@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="前端博客天地，HTML JS CSS 前端架构在这里应有尽有">
+    <meta name="keywords" content="前端 HTML JS CSS Gorden的博客 Gorden‘s博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/index.css" media="screen">
+
+    <title>Blog by Gorden-Wang</title>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1>Blog</h1>
+
+        <h2>Gorden&#39;s Blog</h2>
+
+        <!--<section id="downloads">-->
+        <!--<a href="https://github.com/Gorden-Wang/blog/zipball/master" class="btn">Download as .zip</a>-->
+        <!--<a href="https://github.com/Gorden-Wang/blog/tarball/master" class="btn">Download as .tar.gz</a>-->
+        <!--<a href="https://github.com/Gorden-Wang/blog" class="btn btn-github"><span class="icon"></span>View on GitHub</a>-->
+        <!--</section>-->
+        <!--<nav class="nav-wrapper">-->
+            <!--<ul>-->
+                <!--<li>JavaScript</li>-->
+                <!--<li>CSS3</li>-->
+                <!--<li>HTML5</li>-->
+                <!--<li>前端架构</li>-->
+                <!--<li>前端周报</li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+    </div>
+</header>
+<div class="container">
+    <nav id="bt-menu" class="bt-menu bt-menu-close">
+        <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+        <ul>
+            <!--<li><a href="#">About us</a></li>-->
+            <!--<li><a href="#">Work</a></li>-->
+            <!--<li><a href="#">Clients</a></li>-->
+            <!--<li><a href="#">Blog</a></li>-->
+            <!--<li><a href="#">Contact</a></li>-->
+            <!---->
+            <li><a href="../index.html">Main</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="css.html">Css</a></li>
+            <li><a href="#">Html5</a></li>
+            <li><a href="#">前端架构</a></li>
+            <li><a href="#">前端周报</a></li>
+        </ul>
+        <ul>
+            <li><a href="http://www.twitter.com/codrops" class="bt-icon icon-twitter">Twitter</a></li>
+            <li><a href="https://plus.google.com/101095823814290637419" class="bt-icon icon-gplus">Google+</a></li>
+            <li><a href="http://www.facebook.com/pages/Codrops/159107397912" class="bt-icon icon-facebook">Facebook</a></li>
+            <li><a href="https://github.com/codrops" class="bt-icon icon-github">icon-github</a></li>
+        </ul>
+        <div class="bt-overlay"></div></nav>
+</div>
+<div class="container">
+    <section id="main_content">
+       <h1>JavaScript</h1>
+
+        <ul>
+            <li>
+                <h3>JavaScript LazyLoad</h3>
+                <p>LazyLoad在Web APP中是很常见的功能，我们希望最大化的提升首屏的加载速度，以最优的方案给用户最直接的体验，而不是漫长的菊花和等待。因此就要在页面滑动或滚动的时候去请求接口或图片。至于怎么做？</p>
+                <pre>
+    _bindLazyLoad: function () {
+            var imgCons = $('.lazy-image');
+
+            function interval() {
+                setTimeout(function () {
+                    check();
+                }, 30);
+            }
+
+            function detach() {
+                window.removeEventListener('scroll', interval, false);
+                window.removeEventListener('resize', interval, false);
+            }
+
+            function check() {
+                var winHeight = window.innerHeight, scrollTop = window.pageYOffset, i = 0, con, img, offset;
+
+                while (i < imgCons.length) {
+                    con = $(imgCons[i]);
+                    offset = con.offset();
+                    if (scrollTop + winHeight + 20 >= offset.top) {
+                        img = $(con);
+                        $(img[0]).attr("src", img.attr('lazy-image'));
+                        $(img[0]).removeClass("lazy-image");
+                        [].splice.call(imgCons, i, 1);
+                        i--;
+                        if (!imgCons.length) {
+                            detach();
+                        }
+                    }
+                    i++;
+                }
+            }
+
+
+            window.addEventListener('scroll', interval, false);
+            window.addEventListener('resize', interval, false);
+
+            check();
+        },
+                </pre>
+            </li>
+        </ul>
+    </section>
+</div>
+
+<script src="../javascripts/main.js"></script>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-60947425-1");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
+
+</body>
+</html>
