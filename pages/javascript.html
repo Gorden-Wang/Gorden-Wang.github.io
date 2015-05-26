@@ -114,6 +114,29 @@
         },
                 </pre>
             </li>
+            <li>
+                <h3>JavaScript AJAX 顺序</h3>
+                <p>JS中的AJAX是异步的方法，意思是你不知道什么时候返回结果，如果想以顺序的方式得到结果，我们最容易想到的是使用同步的方式去发送请求，但是这种方式会有弊端，DOM都会被锁住，体验很差。</p>
+                <pre>
+// Node.js example:
+ function creatPost(i, max) {
+        request('http://talent.baidu.com/baidu/web/templet1000/index/corpwebPosition1000baidu!getPostListByConditionBaidu?pc.currentPage=' + i + '&pc.rowSize=10', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //console.log(body) // Show the HTML for the Google homepage.
+                var a = body.match(/class=\'hrs_curPage\'>(\d{1,10})/);
+                console.log(a[1]);
+                if (i + 1 < max) {
+                    creatPost(i + 1, max);
+                }
+            }
+        });
+
+    }
+
+    //creatPost(1, 10);
+
+                </pre>
+            </li>
         </ul>
     </section>
 </div>
