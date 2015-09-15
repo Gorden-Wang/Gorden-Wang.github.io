@@ -129,7 +129,7 @@
       height: 1px;
       background-color: #c6c6c6;
       position: absolute;
-      top: 16px;
+      top: 18px;
       left: 15%; }
     #page .time-picker .time-wrapper li:nth-of-type(4n) {
       margin-right: 0px; }
@@ -249,7 +249,7 @@
   .swiper-slide .day {
     color: #fb6c8a;
     font-size: 12px;
-    margin: 3px 0px; }
+    margin: 1px 0px; }
   .swiper-slide .week {
     border: 1px solid #fb6c8a;
     -webkit-border-radius: 2px;

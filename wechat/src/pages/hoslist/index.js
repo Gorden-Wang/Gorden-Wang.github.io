@@ -65,6 +65,7 @@
             for (var i = 0; i < that.data.depList.length; i++) {
                 if(that.data.departmentId == that.data.depList[i].data.id){
                     title = that.data.depList[i].data.name;
+                    that.data.departmentId == -1 && (title ="科室");
                 }
                 res += '<div data-id="' + that.data.depList[i].data.id + '" class="condit"><span class="ks_' + that.data.depList[i].data.id + '"></span>' + that.data.depList[i].data.name + '</div>';
             }
@@ -141,10 +142,10 @@
                         res = '住院医师';
                         break;
                     case '-1' :
-                        res = '不限';
+                        res = '医生级别';
                         break;
                     default :
-                        res = '不限'
+                        res = '医生级别'
                 }
                 return res;
             });
