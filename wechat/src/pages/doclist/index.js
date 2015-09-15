@@ -120,7 +120,7 @@
                         res = '住院医师';
                         break;
                     case -1 :
-                        res = '不限';
+                        res = '医生级别';
                         break;
 
                 }
@@ -183,7 +183,7 @@
             that.dom.desdep.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.departmentId = id;
-                window.location.href = '../../pages/hoslist/index.html?' + that.makeURL();
+                window.location.href = '../../pages/doclist/index.html?' + that.makeURL();
             });
         },
         fetchDepartments: function () {
