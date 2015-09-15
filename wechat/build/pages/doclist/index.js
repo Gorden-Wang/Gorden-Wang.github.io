@@ -174,11 +174,13 @@
             for (var i = 0; i < that.data.depList.length; i++) {
                 if(that.data.departmentId == that.data.depList[i].data.id){
                     title = that.data.depList[i].data.name;
+                    that.data.departmentId == -1 && (title ="科室");
                 }
                 res += '<div data-id="' + that.data.depList[i].data.id + '" class="condit"><span class="ks_' + that.data.depList[i].data.id + '"></span>' + that.data.depList[i].data.name + '</div>';
             }
             $("#desdep").html(res);
             title ? $("#seldep").text(title) : $("#seldep").text("科室")
+
 
             that.dom.desdep.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
