@@ -1,0 +1,262 @@
+#page {
+  color: #404040; }
+  #page .menzhen-wrapper {
+    background-color: white;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+    -webkit-box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px; }
+    #page .menzhen-wrapper p {
+      text-align: center;
+      font-size: 16px; }
+    #page .menzhen-wrapper ul {
+      padding: 10px; }
+    #page .menzhen-wrapper li {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      background-position: left center;
+      background-repeat: no-repeat;
+      padding-left: 20px;
+      margin: 10px 0px;
+      font-size: 14px;
+      height: 15px; }
+      #page .menzhen-wrapper li div:first-of-type {
+        width: 2em;
+        margin-right: 16px; }
+    #page .menzhen-wrapper .icon1 {
+      -webkit-background-size: 12px 12px;
+         -moz-background-size: 12px 12px;
+           -o-background-size: 12px 12px;
+              background-size: 12px 12px;
+      background-image: url(../../images/preorder/icon1.png); }
+    #page .menzhen-wrapper .icon2 {
+      -webkit-background-size: 12px 11px;
+         -moz-background-size: 12px 11px;
+           -o-background-size: 12px 11px;
+              background-size: 12px 11px;
+      background-image: url(../../images/preorder/icon2.png); }
+    #page .menzhen-wrapper .icon3 {
+      -webkit-background-size: 12px 15px;
+         -moz-background-size: 12px 15px;
+           -o-background-size: 12px 15px;
+              background-size: 12px 15px;
+      background-image: url(../../images/preorder/icon3.png); }
+    #page .menzhen-wrapper .icon4 {
+      -webkit-background-size: 11px 11px;
+         -moz-background-size: 11px 11px;
+           -o-background-size: 11px 11px;
+              background-size: 11px 11px;
+      background-image: url(../../images/preorder/icon4.png); }
+  #page > p {
+    padding-left: 11px;
+    font-size: 14px;
+    color: #999999; }
+  #page .jiuzhen-wrapper {
+    background-color: white;
+    margin-top: 11px; }
+    #page .jiuzhen-wrapper ul {
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 1px solid #d1d1d1;
+      padding: 0px 11px; }
+      #page .jiuzhen-wrapper ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        border-bottom: 1px solid #d1d1d1;
+        padding: 10px 0px;
+        font-size: 14px; }
+        #page .jiuzhen-wrapper ul li div:first-of-type {
+          width: 4em;
+          margin-right: 35px; }
+        #page .jiuzhen-wrapper ul li div:last-of-type {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1; }
+      #page .jiuzhen-wrapper ul li:last-of-type {
+        border-bottom: 0px; }
+  #page .history-wrapper {
+    margin: 5px 0px 11px 0px;
+    background-color: white; }
+    #page .history-wrapper ul {
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 1px solid #d1d1d1;
+      padding: 0px 11px; }
+      #page .history-wrapper ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        border-bottom: 1px solid #d1d1d1;
+        padding: 10px 0px;
+        font-size: 14px;
+        line-height: 19px; }
+        #page .history-wrapper ul li span.l-name {
+          margin-right: 10px; }
+        #page .history-wrapper ul li span.l-tel {
+          margin-right: 10px; }
+        #page .history-wrapper ul li span.l-code {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1;
+          margin-right: 10px;
+          -o-text-overflow: ellipsis;
+             text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap; }
+        #page .history-wrapper ul li .radio {
+          margin-right: 10px; }
+      #page .history-wrapper ul li:last-of-type {
+        border-bottom: 0px; }
+  #page .price-wrapper {
+    background-color: white;
+    margin-top: 11px;
+    margin-bottom: 11px; }
+    #page .price-wrapper ul {
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 1px solid #d1d1d1;
+      padding: 0px 11px; }
+      #page .price-wrapper ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        border-bottom: 1px solid #d1d1d1;
+        padding: 10px 0px;
+        font-size: 14px;
+        line-height: 19px;
+        color: #404040; }
+        #page .price-wrapper ul li .l-sp1 {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1; }
+        #page .price-wrapper ul li .l-sp2 {
+          width: 3em;
+          margin-right: 20px;
+          text-align: right; }
+        #page .price-wrapper ul li .l-sp3 {
+          margin-right: 10px;
+          text-align: right; }
+      #page .price-wrapper ul li.title {
+        color: #000000;
+        font-size: 16px; }
+      #page .price-wrapper ul li:last-of-type {
+        border-bottom: 0px; }
+  #page .price-channel {
+    background-color: white;
+    margin-top: 11px;
+    margin-bottom: 60px; }
+    #page .price-channel ul {
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 1px solid #d1d1d1;
+      padding: 0px 11px; }
+      #page .price-channel ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        border-bottom: 1px solid #d1d1d1;
+        padding: 10px 0px;
+        font-size: 14px;
+        line-height: px;
+        color: #404040; }
+        #page .price-channel ul li > span {
+          width: 28px;
+          height: 28px;
+          background-position: center center;
+          background-repeat: no-repeat;
+          -webkit-background-size: 28px 28px;
+             -moz-background-size: 28px 28px;
+               -o-background-size: 28px 28px;
+                  background-size: 28px 28px;
+          margin: 0px 15px; }
+        #page .price-channel ul li p {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1; }
+          #page .price-channel ul li p span {
+            display: block; }
+          #page .price-channel ul li p span:last-of-type {
+            font-size: 12px;
+            color: #909090;
+            margin-top: 3px; }
+        #page .price-channel ul li .alipay {
+          background-image: url(../../images/preorder/alipay.png); }
+        #page .price-channel ul li .wechat {
+          background-image: url(../../images/preorder/wechat.png); }
+        #page .price-channel ul li .radio {
+          margin-right: 10px;
+          margin-top: 5px; }
+      #page .price-channel ul li.title {
+        color: #000000;
+        font-size: 16px; }
+      #page .price-channel ul li:last-of-type {
+        border-bottom: 0px; }
+  #page footer {
+    background-color: white;
+    margin-top: 11px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px; }
+    #page footer ul {
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 1px solid #d1d1d1;
+      padding: 0px 11px; }
+      #page footer ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        border-bottom: 1px solid #d1d1d1;
+        padding: 10px 0px;
+        font-size: 14px;
+        line-height: px;
+        color: #404040; }
+        #page footer ul li div {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1;
+          font-size: 16px; }
+        #page footer ul li .btn {
+          -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+                  border-radius: 4px;
+          display: inline-block;
+          padding: 8px 10px;
+          color: white;
+          background-color: #f86987; }
+        #page footer ul li .dis {
+          background-color: #d8d8d8; }
+      #page footer ul li:last-of-type {
+        border-bottom: 0px; }
+
+input {
+  border: 0px;
+  width: 100%;
+  background-color: transparent; }
+
+.radio {
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 19px 19px;
+     -moz-background-size: 19px 19px;
+       -o-background-size: 19px 19px;
+          background-size: 19px 19px;
+  width: 19px;
+  height: 19px;
+  background-image: url(../../images/preorder/ra.png); }
+
+.radio_se {
+  background-image: url(../../images/preorder/ra_se.png); }

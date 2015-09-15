@@ -1,0 +1,117 @@
+#page {
+  .wrap {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .input_address {
+    select {
+      border: 0px;
+      background-color: transparent;
+      font-size: 16px;
+      color: #9e9e9e;
+    }
+  }
+
+  #tel-wrapper {
+    padding: 0px;
+    .list_yz {
+      height: auto;
+      padding: 15px 10px;
+    }
+    .list_yz .Center .row_1 {
+      height: auto;
+      line-height: 16px;
+      font-size: 16px;
+      color: #404040;
+      margin-bottom: 5px;
+    }
+    .Right {
+      margin-top: 10px;
+    }
+    span {
+      color: #f8829a;
+      font-size: 18px;
+    }
+  }
+
+  .box_yz {
+    background-color: #FFF;
+  }
+  .border{
+    border-top: 1px solid #d1d1d1;
+  }
+
+  .my-wrapper {
+    padding: 20px 0px;
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    .box-radius-wrapper {
+      width: 40%;
+      margin-right: 20%;
+      float: left;
+
+      img {
+        width: 100%;
+      }
+      p {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #404040;
+      }
+    }
+    .box-radius-wrapper:last-of-type {
+      margin-right: 0px;
+    }
+  }
+
+  .list-widget {
+    display: flex;
+    padding: 15px 20px;
+
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      margin-right: 20px;
+
+    }
+    p {
+      flex: 1;
+      padding-top: 3px;
+      font-size: 16px;
+      color: #404040;
+    }
+    .right-icon {
+      display: inline-block;
+      width: 9px;
+      height: 16px;
+      background-image: url(../../images/arro_right.png);
+      background-size: 9px 16px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .icon1{
+    background-image: url(../../images/person/icon1.png);
+  }
+  .icon2{
+    background-image: url(../../images/person/icon2.png);
+  }
+  .icon3{
+    background-image: url(../../images/person/icon3.png);
+  }
+  .icon4{
+    background-image: url(../../images/person/icon4.png);
+  }
+  .icon5{
+    background-image: url(../../images/person/icon5.png);
+  }
+
+}

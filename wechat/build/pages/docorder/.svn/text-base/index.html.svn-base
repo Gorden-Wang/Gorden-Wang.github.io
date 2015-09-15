@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>医生列表</title>
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/widgets/swiper/index.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="top-wrapper">
+            <div class="box box_list_ys">
+                <div class="list_ys clearfix">
+                    <a href="https://ssl-static-test.instarekber.com/upay/pages/docdetail/index.html">
+                        <div class="Left"><img src="https://ssl-static-test.instarekber.com/upay/images/temp/img_3.png"/></div>
+                        <div class="Center">
+                            <div class="row_1">王落英</div>
+                            <div class="row_2">主治医师</div>
+                            <div class="row_2">北京301医院</div>
+                            <div class="row_2">擅长：推拿，小儿内科</div>
+                        </div>
+                        <div class="Right">妇科</div>
+                        <div class="right-icon t-r"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-picker box_yz">
+            <span class="right-icon rota pre" id="leftbtn"></span>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide selected">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <!--<div class="swiper-pagination"></div>-->
+                <!--&lt;!&ndash; Add Arrows &ndash;&gt;-->
+                <!--<div class="swiper-button-next"></div>-->
+                <!--<div class="swiper-button-prev"></div>-->
+            </div>
+            <span class="right-icon next" id="rightbtn"></span>
+        </div>
+
+
+        <div class="time-picker box_yz bottom-radius">
+            <div class="box box_list_ys top-radius">
+                <div class="list_ys clearfix">
+                    <a href="https://ssl-static-test.instarekber.com/upay/pages/hosdetail/index.html">
+                        <div class="Center">
+                            <div class="row_1 icon1">美年大健康望京店</div>
+                            <div class="row_2 icon2">北京市海淀区苏州街后街31号</div>
+                        </div>
+                        <div class="Right">妇科</div>
+                    </a>
+                </div>
+            </div>
+            <div class="taochan-wrapper">
+                <p>
+                    套餐费:
+                    <span>￥300</span>
+                    (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
+                </p>
+
+                <div class="right-icon t-r"></div>
+            </div>
+            <div class="time-wrapper ">
+                <ul>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item dis">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                </ul>
+            </div>
+            <div class="tiaokuan-wrapper bottom-radius">
+                <ul>
+                    <li>
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/index.html">
+                        服务须知
+                        <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/terms.html">
+                        退改条款
+                        <div class="right-icon t-r"></div>
+                            </a>
+                    </li>
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/feedback/list.html">
+                        用户评价
+                        <div class="right-icon t-r"></div>
+                            </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="time-picker box_yz bottom-radius">
+            <div class="box box_list_ys top-radius">
+                <div class="list_ys clearfix">
+                    <a href="https://ssl-static-test.instarekber.com/upay/pages/hosdetail/index.html">
+                        <div class="Center">
+                            <div class="row_1 icon1">美年大健康望京店</div>
+                            <div class="row_2 icon2">北京市海淀区苏州街后街31号</div>
+                        </div>
+                        <div class="Right">妇科</div>
+                    </a>
+                </div>
+            </div>
+            <div class="taochan-wrapper">
+                <p>
+                    套餐费:
+                    <span>￥300</span>
+                    (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
+                </p>
+
+                <div class="right-icon t-r"></div>
+            </div>
+            <div class="time-wrapper ">
+                <ul>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item dis">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                </ul>
+            </div>
+            <div class="tiaokuan-wrapper bottom-radius">
+                <ul>
+                    <li>
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/index.html">
+                            服务须知
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/terms.html">
+                            退改条款
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/feedback/list.html">
+                            用户评价
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="time-picker box_yz bottom-radius">
+            <div class="box box_list_ys top-radius">
+                <div class="list_ys clearfix">
+                    <a href="https://ssl-static-test.instarekber.com/upay/pages/hosdetail/index.html">
+                        <div class="Center">
+                            <div class="row_1 icon1">美年大健康望京店</div>
+                            <div class="row_2 icon2">北京市海淀区苏州街后街31号</div>
+                        </div>
+                        <div class="Right">妇科</div>
+                    </a>
+                </div>
+            </div>
+            <div class="taochan-wrapper">
+                <p>
+                    套餐费:
+                    <span>￥300</span>
+                    (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
+                </p>
+
+                <div class="right-icon t-r"></div>
+            </div>
+            <div class="time-wrapper ">
+                <ul>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item dis">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                </ul>
+            </div>
+            <div class="tiaokuan-wrapper bottom-radius">
+                <ul>
+                    <li>
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/index.html">
+                            服务须知
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/terms.html">
+                            退改条款
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/feedback/list.html">
+                            用户评价
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</script>
+
+
+<script src="https://ssl-static-test.instarekber.com/upay/lib/zepto.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/juicer.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/widgets/swiper/index.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/index.js?version=0.1.0"></script>
+
+</body>
+</html>

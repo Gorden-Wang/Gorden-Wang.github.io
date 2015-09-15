@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>医生详情</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div id="overlay" class="fadeAnimate"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <!--医生资料-->
+        <div class="portbox">
+            <div class="portimg"><img src="${doc.snapshot}" /></div>
+            <p>${doc.name}</p>
+            <p>${makeTitle(doc.title)}</p>
+        </div>
+        <div class="tabbox">
+            <div class="box">
+                <div class="tab_tit">
+                    <span class="tab_selected" id="docdes">医生介绍</span><span id="feedback">用户评价</span>
+                </div>
+            </div>
+            <div class="tabs">
+                <!--医生介绍-->
+                <div class="tabdetail" id="deswrapper">
+                    <div class="introbox">
+                        <div class="intro mb8">
+                            <span>所属医院</span>${doc.hospital}
+                        </div>
+                        <div class="intro mb8">
+                            <span>医院科室</span>妇科
+                        </div>
+                        <div class="intro mb8">
+                            <span>擅长领域</span>
+                            ${makeDes(doc.specialities)}
+                        </div>
+                        <div class="intro mb8">
+                            <span>个人说明</span>${doc.description}
+                        </div>
+                    </div>
+
+                </div>
+                <!--用户评价-->
+                <div class="tabdetail" id="fbwrapper" style=" display:none">
+                    <div class="ptext">上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海</div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</script>
+
+
+<script src="../../lib/libAll.js?version=0.1.0"></script>
+<script src="../../widgets/cityList/index.js?version=0.1.0"></script>
+<script src="../../pages/docdetail/index.js?version=0.1.0"></script>
+
+</body>
+</html>

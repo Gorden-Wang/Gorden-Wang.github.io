@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>线下门诊</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="../../pages/index/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <!--banner-->
+        <div class="banner bd_top" data-href="http://www.baidu.com"><img src="../../images/temp/img_2.jpg" /></div>
+        <!--地址-->
+        <div class="section_box">
+            <div class="section_nav">
+                <div class="address">
+                    <div class="input_address">
+                        <select>
+                            {@each cityList as item}
+
+                            <option value="${item.id}">${item.name}</option>
+
+                            {@/each}
+
+
+                        </select>
+                    </div>
+                    <div class="hide_address"></div>
+                </div>
+                <div class="personal">
+                    <div><img src="../../images/personal-central@2x.gif" /></div>
+                </div>
+            </div>
+        </div>
+        <!--约诊-->
+        <div class="box_yz">
+            <div id="docItme" class="box box_list_yz">
+                <div class="list_yz clearfix">
+                    <a>
+                        <div class="Left"><img src="../../images/touxiang_1.png" /></div>
+                        <div class="Center">
+                            <div class="row_1">医生约诊</div>
+                        </div>
+                        <div class="Right"></div>
+                    </a>
+                </div>
+            </div>
+            <div id="hosItme" class="box box_list_yz">
+                <div class="list_yz bd_none clearfix">
+                    <a >
+                        <div class="Left"><img src="../../images/touxiang_2.png" /></div>
+                        <div class="Center">
+                            <div class="row_1">诊所约诊</div>
+                        </div>
+                        <div class="Right"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.0"></script>
+<script src="../../widgets/cityList/index.js?version=0.1.0"></script>
+<script src="../../pages/index/index.js?version=0.1.0"></script>
+
+</body>
+</html>

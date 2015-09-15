@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>个人中心</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="../../pages/person/index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <!--头部-->
+        <!--<div class="header">-->
+        <!--<div class="header_in">-->
+        <!--<span class="Btn_return"></span>线下门诊<strong class="Btn_function"></strong>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--banner-->
+        <div class="section_box">
+            <div class="section_nav">
+                <div class="address">
+                    <div class="input_address">
+                        <select>
+                            <option>北京</option>
+                            <option>上海</option>
+                            <option>广州</option>
+                            <option>深圳</option>
+                            <option>天津</option>
+                            <option>成都</option>
+                            <option>重庆</option>
+                            <option>成都</option>
+                            <option>沈阳</option>
+                            <option>不限</option>
+                        </select>
+                    </div>
+                    <div class="hide_address"></div>
+                </div>
+                <div class="personal">
+                    <div><img src="../../images/personal-central@2x.gif"/></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tel-wrapper" class="box box_list_yz ">
+            <div class="list_yz clearfix">
+                <a href="#">
+                    <div class="Center">
+                        <div class="row_1">13800002100</div>
+                        <span>已绑定</span>
+                    </div>
+                    <div class="Right"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="box_yz">
+
+            <div class="my-wrapper">
+                <div class="box-radius-wrapper">
+                    <img src="../../images/myorder.png">
+                    <p>我的订单</p>
+                </div>
+
+                <div class="box-radius-wrapper">
+                    <div class="box-radius-inner">
+                        <img src="../../images/mybill.png">
+                        <p>我的病历</p>
+                    </div>
+                </div>
+            </div>
+            <div class="list-widget border">
+                <span class="icon icon1"></span>
+                <p class="content">待完成订单</p>
+                <span class="right-icon"></span>
+            </div>
+
+        </div>
+
+
+        <div class="box_yz">
+            <div class="list-widget">
+                <span class="icon icon2"></span>
+                <p class="content">账户余额</p>
+                <span class="right-icon"></span>
+            </div>
+            <div class="list-widget border">
+                <span class="icon icon3"></span>
+                <p class="content">我的红包</p>
+                <span class="right-icon"></span>
+            </div>
+        </div>
+
+        <div class="box_yz">
+            <div class="list-widget">
+                <span class="icon icon4"></span>
+                <p class="content">规则介绍</p>
+                <span class="right-icon"></span>
+            </div>
+            <div class="list-widget border">
+                <span class="icon icon5"></span>
+                <p class="content">意见反馈</p>
+                <span class="right-icon"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+</script>
+
+
+<script src="../../lib/zepto.js?version=0.1.0"></script>
+<script src="../../lib/juicer.js?version=0.1.0"></script>
+<script src="index.js?version=0.1.0"></script>
+
+</body>
+</html>
