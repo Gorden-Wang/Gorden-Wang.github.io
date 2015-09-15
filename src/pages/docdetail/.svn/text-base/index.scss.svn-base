@@ -1,0 +1,232 @@
+#page{
+  .wrap{
+    margin-top: 0px;
+  }
+
+  .Center{
+    div{
+      margin: 5px 0px;
+    }
+  }
+
+  .right-icon {
+    display: inline-block;
+    width: 9px;
+    height: 16px;
+    background-image: url(../../images/arro_right.png);
+    background-size: 9px 16px;
+    background-repeat: no-repeat;
+  }
+
+  .t-r{
+    position: absolute;
+    right: 10px;
+    top: 45px;
+  }
+
+  .data-picker{
+    display: flex;
+    background-color: #FFF;
+    span.right-icon {
+      display: inline-block;
+      width: 30px;
+      height: 60px;
+      background-image: url(../../images/arro_right.png);
+      background-size: 9px 16px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .rota{
+      transform: rotate(-180deg);
+    }
+    div{
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+
+      ul{
+        overflow: hidden;
+        width: 3000px;
+
+        li{
+          float: left;
+          height: 100%;
+          border-right: 1px solid #d1d1d1;
+          div{
+            margin: 2px;
+            padding: 4px 10px;
+          }
+
+          .year{
+            color: #c7c7c7;
+          }
+          .day{
+            color:#fb6c8a;
+            font-size: 16px;
+            margin: 3px 0px;
+          }
+          .week{
+            border: 1px solid #fb6c8a;
+            border-radius: 2px;
+            color:#fb6c8a;
+          }
+        }
+        li:first-of-type{
+          border-left: 1px solid #d1d1d1;
+        }
+
+        .selected{
+          div{
+            background-color: #feb7c6;
+            border-radius: 4px;
+            //padding: 0px;
+          }
+
+          .year{
+            color: #FFF;
+            font-size: 16px;
+          }
+          .day{
+            color:#FFF;
+            font-size: 16px;
+            margin: 3px 0px;
+          }
+          .week{
+            border: 1px solid #FFF;
+            border-radius: 2px;
+            color:#FFF;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-radius{
+    border-radius: 0px 0px 8px 8px;
+  }
+  .time-picker{
+
+    margin: 0px 15px;
+    box-sizing: border-box;
+    border-top: 0px;
+    margin-top: 9px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+
+    .top-radius{
+      border-radius: 8px 8px 0px 0px;
+    }
+
+    .box_list_ys{
+      margin-top: 0px;
+    }
+    .icon1{
+      -webkit-background-size: 16px 16px;
+      background-size: 16px 16px;
+      background-image: url(../../images/order/icon1.png);
+      margin-bottom: 15px;
+    }
+    .icon2{
+      -webkit-background-size: 13px 17.5px;
+      background-size: 13px 17.5px;
+      background-image: url(../../images/order/icon2.png);
+      padding: 3px 0px;
+    }
+    .row_1,.row_2{
+      background-position: left center;
+      background-repeat:no-repeat;
+      padding-left: 40px;
+      font-size: 18px;
+      line-height: 18px;
+    }
+    .box{
+      border-bottom-style: dotted;
+    }
+
+    .taochan-wrapper{
+      background-color: #fff7fa;
+      padding: 12px 30px 12px 10px;
+      position: relative;
+      .right-icon{
+        top: 13px;
+      }
+      p{
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #b4b4b4;
+        span{
+          color: #9bb8f8;
+          font-size: 20px;
+        }
+      }
+
+    }
+
+    .time-wrapper{
+      padding: 22px 11px 7px 11px;
+      background-color: #FFF;
+      border-top: 1px solid #d1d1d1;
+      ul{
+        overflow: hidden;
+      }
+      li{
+        border-radius: 6px;
+        font-size: 15px;
+        color: #FFF;
+        padding: 10px 0px;
+        text-align: center;
+        background-color: #f98099;
+        width:percentage(120/(640-22-30));
+        margin-right:percentage(33/(640-22-30)) ;
+        float: left;
+        margin-bottom: 15px;
+        position: relative;
+
+      }
+      .time-item.dis{
+        background-color:#e8e8e8 ;
+        color: #c6c6c6;
+      }
+      .dis:before{
+        content: " ";
+        width: 70%;
+        height: 1px;
+        background-color:#c6c6c6 ;
+        position: absolute;
+        top: 16px;
+        left: 15%;
+      }
+      li:nth-of-type(4n){
+        margin-right: 0px;
+      }
+    }
+
+    .tiaokuan-wrapper{
+      background-color: #FFF;
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 0px;
+
+      ul{
+        overflow: hidden;
+        li{
+          position: relative;
+          width: 33.33%;
+          float: left;
+          padding: 15px 10px;
+          box-sizing: border-box;
+          font-size: 16px;
+          color: #919191;
+          text-align: center;
+
+          .right-icon{
+            top: 15px;
+          }
+        }
+      }
+    }
+
+  }
+
+}
