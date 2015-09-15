@@ -118,5 +118,5 @@
         }
     }
 
-     window.Rate = Rate;
+    window.Wlib ? (Wlib.Rate = Rate) : (window.Rate = Rate);
 })($);

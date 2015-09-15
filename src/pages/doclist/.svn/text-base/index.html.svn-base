@@ -7,11 +7,11 @@
     <meta content="telephone=no" name="format-detection"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black"/>-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>医生下单</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="../../pages/doclist/index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/pages/doclist/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -29,7 +29,7 @@
                         <div class="hide_address"></div>
                     </div>
                     <div class="personal">
-                        <div><img src="../../images/personal-central@2x.gif"/></div>
+                        <div><img src="https://ssl-static-test.instarekber.com/upay/images/personal-central@2x.gif"/></div>
                     </div>
                 </div>
                 <div class="citybox">
@@ -48,7 +48,7 @@
             <div class="screenbox mb8">
                 <div class="screening clearfix">
                     <div id="seldep" class="screen_left">科室</div>
-                    <div id="selpro" class="screen_right">${makeTitle(parseInt(titleId))}</div>
+                    <div id="selpro" class="screen_right">专家级别</div>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
 
             <div class="box box_list_ys">
                 <div class="list_ys clearfix">
-                    <a href="../../pages/docdetail/index.html?doctorId=${item.doctor.doctorId}">
+                    <a href="https://ssl-static-test.instarekber.com/upay/pages/docdetail/index.html?doctorId=${item.doctor.doctorId}">
                         <div class="Left"><img class="lazy-image" lazy-image="${item.doctor.snapshot}"/></div>
                         <div class="Center">
                             <div class="row_1">${item.doctor.name}</div>
@@ -84,7 +84,7 @@
                 {@each item.treatmentPlan as location , index}
 
                 <div class="address_ys clearfix">
-                    <a href="../../pages/docorder/index.html?doctorId=${item.doctor.doctorId}">
+                    <a href="https://ssl-static-test.instarekber.com/upay/pages/docorder/index.html">
                         <div class="Left radius-wrapper">${parseInt(index)+1}</div>
                         <div class="Center">
                             <div class="row_1">${location}
@@ -113,7 +113,7 @@
 
     <div class="box box_list_ys">
         <div class="list_ys clearfix">
-            <a href="../../pages/docdetail/index.html">
+            <a href="https://ssl-static-test.instarekber.com/upay/pages/docdetail/index.html">
                 <div class="Left"><img class="lazy-image" lazy-image="${item.doctor.snapshot}"/></div>
                 <div class="Center">
                     <div class="row_1">${item.doctor.name}</div>
@@ -127,7 +127,7 @@
         {@each item.treatmentPlan as location , index}
 
         <div class="address_ys clearfix">
-            <a href="../../pages/docorder/index.html">
+            <a href="https://ssl-static-test.instarekber.com/upay/pages/docorder/index.html">
                 <div class="Left radius-wrapper">${parseInt(index)+1}</div>
                 <div class="Center">
                     <div class="row_1">${location}
@@ -147,9 +147,9 @@
     </script>
 
 
-<script src="../../lib/libAll.js"></script>
-<script src="../../widgets/cityList/index.js"></script>
-<script src="../../pages/doclist/index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/libAll.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/widgets/cityList/index.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/pages/doclist/index.js?version=0.1.0"></script>
 
 </body>
 </html>

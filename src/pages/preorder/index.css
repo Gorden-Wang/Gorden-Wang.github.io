@@ -2,8 +2,12 @@
   color: #404040; }
   #page .menzhen-wrapper {
     background-color: white;
-    border-radius: 4px;
-    box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+    -webkit-box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.3);
     width: 90%;
     margin: 20px auto;
     padding: 10px; }
@@ -13,6 +17,9 @@
     #page .menzhen-wrapper ul {
       padding: 10px; }
     #page .menzhen-wrapper li {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
       background-position: left center;
       background-repeat: no-repeat;
@@ -24,16 +31,28 @@
         width: 2em;
         margin-right: 16px; }
     #page .menzhen-wrapper .icon1 {
-      background-size: 12px 12px;
+      -webkit-background-size: 12px 12px;
+         -moz-background-size: 12px 12px;
+           -o-background-size: 12px 12px;
+              background-size: 12px 12px;
       background-image: url(../../images/preorder/icon1.png); }
     #page .menzhen-wrapper .icon2 {
-      background-size: 12px 11px;
+      -webkit-background-size: 12px 11px;
+         -moz-background-size: 12px 11px;
+           -o-background-size: 12px 11px;
+              background-size: 12px 11px;
       background-image: url(../../images/preorder/icon2.png); }
     #page .menzhen-wrapper .icon3 {
-      background-size: 12px 15px;
+      -webkit-background-size: 12px 15px;
+         -moz-background-size: 12px 15px;
+           -o-background-size: 12px 15px;
+              background-size: 12px 15px;
       background-image: url(../../images/preorder/icon3.png); }
     #page .menzhen-wrapper .icon4 {
-      background-size: 11px 11px;
+      -webkit-background-size: 11px 11px;
+         -moz-background-size: 11px 11px;
+           -o-background-size: 11px 11px;
+              background-size: 11px 11px;
       background-image: url(../../images/preorder/icon4.png); }
   #page > p {
     padding-left: 11px;
@@ -47,6 +66,9 @@
       border-bottom: 1px solid #d1d1d1;
       padding: 0px 11px; }
       #page .jiuzhen-wrapper ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
         display: flex;
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
@@ -55,7 +77,10 @@
           width: 4em;
           margin-right: 35px; }
         #page .jiuzhen-wrapper ul li div:last-of-type {
-          flex: 1; }
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1; }
       #page .jiuzhen-wrapper ul li:last-of-type {
         border-bottom: 0px; }
   #page .history-wrapper {
@@ -66,6 +91,9 @@
       border-bottom: 1px solid #d1d1d1;
       padding: 0px 11px; }
       #page .history-wrapper ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
         display: flex;
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
@@ -76,9 +104,13 @@
         #page .history-wrapper ul li span.l-tel {
           margin-right: 10px; }
         #page .history-wrapper ul li span.l-code {
-          flex: 1;
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1;
           margin-right: 10px;
-          text-overflow: ellipsis;
+          -o-text-overflow: ellipsis;
+             text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap; }
         #page .history-wrapper ul li .radio {
@@ -94,6 +126,9 @@
       border-bottom: 1px solid #d1d1d1;
       padding: 0px 11px; }
       #page .price-wrapper ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
         display: flex;
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
@@ -101,7 +136,10 @@
         line-height: 19px;
         color: #404040; }
         #page .price-wrapper ul li .l-sp1 {
-          flex: 1; }
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1; }
         #page .price-wrapper ul li .l-sp2 {
           width: 3em;
           margin-right: 20px;
@@ -123,6 +161,9 @@
       border-bottom: 1px solid #d1d1d1;
       padding: 0px 11px; }
       #page .price-channel ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
         display: flex;
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
@@ -134,10 +175,16 @@
           height: 28px;
           background-position: center center;
           background-repeat: no-repeat;
-          background-size: 28px 28px;
+          -webkit-background-size: 28px 28px;
+             -moz-background-size: 28px 28px;
+               -o-background-size: 28px 28px;
+                  background-size: 28px 28px;
           margin: 0px 15px; }
         #page .price-channel ul li p {
-          flex: 1; }
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1; }
           #page .price-channel ul li p span {
             display: block; }
           #page .price-channel ul li p span:last-of-type {
@@ -167,6 +214,9 @@
       border-bottom: 1px solid #d1d1d1;
       padding: 0px 11px; }
       #page footer ul li {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
         display: flex;
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
@@ -174,10 +224,15 @@
         line-height: px;
         color: #404040; }
         #page footer ul li div {
-          flex: 1;
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1;
           font-size: 16px; }
         #page footer ul li .btn {
-          border-radius: 4px;
+          -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+                  border-radius: 4px;
           display: inline-block;
           padding: 8px 10px;
           color: white;
@@ -195,12 +250,13 @@ input {
 .radio {
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 19px 19px;
+  -webkit-background-size: 19px 19px;
+     -moz-background-size: 19px 19px;
+       -o-background-size: 19px 19px;
+          background-size: 19px 19px;
   width: 19px;
   height: 19px;
   background-image: url(../../images/preorder/ra.png); }
 
 .radio_se {
   background-image: url(../../images/preorder/ra_se.png); }
-
-/*# sourceMappingURL=index.css.map */

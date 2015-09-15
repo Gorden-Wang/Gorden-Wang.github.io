@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>医生下单</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="../../pages/orderlist/index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/pages/orderlist/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -37,21 +37,21 @@
                     已完成
                 </li>
                 <li id="filter">
-                    <img src="../../images/screen_down.png">筛选
+                    <img src="https://ssl-static-test.instarekber.com/upay/images/screen_down.png">筛选
                 </li>
             </ul>
 
             <div class="filterbox">
                 <ul class="clearfix">
                     <li>
-                        <img src="../../images/orderlist/icon1.png">不限
+                        <img src="https://ssl-static-test.instarekber.com/upay/images/orderlist/icon1.png">不限
 
                     </li>
                     <li>
-                        <img src="../../images/orderlist/icon2.png">门诊
+                        <img src="https://ssl-static-test.instarekber.com/upay/images/orderlist/icon2.png">门诊
                     </li>
                     <li>
-                        <img src="../../images/orderlist/icon3.png">体验
+                        <img src="https://ssl-static-test.instarekber.com/upay/images/orderlist/icon3.png">体验
                     </li>
                 </ul>
             </div>
@@ -377,9 +377,9 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
-<script src="index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/zepto.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/juicer.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/index.js?version=0.1.0"></script>
 
 </body>
 </html>

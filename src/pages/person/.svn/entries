@@ -2,13 +2,13 @@
 
 dir
 15
-svn://wangshiqing@182.92.216.40/wechat/src/pages/person
+svn://wangshiqing@182.92.216.40/wechat/build/pages/person
 svn://wangshiqing@182.92.216.40/wechat
 
 
 
-2015-09-09T03:06:22.944910Z
-11
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
 
 
@@ -26,52 +26,18 @@ wangshiqing
 
 518fdb66-bc1e-4ce7-a830-efb528a440c4
 
-index.scss
-file
-
-
-
-
-2015-09-06T07:49:40.000000Z
-a485a67e6666467624c81f3eedb84390
-2015-08-27T07:23:03.979413Z
-1
-wangshiqing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2092
-
 index.js
 file
 
 
 
 
-2015-09-06T07:49:40.000000Z
+2015-09-10T01:30:17.000000Z
 065a6a23a0c267dbbcef789e02e24ea6
-2015-08-27T07:23:03.979413Z
-1
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
-has-props
+
 
 
 
@@ -94,52 +60,17 @@ has-props
 
 1136
 
-index.css.map
-file
-
-
-
-
-2015-09-08T10:22:54.000000Z
-2f2eb3f767473f60584b3d47bb382bc6
-2015-09-09T03:06:22.944910Z
-11
-wangshiqing
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1556
-
 index.html
 file
 
 
 
 
-2015-09-06T07:49:40.000000Z
-99c4dfa85bc261ce86988e2c790c3563
-2015-08-27T07:23:03.979413Z
-1
+2015-09-10T01:30:17.000000Z
+54881ec71a8d5b4abe7b2114b730d5db
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
-has-props
 
 
 
@@ -160,7 +91,8 @@ has-props
 
 
 
-4386
+
+4785
 
 index.css
 file
@@ -168,12 +100,11 @@ file
 
 
 
-2015-09-06T07:49:40.000000Z
-4882bc553f39e54e64c44cc9ae442088
-2015-08-27T07:23:03.979413Z
-1
+2015-09-10T01:30:18.000000Z
+e3613f578b8e9181deea0504a3f43926
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
-has-props
 
 
 
@@ -194,5 +125,6 @@ has-props
 
 
 
-2183
+
+2536
 

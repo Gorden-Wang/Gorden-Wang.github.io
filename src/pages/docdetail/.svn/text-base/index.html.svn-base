@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>医生详情</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -23,7 +23,7 @@
     <div class="wrap">
         <!--医生资料-->
         <div class="portbox">
-            <div class="portimg"><img src="${doc.snapshot}" /></div>
+            <div class="portimg"><img src="https://ssl-static-test.instarekber.com/upay/${doc.snapshot}" /></div>
             <p>${doc.name}</p>
             <p>${makeTitle(doc.title)}</p>
         </div>
@@ -44,11 +44,10 @@
                             <span>医院科室</span>妇科
                         </div>
                         <div class="intro mb8">
-                            <span>擅长领域</span>
-                            ${makeDes(doc.specialities)}
+                            <span>擅长领域</span>针灸
                         </div>
                         <div class="intro mb8">
-                            <span>个人说明</span>${doc.description}
+                            <span>个人资料</span>上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院
                         </div>
                     </div>
 
@@ -69,9 +68,9 @@
 </script>
 
 
-<script src="../../lib/libAll.js"></script>
-<script src="../../widgets/cityList/index.js"></script>
-<script src="../../pages/docdetail/index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/libAll.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/widgets/cityList/index.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/pages/docdetail/index.js?version=0.1.0"></script>
 
 </body>
 </html>

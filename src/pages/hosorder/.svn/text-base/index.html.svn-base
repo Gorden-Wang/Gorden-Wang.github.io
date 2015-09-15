@@ -9,10 +9,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>医院下单</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="../../widgets/swiper/index.css" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/widgets/swiper/index.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -24,13 +24,14 @@
     <div class="wrap">
         <div class="top-wrapper">
             <div class="box box_list_mz">
-                <div class="list_mz clearfix"><a href="../../pages/hosdetail/index.html?clinicId=${clinicId}">
-                    <div class="Left"><img src="${hos.snapshot}"/>></div>
+                <div class="list_mz clearfix"><a href="https://ssl-static-test.instarekber.com/upay/pages/hosdetail/index.html">
+                    <div class="Left"><img src="https://ssl-static-test.instarekber.com/upay/images/temp/img_1.jpg"></div>
                     <div class="Center">
-                        <div class="row_1">${hos.name}</div>
-                        <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong>
+                        <div class="row_1">美年大健康望京店</div>
+                        <div class="row_2"><span class="star star_red"></span><span class="star star_red"></span><span
+                                class="star star_red"></span><span class="star star_gray"></span><strong>4.0分</strong>
                         </div>
-                        <div class="row_3">${hos.address}</div>
+                        <div class="row_3">北京市海淀区苏州街后街31号</div>
                     </div>
                     <div class="Right"></div>
                 </a></div>
@@ -41,7 +42,7 @@
             <div class="screenbox mb8">
                 <div class="screening clearfix">
                     <div id="seldep" class="screen_left">科室</div>
-                    <div id="selpro" class="screen_right">${makeTitle(titleId)}</div>
+                    <div id="selpro" class="screen_right">专家级别</div>
                 </div>
             </div>
             <div id="desdep" class="conditbox">
@@ -53,11 +54,11 @@
                 <div class="condit"><span class="ks_zxk"></span>整形科</div>
             </div>
             <div id="despro" class="conditbox conditbox_ys">
-                <div class="condit" data-id="-1">不限</div>
-                <div class="condit" data-id="1">主任医师</div>
-                <div class="condit" data-id="2">副主任医师</div>
-                <div class="condit" data-id="3">主治医师</div>
-                <div class="condit" data-id="4">住院医师</div>
+                <div class="condit">不限</div>
+                <div class="condit">国际知名专家</div>
+                <div class="condit">知名专家</div>
+                <div class="condit">公立医院10年以上主治医师</div>
+                <div class="condit">公立医院主治医师</div>
             </div>
         </div>
 
@@ -66,44 +67,75 @@
 
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    {@each originTimeList as item}
-
-                    <div class="swiper-slide ${makeTimeListCheck(timeEnable)}">
+                    <div class="swiper-slide">
                         <div>
-                            <p class="year">${item.y}</p>
+                            <p class="year">2015</p>
 
-                            <p class="day">${item.m}月${item.d}日</p>
-                            <span class="week">${item.w}</span>
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
                         </div>
                     </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
 
-                    {@/each}
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide selected">
+                        <div>
+                            <p class="year">2015</p>
 
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <p class="year">2015</p>
+
+                            <p class="day">06月12日</p>
+                            <span class="week">周一</span>
+                        </div>
+                    </div>
                 </div>
+                <!-- Add Pagination -->
+                <!--<div class="swiper-pagination"></div>-->
+                <!--&lt;!&ndash; Add Arrows &ndash;&gt;-->
+                <!--<div class="swiper-button-next"></div>-->
+                <!--<div class="swiper-button-prev"></div>-->
             </div>
             <span class="right-icon next"></span>
         </div>
 
-        {@each itemList as item }
 
         <div class="time-picker box_yz bottom-radius">
             <div class="box box_list_ys top-radius">
-                <div class="list_ys clearfix"><a href="../../pages/docdetail/index.html?doctorId=${item.doctor.doctorId}">
-                    <div class="Left"><img src="${item.doctor.snapshot}"></div>
+                <div class="list_ys clearfix"><a href="https://ssl-static-test.instarekber.com/upay/pages/docdetail/index.html">
+                    <div class="Left"><img src="https://ssl-static-test.instarekber.com/upay/images/temp/img_3.png"></div>
                     <div class="Center">
-                        <div class="row_1">${item.doctor.name}</div>
-                        <div class="row_2">${makeTitle(item.doctor.title+"")}</div>
-                        <div class="row_2">${item.doctor.hospital}</div>
-                        <div class="row_2">擅长：${item.doctor.specialityName}</div>
+                        <div class="row_1">王落英</div>
+                        <div class="row_2">主治医师</div>
+                        <div class="row_2">北京301医院</div>
+                        <div class="row_2">擅长：推拿，小儿内科</div>
                     </div>
-                    <div class="Right">${item.doctor.className}</div>
+                    <div class="Right">妇科</div>
                     <div class="right-icon t-r"></div>
                 </a></div>
             </div>
             <div class="taochan-wrapper">
                 <p>
                     套餐费:
-                    <span>￥${item.price}</span>
+                    <span>￥300</span>
                     (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
                 </p>
 
@@ -111,45 +143,34 @@
             </div>
             <div class="time-wrapper ">
                 <ul>
-                    {@each item.treatmentPlanDetails as timeItem}
-
-                    {@if timeItem.finished == true}
-                    <li class="time-item">${timeItem.starttime}</li>
-                    {@/if}
-
-                    {@if timeItem.finished == false}
-                    <li class="time-item dis">${timeItem.starttime}</li>
-                    {@/if}
-
-                    {@/each}
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item dis">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item dis">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
+                    <li class="time-item">09:00</li>
                 </ul>
             </div>
             <div class="tiaokuan-wrapper bottom-radius">
                 <ul>
                     <li>
-                        <a href="../../pages/tips/index.html">
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/index.html">
                             服务须知
                             <div class="right-icon t-r"></div>
                         </a>
                     </li>
-                    <li>
-                        <a href="../../pages/tips/terms.html">
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/tips/terms.html">
                             退改条款
                             <div class="right-icon t-r"></div>
                         </a>
                     </li>
-                    <li>
-                        <a href="../../pages/feedback/list.html">
+                    <li >
+                        <a href="https://ssl-static-test.instarekber.com/upay/pages/feedback/list.html">
                             用户评价
                             <div class="right-icon t-r"></div>
                         </a>
@@ -159,10 +180,6 @@
             </div>
 
         </div>
-
-
-        {@/each}
-
 
         <div class="des-wrapper">
             <ul class="t-bar">
@@ -174,25 +191,24 @@
                 </li>
             </ul>
             <div class="js">
-                <!--<ul>-->
-                <!--<li>-->
-                <!--<div class="list-style"></div>-->
-                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<div class="list-style"></div>-->
-                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<div class="list-style"></div>-->
-                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<div class="list-style"></div>-->
-                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
-                <!--</li>-->
-                <!--</ul>-->
-                ${hos.description}
+                <ul>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                </ul>
             </div>
             <div class="xz">
                 <ul>
@@ -223,11 +239,10 @@
 </script>
 
 
-<script src="../../lib/libAll.js"></script>
-<script src="../../widgets/cityList/index.js"></script>
-<script src="../../widgets/rate/index.js"></script>
-<script src="../../widgets/swiper/index.js"></script>
-<script src="../../pages/hosorder/index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/zepto.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/juicer.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/widgets/swiper/index.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/index.js?version=0.1.0"></script>
 
 </body>
 </html>

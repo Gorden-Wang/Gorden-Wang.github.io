@@ -10,16 +10,8 @@
     display: none; }
   #page .banner-fix .conditbox {
     display: none; }
-#page #desdep, #page #despro {
-  top: 93px; }
 #page .list-wrapper {
   margin-top: 103px; }
-#page .rate-eles {
-  margin-right: 15px; }
-  #page .rate-eles img {
-    width: 15px; }
-#page .row_2 {
-  margin-bottom: 8px; }
 
 #overlay {
   opacity: 0;
@@ -30,5 +22,3 @@
   height: 0;
   z-index: 80;
   background-color: rgba(0, 0, 0, 0.7); }
-
-/*# sourceMappingURL=index.css.map */

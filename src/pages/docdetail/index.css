@@ -7,13 +7,19 @@
   width: 9px;
   height: 16px;
   background-image: url(../../images/arro_right.png);
-  background-size: 9px 16px;
+  -webkit-background-size: 9px 16px;
+     -moz-background-size: 9px 16px;
+       -o-background-size: 9px 16px;
+          background-size: 9px 16px;
   background-repeat: no-repeat; }
 #page .t-r {
   position: absolute;
   right: 10px;
   top: 45px; }
 #page .data-picker {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
   background-color: #FFF; }
   #page .data-picker span.right-icon {
@@ -21,13 +27,22 @@
     width: 30px;
     height: 60px;
     background-image: url(../../images/arro_right.png);
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     background-repeat: no-repeat;
     background-position: center center; }
   #page .data-picker .rota {
-    transform: rotate(-180deg); }
+    -webkit-transform: rotate(-180deg);
+       -moz-transform: rotate(-180deg);
+         -o-transform: rotate(-180deg);
+            transform: rotate(-180deg); }
   #page .data-picker div {
-    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
     overflow: hidden;
     position: relative; }
     #page .data-picker div ul {
@@ -48,13 +63,17 @@
           margin: 3px 0px; }
         #page .data-picker div ul li .week {
           border: 1px solid #fb6c8a;
-          border-radius: 2px;
+          -webkit-border-radius: 2px;
+             -moz-border-radius: 2px;
+                  border-radius: 2px;
           color: #fb6c8a; }
       #page .data-picker div ul li:first-of-type {
         border-left: 1px solid #d1d1d1; }
       #page .data-picker div ul .selected div {
         background-color: #feb7c6;
-        border-radius: 4px; }
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px; }
       #page .data-picker div ul .selected .year {
         color: #FFF;
         font-size: 16px; }
@@ -64,29 +83,43 @@
         margin: 3px 0px; }
       #page .data-picker div ul .selected .week {
         border: 1px solid #FFF;
-        border-radius: 2px;
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+                border-radius: 2px;
         color: #FFF;
         font-size: 14px; }
 #page .bottom-radius {
-  border-radius: 0px 0px 8px 8px; }
+  -webkit-border-radius: 0px 0px 8px 8px;
+     -moz-border-radius: 0px 0px 8px 8px;
+          border-radius: 0px 0px 8px 8px; }
 #page .time-picker {
   margin: 0px 15px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   border-top: 0px;
   margin-top: 9px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); }
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); }
   #page .time-picker .top-radius {
-    border-radius: 8px 8px 0px 0px; }
+    -webkit-border-radius: 8px 8px 0px 0px;
+       -moz-border-radius: 8px 8px 0px 0px;
+            border-radius: 8px 8px 0px 0px; }
   #page .time-picker .box_list_ys {
     margin-top: 0px; }
   #page .time-picker .icon1 {
     -webkit-background-size: 16px 16px;
-    background-size: 16px 16px;
+    -moz-background-size: 16px 16px;
+      -o-background-size: 16px 16px;
+         background-size: 16px 16px;
     background-image: url(../../images/order/icon1.png);
     margin-bottom: 15px; }
   #page .time-picker .icon2 {
     -webkit-background-size: 13px 17.5px;
-    background-size: 13px 17.5px;
+    -moz-background-size: 13px 17.5px;
+      -o-background-size: 13px 17.5px;
+         background-size: 13px 17.5px;
     background-image: url(../../images/order/icon2.png);
     padding: 3px 0px; }
   #page .time-picker .row_1, #page .time-picker .row_2 {
@@ -104,7 +137,8 @@
     #page .time-picker .taochan-wrapper .right-icon {
       top: 13px; }
     #page .time-picker .taochan-wrapper p {
-      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+         text-overflow: ellipsis;
       word-break: break-all;
       white-space: nowrap;
       overflow: hidden;
@@ -119,7 +153,9 @@
     #page .time-picker .time-wrapper ul {
       overflow: hidden; }
     #page .time-picker .time-wrapper li {
-      border-radius: 6px;
+      -webkit-border-radius: 6px;
+         -moz-border-radius: 6px;
+              border-radius: 6px;
       font-size: 15px;
       color: #FFF;
       padding: 10px 0px;
@@ -154,11 +190,11 @@
         width: 33.33%;
         float: left;
         padding: 15px 10px;
-        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
         font-size: 16px;
         color: #919191;
         text-align: center; }
         #page .time-picker .tiaokuan-wrapper ul li .right-icon {
           top: 15px; }
-
-/*# sourceMappingURL=index.css.map */

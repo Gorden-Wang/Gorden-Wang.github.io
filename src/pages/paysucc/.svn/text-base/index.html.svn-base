@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>支付成功</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="../../pages/feedback/index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/pages/feedback/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -25,7 +25,7 @@
 
         <div class="sucbox">
             <div class="sucbox_in">
-                <div class="dhicon"><img src="../../images/dhicon.png"/></div>
+                <div class="dhicon"><img src="https://ssl-static-test.instarekber.com/upay/images/dhicon.png"/></div>
                 <p>支付成功</p>
                 <p>您已成功预约线下门诊</p>
                 <p>您的订单ID号为</p>
@@ -46,9 +46,9 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
-<script src="index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/zepto.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/juicer.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/index.js?version=0.1.0"></script>
 
 </body>
 </html>

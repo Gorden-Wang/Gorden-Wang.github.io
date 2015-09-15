@@ -173,7 +173,10 @@ textarea {
     top: 18px;
     display: inline-block;
     background: url(../images/header_pre.png) no-repeat left center;
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     width: 9px;
     height: 16px;
 }
@@ -184,7 +187,10 @@ textarea {
     top: 19px;
     display: inline-block;
     background: url(../images/Btn_function.png) no-repeat left center;
-    background-size: 22px 5px;
+    -webkit-background-size: 22px 5px;
+       -moz-background-size: 22px 5px;
+         -o-background-size: 22px 5px;
+            background-size: 22px 5px;
     width: 22px;
     height: 5px;
 }
@@ -223,7 +229,10 @@ textarea {
     font-size: 14px;
     color: #9e9e9e;
     background: url(../images/arro_down.png) no-repeat right center;
-    background-size: 16px 9px;
+    -webkit-background-size: 16px 9px;
+       -moz-background-size: 16px 9px;
+         -o-background-size: 16px 9px;
+            background-size: 16px 9px;
     padding-right: 22px;
 }
 
@@ -253,7 +262,10 @@ textarea {
 
 .screen_left {
     background: url(../images/screen_down.png) no-repeat left center;
-    background-size: 18px 15px;
+    -webkit-background-size: 18px 15px;
+       -moz-background-size: 18px 15px;
+         -o-background-size: 18px 15px;
+            background-size: 18px 15px;
     padding-left: 22px;
     float: left;
     margin-left: 40px;
@@ -263,7 +275,10 @@ textarea {
 
 .screen_right {
     background: url(../images/screen_down.png) no-repeat left center;
-    background-size: 18px 15px;
+    -webkit-background-size: 18px 15px;
+       -moz-background-size: 18px 15px;
+         -o-background-size: 18px 15px;
+            background-size: 18px 15px;
     padding-left: 22px;
     float: right;
     margin-right: 40px;
@@ -273,7 +288,10 @@ textarea {
 
 .screen_up {
     background: url(../images/screen_up.png) no-repeat left center;
-    background-size: 18px 15px;
+    -webkit-background-size: 18px 15px;
+       -moz-background-size: 18px 15px;
+         -o-background-size: 18px 15px;
+            background-size: 18px 15px;
 }
 
 .banner {
@@ -332,7 +350,8 @@ textarea {
     margin-bottom: 5px;
     color: #000;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -340,7 +359,8 @@ textarea {
     font-size: 13px;
     color: #919191;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -353,12 +373,18 @@ textarea {
 
 .list_mz .Center .row_2 .star_red {
     background: url(../images/redstar.png) no-repeat left center;
-    background-size: 13px 13px;
+    -webkit-background-size: 13px 13px;
+       -moz-background-size: 13px 13px;
+         -o-background-size: 13px 13px;
+            background-size: 13px 13px;
 }
 
 .list_mz .Center .row_2 .star_gray {
     background: url(../images/graystar.png) no-repeat left center;
-    background-size: 13px 13px;
+    -webkit-background-size: 13px 13px;
+       -moz-background-size: 13px 13px;
+         -o-background-size: 13px 13px;
+            background-size: 13px 13px;
 }
 
 .list_mz .Center .row_2 strong {
@@ -369,14 +395,18 @@ textarea {
     font-size: 13px;
     color: #919191;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .list_mz .Right {
     float: right;
     background: url(../images/arro_right.png) no-repeat left center;
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     display: inline-block;
     width: 9px;
     height: 16px;
@@ -417,7 +447,9 @@ textarea {
     width: 43px;
     height: 43px;
     border: 1px solid #d1d1d1;
-    border-radius: 22px;
+    -webkit-border-radius: 22px;
+       -moz-border-radius: 22px;
+            border-radius: 22px;
 }
 
 .list_yz .Center {
@@ -431,14 +463,18 @@ textarea {
     height: 43px;
     line-height: 43px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .list_yz .Right {
     float: right;
     background: url(../images/arro_right.png) no-repeat left center;
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     display: inline-block;
     width: 9px;
     height: 16px;
@@ -474,7 +510,9 @@ textarea {
     width: 64px;
     height: 64px;
     border: 1px solid #d1d1d1;
-    border-radius: 32px;
+    -webkit-border-radius: 32px;
+       -moz-border-radius: 32px;
+            border-radius: 32px;
 }
 
 .list_ys .Center {
@@ -485,7 +523,8 @@ textarea {
     font-size: 13px;
     color: #000;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -493,7 +532,8 @@ textarea {
     font-size: 12px;
     color: #919191;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -506,7 +546,9 @@ textarea {
     padding: 2px 5px;
     color: #fff;
     font-size: 12px;
-    border-radius: 9px;
+    -webkit-border-radius: 9px;
+       -moz-border-radius: 9px;
+            border-radius: 9px;
 }
 
 .address_ys {
@@ -535,7 +577,9 @@ textarea {
 
 .address_ys .Center .row_1 span {
     padding: 0 5px;
-    border-radius: 3px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
     color: #fff;
     background: #fb6787;
     margin-left: 5px;
@@ -544,7 +588,10 @@ textarea {
 
 .address_ys .Right {
     background: url(../images/arro_right.png) no-repeat left center;
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     display: inline-block;
     width: 9px;
     height: 16px;
@@ -577,7 +624,10 @@ textarea {
 
 .condit .ks_bx {
     background: url(../images/ks_bx.png) no-repeat left center;
-    background-size: 19px 18px;
+    -webkit-background-size: 19px 18px;
+       -moz-background-size: 19px 18px;
+         -o-background-size: 19px 18px;
+            background-size: 19px 18px;
     width: 19px;
     height: 18px;
     float: left
@@ -585,35 +635,50 @@ textarea {
 
 .condit .ks_fk {
     background: url(../images/ks_fk.png) no-repeat left center;
-    background-size: 19px 17px;
+    -webkit-background-size: 19px 17px;
+       -moz-background-size: 19px 17px;
+         -o-background-size: 19px 17px;
+            background-size: 19px 17px;
     width: 19px;
     height: 17px;
 }
 
 .condit .ks_ck {
     background: url(../images/ks_ck.png) no-repeat left center;
-    background-size: 19px 23px;
+    -webkit-background-size: 19px 23px;
+       -moz-background-size: 19px 23px;
+         -o-background-size: 19px 23px;
+            background-size: 19px 23px;
     width: 19px;
     height: 23px;
 }
 
 .condit .ks_ek {
     background: url(../images/ks_ek.png) no-repeat left center;
-    background-size: 19px 26px;
+    -webkit-background-size: 19px 26px;
+       -moz-background-size: 19px 26px;
+         -o-background-size: 19px 26px;
+            background-size: 19px 26px;
     width: 19px;
     height: 26px;
 }
 
 .condit .ks_pfk {
     background: url(../images/ks_pfk.png) no-repeat left center;
-    background-size: 19px 23px;
+    -webkit-background-size: 19px 23px;
+       -moz-background-size: 19px 23px;
+         -o-background-size: 19px 23px;
+            background-size: 19px 23px;
     width: 19px;
     height: 23px;
 }
 
 .condit .ks_zxk {
     background: url(../images/ks_zxk.png) no-repeat left center;
-    background-size: 19px 22px;
+    -webkit-background-size: 19px 22px;
+       -moz-background-size: 19px 22px;
+         -o-background-size: 19px 22px;
+            background-size: 19px 22px;
     width: 19px;
     height: 22px;
 }
@@ -640,7 +705,9 @@ textarea {
 .portimg img {
     width: 68px;
     height: 68px;
-    border-radius: 34px;
+    -webkit-border-radius: 34px;
+       -moz-border-radius: 34px;
+            border-radius: 34px;
     border: 1px solid #f86987
 }
 
@@ -749,7 +816,8 @@ textarea {
     font-size: 13px;
     margin-bottom: 5px;
     color: #000;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -761,7 +829,8 @@ textarea {
     font-size: 13px;
     color: #919191;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -774,12 +843,18 @@ textarea {
 
 .list_mz .Center .row_2 .star_red {
     background: url(../images/redstar.png) no-repeat left center;
-    background-size: 13px 13px;
+    -webkit-background-size: 13px 13px;
+       -moz-background-size: 13px 13px;
+         -o-background-size: 13px 13px;
+            background-size: 13px 13px;
 }
 
 .list_mz .Center .row_2 .star_gray {
     background: url(../images/graystar.png) no-repeat left center;
-    background-size: 13px 13px;
+    -webkit-background-size: 13px 13px;
+       -moz-background-size: 13px 13px;
+         -o-background-size: 13px 13px;
+            background-size: 13px 13px;
 }
 
 .list_mz .Center .row_2 strong {
@@ -790,7 +865,8 @@ textarea {
     font-size: 13px;
     color: #919191;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -848,7 +924,9 @@ textarea {
     padding: 0 10px;
     border: 1px solid #ffb5c6;
     color: #ffb5c6;
-    border-radius: 8px;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
     display: inline-block;
     float: right;
     margin-top: 8px;
@@ -876,7 +954,9 @@ textarea {
     background: #fb6c8a;
     border: none;
     letter-spacing: 3px;
-    border-radius: 10px;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
     margin-top: 10px;
     font-size: 16px;
 }
@@ -911,12 +991,18 @@ textarea {
 
 .evalua .star_red {
     background: url(../images/redstar.png) no-repeat left center;
-    background-size: 13px 13px;
+    -webkit-background-size: 13px 13px;
+       -moz-background-size: 13px 13px;
+         -o-background-size: 13px 13px;
+            background-size: 13px 13px;
 }
 
 .evalua .star_gray {
     background: url(../images/graystar.png) no-repeat left center;
-    background-size: 13px 13px;
+    -webkit-background-size: 13px 13px;
+       -moz-background-size: 13px 13px;
+         -o-background-size: 13px 13px;
+            background-size: 13px 13px;
 }
 
 .pjtext {
@@ -928,7 +1014,9 @@ textarea {
 
 .textareabox {
     border: 1px solid #d1d1d1;
-    border-radius: 5px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
     padding: 7px
 }
 
@@ -1004,10 +1092,15 @@ textarea {
     text-align: center;
     background: #fff;
     color: #000;
-    border-radius: 5px;
-    box-shadow: 1px 1px 2px 1px #a2a2a2;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 2px 1px #a2a2a2;
+       -moz-box-shadow: 1px 1px 2px 1px #a2a2a2;
+            box-shadow: 1px 1px 2px 1px #a2a2a2;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -1019,14 +1112,18 @@ textarea {
 /*待就诊*/
 .secbox {
     margin: 0 11px;
-    box-shadow: 0 2px 1px 1px #dbdbdb
+    -webkit-box-shadow: 0 2px 1px 1px #dbdbdb;
+       -moz-box-shadow: 0 2px 1px 1px #dbdbdb;
+            box-shadow: 0 2px 1px 1px #dbdbdb
 }
 
 .box_tit {
     height: 26px;
     line-height: 26px;
     border-bottom: 1px dashed #d1d1d1;
-    border-radius: 3px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
     background: #fff;
     color: #919191;
     font-size: 13px;
@@ -1037,7 +1134,9 @@ textarea {
     background: #8be1d4;
     color: #fff;
     display: inline-block;
-    border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+       -moz-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
     margin-right: 3px;
 }
 
@@ -1046,7 +1145,9 @@ textarea {
     background: #aac5f4;
     color: #fff;
     display: inline-block;
-    border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+       -moz-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
     margin-right: 3px;
 }
 
@@ -1057,7 +1158,9 @@ textarea {
 }
 
 .oddetail {
-    border-radius: 3px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
     background: #fff;
     padding: 10px;
 }
@@ -1069,7 +1172,8 @@ textarea {
 .details strong {
     font-weight: normal;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
     margin-left: 15px;
 }
@@ -1077,7 +1181,10 @@ textarea {
 .details .more {
     float: right;
     background: url(../images/arro_right.png) no-repeat left center;
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     display: inline-block;
     width: 9px;
     height: 16px;
@@ -1115,7 +1222,9 @@ textarea {
     display: inline-block;
     height: 5px;
     width: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
     background: #f86987;
     margin-right: 10px;
     position: absolute;
@@ -1136,7 +1245,9 @@ textarea {
     margin: 0 15px;
     color: #f86987;
     border: 1px solid #f86987;
-    border-radius: 5px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
     height: 30px;
     line-height: 30px;
     font-size: 16px;
@@ -1157,7 +1268,9 @@ textarea {
         margin: 0 5px;
         color: #f86987;
         border: 1px solid #f86987;
-        border-radius: 5px;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
         height: 30px;
         line-height: 30px;
         font-size: 16px;
@@ -1194,14 +1307,20 @@ textarea {
     top: 50%;
     margin-left: -50px;
     margin-top: -45px;
-    border-radius: 10px;
+    -moz-border-radius: 10px;
+         border-radius: 10px;
     -webkit-border-radius: 10px;
     border: 0px !important;
-    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+       -moz-box-shadow: none !important;
+            box-shadow: none !important;
     display: block;
     background-color: rgba(47, 34, 33, 0.9);
     background-image: url(../images/common/loading_new.gif);
-    background-size: 50%;
+    -webkit-background-size: 50% 50%;
+       -moz-background-size: 50%;
+         -o-background-size: 50%;
+            background-size: 50%;
     background-position: center center;
     background-repeat: no-repeat;
     line-height: 0px;
@@ -1210,12 +1329,64 @@ textarea {
 
 .tipsanimated {
     -webkit-animation-duration: 3s;
-    animation-duration: 3s;
+    -moz-animation-duration: 3s;
+      -o-animation-duration: 3s;
+         animation-duration: 3s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+      -o-animation-fill-mode: both;
+         animation-fill-mode: both;
 }
 
 @-webkit-keyframes tipsfadeIn {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@-moz-keyframes tipsfadeIn {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@-o-keyframes tipsfadeIn {
     0% {
         opacity: 0;
         background-color: black;
@@ -1265,20 +1436,60 @@ textarea {
 
 .tipsfadeIn {
     -webkit-animation-name: tipsfadeIn;
-    animation-name: tipsfadeIn;
+    -moz-animation-name: tipsfadeIn;
+      -o-animation-name: tipsfadeIn;
+         animation-name: tipsfadeIn;
 }
 
 .fadeAnimate {
     -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
+    -moz-animation-duration: 0.3s;
+      -o-animation-duration: 0.3s;
+         animation-duration: 0.3s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+      -o-animation-fill-mode: both;
+         animation-fill-mode: both;
 }
 
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
         display: none;
+        -webkit-animation-timing-function: ease-in;
+    }
+    2% {
+        opacity: 0.2;
+        height: 100%;
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+    }
+    2% {
+        opacity: 0.2;
+        height: 100%;
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
         -webkit-animation-timing-function: ease-in;
     }
     2% {
@@ -1312,7 +1523,9 @@ textarea {
 
 .fadeIn {
     -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
+    -moz-animation-name: fadeIn;
+      -o-animation-name: fadeIn;
+         animation-name: fadeIn;
 }
 
 .fixed {
@@ -1333,7 +1546,10 @@ textarea {
 
 .condit .ks_-1 {
     background: url(../images/ks_bx.png) no-repeat left center;
-    background-size: 19px 18px;
+    -webkit-background-size: 19px 18px;
+       -moz-background-size: 19px 18px;
+         -o-background-size: 19px 18px;
+            background-size: 19px 18px;
     width: 19px;
     height: 18px;
     float: left
@@ -1341,35 +1557,50 @@ textarea {
 
 .condit .ks_3 {
     background: url(../images/ks_fk.png) no-repeat left center;
-    background-size: 19px 17px;
+    -webkit-background-size: 19px 17px;
+       -moz-background-size: 19px 17px;
+         -o-background-size: 19px 17px;
+            background-size: 19px 17px;
     width: 19px;
     height: 17px;
 }
 
 .condit .ks_4 {
     background: url(../images/ks_ck.png) no-repeat left center;
-    background-size: 19px 23px;
+    -webkit-background-size: 19px 23px;
+       -moz-background-size: 19px 23px;
+         -o-background-size: 19px 23px;
+            background-size: 19px 23px;
     width: 19px;
     height: 23px;
 }
 
 .condit .ks_5 {
     background: url(../images/ks_ek.png) no-repeat left center;
-    background-size: 19px 26px;
+    -webkit-background-size: 19px 26px;
+       -moz-background-size: 19px 26px;
+         -o-background-size: 19px 26px;
+            background-size: 19px 26px;
     width: 19px;
     height: 26px;
 }
 
 .condit .ks_7 {
     background: url(../images/ks_pfk.png) no-repeat left center;
-    background-size: 19px 23px;
+    -webkit-background-size: 19px 23px;
+       -moz-background-size: 19px 23px;
+         -o-background-size: 19px 23px;
+            background-size: 19px 23px;
     width: 19px;
     height: 23px;
 }
 
 .condit .ks_9 {
     background: url(../images/ks_zxk.png) no-repeat left center;
-    background-size: 19px 22px;
+    -webkit-background-size: 19px 22px;
+       -moz-background-size: 19px 22px;
+         -o-background-size: 19px 22px;
+            background-size: 19px 22px;
     width: 19px;
     height: 22px;
 }

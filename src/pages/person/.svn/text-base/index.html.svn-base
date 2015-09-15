@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>个人中心</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="../../pages/person/index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/pages/person/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -47,7 +47,7 @@
                     <div class="hide_address"></div>
                 </div>
                 <div class="personal">
-                    <div><img src="../../images/personal-central@2x.gif"/></div>
+                    <div><img src="https://ssl-static-test.instarekber.com/upay/images/personal-central@2x.gif"/></div>
                 </div>
             </div>
         </div>
@@ -68,13 +68,13 @@
 
             <div class="my-wrapper">
                 <div class="box-radius-wrapper">
-                    <img src="../../images/myorder.png">
+                    <img src="https://ssl-static-test.instarekber.com/upay/images/myorder.png">
                     <p>我的订单</p>
                 </div>
 
                 <div class="box-radius-wrapper">
                     <div class="box-radius-inner">
-                        <img src="../../images/mybill.png">
+                        <img src="https://ssl-static-test.instarekber.com/upay/images/mybill.png">
                         <p>我的病历</p>
                     </div>
                 </div>
@@ -120,9 +120,9 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
-<script src="index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/zepto.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/juicer.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/index.js?version=0.1.0"></script>
 
 </body>
 </html>

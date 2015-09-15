@@ -56,7 +56,9 @@ li li {
     body{
         background-color: white !important;
         padding: 0 40px;
-        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
     }
     p{
         font-size : 18px;

@@ -23,8 +23,7 @@
             that.data.depList = [];
             that.data.departmentId = Wlib.getRequestParam("departmentId") || -1;
             that.data.titleId = Wlib.getRequestParam("titleId") || -1;
-            that.data.maxResults = 10;
-            that.data.firstResult = 0;
+            that.data.maxResults = 5;
         },
         cacheDom: function () {
             var that = this;
@@ -107,22 +106,18 @@
             juicer.register("makeTitle", function (str) {
                 var res = "";
                 switch (str) {
-                    case 1 :
+                    case '1' :
                         res = '主任医师';
                         break;
-                    case 2 :
+                    case '2' :
                         res = '副主任医师';
                         break;
-                    case 3:
+                    case '3' :
                         res = '主治医师';
                         break;
-                    case 4 :
+                    case '4' :
                         res = '住院医师';
                         break;
-                    case -1 :
-                        res = '不限';
-                        break;
-
                 }
                 return res;
             });
@@ -135,11 +130,11 @@
             });
 
         },
-        bindNext: function (tag) {
+        bindNext: function () {
             var that = this;
 
             Wlib._bindScrollTobottom(function () {
-                that.data.firstResult = that.data.firstResult + that.data.maxResults;
+                that.data.firstResult = that.data.firstResult + 5;
                 var param = {
                     "departmentId": that.data.departmentId || -1,
                     "locationId": that.data.locationId || -1,
@@ -151,39 +146,30 @@
                 Wlib.SendRequest("2034", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
-                    var data = {};
-                    data.docList = res.entity || [];
-                    var reshtml = juicer($("#itemtpl").html(),data);
-                    $(".list-wrapper").append(reshtml);
-                    Wlib._bindLazyLoad();
-                    if(res.entity.length == that.data.maxResults){
-                        that.bindNext(true);
-                    }
+                    console.log(res);
+
                     if (!res.entity || res.entity.length == 0) {
                         Wlib.tips("没有查询到相关记录。")
                     }
 
                 });
-            },tag)
+            },true)
 
 
         },
         renderDepart: function () {
             var that = this;
-            var res = "",title="";
+            var res = ""
             for (var i = 0; i < that.data.depList.length; i++) {
-                if(that.data.departmentId == that.data.depList[i].data.id){
-                    title = that.data.depList[i].data.name;
-                }
                 res += '<div data-id="' + that.data.depList[i].data.id + '" class="condit"><span class="ks_' + that.data.depList[i].data.id + '"></span>' + that.data.depList[i].data.name + '</div>';
             }
             $("#desdep").html(res);
-            title ? $("#seldep").text(title) : $("#seldep").text("科室")
+
 
             that.dom.desdep.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.departmentId = id;
-                window.location.href = '../../pages/hoslist/index.html?' + that.makeURL();
+                window.location.href = '../../pages/doclist/index.html?' + that.makeURL();
             });
         },
         fetchDepartments: function () {
@@ -214,9 +200,7 @@
                 //if (res.entity && res.entity.length > 0) {
                 that.data.docList = res.entity || [];
                 that.renderUI();
-                if(res.entity && (res.entity.length == that.data.maxResults)){
-                    that.bindNext(true);
-                }
+                that.bindNext();
                 that.recacheDom();
                 that.bindEvent();
                 that.fetchDepartments();

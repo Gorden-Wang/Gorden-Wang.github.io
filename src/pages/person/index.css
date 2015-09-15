@@ -46,6 +46,9 @@
   #page .my-wrapper .box-radius-wrapper:last-of-type {
     margin-right: 0px; }
 #page .list-widget {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
   padding: 15px 20px; }
   #page .list-widget .icon {
@@ -54,10 +57,16 @@
     height: 20px;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    -webkit-background-size: 100% 100%;
+       -moz-background-size: 100%;
+         -o-background-size: 100%;
+            background-size: 100%;
     margin-right: 20px; }
   #page .list-widget p {
-    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
     padding-top: 3px;
     font-size: 16px;
     color: #404040; }
@@ -66,7 +75,10 @@
     width: 9px;
     height: 16px;
     background-image: url(../../images/arro_right.png);
-    background-size: 9px 16px;
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
     background-repeat: no-repeat; }
 #page .icon1 {
   background-image: url(../../images/person/icon1.png); }
@@ -78,5 +90,3 @@
   background-image: url(../../images/person/icon4.png); }
 #page .icon5 {
   background-image: url(../../images/person/icon5.png); }
-
-/*# sourceMappingURL=index.css.map */

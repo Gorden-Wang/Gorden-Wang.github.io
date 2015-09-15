@@ -3,16 +3,24 @@
   margin-bottom: 20px; }
 #page .content-header {
   color: #919191;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
   padding: 10px;
   background-color: white;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   font-size: 16px; }
   #page .content-header .rate-wrapper {
     top: -3px;
     position: relative;
     margin-left: 5px;
-    flex: 1; }
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1; }
   #page .content-header var {
     font-style: normal;
     color: #f86987; }
@@ -35,11 +43,17 @@
     padding: 10px 0px;
     border-bottom: 1px solid #d1d1d1; }
     #page ul li .top-li {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
       margin-bottom: 10px; }
       #page ul li .top-li div {
         margin-left: 5px;
-        flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
         top: -3px;
         position: relative; }
 #page .rate-eles {
@@ -49,5 +63,3 @@
   #page .rate-eles i > img {
     width: 15px;
     margin: 0 1px; }
-
-/*# sourceMappingURL=index.css.map */

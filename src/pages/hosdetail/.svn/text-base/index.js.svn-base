@@ -9,13 +9,10 @@
     DocList.prototype = {
         init : function(){
             var that = this;
-            that.addJuicerHandler();
             that.cacheDom();
-            that.cacheData();
-            //that.renderUI();
-            //that.recacheDom();
-            //that.bindEvent();
-            that.fetchData();
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
         },
         cacheDom : function(){
             var that = this;
@@ -26,15 +23,9 @@
             }
 
         },
-        cacheData : function(){
-            var that = this;
-
-            that.data = {};
-            that.data.clinicId = Wlib.getRequestParam("clinicId");
-        },
         renderUI : function(){
             var that = this;
-            that.dom.wrapper.html(juicer(that.dom.tpl.html(),that.data));
+            that.dom.wrapper.html(juicer(that.dom.tpl.html(),{}));
             that.dom.loading.hide();
         },
         recacheDom : function(){
@@ -44,47 +35,6 @@
             that.dom.hostip = $("#hostip");
             that.dom.deswrapper = $("#deswrapper");
             that.dom.tipwrapper = $("#tipwrapper");
-
-        },
-        fetchData :function(){
-            var that = this;
-            var param = {
-                "clinicId": that.data.clinicId
-            }
-
-            Wlib.SendRequest("2030", param, function (res) {
-                that.data.hos = res.entity;
-                //that.fetcPingjia(function(){
-                //    that.renderUI();
-                //    that.recacheDom();
-                //    that.bindEvent();
-                //    //return;
-                //    //}
-                //    that.dom.loading.hide();
-                //});
-
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
-                console.log(res)
-
-
-
-            });
-        },
-        addJuicerHandler: function () {
-            var that = this;
-
-            juicer.register("makeRate", function (v) {
-                var rate = new Rate({
-                    rate: parseFloat(v),
-                    activeImg: '../../images/redstar.png',
-                    defaultImg: '../../images/graystar.png',
-                    halfImg : '../../images/halfstar.png'
-                });
-                return rate.init()
-            });
-
 
         },
         bindEvent : function(){
@@ -107,15 +57,6 @@
                 that.dom.tipwrapper.show();
                 that.dom.deswrapper.hide();
 
-            })
-
-            $(".list_mz").on("click",function(event){
-                if($(event.target).hasClass("row_4")){
-                    var num = $(event.target).text();
-                    $("body").append("<iframe src='tel:"+num+"'></iframe>")
-                }else{
-                    window.location = $(this).attr("data-href");
-                }
             })
         }
     }

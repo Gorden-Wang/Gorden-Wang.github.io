@@ -2,13 +2,13 @@
 
 dir
 15
-svn://wangshiqing@182.92.216.40/wechat/src/widgets/swiper
+svn://wangshiqing@182.92.216.40/wechat/build/widgets/swiper
 svn://wangshiqing@182.92.216.40/wechat
 
 
 
-2015-08-30T08:02:44.198276Z
-5
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
 
 
@@ -32,12 +32,12 @@ file
 
 
 
-2015-09-06T07:49:44.000000Z
+2015-09-10T01:30:17.000000Z
 5d0c1027f9c16d0a000ba6823afc621e
-2015-08-30T08:02:44.198276Z
-5
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
-has-props
+
 
 
 
@@ -66,12 +66,11 @@ file
 
 
 
-2015-09-06T07:49:44.000000Z
-7fde75398c20e6ed48e068365da1eb20
-2015-08-30T08:02:44.198276Z
-5
+2015-09-10T01:30:18.000000Z
+0dfc0bf0b30f8b7b472a051e3470e1f4
+2015-09-10T10:44:09.309190Z
+14
 wangshiqing
-has-props
 
 
 
@@ -92,5 +91,6 @@ has-props
 
 
 
-14733
+
+16433
 

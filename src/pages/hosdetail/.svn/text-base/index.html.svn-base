@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>医生详情</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <!--<link href="https://ssl-static-test.instarekber.com/upay/lib/base.css" rel="stylesheet">-->
+    <link href="https://ssl-static-test.instarekber.com/upay/lib/all.css" rel="stylesheet">
+    <link href="https://ssl-static-test.instarekber.com/upay/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -22,13 +22,13 @@
 <script type="template/juicer" id="tpl">
     <div class="wrap">
         <div class="box box_zl mb8">
-            <div class="list_mz clearfix" data-href="../../pages/map/index.html?longitude=${hos.longitude}&latitude=${hos.latitude}">
-                <a>
-                    <div class="Left"><img src="${hos.snapshot}" /></div>
+            <div class="list_mz clearfix">
+                <a href="https://ssl-static-test.instarekber.com/upay/pages/map/index.html">
+                    <div class="Left"><img src="https://ssl-static-test.instarekber.com/upay/images/temp/img_1.jpg" /></div>
                     <div class="Center">
-                        <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong></div>
-                        <div class="row_4">${hos.address}</div>
-                        <div class="row_4">${hos.tel}</div>
+                        <div class="row_2"><span class="star star_red"></span><span class="star star_red"></span><span class="star star_red"></span><span class="star star_gray"></span><strong>4.0分</strong></div>
+                        <div class="row_4">北京市海淀区苏州街后街31号北京市海</div>
+                        <div class="row_4">010-9898977</div>
                     </div>
                     <div class="Right"></div>
                 </a>
@@ -44,7 +44,7 @@
             <div class="tabs">
                 <!--诊所介绍-->
                 <div class="tabdetail" id="deswrapper">
-                    <div class="ptext" style="text-indent: 2em;">${hos.description}</div>
+                    <div class="ptext">上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海</div>
                 </div>
                 <!--诊所须知-->
                 <div class="tabdetail" id="tipwrapper" style=" display:none">
@@ -57,10 +57,9 @@
 </script>
 
 
-<script src="../../lib/libAll.js"></script>
-<script src="../../widgets/cityList/index.js"></script>
-<script src="../../widgets/rate/index.js"></script>
-<script src="../../pages/hosdetail/index.js"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/zepto.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/lib/juicer.js?version=0.1.0"></script>
+<script src="https://ssl-static-test.instarekber.com/upay/index.js?version=0.1.0"></script>
 
 </body>
 </html>

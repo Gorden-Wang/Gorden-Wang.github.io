@@ -7,7 +7,10 @@
   width: 9px;
   height: 16px;
   background-image: url(../../images/arro_right.png);
-  background-size: 9px 16px;
+  -webkit-background-size: 9px 16px;
+     -moz-background-size: 9px 16px;
+       -o-background-size: 9px 16px;
+          background-size: 9px 16px;
   background-repeat: no-repeat; }
 #page .t-r {
   position: absolute;
@@ -22,5 +25,3 @@
 
 iframe {
   display: none; }
-
-/*# sourceMappingURL=index.css.map */

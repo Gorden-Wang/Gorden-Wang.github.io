@@ -43,42 +43,31 @@
         },
         addJuicerHandler : function(){
             var that = this;
-            juicer.register("makeTitle", function (str) {
-                var res = "";
-                switch (str) {
-                    case 1 :
+            juicer.register("makeTitle",function(str){
+                var res="";
+                switch (str){
+                    case '1' :
                         res = '主任医师';
                         break;
-                    case 2 :
+                    case '2' :
                         res = '副主任医师';
                         break;
-                    case 3:
+                    case '3' :
                         res = '主治医师';
                         break;
-                    case 4 :
+                    case '4' :
                         res = '住院医师';
                         break;
                 }
                 return res;
             });
-            //juicer.register("makeCityName",function(str){
-            //    for(var i=0;i<CITYLIST.length;i++){
-            //        if(str == CITYLIST[i].id){
-            //            return CITYLIST[i].name;
-            //        }
-            //    }
-            //});
-            juicer.register("makeDes",function(obj){
-                var res="";
-                for(var i=0;i<obj.length;i++){
-                   res = res+obj[i].name;
-                    if(i<obj.lenght){
-                        res+=",";
+            juicer.register("makeCityName",function(str){
+                for(var i=0;i<CITYLIST.length;i++){
+                    if(str == CITYLIST[i].id){
+                        return CITYLIST[i].name;
                     }
                 }
-                return res;
             });
-
 
 
 
@@ -91,29 +80,12 @@
 
             Wlib.SendRequest("240", param, function (res) {
                 that.data.doc = res.entity;
-                that.fetcPingjia(function(){
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
-                    //return;
-                    //}
-                    that.dom.loading.hide();
-                });
-
-
-
-            });
-        },
-        fetcPingjia :function(callback){
-            var that = this;
-            var param = {
-                "doctorId": that.data.doctorId
-            }
-
-            Wlib.SendRequest("2032", param, function (res) {
-                that.data.pingjia = res.entity;
-                callback && callback();
-                //that.dom.loading.hide();
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+                //return;
+                //}
+                that.dom.loading.hide();
 
 
             });
@@ -131,14 +103,12 @@
             });
 
             that.dom.feedback.on("click",function(){
-                //if($(this).hasClass("tab_selected")){
-                //    return
-                //}
-                //$(this).addClass("tab_selected").siblings().removeClass("tab_selected");
-                //that.dom.fbwrapper.show();
-                //that.dom.docwrapper.hide();
-
-                window.location.href = '../../pages/feedback/list.html?doctorId='+that.data.doctorId
+                if($(this).hasClass("tab_selected")){
+                    return
+                }
+                $(this).addClass("tab_selected").siblings().removeClass("tab_selected");
+                that.dom.fbwrapper.show();
+                that.dom.docwrapper.hide();
             });
         }
     }
