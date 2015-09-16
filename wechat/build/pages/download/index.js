@@ -39,12 +39,12 @@
             var header = $("header");
             $(window).on("scroll",function(event){
                 nextH = window.pageYOffset;
-                if(nextH > thisH){
+                if(nextH - thisH > 10){
                     //页面向上走
                     if(!isHide){
                         header.addClass("hide");
                     }
-                }else{
+                }else if(thisH - nextH > 10){
                     //页面向下走
 
                     if(!isHide){
