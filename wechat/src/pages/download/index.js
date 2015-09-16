@@ -33,10 +33,27 @@
         },
         bindEvent : function(){
             var that = this;
-            that.dom.banner.on("click",function(){
-                var url = $(this).attr("data-href");
-                url && (window.location = url);
-            });
+
+            var thisH = window.pageYOffset,nextH= window.pageYOffset;
+            var isHide =  $("header").hasClass("hide");
+            var header = $("header");
+            $(window).on("scroll",function(event){
+                nextH = window.pageYOffset;
+                if(nextH > thisH){
+                    //页面向上走
+                    if(!isHide){
+                        header.addClass("hide");
+                    }
+                }else{
+                    //页面向下走
+
+                    if(!isHide){
+                        header.removeClass("hide");
+                    }
+                }
+                thisH = window.pageYOffset;
+            })
+
         }
     }
 
