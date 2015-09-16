@@ -23,6 +23,7 @@
                 locationId: "1"//默认北京
             }
             that.data.cityList = win.CITYLIST;
+            localStorage.setItem("userId",Wlib.getRequestParam("userId"))
         },
         cacheDom: function () {
             var that = this;
