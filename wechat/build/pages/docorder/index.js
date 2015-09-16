@@ -214,14 +214,34 @@
                 if($(this).hasClass("dis")){
                     return;
                 }
-                //$(this).addClass("selected").siblings().removeClass("selected");
 
-                //下一页
+                //如果没有登录
 
-                window.location.href = "../../pages/preorder/index.html";
+                !!localStorage.getItem("userId") && localStorage.setItem("userId","00000301");
+
+
+
+
+                var param = {
+                    "treatmentPlanId": $(this).attr("data-plan"),
+                    "userId" : localStorage.getItem("userId"),
+                    "treatmentPlanDetailId" : $(this).attr("data-id")
+                }
+
+                Wlib.SendRequest("2033", param, function (res) {
+
+                    console.log(res);
+
+                });
+
+
+
+                //window.location.href = "../../pages/preorder/index.html";
 
 
             })
+
+            //@TODO : 下一页。。
 
         }
 

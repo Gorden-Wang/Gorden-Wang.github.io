@@ -94,25 +94,15 @@
                     {@each item.treatmentPlan.treatmentPlanDetails as timeItem}
 
                     {@if timeItem.finished == true}
-                    <li class="time-item">${timeItem.starttime}</li>
+                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
                     {@/if}
 
                     {@if timeItem.finished == false}
-                    <li class="time-item dis">${timeItem.starttime}</li>
+                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
                     {@/if}
 
 
                     {@/each}
-
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item dis">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
-                    <!--<li class="time-item">09:00</li>-->
                 </ul>
             </div>
             <div class="tiaokuan-wrapper bottom-radius">
