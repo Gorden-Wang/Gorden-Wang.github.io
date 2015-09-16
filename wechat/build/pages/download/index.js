@@ -39,12 +39,12 @@
             var header = $("header");
             $(window).on("scroll",function(event){
                 nextH = window.pageYOffset;
-                if(nextH - thisH > 10){
+                if(nextH > thisH){
                     //页面向上走
                     if(!isHide){
                         header.addClass("hide");
                     }
-                }else if(thisH - nextH > 10){
+                }else{
                     //页面向下走
 
                     if(!isHide){
@@ -59,7 +59,7 @@
 
             $("#download").on("click",function(){
                 if(isIphone){
-                    $("body").append("<iframe src='itms://itunes.apple.com/cn/app/yi-jian-kang/id981084179?l=en&mt=8'></iframe>")
+                    $("body").append("<iframe src='https://itunes.apple.com/cn/app/yi-jian-kang/id981084179?l=en&mt=8'></iframe>")
                 }else{
                     window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
                 }
