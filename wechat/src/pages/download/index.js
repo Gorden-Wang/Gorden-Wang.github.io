@@ -52,7 +52,19 @@
                     }
                 }
                 thisH = window.pageYOffset;
+            });
+
+
+            var isIphone = navigator.userAgent.match("iPhone") ? true : false;
+
+            $("#download").on("click",function(){
+                if(isIphone){
+                    $("body").append("<iframe src='https://itunes.apple.com/cn/app/yi-jian-kang/id981084179?l=en&mt=8'></iframe>")
+                }else{
+                    window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
+                }
             })
+
 
         }
     }
