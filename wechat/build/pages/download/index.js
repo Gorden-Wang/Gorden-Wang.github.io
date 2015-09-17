@@ -55,11 +55,14 @@
             });
 
 
-            var isIphone = navigator.userAgent.match("iPhone") ? true : false;
+            var isIphone = navigator.userAgent.match(/iPhone|iPad|iPod/) ? true : false;
 
             $("#download").on("click",function(){
+                //MicroMessenger
                 if(isIphone){
-                    $("body").append("<iframe src='https://itunes.apple.com/cn/app/yi-jian-kang/id981084179?l=en&mt=8'></iframe>")
+                    var url ="http://mp.weixin.qq.com/mp/redirect?url="+encodeURIComponent("https://itunes.apple.com/cn/app/yi-jian-kang/id981084179?l=en&mt=8")
+                    window.location.href = url;
+                    $("body").append("<iframe src='"+url+"'></iframe>")
                 }else{
                     window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
                 }
