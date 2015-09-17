@@ -12,6 +12,7 @@ header{
   padding: 0px 15px;
   box-sizing: border-box;
   top: 0px;
+  transition: top 0.2s ease-in-out;
 
   h1{
     text-indent: -9999em;
@@ -179,9 +180,6 @@ footer{
   }
 }
 
-.hide{
-  display: none;
-}
 
 #loading {
   display: block;
@@ -227,4 +225,8 @@ iframe{
   border:0px;
   height: 0px;
   width: 0px;
+}
+
+.nav-up {
+  top: -50px;
 }

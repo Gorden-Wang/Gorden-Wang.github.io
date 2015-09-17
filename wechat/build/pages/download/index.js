@@ -34,25 +34,7 @@
         bindEvent : function(){
             var that = this;
 
-            var thisH = window.pageYOffset,nextH= window.pageYOffset;
-            var isHide =  $("header").hasClass("hide");
-            var header = $("header");
-            $(window).on("scroll",function(event){
-                nextH = window.pageYOffset;
-                if(nextH > thisH){
-                    //页面向上走
-                    if(!isHide){
-                        header.addClass("hide");
-                    }
-                }else{
-                    //页面向下走
 
-                    if(!isHide){
-                        header.removeClass("hide");
-                    }
-                }
-                thisH = window.pageYOffset;
-            });
 
 
             var isIphone = navigator.userAgent.match(/iPhone|iPad|iPod/) ? true : false;
@@ -67,6 +49,44 @@
                     window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
                 }
             })
+
+
+
+            var didScroll;
+            var lastScrollTop = 0;
+            var delta = 5;
+            var navbarHeight = $('header').outerHeight();
+
+            $(window).scroll(function(event){
+                didScroll = true;
+            });
+
+            setInterval(function() {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 250);
+
+            function hasScrolled() {
+                var st = $(this).scrollTop();
+
+                // Make sure they scroll more than delta
+                if(Math.abs(lastScrollTop - st) <= delta)
+                    return;
+
+                if (st > lastScrollTop && st > navbarHeight){
+                    // Scroll Down
+                    $('header').removeClass('nav-down').addClass('nav-up');
+                } else {
+                    // Scroll Up
+                    if(st + $(window).height() < $(document).height()) {
+                        $('header').removeClass('nav-up').addClass('nav-down');
+                    }
+                }
+
+                lastScrollTop = st;
+            }
 
 
         }

@@ -11,7 +11,8 @@ header {
   width: 100%;
   padding: 0px 15px;
   box-sizing: border-box;
-  top: 0px; }
+  top: 0px;
+  transition: top 0.2s ease-in-out; }
   header h1 {
     text-indent: -9999em;
     background-image: url(./h-logo.png);
@@ -129,9 +130,6 @@ footer {
     width: 48px;
     height: 60px; }
 
-.hide {
-  display: none; }
-
 #loading {
   display: block;
   position: absolute;
@@ -172,5 +170,8 @@ iframe {
   border: 0px;
   height: 0px;
   width: 0px; }
+
+.nav-up {
+  top: -50px; }
 
 /*# sourceMappingURL=index.css.map */
