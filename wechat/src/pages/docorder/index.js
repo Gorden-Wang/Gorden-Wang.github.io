@@ -235,6 +235,45 @@
 
             });
 
+            juicer.register("makeFuckTime", function (time) {
+
+                var time = new Date(time), w;
+                switch (time.getDay()) {
+                    case 0 :
+                        w = "周日";
+                        break;
+                    case 1 :
+                        w = "周一";
+                        break;
+                    case 2 :
+                        w = "周二";
+                        break;
+                    case 3 :
+                        w = "周三";
+                        break;
+                    case 4 :
+                        w = "周四";
+                        break;
+                    case 5 :
+                        w = "周五";
+                        break;
+                    case 6 :
+                        w = "周六";
+                        break;
+                }
+                var obj = {
+                    y: time.getFullYear(),
+                    m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
+                    d: time.getDate(),
+                    w: w
+                }
+                var resTime = obj.y + "年" + obj.m + '月' + obj.d + '日';
+
+
+                return resTime
+
+            });
+
 
         },
         bindEvent: function () {
@@ -262,19 +301,30 @@
                 !!localStorage.getItem("userId") && localStorage.setItem("userId", "00000301");
 
 
-                var param = {
-                    "treatmentPlanId": $(this).attr("data-plan"),
-                    "userId": localStorage.getItem("userId"),
-                    "treatmentPlanDetailId": $(this).attr("data-id")
-                }
-
-                Wlib.SendRequest("2033", param, function (res) {
-
-                    console.log(res);
-
-                    window.location.href = "../../pages/preorder/index.html?oid="+res.entity+"uid="+localStorage.getItem("userId");
-
-                });
+                var param = [
+                    "treatmentPlanId="+ $(this).attr("data-plan"),
+                    "userId="+ localStorage.getItem("userId"),
+                    "treatmentPlanDetailId="+ $(this).attr("data-id"),
+                    "doc="+ that.data.doc.name,
+                    "dep="+ $("#res-dep").text(),
+                    "add="+ $("#res-add").text(),
+                    "time="+ $(this).attr("data-time")+" "+$(this).text(),
+                    "price="+that.data.docList[0].treatmentPlan.price
+                ]
+                var resparam = [].join.call(param,"&");
+                console.log(resparam)
+                //Wlib.SendRequest("2033", param, function (res) {
+                //
+                //    console.log(res);
+                //    var nextparam = {
+                //        doc : that.data.doc.name,
+                //        dep :
+                //    }
+                //
+                //    window.location.href = "../../pages/preorder/index.html?oid="+res.entity+"uid="+localStorage.getItem("userId");
+                //
+                //});
+                window.location.href = "../../pages/preorder/index.html?"+resparam;
 
 
 

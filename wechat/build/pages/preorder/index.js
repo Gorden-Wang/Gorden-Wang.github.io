@@ -7,39 +7,67 @@
     }
 
     DocList.prototype = {
-        init : function(){
+        init: function () {
             var that = this;
+            that.cacheData();
             that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getContactList();
+
         },
-        cacheDom : function(){
+        cacheData: function () {
+            var that = this;
+
+            that.data = {
+                "treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
+                "userId": Wlib.getRequestParam("userId"),
+                "treatmentPlanDetailId": Wlib.getRequestParam("treatmentPlanDetailId"),
+                "doc": Wlib.getRequestParam("doc"),
+                "dep": Wlib.getRequestParam("dep"),
+                "add": Wlib.getRequestParam("add"),
+                "time": Wlib.getRequestParam("time"),
+                "price":Wlib.getRequestParam("price")
+            }
+        },
+        cacheDom: function () {
             var that = this;
             that.dom = {
-                wrapper : $("#page"),
-                loading : $("#loading"),
-                tpl : $("#tpl")
+                wrapper: $("#page"),
+                loading: $("#loading"),
+                tpl: $("#tpl")
             }
 
         },
-        renderUI : function(){
+        renderUI: function () {
             var that = this;
-            that.dom.wrapper.html(juicer(that.dom.tpl.html(),{}));
+            that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
             that.dom.loading.hide();
         },
-        recacheDom : function(){
-          var that = this;
+        recacheDom: function () {
+            var that = this;
             that.dom.docdes = $("#docdes");
             that.dom.feedback = $("#feedback");
             that.dom.docwrapper = $("#deswrapper");
             that.dom.fbwrapper = $("#fbwrapper");
         },
-        bindEvent : function(){
+        getContactList: function () {
+            var that = this;
+            Wlib.SendRequest("248", {userId: that.data.userId}, function (res) {
+                if(res.errorcode == 0){
+                    that.data.conList = res.entity;
+                    that.renderUI();
+                    that.recacheDom();
+                    that.bindEvent();
+                }else{
+                    //@TODO 用户不存在 去登录
+                }
+
+            });
+        },
+        bindEvent: function () {
             var that = this;
 
-            that.dom.docdes.on("click",function(){
-                if($(this).hasClass("tab_selected")){
+            that.dom.docdes.on("click", function () {
+                if ($(this).hasClass("tab_selected")) {
                     return
                 }
                 $(this).addClass("tab_selected").siblings().removeClass("tab_selected");
@@ -47,8 +75,8 @@
                 that.dom.fbwrapper.hide()
             });
 
-            that.dom.feedback.on("click",function(){
-                if($(this).hasClass("tab_selected")){
+            that.dom.feedback.on("click", function () {
+                if ($(this).hasClass("tab_selected")) {
                     return
                 }
                 $(this).addClass("tab_selected").siblings().removeClass("tab_selected");

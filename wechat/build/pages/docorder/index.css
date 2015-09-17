@@ -146,8 +146,7 @@
     border-bottom-style: dotted; }
   #page .time-picker .time-wrapper {
     padding: 22px 11px 7px 11px;
-    background-color: #FFF;
-    border-top: 1px solid #d1d1d1; }
+    background-color: #FFF; }
     #page .time-picker .time-wrapper ul {
       overflow: hidden; }
     #page .time-picker .time-wrapper li {

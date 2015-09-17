@@ -42,9 +42,7 @@
             $("#download").on("click",function(){
                 //MicroMessenger
                 if(isIphone){
-                    var url ="http://mp.weixin.qq.com/mp/redirect?url="+encodeURIComponent("https://itunes.apple.com/cn/app/yi-jian-kang/id981084179?l=en&mt=8")
-                    window.location.href = url;
-                    $("body").append("<iframe src='"+url+"'></iframe>")
+                    window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
                 }else{
                     window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
                 }

@@ -26,19 +26,19 @@
         <ul>
             <li class="icon1">
                 <div>医生</div>
-                <div>王尼玛</div>
+                <div>${doc}</div>
             </li>
             <li class="icon2">
                 <div>科室</div>
-                <div>妇科</div>
+                <div>${dep}</div>
             </li>
             <li class="icon3">
                 <div>地点</div>
-                <div>美年达体检中心</div>
+                <div>${add}</div>
             </li>
             <li class="icon4">
                 <div>时间</div>
-                <div>2015年10月10日 09:00</div>
+                <div>${time}</div>
             </li>
         </ul>
     </div>
@@ -147,7 +147,7 @@
                 <div>
                     <p>总计：</p>
 
-                    <p>￥350.00</p>
+                    <p>￥${price}.00</p>
                 </div>
                 <span class="btn dis">确认支付</span>
             </li>
@@ -156,9 +156,8 @@
 </script>
 
 
-<script src="../../lib/zepto.js?version=0.1.2"></script>
-<script src="../../lib/juicer.js?version=0.1.2"></script>
-<script src="index.js?version=0.1.2"></script>
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../pages/preorder/index.js?version=0.1.2"></script>
 
 </body>
 </html>

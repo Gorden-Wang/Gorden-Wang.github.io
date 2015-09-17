@@ -29,11 +29,11 @@
                         <div class="Left"><img src="../../images/temp/img_3.png"/></div>
                         <div class="Center">
                             <div class="row_1">${doc.name}</div>
-                            <div class="row_2">${makeTitle(doc.title)}</div>
-                            <div class="row_2">${doc.hospital}</div>
+                            <div class="row_2" id="res-til">${makeTitle(doc.title)}</div>
+                            <div class="row_2" id="res-add">${doc.hospital}</div>
                             <div class="row_2">擅长： ${makeDes(doc.specialities)}</div>
                         </div>
-                        <div class="Right">妇科</div>
+                        <div class="Right" id="res-dep">妇科</div>
                         <div class="right-icon t-r"></div>
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                     {@each item.treatmentPlan.treatmentPlanDetails as timeItem}
 
                     {@if timeItem.finished == true}
-                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    <li data-time="${makeFuckTime(item.treatmentPlan.starttime)}" data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
                     {@/if}
 
                     {@if timeItem.finished == false}
