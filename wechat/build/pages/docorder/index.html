@@ -38,72 +38,14 @@
                     </a>
                 </div>
             </div>
-        </div>
-
-        <div class="data-picker box_yz">
-            <span class="right-icon rota pre" id="leftbtn"></span>
-
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    {@each timeList as item,index}
-
-                    <div class="swiper-slide">
-                        <div>
-                            <p class="year">${item.y}</p>
-
-                            <p class="day">${item.m}月${item.d}日</p>
-                            <span class="week">${item.w}</span>
-                        </div>
-                    </div>
-
-                    {@/each}
-
-
-                </div>
-            </div>
-            <span class="right-icon next" id="rightbtn"></span>
-        </div>
-
-
-        {@each docList as item}
-
-
-        <div class="time-picker box_yz bottom-radius">
-            <div class="box box_list_ys top-radius">
-                <div class="list_ys clearfix">
-                    <a href="../../pages/hosdetail/index.html">
-                        <div class="Center">
-                            <div class="row_1 icon1">${item.clinic.name}</div>
-                            <div class="row_2 icon2">${item.clinic.address}</div>
-                        </div>
-                        <div class="Right">${makeTitle(doc.title)}</div>
-                    </a>
-                </div>
-            </div>
             <div class="taochan-wrapper">
                 <p>
                     套餐费:
-                    <span>￥${item.treatmentPlan.price}</span>
+                    <span>￥${getPrice()}</span>
                     (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
                 </p>
 
                 <div class="right-icon t-r"></div>
-            </div>
-            <div class="time-wrapper ">
-                <ul>
-                    {@each item.treatmentPlan.treatmentPlanDetails as timeItem}
-
-                    {@if timeItem.finished == true}
-                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
-                    {@/if}
-
-                    {@if timeItem.finished == false}
-                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
-                    {@/if}
-
-
-                    {@/each}
-                </ul>
             </div>
             <div class="tiaokuan-wrapper bottom-radius">
                 <ul>
@@ -128,6 +70,48 @@
 
                 </ul>
             </div>
+        </div>
+
+
+
+
+        {@each docList as item}
+
+
+        <div class="time-picker box_yz bottom-radius">
+            <div class="box box_list_ys top-radius">
+
+                <div class="top-banner">
+                        $${makeTime(item.treatmentPlan.starttime)}
+                </div>
+
+                <div class="list_ys clearfix">
+                    <a href="../../pages/hosdetail/index.html">
+                        <div class="Center">
+                            <div class="row_1 icon1">${item.clinic.name}</div>
+                            <div class="row_2 icon2">${item.clinic.address}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="time-wrapper ">
+                <ul>
+                    {@each item.treatmentPlan.treatmentPlanDetails as timeItem}
+
+                    {@if timeItem.finished == true}
+                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    {@/if}
+
+                    {@if timeItem.finished == false}
+                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
+                    {@/if}
+
+
+                    {@/each}
+                </ul>
+            </div>
+
 
         </div>
 
