@@ -65,6 +65,14 @@
                 }else{
                     window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
                 }
+            });
+            $("footer").on("click",function(){
+                //MicroMessenger
+                if(isIphone){
+                    window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
+                }else{
+                    window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.yihealth";
+                }
             })
 
 
