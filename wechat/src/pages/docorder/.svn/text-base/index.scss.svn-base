@@ -30,13 +30,58 @@
     top: 45px;
   }
 
+  .top-wrapper{
+    .taochan-wrapper{
+      background-color: #fff7fa;
+      padding: 12px 30px 12px 10px;
+      position: relative;
+      .right-icon{
+        top: 13px;
+      }
+      p{
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #b4b4b4;
+        span{
+          color: #9bb8f8;
+          font-size: 20px;
+        }
+      }
+
+    }
+    .tiaokuan-wrapper{
+      background-color: #FFF;
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 0px;
+
+      ul{
+        overflow: hidden;
+        li{
+          position: relative;
+          width: 33.33%;
+          float: left;
+          padding: 15px 10px;
+          box-sizing: border-box;
+          font-size: 16px;
+          color: #919191;
+          text-align: center;
+
+          .right-icon{
+            top: 15px;
+          }
+        }
+      }
+    }
+  }
   .data-picker{
     display: flex;
     background-color: #FFF;
     span.right-icon {
       display: inline-block;
       width: 30px;
-      height: 60px;
+      height: 70px;
       background-image: url(../../images/arro_right.png);
       background-size: 9px 16px;
       background-repeat: no-repeat;
@@ -58,6 +103,30 @@
     border-top: 0px;
     margin-top: 9px;
     box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+
+    .top-banner{
+      display: flex;
+      padding: 10px 10px;
+
+      div{
+        flex:1;
+        font-size: 18px;
+        color: #000;
+      }
+    }
+    .top-banner:after{
+      content:"";
+      position: absolute;
+      width: 100%;
+      left: 0px;
+      height: 2.5px;
+      background-image: url(../../images/order/border.png);
+      background-size: contain;
+      top: 38px;
+
+
+    }
 
     .top-radius{
       border-radius: 8px 8px 0px 0px;
@@ -89,31 +158,11 @@
       border-bottom-style: dotted;
     }
 
-    .taochan-wrapper{
-      background-color: #fff7fa;
-      padding: 12px 30px 12px 10px;
-      position: relative;
-      .right-icon{
-        top: 13px;
-      }
-      p{
-        text-overflow: ellipsis;
-        word-break: break-all;
-        white-space: nowrap;
-        overflow: hidden;
-        color: #b4b4b4;
-        span{
-          color: #9bb8f8;
-          font-size: 20px;
-        }
-      }
 
-    }
 
     .time-wrapper{
       padding: 22px 11px 7px 11px;
       background-color: #FFF;
-      border-top: 1px solid #d1d1d1;
       ul{
         overflow: hidden;
       }
@@ -144,7 +193,7 @@
         height: 1px;
         background-color:#c6c6c6 ;
         position: absolute;
-        top: 16px;
+        top: 18px;
         left: 15%;
       }
       li:nth-of-type(4n){
@@ -152,29 +201,7 @@
       }
     }
 
-    .tiaokuan-wrapper{
-      background-color: #FFF;
-      border-top: 1px solid #d1d1d1;
-      border-bottom: 0px;
 
-      ul{
-        overflow: hidden;
-        li{
-          position: relative;
-          width: 33.33%;
-          float: left;
-          padding: 15px 10px;
-          box-sizing: border-box;
-          font-size: 16px;
-          color: #919191;
-          text-align: center;
-
-          .right-icon{
-            top: 15px;
-          }
-        }
-      }
-    }
 
   }
 
@@ -189,7 +216,7 @@
 
 .swiper-container {
   width: 100%;
-  height: 60px;
+  height: 70px;
 }
 .swiper-slide {
   text-align: left;
@@ -224,7 +251,7 @@
   .day{
     color:#fb6c8a;
     font-size: 12px;
-    margin: 3px 0px;
+    margin: 1px 0px;
   }
   .week{
     border: 1px solid #fb6c8a;

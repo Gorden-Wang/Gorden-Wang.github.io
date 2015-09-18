@@ -52,49 +52,47 @@
             <li>
                 <div>姓名</div>
                 <div>
-                    <input type="text" placeholder="请输入姓名">
-                </div>
-            </li>
-            <li>
-                <div>身份证号</div>
-                <div>
-                    <input type="text" placeholder="请输入身份证号">
+                    <input type="text" id="name" placeholder="请输入姓名">
                 </div>
             </li>
             <li>
                 <div>联系电话</div>
                 <div>
-                    <input type="number" placeholder="请输入联系电话">
+                    <input type="number" id="tel" placeholder="请输入联系电话">
+                </div>
+            </li>
+            <li>
+                <div>身份证号</div>
+                <div>
+                    <input type="text" id="idcode" placeholder="请输入身份证号">
                 </div>
             </li>
         </ul>
     </div>
 
+    {@if conList.length > 0}
+
     <div class="history-wrapper">
         <ul>
-            <li>
-                <span class="l-name">王小华</span>
-                <span class="l-tel">13888888888</span>
-                <span class="l-code">110111111111011101</span>
+
+
+            {@each conList as item}
+            <li data-id="${item.id}">
+                <span class="l-name">${item.userName}</span>
+                <span class="l-tel">${item.phone}</span>
+                <span class="l-code">${item.idNumber}</span>
 
                 <div class="radio"></div>
             </li>
-            <li>
-                <span class="l-name">王小华</span>
-                <span class="l-tel">13888888888</span>
-                <span class="l-code">110111111111011101</span>
-
-                <div class="radio"></div>
-            </li>
-            <li>
-                <span class="l-name">王小华</span>
-                <span class="l-tel">13888888888</span>
-                <span class="l-code">110111111111011101</span>
-
-                <div class="radio"></div>
-            </li>
+            {@/each}
         </ul>
     </div>
+
+
+    {@/if}
+
+
+
 
     <p>
         支付列表
@@ -104,12 +102,12 @@
             <li class="title">
                 <span class="l-sp1">总计</span>
                 <span class="l-sp2">1份</span>
-                <span class="l-sp3">￥350</span>
+                <span class="l-sp3">￥${price}</span>
             </li>
             <li>
                 <span class="l-sp1">定制体检套餐</span>
                 <span class="l-sp2">x1</span>
-                <span class="l-sp3">￥350</span>
+                <span class="l-sp3">￥${price}</span>
             </li>
         </ul>
     </div>
@@ -118,16 +116,16 @@
     </p>
     <div class="price-channel">
         <ul>
-            <li>
-                <span class="alipay"></span>
+            <!--<li>-->
+                <!--<span class="alipay"></span>-->
 
-                <p>
-                    <span>支付宝网页支付</span>
-                    <span>可银行卡支付</span>
-                </p>
+                <!--<p>-->
+                    <!--<span>支付宝网页支付</span>-->
+                    <!--<span>可银行卡支付</span>-->
+                <!--</p>-->
 
-                <div class="radio radio_se"></div>
-            </li>
+                <!--<div class="radio radio_se"></div>-->
+            <!--</li>-->
             <li>
                 <span class="wechat"></span>
 
@@ -136,7 +134,7 @@
                     <span>可银行卡支付</span>
                 </p>
 
-                <div class="radio"></div>
+                <div class="radio radio_se"></div>
             </li>
         </ul>
     </div>

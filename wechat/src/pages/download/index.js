@@ -13,6 +13,7 @@
             that.renderUI();
             that.recacheDom();
             that.bindEvent();
+            that.initWeChat();
         },
         cacheDom : function(){
             var that = this;
@@ -26,6 +27,24 @@
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(),{}));
             that.dom.loading.hide();
+        },
+        initWeChat : function(){
+            wx.ready(function(){
+                wx.onMenuShareAppMessage({
+                    title: $("#shareTitle").attr("content"), // 分享标题
+                    desc: $("#shareDes").attr("content"), // 分享描述
+                    link: $("#shareLink").attr("content") || window.location.href, // 分享链接
+                    imgUrl: $("#shareImg").attr("content") || 'http://www.gorden.wang/wechat/build/pages/download/logo.png', // 分享图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+            });
         },
         recacheDom : function(){
           var that = this;

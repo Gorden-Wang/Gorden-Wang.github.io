@@ -114,11 +114,11 @@
                     {@each item.treatmentPlanDetails as timeItem}
 
                     {@if timeItem.finished == true}
-                    <li class="time-item">${timeItem.starttime}</li>
+                    <li data-price="${item.price}" data-dep="${item.doctor.className}" data-add="${item.doctor.hospital}" data-name="${item.doctor.name}" data-time="${makeFuckTime(item.starttime)}" data-plan="${item.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
                     {@/if}
 
                     {@if timeItem.finished == false}
-                    <li class="time-item dis">${timeItem.starttime}</li>
+                    <li  data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
                     {@/if}
 
                     {@/each}

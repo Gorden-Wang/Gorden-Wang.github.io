@@ -1,7 +1,7 @@
 /**
  * Created by gorden on 15/7/31.
  */
-(function (win, $,Swiper) {
+(function (win, $, Swiper) {
     var DoOrder = function () {
         this.init();
     }
@@ -14,7 +14,7 @@
             that.cacheDom();
             //that.renderUI();
             //that.recacheDom();
-           // that.bindEvent();
+            // that.bindEvent();
             that.fetchData();
         },
         cacheDom: function () {
@@ -49,10 +49,10 @@
             });
             that.dom.loading.hide();
         },
-        makeTimeList : function(){
-          var that = this;
+        makeTimeList: function () {
+            var that = this;
 
-            var arr = (function(date){
+            var arr = (function (date) {
 
                 //<div>
                 //<p class="year">2015</p>
@@ -62,10 +62,10 @@
                 //    </div>
 
                 var arr = [];
-                var time,obj,w;
-                for(var i =1;i<=7;i++){
-                    time = new Date(date.getTime()+i*24*3600*1000);
-                    switch (time.getDay()){
+                var time, obj, w;
+                for (var i = 1; i <= 7; i++) {
+                    time = new Date(date.getTime() + i * 24 * 3600 * 1000);
+                    switch (time.getDay()) {
                         case 0 :
                             w = "星期日";
                             break;
@@ -89,10 +89,10 @@
                             break;
                     }
                     obj = {
-                        y : time.getFullYear(),
-                        m : (time.getMonth()+1) <10 ? "0"+(time.getMonth()+1) : (time.getMonth()+1),
-                        d : time.getDate(),
-                        w : w
+                        y: time.getFullYear(),
+                        m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
+                        d: time.getDate(),
+                        w: w
                     }
 
                     arr.push(obj);
@@ -114,9 +114,8 @@
             that.dom.times = $(".time-item");
 
 
-
         },
-        fetchData : function(){
+        fetchData: function () {
             var that = this;
             var param = {
                 "doctorId": that.data.doctorId
@@ -128,7 +127,7 @@
                 that.makeTimeList();
                 console.log(that.data)
 
-                that.fetchDocDetail(function(){
+                that.fetchDocDetail(function () {
 
                     that.renderUI();
                     that.recacheDom();
@@ -139,7 +138,7 @@
 
             });
         },
-        fetchDocDetail :function(callback){
+        fetchDocDetail: function (callback) {
             var that = this;
             var param = {
                 "doctorId": that.data.doctorId
@@ -150,10 +149,9 @@
                 callback && callback();
 
 
-
             });
         },
-        addJuicerHandler : function(){
+        addJuicerHandler: function () {
             var that = this;
             juicer.register("makeTitle", function (str) {
                 var res = "";
@@ -180,48 +178,161 @@
             //        }
             //    }
             //});
-            juicer.register("makeDes",function(obj){
-                var res="";
-                for(var i=0;i<obj.length;i++){
-                    res = res+obj[i].name;
-                    if(i<obj.lenght){
-                        res+=",";
+            juicer.register("makeDes", function (obj) {
+                var res = "";
+                for (var i = 0; i < obj.length; i++) {
+                    res = res + obj[i].name;
+                    if (i < obj.lenght) {
+                        res += ",";
                     }
                 }
                 return res;
             });
 
+            juicer.register("getPrice", function () {
+                return that.data.docList[0].treatmentPlan.price;
+            });
+            juicer.register("makeTime", function (time) {
 
+                var time = new Date(time), w;
+                switch (time.getDay()) {
+                    case 0 :
+                        w = "周日";
+                        break;
+                    case 1 :
+                        w = "周一";
+                        break;
+                    case 2 :
+                        w = "周二";
+                        break;
+                    case 3 :
+                        w = "周三";
+                        break;
+                    case 4 :
+                        w = "周四";
+                        break;
+                    case 5 :
+                        w = "周五";
+                        break;
+                    case 6 :
+                        w = "周六";
+                        break;
+                }
+                var obj = {
+                    y: time.getFullYear(),
+                    m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
+                    d: time.getDate(),
+                    w: w
+                }
+                var resTime = obj.y + "年" + obj.m + '月' + obj.d + '日';
+
+
+                return '<div>' +
+                    resTime +
+                    '</div>' +
+                    '<span>' + w +
+                    '</span>';
+
+            });
+
+            juicer.register("makeFuckTime", function (time) {
+
+                var time = new Date(time), w;
+                switch (time.getDay()) {
+                    case 0 :
+                        w = "周日";
+                        break;
+                    case 1 :
+                        w = "周一";
+                        break;
+                    case 2 :
+                        w = "周二";
+                        break;
+                    case 3 :
+                        w = "周三";
+                        break;
+                    case 4 :
+                        w = "周四";
+                        break;
+                    case 5 :
+                        w = "周五";
+                        break;
+                    case 6 :
+                        w = "周六";
+                        break;
+                }
+                var obj = {
+                    y: time.getFullYear(),
+                    m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
+                    d: time.getDate(),
+                    w: w
+                }
+                var resTime = obj.y + "年" + obj.m + '月' + obj.d + '日';
+
+
+                return resTime
+
+            });
 
 
         },
         bindEvent: function () {
             var that = this;
-            that.dom.dataitems.on("click",function(){
-                if($(this).hasClass("selected")){
+            that.dom.dataitems.on("click", function () {
+                if ($(this).hasClass("selected")) {
                     return;
                 }
                 $(this).addClass("selected").siblings().removeClass("selected");
             });
-            that.dom.taocan.on("click",function(){
+            that.dom.taocan.on("click", function () {
                 $(this).find("p").toggleClass("taocanToggle");
                 $(this).find(".t-r").toggleClass("rightToogle")
             });
-            that.dom.times.on("click",function(){
-                if($(this).hasClass("selected")){
+            that.dom.times.on("click", function () {
+                if ($(this).hasClass("selected")) {
                     return;
                 }
-                if($(this).hasClass("dis")){
+                if ($(this).hasClass("dis")) {
                     return;
                 }
-                //$(this).addClass("selected").siblings().removeClass("selected");
 
-                //下一页
+                //如果没有登录 TODO : 删除localStorage
 
-                window.location.href = "../../pages/preorder/index.html";
+                !!localStorage.getItem("userId") && localStorage.setItem("userId", "00000301");
+
+
+                var param = [
+                    "treatmentPlanId="+ $(this).attr("data-plan"),
+                    "userId="+ localStorage.getItem("userId"),
+                    "treatmentPlanDetailId="+ $(this).attr("data-id"),
+                    "doc="+ that.data.doc.name,
+                    "dep="+ $("#res-dep").text(),
+                    "add="+ $("#res-add").text(),
+                    "time="+ $(this).attr("data-time")+" "+$(this).text(),
+                    "price="+that.data.docList[0].treatmentPlan.price
+                ]
+                var resparam = [].join.call(param,"&");
+                console.log(resparam)
+                //Wlib.SendRequest("2033", param, function (res) {
+                //
+                //    console.log(res);
+                //    var nextparam = {
+                //        doc : that.data.doc.name,
+                //        dep :
+                //    }
+                //
+                //    window.location.href = "../../pages/preorder/index.html?oid="+res.entity+"uid="+localStorage.getItem("userId");
+                //
+                //});
+                window.location.href = "../../pages/preorder/index.html?"+resparam;
+
+
+
 
 
             })
+
+            //@TODO : 下一页。。
 
         }
 
@@ -230,4 +341,4 @@
     var doc = new DoOrder();
 
 
-})(window, $,Swiper);
+})(window, $, Swiper);

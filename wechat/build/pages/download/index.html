@@ -9,7 +9,60 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>伊健康-女性健康卫士</title>
+    <meta id="shareTitle" content="todo"/>
+    <meta id="shareDes" content="todo"/>
+    <meta id="shareImg" content="todo"/>
+    <meta id="shareLink" content="todo"/>
     <link href="../../pages/download/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js?version=0.1.2"></script>
+    <script>
+        wx.config({
+            debug: false,
+            appId: 'wx9ade35641403eb00',
+            timestamp: 0,//@TODO
+            nonceStr: 'Tr0UrLen3BxlTccH',//@TODO
+            signature: 'f45db7ec8696783f3d0bd8b73820a26fd9c9ae31',//@TODO
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onVoiceRecordEnd',
+                'playVoice',
+                'onVoicePlayEnd',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+    </script>
+
 </head>
 <body>
 <div id="loading" class="loading">

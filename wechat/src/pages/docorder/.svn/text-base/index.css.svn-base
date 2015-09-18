@@ -16,13 +16,45 @@
   position: absolute;
   right: 10px;
   top: 45px; }
+#page .top-wrapper .taochan-wrapper {
+  background-color: #fff7fa;
+  padding: 12px 30px 12px 10px;
+  position: relative; }
+  #page .top-wrapper .taochan-wrapper .right-icon {
+    top: 13px; }
+  #page .top-wrapper .taochan-wrapper p {
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #b4b4b4; }
+    #page .top-wrapper .taochan-wrapper p span {
+      color: #9bb8f8;
+      font-size: 20px; }
+#page .top-wrapper .tiaokuan-wrapper {
+  background-color: #FFF;
+  border-top: 1px solid #d1d1d1;
+  border-bottom: 0px; }
+  #page .top-wrapper .tiaokuan-wrapper ul {
+    overflow: hidden; }
+    #page .top-wrapper .tiaokuan-wrapper ul li {
+      position: relative;
+      width: 33.33%;
+      float: left;
+      padding: 15px 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      color: #919191;
+      text-align: center; }
+      #page .top-wrapper .tiaokuan-wrapper ul li .right-icon {
+        top: 15px; }
 #page .data-picker {
   display: flex;
   background-color: #FFF; }
   #page .data-picker span.right-icon {
     display: inline-block;
     width: 30px;
-    height: 60px;
+    height: 70px;
     background-image: url(../../images/arro_right.png);
     background-size: 9px 16px;
     background-repeat: no-repeat;
@@ -36,7 +68,24 @@
   box-sizing: border-box;
   border-top: 0px;
   margin-top: 9px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative; }
+  #page .time-picker .top-banner {
+    display: flex;
+    padding: 10px 10px; }
+    #page .time-picker .top-banner div {
+      flex: 1;
+      font-size: 18px;
+      color: #000; }
+  #page .time-picker .top-banner:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    height: 2.5px;
+    background-image: url(../../images/order/border.png);
+    background-size: contain;
+    top: 38px; }
   #page .time-picker .top-radius {
     border-radius: 8px 8px 0px 0px; }
   #page .time-picker .box_list_ys {
@@ -59,25 +108,9 @@
     line-height: 18px; }
   #page .time-picker .box {
     border-bottom-style: dotted; }
-  #page .time-picker .taochan-wrapper {
-    background-color: #fff7fa;
-    padding: 12px 30px 12px 10px;
-    position: relative; }
-    #page .time-picker .taochan-wrapper .right-icon {
-      top: 13px; }
-    #page .time-picker .taochan-wrapper p {
-      text-overflow: ellipsis;
-      word-break: break-all;
-      white-space: nowrap;
-      overflow: hidden;
-      color: #b4b4b4; }
-      #page .time-picker .taochan-wrapper p span {
-        color: #9bb8f8;
-        font-size: 20px; }
   #page .time-picker .time-wrapper {
     padding: 22px 11px 7px 11px;
-    background-color: #FFF;
-    border-top: 1px solid #d1d1d1; }
+    background-color: #FFF; }
     #page .time-picker .time-wrapper ul {
       overflow: hidden; }
     #page .time-picker .time-wrapper li {
@@ -103,27 +136,10 @@
       height: 1px;
       background-color: #c6c6c6;
       position: absolute;
-      top: 16px;
+      top: 18px;
       left: 15%; }
     #page .time-picker .time-wrapper li:nth-of-type(4n) {
       margin-right: 0px; }
-  #page .time-picker .tiaokuan-wrapper {
-    background-color: #FFF;
-    border-top: 1px solid #d1d1d1;
-    border-bottom: 0px; }
-    #page .time-picker .tiaokuan-wrapper ul {
-      overflow: hidden; }
-      #page .time-picker .tiaokuan-wrapper ul li {
-        position: relative;
-        width: 33.33%;
-        float: left;
-        padding: 15px 10px;
-        box-sizing: border-box;
-        font-size: 16px;
-        color: #919191;
-        text-align: center; }
-        #page .time-picker .tiaokuan-wrapper ul li .right-icon {
-          top: 15px; }
 
 .fadeAnimate {
   -webkit-animation-duration: 1s;
@@ -133,7 +149,7 @@
 
 .swiper-container {
   width: 100%;
-  height: 60px; }
+  height: 70px; }
 
 .swiper-slide {
   text-align: left;
@@ -161,7 +177,7 @@
   .swiper-slide .day {
     color: #fb6c8a;
     font-size: 12px;
-    margin: 3px 0px; }
+    margin: 1px 0px; }
   .swiper-slide .week {
     border: 1px solid #fb6c8a;
     border-radius: 2px;
