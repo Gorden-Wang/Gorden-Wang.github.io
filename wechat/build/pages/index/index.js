@@ -23,7 +23,7 @@
                 locationId: "1"//默认北京
             }
             that.data.cityList = win.CITYLIST;
-            localStorage.setItem("userId",Wlib.getRequestParam("userId"))
+            localStorage.setItem("userId", Wlib.getRequestParam("userId"))
         },
         cacheDom: function () {
             var that = this;
@@ -79,7 +79,7 @@
 
             function showPosition(position) {
                 console.log(position)
-               // callback && callback({latitude: position.coords.latitude, longitude: position.coords.longitude})
+                // callback && callback({latitude: position.coords.latitude, longitude: position.coords.longitude})
 
                 //var myGeo = new BMap.Geocoder();
                 //myGeo.getLocation(new BMap.Point(  position.coords.longitude,position.coords.latitude), function(result){
@@ -88,13 +88,16 @@
                 //    }
                 //});
 
-                Wlib.SendRequest("1267",{latitude: position.coords.latitude, longitude: position.coords.longitude},function(res){
-                    if(res.entity){
+                Wlib.SendRequest("1267", {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                }, function (res) {
+                    if (res.entity) {
                         var CityList = {
-                            "1" : "",
-                            "2" : "",
-                            "3" : "",
-                            "187" : ""
+                            "1": "",
+                            "2": "",
+                            "3": "",
+                            "187": ""
                         };
                         (res.entity.id in CityList) && that.dom.citySelect.val(res.entity.id);
                     }

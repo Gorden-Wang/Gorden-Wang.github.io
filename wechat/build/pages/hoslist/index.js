@@ -9,6 +9,7 @@
     DocList.prototype = {
         init: function () {
             var that = this;
+            that.getPosition();
             that.addJuicerHandler();
             that.cacheDom();
             that.cacheData();
@@ -78,6 +79,29 @@
                 window.location.href = '../../pages/hoslist/index.html?' + that.makeURL();
             });
         },
+        getPosition: function () {
+            var that = this;
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                else {
+                    Wlib.tips("没有定位到您的城市，请稍候再试")
+                }
+            }
+
+            function showPosition(position) {
+                console.log(position)
+
+                that.data.latitude = position.coords.latitude;
+                that.data.longitude= position.coords.longitude;
+            }
+
+            getLocation();
+
+
+        },
         fetchDepartments: function () {
             var that = this;
             if (that.data.depList.length == 0) {
@@ -98,6 +122,8 @@
                 "deptId": that.data.departmentId || -1,
                 "city": that.data.locationId || -1,
                 "queryType": that.data.titleId || -1,
+                latitude : that.data.latitude,
+                longitude : that.data.longitude,
                 firstResult: that.data.firstResult || 0,
                 maxResults: that.data.maxResults || 5
             }
