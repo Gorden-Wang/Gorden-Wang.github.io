@@ -23,7 +23,8 @@
       padding-left: 20px;
       margin: 10px 0px;
       font-size: 14px;
-      height: 15px;
+      height: 18px;
+
       div:first-of-type {
         width: 2em;
         margin-right: 16px;
@@ -246,7 +247,6 @@
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
         font-size: 14px;
-        line-height: px;
         color: #404040;
 
         div{
@@ -257,9 +257,11 @@
         .btn{
           border-radius: 4px;
           display: inline-block;
-          padding: 8px 10px;
+          padding: 10px 10px;
           color: white;
           background-color:#f86987;
+          line-height: 25px;
+          height: 25px
         }
         .dis{
           background-color:#d8d8d8;
