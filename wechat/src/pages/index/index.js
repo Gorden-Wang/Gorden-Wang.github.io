@@ -56,7 +56,7 @@
                 window.location = "../../pages/doclist/index.html?locationId=" + that.data.locationId;
             });
             that.dom.hos.on("click", function () {
-                window.location = "../../pages/hoslist/index.html?locationId=" + that.data.locationId;
+                window.location = "../../pages/hoslist/index.html?locationId=" + that.data.locationId + "&latitude="+that.data.latitude+"&longitude="+that.data.longitude;
             });
             that.dom.person.on("click", function () {
                 window.location = "../../pages/person/index.html?locationId=" + that.data.locationId;
@@ -87,7 +87,8 @@
                 //        console.log(result);
                 //    }
                 //});
-
+                that.data.latitude = position.coords.latitude;
+                that.data.longitude = position.coords.longitude;
                 Wlib.SendRequest("1267", {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude

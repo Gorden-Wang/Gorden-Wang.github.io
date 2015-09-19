@@ -144,7 +144,9 @@
                 if(res.errorcode == 0){
                     //下单成功
 
-                    alert("下单成功，去支付去。。需要提供支付接口。先跳转订单详情。");
+                    alert("下单成功，去支付去。。需要提供支付接口。");
+                    //location.href = '../../pages/orderdetail/index.html?orderId='+res.entity;
+                    location.href = '../../pages/paysucc/index.html?orderId='+res.entity;
                 }
 
 

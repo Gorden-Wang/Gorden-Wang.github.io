@@ -37,6 +37,8 @@
             that.data.titleId = Wlib.getRequestParam("titleId") || -1;
             that.data.maxResults = 10;
             that.data.firstResult = 0;
+            that.data.latitude = Wlib.getRequestParam("latitude");
+            that.data.longitude = Wlib.getRequestParam("longitude");
         },
         renderUI: function () {
             var that = this;
@@ -58,15 +60,15 @@
         makeURL: function () {
             var that = this;
 
-            return 'locationId=' + that.data.locationId + '&departmentId=' + that.data.departmentId + '&titleId=' + that.data.titleId;
+            return 'locationId=' + that.data.locationId + '&departmentId=' + that.data.departmentId + '&titleId=' + that.data.titleId + "&latitude="+that.data.latitude+"&longitude="+that.data.longitude;
         },
         renderDepart: function () {
             var that = this;
-            var res = "",title="";
+            var res = "", title = "";
             for (var i = 0; i < that.data.depList.length; i++) {
-                if(that.data.departmentId == that.data.depList[i].data.id){
+                if (that.data.departmentId == that.data.depList[i].data.id) {
                     title = that.data.depList[i].data.name;
-                    that.data.departmentId == -1 && (title ="科室");
+                    that.data.departmentId == -1 && (title = "科室");
                 }
                 res += '<div data-id="' + that.data.depList[i].data.id + '" class="condit"><span class="ks_' + that.data.depList[i].data.id + '"></span>' + that.data.depList[i].data.name + '</div>';
             }
@@ -76,7 +78,7 @@
             that.dom.desdep.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.departmentId = id;
-                window.location.href = '../../pages/hoslist/index.html?' + that.makeURL();
+                window.location.replace('../../pages/hoslist/index.html?' + that.makeURL());
             });
         },
         getPosition: function () {
@@ -95,7 +97,7 @@
                 console.log(position)
 
                 that.data.latitude = position.coords.latitude;
-                that.data.longitude= position.coords.longitude;
+                that.data.longitude = position.coords.longitude;
             }
 
             getLocation();
@@ -122,8 +124,8 @@
                 "deptId": that.data.departmentId || -1,
                 "city": that.data.locationId || -1,
                 "queryType": that.data.titleId || -1,
-                latitude : that.data.latitude,
-                longitude : that.data.longitude,
+                latitude: that.data.latitude,
+                longitude: that.data.longitude,
                 firstResult: that.data.firstResult || 0,
                 maxResults: that.data.maxResults || 5
             }
@@ -188,7 +190,7 @@
                     rate: parseFloat(v),
                     activeImg: '../../images/redstar.png',
                     defaultImg: '../../images/graystar.png',
-                    halfImg : '../../images/halfstar.png'
+                    halfImg: '../../images/halfstar.png'
                 });
                 return rate.init()
             });
@@ -213,10 +215,10 @@
 
                     var data = {};
                     data.hosList = res.entity || [];
-                    var reshtml = juicer($("#itemtpl").html(),data);
+                    var reshtml = juicer($("#itemtpl").html(), data);
                     $(".list-wrapper").append(reshtml);
                     Wlib._bindLazyLoad();
-                    if(res.entity.length == that.data.maxResults){
+                    if (res.entity.length == that.data.maxResults) {
                         that.bindNext(true);
                     }
                     if (!res.entity || res.entity.length == 0) {
@@ -224,7 +226,7 @@
                     }
 
                 });
-            },tag)
+            }, tag)
 
 
         },
@@ -253,14 +255,14 @@
             that.dom.city.find("li").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.locationId = id;
-                window.location.href = '../../pages/hoslist/index.html?' + that.makeURL();
+                window.location.replace('../../pages/hoslist/index.html?' + that.makeURL());
 
             });
 
             that.dom.despro.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.titleId = id;
-                window.location.href = '../../pages/hoslist/index.html?' + that.makeURL();
+                window.location.replace('../../pages/hoslist/index.html?' + that.makeURL());
             });
 
             function resetDom() {

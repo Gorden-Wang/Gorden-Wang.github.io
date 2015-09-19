@@ -8,7 +8,7 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>医生下单</title>
+    <title>订单列表</title>
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
     <link href="../../lib/all.css" rel="stylesheet">
     <link href="../../pages/orderlist/index.css" rel="stylesheet">
@@ -24,16 +24,16 @@
         <div class="banner-fix">
 
             <ul class="banner">
-                <li class="item selected">
+                <li data-id="-1" class="item selected">
                     全部
                 </li>
-                <li class="item">
+                <li data-id="1" class="item">
                     未付款
                 </li>
-                <li class="item">
+                <li data-id="-1" class="item">
                     待完成
                 </li>
-                <li class="item border-right">
+                <li data-id="-1" class="item border-right">
                     已完成
                 </li>
                 <li id="filter">
@@ -59,24 +59,35 @@
         </div>
 
         <div class="list-wrapper">
+            <!-- 订单样式：wfk,yfk,dwc-->
+            <!-- @TODO style-->
+            {@each olist as item}
+
             <ul>
                 <li class="o-title">
-                    <div class="o-s ywc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
+                    <div class="o-s ywc">${makeStatus(item.orderStatus)}</div>
+                    <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
+                    <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
                 </li>
                 <li class="o-main">
+
                     <div class="o-img jiuzhen">
 
                     </div>
                     <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
+                        <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
+                            <!-- @TODO : A套餐是什么？-->
+                            <p>A套餐：关爱女性套餐</p>
+
+                            <p>地点：${item.clinicName}</p>
+
+                            <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+                        </a>
                     </div>
                     <div class="o-r Right">
 
                     </div>
+
                 </li>
                 <li class="o-b">
                     <div class="o-btn">
@@ -85,289 +96,18 @@
                         </div>
                     </div>
                     <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
+                        单价：<span>￥${item.amount}</span><var>X1</var>
                     </div>
                     <div class="o-allp">
-                        合计：<span>￥1600</span>
+                        合计：<span>￥${item.amount}</span>
                     </div>
                 </li>
             </ul>
 
-            <ul>
-                <li class="o-title">
-                    <div class="o-s wfk">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img tijian">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
-
-            <ul>
-                <li class="o-title">
-                    <div class="o-s wfk">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
-
-            <ul>
-                <li class="o-title">
-                    <div class="o-s ywc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
-
-            <ul>
-                <li class="o-title">
-                    <div class="o-s ywc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
+            {@/each}
 
 
-            <ul>
-                <li class="o-title">
-                    <div class="o-s ywc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
 
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
-
-
-            <ul>
-                <li class="o-title">
-                    <div class="o-s dwc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
-
-
-            <ul>
-                <li class="o-title">
-                    <div class="o-s ywc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
-
-
-            <ul>
-                <li class="o-title">
-                    <div class="o-s ywc">未付款</div>
-                    <div class="o-id">体检订单：052102</div>
-                    <div class="o-t">2015/08/02下单</div>
-                </li>
-                <li class="o-main">
-                    <div class="o-img jiuzhen">
-
-                    </div>
-                    <div class="o-con">
-                        <p>A套餐：关爱女性套餐</p>
-                        <p>地点：美年达健康中关村店</p>
-                        <p>时间：2015/08/02体检</p>
-                    </div>
-                    <div class="o-r Right">
-
-                    </div>
-                </li>
-                <li class="o-b">
-                    <div class="o-btn">
-                        <div class="btn">
-                            去评价
-                        </div>
-                    </div>
-                    <div class="o-p">
-                        单价：<span>￥800</span><var>X2</var>
-                    </div>
-                    <div class="o-allp">
-                        合计：<span>￥1600</span>
-                    </div>
-                </li>
-            </ul>
         </div>
 
 
@@ -377,8 +117,7 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
+<script src="../../lib/libAll.js"></script>
 <script src="index.js"></script>
 
 </body>

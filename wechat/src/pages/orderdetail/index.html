@@ -24,21 +24,31 @@
         <!--订单详情-->
         <div class="pjbox">
             <div class="secbox">
-                <div class="box_tit"><span class="wc">已完成</span><span class="ord">门诊订单：010201</span><strong class="odtime">2015/08/02下单</strong></div>
+                <div class="box_tit"><span class="wc">${makeStatus(de.orderRecord.orderStatus)}</span><span class="ord">${makeType(de.orderRecord.orderType)}订单：${de.orderRecord.id}</span><strong class="odtime">${makeFuckTime(de.orderRecord.orderDate)}下单</strong></div>
             </div>
             <div class="secbox">
                 <div class="oddetail mb8">
-                    <div class="details"><span><i class="ys"></i>医生</span><strong>王尼玛</strong><a href="#" class="more"></a></div>
-                    <div class="details"><span><i class="ks"></i>科室</span><strong>科室</strong></div>
-                    <div class="details"><span><i class="dd"></i>地点</span><strong>中关村店</strong><a href="#" class="more"></a></div>
-                    <div class="details"><span><i class="sj"></i>时间</span><strong>2015年08月19日  09:45</strong></div>
+                    <div class="details">
+                        <a style="display: block;" href="../../pages/docdetail/index.html?doctorId=${de.orderRecord.doctorId}">
+                            <span><i class="ys"></i>医生</span><strong>${de.orderRecord.doctorName}</strong><span class="more"></span>
+                        </a>
+
+                    </div>
+                    <div class="details"><span><i class="ks"></i>科室</span><strong>${makeDep(de.orderRecord.doctorTitle)}</strong></div>
+                    <div class="details">
+                       <a style="display: block;" href="../../pages/hosdetail/index.html?clinicId=${de.orderRecord.clinicId}">
+                           <span><i class="dd"></i>地点</span><strong>${de.orderRecord.clinicName}</strong><span  class="more"></span>
+                       </a>
+
+                    </div>
+                    <div class="details"><span><i class="sj"></i>时间</span><strong>${makeFuckTimeFuck(de.orderRecord.starttime)}</strong></div>
                 </div>
             </div>
             <div class="secbox">
                 <div class="oddetail">
-                    <div class="details"><span><i class="ys"></i>姓名</span><strong>王尼玛</strong></div>
-                    <div class="details"><span><i class="ks"></i>电话</span><strong>13822222222</strong></div>
-                    <div class="details"><span><i class="dd"></i>总价</span><strong>10000元</strong></div>
+                    <div class="details"><span><i class="ys"></i>姓名</span><strong>${de.reserveProfile.name}</strong></div>
+                    <div class="details"><span><i class="ks"></i>电话</span><strong>${de.reserveProfile.phone}</strong></div>
+                    <div class="details"><span><i class="dd"></i>总价</span><strong>${de.orderRecord.amount}元</strong></div>
                 </div>
             </div>
             <div class="rules">
@@ -68,8 +78,7 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
+<script src="../../lib/libAll.js"></script>
 <script src="index.js"></script>
 
 </body>

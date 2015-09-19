@@ -82,14 +82,14 @@
             that.dom.city.find("li").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.locationId = id;
-                window.location.href = '../../pages/doclist/index.html?' + that.makeURL();
+                window.location.replace('../../pages/doclist/index.html?' + that.makeURL());
 
             });
 
             that.dom.despro.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.titleId = id;
-                window.location.href = '../../pages/doclist/index.html?' + that.makeURL();
+                window.location.replace( '../../pages/doclist/index.html?' + that.makeURL());
             });
             function resetDom() {
                 that.dom.city.hide();
@@ -185,7 +185,7 @@
             that.dom.desdep.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.departmentId = id;
-                window.location.href = '../../pages/doclist/index.html?' + that.makeURL();
+                window.location.replace( '../../pages/doclist/index.html?' + that.makeURL());
             });
         },
         fetchDepartments: function () {

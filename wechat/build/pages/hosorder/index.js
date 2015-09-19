@@ -117,7 +117,7 @@
                     for (var i = 0; i < o.length; i++) {
                         if (arr[j] == o[i].des) {
                             res = true;
-                            that.data.fuckJ = j+1;
+                            that.data.fuckJ = j + 1;
                             break;
                         }
                     }
@@ -288,8 +288,8 @@
                 "deptId": that.data.departmentId,
                 "titleId": that.data.titleId,
                 "date": str,
-                "firstResult":that.data.firstResult,
-                "maxResults":that.data.maxResults
+                "firstResult": that.data.firstResult,
+                "maxResults": that.data.maxResults
             }
 
             Wlib.SendRequest("2029", param, function (res) {
@@ -299,20 +299,19 @@
 
             });
         },
-        bindNext : function(){
-          var that = this;
+        bindNext: function () {
+            var that = this;
             var param = {
                 "clinicId": that.data.clinicId,
                 "deptId": that.data.departmentId,
                 "titleId": that.data.titleId,
                 "date": str,
-                "firstResult":that.data.firstResult,
-                "maxResults":that.data.maxResults
+                "firstResult": that.data.firstResult,
+                "maxResults": that.data.maxResults
             }
 
             Wlib.SendRequest("2029", param, function (res) {
                 that.data.itemList = res.entity;
-
 
 
             });
@@ -323,7 +322,7 @@
             for (var i = 0; i < that.data.depList.length; i++) {
                 if (that.data.departmentId == that.data.depList[i].data.id) {
                     title = that.data.depList[i].data.name;
-                    that.data.departmentId == -1 && (title ="科室");
+                    that.data.departmentId == -1 && (title = "科室");
                 }
                 res += '<div data-id="' + that.data.depList[i].data.id + '" class="condit"><span class="ks_' + that.data.depList[i].data.id + '"></span>' + that.data.depList[i].data.name + '</div>';
             }
@@ -333,7 +332,7 @@
             that.dom.desdep.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.departmentId = id;
-                window.location.href = '../../pages/hosorder/index.html?' + that.makeURL();
+                window.location.replace('../../pages/hosorder/index.html?' + that.makeURL());
             });
         },
         fetchDepartments: function () {
@@ -420,7 +419,7 @@
             that.dom.despro.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
                 that.data.titleId = id;
-                window.location.href = '../../pages/hosorder/index.html?' + that.makeURL();
+                window.location.replace('../../pages/hosorder/index.html?' + that.makeURL());
             });
 
             that.dom.times.on("click", function () {
@@ -438,17 +437,17 @@
 
 
                 var param = [
-                    "treatmentPlanId="+ $(this).attr("data-plan"),
-                    "userId="+ localStorage.getItem("userId"),
-                    "treatmentPlanDetailId="+ $(this).attr("data-id"),
-                    "doc="+ $(this).attr("data-name"),
-                    "dep="+ $(this).attr("data-dep"),
-                    "add="+ $(this).attr("data-add"),
-                    "time="+ $(this).attr("data-time")+" "+$(this).text(),
-                    "price="+$(this).attr("data-price")
+                    "treatmentPlanId=" + $(this).attr("data-plan"),
+                    "userId=" + localStorage.getItem("userId"),
+                    "treatmentPlanDetailId=" + $(this).attr("data-id"),
+                    "doc=" + $(this).attr("data-name"),
+                    "dep=" + $(this).attr("data-dep"),
+                    "add=" + $(this).attr("data-add"),
+                    "time=" + $(this).attr("data-time") + " " + $(this).text(),
+                    "price=" + $(this).attr("data-price")
                 ]
 
-                var resparam = [].join.call(param,"&");
+                var resparam = [].join.call(param, "&");
                 console.log(resparam)
                 //Wlib.SendRequest("2033", param, function (res) {
                 //
@@ -461,10 +460,7 @@
                 //    window.location.href = "../../pages/preorder/index.html?oid="+res.entity+"uid="+localStorage.getItem("userId");
                 //
                 //});
-                window.location.href = "../../pages/preorder/index.html?"+resparam;
-
-
-
+                window.location.href = "../../pages/preorder/index.html?" + resparam;
 
 
             })
