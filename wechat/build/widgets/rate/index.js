@@ -92,8 +92,8 @@
             $(w).find("i").each(function(i,v){
                 $(this).on("click",function(){
                     var dom = that.lazyRender(_getSelectTag(this));
-                    $(w).find(".rate-eles").empty();
-                    $(w).find(".rate-eles").append(dom);
+                    $(w).empty();
+                    $(w).append(dom);
                     that.bindEvent(wrapper);
                 })
             })

@@ -1,0 +1,22 @@
+#page .wrap {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 0px 10px;
+  border-top: 1px solid #d1d1d1;
+  min-height: 0px;
+  border-bottom: 1px solid #d1d1d1; }
+  #page .wrap .evalua {
+    display: flex;
+    border: 0px;
+    margin-bottom: 0px; }
+    #page .wrap .evalua .rate-eles {
+      top: -3px;
+      position: relative; }
+    #page .wrap .evalua img {
+      width: 20px; }
+  #page .wrap .pjtext {
+    border-bottom: 0px;
+    padding-bottom: 10px; }
+
+/*# sourceMappingURL=feed.css.map */

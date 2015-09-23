@@ -26,9 +26,9 @@
         <div class="content-header">
             <span>综合评价:</span>
             <!-- sumSorce-->
-            <div class="rate-wrapper">$${makeRate(sumSorce)}</div>
+            <div class="rate-wrapper">$${makeRate(list.sumSorce)}</div>
             <!-- percent-->
-            <span>好评率：<var>${percent}%</var></span>
+            <span>好评率：<var>${makePercen(list.percent)}%</var></span>
         </div>
         <div class="ul-title">
             <p>
@@ -37,7 +37,7 @@
         </div>
         <ul>
 
-            {@each list as item}
+            {@each list.list as item}
 
             <li>
                 <div class="top-li">
@@ -59,6 +59,23 @@
     </div>
 
 
+</script>
+
+<script type="template/juicer" id="tplItem">
+{@each res.list as item}
+
+<li>
+    <div class="top-li">
+        <span>${item.owner.nickName}</span>
+        <div>$${makeRate(item.sumScore)}</div>
+        <span>${makeTime(item.createtime)}</span>
+    </div>
+    <p class="content">
+        ${item.content}
+    </p>
+</li>
+
+{@/each}
 </script>
 
 

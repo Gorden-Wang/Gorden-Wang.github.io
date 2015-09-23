@@ -10,6 +10,7 @@
         init : function(){
             var that = this;
             that.cacheDom();
+            that.cacheData();
             that.renderUI();
             that.recacheDom();
             that.bindEvent();
@@ -22,9 +23,15 @@
                 tpl : $("#tpl")
             }
         },
+        cacheData : function(){
+          var that = this;
+            that.data = {
+                oid : Wlib.getRequestParam("orderId")
+            }
+        },
         renderUI : function(){
             var that = this;
-            that.dom.wrapper.html(juicer(that.dom.tpl.html(),{}));
+            that.dom.wrapper.html(juicer(that.dom.tpl.html(),that.data));
             that.dom.loading.hide();
         },
         recacheDom : function(){
@@ -33,9 +40,8 @@
         },
         bindEvent : function(){
             var that = this;
-            that.dom.banner.on("click",function(){
-                var url = $(this).attr("data-href");
-                url && (window.location = url);
+            $(".submit_btn").on("click",function(){
+                win.location.href = "../../pages/orderdetail/index.html?orderId="+that.data.oid;
             });
         }
     }

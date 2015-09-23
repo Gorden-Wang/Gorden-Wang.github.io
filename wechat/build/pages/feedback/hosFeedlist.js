@@ -26,11 +26,11 @@
         cacheData : function(){
             var that = this;
             that.data = {};
-            that.data.doctorId = Wlib.getRequestParam("doctorId");
+            that.data.clinicId = Wlib.getRequestParam("clinicId");
             that.data.firstResult = 0;
             that.data.maxResults = 15;
         },
-        renderUI: function (){
+        renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
             that.dom.loading.hide();
@@ -59,12 +59,12 @@
         fetchData : function(){
           var that = this;
             var param = {
-                "doctorId": that.data.doctorId,
+                "clinicId": that.data.clinicId,
                 "firstResult" : that.data.firstResult,
                 "maxResults" :  that.data.maxResults
             }
 
-            Wlib.SendRequest("2032", param, function (res) {
+            Wlib.SendRequest("2031", param, function (res) {
                 that.data.list = res.entity;
                 that.data.COUNT = res.entity.list ? res.entity.list.length : res.entity.length
                 console.log(that.data)
@@ -146,8 +146,14 @@
         recacheDom: function () {
             var that = this;
             that.dom.banner = $(".banner");
+        },
+        bindEvent: function () {
+            var that = this;
+            that.dom.banner.on("click", function () {
+                var url = $(this).attr("data-href");
+                url && (window.location = url);
+            });
         }
-
     }
 
     var person = new Person();
