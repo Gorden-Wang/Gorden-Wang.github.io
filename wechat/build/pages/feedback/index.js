@@ -26,7 +26,7 @@
         renderRate: function () {
             var that = this;
 
-            var rate = new Rate({
+            var rate = that.RATE = new Rate({
                 rate: 5.0,
                 wrapper: '#docrate',
                 activeImg: '../../images/redstar.png',
@@ -37,7 +37,7 @@
             rate.bindEvent("#docrate");
 
 
-            var rate1 = new Rate({
+            var rate1 = that.RATE1 = new Rate({
                 rate: 5.0,
                 wrapper: '#hosrate',
                 activeImg: '../../images/redstar.png',
@@ -64,18 +64,32 @@
         fetchData: function () {
             var that = this;
             var param = {
-                "userId":  localStorage.getItem("userId"),
-                "doctorId": "11",
+                "userid":  Wlib.getRequestParam("userId"),
+                "doctorId": Wlib.getRequestParam("doctorId"),
                 "doctorContent": $("#doccontent").val(),
-                "doctorScore": 5,
-                "clinicId": 8,
+                "doctorScore": that.RATE.rate || 5,
+                "clinicId": Wlib.getRequestParam("clinicId"),
                 "clinicContent": $("#hoscontent").val(),
-                "clinicScore": 5
+                "clinicScore": that.RATE1.rate || 5
 
             }
 
+            if($.trim($("#doccontent").val()) == ""){
+                Wlib.tips("请为医生填写评价");
+                return;
+            }
+            if($.trim($("#hoscontent").val()) == ""){
+                Wlib.tips("请为诊所填写评价");
+                return;
+            }
             Wlib.SendRequest("2036", param, function (res) {
 
+                if(res.errorcode == 0){
+                    Wlib.tips("感谢您的反馈");
+                    setTimeout(function(){
+                        window.history.back();
+                    },4000);
+                }
 
             });
 

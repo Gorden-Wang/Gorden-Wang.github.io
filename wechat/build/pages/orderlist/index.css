@@ -42,7 +42,7 @@
               flex: 1;
       text-align: center; }
 #page .list-wrapper {
-  margin-top: 60px;
+  margin-top: 90px;
   padding: 0px 10px; }
   #page .list-wrapper ul {
     margin-bottom: 10px; }
@@ -58,12 +58,14 @@
             border-radius: 4px;
     font-size: 11px;
     color: #999; }
-    #page .list-wrapper .o-title .wfk {
+    #page .list-wrapper .o-title .ds-01 {
       background-color: #fe9f9d; }
-    #page .list-wrapper .o-title .ywc {
+    #page .list-wrapper .o-title .ds-03 {
       background-color: #a9c4f2; }
-    #page .list-wrapper .o-title .dwc {
+    #page .list-wrapper .o-title .ds-02 {
       background-color: #8be1d4; }
+    #page .list-wrapper .o-title .ds-04 {
+      background-color: #dddddd; }
     #page .list-wrapper .o-title .o-s {
       color: #FFF;
       padding: 10px 0px;
@@ -104,15 +106,23 @@
       #page .list-wrapper .o-main .o-con p {
         margin: 5px 0px;
         font-size: 12px; }
-    #page .list-wrapper .o-main .tijian {
-      background-image: url(../../images/orderlist/icon5.png);
+    #page .list-wrapper .o-main .ot-1 {
+      background-image: url(../../images/orderlist/icon6.png);
       background-repeat: no-repeat;
       background-position: center center;
       -webkit-background-size: 48px 48px;
          -moz-background-size: 48px;
            -o-background-size: 48px;
               background-size: 48px; }
-    #page .list-wrapper .o-main .jiuzhen {
+    #page .list-wrapper .o-main .ot-2 {
+      background-image: url(../../images/orderlist/icon7.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      -webkit-background-size: 48px 48px;
+         -moz-background-size: 48px;
+           -o-background-size: 48px;
+              background-size: 48px; }
+    #page .list-wrapper .o-main .ot-3 {
       background-image: url(../../images/orderlist/icon4.png);
       background-repeat: no-repeat;
       background-position: center center;
@@ -180,3 +190,16 @@
   display: inline-block;
   background-repeat: no-repeat;
   width: 9px; }
+
+.filterbanner {
+  background-color: white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+  .filterbanner img {
+    width: 16px;
+    margin-right: 10px; }

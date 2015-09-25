@@ -26,7 +26,8 @@
         cacheData : function(){
           var that = this;
             that.data = {
-                oid : Wlib.getRequestParam("orderId")
+                oid : Wlib.getRequestParam("orderId"),
+                userId : Wlib.getRequestParam("userId")
             }
         },
         renderUI : function(){

@@ -33,13 +33,19 @@
                 <li data-id="-1" class="item">
                     待完成
                 </li>
-                <li data-id="-1" class="item border-right">
+                <li data-id="-1" class="item">
                     已完成
                 </li>
-                <li id="filter">
-                    <img src="../../images/screen_down.png">筛选
+                <li data-id="4" class="item">
+                    已退款
                 </li>
+                <!--<li id="filter">-->
+                    <!--<img src="../../images/screen_down.png">筛选-->
+                <!--</li>-->
             </ul>
+            <div id="filter" class="filterbanner">
+                <img src="../../images/screen_down.png">筛选
+            </div>
 
             <div class="filterbox">
                 <ul class="clearfix">
@@ -65,23 +71,42 @@
 
             <ul>
                 <li class="o-title">
-                    <div class="o-s ywc">${makeStatus(item.orderStatus)}</div>
+                    <div class="o-s ds-0${item.orderStatus}">${makeStatus(item.orderStatus)}</div>
                     <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
                     <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
                 </li>
                 <li class="o-main">
 
-                    <div class="o-img jiuzhen">
+                    <div class="o-img ot-${item.orderType}">
 
                     </div>
                     <div class="o-con">
                         <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
                             <!-- @TODO : A套餐是什么？-->
+
+                            {@if item.orderType == 2}
+
+                               <p>${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                                <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+                            {@else if item.orderType == 1}
+
+                            <p>${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                            <p>地点：${item.clinicName}</p>
+                            <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+
+                            {@else}
+
                             <p>A套餐：关爱女性套餐</p>
 
                             <p>地点：${item.clinicName}</p>
 
                             <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+                            {@/if}
+
+
                         </a>
                     </div>
                     <div class="o-r Right">
@@ -114,6 +139,53 @@
     </div>
 
 
+</script>
+
+<script id="itemtpl" type="template/juicer">
+    {@each olist as item}
+
+    <ul>
+        <li class="o-title">
+            <div class="o-s ds-0${item.orderStatus}">${makeStatus(item.orderStatus)}</div>
+            <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
+            <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
+        </li>
+        <li class="o-main">
+
+            <div class="o-img ot-${item.orderType}">
+
+            </div>
+            <div class="o-con">
+                <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
+                    <!-- @TODO : A套餐是什么？-->
+                    <p>A套餐：关爱女性套餐</p>
+
+                    <p>地点：${item.clinicName}</p>
+
+                    <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+                </a>
+            </div>
+            <div class="o-r Right">
+
+            </div>
+
+        </li>
+        <li class="o-b">
+            <div class="o-btn">
+                <div class="btn">
+                    去评价
+                </div>
+            </div>
+            <div class="o-p">
+                单价：<span>￥${item.amount}</span><var>X1</var>
+            </div>
+            <div class="o-allp">
+                合计：<span>￥${item.amount}</span>
+            </div>
+        </li>
+    </ul>
+
+    {@/each}
 </script>
 
 

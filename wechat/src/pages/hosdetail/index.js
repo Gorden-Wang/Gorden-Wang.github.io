@@ -110,7 +110,7 @@
             })
 
             $(".list_mz").on("click",function(event){
-                if($(event.target).hasClass("row_4")){
+                if($(event.target).hasClass("tel")){
                     var num = $(event.target).text();
                     $("body").append("<iframe src='tel:"+num+"'></iframe>")
                 }else{

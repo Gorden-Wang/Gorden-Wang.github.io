@@ -238,7 +238,7 @@
             that.dom.person = $(".personal");
         },
         bindEvent : function(){
-
+        //?treatmentPlanId=1&userId=00000301&treatmentPlanDetailId=2&doc=菜菜&dep=妇科&add=北京协和医院&time=2015年09月21日%2013:15&price=50
         }
     }
 

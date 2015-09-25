@@ -31,7 +31,9 @@
             that.data = {
                 userId: Wlib.getRequestParam("userId") || "00000301",
                 orderStatus : Wlib.getRequestParam("orderStatus") || "-1",
-                orderType : Wlib.getRequestParam("orderType") || "-1"
+                orderType : Wlib.getRequestParam("orderType") || "-1",
+                firstResult: 0,
+                maxResults: 10
             }
         },
         renderUI: function () {
@@ -51,7 +53,9 @@
             var param = {
                 "orderStatus": that.data.orderStatus,
                 "userId" : that.data.userId,
-                "orderType" : that.data.orderType
+                "orderType" : that.data.orderType,
+                firstResult: that.data.firstResult || 0,
+                maxResults: that.data.maxResults || 15
             }
 
             Wlib.SendRequest("287", param, function (res) {
@@ -62,10 +66,48 @@
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
+                    if (res.entity.length == that.data.maxResults) {
+                        that.bindNext(true);
+                    }
+                    if (!res.entity || res.entity.length == 0) {
+                        Wlib.tips("没有查询到相关记录。")
+                    }
                 }
 
 
             });
+        },
+        bindNext: function (tag) {
+            var that = this;
+
+            Wlib._bindScrollTobottom(function () {
+                that.data.firstResult = that.data.firstResult + that.data.maxResults;
+                var param = {
+                    "orderStatus": that.data.orderStatus,
+                    "userId" : that.data.userId,
+                    "orderType" : that.data.orderType,
+                    firstResult: that.data.firstResult || 0,
+                    maxResults: that.data.maxResults || 10
+                }
+
+                Wlib.SendRequest("287", param, function (res) {
+                    //if (res.entity && res.entity.length > 0) {
+
+                    var data = {};
+                    data.olist = res.entity || [];
+                    var reshtml = juicer($("#itemtpl").html(), data);
+                    $(".list-wrapper").append(reshtml);
+                    if (res.entity.length == that.data.maxResults) {
+                        that.bindNext(true);
+                    }
+                    if (!res.entity || res.entity.length == 0) {
+                        Wlib.tips("没有查询到相关记录。")
+                    }
+
+                });
+            }, tag)
+
+
         },
         addJuicerHandler: function () {
             var that = this;
