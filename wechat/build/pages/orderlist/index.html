@@ -30,10 +30,10 @@
                 <li data-id="1" class="item">
                     未付款
                 </li>
-                <li data-id="-1" class="item">
-                    待完成
+                <li data-id="2" class="item">
+                    已付款
                 </li>
-                <li data-id="-1" class="item">
+                <li data-id="3" class="item">
                     已完成
                 </li>
                 <li data-id="4" class="item">
@@ -49,7 +49,7 @@
 
             <div class="filterbox">
                 <ul class="clearfix">
-                    <li>
+                    <li data-id="-1">
                         <img src="../../images/orderlist/icon1.png">不限
 
                     </li>
@@ -117,7 +117,9 @@
                 <li class="o-b">
                     <div class="o-btn">
                         <div class="btn">
-                            去评价
+                            <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userId=${item.userId}&doctorId=${item.doctorId}&id=${item.id}">
+                                去评价
+                            </a>
                         </div>
                     </div>
                     <div class="o-p">
@@ -173,7 +175,9 @@
         <li class="o-b">
             <div class="o-btn">
                 <div class="btn">
+                    <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userId=${item.userId}&doctorId=${item.doctorId}&id=${item.id}">
                     去评价
+                    </a>
                 </div>
             </div>
             <div class="o-p">

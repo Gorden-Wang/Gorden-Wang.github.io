@@ -70,7 +70,8 @@
                 "doctorScore": that.RATE.rate || 5,
                 "clinicId": Wlib.getRequestParam("clinicId"),
                 "clinicContent": $("#hoscontent").val(),
-                "clinicScore": that.RATE1.rate || 5
+                "clinicScore": that.RATE1.rate || 5,
+                "treatmentPlanRecordId" : Wlib.getRequestParam("id")
 
             }
 
