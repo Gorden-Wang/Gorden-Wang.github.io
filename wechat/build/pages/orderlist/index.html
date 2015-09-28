@@ -24,19 +24,19 @@
         <div class="banner-fix">
 
             <ul class="banner">
-                <li data-id="-1" class="item selected">
+                <li data-id="-1" class="item ${makeStatusDisplay(-1)}">
                     全部
                 </li>
-                <li data-id="1" class="item">
+                <li data-id="1" class="item ${makeStatusDisplay(1)}">
                     未付款
                 </li>
-                <li data-id="2" class="item">
+                <li data-id="2" class="item ${makeStatusDisplay(2)}">
                     已付款
                 </li>
-                <li data-id="3" class="item">
+                <li data-id="3" class="item ${makeStatusDisplay(3)}">
                     已完成
                 </li>
-                <li data-id="4" class="item">
+                <li data-id="4" class="item ${makeStatusDisplay(4)}">
                     已退款
                 </li>
                 <!--<li id="filter">-->
@@ -44,7 +44,7 @@
                 <!--</li>-->
             </ul>
             <div id="filter" class="filterbanner">
-                <img src="../../images/screen_down.png">筛选
+                <img src="../../images/screen_down.png">${makeFilterDisplay()}
             </div>
 
             <div class="filterbox">
@@ -53,11 +53,14 @@
                         <img src="../../images/orderlist/icon1.png">不限
 
                     </li>
-                    <li>
-                        <img src="../../images/orderlist/icon2.png">门诊
+                    <li data-id="1">
+                        <img src="../../images/orderlist/icon2.png">线下门诊
                     </li>
-                    <li>
-                        <img src="../../images/orderlist/icon3.png">体验
+                    <li data-id="2">
+                        <img src="../../images/orderlist/icon2.png">线上问诊
+                    </li>
+                    <li data-id="3">
+                        <img src="../../images/orderlist/icon3.png">预约体验
                     </li>
                 </ul>
             </div>
@@ -86,7 +89,7 @@
 
                             {@if item.orderType == 2}
 
-                               <p>${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                               <p style="margin-top: 15px;">${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
                                 <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
 
                             {@else if item.orderType == 1}

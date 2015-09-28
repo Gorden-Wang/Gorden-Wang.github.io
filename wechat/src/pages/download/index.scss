@@ -268,10 +268,13 @@ iframe {
 .list_mz {
   padding: 10px 0;
   height: 58px;
+
+  a{
+    display: flex;
+  }
 }
 
 .list_mz .Left {
-  float: left;
   width: 58px;
   height: 58px;
   overflow: hidden;
@@ -285,8 +288,7 @@ iframe {
 }
 
 .list_mz .Center {
-  float: left;
-  width: 260px;
+  flex: 1;
 }
 
 .list_mz .Center .row_1 {
@@ -355,7 +357,7 @@ iframe {
   }
   .i6 {
     background-image: url(./i6.png);
-    background-position: 0px 15px;
+    background-position: 0px 17px;
     p {
       color: #404040;
     }
@@ -368,7 +370,6 @@ iframe {
 }
 
 .rate-eles {
-  margin-right: 10px;
   img {
     width: 20px;
   }

@@ -259,6 +259,32 @@
 
             });
 
+            juicer.register("makeStatusDisplay", function (v) {
+                if(v == that.data.orderStatus){
+                    return "selected";
+                }
+                return "";
+            });
+            juicer.register("makeFilterDisplay", function () {
+                var res;
+                var v = that.data.orderType;
+                switch (v){
+                    case "-1" :
+                        res = "筛选";
+                        break;
+                    case "1" :
+                        res = "线下门诊";
+                        break;
+                    case "2" :
+                        res = "线上问诊";
+                        break;
+                    case "3" :
+                        res = "预约体验";
+                        break;
+                }
+
+                return res;
+            });
 
 
 
@@ -280,6 +306,17 @@
                 if (!hasClass) {
                     $(this).addClass("selected").siblings(".item").removeClass("selected");
                 }
+            });
+
+
+            $(".banner li").on("click",function(){
+                var orderStatus = $(this).attr("data-id");
+                win.location = '../../pages/orderlist/index.html?orderStatus='+orderStatus + '&orderType='+that.data.orderType;
+            });
+
+            $(".filterbox li").on("click",function(){
+                var orderType = $(this).attr("data-id");
+                win.location = '../../pages/orderlist/index.html?orderStatus='+that.data.orderStatus + '&orderType=' + orderType;
             })
 
 

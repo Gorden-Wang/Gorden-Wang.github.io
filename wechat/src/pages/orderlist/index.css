@@ -74,7 +74,8 @@
     border-radius: 4px 4px 0px 0px;
     border-bottom: 1px dashed #d1d1d1;
     padding: 10px;
-    background-color: #fff; }
+    background-color: #fff;
+    min-height: 60px; }
     #page .list-wrapper .o-main .o-img {
       width: 48px; }
     #page .list-wrapper .o-main .o-con {

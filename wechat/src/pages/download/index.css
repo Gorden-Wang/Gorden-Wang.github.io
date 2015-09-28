@@ -203,9 +203,10 @@ iframe {
 .list_mz {
   padding: 10px 0;
   height: 58px; }
+  .list_mz a {
+    display: flex; }
 
 .list_mz .Left {
-  float: left;
   width: 58px;
   height: 58px;
   overflow: hidden;
@@ -217,8 +218,7 @@ iframe {
   border: 1px solid #d1d1d1; }
 
 .list_mz .Center {
-  float: left;
-  width: 260px; }
+  flex: 1; }
 
 .list_mz .Center .row_1 {
   font-size: 13px;
@@ -273,16 +273,14 @@ iframe {
     background-image: url(./i7.png); }
   .box .i6 {
     background-image: url(./i6.png);
-    background-position: 0px 15px; }
+    background-position: 0px 17px; }
     .box .i6 p {
       color: #404040; }
   .box .i5 {
     background-image: url(./i5.png); }
 
-.rate-eles {
-  margin-right: 10px; }
-  .rate-eles img {
-    width: 20px; }
+.rate-eles img {
+  width: 20px; }
 
 .clinic-rate .wrapper {
   display: flex;
