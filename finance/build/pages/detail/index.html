@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>动态详情</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/detail/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+
+        <header>
+            <span class="back left-menu">
+
+            </span>
+
+            <p class="title">动态详情</p>
+        </header>
+
+        <div class="top-banner">
+            <div class="user-wrapper box">
+                <div class="img-wrapper">
+                    <img src="../../images/pic.png">
+                </div>
+                <div class="detail-wrapper">
+                    <p>magendesign</p>
+
+                    <p>23分钟前</p>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                小时候看《月亮和六便士》开始的梦。一直以为马尔代夫是
+                在太平洋，刚细想了想，错了。是在印度洋上的一个小岛，
+                荒芜得可怕。
+            </div>
+            <ul class="imgs-wrapper box">
+                <li>
+                    <a>
+                        <img src="../../images/pic1.png">
+                    </a>
+
+                </li>
+                <li>
+                    <a>
+                        <img src="../../images/pic1.png">
+                    </a>
+
+                </li>
+                <li>
+                    <a>
+                        <img src="../../images/pic1.png">
+                    </a>
+
+                </li>
+                <li>
+                    <a>
+                        <img src="../../images/pic1.png">
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="like-wrapper box">
+            <span class="share-icon">
+
+            </span>
+
+            <div>
+                <img src="../../images/pic.png">
+                <img src="../../images/pic.png">
+                <img src="../../images/pic.png">
+                <img src="../../images/pic.png">
+                <img src="../../images/pic.png">
+                <img src="../../images/pic.png">
+                <img src="../../images/pic.png">
+            </div>
+        </div>
+
+        <div class="reply-wrapper box">
+            <span class="reply-icon">
+
+            </span>
+            <ul>
+                <li class="box">
+                    <img src="../../images/pic.png">
+
+                    <div class="reply-content">
+                        <div class="li-title box">
+                            <p class="reply-name">
+                                我和春天有个约会
+                            </p>
+                            <span>
+                                1小时前
+                            </span>
+                        </div>
+
+                        <p>
+                            说账号不存在了，看吧里的帖子的意思是被盗
+                            了？还找的回来吗。用了好几年的号！
+                        </p>
+
+
+                    </div>
+                </li>
+                <li class="box">
+                    <img src="../../images/pic.png">
+
+                    <div class="reply-content">
+                        <div class="li-title box">
+                            <p class="reply-name">
+                                我和春天有个约会
+                            </p>
+                            <span>
+                                1小时前
+                            </span>
+                        </div>
+
+                        <p>
+                            说账号不存在了，看吧里的帖子的意思是被盗
+                            了？还找的回来吗。用了好几年的号！
+                        </p>
+
+
+                    </div>
+                </li>
+                <li class="box">
+                    <img src="../../images/pic.png">
+
+                    <div class="reply-content">
+                        <div class="li-title box">
+                            <p class="reply-name">
+                                我和春天有个约会
+                            </p>
+                            <span>
+                                1小时前
+                            </span>
+                        </div>
+
+                        <p>
+                            说账号不存在了，看吧里的帖子的意思是被盗
+                            了？还找的回来吗。用了好几年的号！
+                        </p>
+
+
+                    </div>
+                </li>
+                <li class="box">
+                    <img src="../../images/pic.png">
+
+                    <div class="reply-content">
+                        <div class="li-title box">
+                            <p class="reply-name">
+                                我和春天有个约会
+                            </p>
+                            <span>
+                                1小时前
+                            </span>
+                        </div>
+
+                        <p>
+                            说账号不存在了，看吧里的帖子的意思是被盗
+                            了？还找的回来吗。用了好几年的号！
+                        </p>
+
+
+                    </div>
+                </li>
+                <li class="box">
+                    <img src="../../images/pic.png">
+
+                    <div class="reply-content">
+                        <div class="li-title box">
+                            <p class="reply-name">
+                                我和春天有个约会
+                            </p>
+                            <span>
+                                1小时前
+                            </span>
+                        </div>
+
+                        <p>
+                            说账号不存在了，看吧里的帖子的意思是被盗
+                            了？还找的回来吗。用了好几年的号！
+                        </p>
+
+
+                    </div>
+                </li>
+                <li class="box">
+                    <img src="../../images/pic.png">
+
+                    <div class="reply-content">
+                        <div class="li-title box">
+                            <p class="reply-name">
+                                我和春天有个约会
+                            </p>
+                            <span>
+                                1小时前
+                            </span>
+                        </div>
+
+                        <p>
+                            说账号不存在了，看吧里的帖子的意思是被盗
+                            了？还找的回来吗。用了好几年的号！
+                        </p>
+
+
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+
+        <footer>
+            下载life金融街客户端
+        </footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../pages/item/index.js?version=0.1.2"></script>
+
+</body>
+</html>
