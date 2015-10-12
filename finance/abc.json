@@ -1,0 +1,18 @@
+{
+  "name": "wechat",
+  "desc": "wechat Projiect",
+  "type": "clam",
+  "port": "80",
+  "proxyPort": "8090",
+  "group": "",
+  "src": "true",
+  "version": "0.1.0",
+  "versionTemp": "0.1.2",
+  "combohtml": "true",
+  "env": "daily",
+  "author": {
+    "name": "wangshiqing",
+    "password": "koudai123$%^",
+    "email": "shilling.wsq@alibaba-inc.com"
+  }
+}

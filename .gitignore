@@ -1,3 +1,6 @@
 .idea
 .DS_Store
 ./wechat/node_modules
+./wechat/.sass-cache
+./finace/node_modules
+./finace/.sass-cache
