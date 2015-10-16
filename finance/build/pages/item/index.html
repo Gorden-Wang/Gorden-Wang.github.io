@@ -13,6 +13,70 @@
     <link href="../../lib/base.css" rel="stylesheet">
     <link href="../../pages/item/index.css" rel="stylesheet">
 
+    <script>
+        var DATA = {
+            success: true,
+            code: 1,
+            message: "success",
+            data: {
+                productId: 1,
+                userId: 2,
+                userName: "OLE超市",
+                isFavorite: 0,
+                categoryId: 1,
+                name: "意大利面",
+                image: "/file/user/1/655ca12a-2380-4d38-ac00-0d9ef61bcf571.png",
+                oldPrice: 25,
+                price: 23,
+                soldCount: 0,
+                description: "",
+                note: "",
+                shareCount: 0,
+                favoriteCount: 0,
+                productStocks: 0,
+                status: 1,
+                specsList: [
+                    {
+                        specsId: 1,
+                        productId: 1,
+                        specsName: "500ml",
+                        specsValue: "500ml",
+                        specsStatus: 1,
+                        oldPrice: 0,
+                        price: 10,
+                        stocks: 99999,
+                        description: "",
+                        isDefault: 0
+                    },
+                    {
+                        specsId: 2,
+                        productId: 1,
+                        specsName: "1L",
+                        specsValue: "1L",
+                        specsStatus: 1,
+                        oldPrice: 0,
+                        price: 15,
+                        stocks: 99999,
+                        description: "",
+                        isDefault: 1
+                    },
+                    {
+                        specsId: 3,
+                        productId: 1,
+                        specsName: "1.5L",
+                        specsValue: "1.5L",
+                        specsStatus: 1,
+                        oldPrice: 0,
+                        price: 18,
+                        stocks: 0,
+                        description: "",
+                        isDefault: 0
+                    }
+                ]
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div id="loading" class="loading">
@@ -23,11 +87,9 @@
     <div class="wrap">
 
         <div class="top-banner">
-            <div class="back-wrapper ">
-                <span class="back"></span>
-            </div>
+
             <a>
-                <img src="../../images/item/banner.png">
+                <img src="http://121.199.57.142:8081/lifefinancial${data.image}">
             </a>
 
         </div>
@@ -38,12 +100,12 @@
             <div class="item-wrapper box">
 
                 <div class="item-title">
-                    <p>意大利肉酱面</p>
-                    <span>由金鼎轩主理</span>
+                    <p>${data.name}</p>
+                    <span>由${data.userName}主理</span>
                 </div>
 
                 <div class="item-price">
-                    <span class="now-price">￥15</span><span style="text-decoration: line-through;">￥20</span>
+                    <span class="now-price">￥${data.price}</span><span style="text-decoration: line-through;">￥${data.oldPrice}</span>
                 </div>
 
             </div>
@@ -53,21 +115,38 @@
                 <span style="margin-right: 15px;">请选择规格</span>
 
                 <div class="sku-items">
-                    <div class="sku-item">
-                        250ml
-                    </div>
-                    <div class="sku-item selected">
-                        250ml
-                    </div>
-                    <div class="sku-item">
-                        250ml
-                    </div>
-                    <div class="sku-item">
-                        250ml
-                    </div>
-                    <div class="sku-item">
-                        0ml
-                    </div>
+                    {@each data.specsList as item,index}
+
+                        {@if index == 0 }
+                            <div class="sku-item selected" data-stocks="${item.stocks}">
+                                ${item.specsName}
+                            </div>
+
+
+                        {@else}
+                            <div class="sku-item" data-stocks="${item.stocks}">
+                                ${item.specsName}
+                            </div>
+                        {@/if}
+
+
+
+
+                    {@/each}
+
+
+                    <!--<div class="sku-item selected">-->
+                        <!--250ml-->
+                    <!--</div>-->
+                    <!--<div class="sku-item">-->
+                        <!--250ml-->
+                    <!--</div>-->
+                    <!--<div class="sku-item">-->
+                        <!--250ml-->
+                    <!--</div>-->
+                    <!--<div class="sku-item">-->
+                        <!--0ml-->
+                    <!--</div>-->
                 </div>
             </div>
 
@@ -75,9 +154,9 @@
                 <span>请选择数量</span>
 
                 <div>
-                    <span style="font-size: 15px;">—</span>
+                    <span id="l-btn" style="font-size: 15px;">—</span>
                     <span class="dest-num">1</span>
-                    <span style="font-size: 20px;">+</span>
+                    <span id="r-btn" style="font-size: 20px;">+</span>
                 </div>
             </div>
 
@@ -85,7 +164,7 @@
         </section>
 
         <article>
-            意大利肉酱面，传统的一道了大力面食。洋葱70g，意大利蘑菇干5g，胡萝卜20g，红番茄200g，家乐牛肉清汤粉8克，清水400ml
+            ${data.description}
         </article>
 
         <footer>

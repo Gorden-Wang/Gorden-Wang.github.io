@@ -147,4 +147,12 @@
   #page .box {
     display: flex; }
 
+iframe {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  height: 400px;
+  width: 100%;
+  overflow: scroll; }
+
 /*# sourceMappingURL=index.css.map */

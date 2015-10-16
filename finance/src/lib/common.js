@@ -192,34 +192,7 @@ window.Wlib = (function () {
 
             check();
         },
-        SendRequest: function (method, data, success, error) {
-            var that = this;
-            var body = {
-                "channel": "102",
-                "method": method,
-                "token": localStorage.getItem("token") || "",
-                "version": "1.0.2.0830",
-                "params": data
-            }
 
-            var url = (function () {
-                var u =  that.evn == "daily" ? "http://182.92.216.40/xiaomianao/request?body=" : "http://182.92.118.70/xiaomianao/request?body=";
-
-
-                return u + JSON.stringify(body);
-            })();
-
-            $.ajax({
-                url: url + "&callback=?",
-                dataType: "JSONP",
-                success: function (res) {
-                    success(res);
-                },
-                error: function (err) {
-                    error && error(err);
-                }
-            })
-        },
         GetJsonData: function (url, success, error) {
             $.ajax({
                 url: url,
@@ -228,7 +201,7 @@ window.Wlib = (function () {
                     success(res);
                 },
                 error: function (err) {
-                    error && error(err);
+                    error && error(DATA);
                 }
             })
         },

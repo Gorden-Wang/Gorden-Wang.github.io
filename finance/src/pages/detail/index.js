@@ -1,5 +1,5 @@
 /**
- * Created by gorden on 15/7/31.
+ * Created by gorden on 15/10/10.
  */
 (function (win, $) {
     var Index = function () {
@@ -11,18 +11,22 @@
             var that = this;
             that.cacheData();
             that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            //that.renderUI();
+
+
+            that.getItems();
         },
         cacheData: function () {
             var that = this;
-
+            //newsId=1&userId=8&token=c9f0f895fb98ab9159f51fd0297e236d
             that.data = {
-                locationId: "1"//默认北京
+                newsId: Wlib.getRequestParam("newsId"),
+                type : Wlib.getRequestParam("type"),
+                pageIndex : 1,
+                pageSize : 10
+
+
             }
-            that.data.cityList = win.CITYLIST;
-            localStorage.setItem("userId", Wlib.getRequestParam("userId"))
         },
         cacheDom: function () {
             var that = this;
@@ -39,74 +43,284 @@
         },
         recacheDom: function () {
             var that = this;
-            that.dom.banner = $(".banner");
-            that.dom.doc = $("#docItme");
-            that.dom.hos = $("#hosItme");
-            that.dom.person = $(".personal");
-            that.dom.citySelect = $("select");
+        },
+        renderList : function(){
+          var that = this;
+
+            $("#reply").append(juicer($("#item-tpl").html(), that.data))
         },
         bindEvent: function () {
             var that = this;
-            that.dom.banner.on("click", function () {
-                var url = $(this).attr("data-href");
-                url && (window.location = url);
-            });
-            that.dom.doc.on("click", function () {
-                window.location = "../../pages/doclist/index.html?locationId=" + that.data.locationId;
-            });
-            that.dom.hos.on("click", function () {
-                window.location = "../../pages/hoslist/index.html?locationId=" + that.data.locationId + "&latitude="+that.data.latitude+"&longitude="+that.data.longitude;
-            });
-            that.dom.person.on("click", function () {
-                window.location = "../../pages/person/index.html?locationId=" + that.data.locationId;
-            });
-            that.dom.citySelect.on("change", function () {
-                that.data.locationId = $(this).val();
-            })
+
         },
-        getPosition: function () {
+        getItems: function () {
+
             var that = this;
 
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
+
+            function callback(data){
+
+                if(data.success && data.code == "1"){
+                    //成功
+
+                    that.data.data = data.data;
+
+                    that.renderUI();
+                    that.bindEvent();
+
+                    that.getList();
+
+                    console.log(that.data.list)
+
+
+                }else{
+                    Wlib.tips(data.message);
                 }
-                else {
-                    Wlib.tips("没有定位到您的城市，请稍候再试")
-                }
+
+
+
+
+
             }
 
-            function showPosition(position) {
-                console.log(position)
-                // callback && callback({latitude: position.coords.latitude, longitude: position.coords.longitude})
 
-                //var myGeo = new BMap.Geocoder();
-                //myGeo.getLocation(new BMap.Point(  position.coords.longitude,position.coords.latitude), function(result){
-                //    if (result){
-                //        console.log(result);
-                //    }
-                //});
-                that.data.latitude = position.coords.latitude;
-                that.data.longitude = position.coords.longitude;
-                Wlib.SendRequest("1267", {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                }, function (res) {
-                    if (res.entity) {
-                        var CityList = {
-                            "1": "",
-                            "2": "",
-                            "3": "",
-                            "187": ""
-                        };
-                        (res.entity.id in CityList) && that.dom.citySelect.val(res.entity.id);
+            Wlib.GetJsonData("http://121.199.57.142:8081/lifefinancial/api/news/detail.json?newsId="+that.data.newsId+"&type="+that.data.type,callback,callback);
+
+        },
+
+        getList : function(){
+            var that = this;
+
+
+            function callback(data){
+
+                if(data.success && data.code == "1"){
+                    //成功
+
+                    var data = {
+                        success: true,
+                        code: 1,
+                        message: "success",
+                        data: [
+                            {
+                                commentId: 2,
+                                newsId: 1,
+                                commentUserId: 31,
+                                repliedUserId: 1,
+                                repliedCommentId: 1,
+                                content: "哈哈哈哈哈哈哈哈哈哈哈哈哈",
+                                crType: 0,
+                                releaseTime: "7天前",
+                                commentUserName: "丁玲珑",
+                                commentUserHeadImage: "/file/user/31/afd1407f-e89a-4d0b-ade7-bf26e22a7e7b.jpg",
+                                repliedUserName: "李东",
+                                repliedUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png"
+                            },
+                            {
+                                commentId: 18,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 8,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "尼丝纺",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 19,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 1,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "李东",
+                                repliedUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png"
+                            },
+                            {
+                                commentId: 20,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 2,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 21,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 2,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 22,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 2,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 23,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 2,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 24,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 2,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 26,
+                                newsId: 1,
+                                commentUserId: 1,
+                                repliedUserId: 2,
+                                repliedCommentId: 1,
+                                content: "1111",
+                                crType: 0,
+                                releaseTime: "6天前",
+                                commentUserName: "李东",
+                                commentUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 30,
+                                newsId: 1,
+                                commentUserId: 11,
+                                repliedUserId: 2,
+                                repliedCommentId: 26,
+                                content: "22222222",
+                                crType: 1,
+                                releaseTime: "5天前",
+                                commentUserName: "李四",
+                                commentUserHeadImage: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 31,
+                                newsId: 1,
+                                commentUserId: 11,
+                                repliedUserId: 0,
+                                repliedCommentId: 0,
+                                content: "的恶魔我想咨询",
+                                crType: 0,
+                                releaseTime: "5天前",
+                                commentUserName: "李四",
+                                commentUserHeadImage: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                                repliedUserName: "",
+                                repliedUserHeadImage: ""
+                            },
+                            {
+                                commentId: 39,
+                                newsId: 1,
+                                commentUserId: 11,
+                                repliedUserId: 1,
+                                repliedCommentId: 19,
+                                content: "蓝凌命名空间",
+                                crType: 1,
+                                releaseTime: "4天前",
+                                commentUserName: "李四",
+                                commentUserHeadImage: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                                repliedUserName: "李东",
+                                repliedUserHeadImage: "/file/user/1/63dc528c-9ab2-4f9e-9d18-b760d9a7017d.png"
+                            },
+                            {
+                                commentId: 40,
+                                newsId: 1,
+                                commentUserId: 11,
+                                repliedUserId: 2,
+                                repliedCommentId: 30,
+                                content: "默默中央音乐学院",
+                                crType: 1,
+                                releaseTime: "4天前",
+                                commentUserName: "李四",
+                                commentUserHeadImage: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                                repliedUserName: "王健林",
+                                repliedUserHeadImage: ""
+                            }
+                        ],
+                        pager: {
+                            pageIndex: 1,
+                            pageCount: 0,
+                            pageSize: 100,
+                            totalCount: 0,
+                            startRownum: 100
+                        }
+                    };
+
+
+                    that.data.list = data.data;
+                    that.renderList();
+
+                    //that.renderUI();
+                    //that.recacheDom();
+                    //that.bindEvent();
+
+                    if(that.data.list.length == data.data.length){
+                        //@TODO 下一页
                     }
-                })
+
+                    console.log(that.data.data)
+
+
+                }else{
+                    Wlib.tips(data.message);
+                }
+
+
+
+
+
             }
 
-            getLocation();
 
-
+            Wlib.GetJsonData("http://121.199.57.142:8081/lifefinancial/api/news/detail.json?newsId="+that.data.newsId+"&pageIndex="+that.data.pageIndex+"&pageSize="+that.data.pageSize,callback,callback);
         }
     }
 

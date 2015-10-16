@@ -1,5 +1,5 @@
 /**
- * Created by gorden on 15/7/31.
+ * Created by gorden on 15/10/10.
  */
 (function (win, $) {
     var Index = function () {
@@ -11,18 +11,18 @@
             var that = this;
             that.cacheData();
             that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            //that.renderUI();
+
+
+            that.getItems();
         },
         cacheData: function () {
             var that = this;
 
             that.data = {
-                locationId: "1"//默认北京
+                productId: Wlib.getRequestParam("productId")
+
             }
-            that.data.cityList = win.CITYLIST;
-            localStorage.setItem("userId", Wlib.getRequestParam("userId"))
         },
         cacheDom: function () {
             var that = this;
@@ -39,73 +39,68 @@
         },
         recacheDom: function () {
             var that = this;
-            that.dom.banner = $(".banner");
-            that.dom.doc = $("#docItme");
-            that.dom.hos = $("#hosItme");
-            that.dom.person = $(".personal");
-            that.dom.citySelect = $("select");
         },
         bindEvent: function () {
             var that = this;
-            that.dom.banner.on("click", function () {
-                var url = $(this).attr("data-href");
-                url && (window.location = url);
+            var numwrapper = $(".dest-num");
+            var num = parseInt(numwrapper.text());
+            $(".sku-items .sku-item").on("click",function(){
+
+                var isSel = $(this).hasClass("selected");
+
+                if(!isSel){
+                    $(this).addClass("selected").siblings().removeClass("selected");
+
+                    that.data.stocks = $(this).attr("data-stocks");
+                }
+
             });
-            that.dom.doc.on("click", function () {
-                window.location = "../../pages/doclist/index.html?locationId=" + that.data.locationId;
+
+            $("#l-btn").on("click",function(){
+                if(num != 1){
+                    num--;
+                    numwrapper.text(num);
+                }
             });
-            that.dom.hos.on("click", function () {
-                window.location = "../../pages/hoslist/index.html?locationId=" + that.data.locationId + "&latitude="+that.data.latitude+"&longitude="+that.data.longitude;
+
+            $("#r-btn").on("click",function(){
+                if(num != that.data.stocks){
+                    num++;
+                    numwrapper.text(num);
+                }
             });
-            that.dom.person.on("click", function () {
-                window.location = "../../pages/person/index.html?locationId=" + that.data.locationId;
-            });
-            that.dom.citySelect.on("change", function () {
-                that.data.locationId = $(this).val();
-            })
         },
-        getPosition: function () {
+        getItems: function () {
+
             var that = this;
 
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
+
+            function callback(data){
+
+                if(data.success && data.code == "1"){
+                    //成功
+
+                    that.data.data = data.data;
+
+                    that.renderUI();
+                    that.recacheDom();
+                    that.bindEvent();
+
+                    console.log(that.data.data)
+
+
+                }else{
+                    Wlib.tips(data.message);
                 }
-                else {
-                    Wlib.tips("没有定位到您的城市，请稍候再试")
-                }
+
+
+
+
+
             }
 
-            function showPosition(position) {
-                console.log(position)
-                // callback && callback({latitude: position.coords.latitude, longitude: position.coords.longitude})
 
-                //var myGeo = new BMap.Geocoder();
-                //myGeo.getLocation(new BMap.Point(  position.coords.longitude,position.coords.latitude), function(result){
-                //    if (result){
-                //        console.log(result);
-                //    }
-                //});
-                that.data.latitude = position.coords.latitude;
-                that.data.longitude = position.coords.longitude;
-                Wlib.SendRequest("1267", {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                }, function (res) {
-                    if (res.entity) {
-                        var CityList = {
-                            "1": "",
-                            "2": "",
-                            "3": "",
-                            "187": ""
-                        };
-                        (res.entity.id in CityList) && that.dom.citySelect.val(res.entity.id);
-                    }
-                })
-            }
-
-            getLocation();
-
+            Wlib.GetJsonData("http://121.199.57.142:8081/lifefinancial/api/public/lfProductDetail.json?productId=" + that.data.productId,callback,callback);
 
         }
     }

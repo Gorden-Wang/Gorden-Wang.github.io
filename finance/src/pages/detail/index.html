@@ -12,6 +12,65 @@
     <link href="../../lib/base.css" rel="stylesheet">
     <link href="../../pages/detail/index.css" rel="stylesheet">
 
+    <script>
+
+        var DATA = {
+            success: true,
+            code: 1,
+            message: "success",
+            data: {
+                newsId: 5,
+                userId: 4,
+                type: 1,
+                title: "创业宣讲心路历程",
+                content: "小时候看《月亮和六便士》开始的梦。一直以为马尔代夫是温暖神秘的时间，清澈的海水，成群的鱼儿，蓝底耀眼的天空",
+                images: [
+                    "/file/user/1/2457387_093334175000_2.jpg"
+                ],
+                isFinish: 0,
+                isFull: 1,
+                joinCount: 5,
+                supportCount: 3,
+                commentCount: 12,
+                shareCount: 0,
+                activeTag: "创业",
+                activeStartTime: "2015-09-28 18:32:32",
+                activeEndTime: "2015-10-24 18:30:00",
+                activeAddress: "北京金融街",
+                activePartakeCount: 5,
+                isJoin: 1,
+                releaseTime: "17天前",
+                headImageUrl: "/file/user/9/2d9c74f8-4784-41f8-a731-54b4577ef0d1.jpg",
+                realName: "金融街生活",
+                isSupport: 0,
+                lfNewsSupports: [
+                    {
+                        userSupportId: 64,
+                        userId: 69,
+                        newsId: 5,
+                        headImageUrl: "",
+                        realName: "aaaaa"
+                    },
+                    {
+                        userSupportId: 67,
+                        userId: 11,
+                        newsId: 5,
+                        headImageUrl: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                        realName: "李四"
+                    },
+                    {
+                        userSupportId: 160,
+                        userId: 127,
+                        newsId: 5,
+                        headImageUrl: "/file/user/1/52d4dc4b-d3b4-40bc-b439-ea59deb6cfb6.png",
+                        realName: "金"
+                    }
+                ],
+                lfNewsJoins: []
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div id="loading" class="loading">
@@ -22,54 +81,46 @@
     <div class="wrap">
 
         <header>
-            <span class="back left-menu">
 
-            </span>
-
-            <p class="title">动态详情</p>
+            <p class="title">${data.title}</p>
         </header>
 
         <div class="top-banner">
             <div class="user-wrapper box">
                 <div class="img-wrapper">
+                    {@if data.headImageUrl}
+                    <img src="http://121.199.57.142:8081/lifefinancial${data.headImageUrl}">
+                    {@else}
                     <img src="../../images/pic.png">
+
+                    {@/if}
+
                 </div>
                 <div class="detail-wrapper">
-                    <p>magendesign</p>
+                    <p>${data.realName}</p>
 
-                    <p>23分钟前</p>
+                    <p>${data.releaseTime}</p>
                 </div>
             </div>
             <div class="content-wrapper">
-                小时候看《月亮和六便士》开始的梦。一直以为马尔代夫是
-                在太平洋，刚细想了想，错了。是在印度洋上的一个小岛，
-                荒芜得可怕。
+                ${data.content}
             </div>
             <ul class="imgs-wrapper box">
+
+
+                {@each data.images as item,index}
+
+                {@if index<4}
                 <li>
                     <a>
-                        <img src="../../images/pic1.png">
+                        <img src="http://121.199.57.142:8081/lifefinancial${item}">
                     </a>
 
                 </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic1.png">
-                    </a>
+                {@/if}
+                {@/each}
 
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic1.png">
-                    </a>
 
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic1.png">
-                    </a>
-
-                </li>
             </ul>
         </div>
 
@@ -79,13 +130,19 @@
             </span>
 
             <div>
+
+                {@each data.lfNewsSupports as item}
+
+                {@if item.headImageUrl}
+                <img src="http://121.199.57.142:8081/lifefinancial${item.headImageUrl}">
+                {@else}
                 <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
+                {@/if}
+
+
+                {@/each}
+
+
             </div>
         </div>
 
@@ -93,133 +150,8 @@
             <span class="reply-icon">
 
             </span>
-            <ul>
-                <li class="box">
-                    <img src="../../images/pic.png">
+            <ul id="reply">
 
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
             </ul>
 
         </div>
@@ -234,8 +166,41 @@
 
 </script>
 
+<script id="item-tpl" type="template/juicer">
+
+    {@each list as item}
+    <li class="box">
+        {@if item.commentUserHeadImage}
+        <img src="http://121.199.57.142:8081/lifefinancial${item.commentUserHeadImage}">
+        {@else}
+        <img src="../../images/pic.png">
+        {@/if}
+
+
+        <div class="reply-content">
+            <div class="li-title box">
+                <p class="reply-name">
+                    ${item.commentUserName}
+                </p>
+                            <span>
+                                ${item.releaseTime}
+                            </span>
+            </div>
+
+            <p>
+                ${item.content}
+            </p>
+
+
+        </div>
+    </li>
+
+    {@/each}
+
+</script>
+
 <script src="../../lib/libAll.js"></script>
-<script src="../../pages/item/index.js"></script>
+<script src="../../pages/detail/index.js"></script>
 
 </body>
 </html>

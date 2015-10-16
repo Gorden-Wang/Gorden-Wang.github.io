@@ -8,10 +8,113 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>动态详情</title>
+    <title>活动详情</title>
     <link href="../../lib/base.css" rel="stylesheet">
     <link href="../../pages/detailall/index.css" rel="stylesheet">
+    <script>
 
+        var DATA = {
+            success: true,
+            code: 1,
+            message: "success",
+            data: {
+                newsId: 5,
+                userId: 4,
+                type: 1,
+                title: "创业宣讲心路历程",
+                content: "小时候看《月亮和六便士》开始的梦。一直以为马尔代夫是温暖神秘的时间，清澈的海水，成群的鱼儿，蓝底耀眼的天空",
+                images: [
+                    "/file/user/1/2457387_093334175000_2.jpg"
+                ],
+                isFinish: 0,
+                isFull: 1,
+                joinCount: 5,
+                supportCount: 3,
+                commentCount: 12,
+                shareCount: 0,
+                activeTag: "创业",
+                activeStartTime: "2015-09-28 18:32:32",
+                activeEndTime: "2015-10-24 18:30:00",
+                activeAddress: "北京金融街",
+                activePartakeCount: 5,
+                isJoin: 1,
+                releaseTime: "18天前",
+                headImageUrl: "/file/user/9/2d9c74f8-4784-41f8-a731-54b4577ef0d1.jpg",
+                realName: "金融街生活",
+                isSupport: 0,
+                lfNewsSupports: [
+                    {
+                        userSupportId: 64,
+                        userId: 69,
+                        newsId: 5,
+                        headImageUrl: "",
+                        realName: "aaaaa"
+                    },
+                    {
+                        userSupportId: 67,
+                        userId: 11,
+                        newsId: 5,
+                        headImageUrl: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                        realName: "李四"
+                    },
+                    {
+                        userSupportId: 160,
+                        userId: 127,
+                        newsId: 5,
+                        headImageUrl: "/file/user/1/52d4dc4b-d3b4-40bc-b439-ea59deb6cfb6.png",
+                        realName: "金"
+                    }
+                ],
+                lfNewsJoins: [
+                    {
+                        joinId: 4,
+                        userId: 1,
+                        newsId: 5,
+                        companyName: "234",
+                        positionName: "",
+                        headImageUrl: "/file/user/1/27f68951-61fd-4aee-a2c7-cef498469040.jpg",
+                        realName: "李东"
+                    },
+                    {
+                        joinId: 9,
+                        userId: 11,
+                        newsId: 5,
+                        companyName: "蓝凌科技",
+                        positionName: "程序猿",
+                        headImageUrl: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",
+                        realName: "李四"
+                    },
+                    {
+                        joinId: 10,
+                        userId: 10,
+                        newsId: 5,
+                        companyName: "腾讯",
+                        positionName: "程序员",
+                        headImageUrl: "/file/user/10/54af6ccc-7fd4-48d2-9f11-5ad8402b65fd.jpg",
+                        realName: "张三"
+                    },
+                    {
+                        joinId: 19,
+                        userId: 15,
+                        newsId: 5,
+                        companyName: "蓝凌科技",
+                        positionName: "程序员",
+                        headImageUrl: "",
+                        realName: "哈哈"
+                    },
+                    {
+                        joinId: 22,
+                        userId: 33,
+                        newsId: 5,
+                        companyName: "的得到",
+                        positionName: "iOS开发工程师",
+                        headImageUrl: "/file/user/33/a2b3de23-11ba-49f3-be81-b742a83fd921.png",
+                        realName: "文彩依"
+                    }
+                ]
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="loading" class="loading">
@@ -22,97 +125,106 @@
     <div class="wrap">
 
         <header>
-            <span class="back left-menu">
 
-            </span>
 
             <p class="title">动态详情</p>
         </header>
 
         <div class="banner-wrapper">
             <a>
-                <img src="../../images/item/banner.png">
+
+                <img src="http://121.199.57.142:8081/lifefinancial${data.images[0]}">
             </a>
 
         </div>
 
         <div class="mid-wrapper">
             <p class="title">
-                创业宣讲心路历程
+                ${data.title}
             </p>
 
             <p >
-               <span class="icon time"></span> 活动时间：15.09.03 13:10-15:20
+               <span class="icon time"></span> 活动时间：${data.activeStartTime}-${data.activeEndTime}
             </p>
 
             <p>
-                <span class="icon location"></span>活动地址：金融街1号
+                <span class="icon location"></span>活动地址：${data.activeAddress}
             </p>
 
             <p>
-                <span class="icon name"></span>发布者：张明敏
+                <span class="icon name"></span>发布者：${data.realName}
             </p>
 
             <div class="users-wrapper box">
                 <span>
-                    共200人报名
+                    共${data.joinCount}人报名
                 </span>
 
                 <div>
+
+                    {@each data.lfNewsSupports as item}
+
+                    {@if item.headImageUrl}
+                    <img src="http://121.199.57.142:8081/lifefinancial${item.headImageUrl}">
+                    {@else}
                     <img src="../../images/pic.png">
-                    <img src="../../images/pic.png">
-                    <img src="../../images/pic.png">
-                    <img src="../../images/pic.png">
-                    <img src="../../images/pic.png">
-                    <img src="../../images/pic.png">
-                    <img src="../../images/pic.png">
+                    {@/if}
+
+
+                    {@/each}
+
+
                 </div>
             </div>
         </div>
 
 
         <div class="big-ul">
-            <ul>
-                <li>
-                    <p>
-                        金融街小二，是life金融街用户对金融街工作人员的统称。开展业务的工具包括聊天工具阿里旺旺和淘宝论坛管理等。全部的工作基本上都在电脑前完成，而且还可以跟店老板商量，定自己的工作时间,他们过得更自由，更轻松。
-                    </p>
+            <!--<ul>-->
+                <!--<li>-->
+                    <!--<p>-->
+                        <!--金融街小二，是life金融街用户对金融街工作人员的统称。开展业务的工具包括聊天工具阿里旺旺和淘宝论坛管理等。全部的工作基本上都在电脑前完成，而且还可以跟店老板商量，定自己的工作时间,他们过得更自由，更轻松。-->
+                    <!--</p>-->
 
-                    <div class="img-wrapper">
-                        <a>
-                            <img src="../../images/item/banner.png">
-                        </a>
+                    <!--<div class="img-wrapper">-->
+                        <!--<a>-->
+                            <!--<img src="../../images/item/banner.png">-->
+                        <!--</a>-->
 
-                        <p>代客泊车</p>
-                    </div>
-                </li>
-                <li>
-                    <p>
-                        金融街小二，是life金融街用户对金融街工作人员的统称。开展业务的工具包括聊天工具阿里旺旺和淘宝论坛管理等。全部的工作基本上都在电脑前完成，而且还可以跟店老板商量，定自己的工作时间,他们过得更自由，更轻松。
-                    </p>
+                        <!--<p>代客泊车</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<p>-->
+                        <!--金融街小二，是life金融街用户对金融街工作人员的统称。开展业务的工具包括聊天工具阿里旺旺和淘宝论坛管理等。全部的工作基本上都在电脑前完成，而且还可以跟店老板商量，定自己的工作时间,他们过得更自由，更轻松。-->
+                    <!--</p>-->
 
-                    <div class="img-wrapper">
-                        <a>
-                            <img src="../../images/item/banner.png">
-                        </a>
+                    <!--<div class="img-wrapper">-->
+                        <!--<a>-->
+                            <!--<img src="../../images/item/banner.png">-->
+                        <!--</a>-->
 
-                        <p>代客泊车</p>
-                    </div>
-                </li>
-                <li>
-                    <p>
-                        金融街小二，是life金融街用户对金融街工作人员的统称。开展业务的工具包括聊天工具阿里旺旺和淘宝论坛管理等。全部的工作基本上都在电脑前完成，而且还可以跟店老板商量，定自己的工作时间,他们过得更自由，更轻松。
-                    </p>
+                        <!--<p>代客泊车</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<p>-->
+                        <!--金融街小二，是life金融街用户对金融街工作人员的统称。开展业务的工具包括聊天工具阿里旺旺和淘宝论坛管理等。全部的工作基本上都在电脑前完成，而且还可以跟店老板商量，定自己的工作时间,他们过得更自由，更轻松。-->
+                    <!--</p>-->
 
-                    <div class="img-wrapper">
-                        <a>
-                            <img src="../../images/item/banner.png">
-                        </a>
+                    <!--<div class="img-wrapper">-->
+                        <!--<a>-->
+                            <!--<img src="../../images/item/banner.png">-->
+                        <!--</a>-->
 
-                        <p>代客泊车</p>
-                    </div>
-                </li>
-            </ul>
+                        <!--<p>代客泊车</p>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+
+            <iframe src="http://www.baidu.com">
+
+            </iframe>
         </div>
 
         <div class="like-wrapper box">
@@ -121,13 +233,17 @@
             </span>
 
             <div>
+
+                {@each data.lfNewsSupports as item}
+
+                {@if item.headImageUrl}
+                <img src="http://121.199.57.142:8081/lifefinancial${item.headImageUrl}">
+                {@else}
                 <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
-                <img src="../../images/pic.png">
+                {@/if}
+
+
+                {@/each}
             </div>
         </div>
 
@@ -135,133 +251,8 @@
             <span class="reply-icon">
 
             </span>
-            <ul>
-                <li class="box">
-                    <img src="../../images/pic.png">
+            <ul id="reply">
 
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
-                <li class="box">
-                    <img src="../../images/pic.png">
-
-                    <div class="reply-content">
-                        <div class="li-title box">
-                            <p class="reply-name">
-                                我和春天有个约会
-                            </p>
-                            <span>
-                                1小时前
-                            </span>
-                        </div>
-
-                        <p>
-                            说账号不存在了，看吧里的帖子的意思是被盗
-                            了？还找的回来吗。用了好几年的号！
-                        </p>
-
-
-                    </div>
-                </li>
             </ul>
 
         </div>
@@ -276,8 +267,41 @@
 
 </script>
 
+<script id="item-tpl" type="template/juicer">
+
+    {@each list as item}
+    <li class="box">
+        {@if item.repliedUserHeadImage}
+        <img src="http://121.199.57.142:8081/lifefinancial${item.repliedUserHeadImage}">
+        {@else}
+        <img src="../../images/pic.png">
+        {@/if}
+
+
+        <div class="reply-content">
+            <div class="li-title box">
+                <p class="reply-name">
+                    ${item.repliedUserName}
+                </p>
+                            <span>
+                                ${item.releaseTime}
+                            </span>
+            </div>
+
+            <p>
+                ${item.content}
+            </p>
+
+
+        </div>
+    </li>
+
+    {@/each}
+
+</script>
+
 <script src="../../lib/libAll.js"></script>
-<script src="../../pages/item/index.js"></script>
+<script src="../../pages/detailall/index.js"></script>
 
 </body>
 </html>
