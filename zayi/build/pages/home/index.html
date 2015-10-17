@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>个人主页</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../pages/home/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div class="full-img">
+    <a class="back-img">
+        <img src="../../images/pic.png">
+    </a>
+</div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+
+        <div class="top-banner back-img">
+            <a>
+
+            </a>
+
+            <img class="t-head" src="../../images/common/head.png">
+
+            <p class="t-name">
+                小桌
+            </p>
+        </div>
+
+        <div class="des-wrapper">
+
+            <div class="rate-wrapper">
+                <img src="../../images/rate/4.5.png"> 4.5
+            </div>
+
+            <div class="cer-wrapper">
+                <span class="icon150 "><img src="../../images/home/@2X_150.png">公司认证</span>
+                <span class="icon148"><img src="../../images/home/@2X_148.png">实名认证</span>
+            </div>
+
+        </div>
+
+        <div class="graybox">
+            #发布者的一句话。没有不现实
+        </div>
+
+        <p class="box-label">
+            最新发布
+        </p>
+
+        <section class="li-wrapper">
+            <div class="li-items">
+                <div class="l-img">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>
+                    </div>
+                </div>
+                <div class="l-des">
+                    死人旅行规划师，打造磁盘旅行经历
+                </div>
+                <div class="l-loca">
+                    <span class="l-lo">
+                        北京市朝阳区
+                    </span>
+                    <span class="l-de">
+                        15.7KM
+                    </span>
+                </div>
+            </div>
+
+            <div class="li-items no-img">
+                <div class="l-img ">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="mai-icon"></span><span class="b-num rest-top">￥450</span><span
+                            class="rest-top">/每次</span>
+                    </div>
+                </div>
+                <div class="l-des">
+                    死人旅行规划师，打造磁盘旅行经历
+                </div>
+                <div class="l-loca">
+                    <span class="l-lo">
+                        北京市朝阳区
+                    </span>
+                    <span class="l-de">
+                        15.7KM
+                    </span>
+                </div>
+            </div>
+
+            <div class="li-items hide">
+                <div class="l-img">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>
+                    </div>
+                </div>
+                <div class="l-des">
+                    死人旅行规划师，打造磁盘旅行经历
+                </div>
+                <div class="l-loca">
+                    <span class="l-lo">
+                        北京市朝阳区
+                    </span>
+                    <span class="l-de">
+                        15.7KM
+                    </span>
+                </div>
+            </div>
+
+            <div class="li-items hide">
+                <div class="l-img">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>
+                    </div>
+                </div>
+                <div class="l-des">
+                    死人旅行规划师，打造磁盘旅行经历
+                </div>
+                <div class="l-loca">
+                    <span class="l-lo">
+                        北京市朝阳区
+                    </span>
+                    <span class="l-de">
+                        15.7KM
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="btn-wrapper" data-text="查看n个发布中的信息" data-target=".li-wrapper>.li-items.hide">
+            <p><img src="../../images/home/search.png"><span>查看n个发布中的信息</span></p>
+        </div>
+
+        <section class="b-wrapper">
+            <p class="b-title">自我介绍</p>
+
+            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+
+            <ul class="may-ul">
+                <li>
+                    <div>年龄</div>
+                    <div>15岁</div>
+                </li>
+                <li>
+                    <div>性别</div>
+                    <div>男</div>
+                </li>
+                <li>
+                    <div>工作年龄</div>
+                    <div>10年</div>
+                </li>
+                <li>
+                    <div class="clear-float">教育北京</div>
+                    <ul>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear-float">拥有资质</div>
+                    <ul>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="graybox" style="margin-left: -10px;margin-right: -10px;">
+                <p class="b-title">企业名称</p>
+
+                <p class="b-content">没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写</p>
+            </div>
+            <p class="b-title">兴趣点</p>
+
+            <div class="in-wrapper items" id="inst">
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+            </div>
+
+            <div class="btn-wrapper" data-target="#inst>.bor-item.hide" data-text="查看全部n个兴趣点">
+                <p><img src="../../images/home/search.png"><span>查看全部n个兴趣点</span></p>
+            </div>
+
+            <p class="b-title">常活动地点</p>
+
+            <div class="in-wrapper items" id="locs">
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+                <div class="bor-item hide">
+                    收银员
+                </div>
+            </div>
+
+            <div class="btn-wrapper" style="margin-bottom: 15px;" data-target="#locs>.bor-item.hide" data-text="查看全部n个活动地点">
+                <p><img src="../../images/home/search.png"><span>查看全部n个活动地点</span></p>
+            </div>
+
+            <div class="imgs-wrapper graybox" style="margin-left: -10px;margin-right: -10px;">
+                <p style="margin-bottom: 10px">照片墙</p>
+
+                <div class="swiper-container" id="pics">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="../../images/pic.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="../../images/pic.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="../../images/pic.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="../../images/pic.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="../../images/pic.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="../../images/pic.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <p class="b-title">个人信用</p>
+
+            <div class="rate-wrapper">
+                <img src="../../images/rate/4.5.png"> 4.5
+            </div>
+
+            <ul class="may-ul">
+                <li>
+                    <div>成交量</div>
+                    <div>10次</div>
+                </li>
+                <li>
+                    <div>好评率</div>
+                    <div>100%</div>
+                </li>
+                <li>
+                    <div>违约率</div>
+                    <div>10%</div>
+                </li>
+                <li>
+                    <div>响应速读</div>
+                    <div>5天</div>
+                </li>
+                <li>
+                    <div>资料完整度</div>
+                    <div>10%</div>
+                </li>
+                <li style="border-bottom: 1px solid #d8d8d8;">
+                    <p class="b-title">收到的评价</p>
+
+                    <p class="bottom-rate box">
+                        <span>合作态度：<span>5分</span></span>
+                        <span>描述相符：<span>5分</span></span>
+                        <span>被推荐度：<span>5分</span></span>
+                    </p>
+                </li>
+            </ul>
+
+            <ul class="reply-wrapper">
+                <li>
+                    <div class="b-t box">
+                        <div class="b-img">
+                            <img src="../../images/pic.png">
+                        </div>
+                        <div class="b-name">
+                            Gorden：<span>好评</span>
+                        </div>
+                        <span class="b-time">
+                            2015-05-04 17:15
+                        </span>
+                    </div>
+
+                    <div class="b-content">
+                        评价，没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评
+                    </div>
+                    <div class="imgs">
+                        <div class="swiper-container reply-img">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="hide">
+                    <div class="b-t box">
+                        <div class="b-img">
+                            <img src="../../images/pic.png">
+                        </div>
+                        <div class="b-name">
+                            Gorden：<span>好评</span>
+                        </div>
+                        <span class="b-time">
+                            2015-05-04 17:15
+                        </span>
+                    </div>
+
+                    <div class="b-content">
+                        评价，没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评
+                    </div>
+                    <div class="imgs">
+                        <div class="swiper-container reply-img">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="hide">
+                    <div class="b-t box">
+                        <div class="b-img">
+                            <img src="../../images/pic.png">
+                        </div>
+                        <div class="b-name">
+                            Gorden：<span>好评</span>
+                        </div>
+                        <span class="b-time">
+                            2015-05-04 17:15
+                        </span>
+                    </div>
+
+                    <div class="b-content">
+                        评价，没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评没写默认好评
+                    </div>
+                    <div class="imgs">
+                        <div class="swiper-container reply-img">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="../../images/pic.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="btn-wrapper" data-inswiper="true" data-target=".reply-wrapper>li.hide" data-text="查看全部n条评价">
+                <p><img src="../../images/home/search.png"><span>查看全部n条评价</span></p>
+            </div>
+
+
+        </section>
+
+        <p class="pink">
+            完善个人资料
+        </p>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.2"></script>
+<script src="../../pages/home/index.js?version=0.1.2"></script>
+
+<script>
+    var swiper = new Swiper('#pics', {
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 10
+    });
+
+    var bswiper = new Swiper('.reply-img', {
+        slidesPerView: 5,
+        paginationClickable: true,
+        spaceBetween: 10
+    });
+
+
+</script>
+
+</body>
+</html>
