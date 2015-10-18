@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>个人主页</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/buy/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div class="full-img">
+    <a class="back-img">
+        <img src="../../images/pic.png">
+    </a>
+</div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="down-header">
+            <a>
+                <img src="../../images/common/header.png">
+            </a>
+        </div>
+
+        <section class="li-wrapper">
+            <div class="li-items">
+                <div class="l-img">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="des-wrapper">
+            <p class="d-title">
+                企业年会找兼职视频制作
+            </p>
+
+            <div class="t-head">
+                <img src="../../images/common/head.png">
+            </div>
+
+            <div class="rate-wrapper">
+                <p>王女士</p>
+                <img src="../../images/rate/4.5.png"> 4.5
+            </div>
+
+            <div class="cer-wrapper">
+                <span class="icon150 "><img src="../../images/home/@2X_150.png">公司认证</span>
+                <span class="icon148"><img src="../../images/home/@2X_148.png">实名认证</span>
+            </div>
+
+        </div>
+
+        <div class="graybox">
+            <p class="b-title">
+                职责描述
+            </p>
+
+            <p class="b-content">#发布者的一句话。没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实</p>
+        </div>
+
+
+        <section class="b-wrapper">
+            <p class="b-title">奖金/提成标准</p>
+
+            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+
+            <p class="b-title">工作地点</p>
+
+            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+
+            <p class="b-title">工作时间</p>
+
+            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+
+
+            <ul class="may-ul graybox" style="margin-left: -10px;margin-right: -10px;">
+                <li>
+                    <div class="clear-float">#以下工作时间灵活可选或必须在以下时间完成工作#</div>
+                    <ul style="text-align: left" id="date">
+                        <li>#YYYYMMDD-YYYYMMDD 的 0000-0000#</li>
+                        <li>#YYYYMMDD 的 0000-0000#</li>
+                        <li>#YYYYMMDD 的 0000-0000#</li>
+                        <li>#YYYYMMDD 的 0000-0000#</li>
+                        <li class="hide">#YYYYMMDD 的 0000-0000#</li>
+                        <li class="hide">#YYYYMMDD 的 0000-0000#</li>
+                    </ul>
+                </li>
+
+                <div class="btn-wrapper" data-target="#date>li.hide" data-text="查看全部n个工作时间">
+                    <p><img src="../../images/home/search.png"><span>查看全部n个工作时间</span></p>
+                </div>
+            </ul>
+
+
+            <p class="b-title">用人要求</p>
+
+            <ul class="may-ul">
+                <li>
+                    <div>年龄</div>
+                    <div>15岁</div>
+                </li>
+                <li>
+                    <div>性别</div>
+                    <div>男</div>
+                </li>
+                <li>
+                    <div>教育程度</div>
+                    <div>本科</div>
+                </li>
+                <li>
+                    <div>工作年龄</div>
+                    <div>10年</div>
+                </li>
+                <li>
+                    <div class="clear-float">资质要求</div>
+                    <ul>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="clear-float">其他用人要求</div>
+                    <ul>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                        <li>本科***学校</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="gray-ul">
+                <li>
+                    <div>招聘人数</div>
+                    <div>10人</div>
+                </li>
+                <li>
+                    <div>所需工作量</div>
+                    <div>10人</div>
+                </li>
+                <li>
+                    <div>是否面试</div>
+                    <div>需面试</div>
+                </li>
+            </ul>
+
+            <p class="b-title">企业名称</p>
+
+            <p class="b-content">没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写</p>
+
+            <p class="dead-line">该信息将#YYYYMMDD-0000#后失效</p>
+
+
+
+            <div class="btn-down" style="width: 90%;margin-top: 10px;">
+                <p><span>查看全部n个工作时间</span></p>
+            </div>
+        </section>
+
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/buy/index.js"></script>
+
+
+</body>
+</html>
