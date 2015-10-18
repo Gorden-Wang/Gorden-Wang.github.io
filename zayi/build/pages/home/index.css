@@ -9,7 +9,9 @@
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    z-index: 1; }
+    z-index: 1;
+    position: fixed;
+    top: 0px; }
     #page .down-header a {
       position: absolute;
       width: 100%;

@@ -1095,3 +1095,7 @@ header .right-menu .bottom-icon {
     opacity: 0;
     z-index: 100;
 }
+
+.wrap{
+    margin-top: 45px;
+}
