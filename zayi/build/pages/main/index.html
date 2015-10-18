@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>个人主页</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../pages/main/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div class="full-img">
+    <a class="back-img">
+        <img src="../../images/pic.png">
+    </a>
+</div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="down-header">
+            <a>
+                <img src="../../images/common/header.png">
+            </a>
+        </div>
+
+        <div class="top-banner back-img">
+            <a>
+                <img src="../../images/common/back.png">
+            </a>
+
+        </div>
+
+        <div class="des-wrapper">
+
+
+        </div>
+
+
+        <section class="li-wrapper">
+            <div class="li-items">
+                <div class="l-img">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="b-left">
+                        <div class="l-des">
+                            死人旅行规划师，打造磁盘旅行经历
+                        </div>
+                        <div class="l-loca">
+                            <p style="margin-bottom: 5px">
+                                <span class="l-name">
+                                小强先生
+                                </span>
+                                <span class="l-rate">
+                                    4.8
+                                </span>
+                            </p>
+                            <p>
+                                <span class="l-lo">
+                                北京市朝阳区
+                                </span>
+                                <span class="l-de">
+                                    15.7KM
+                                </span>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="b-right">
+                        <div class="t-head">
+                            <img src="../../images/common/head.png">
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="li-items no-img">
+                <div class="l-img ">
+                    <a class="back-img">
+
+                    </a>
+                    <span class="l-label">
+                        独门技艺/杂项特长
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="mai-icon"></span><span class="b-num rest-top">￥450</span><span
+                            class="rest-top">/每次</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="b-left">
+                        <div class="l-des">
+                            死人旅行规划师，打造磁盘旅行经历
+                        </div>
+                        <div class="l-loca">
+                            <p style="margin-bottom: 5px">
+                                <span class="l-name">
+                                小强先生
+                                </span>
+                                <span class="l-rate">
+                                    4.8
+                                </span>
+                            </p>
+                            <p>
+                                <span class="l-lo">
+                                北京市朝阳区
+                                </span>
+                                <span class="l-de">
+                                    15.7KM
+                                </span>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="b-right">
+                        <div class="t-head">
+                            <img src="../../images/common/head.png">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.2"></script>
+<script src="../../pages/main/index.js?version=0.1.2"></script>
+
+<script>
+    var swiper = new Swiper('#pics', {
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 10
+    });
+
+    var bswiper = new Swiper('.reply-img', {
+        slidesPerView: 5,
+        paginationClickable: true,
+        spaceBetween: 10
+    });
+
+
+</script>
+
+</body>
+</html>

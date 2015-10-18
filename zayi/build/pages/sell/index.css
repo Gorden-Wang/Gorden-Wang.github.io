@@ -51,7 +51,10 @@
       display: block;
       margin: 0px auto;
       position: relative;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      -webkit-border-radius: 87px;
+         -moz-border-radius: 87px;
+              border-radius: 87px; }
       #page .des-wrapper .t-head img {
         display: block;
         width: 100%; }
