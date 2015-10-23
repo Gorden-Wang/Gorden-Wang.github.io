@@ -10,19 +10,27 @@
         init: function () {
             var that = this;
             that.cacheData();
+            that.addJuicerHandler();
             that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getPosition();
 
-            //that.getItems();
+
         },
         cacheData: function () {
             var that = this;
+            that.data = {};
 
-            that.data = {
-                //productId: Wlib.getRequestParam("productId")
-
+            that.data.param = {
+                //cityCode=110100&lng=102&lat=54&img_w=100&img_h=100&product_img_w=100&product_img_h=100&queryTime=0&findStart=0&employStart=0&limit=10
+                cityCode:0,
+                img_w : 100,
+                img_h : 100,
+                product_img_w : $("body").width(),
+                product_img_h : Math.floor(0.609375 * $("body").width()),
+                queryTime : 0,
+                findStart : 0,
+                employStart : 0,
+                limit : 10
             }
         },
         cacheDom: function () {
@@ -41,6 +49,16 @@
         recacheDom: function () {
             var that = this;
             that.dom.full = $(".full-img");
+        },
+        addJuicerHandler : function(){
+          var that = this;
+            juicer.register("checkIsImg", function (url) {
+                return url ? "" : "no-img"
+            });
+            juicer.register("makeBuyOrSell", function (type) {
+                return type==2 ? "zhao-icon" : "mai-icon";
+            });
+
         },
         bindEvent: function () {
             var that = this;
@@ -71,6 +89,54 @@
                 });
 
             });
+
+            $(".li-items").off("click").on("click",function(){
+                var productId = $(this).attr("data-productId");
+                var type = $(this).attr("data-type");
+
+                if(type == "1"){
+                    //卖
+                    location.href = '../../pages/sell/index.html?productId='+productId;
+                }else{
+                    location.href = '../../pages/buy/index.html?productId='+productId;
+                }
+            })
+
+            //add download
+
+            $(".down-header,footer").on("click",function(){
+                location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.zy.part_timejob"
+            })
+        },
+        getPosition: function () {
+            var that = this;
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    var i=0;
+
+                    var geolocationOptions={timeout:3000,enableHighAccuracy:true,maximumAge:5000};
+
+                    navigator.geolocation.getCurrentPosition(showPosition,showPosition,geolocationOptions);
+                }
+                else {
+                    that.getItems();
+                }
+            }
+
+            function showPosition(position) {
+
+                that.data.param.lat = position.coords ? position.coords.latitude : '39.90960456049752';
+                that.data.param.lng =  position.coords ? position.coords.longitude : '116.3972282409668';
+
+
+
+                that.getItems();
+            }
+
+            getLocation();
+
+
         },
         getItems: function () {
 
@@ -79,14 +145,25 @@
 
             function callback(data){
 
-                if(data.success && data.code == "1"){
+                if(data.resultCode  == "1"){
                     //成功
 
-                    that.data.data = data.data;
+                    that.data.data = data.resultData;
 
-                    that.renderUI();
+                    that.data.param.employStart = that.data.data.employStart;
+                    if(that.data.param.findStart == 0){
+                        that.renderUI();
+                    }else{
+                        that.renderItem();
+                    }
+
                     that.recacheDom();
                     that.bindEvent();
+
+                    if(that.data.data.list.length == that.data.param.limit){
+                        that.bindNext(true);
+                    }
+
 
                     console.log(that.data.data)
 
@@ -101,9 +178,38 @@
 
             }
 
+            var param = (function(data){
 
-            Wlib.GetJsonData("http://121.199.57.142:8081/lifefinancial/api/public/lfProductDetail.json?productId=" + that.data.productId,callback,callback);
+                var res = "";
 
+                for(var i in data){
+                    res += (i + "="+data[i])+"&";
+                }
+
+                return res.slice(0,-1);
+
+            })(that.data.param);
+
+            console.log(param)
+
+
+            Wlib.GetJsonData("app/product/recommend/list/home/jsonp?"+param,callback,callback);
+
+        },
+        bindNext: function (tag) {
+            var that = this;
+
+            Wlib._bindScrollTobottom(function () {
+                that.data.param.findStart = that.data.param.findStart + that.data.param.limit;
+
+                that.getItems();
+            },tag)
+
+
+        },
+        renderItem : function(){
+            var that = this;
+            $(".li-wrapper").append(juicer($("#tpl-item").html(),that.data));
         }
     }
 

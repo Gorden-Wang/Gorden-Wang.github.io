@@ -196,8 +196,9 @@ window.Wlib = (function () {
 
         GetJsonData: function (url, success, error) {
             $.ajax({
-                url: url,
-                dataType: "JSON",
+                url: "http://icefox-cool.xicp.net/master/"+url,
+                dataType : "jsonp",
+                method : "GET",
                 success: function (res) {
                     success(res);
                 },
@@ -220,6 +221,9 @@ window.Wlib = (function () {
         }
 
     };
+
+
+
     return new lib("daily", "");
 })($);
 

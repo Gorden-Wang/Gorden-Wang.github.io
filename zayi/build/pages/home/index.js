@@ -14,8 +14,9 @@
             that.renderUI();
             that.recacheDom();
             that.bindEvent();
+            that.getPosition();
 
-            //that.getItems();
+            that.getItems();
         },
         cacheData: function () {
             var that = this;
@@ -71,6 +72,33 @@
                 });
 
             });
+
+            //add download
+
+            $(".down-header,footer").on("click",function(){
+                location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.zy.part_timejob"
+            })
+        },
+        getPosition: function () {
+            var that = this;
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                else {
+                    Wlib.tips("没有定位到您的城市，请稍候再试")
+                }
+            }
+
+            function showPosition(position) {
+                that.data.latitude = position.coords.latitude;
+                that.data.longitude = position.coords.longitude;
+            }
+
+            getLocation();
+
+
         },
         getItems: function () {
 

@@ -37,14 +37,19 @@
             <div class="li-items">
                 <div class="l-img">
                     <a class="back-img">
+                        {@if data.product.productImg}
+                        <img src="${data.product.productImg}">
+                        {@else}
+                        <img src="../../images/common/buy-header.png">
+                        {@/if}
 
                     </a>
                     <span class="l-label">
-                        独门技艺/杂项特长
+                       ${data.product.categoryName}
                     </span>
 
                     <div class="l-img-banner">
-                        <span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>
+                        <span class="zhao-icon"></span><span class="b-num rest-top">￥${data.product.minPrice}-￥${data.product.maxPrice}</span><span class="rest-top">/${data.product.priceUnit}</span>
                     </div>
                 </div>
 
@@ -55,21 +60,26 @@
 
         <div class="des-wrapper">
             <p class="d-title">
-                企业年会找兼职视频制作
+                ${data.product.title}
             </p>
 
             <div class="t-head">
-                <img src="../../images/common/head.png">
+                <img src="${data.user.headImg}">
             </div>
 
             <div class="rate-wrapper">
-                <p>王女士</p>
-                <img src="../../images/rate/4.5.png"> 4.5
+                <p>${data.product.releaseUserNickname}</p>
+                <img src="../../images/rate/${makeRateImg(data.user.creditLevel)}.png"> ${data.user.creditLevel}
             </div>
 
             <div class="cer-wrapper">
+                {@if data.user.companyStatus == 4}
                 <span class="icon150 "><img src="../../images/home/@2X_150.png">公司认证</span>
+                {@/if}
+                {@if data.user.userStatus == 5 || data.user.userStatus == 6}
                 <span class="icon148"><img src="../../images/home/@2X_148.png">实名认证</span>
+                {@/if}
+
             </div>
 
         </div>
@@ -79,100 +89,134 @@
                 职责描述
             </p>
 
-            <p class="b-content">#发布者的一句话。没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实没有不现实</p>
+            <p class="b-content">${data.product.introduction}</p>
         </div>
 
 
         <section class="b-wrapper">
+
             <p class="b-title">奖金/提成标准</p>
 
-            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+            <p class="b-content" style="text-align: center">
+                {@if data.product.hasBonus == 1}
+                <!--hasBonus:是否有奖金 1-有 2-无-->
+                ${data.product.bonusDesc}
+                {@else}
+                无
+                {@/if}
+            </p>
 
             <p class="b-title">工作地点</p>
 
-            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+            <p class="b-content" style="text-align: center">
+                {@if data.product.workplacedesc}
+                    ${data.product.workplacedesc}
+                {@else}
+                    无
+                {@/if}
+            </p>
 
             <p class="b-title">工作时间</p>
 
-            <p class="b-content">自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍 没填写无</p>
+            <p class="b-content" style="text-align: center">
+                {@if data.product.workTimeDesc}
+                ${data.product.workTimeDesc}
+                {@else}
+                无
+                {@/if}
+            </p>
 
 
+            <!-- @TODO:timeList-->
+            {@if data.product.workTimeType != 1}
             <ul class="may-ul graybox" style="margin-left: -10px;margin-right: -10px;">
                 <li>
-                    <div class="clear-float">#以下工作时间灵活可选或必须在以下时间完成工作#</div>
+                    <div class="clear-float">${makeTimeTitle(data.product.workTimeType)}</div>
                     <ul style="text-align: left" id="date">
-                        <li>#YYYYMMDD-YYYYMMDD 的 0000-0000#</li>
-                        <li>#YYYYMMDD 的 0000-0000#</li>
-                        <li>#YYYYMMDD 的 0000-0000#</li>
-                        <li>#YYYYMMDD 的 0000-0000#</li>
-                        <li class="hide">#YYYYMMDD 的 0000-0000#</li>
-                        <li class="hide">#YYYYMMDD 的 0000-0000#</li>
+                        <!--<li>#YYYYMMDD-YYYYMMDD 的 0000-0000#</li>-->
+                        <!--<li>#YYYYMMDD 的 0000-0000#</li>-->
+                        <!--<li>#YYYYMMDD 的 0000-0000#</li>-->
+                        <!--<li>#YYYYMMDD 的 0000-0000#</li>-->
+                        <!--<li class="hide">#YYYYMMDD 的 0000-0000#</li>-->
+                        <!--<li class="hide">#YYYYMMDD 的 0000-0000#</li>-->
+                        {@each data.product.workDatetime as item,index}
+
+                            {@if index >3}
+                            <li class="hide">${item.data} 的 ${item.time}</li>
+                            {@else}
+                            <li>${item.data} 的 ${item.time}</li>
+                            {@/if}
+
+                        {@/each}
+
                     </ul>
                 </li>
 
+                {@if checkDisplayMore(data.product.workDateTime)}
                 <div class="btn-wrapper" data-target="#date>li.hide" data-text="查看全部n个工作时间">
                     <p><img src="../../images/home/search.png"><span>查看全部n个工作时间</span></p>
                 </div>
+                {@/if}
             </ul>
-
+            {@/if}
 
             <p class="b-title">用人要求</p>
 
             <ul class="may-ul">
                 <li>
                     <div>年龄</div>
-                    <div>15岁</div>
+                    <div>${makeAgeDis(data.product.requireMinAge,data.product.requireMaxAge)}</div>
                 </li>
                 <li>
                     <div>性别</div>
-                    <div>男</div>
+                    <div>${data.product.requireSexName}</div>
                 </li>
                 <li>
                     <div>教育程度</div>
-                    <div>本科</div>
+                    <div>${data.product.requireEducationName}</div>
                 </li>
                 <li>
                     <div>工作经验</div>
-                    <div>10年</div>
+                    <div>${data.product.requireExperienceName}</div>
                 </li>
+                {@if data.product.requireOffice}
                 <li>
                     <div class="clear-float">资质要求</div>
-                    <ul>
-                        <li>本科***学校</li>
-                        <li>本科***学校</li>
-                        <li>本科***学校</li>
-                    </ul>
+                    <div style="width: 100%;text-align: left">${data.product.requireOffice}</div>
                 </li>
+                {@/if}
+                {@if data.product.requireOther}
                 <li>
                     <div class="clear-float">其他用人要求</div>
-                    <ul>
-                        <li>本科***学校</li>
-                        <li>本科***学校</li>
-                        <li>本科***学校</li>
-                    </ul>
+                    <div style="width: 100%;text-align: left">${data.product.requireOther}</div>
                 </li>
+                {@/if}
             </ul>
 
             <ul class="gray-ul">
                 <li>
                     <div>招聘人数</div>
-                    <div>10人</div>
+                    <div>${data.product.vacancyCount}人</div>
                 </li>
                 <li>
                     <div>所需工作量</div>
-                    <div>10人</div>
+                    <div>${data.product.workloadTimes}${data.product.workloadUnit}</div>
                 </li>
                 <li>
                     <div>是否面试</div>
-                    <div>需面试</div>
+                    <div>${makeAudiDis(data.product.requireAudition)}</div>
                 </li>
             </ul>
 
-            <p class="b-title">企业名称</p>
+            {@if data.product.companyName}
+            <p class="b-title">${data.product.companyName}</p>
 
-            <p class="b-content">没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写没有不写</p>
+            {@if data.product.companyInfo}
+            <p class="b-content">${data.product.companyInfo}</p>
+            {@/if}
 
-            <p class="dead-line">该信息将#YYYYMMDD-0000#后失效</p>
+            {@/if}
+            <p class="dead-line">该信息将${data.product.expDate}后失效</p>
 
 
 
