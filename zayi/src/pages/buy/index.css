@@ -52,6 +52,8 @@
       margin: 0px auto;
       position: relative;
       margin-bottom: 10px;
+      border-radius: 87px;
+      overflow: hidden;
       border-radius: 87px; }
       #page .des-wrapper .t-head img {
         display: block;

@@ -57,6 +57,7 @@
       margin: 0px auto;
       position: relative;
       margin-bottom: 10px;
+      overflow: hidden;
       -webkit-border-radius: 87px;
          -moz-border-radius: 87px;
               border-radius: 87px; }

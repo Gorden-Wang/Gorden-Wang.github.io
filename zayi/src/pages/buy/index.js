@@ -23,8 +23,8 @@
             that.data = {};
             that.data.param = {
                 id: Wlib.getRequestParam("productId"),
-                img_w: 100,
-                img_h: 100,
+                img_w: $("body").width(),
+                img_h: Math.floor(0.609375 * $("body").width()),
                 user_headimg_w: 100,
                 user_headimg_h: 100
 
