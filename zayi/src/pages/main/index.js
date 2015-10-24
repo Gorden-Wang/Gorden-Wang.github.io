@@ -44,6 +44,7 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+            Wlib._bindLazyLoad();
             that.dom.loading.hide();
         },
         recacheDom: function () {
@@ -210,6 +211,7 @@
         renderItem : function(){
             var that = this;
             $(".li-wrapper").append(juicer($("#tpl-item").html(),that.data));
+            Wlib._bindLazyLoad();
         }
     }
 
