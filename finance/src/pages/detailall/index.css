@@ -1,0 +1,158 @@
+#page {
+  margin-bottom: 50px; }
+  #page .banner-wrapper {
+    height: 0px;
+    width: 100%;
+    padding-bottom: 40%;
+    position: relative; }
+    #page .banner-wrapper a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; }
+      #page .banner-wrapper a img {
+        width: 100%;
+        vertical-align: middle; }
+  #page .mid-wrapper {
+    padding: 15px;
+    color: #333333;
+    font-size: 14px;
+    padding-top: 0px; }
+    #page .mid-wrapper .title {
+      font-size: 17px;
+      color: #666666; }
+    #page .mid-wrapper p {
+      margin: 15px 0px; }
+    #page .mid-wrapper .icon {
+      padding-left: 20px;
+      background-image: url(../../images/common/icon1.png);
+      background-size: 20px 64px;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      top: 5px;
+      position: relative;
+      margin-right: 5px; }
+    #page .mid-wrapper .time {
+      display: inline-block; }
+    #page .mid-wrapper .location {
+      display: inline-block;
+      background-position: 0px -22px; }
+    #page .mid-wrapper .name {
+      display: inline-block;
+      background-position: 0px -44px; }
+    #page .mid-wrapper .users-wrapper span {
+      padding-top: 5px; }
+    #page .mid-wrapper .users-wrapper div {
+      flex: 1;
+      margin-left: 20px; }
+      #page .mid-wrapper .users-wrapper div img {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        overflow: hidden;
+        margin-right: 8px; }
+  #page .big-ul {
+    padding: 15px;
+    padding-top: 0px;
+    color: #b5b5b5;
+    font-size: 13px; }
+    #page .big-ul li p {
+      margin-bottom: 15px; }
+    #page .big-ul li .img-wrapper {
+      width: 100%;
+      height: 0px;
+      padding-bottom: 33.33333%;
+      position: relative;
+      margin-bottom: 15px; }
+      #page .big-ul li .img-wrapper a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; }
+        #page .big-ul li .img-wrapper a img {
+          width: 100%; }
+      #page .big-ul li .img-wrapper p {
+        position: absolute;
+        font-size: 28px;
+        color: #FFF;
+        left: 0%;
+        width: 100%;
+        text-align: center;
+        top: 40%; }
+  #page .like-wrapper {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ebebeb; }
+    #page .like-wrapper .share-icon {
+      background-image: url(../../images/common/icon.png);
+      background-size: 12px 22px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 13px;
+      height: 11px;
+      margin-top: 10px; }
+    #page .like-wrapper div {
+      margin-left: 10px; }
+      #page .like-wrapper div img {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        overflow: hidden;
+        margin-right: 8px; }
+  #page .reply-wrapper {
+    padding: 0px 10px; }
+    #page .reply-wrapper .reply-icon {
+      background-image: url(../../images/common/icon.png);
+      background-size: 12px 22px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 13px;
+      height: 11px;
+      margin-top: 15px;
+      background-position: 0px -12px; }
+    #page .reply-wrapper ul {
+      margin-left: 10px;
+      flex: 1; }
+      #page .reply-wrapper ul li {
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px 0px; }
+      #page .reply-wrapper ul img {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        overflow: hidden;
+        margin-right: 8px; }
+      #page .reply-wrapper ul .reply-content {
+        flex: 1;
+        color: #333333;
+        font-size: 14px; }
+        #page .reply-wrapper ul .reply-content > p {
+          line-height: 15px;
+          margin-top: 5px; }
+        #page .reply-wrapper ul .reply-content .li-title {
+          color: #666;
+          font-size: 13px; }
+          #page .reply-wrapper ul .reply-content .li-title .reply-name {
+            flex: 1; }
+  #page footer {
+    background-color: #f15c40;
+    color: #FFF;
+    font-size: 17px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    width: 100%; }
+  #page .box {
+    display: flex; }
+
+iframe {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  height: 400px;
+  width: 100%;
+  overflow: scroll; }
+
+/*# sourceMappingURL=index.css.map */

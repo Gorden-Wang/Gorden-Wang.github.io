@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>医生列表</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="top-wrapper">
+            <div class="box box_list_ys">
+                <div class="list_ys clearfix">
+                    <a href="../../pages/docdetail/index.html?doctorId=${doctorId}">
+                        <div class="Left"><img src="../../images/temp/img_3.png"/></div>
+                        <div class="Center">
+                            <div class="row_1">${doc.name}</div>
+                            <div class="row_2" id="res-til">${makeTitle(doc.title)}</div>
+                            <div class="row_2" id="res-add">${doc.hospital}</div>
+                            <div class="row_2">擅长： ${makeDes(doc.specialities)}</div>
+                        </div>
+                        <div class="Right" id="res-dep">${doc.deptName}</div>
+                        <div class="right-icon t-r"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="taochan-wrapper">
+                <p>
+                    套餐费:
+                    <span>￥${getPrice()}</span>
+                    (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
+                </p>
+
+                <div class="right-icon t-r"></div>
+            </div>
+            <div class="tiaokuan-wrapper bottom-radius">
+                <ul>
+                    <li>
+                        <a href="../../pages/tips/index.html">
+                            服务须知
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../pages/tips/terms.html">
+                            退改条款
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../pages/feedback/list.html?doctorId=${doc.id}">
+                            用户评价
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        {@each docList as item}
+
+
+        <div class="time-picker box_yz bottom-radius">
+            <div class="box box_list_ys top-radius">
+
+                <div class="top-banner">
+                        $${makeTime(item.treatmentPlan.starttime)}
+                </div>
+
+                <div class="list_ys clearfix">
+                    <a href="../../pages/hosdetail/index.html?clinicId=${item.clinic.id}">
+                        <div class="Center">
+                            <div class="row_1 icon1">${item.clinic.name}</div>
+                            <div class="row_2 icon2">${item.clinic.address}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="time-wrapper ">
+                <ul>
+                    {@each item.treatmentPlan.treatmentPlanDetails as timeItem}
+
+                    {@if timeItem.finished == true}
+                    <li data-time="${makeFuckTime(item.treatmentPlan.starttime)}" data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    {@/if}
+
+                    {@if timeItem.finished == false}
+                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
+                    {@/if}
+
+
+                    {@/each}
+                </ul>
+            </div>
+
+
+        </div>
+
+
+        {@/each}
+
+
+
+
+
+
+
+
+    </div>
+
+
+</script>
+
+
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/cityList/index.js?version=0.1.2"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.2"></script>
+<script src="../../pages/docorder/index.js?version=0.1.2"></script>
+
+</body>
+</html>

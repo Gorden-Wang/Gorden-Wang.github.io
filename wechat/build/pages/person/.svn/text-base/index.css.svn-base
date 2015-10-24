@@ -1,0 +1,92 @@
+#page .wrap {
+  margin-top: 0px;
+  margin-bottom: 20px; }
+#page .input_address select {
+  border: 0px;
+  background-color: transparent;
+  font-size: 16px;
+  color: #9e9e9e; }
+#page #tel-wrapper {
+  padding: 0px; }
+  #page #tel-wrapper .list_yz {
+    height: auto;
+    padding: 15px 10px; }
+  #page #tel-wrapper .list_yz .Center .row_1 {
+    height: auto;
+    line-height: 16px;
+    font-size: 16px;
+    color: #404040;
+    margin-bottom: 5px; }
+  #page #tel-wrapper .Right {
+    margin-top: 10px; }
+  #page #tel-wrapper span {
+    color: #f8829a;
+    font-size: 18px; }
+#page .box_yz {
+  background-color: #FFF; }
+#page .border {
+  border-top: 1px solid #d1d1d1; }
+#page .my-wrapper {
+  padding: 20px 0px;
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  overflow: hidden; }
+  #page .my-wrapper .box-radius-wrapper {
+    width: 40%;
+    margin-right: 20%;
+    float: left; }
+    #page .my-wrapper .box-radius-wrapper img {
+      width: 100%; }
+    #page .my-wrapper .box-radius-wrapper p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #404040; }
+  #page .my-wrapper .box-radius-wrapper:last-of-type {
+    margin-right: 0px; }
+#page .list-widget {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  padding: 15px 20px; }
+  #page .list-widget .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+       -moz-background-size: 100%;
+         -o-background-size: 100%;
+            background-size: 100%;
+    margin-right: 20px; }
+  #page .list-widget p {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
+    padding-top: 3px;
+    font-size: 16px;
+    color: #404040; }
+  #page .list-widget .right-icon {
+    display: inline-block;
+    width: 9px;
+    height: 16px;
+    background-image: url(../../images/arro_right.png);
+    -webkit-background-size: 9px 16px;
+       -moz-background-size: 9px 16px;
+         -o-background-size: 9px 16px;
+            background-size: 9px 16px;
+    background-repeat: no-repeat; }
+#page .icon1 {
+  background-image: url(../../images/person/icon1.png); }
+#page .icon2 {
+  background-image: url(../../images/person/icon2.png); }
+#page .icon3 {
+  background-image: url(../../images/person/icon3.png); }
+#page .icon4 {
+  background-image: url(../../images/person/icon4.png); }
+#page .icon5 {
+  background-image: url(../../images/person/icon5.png); }

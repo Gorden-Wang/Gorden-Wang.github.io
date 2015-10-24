@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>活动详情</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/detail/index.css" rel="stylesheet">
+
+    <!--<script>-->
+
+        <!--var DATA = {-->
+            <!--success: true,-->
+            <!--code: 1,-->
+            <!--message: "success",-->
+            <!--data: {-->
+                <!--newsId: 5,-->
+                <!--userId: 4,-->
+                <!--type: 1,-->
+                <!--title: "创业宣讲心路历程",-->
+                <!--content: "小时候看《月亮和六便士》开始的梦。一直以为马尔代夫是温暖神秘的时间，清澈的海水，成群的鱼儿，蓝底耀眼的天空",-->
+                <!--images: [-->
+                    <!--"/file/user/1/2457387_093334175000_2.jpg"-->
+                <!--],-->
+                <!--isFinish: 0,-->
+                <!--isFull: 1,-->
+                <!--joinCount: 5,-->
+                <!--supportCount: 3,-->
+                <!--commentCount: 12,-->
+                <!--shareCount: 0,-->
+                <!--activeTag: "创业",-->
+                <!--activeStartTime: "2015-09-28 18:32:32",-->
+                <!--activeEndTime: "2015-10-24 18:30:00",-->
+                <!--activeAddress: "北京金融街",-->
+                <!--activePartakeCount: 5,-->
+                <!--isJoin: 1,-->
+                <!--releaseTime: "17天前",-->
+                <!--headImageUrl: "/file/user/9/2d9c74f8-4784-41f8-a731-54b4577ef0d1.jpg",-->
+                <!--realName: "金融街生活",-->
+                <!--isSupport: 0,-->
+                <!--lfNewsSupports: [-->
+                    <!--{-->
+                        <!--userSupportId: 64,-->
+                        <!--userId: 69,-->
+                        <!--newsId: 5,-->
+                        <!--headImageUrl: "",-->
+                        <!--realName: "aaaaa"-->
+                    <!--},-->
+                    <!--{-->
+                        <!--userSupportId: 67,-->
+                        <!--userId: 11,-->
+                        <!--newsId: 5,-->
+                        <!--headImageUrl: "/file/user/11/76787645-510a-4535-bbbd-8fe38cc13846.jpg",-->
+                        <!--realName: "李四"-->
+                    <!--},-->
+                    <!--{-->
+                        <!--userSupportId: 160,-->
+                        <!--userId: 127,-->
+                        <!--newsId: 5,-->
+                        <!--headImageUrl: "/file/user/1/52d4dc4b-d3b4-40bc-b439-ea59deb6cfb6.png",-->
+                        <!--realName: "金"-->
+                    <!--}-->
+                <!--],-->
+                <!--lfNewsJoins: []-->
+            <!--}-->
+        <!--}-->
+    <!--</script>-->
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+
+        <header>
+
+            <p class="title">活动详情</p>
+        </header>
+
+        <div class="top-banner">
+            <div class="user-wrapper box">
+                <div class="img-wrapper">
+                    {@if data.headImageUrl}
+                    <img src="http://121.199.57.142:8081/lifefinancial${data.headImageUrl}">
+                    {@else}
+                    <img src="../../images/pic.png">
+
+                    {@/if}
+
+                </div>
+                <div class="detail-wrapper">
+                    <p>${data.realName}</p>
+
+                    <p>${data.releaseTime}</p>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                ${data.content}
+            </div>
+            <ul class="imgs-wrapper box">
+
+
+                {@each data.images as item,index}
+
+                {@if index<4}
+                <li>
+                    <a>
+                        <img src="http://121.199.57.142:8081/lifefinancial${item}">
+                    </a>
+
+                </li>
+                {@/if}
+                {@/each}
+
+
+            </ul>
+        </div>
+
+        <div class="like-wrapper box">
+            <span class="share-icon">
+
+            </span>
+
+            <div>
+
+                {@each data.lfNewsSupports as item}
+
+                {@if item.headImageUrl}
+                <img src="http://121.199.57.142:8081/lifefinancial${item.headImageUrl}">
+                {@else}
+                <img src="../../images/pic.png">
+                {@/if}
+
+
+                {@/each}
+
+
+            </div>
+        </div>
+
+        <div class="reply-wrapper box">
+            <span class="reply-icon">
+
+            </span>
+            <ul id="reply">
+
+            </ul>
+
+        </div>
+
+
+        <footer>
+            下载life金融街客户端
+        </footer>
+
+    </div>
+
+
+</script>
+
+<script id="item-tpl" type="template/juicer">
+
+    {@each list as item}
+    <li class="box">
+        {@if item.commentUserHeadImage}
+        <img src="http://121.199.57.142:8081/lifefinancial${item.commentUserHeadImage}">
+        {@else}
+        <img src="../../images/pic.png">
+        {@/if}
+
+
+        <div class="reply-content">
+            <div class="li-title box">
+                <p class="reply-name">
+                    ${item.commentUserName}
+                </p>
+                            <span>
+                                ${item.releaseTime}
+                            </span>
+            </div>
+
+            <p>
+                ${item.content}
+            </p>
+
+
+        </div>
+    </li>
+
+    {@/each}
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.0"></script>
+<script src="../../pages/detail/index.js?version=0.1.0"></script>
+
+</body>
+</html>

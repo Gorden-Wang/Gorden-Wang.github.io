@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>订单列表</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="../../pages/orderlist/index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div id="overlay" class="fadeAnimate"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="banner-fix">
+
+            <ul class="banner">
+                <li data-id="-1" class="item ${makeStatusDisplay(-1)}">
+                    全部
+                </li>
+                <li data-id="1" class="item ${makeStatusDisplay(1)}">
+                    未付款
+                </li>
+                <li data-id="2" class="item ${makeStatusDisplay(2)}">
+                    已付款
+                </li>
+                <li data-id="3" class="item ${makeStatusDisplay(3)}">
+                    已完成
+                </li>
+                <li data-id="4" class="item ${makeStatusDisplay(4)}">
+                    已退款
+                </li>
+                <!--<li id="filter">-->
+                    <!--<img src="../../images/screen_down.png">筛选-->
+                <!--</li>-->
+            </ul>
+            <div id="filter" class="filterbanner">
+                <img src="../../images/screen_down.png">${makeFilterDisplay()}
+            </div>
+
+            <div class="filterbox">
+                <ul class="clearfix">
+                    <li data-id="-1">
+                        <img src="../../images/orderlist/icon1.png">不限
+
+                    </li>
+                    <li data-id="1">
+                        <img src="../../images/orderlist/icon2.png">线下门诊
+                    </li>
+                    <li data-id="2">
+                        <img src="../../images/orderlist/icon2.png">线上问诊
+                    </li>
+                    <li data-id="3">
+                        <img src="../../images/orderlist/icon3.png">预约体验
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="list-wrapper">
+            <!-- 订单样式：wfk,yfk,dwc-->
+            <!-- @TODO style-->
+            {@each olist as item}
+
+            <ul>
+                <li class="o-title">
+                    <div class="o-s ds-0${item.orderStatus}">${makeStatus(item.orderStatus)}</div>
+                    <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
+                    <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
+                </li>
+                <li class="o-main">
+
+                    <div class="o-img ot-${item.orderType}">
+
+                    </div>
+                    <div class="o-con">
+                        <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
+                            <!-- @TODO : A套餐是什么？-->
+
+                            {@if item.orderType == 2}
+
+                               <p style="margin-top: 15px;">${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                                <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+                            {@else if item.orderType == 1}
+
+                            <p>${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                            <p>地点：${item.clinicName}</p>
+                            <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+
+                            {@else}
+
+                            <p>A套餐：关爱女性套餐</p>
+
+                            <p>地点：${item.clinicName}</p>
+
+                            <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+                            {@/if}
+
+
+                        </a>
+                    </div>
+                    <div class="o-r Right">
+
+                    </div>
+
+                </li>
+                <li class="o-b">
+                    <div class="o-btn">
+                        <div class="btn">
+                            <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userId=${item.userId}&doctorId=${item.doctorId}&id=${item.id}">
+                                去评价
+                            </a>
+                        </div>
+                    </div>
+                    <div class="o-p">
+                        单价：<span>￥${item.amount}</span><var>X1</var>
+                    </div>
+                    <div class="o-allp">
+                        合计：<span>￥${item.amount}</span>
+                    </div>
+                </li>
+            </ul>
+
+            {@/each}
+
+
+
+        </div>
+
+
+    </div>
+
+
+</script>
+
+<script id="itemtpl" type="template/juicer">
+    {@each olist as item}
+
+    <ul>
+        <li class="o-title">
+            <div class="o-s ds-0${item.orderStatus}">${makeStatus(item.orderStatus)}</div>
+            <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
+            <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
+        </li>
+        <li class="o-main">
+
+            <div class="o-img ot-${item.orderType}">
+
+            </div>
+            <div class="o-con">
+                <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
+                    <!-- @TODO : A套餐是什么？-->
+                    <p>A套餐：关爱女性套餐</p>
+
+                    <p>地点：${item.clinicName}</p>
+
+                    <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+                </a>
+            </div>
+            <div class="o-r Right">
+
+            </div>
+
+        </li>
+        <li class="o-b">
+            <div class="o-btn">
+                <div class="btn">
+                    <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userId=${item.userId}&doctorId=${item.doctorId}&id=${item.id}">
+                    去评价
+                    </a>
+                </div>
+            </div>
+            <div class="o-p">
+                单价：<span>￥${item.amount}</span><var>X1</var>
+            </div>
+            <div class="o-allp">
+                合计：<span>￥${item.amount}</span>
+            </div>
+        </li>
+    </ul>
+
+    {@/each}
+</script>
+
+
+<script src="../../lib/libAll.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>

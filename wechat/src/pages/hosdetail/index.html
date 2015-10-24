@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>医生详情</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div id="overlay" class="fadeAnimate"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="box box_zl mb8">
+            <div class="list_mz clearfix" data-href="../../pages/map/index.html?longitude=${hos.longitude}&latitude=${hos.latitude}">
+                <a>
+                    <div class="Left"><img src="${hos.snapshot}" /></div>
+                    <div class="Center">
+                        <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong></div>
+                        <div class="row_4">${hos.address}</div>
+                        <div class="row_4 tel">${hos.tel}</div>
+                    </div>
+                    <div class="Right"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="tabbox">
+            <div class="box">
+                <div class="tab_tit">
+                    <span class="tab_selected" id="hosdes">诊所介绍</span><span id="hostip">诊所须知</span>
+                </div>
+            </div>
+            <div class="tabs">
+                <!--诊所介绍-->
+                <div class="tabdetail" id="deswrapper">
+                    <div class="ptext" style="text-indent: 2em;">${hos.description}</div>
+                </div>
+                <!--诊所须知-->
+                <div class="tabdetail" id="tipwrapper" style=" display:none">
+                    <div class="ptext">上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海上海同济大学附属医院上海同济大学附属医院上海同济大学附属医院上海</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/cityList/index.js"></script>
+<script src="../../widgets/rate/index.js"></script>
+<script src="../../pages/hosdetail/index.js"></script>
+
+</body>
+</html>

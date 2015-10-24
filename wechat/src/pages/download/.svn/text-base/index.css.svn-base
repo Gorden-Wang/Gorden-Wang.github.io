@@ -1,0 +1,177 @@
+body, h1 {
+  margin: 0px;
+  padding: 0px; }
+
+header {
+  background-image: url(./header.png);
+  height: 49px;
+  background-size: contain;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  padding: 0px 15px;
+  box-sizing: border-box;
+  top: 0px;
+  transition: top 0.2s ease-in-out; }
+  header h1 {
+    text-indent: -9999em;
+    background-image: url(./h-logo.png);
+    background-size: 34px 36.5px;
+    width: 34px;
+    height: 36.5px;
+    background-repeat: no-repeat;
+    margin-top: 5px; }
+  header div {
+    line-height: 49px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    flex: 1; }
+  header span {
+    width: 23px;
+    height: 25.5px;
+    background-image: url(./download.png);
+    background-size: 23px 25.5px;
+    margin-top: 12px; }
+
+.wrap {
+  margin-top: 50px;
+  background-color: #ededed; }
+
+.banner {
+  display: flex;
+  background-color: white;
+  padding: 15px 0px;
+  border-bottom: 1px solid #d1d1d1; }
+  .banner div {
+    flex: 1;
+    text-align: center; }
+    .banner div .icon {
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 22px;
+      height: 22px;
+      margin-bottom: 5px; }
+    .banner div p {
+      margin: 0.1em 0px;
+      font-size: 10px;
+      color: #999999; }
+    .banner div .i1 {
+      background-image: url(./i1.png);
+      background-size: 22px 20.5px; }
+    .banner div .i2 {
+      background-image: url(./i2.png);
+      background-size: 16px 20px; }
+    .banner div .i3 {
+      background-image: url(./i3.png);
+      background-size: 20px 20.5px; }
+    .banner div .i4 {
+      background-image: url(./i4.png);
+      background-size: 19.5px 20px; }
+
+.content {
+  border-top: 1px solid #d1d1d1;
+  margin-top: 7px;
+  background-color: white;
+  padding: 0px 15px; }
+  .content h1 {
+    font-size: 16px;
+    margin: 10px 0px;
+    color: #404040; }
+  .content p {
+    font-size: 14px;
+    color: #999;
+    display: flex; }
+    .content p span {
+      flex: 1;
+      display: block; }
+    .content p span:last-of-type {
+      text-align: right; }
+
+article {
+  line-height: 1.3em;
+  color: #646464;
+  margin-bottom: 30px; }
+
+footer {
+  bottom: 0px;
+  border-top: 1px solid #d1d1d1;
+  padding: 20px 0px;
+  margin: 0px 15px;
+  box-sizing: border-box;
+  background-color: white; }
+  footer p {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 20px; }
+  footer div {
+    display: flex; }
+  footer .f-logo {
+    background-image: url(./logo.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 126.5px 41.5px;
+    flex: 1; }
+  footer .iphone {
+    background-image: url(./ios.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 48px;
+    height: 60px;
+    margin-right: 20px;
+    margin-left: 20px; }
+  footer .android {
+    background-image: url(./android.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 48px;
+    height: 60px; }
+
+#loading {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  z-index: 99999;
+  background: transparent; }
+
+#loading .loading-content {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  line-height: 100px;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -45px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 0px !important;
+  box-shadow: none !important;
+  display: block;
+  background-color: rgba(47, 34, 33, 0.9);
+  background-image: url(./loading_new.gif);
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  line-height: 0px;
+  text-indent: -999em; }
+
+iframe {
+  border: 0px;
+  height: 0px;
+  width: 0px; }
+
+.nav-up {
+  top: -50px; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>伊健康-女性健康卫士</title>
+    <meta id="shareTitle" content="todo"/>
+    <meta id="shareDes" content="todo"/>
+    <meta id="shareImg" content="todo"/>
+    <meta id="shareLink" content="todo"/>
+    <link href="../../pages/download/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js?version=0.1.2"></script>
+    <script>
+        wx.config({
+            debug: false,
+            appId: 'wx9ade35641403eb00',
+            timestamp: 0,//@TODO
+            nonceStr: 'Tr0UrLen3BxlTccH',//@TODO
+            signature: 'f45db7ec8696783f3d0bd8b73820a26fd9c9ae31',//@TODO
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onVoiceRecordEnd',
+                'playVoice',
+                'onVoicePlayEnd',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+    </script>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <header>
+        <h1 class="logo">
+            伊健康
+        </h1>
+
+        <div>伊健康</div>
+        <span id="download"></span>
+    </header>
+    <div class="wrap">
+
+
+        <div class="banner">
+            <div>
+                <span class="icon i1"></span>
+
+                <p>最专业</p>
+
+                <p>女性健康论坛</p>
+            </div>
+            <div>
+                <span class="icon i2"></span>
+
+                <p>最便捷</p>
+
+                <p>线上名医问诊</p>
+            </div>
+            <div>
+                <span class="icon i3"></span>
+
+                <p>最优质</p>
+
+                <p>线下就诊服务</p>
+            </div>
+            <div>
+                <span class="icon i4"></span>
+
+                <p>最权威</p>
+
+                <p>妇产医院排名</p>
+            </div>
+        </div>
+        <div class="content">
+            <h1>女性更年期如何保健？</h1>
+
+            <div class="com-title-wrapper">
+                <span class="img-wrapper">
+                    <img src="./pic.png">
+                </span>
+
+                <div>
+                    小红
+                </div>
+                <span>06-29 11:30</span>
+            </div>
+
+            <div class="com-reply-wrapper">
+                <span>
+                    65条评论
+                </span>
+                <span>来自:</span>
+                <span>伊健康-妇科吧</span>
+            </div>
+
+            <article>
+                妇女生命的三分之一时间将在绝经后度过。从中医角度来讲，脏燥症主要是由于阴血亏虚，阴阳失调，气机紊乱，心神不安所致。而目前，由于压力过大，暴饮暴食，长期熬夜，缺乏运动，使得人体内的阴阳极度失调，阴精耗损，虚火上扬，甚至很多30多岁的人就已经提前出现了更年期的症状，走向了衰老。但是，目前对于这个问题大多数人没有引起充分的重视，认为既然人都要经历更年期，脏燥就脏燥吧，慢慢就好了。
+                妇女生命的三分之一时间将在绝经后度过。从中医角度来讲，脏燥症主要是由于阴血亏虚，阴阳失调，气机紊乱，心神不安所致。而目前，由于压力过大，暴饮暴食，长期熬夜，缺乏运动，使得人体内的阴阳极度失调，阴精耗损，虚火上扬，甚至很多30多岁的人就已经提前出现了更年期的症状，走向了衰老。但是，目前对于这个问题大多数人没有引起充分的重视，认为既然人都要经历更年期，脏燥就脏燥吧，慢慢就好了。
+            </article>
+
+            <ul class="coment">
+                <li>
+                    <div class="com-title-wrapper">
+                <span class="img-wrapper">
+                    <img src="./pic.png">
+                </span>
+
+                        <div class="name">
+                            小红
+                        </div>
+                        <span>06-29 11:30</span>
+                    </div>
+                    <p class="ad">
+                        我认为这是个很好的建议，我也会遵守的，这真是个好论坛帖子，我会继续关注。
+                    </p>
+                </li>
+                <li>
+                    <div class="com-title-wrapper">
+                <span class="img-wrapper">
+                    <img src="./pic.png">
+                </span>
+
+                        <div class="name">
+                            小红
+                        </div>
+                        <span>06-29 11:30</span>
+                    </div>
+                    <p class="ad">
+                        我认为这是个很好的建议，我也会遵守的，这真是个好论坛帖子，我会继续关注。
+                    </p>
+                </li>
+            </ul>
+            <div class="download-li">
+                下载查看更多内容
+            </div>
+
+            <footer>
+                <p>喜欢健康咨询，下载伊健康APP吧</p>
+
+                <div>
+                    <span class="f-logo"></span>
+                    <span class="iphone"></span>
+                    <span class="android"></span>
+                </div>
+            </footer>
+        </div>
+
+
+    </div>
+
+
+</script>
+
+
+<script src="../../lib/zepto.js?version=0.1.2"></script>
+<script src="../../lib/juicer.js?version=0.1.2"></script>
+<script src="index.js?version=0.1.2"></script>
+
+</body>
+</html>

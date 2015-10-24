@@ -1,0 +1,37 @@
+#page {
+  .wrap {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    padding:0px 10px;
+    border-top: 1px solid #d1d1d1;
+    min-height: 0px;
+    border-bottom: 1px solid #d1d1d1;
+
+    .evalua{
+      display: flex;
+      border: 0px;
+      margin-bottom: 0px;
+
+
+      .rate-eles{
+        top: -3px;
+        position: relative;
+      }
+      
+      img{
+        width: 20px;
+
+      }
+
+
+    }
+
+    .pjtext{
+      //padding: 0px;
+      border-bottom: 0px;
+      padding-bottom: 10px;
+    }
+  }
+
+}

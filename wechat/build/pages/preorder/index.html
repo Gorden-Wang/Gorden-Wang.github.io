@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>预览确认</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div id="overlay" class="fadeAnimate"></div>
+<script type="template/juicer" id="tpl">
+
+    <div class="menzhen-wrapper">
+        <p>线下门诊详情</p>
+        <ul>
+            <li class="icon1">
+                <div>医生</div>
+                <div>${doc}</div>
+            </li>
+            <li class="icon2">
+                <div>科室</div>
+                <div>${dep}</div>
+            </li>
+            <li class="icon3">
+                <div>地点</div>
+                <div>${add}</div>
+            </li>
+            <li class="icon4">
+                <div>时间</div>
+                <div>${time}</div>
+            </li>
+        </ul>
+    </div>
+
+    <p>
+        填写预约就诊人信息
+    </p>
+
+    <div class="jiuzhen-wrapper">
+        <ul>
+            <li>
+                <div>姓名</div>
+                <div>
+                    <input type="text" id="name" placeholder="请输入姓名">
+                </div>
+            </li>
+            <li>
+                <div>联系电话</div>
+                <div>
+                    <input type="number" id="tel" placeholder="请输入联系电话">
+                </div>
+            </li>
+            <li>
+                <div>身份证号</div>
+                <div>
+                    <input type="text" id="idcode" placeholder="请输入身份证号">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    {@if conList.length > 0}
+
+    <div class="history-wrapper">
+        <ul>
+
+
+            {@each conList as item}
+            <li data-id="${item.id}">
+                <span class="l-name">${item.userName}</span>
+                <span class="l-tel">${item.phone}</span>
+                <span class="l-code">${item.idNumber}</span>
+
+                <div class="radio"></div>
+            </li>
+            {@/each}
+        </ul>
+    </div>
+
+
+    {@/if}
+
+
+
+
+    <p>
+        支付列表
+    </p>
+    <div class="price-wrapper">
+        <ul>
+            <li class="title">
+                <span class="l-sp1">总计</span>
+                <span class="l-sp2">1份</span>
+                <span class="l-sp3">￥${price}</span>
+            </li>
+            <li>
+                <span class="l-sp1">定制体检套餐</span>
+                <span class="l-sp2">x1</span>
+                <span class="l-sp3">￥${price}</span>
+            </li>
+        </ul>
+    </div>
+    <p>
+        支付账户
+    </p>
+    <div class="price-channel">
+        <ul>
+            <!--<li>-->
+                <!--<span class="alipay"></span>-->
+
+                <!--<p>-->
+                    <!--<span>支付宝网页支付</span>-->
+                    <!--<span>可银行卡支付</span>-->
+                <!--</p>-->
+
+                <!--<div class="radio radio_se"></div>-->
+            <!--</li>-->
+            <li>
+                <span class="wechat"></span>
+
+                <p>
+                    <span>支付宝网页支付</span>
+                    <span>可银行卡支付</span>
+                </p>
+
+                <div class="radio radio_se"></div>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <ul>
+            <li>
+                <div>
+                    <p>总计：</p>
+
+                    <p>￥${price}.00</p>
+                </div>
+                <span class="btn dis">确认支付</span>
+            </li>
+        </ul>
+    </footer>
+</script>
+
+
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../pages/preorder/index.js?version=0.1.2"></script>
+
+</body>
+</html>

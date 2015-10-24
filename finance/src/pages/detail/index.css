@@ -1,0 +1,108 @@
+#page {
+  margin-bottom: 50px; }
+  #page .top-banner {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ebebeb; }
+    #page .top-banner .user-wrapper .img-wrapper {
+      width: 35px;
+      height: 35px;
+      border-radius: 35px;
+      overflow: hidden;
+      margin-right: 10px; }
+    #page .top-banner .user-wrapper .detail-wrapper {
+      flex: 1; }
+      #page .top-banner .user-wrapper .detail-wrapper p:first-of-type {
+        font-size: 15px;
+        line-height: 18px; }
+      #page .top-banner .user-wrapper .detail-wrapper p:last-of-type {
+        font-size: 11px;
+        color: #94989e; }
+    #page .top-banner .user-wrapper img {
+      width: 100%; }
+    #page .top-banner .content-wrapper {
+      color: #666;
+      margin: 12px 0px; }
+    #page .top-banner .imgs-wrapper li {
+      width: 23.33333%;
+      float: left;
+      height: 0px;
+      position: relative;
+      padding-bottom: 20.33333%;
+      margin-right: 3%; }
+      #page .top-banner .imgs-wrapper li a {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+      #page .top-banner .imgs-wrapper li img {
+        width: 100%;
+        height: 100%; }
+    #page .top-banner .imgs-wrapper li:last-of-type {
+      margin-right: 0px; }
+  #page .like-wrapper {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ebebeb; }
+    #page .like-wrapper .share-icon {
+      background-image: url(../../images/common/icon.png);
+      background-size: 12px 22px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 13px;
+      height: 11px;
+      margin-top: 10px; }
+    #page .like-wrapper div {
+      margin-left: 10px; }
+      #page .like-wrapper div img {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        overflow: hidden;
+        margin-right: 8px; }
+  #page .reply-wrapper {
+    padding: 0px 10px; }
+    #page .reply-wrapper .reply-icon {
+      background-image: url(../../images/common/icon.png);
+      background-size: 12px 22px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 13px;
+      height: 11px;
+      margin-top: 15px;
+      background-position: 0px -12px; }
+    #page .reply-wrapper ul {
+      margin-left: 10px;
+      flex: 1; }
+      #page .reply-wrapper ul li {
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px 0px; }
+      #page .reply-wrapper ul img {
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        overflow: hidden;
+        margin-right: 8px; }
+      #page .reply-wrapper ul .reply-content {
+        flex: 1;
+        color: #333333;
+        font-size: 14px; }
+        #page .reply-wrapper ul .reply-content > p {
+          line-height: 15px;
+          margin-top: 5px; }
+        #page .reply-wrapper ul .reply-content .li-title {
+          color: #666;
+          font-size: 13px; }
+          #page .reply-wrapper ul .reply-content .li-title .reply-name {
+            flex: 1; }
+  #page footer {
+    background-color: #f15c40;
+    color: #FFF;
+    font-size: 17px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    width: 100%; }
+  #page .box {
+    display: flex; }
+
+/*# sourceMappingURL=index.css.map */
