@@ -144,7 +144,8 @@
           background-color: rgba(0, 0, 0, 0.5);
           color: #FFF;
           top: 15px;
-          padding: 3px 5px; }
+          padding: 3px 5px;
+          font-size: 14px; }
         #page .li-wrapper .li-items .l-img .l-img-banner {
           position: absolute;
           bottom: 0px;
@@ -165,7 +166,7 @@
             position: relative; }
       #page .li-wrapper .li-items .l-des {
         padding: 10px;
-        font-size: 14px;
+        font-size: 16px;
         color: #f22452; }
       #page .li-wrapper .li-items .l-loca {
         padding: 10px;

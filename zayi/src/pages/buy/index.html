@@ -89,7 +89,7 @@
                 职责描述
             </p>
 
-            <p class="b-content">${data.product.introduction}</p>
+            <p class="b-content">${data.product.requireOffice}</p>
         </div>
 
 
@@ -109,8 +109,8 @@
             <p class="b-title">工作地点</p>
 
             <p class="b-content" style="text-align: center">
-                {@if data.product.workplacedesc}
-                    ${data.product.workplacedesc}
+                {@if data.product.workPlaceDesc}
+                    ${data.product.workPlaceDesc}
                 {@else}
                     无
                 {@/if}
@@ -127,8 +127,7 @@
             </p>
 
 
-            <!-- @TODO:timeList-->
-            {@if data.product.workTimeType != 1}
+            {@if data.product.workDateTime.length > 0}
             <ul class="may-ul graybox" style="margin-left: -10px;margin-right: -10px;">
                 <li>
                     <div class="clear-float">${makeTimeTitle(data.product.workTimeType)}</div>
@@ -139,12 +138,12 @@
                         <!--<li>#YYYYMMDD 的 0000-0000#</li>-->
                         <!--<li class="hide">#YYYYMMDD 的 0000-0000#</li>-->
                         <!--<li class="hide">#YYYYMMDD 的 0000-0000#</li>-->
-                        {@each data.product.workDatetime as item,index}
+                        {@each data.product.workDateTime as item,index}
 
                             {@if index >3}
-                            <li class="hide">${item.data} 的 ${item.time}</li>
+                            <li class="hide">${item.date} 的 ${item.time}</li>
                             {@else}
-                            <li>${item.data} 的 ${item.time}</li>
+                            <li>${item.date} 的 ${item.time}</li>
                             {@/if}
 
                         {@/each}
@@ -179,10 +178,10 @@
                     <div>工作经验</div>
                     <div>${data.product.requireExperienceName}</div>
                 </li>
-                {@if data.product.requireOffice}
+                {@if data.product.requireQualification}
                 <li>
                     <div class="clear-float">资质要求</div>
-                    <div style="width: 100%;text-align: left">${data.product.requireOffice}</div>
+                    <div style="width: 100%;text-align: left">${data.product.requireQualification}</div>
                 </li>
                 {@/if}
                 {@if data.product.requireOther}
@@ -200,7 +199,13 @@
                 </li>
                 <li>
                     <div>所需工作量</div>
-                    <div>${data.product.workloadTimes}${data.product.workloadUnit}</div>
+                    <div>
+                        {@if data.product.minWorkloadManHour!= data.product.maxWorkloadManHour}
+                        ${data.product.minWorkloadManHour} - ${data.product.maxWorkloadManHour}${data.product.workloadUnit}/人
+                        {@else}
+                        ${data.product.minWorkloadManHour}${data.product.workloadUnit}/人
+                        {@/if}
+                    </div>
                 </li>
                 <li>
                     <div>是否面试</div>

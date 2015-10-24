@@ -47,7 +47,7 @@
         <div class="des-wrapper">
 
             <div class="rate-wrapper">
-                <img src="../../images/rate/${makeRateImg(data.recommendationLevel)}.png"> ${data.recommendationLevel}
+                <img src="../../images/rate/${makeRateImg(data.creditScore)}.png"> ${data.creditScore}
             </div>
 
             <div class="cer-wrapper">
@@ -72,114 +72,6 @@
         </p>
 
         <section class="li-wrapper">
-            <!--<div class="li-items">-->
-                <!--<div class="l-img">-->
-                    <!--<a class="back-img">-->
-
-                    <!--</a>-->
-                    <!--<span class="l-label">-->
-                        <!--独门技艺/杂项特长-->
-                    <!--</span>-->
-
-                    <!--<div class="l-img-banner">-->
-                        <!--<span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="l-des">-->
-                    <!--死人旅行规划师，打造磁盘旅行经历-->
-                <!--</div>-->
-                <!--<div class="l-loca">-->
-                    <!--<span class="l-lo">-->
-                        <!--北京市朝阳区-->
-                    <!--</span>-->
-                    <!--<span class="l-de">-->
-                        <!--15.7KM-->
-                    <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="li-items no-img">-->
-                <!--<div class="l-img ">-->
-                    <!--<a class="back-img">-->
-
-                    <!--</a>-->
-                    <!--<span class="l-label">-->
-                        <!--独门技艺/杂项特长-->
-                    <!--</span>-->
-
-                    <!--<div class="l-img-banner">-->
-                        <!--<span class="mai-icon"></span><span class="b-num rest-top">￥450</span><span-->
-                            <!--class="rest-top">/每次</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="l-des">-->
-                    <!--死人旅行规划师，打造磁盘旅行经历-->
-                <!--</div>-->
-                <!--<div class="l-loca">-->
-                    <!--<span class="l-lo">-->
-                        <!--北京市朝阳区-->
-                    <!--</span>-->
-                    <!--<span class="l-de">-->
-                        <!--15.7KM-->
-                    <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="li-items hide">-->
-                <!--<div class="l-img">-->
-                    <!--<a class="back-img">-->
-
-                    <!--</a>-->
-                    <!--<span class="l-label">-->
-                        <!--独门技艺/杂项特长-->
-                    <!--</span>-->
-
-                    <!--<div class="l-img-banner">-->
-                        <!--<span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="l-des">-->
-                    <!--死人旅行规划师，打造磁盘旅行经历-->
-                <!--</div>-->
-                <!--<div class="l-loca">-->
-                    <!--<span class="l-lo">-->
-                        <!--北京市朝阳区-->
-                    <!--</span>-->
-                    <!--<span class="l-de">-->
-                        <!--15.7KM-->
-                    <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="li-items hide">-->
-                <!--<div class="l-img">-->
-                    <!--<a class="back-img">-->
-
-                    <!--</a>-->
-                    <!--<span class="l-label">-->
-                        <!--独门技艺/杂项特长-->
-                    <!--</span>-->
-
-                    <!--<div class="l-img-banner">-->
-                        <!--<span class="zhao-icon"></span><span class="b-num rest-top">￥450</span><span class="rest-top">/每次</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="l-des">-->
-                    <!--死人旅行规划师，打造磁盘旅行经历-->
-                <!--</div>-->
-                <!--<div class="l-loca">-->
-                    <!--<span class="l-lo">-->
-                        <!--北京市朝阳区-->
-                    <!--</span>-->
-                    <!--<span class="l-de">-->
-                        <!--15.7KM-->
-                    <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-
-
-
-
 
             {@each data.productList as item , index}
 
@@ -231,24 +123,33 @@
             <p class="b-content" style="text-align: center">
                 {@if data.userDesc}
                     ${data.userDesc}
+                    {@if data.userSupplyDescription}
+                     <br> ${data.userSupplyDescription}
+                    {@/if}
                 {@else}
                     无
                 {@/if}
             </p>
 
             <ul class="may-ul">
+                {@if data.age}
                 <li>
                     <div>年龄</div>
                     <div>${data.age}岁</div>
                 </li>
+                {@/if}
+                {@if data.gender}
                 <li>
                     <div>性别</div>
                     <div>${data.gender}</div>
                 </li>
+                {@/if}
+                {@if data.jobExp}
                 <li>
                     <div>工作年龄</div>
                     <div>${data.jobExp}</div>
                 </li>
+                {@/if}
                 {@if data.educationViewList.length > 0}
                 <li>
                     <div class="clear-float">教育背景</div>
@@ -271,17 +172,17 @@
                 {@/if}
             </ul>
 
+            {@if data.compName}
             <div class="graybox" style="margin-left: -10px;margin-right: -10px;">
-                <p class="b-title">企业名称</p>
+                <p class="b-title">${data.compName}</p>
 
                 <p class="b-content" style="text-align: center">
-                    {@if data.compName}
-                    ${data.compName}
-                    {@else}
-                    无
+                    {@if data.compDesc}
+                    ${data.compDesc}
                     {@/if}
                 </p>
             </div>
+            {@/if}
 
             {@if data.interestView.length > 0}
             <p class="b-title">兴趣点</p>
@@ -304,7 +205,7 @@
             </div>
             {@/if}
 
-            {@if data.addressList}
+            {@if data.addressList.length > 0}
 
             <p class="b-title">常活动地点</p>
 
@@ -362,11 +263,11 @@
                 </li>
                 <li>
                     <div>好评率</div>
-                    <div>${data.fineAppraiseRate * 100}%</div>
+                    <div>${makePercentage(data.fineAppraiseRate)}%</div>
                 </li>
                 <li>
                     <div>违约率</div>
-                    <div>${data.renegeRate * 100}%</div>
+                    <div>${makePercentage(data.renegeRate)}%</div>
                 </li>
                 <li>
                     <div>响应速度</div>
@@ -374,7 +275,7 @@
                 </li>
                 <li>
                     <div>资料完整度</div>
-                    <div>${data.userInfoCompleteRate * 100}%</div>
+                    <div>${makePercentage(data.userInfoCompleteRate)}%</div>
                 </li>
                 <li style="border-bottom: 1px solid #d8d8d8;">
                     <p class="b-title">收到的评价</p>

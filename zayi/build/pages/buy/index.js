@@ -73,8 +73,11 @@
             });
             //add download
 
-            $(".down-header,footer").on("click", function () {
+            $(".down-header,footer,.btn-down").on("click", function () {
                 location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.zy.part_timejob"
+            });
+            $(".des-wrapper").on("click",function(){
+                location.href = "../../pages/home/index.html?user_id="+that.data.data.product.userId;
             })
 
         },

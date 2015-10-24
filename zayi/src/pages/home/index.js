@@ -74,6 +74,10 @@
                 return num>1 ? "hide" : "";
 
             });
+            juicer.register("makePercentage", function (num) {
+               return Math.round(num*100);
+
+            });
 
 
             juicer.register("makeAgeDis", function (min, max) {
