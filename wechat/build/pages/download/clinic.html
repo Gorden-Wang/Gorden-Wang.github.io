@@ -118,34 +118,30 @@
                 <div class="list_mz clearfix">
                     <a>
                     <div class="Left"><img class=""
-                                           src="http://7xax0y.com1.z0.glb.clouddn.com/user/FF91D323FFD04EE2ADB7D3B1D6CD0695/snapshot/1436164403937.png">
+                                           src="${clinic.images[0]}">
                     </div>
                     <div class="Center">
-                        <div class="row_1">北京美年大健康大望路分院</div>
-                        <div class="row_2">
-                            <span class="rate-eles">
-                                <i><img src="../../images/redstar.png"></i><i><img
-                                    src="../../images/redstar.png"></i><i><img
-                                    src="../../images/redstar.png"></i><i><img
-                                    src="../../images/redstar.png"></i><i><img
-                                    src="../../images/graystar.png"></i></span><strong>5分</strong></div>
-                        <div class="row_3">北京市朝阳区西大望路15号外企大厦B座5层</div>
+                        <div class="row_1">${clinic.name}</div>
+                        <div class="row_2" style="margin-top: 10px;">
+                           $${makeRate(clinic.sumScore)} <strong>5分</strong></div>
+                        <!--<div class="row_3">北京市朝阳区西大望路15号外企大厦B座5层</div>-->
                     </div>
                     <!--<div class="Right"></div>-->
                 </a></div>
 
                 <ul>
-                    <li class="i7">
-                        北京市海淀区15号北京协和医院
+                    <li id="cl-address" class="i7" data-lat="${clinic.latitude}" data-lng="${clinic.longitude}">
+                        ${clinic.address}
                     </li>
                     <li class="i5">
-                        010-1234567
+                        ${clinic.tel}
                     </li>
                     <li class="i6">
                         <p>综合介绍</p>
 
-                        <p style="margin-top: 5px; ">
-                            中国协和医科大学妇产科是国家卫生部明明的研究中心发国家级重点学科，中国协和医科大学妇产科是国家卫生部明明的研究中心发国家级重点学科</p>
+                        <p style="margin-top: 5px;line-height: 1.5em ">
+                            ${clinic.description}
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -159,12 +155,7 @@
                     <span class="title">综合评分</span>
 
                     <div class="rate">
-                        <span class="rate-eles">
-                                <i><img src="redstar.png"></i><i><img
-                                src="redstar.png"></i><i><img
-                                src="redstar.png"></i><i><img
-                                src="redstar.png"></i><i><img
-                                src="graystar.png"></i></span>
+                        $${makeRate(com.sumSorce)}
                     </div>
                     <span class="score"> 87分</span>
                 </div>
@@ -198,40 +189,28 @@
 
 
             <ul class="coment">
+                {@each com.comments as item,index}
+
+                {@if index<2}
+
                 <li>
                     <p>
 
-                        <span class="name" style="flex: none;line-height: 25px;margin-right: 10px;">我是医生</span>
-<span class="rate-eles">
-                                <i><img src="../../images/redstar.png"></i><i><img
-        src="../../images/redstar.png"></i><i><img
-        src="../../images/redstar.png"></i><i><img
-        src="../../images/redstar.png"></i><i><img
-        src="../../images/graystar.png"></i></span>
-                        <span class="time">06-29 11:30</span>
+                        <span class="name" style="flex: none;line-height: 25px;margin-right: 10px;">${item.nickName}</span>
+                        $${makeRate(item.sumScore)}
+                        <span class="time">${makeTime(item.createtime)}</span>
                     </p>
 
-                    <p class="ad">
-                        我认为这是个很好的建议，我也会遵守的，这真是个好论坛帖子，我会继续关注。
+                    <p class="ad" style="line-height: 1.5em">
+                        ${item.content}
                     </p>
                 </li>
-                <li>
-                    <p>
 
-                        <span class="name" style="flex: none;line-height: 25px;margin-right: 10px;">我是医生</span>
-<span class="rate-eles">
-                                <i><img src="../../images/redstar.png"></i><i><img
-        src="../../images/redstar.png"></i><i><img
-        src="../../images/redstar.png"></i><i><img
-        src="../../images/redstar.png"></i><i><img
-        src="../../images/graystar.png"></i></span>
-                        <span class="time">06-29 11:30</span>
-                    </p>
+                {@/if}
 
-                    <p class="ad">
-                        我认为这是个很好的建议，我也会遵守的，这真是个好论坛帖子，我会继续关注。
-                    </p>
-                </li>
+
+                {@/each}
+
             </ul>
 
             <div class="download-li">
@@ -259,8 +238,8 @@
 </script>
 
 
-<script src="../../lib/zepto.js?version=0.1.2"></script>
-<script src="../../lib/juicer.js?version=0.1.2"></script>
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/rate/index.js?version=0.1.2"></script>
 <script src="index.js?version=0.1.2"></script>
 
 </body>

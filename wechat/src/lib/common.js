@@ -220,6 +220,47 @@ window.Wlib = (function () {
                 }
             })
         },
+        SendRequestNew: function (method,next, data, success, error) {
+
+            var that = this;
+            var plateform = (function(str){
+                if(str.match(/iPhone|iPod|iPad/)){
+                    return 2
+                }else{
+                    return 1
+                }
+            })(navigator.userAgent);
+
+            var body = {
+                "deviceid" : "",
+                "channel": "102",
+                "clientVersion":"H5",
+                "method": method,
+                "requestType":next,
+                "token": localStorage.getItem("token") || "",
+                "version": "1.0.2.0830",
+                "platform":plateform,
+                "params": data
+            }
+
+            var url = (function () {
+                var u =  that.evn == "daily" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://182.92.216.40/adapter/api/requestH5?body=";
+
+
+                return u + JSON.stringify(body);
+            })();
+
+            $.ajax({
+                url: url + "&callback=?",
+                dataType: "JSONP",
+                success: function (res) {
+                    success(res);
+                },
+                error: function (err) {
+                    error && error(err);
+                }
+            })
+        },
         GetJsonData: function (url, success, error) {
             $.ajax({
                 url: url,
