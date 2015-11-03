@@ -25,15 +25,15 @@
         <div class="top-wrapper">
             <div class="box box_list_ys">
                 <div class="list_ys clearfix">
-                    <a href="../../pages/docdetail/index.html?doctorId=${doctorId}">
+                    <a href="../../pages/docdetail/index.html?doctorId=${doc.doctorId}">
                         <div class="Left"><img src="../../images/temp/img_3.png"/></div>
                         <div class="Center">
                             <div class="row_1">${doc.name}</div>
-                            <div class="row_2" id="res-til">${makeTitle(doc.title)}</div>
+                            <div class="row_2" id="res-til">${doc.titleName}</div>
                             <div class="row_2" id="res-add">${doc.hospital}</div>
-                            <div class="row_2">擅长： ${makeDes(doc.specialities)}</div>
+                            <div class="row_2">擅长： ${doc.specialitys}</div>
                         </div>
-                        <div class="Right" id="res-dep">妇科</div>
+                        <div class="Right" id="res-dep">${doc.departmentName}</div>
                         <div class="right-icon t-r"></div>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../pages/feedback/list.html?doctorId=${doc.id}">
+                        <a href="../../pages/feedback/list.html?doctorId=${doc.doctorId}">
                             用户评价
                             <div class="right-icon t-r"></div>
                         </a>
@@ -82,14 +82,14 @@
             <div class="box box_list_ys top-radius">
 
                 <div class="top-banner">
-                        $${makeTime(item.treatmentPlan.starttime)}
+                        $${makeTime(item.plan.starttime)}
                 </div>
 
                 <div class="list_ys clearfix">
-                    <a href="../../pages/hosdetail/index.html">
+                    <a href="../../pages/hosdetail/index.html?clinicId=${item.plan.clinicId}">
                         <div class="Center">
-                            <div class="row_1 icon1">${item.clinic.name}</div>
-                            <div class="row_2 icon2">${item.clinic.address}</div>
+                            <div class="row_1 icon1">${item.plan.name}</div>
+                            <div class="row_2 icon2">${item.plan.address}</div>
                         </div>
                     </a>
                 </div>
@@ -97,14 +97,12 @@
 
             <div class="time-wrapper ">
                 <ul>
-                    {@each item.treatmentPlan.treatmentPlanDetails as timeItem}
+                    {@each item.planDetail as timeItem}
 
-                    {@if timeItem.finished == true}
-                    <li data-time="${makeFuckTime(item.treatmentPlan.starttime)}" data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
-                    {@/if}
-
-                    {@if timeItem.finished == false}
-                    <li data-plan="${item.treatmentPlan.id}" data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
+                    {@if timeItem.state == 1}
+                    <li data-time="${makeFuckTime(item.plan.starttime)}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    {@else}
+                    <li  data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
                     {@/if}
 
 

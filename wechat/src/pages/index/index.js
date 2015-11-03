@@ -89,18 +89,18 @@
                 //});
                 that.data.latitude = position.coords.latitude;
                 that.data.longitude = position.coords.longitude;
-                Wlib.SendRequest("1267", {
+                Wlib.SendRequestNew("commonQuery","locate", {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 }, function (res) {
-                    if (res.entity) {
+                    if (res.value) {
                         var CityList = {
                             "1": "",
                             "2": "",
                             "3": "",
                             "187": ""
                         };
-                        (res.entity.id in CityList) && that.dom.citySelect.val(res.entity.id);
+                        (res.value.id in CityList) && that.dom.citySelect.val(res.value.id);
                     }
                 })
             }

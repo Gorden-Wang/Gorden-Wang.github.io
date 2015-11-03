@@ -64,16 +64,16 @@
                 "maxResults" :  that.data.maxResults
             }
 
-            Wlib.SendRequest("2032", param, function (res) {
-                that.data.list = res.entity;
-                that.data.COUNT = res.entity.list ? res.entity.list.length : res.entity.length
+            Wlib.SendRequestNew("treatQuery","findDoctorComment", param, function (res) {
+                that.data.list = res.value;
+                that.data.COUNT = res.value.comments ? res.value.comments.length : res.value.length
                 console.log(that.data)
                 //that.dom.loading.hide();
                 that.renderUI();
                 that.recacheDom();
                 //that.renderRate();
 
-                if (res.entity.list && (res.entity.list.length == that.data.maxResults)) {
+                if (res.value.comments && (res.value.comments.length == that.data.maxResults)) {
                     that.bindNext(true);
                 }
 
@@ -91,14 +91,14 @@
                     "maxResults" :  that.data.maxResults
                 }
 
-                Wlib.SendRequest("2032", param, function (res) {
+                Wlib.SendRequestNew("treatQuery","findDoctorComment", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
                     var data = {};
-                    data.res = res.entity || [];
+                    data.res = res.value || [];
                     var reshtml = juicer($("#tplItem").html(), data);
                     $("ul").append(reshtml);
-                    if (res.entity.list && (res.entity.list.length == that.data.maxResults)) {
+                    if (res.value.comments && (res.value.comments.length == that.data.maxResults)) {
                         that.bindNext(true);
                     }
                     if (!res.entity || res.entity.length == 0) {

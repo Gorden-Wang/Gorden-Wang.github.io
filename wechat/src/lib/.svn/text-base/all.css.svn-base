@@ -1268,6 +1268,60 @@ textarea {
     animation-name: tipsfadeIn;
 }
 
+/*with no close*/
+@-webkit-keyframes tipsfadeInNo {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@keyframes tipsfadeInNo {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+.tipsfadeInNo {
+    -webkit-animation-name: tipsfadeInNo;
+    animation-name: tipsfadeInNo;
+}
+
 .fadeAnimate {
     -webkit-animation-duration: 0.3s;
     animation-duration: 0.3s;

@@ -40,14 +40,14 @@
           var that = this;
 
             var param = {
-                "orderId": that.data.orderId
+                "orderid": that.data.orderId
             }
 
-            Wlib.SendRequest("2037", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","findOrderById", param, function (res) {
 
                 //@TODO 获取支付方式，去支付
-                if(res.errorcode == 0){
-                    that.data.de = res.entity;
+                if(res.errorCode == 0){
+                    that.data.de = res.value;
 
                     that.fetchDepartments(function(){
                         that.renderUI();
@@ -64,9 +64,9 @@
 
         fetchDepartments: function (callback) {
             var that = this;
-                Wlib.SendRequest("253", {}, function (res) {
-                    if (res.errorcode == 0 && res.entity) {
-                        that.data.depList = res.entity;
+                Wlib.SendRequestNew("commonQuery","findClinicDepts", {}, function (res) {
+                    if (res.errorCode == 0 && res.value) {
+                        that.data.depList = res.value;
                         callback && callback();
                     }
                 });

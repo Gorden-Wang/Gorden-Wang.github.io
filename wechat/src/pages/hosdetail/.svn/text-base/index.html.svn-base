@@ -24,11 +24,11 @@
         <div class="box box_zl mb8">
             <div class="list_mz clearfix" data-href="../../pages/map/index.html?longitude=${hos.longitude}&latitude=${hos.latitude}">
                 <a>
-                    <div class="Left"><img src="${hos.snapshot}" /></div>
+                    <div class="Left"><img src="${hos.images[0]}" /></div>
                     <div class="Center">
                         <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong></div>
                         <div class="row_4">${hos.address}</div>
-                        <div class="row_4">${hos.tel}</div>
+                        <div class="row_4 tel">${hos.tel}</div>
                     </div>
                     <div class="Right"></div>
                 </a>

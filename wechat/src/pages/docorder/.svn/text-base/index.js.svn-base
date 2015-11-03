@@ -118,34 +118,45 @@
         fetchData: function () {
             var that = this;
             var param = {
-                "doctorId": that.data.doctorId
+                "doctorId": that.data.doctorId,
+                "userid" : Wlib.getUserId()
             }
 
-            Wlib.SendRequest("2035", param, function (res) {
-                that.data.docList = res.entity;
+            Wlib.SendRequestNew("treatQuery","findDoctorTreatmentPlans", param, function (res) {
+                that.data.docList = res.value;
 
-                that.makeTimeList();
-                console.log(that.data)
+                if(res.value){
+                    that.makeTimeList();
+                    console.log(that.data)
 
-                that.fetchDocDetail(function () {
+                    that.fetchDocDetail(function () {
 
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
+                        that.renderUI();
+                        that.recacheDom();
+                        that.bindEvent();
+                        that.dom.loading.hide();
+
+                    })
+                }else{
                     that.dom.loading.hide();
+                    Wlib.tips("没有该医生的约诊信息。",null,true);
 
-                })
+
+                }
+
+
 
             });
         },
         fetchDocDetail: function (callback) {
             var that = this;
             var param = {
-                "doctorId": that.data.doctorId
+                "doctorId": that.data.doctorId,
+                "userid" : Wlib.getUserId()
             }
 
-            Wlib.SendRequest("240", param, function (res) {
-                that.data.doc = res.entity;
+            Wlib.SendRequestNew("treatQuery","doctorInfo", param, function (res) {
+                that.data.doc = res.value;
                 callback && callback();
 
 
@@ -190,7 +201,7 @@
             });
 
             juicer.register("getPrice", function () {
-                return that.data.docList[0].treatmentPlan.price;
+                return that.data.docList[0].plan.price;
             });
             juicer.register("makeTime", function (time) {
 
@@ -309,7 +320,7 @@
                     "dep="+ $("#res-dep").text(),
                     "add="+ $("#res-add").text(),
                     "time="+ $(this).attr("data-time")+" "+$(this).text(),
-                    "price="+that.data.docList[0].treatmentPlan.price
+                    "price="+that.data.docList[0].plan.price
                 ]
                 var resparam = [].join.call(param,"&");
                 console.log(resparam)

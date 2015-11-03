@@ -47,11 +47,18 @@ window.Wlib = (function () {
             return value ? decodeURIComponent(value[1]) : value;
         },
         tips: function (txt, callback, noClose) {
-            var bgwrapper = $("<div class = 'fixed tipsfadeIn tipsanimated'>" + txt + "</div>");
+            if (!noClose) {
+                var bgwrapper = $("<div class = 'fixed tipsfadeIn tipsanimated'>" + txt + "</div>");
+            } else {
+                var bgwrapper = $("<div class = 'fixed tipsfadeInNo tipsanimated'>" + txt + "</div>");
+            }
+
             $("body").append(bgwrapper);
             setTimeout(function () {
-                $(bgwrapper).remove();
-                callback && callback();
+                if (!noClose) {
+                    $(bgwrapper).remove();
+                    callback && callback();
+                }
             }, 3000);
         },
         removeTips: function (callback) {
@@ -192,6 +199,9 @@ window.Wlib = (function () {
 
             check();
         },
+        getUserId: function () {
+            return Wlib.getRequestParam("userId") || localStorage.getItem("userId");
+        },
         SendRequest: function (method, data, success, error) {
             var that = this;
             var body = {
@@ -203,7 +213,7 @@ window.Wlib = (function () {
             }
 
             var url = (function () {
-                var u =  that.evn == "daily" ? "http://182.92.216.40/xiaomianao/request?body=" : "http://182.92.118.70/xiaomianao/request?body=";
+                var u = that.evn == "daily" ? "http://182.92.216.40/xiaomianao/request?body=" : "http://182.92.118.70/xiaomianao/request?body=";
 
 
                 return u + JSON.stringify(body);
@@ -220,31 +230,31 @@ window.Wlib = (function () {
                 }
             })
         },
-        SendRequestNew: function (method,next, data, success, error) {
+        SendRequestNew: function (method, next, data, success, error) {
 
             var that = this;
-            var plateform = (function(str){
-                if(str.match(/iPhone|iPod|iPad/)){
+            var plateform = (function (str) {
+                if (str.match(/iPhone|iPod|iPad/)) {
                     return 2
-                }else{
+                } else {
                     return 1
                 }
             })(navigator.userAgent);
 
             var body = {
-                "deviceid" : "",
+                "deviceid": "",
                 "channel": "102",
-                "clientVersion":"H5",
+                "clientVersion": "H5",
                 "method": method,
-                "requestType":next,
+                "requestType": next,
                 "token": localStorage.getItem("token") || "",
                 "version": "1.0.2.0830",
-                "platform":plateform,
+                "platform": plateform,
                 "params": data
             }
 
             var url = (function () {
-                var u =  that.evn == "daily" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://182.92.216.40/adapter/api/requestH5?body=";
+                var u = that.evn == "daily" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://182.92.216.40/adapter/api/requestH5?body=";
 
 
                 return u + JSON.stringify(body);
@@ -287,6 +297,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("daily", "");
+    return new lib("publish", "");
 })($);
 

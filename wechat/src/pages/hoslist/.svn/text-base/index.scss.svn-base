@@ -33,8 +33,11 @@
   }
 
   .row_2{
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 
+  }
+  .row_1{
+    margin-bottom: 0px;
   }
 }
 #overlay{
@@ -47,4 +50,12 @@
   z-index: 80;
   background-color: rgba(0,0,0,0.7);
 
+}
+
+
+.list_mz .Center .row_2 strong{
+  display: inline-block;
+  margin-left: 0px;
+  line-height: 20px;
+  vertical-align: sub;
 }

@@ -25,7 +25,7 @@
         <div class="top-wrapper">
             <div class="box box_list_mz">
                 <div class="list_mz clearfix"><a href="../../pages/hosdetail/index.html?clinicId=${clinicId}">
-                    <div class="Left"><img src="${hos.snapshot}"/>></div>
+                    <div class="Left"><img src="${hos.images[0]}"/>></div>
                     <div class="Center">
                         <div class="row_1">${hos.name}</div>
                         <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong>
@@ -114,7 +114,7 @@
                     {@each item.treatmentPlanDetails as timeItem}
 
                     {@if timeItem.finished == true}
-                    <li data-price="${item.price}" data-dep="${item.doctor.className}" data-add="${item.doctor.hospital}" data-name="${item.doctor.name}" data-time="${makeFuckTime(item.starttime)}" data-plan="${item.id}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    <li data-price="${item.price}" data-dep="${item.doctor.className}" data-add="${item.doctor.hospital}" data-name="${item.doctor.name}" data-time="${makeFuckTime(item.starttime)}" data-plan="${item.treatmentPlanId}" data-id="${item.id}" class="time-item">${timeItem.starttime}</li>
                     {@/if}
 
                     {@if timeItem.finished == false}

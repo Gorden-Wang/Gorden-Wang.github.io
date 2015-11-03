@@ -86,19 +86,24 @@
         fetchData :function(){
           var that = this;
             var param = {
-                "doctorId": that.data.doctorId
+                "doctorId": that.data.doctorId,
+                "userid" : Wlib.getUserId()
             }
 
-            Wlib.SendRequest("240", param, function (res) {
-                that.data.doc = res.entity;
-                that.fetcPingjia(function(){
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
-                    //return;
-                    //}
-                    that.dom.loading.hide();
-                });
+            Wlib.SendRequestNew("treatQuery","doctorInfo", param, function (res) {
+                that.data.doc = res.value;
+
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+                //return;
+                //}
+                that.dom.loading.hide();
+
+
+                //that.fetcPingjia(function(){
+                //
+                //});
 
 
 
@@ -110,8 +115,8 @@
                 "doctorId": that.data.doctorId
             }
 
-            Wlib.SendRequest("2032", param, function (res) {
-                that.data.pingjia = res.entity;
+            Wlib.SendRequestNew("treatQuery","findDoctorComment", param, function (res) {
+                that.data.pingjia = res.value;
                 callback && callback();
                 //that.dom.loading.hide();
 

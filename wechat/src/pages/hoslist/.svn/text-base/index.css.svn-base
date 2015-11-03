@@ -19,7 +19,9 @@
   #page .rate-eles img {
     width: 15px; }
 #page .row_2 {
-  margin-bottom: 8px; }
+  margin-bottom: 5px; }
+#page .row_1 {
+  margin-bottom: 0px; }
 
 #overlay {
   opacity: 0;
@@ -30,5 +32,11 @@
   height: 0;
   z-index: 80;
   background-color: rgba(0, 0, 0, 0.7); }
+
+.list_mz .Center .row_2 strong {
+  display: inline-block;
+  margin-left: 0px;
+  line-height: 20px;
+  vertical-align: sub; }
 
 /*# sourceMappingURL=index.css.map */

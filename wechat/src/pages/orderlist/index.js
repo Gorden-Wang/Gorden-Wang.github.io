@@ -52,26 +52,28 @@
             var that = this;
             var param = {
                 "orderStatus": that.data.orderStatus,
-                "userId" : that.data.userId,
+                "userid" : that.data.userId,
                 "orderType" : that.data.orderType,
                 firstResult: that.data.firstResult || 0,
                 maxResults: that.data.maxResults || 15
             }
 
-            Wlib.SendRequest("287", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","findOrders", param, function (res) {
 
                 //@TODO 获取支付方式，去支付
-                if (res.errorcode == 0) {
-                    that.data.olist = res.entity;
+                if (res.errorCode == 0) {
+                    that.data.olist = res.value;
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
-                    if (res.entity.length == that.data.maxResults) {
+                    if (res.value && res.value.length == that.data.maxResults) {
                         that.bindNext(true);
                     }
-                    if (!res.entity || res.entity.length == 0) {
-                        Wlib.tips("没有查询到相关记录。")
+                    if (!res.value || res.value.length == 0) {
+                        Wlib.tips("没有查询到相关记录。",null,true)
                     }
+                }else{
+                    Wlib.tips(res.message);
                 }
 
 
@@ -84,23 +86,23 @@
                 that.data.firstResult = that.data.firstResult + that.data.maxResults;
                 var param = {
                     "orderStatus": that.data.orderStatus,
-                    "userId" : that.data.userId,
+                    "userid" : that.data.userId,
                     "orderType" : that.data.orderType,
                     firstResult: that.data.firstResult || 0,
                     maxResults: that.data.maxResults || 10
                 }
 
-                Wlib.SendRequest("287", param, function (res) {
+                Wlib.SendRequestNew("treatOperate","findOrders", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
                     var data = {};
-                    data.olist = res.entity || [];
+                    data.olist = res.value || [];
                     var reshtml = juicer($("#itemtpl").html(), data);
                     $(".list-wrapper").append(reshtml);
-                    if (res.entity.length == that.data.maxResults) {
+                    if (res.value.length == that.data.maxResults) {
                         that.bindNext(true);
                     }
-                    if (!res.entity || res.entity.length == 0) {
+                    if (!res.value || res.value.length == 0) {
                         Wlib.tips("没有查询到相关记录。")
                     }
 

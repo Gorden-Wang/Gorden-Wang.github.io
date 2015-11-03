@@ -3,7 +3,6 @@
   .wrap {
     margin-top: 0px;
     background-color: white;
-    margin: 0px 10px;
     overflow: hidden;
   }
 
@@ -13,11 +12,8 @@
 
   .copy-wrapper{
     text-align: center;
-    height: 1px;
     border-top: 1px dashed gray;
-    position: absolute;
     margin-top: 40px;
-    bottom: 30px;
     width: 100%;
 
     p{
@@ -31,4 +27,8 @@
   }
 
 
+}
+
+body{
+  background-color: white;
 }
