@@ -200,7 +200,7 @@ window.Wlib = (function () {
             check();
         },
         getUserId: function () {
-            return Wlib.getRequestParam("userId") || localStorage.getItem("userId");
+            return Wlib.getRequestParam("userId") || localStorage.getItem("userId") || "";
         },
         SendRequest: function (method, data, success, error) {
             var that = this;
@@ -297,6 +297,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 

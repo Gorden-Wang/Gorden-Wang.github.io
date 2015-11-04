@@ -30,8 +30,8 @@
             var that = this;
             that.data = {
                 userId: Wlib.getRequestParam("userId") || "00000301",
-                orderStatus : Wlib.getRequestParam("orderStatus") || "-1",
-                orderType : Wlib.getRequestParam("orderType") || "-1",
+                orderStatus: Wlib.getRequestParam("orderStatus") || "-1",
+                orderType: Wlib.getRequestParam("orderType") || "-1",
                 firstResult: 0,
                 maxResults: 10
             }
@@ -52,13 +52,13 @@
             var that = this;
             var param = {
                 "orderStatus": that.data.orderStatus,
-                "userid" : that.data.userId,
-                "orderType" : that.data.orderType,
+                "userid": that.data.userId,
+                "orderType": that.data.orderType,
                 firstResult: that.data.firstResult || 0,
                 maxResults: that.data.maxResults || 15
             }
 
-            Wlib.SendRequestNew("treatOperate","findOrders", param, function (res) {
+            Wlib.SendRequestNew("treatOperate", "findOrders", param, function (res) {
 
                 //@TODO 获取支付方式，去支付
                 if (res.errorCode == 0) {
@@ -70,9 +70,9 @@
                         that.bindNext(true);
                     }
                     if (!res.value || res.value.length == 0) {
-                        Wlib.tips("没有查询到相关记录。",null,true)
+                        Wlib.tips("没有查询到相关记录。", null, true)
                     }
-                }else{
+                } else {
                     Wlib.tips(res.message);
                 }
 
@@ -86,13 +86,13 @@
                 that.data.firstResult = that.data.firstResult + that.data.maxResults;
                 var param = {
                     "orderStatus": that.data.orderStatus,
-                    "userid" : that.data.userId,
-                    "orderType" : that.data.orderType,
+                    "userid": that.data.userId,
+                    "orderType": that.data.orderType,
                     firstResult: that.data.firstResult || 0,
                     maxResults: that.data.maxResults || 10
                 }
 
-                Wlib.SendRequestNew("treatOperate","findOrders", param, function (res) {
+                Wlib.SendRequestNew("treatOperate", "findOrders", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
                     var data = {};
@@ -116,7 +116,7 @@
 
             juicer.register("makeStatus", function (v) {
                 var res = '未付款';
-                switch (v){
+                switch (v) {
                     case 1 :
                         res = '未付款';
                         break;
@@ -136,7 +136,7 @@
             juicer.register("makeType", function (v) {
                 var res = '线下门诊';
 
-                switch (v){
+                switch (v) {
                     case 1 :
                         res = '线下门诊';
                         break;
@@ -210,9 +210,9 @@
 
             juicer.register("makeDep", function (id) {
 
-                var res = "",title="";
+                var res = "", title = "";
                 for (var i = 0; i < that.data.depList.length; i++) {
-                    if(id == that.data.depList[i].data.id){
+                    if (id == that.data.depList[i].data.id) {
                         title = that.data.depList[i].data.name;
                     }
                 }
@@ -249,12 +249,12 @@
                 var obj = {
                     y: time.getFullYear(),
                     m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
-                    d: time.getDate() < 10 ? ("0"+time.getDate()): time.getDate(),
+                    d: time.getDate() < 10 ? ("0" + time.getDate()) : time.getDate(),
                     w: w,
-                    h : time.getHours() < 10 ? ("0"+time.getHours()) : time.getHours(),
-                    mm:(time.getMinutes() + 1) < 10 ? "0" + (time.getMinutes() + 1) : (time.getMinutes() + 1),
+                    h: time.getHours() < 10 ? ("0" + time.getHours()) : time.getHours(),
+                    mm: (time.getMinutes() + 1) < 10 ? "0" + (time.getMinutes() + 1) : (time.getMinutes() + 1),
                 }
-                var resTime = obj.y + "年" + obj.m + '月' + obj.d+"日" + " " + obj.h + ":" + obj.mm;
+                var resTime = obj.y + "年" + obj.m + '月' + obj.d + "日" + " " + obj.h + ":" + obj.mm;
 
 
                 return resTime
@@ -262,7 +262,7 @@
             });
 
             juicer.register("makeStatusDisplay", function (v) {
-                if(v == that.data.orderStatus){
+                if (v == that.data.orderStatus) {
                     return "selected";
                 }
                 return "";
@@ -270,7 +270,7 @@
             juicer.register("makeFilterDisplay", function () {
                 var res;
                 var v = that.data.orderType;
-                switch (v){
+                switch (v) {
                     case "-1" :
                         res = "筛选";
                         break;
@@ -287,7 +287,6 @@
 
                 return res;
             });
-
 
 
         },
@@ -311,14 +310,14 @@
             });
 
 
-            $(".banner li").on("click",function(){
+            $(".banner li").on("click", function () {
                 var orderStatus = $(this).attr("data-id");
-                win.location = '../../pages/orderlist/index.html?orderStatus='+orderStatus + '&orderType='+that.data.orderType;
+                win.location.replace('../../pages/orderlist/index.html?orderStatus=' + orderStatus + '&orderType=' + that.data.orderType);
             });
 
-            $(".filterbox li").on("click",function(){
+            $(".filterbox li").on("click", function () {
                 var orderType = $(this).attr("data-id");
-                win.location = '../../pages/orderlist/index.html?orderStatus='+that.data.orderStatus + '&orderType=' + orderType;
+                win.location.replace('../../pages/orderlist/index.html?orderStatus=' + that.data.orderStatus + '&orderType=' + orderType);
             })
 
 
