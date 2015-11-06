@@ -297,6 +297,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("daily", "");
+    return new lib("publish", "");
 })($);
 

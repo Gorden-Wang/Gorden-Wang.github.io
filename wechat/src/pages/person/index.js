@@ -11,9 +11,8 @@
             var that = this;
             that.cacheData();
             that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.fetchData();
+
         },
         cacheDom: function () {
             var that = this;
@@ -37,6 +36,19 @@
             $("select").val(that._makeCityName(that.data.location));
 
             that.dom.loading.hide();
+        },
+        fetchData : function(){
+          var that = this;
+            var param = {
+                "userid": that.data.userId
+            }
+
+            Wlib.SendRequestNew("treatOperate", "userOrderIndex", param, function (res) {
+                that.data.info = res.value;
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
         },
         recacheDom: function () {
             var that = this;

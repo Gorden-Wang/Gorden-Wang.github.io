@@ -223,6 +223,6 @@ window.Wlib = (function () {
 
 
 
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 
