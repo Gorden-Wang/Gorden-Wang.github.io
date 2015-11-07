@@ -1,0 +1,131 @@
+.car-center {
+  background-color: #e5e5e8; }
+  .car-center .top-banner {
+    background-color: white;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    padding: 22px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
+    padding-right: 40px;
+    background-position: 97% center;
+    background-image: url(../../images/center/ri.png);
+    background-repeat: no-repeat;
+    -webkit-background-size: 8px 11px;
+       -moz-background-size: 8px 11px;
+         -o-background-size: 8px 11px;
+            background-size: 8px 11px; }
+    .car-center .top-banner .img-wrapper {
+      width: 84px;
+      height: 84px;
+      -webkit-border-radius: 84px;
+         -moz-border-radius: 84px;
+              border-radius: 84px;
+      overflow: hidden;
+      border: 1px solid #cfd0d0;
+      padding: 4px; }
+      .car-center .top-banner .img-wrapper img {
+        width: 100%;
+        height: 100%; }
+    .car-center .top-banner .flex {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1; }
+    .car-center .top-banner .car-wrapper {
+      display: inline-block;
+      text-align: left;
+      font-size: 14px;
+      color: #232327;
+      font-weight: 400; }
+    .car-center .top-banner .car-wrapper.bold {
+      font-size: 18px;
+      color: #000;
+      font-weight: 800; }
+  .car-center .banner {
+    border-top: 1px solid  #cfd0d0;
+    border-bottom: 1px solid  #cfd0d0;
+    background-color: white;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    margin-bottom: 10px; }
+    .car-center .banner li {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1;
+      border-right: 1px solid #cfd0d0;
+      text-align: center;
+      padding: 15px 0px;
+      position: relative;
+      font-size: 12px; }
+    .car-center .banner .icon-b2 {
+      position: relative; }
+    .car-center .banner .icon-b2 .tips {
+      position: absolute;
+      content: '5';
+      width: 15px;
+      height: 15px;
+      background: red;
+      color: #ffffff;
+      top: -12px;
+      right: -14px;
+      -webkit-border-radius: 15px;
+         -moz-border-radius: 15px;
+              border-radius: 15px;
+      line-height: 15px; }
+    .car-center .banner li:last-of-type {
+      border: 0px; }
+    .car-center .banner li:last-of-type:after {
+      display: none; }
+    .car-center .banner li:last-of-type:before {
+      display: none; }
+    .car-center .banner li:after {
+      content: " ";
+      width: 1px;
+      height: 15px;
+      position: absolute;
+      background-color: white;
+      top: 0px;
+      right: -1px; }
+    .car-center .banner li:before {
+      content: " ";
+      width: 1px;
+      height: 15px;
+      position: absolute;
+      background-color: white;
+      bottom: 0px;
+      right: -1px; }
+  .car-center .menu-wrapper {
+    background-color: white; }
+    .car-center .menu-wrapper li {
+      padding: 15px;
+      border-bottom: 1px solid #cfd0d0;
+      margin-left: 25px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      padding-left: 0px; }
+      .car-center .menu-wrapper li span {
+        margin-right: 15px; }
+      .car-center .menu-wrapper li p {
+        line-height: 30px;
+        background-image: url(../../images/center/ri.png);
+        -webkit-background-size: 8px 11px;
+           -moz-background-size: 8px 11px;
+             -o-background-size: 8px 11px;
+                background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1; }

@@ -1,0 +1,70 @@
+.menu-wrapper {
+  background-color: white; }
+  .menu-wrapper li.title {
+    color: #666666;
+    text-align: center; }
+    .menu-wrapper li.title div:last-of-type {
+      text-align: center; }
+    .menu-wrapper li.title div:first-of-type {
+      color: #666; }
+  .menu-wrapper li {
+    padding: 10px;
+    border-bottom: 1px solid #cfd0d0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex; }
+    .menu-wrapper li div {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+              align-items: center; }
+      .menu-wrapper li div p {
+        width: 100%; }
+    .menu-wrapper li div:first-of-type {
+      width: 9em;
+      font-size: 12px;
+      color: #989898; }
+    .menu-wrapper li div:last-of-type {
+      width: 5em;
+      text-align: right;
+      font-size: 14px;
+      color: #232327; }
+    .menu-wrapper li div:nth-of-type(2) {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1;
+      font-size: 15px;
+      padding: 0px 8px;
+      color: #232327; }
+
+.red {
+  color: #e60021 !important; }
+
+.m-r {
+  background-image: url(../../images/center/ri.png);
+  -webkit-background-size: 8px 11px;
+     -moz-background-size: 8px 11px;
+       -o-background-size: 8px 11px;
+          background-size: 8px 11px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 15px;
+  text-align: right; }
+
+.btn {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #ff9900;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  padding: 10px 0px;
+  width: 50%;
+  margin: 40px auto; }

@@ -1,0 +1,126 @@
+.car-center{
+  background-color: #e5e5e8;
+  .top-banner{
+
+    background-color:#232327;
+    display: flex;
+    padding: 10px;
+    color: white;
+
+
+    .img-wrapper{
+
+      height: 0px;
+      position: relative;
+      width: percentage(280/750);
+      padding-bottom:percentage(150/750);
+      align-items: center;
+      margin-top: 10px;
+
+
+      a{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .car-wrapper{
+      flex: 1;
+      text-align: left;
+      padding: 0px 15px;
+
+      .car-title{
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+      .car-price{
+        span{
+          font-size: 12px;
+        }
+      }
+    }
+
+    .car-change{
+      width: 2em;
+      line-height: 1.2em;
+      background-position: right center;
+      padding: 10px 0px;
+      background-image: url(../../images/drive_appointment/ri-icon.png);
+      background-size: 11px 20px;
+      background-repeat: no-repeat;
+      padding-right: 20px;
+
+    }
+
+
+  }
+
+
+  .menu-wrapper{
+    background-color: white;
+    margin-top: 20px;
+
+    li{
+      padding: 15px;
+      border-bottom: 1px solid #cfd0d0;
+      margin-left: 25px;
+      display: flex;
+      padding-left: 0px;
+
+      input{
+        flex: 1;
+        text-align: left;
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      span{
+        margin-right: 15px;
+      }
+
+      p{
+        line-height: 30px;
+        background-image: url(../../images/center/ri.png);
+        background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        flex: 1;
+      }
+
+      .m-r{
+        background-image: url(../../images/center/ri.png);
+        background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 15px;
+      }
+    }
+  }
+}
+
+.d-btn {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #e60021;
+  border-radius: 4px;
+  padding: 10px 0px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+  .img-wrapper{
+    margin-top:20px !important;
+  }
+
+}

@@ -6,17 +6,17 @@
     overflow: hidden;
   }
 
-  .ruledetail{
+  .ruledetail {
 
   }
 
-  .copy-wrapper{
+  .copy-wrapper {
     text-align: center;
     border-top: 1px dashed gray;
     margin-top: 40px;
     width: 100%;
 
-    p{
+    p {
       position: relative;
       top: -10px;
       background-color: white;
@@ -27,8 +27,31 @@
   }
 
 
+
 }
 
-body{
+body {
   background-color: white;
+}
+
+.article-wrapper {
+  padding:0px 10px;
+  p {
+    //text-indent: 2em;
+    line-height: 1.5em;
+    margin: 0.5em 0px;
+  }
+
+  .h1{
+    margin: 1em;
+    font-weight: 800;
+  }
+
+  .h2{
+    margin: 0.5em;
+    font-weight: 600;
+  }
+  .in2{
+    text-indent: 2em;
+  }
 }

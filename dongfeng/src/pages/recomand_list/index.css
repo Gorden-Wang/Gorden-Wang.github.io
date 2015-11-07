@@ -1,0 +1,67 @@
+.menu-wrapper {
+  background-color: white; }
+  .menu-wrapper li.title {
+    color: #666666;
+    text-align: center; }
+    .menu-wrapper li.title div:last-of-type {
+      text-align: center; }
+    .menu-wrapper li.title div:first-of-type {
+      color: #666;
+      font-size: 14px; }
+  .menu-wrapper li {
+    padding: 10px;
+    border-bottom: 1px solid #cfd0d0;
+    display: flex; }
+    .menu-wrapper li div {
+      display: flex;
+      align-items: center; }
+      .menu-wrapper li div p {
+        width: 100%; }
+    .menu-wrapper li div:first-of-type {
+      width: 9em;
+      font-size: 12px;
+      color: #989898; }
+    .menu-wrapper li div:last-of-type {
+      width: 4em;
+      text-align: left;
+      font-size: 14px;
+      color: #232327; }
+    .menu-wrapper li div:nth-of-type(2) {
+      font-size: 15px;
+      width: 5em;
+      padding: 0px 8px;
+      color: #232327;
+      text-align: center; }
+    .menu-wrapper li div:nth-of-type(3) {
+      font-size: 15px;
+      padding: 0px 8px;
+      color: #232327;
+      flex: 1;
+      text-align: center; }
+
+.red {
+  color: #e60021 !important; }
+
+.m-r {
+  background-image: url(../../images/center/ri.png);
+  background-size: 8px 11px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 15px;
+  text-align: right; }
+
+.btn {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #ff9900;
+  border-radius: 4px;
+  padding: 10px 0px;
+  width: 50%;
+  margin: 40px auto; }
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+  body * {
+    font-size: 12px !important; } }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,86 @@
+.top-banner{
+  width: 100%;
+  height: 0px;
+  padding-bottom: percentage(360/750);
+  position: relative;
+
+  a{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}
+
+.btn-wrapper{
+  display: flex;
+  padding: 10px 15px;
+  border-bottom: 1px solid #cfd0d0;
+  background-color: white;
+  div{
+    flex: 1;
+    text-align: left;
+    padding-top: 10px;
+
+    .bk-coint{
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-image: url(../../images/point_search/coin.png);
+      -webkit-background-size: contain;
+      background-size: contain;
+      margin-left: 5px;
+      margin-top: 3px;
+      background-color: transparent;
+      padding: 0px;
+      margin-right: 10px;
+
+    }
+  }
+  span{
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    padding: 8px 20px;
+    background-color: #ff9900;
+    display: inline-block;
+
+  }
+
+}
+
+.de-wrapper{
+  padding: 15px 10px;
+
+
+  p.de-t{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    span.l-si{
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: #ff9900;
+      margin-right: 10px;
+    }
+  }
+
+  p:not(.de-t){
+   margin-left: 1.8em;
+    color: #666;
+    line-height: 1.5em;
+  }
+}
+
+
+body{
+  //background-color: #e5e6e9;
+}

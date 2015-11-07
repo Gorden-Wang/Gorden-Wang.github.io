@@ -1,0 +1,53 @@
+.menu-wrapper{
+  background-color: white;
+
+  li{
+    padding: 10px;
+    border-bottom: 1px solid #cfd0d0;
+    display: flex;
+
+    .l-w{
+      width:percentage(280/750);
+      height:0px;
+      padding-bottom: percentage(173/750);
+      position: relative;
+      margin-right: 10px;
+
+      a{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        img{
+          width: 100%;
+          height:100%;
+        }
+      }
+
+    }
+    .r-w{
+      flex: 1;
+
+      p.h1{
+        font-size: 14px;
+        margin-top: 0em;
+      }
+
+      p{
+        font-size: 12px;
+        margin: 0.3em;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+
+  p{
+    margin: 0em !important;
+    font-size: 10px !important;
+  }
+}
+
+
+
