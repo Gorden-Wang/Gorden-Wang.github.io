@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>杂役-个人主页</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../pages/home/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div class="full-img">
+
+</div>
+<script type="template/juicer" id="tpl">
+    <div class="down-header">
+        <a>
+            <img src="../../images/common/header.png">
+        </a>
+    </div>
+    <div class="wrap">
+
+
+        <div class="top-banner back-img">
+            <a>
+                <img src="../../images/common/back.png">
+            </a>
+
+            <img class="t-head" src="${data.hurl}">
+
+            <p class="t-name">
+                ${data.nickName}
+            </p>
+        </div>
+
+        <div class="des-wrapper">
+
+            <div class="rate-wrapper">
+                <img src="../../images/rate/${makeRateImg(data.creditScore)}.png"> ${data.creditScore}
+            </div>
+
+            <div class="cer-wrapper">
+                {@if data.companyStatus == 4}
+                <span class="icon150 "><img src="../../images/home/@2X_150.png">公司认证</span>
+                {@/if}
+                {@if data.userStatus == 5 || data.userStatus == 6}
+                <span class="icon148"><img src="../../images/home/@2X_148.png">实名认证</span>
+                {@/if}
+            </div>
+
+        </div>
+
+        {@if data.oneWord}
+        <div class="graybox">
+            ${data.oneWord}
+        </div>
+        {@/if}
+
+        <p class="box-label">
+            最新发布
+        </p>
+
+        <section class="li-wrapper">
+
+            {@each data.productList as item , index}
+
+            <div class="li-items ${checkIsImg(item.productImg)} ${makeItemDis(index)}" data-productId="${item.productId}" data-type="${item.productType}">
+                <div class="l-img">
+                    <a class="back-img">
+                        {@if item.productImg}
+
+                        <img src="${item.productImg}">
+
+                        {@/if}
+                    </a>
+                    <span class="l-label">
+                         ${item.categoryName}
+                    </span>
+
+                    <div class="l-img-banner">
+                        <span class="${makeBuyOrSell(item.productType)}"></span><span class="b-num rest-top">￥${item.minPrice}-${item.maxPrice}</span><span
+                            class="rest-top">/${item.priceUnit}</span>
+                    </div>
+                </div>
+                <div class="l-des">
+                    ${item.productTitle}
+                </div>
+                <div class="l-loca">
+                    <span class="l-lo">
+                        ${item.city}${item.district}
+                    </span>
+                    <span class="l-de">
+                         ${item.distance}
+                    </span>
+                </div>
+            </div>
+
+
+            {@/each}
+        </section>
+
+        {@if checkDisplayMore(data.productList)}
+        <div class="btn-wrapper" data-text="查看n个发布中的信息" data-target=".li-wrapper>.li-items.hide">
+            <p><img src="../../images/home/search.png"><span>查看n个发布中的信息</span></p>
+        </div>
+        {@/if}
+
+        <section class="b-wrapper">
+
+            <p class="b-title">自我介绍</p>
+
+            <p class="b-content" style="text-align: center">
+                {@if data.userDesc}
+                    ${data.userDesc}
+                    {@if data.userSupplyDescription}
+                     <br> ${data.userSupplyDescription}
+                    {@/if}
+                {@else}
+                    无
+                {@/if}
+            </p>
+
+            <ul class="may-ul">
+                {@if data.age}
+                <li>
+                    <div>年龄</div>
+                    <div>${data.age}岁</div>
+                </li>
+                {@/if}
+                {@if data.gender}
+                <li>
+                    <div>性别</div>
+                    <div>${data.gender}</div>
+                </li>
+                {@/if}
+                {@if data.jobExp}
+                <li>
+                    <div>工作年龄</div>
+                    <div>${data.jobExp}</div>
+                </li>
+                {@/if}
+                {@if data.educationViewList.length > 0}
+                <li>
+                    <div class="clear-float">教育背景</div>
+                    <ul>
+                        {@each data.educationViewList as item}
+                        <li>${item.eduName} ${item.school}</li>
+                        {@/each}
+                    </ul>
+                </li>
+                {@/if}
+                {@if data.userSkillList.length > 0}
+                <li>
+                    <div class="clear-float">拥有资质</div>
+                    <ul>
+                        {@each data.userSkillList as item}
+                        <li>${item.skillName}</li>
+                        {@/each}
+                    </ul>
+                </li>
+                {@/if}
+            </ul>
+
+            {@if data.compName}
+            <div class="graybox" style="margin-left: -10px;margin-right: -10px;">
+                <p class="b-title">${data.compName}</p>
+
+                <p class="b-content" style="text-align: center">
+                    {@if data.compDesc}
+                    ${data.compDesc}
+                    {@/if}
+                </p>
+            </div>
+            {@/if}
+
+            {@if data.interestView.length > 0}
+            <p class="b-title">兴趣点</p>
+
+            <div class="in-wrapper items" id="inst">
+                {@each data.interestView as item , index}
+
+                <div class="bor-item ${makeItemDis(index,5)}">
+                    ${item}
+                </div>
+
+                {@/each}
+
+            </div>
+            {@/if}
+
+            {@if checkDisplayMore(data.productList,6)}
+            <div class="btn-wrapper" data-target="#inst>.bor-item.hide" data-text="查看全部n个兴趣点">
+                <p><img src="../../images/home/search.png"><span>查看全部n个兴趣点</span></p>
+            </div>
+            {@/if}
+
+            {@if data.addressList.length > 0}
+
+            <p class="b-title">常活动地点</p>
+
+            <div class="in-wrapper items" id="locs">
+                {@each data.addressList as item , index}
+                <div class="bor-item ${makeItemDis(index,5)}">
+                    ${item}
+                </div>
+                {@/each}
+            </div>
+
+
+            {@/if}
+
+            {@if checkDisplayMore(data.addressList,6)}
+            <div class="btn-wrapper" style="margin-bottom: 15px;" data-target="#locs>.bor-item.hide" data-text="查看全部n个活动地点">
+                <p><img src="../../images/home/search.png"><span>查看全部n个活动地点</span></p>
+            </div>
+            {@/if}
+
+            {@if data.photoWall.length > 0}
+            <div class="imgs-wrapper graybox" style="margin-left: -10px;margin-right: -10px;">
+                <p style="margin-bottom: 10px">照片墙</p>
+
+                <div class="swiper-container" id="pics">
+                    <div class="swiper-wrapper">
+                        {@each data.photoWall as item}
+
+                        <div class="swiper-slide">
+                            <a class="back-img">
+                                <img src="${item.bigPhotoUrl}">
+                            </a>
+                        </div>
+
+                        {@/each}
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            {@/if}
+
+            <p class="b-title">个人信用</p>
+
+            <div class="rate-wrapper">
+                <img src="../../images/rate/${makeRateImg(data.creditScore)}.png"> ${data.creditScore}
+            </div>
+
+            <ul class="may-ul">
+                <li>
+                    <div>成交量</div>
+                    <div>${data.dealCount}次</div>
+                </li>
+                <li>
+                    <div>好评率</div>
+                    <div>${makePercentage(data.fineAppraiseRate)}%</div>
+                </li>
+                <li>
+                    <div>违约率</div>
+                    <div>${makePercentage(data.renegeRate)}%</div>
+                </li>
+                <li>
+                    <div>活跃度</div>
+                    <div>${data.liveness}</div>
+                </li>
+                <li>
+                    <div>资料完整度</div>
+                    <div>${makePercentage(data.userInfoCompleteRate)}%</div>
+                </li>
+                <li style="border-bottom: 1px solid #d8d8d8;">
+                    <p class="b-title">收到的评价</p>
+
+                    <p class="bottom-rate box">
+                        <span>合作态度：<span>${data.cooperation}分</span></span>
+                        <span>描述相符：<span>${data.fitDescription}分</span></span>
+                        <span>被推荐度：<span>${data.recommendationLevel}分</span></span>
+                    </p>
+                </li>
+            </ul>
+
+            {@if data.appraiseList.length > 0 }
+            <ul class="reply-wrapper">
+
+                {@each data.appraiseList as item , index}
+
+                <li class="${makeItemDis(index,1)}">
+                    <div class="b-t box">
+                        <div class="b-img">
+                            <img src="${item.appraiserPhotoUrl}">
+                        </div>
+                        <div class="b-name">
+                            ${item.appraiserName}：<span>${item.appraiseLevel}</span>
+                        </div>
+                        <span class="b-time">
+                            ${item.appraiseTime}
+                        </span>
+                    </div>
+
+                    <div class="b-content">
+                        {@if item.appraiseContent}
+                            ${item.appraiseContent}
+                        {@else}
+                            无
+                        {@/if}
+                    </div>
+                    {@if item.appraisePhotos.length > 0}
+                    <div class="imgs">
+                        <div class="swiper-container reply-img">
+                            <div class="swiper-wrapper">
+                                {@each item.appraisePhotos as reItem}
+                                <div class="swiper-slide">
+                                    <a class="back-img">
+                                        <img src="${item.bigPhotoUrl}">
+                                    </a>
+                                </div>
+                                {@/each}
+                            </div>
+                        </div>
+                    </div>
+                    {@/if}
+                </li>
+
+
+                {@/each}
+
+            </ul>
+
+            {@/if}
+
+            {@if checkDisplayMore(data.appraiseList,2)}
+            <div class="btn-wrapper" data-inswiper="true" data-target=".reply-wrapper>li.hide" data-text="查看全部n条评价">
+                <p><img src="../../images/home/search.png"><span>查看全部n条评价</span></p>
+            </div>
+            {@/if}
+
+
+        </section>
+
+
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/swiper/index.js"></script>
+<script src="../../pages/home/index.js"></script>
+
+</body>
+</html>
