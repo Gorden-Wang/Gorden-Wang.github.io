@@ -206,50 +206,6 @@ td, th {
 body {
     background-color: #FFF; }
 
-header {
-    width: 100%;
-    height: 40px;
-    z-index: 1;
-    background-color: #f15c40;
-    color: #FFF;
-    position: relative;}
-header .title {
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    height: 40px;
-    line-height: 40px;    font-weight: lighter;
-     }
-header .title img {
-    width: 55px;
-    top: 5px;
-    position: relative; }
-header .left-menu {
-    background-image: url(../images/common/back.png);
-    background-size: 23px 20px;
-    position: absolute;
-    left: 20px;
-    top: 10px;
-    display: block;
-    width: 23px;
-    height: 20px; }
-header .right-menu {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    display: block; }
-header .right-menu .top-icon, header .right-menu .bottom-icon {
-    display: block;
-    color: white;
-    font-size: 12px;
-    padding-left: 20px;
-    background-size: 17px 17px;
-    background-repeat: no-repeat; }
-header .right-menu .top-icon {
-    background-image: url(../images/index/top_menu02.png); }
-header .right-menu .bottom-icon {
-    background-image: url(../images/index/top_menu03.png); }
-
 #loading {
     display: block;
     position: absolute;

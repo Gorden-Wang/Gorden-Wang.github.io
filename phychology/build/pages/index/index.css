@@ -1,0 +1,144 @@
+@charset "UTF-8";
+#page {
+  max-width: 640px;
+  margin: auto; }
+  #page .page-wrapper header {
+    position: relative;
+    background-color: #ede5e3;
+    font-size: 18px;
+    color: #59453e;
+    padding: 3px;
+    font-weight: 600; }
+    #page .page-wrapper header .hl-icon {
+      display: inline-block;
+      position: absolute;
+      left: 15px;
+      width: 20px;
+      height: 20px;
+      top: 12px;
+      background-position: 5px 0px; }
+    #page .page-wrapper header .hs-icon {
+      display: inline-block;
+      position: absolute;
+      right: 50px;
+      width: 20px;
+      height: 20px;
+      top: 12px;
+      background-position: -21px 0px; }
+    #page .page-wrapper header .hr-icon {
+      display: inline-block;
+      position: absolute;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+      top: 12px;
+      background-position: -46px 0px; }
+    #page .page-wrapper header .head-title {
+      text-align: center; }
+    #page .page-wrapper header .header-icon {
+      background-image: url(../../images/common/header-icon.png);
+      -webkit-background-size: 66.5px 16px;
+         -moz-background-size: 66.5px 16px;
+           -o-background-size: 66.5px 16px;
+              background-size: 66.5px 16px;
+      background-repeat: no-repeat; }
+  #page .page-wrapper .tab-wrapper {
+    background-color: #ede5e3;
+    font-size: 14px;
+    color: white;
+    font-weight: 600; }
+    #page .page-wrapper .tab-wrapper .selected {
+      color: #59453e; }
+    #page .page-wrapper .tab-wrapper ul {
+      overflow: hidden; }
+    #page .page-wrapper .tab-wrapper li {
+      width: 50%;
+      float: left;
+      text-align: center;
+      padding: 10px 0px; }
+  #page .page-wrapper section.img-wrapper {
+    background-image: url(../../images/index/span.png);
+    background-position: center center;
+    height: 0px;
+    padding-bottom: 41.40625%;
+    -webkit-background-size: contain;
+       -moz-background-size: contain;
+         -o-background-size: contain;
+            background-size: contain;
+    position: relative;
+    background-repeat: no-repeat; }
+    #page .page-wrapper section.img-wrapper .b-img {
+      position: absolute;
+      bottom: 0px;
+      width: 20%;
+      height: 4px;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      background-color: #a5897d;
+      left: 40%; }
+  #page .page-wrapper .ul-wrapper {
+    padding: 12.5px 15px; }
+    #page .page-wrapper .ul-wrapper li .img-wrapper {
+      height: 0px;
+      padding-bottom: 63.11475%;
+      position: relative; }
+      #page .page-wrapper .ul-wrapper li .img-wrapper a {
+        display: block;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%; }
+        #page .page-wrapper .ul-wrapper li .img-wrapper a img {
+          width: 100%;
+          height: 100%; }
+      #page .page-wrapper .ul-wrapper li .img-wrapper .label-wrapper {
+        z-index: 5;
+        position: absolute;
+        right: 8px;
+        top: 7.5px;
+        background-color: rgba(235, 229, 226, 0.6);
+        padding: 1px 8px;
+        color: #59463d;
+        font-size: 14px;
+        -webkit-border-radius: 6px;
+           -moz-border-radius: 6px;
+                border-radius: 6px;
+        font-weight: 400; }
+      #page .page-wrapper .ul-wrapper li .img-wrapper .label-wrapper:nth-of-type(2) {
+        top: 40.5px; }
+    #page .page-wrapper .ul-wrapper li .p-title {
+      color: #59463d;
+      margin: 10px 0px;
+      font-size: 14px;
+      font-weight: 400; }
+    #page .page-wrapper .ul-wrapper li .tl-wrapper span {
+      display: inline-block;
+      border: 1px solid #88c6c2;
+      -webkit-border-radius: 6px;
+         -moz-border-radius: 6px;
+              border-radius: 6px;
+      padding: 1px 8px;
+      color: #88c6c2;
+      margin-right: 7.5px;
+      font-size: 12px; }
+    #page .page-wrapper .ul-wrapper li .p-content {
+      padding: 12.5px 7.5px;
+      background-color: #ebe5e2;
+      color: #59463d;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.2em;
+      margin: 12.5px 0px; }
+
+@media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone 6 */ }
+@media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3) {
+  /* 兼容iphone6 plus */
+  #page .des-wrapper .bk-img {
+    background-position: left top;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover; } }

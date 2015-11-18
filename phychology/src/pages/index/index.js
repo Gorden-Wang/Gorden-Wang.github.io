@@ -12,11 +12,11 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            //that.renderUI();
-            //that.recacheDom();
-            //that.bindEvent();
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
 
-            that.getItems();
+            //that.getItems();
         },
         cacheData: function () {
             var that = this;

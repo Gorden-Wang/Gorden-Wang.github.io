@@ -1,0 +1,190 @@
+#page {
+  max-width: 640px;
+  margin: auto;
+  .page-wrapper {
+    header {
+      position: relative;
+      background-color: #ede5e3;
+      font-size: 18px;
+      color: #59453e;
+      padding: 3px;
+      font-weight: 600;
+
+      .hl-icon {
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        width: 20px;
+        height: 20px;
+        top: 12px;
+        background-position: 5px 0px;
+      }
+      .hs-icon {
+        display: inline-block;
+        position: absolute;
+        right: 50px;
+        width: 20px;
+        height: 20px;
+        top: 12px;
+        background-position: -21px 0px;
+      }
+      .hr-icon {
+        display: inline-block;
+        position: absolute;
+        right: 15px;
+        width: 20px;
+        height: 20px;
+        top: 12px;
+        background-position: -46px 0px;
+      }
+
+      .head-title {
+        text-align: center;
+      }
+      .header-icon {
+        background-image: url(../../images/common/header-icon.png);
+        background-size: 66.5px 16px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .tab-wrapper {
+      background-color: #ede5e3;
+      font-size: 14px;
+      color: white;
+      font-weight: 600;
+      .selected {
+        color: #59453e;
+      }
+      ul {
+        overflow: hidden;
+      }
+      li {
+        width: 50%;
+        float: left;
+        text-align: center;
+        padding: 10px 0px;
+      }
+    }
+
+    section.img-wrapper {
+      background-image: url(../../images/index/span.png);
+      background-position: center center;
+      height: 0px;
+      padding-bottom: percentage(265/640);
+      background-size: contain;
+      position: relative;
+      background-repeat: no-repeat;
+      .b-img {
+        position: absolute;
+        bottom: 0px;
+        width: 20%;
+        height: 4px;
+        border-radius: 4px;
+        background-color: #a5897d;
+        left: 40%;
+      }
+    }
+
+    .ul-wrapper {
+      padding: 12.5px 15px;
+
+      li {
+        .img-wrapper {
+          height: 0px;
+          padding-bottom: percentage(385/(640-30));
+          position: relative;
+          a {
+            display: block;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .label-wrapper{
+            z-index: 5;
+            position: absolute;
+            right: 8px;
+            top: 7.5px;
+            background-color:rgba(235,229,226,0.6) ;
+            padding: 1px 8px;
+            color: #59463d;
+            font-size: 14px;
+            border-radius: 6px;
+            font-weight: 400;
+
+            
+          }
+          .label-wrapper:nth-of-type(2){
+            top: 40.5px;
+          }
+        }
+
+
+        .p-title{
+          color: #59463d;
+          margin: 10px 0px;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        .tl-wrapper{
+          span{
+            display: inline-block;
+            border: 1px solid #88c6c2;
+            border-radius: 6px;
+            padding: 1px 8px;
+            color: #88c6c2;
+            margin-right: 7.5px;
+            font-size: 12px;
+          }
+        }
+
+        .p-content{
+          padding: 12.5px 7.5px;
+          background-color: #ebe5e2;
+          color: #59463d;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.2em;
+          margin: 12.5px 0px;
+        }
+
+
+
+
+
+      }
+    }
+  }
+}
+
+@media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone 6 */
+  .class {
+  }
+}
+
+@media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3.0) {
+  /* 兼容iphone6 plus */
+
+  #page {
+    .des-wrapper {
+
+      .cer-wrapper {
+
+      }
+      .bk-img {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+}
