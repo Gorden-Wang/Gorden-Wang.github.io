@@ -17,6 +17,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>首页</title>
     <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../widgets/slide/index.css" rel="stylesheet">
     <link href="../../pages/index/index.css" rel="stylesheet">
 
 </head>
@@ -24,185 +25,656 @@
 <div id="loading" class="loading">
     <div class="loading-content">loading...</div>
 </div>
+<div id="left-wrapper"></div>
 <div id="page"></div>
+<div id="right-wrapper"></div>
 
 <script type="template/juicer" id="tpl">
 
-<div class="page-wrapper">
-    <header>
-        <span class="hl-icon header-icon">
+    <div class="page-wrapper">
+        <header>
+        <span class="hl-icon header-icon" id="mybtn">
 
         </span>
-        <p class="head-title">观心</p>
-        <span class="hs-icon header-icon">
+
+            <p class="head-title">观心</p>
+        <span class="hs-icon header-icon" id="searchbtn">
 
         </span>
-        <span class="hr-icon header-icon">
+        <span class="hr-icon header-icon" id="filterbtn">
 
         </span>
-    </header>
-    <section class="tab-wrapper">
-        <ul>
-            <li class="selected">求于外</li>
-            <li>求于内</li>
-        </ul>
-    </section>
-    <section class="img-wrapper">
-        <div class="b-img"></div>
-    </section>
-    <section class="ul-wrapper">
-        <ul>
-            <li>
-                <div class="img-wrapper">
-                    <a>
-                        <img src="../../images/index/li.png">
-                    </a>
-                    <div class="label-wrapper">
-                        分类1/分类2
+        </header>
+        <section class="tab-wrapper">
+            <ul>
+                <li class="selected" data-target=".ul-wrapper">求于外</li>
+                <li data-target=".in-wrapper">求于内</li>
+            </ul>
+        </section>
+        <section class="img-wrapper">
+            <div class="b-img"></div>
+        </section>
+        <section class="ul-wrapper">
+            <ul>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
                     </div>
-                    <div class="label-wrapper">
-                        分类3/分类4
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
                     </div>
-                </div>
-                <p class="p-title">
-                    产品标题正面产品标题正面产品标题正面
-                </p>
-                <p class="p-title" style="margin-bottom: 7.5px">
-                    咨询师
-                </p>
-                <div class="tl-wrapper">
-                    <span>咨询师标签</span>
-                    <span>咨询师标签</span>
-                </div>
-                <p class="p-content">
-                    咨询师寄语。个性说明。初期运营自己填写。我健康
-                    孩子才健康。受训经历。理念。丰富的经验。亲子教育
-                    非常重要。要关注自身成长等等最多不超过10字
-                </p>
-            </li>
-            <li>
-                <div class="img-wrapper">
-                    <a>
-                        <img src="../../images/index/li.png">
-                    </a>
-                    <div class="label-wrapper">
-                        分类1/分类2
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
                     </div>
-                    <div class="label-wrapper">
-                        分类3/分类4
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
                     </div>
-                </div>
-                <p class="p-title">
-                    产品标题正面产品标题正面产品标题正面
-                </p>
-                <p class="p-title" style="margin-bottom: 7.5px">
-                    咨询师
-                </p>
-                <div class="tl-wrapper">
-                    <span>咨询师标签</span>
-                    <span>咨询师标签</span>
-                </div>
-                <p class="p-content">
-                    咨询师寄语。个性说明。初期运营自己填写。我健康
-                    孩子才健康。受训经历。理念。丰富的经验。亲子教育
-                    非常重要。要关注自身成长等等最多不超过10字
-                </p>
-            </li>
-            <li>
-                <div class="img-wrapper">
-                    <a>
-                        <img src="../../images/index/li.png">
-                    </a>
-                    <div class="label-wrapper">
-                        分类1/分类2
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
                     </div>
-                    <div class="label-wrapper">
-                        分类3/分类4
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
                     </div>
-                </div>
-                <p class="p-title">
-                    产品标题正面产品标题正面产品标题正面
-                </p>
-                <p class="p-title" style="margin-bottom: 7.5px">
-                    咨询师
-                </p>
-                <div class="tl-wrapper">
-                    <span>咨询师标签</span>
-                    <span>咨询师标签</span>
-                </div>
-                <p class="p-content">
-                    咨询师寄语。个性说明。初期运营自己填写。我健康
-                    孩子才健康。受训经历。理念。丰富的经验。亲子教育
-                    非常重要。要关注自身成长等等最多不超过10字
-                </p>
-            </li>
-            <li>
-                <div class="img-wrapper">
-                    <a>
-                        <img src="../../images/index/li.png">
-                    </a>
-                    <div class="label-wrapper">
-                        分类1/分类2
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
                     </div>
-                    <div class="label-wrapper">
-                        分类3/分类4
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
                     </div>
-                </div>
-                <p class="p-title">
-                    产品标题正面产品标题正面产品标题正面
-                </p>
-                <p class="p-title" style="margin-bottom: 7.5px">
-                    咨询师
-                </p>
-                <div class="tl-wrapper">
-                    <span>咨询师标签</span>
-                    <span>咨询师标签</span>
-                </div>
-                <p class="p-content">
-                    咨询师寄语。个性说明。初期运营自己填写。我健康
-                    孩子才健康。受训经历。理念。丰富的经验。亲子教育
-                    非常重要。要关注自身成长等等最多不超过10字
-                </p>
-            </li>
-            <li>
-                <div class="img-wrapper">
-                    <a>
-                        <img src="../../images/index/li.png">
-                    </a>
-                    <div class="label-wrapper">
-                        分类1/分类2
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
                     </div>
-                    <div class="label-wrapper">
-                        分类3/分类4
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
                     </div>
-                </div>
-                <p class="p-title">
-                    产品标题正面产品标题正面产品标题正面
-                </p>
-                <p class="p-title" style="margin-bottom: 7.5px">
-                    咨询师
-                </p>
-                <div class="tl-wrapper">
-                    <span>咨询师标签</span>
-                    <span>咨询师标签</span>
-                </div>
-                <p class="p-content">
-                    咨询师寄语。个性说明。初期运营自己填写。我健康
-                    孩子才健康。受训经历。理念。丰富的经验。亲子教育
-                    非常重要。要关注自身成长等等最多不超过10字
-                </p>
-            </li>
-        </ul>
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="in-wrapper">
+
+            <div class="no-item">
+                <p>这是一个简单的积极心理学方法</p>
+
+                <p>提高你的幸福感 减轻焦虑与抑郁</p>
+
+                <p class="i-title">"每天3件好事"</p>
+
+                <p>没玩睡前时尚圈今天发生的3件好事情</p>
+
+                <p>帮你看到手边的幸福</p>
+
+                <p>坚持一周</p>
+
+                <p>也许改变就这样发生</p>
+            </div>
 
 
+            <ul class="main-list">
+                <li>
+                    <div class="timewrapper">
+                        <p class="time">10月10日</p>
 
-    </section>
-</div>
+                        <p class="delete">删除</p>
+                    </div>
+                    <div class="contentlist">
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                    </div>
+                </li>
+                <li>
+                    <div class="timewrapper">
+                        <p class="time">10月10日</p>
+
+                        <p class="delete">删除</p>
+                    </div>
+                    <div class="contentlist">
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                    </div>
+                </li>
+                <li>
+                    <div class="timewrapper">
+                        <p class="time">10月10日</p>
+
+                        <p class="delete">删除</p>
+                    </div>
+                    <div class="contentlist">
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                    </div>
+                </li>
+                <li>
+                    <div class="timewrapper">
+                        <p class="time">10月10日</p>
+
+                        <p class="delete">删除</p>
+                    </div>
+                    <div class="contentlist">
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                    </div>
+                </li>
+                <li>
+                    <div class="timewrapper">
+                        <p class="time">10月10日</p>
+
+                        <p class="delete">删除</p>
+                    </div>
+                    <div class="contentlist">
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                    </div>
+                </li>
+                <li>
+                    <div class="timewrapper">
+                        <p class="time">10月10日</p>
+
+                        <p class="delete">删除</p>
+                    </div>
+                    <div class="contentlist">
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                        <section>
+                            <p>
+                                [第一件好事]
+                            </p>
+
+                            <p>
+                                #抓去输入内容#
+                            </p>
+
+                            <p>
+                                原因：#抓去输入内容#
+                            </p>
+                        </section>
+                    </div>
+                </li>
+            </ul>
+
+
+            <footer class="fixedbtn">
+                <div class="btn">
+                    记录今天的3件好事
+                </div>
+            </footer>
+
+
+        </section>
+    </div>
 
 
 </script>
 
+
+<script type="template/juicer" id="r-tpl">
+
+    <div class="right-slide">
+
+        <section class="r-title">
+            <p class="head-title">筛选</p>
+            <ul class="r-btn-w">
+                <li id="resetbtn">重置</li>
+                <li id="filterSearchbtn">完成</li>
+            </ul>
+        </section>
+        <div id="scrollwrapper" style="position: absolute;top: 80px;width: 80%;bottom: 0px;">
+            <div>
+                <section class="r-content">
+                    <p class="r-c-title">
+                        所在城市
+                    </p>
+
+                    <ul class="r-c-u">
+                        <li class="selected unreset">北京</li>
+                    </ul>
+                </section>
+                <section class="r-content">
+                    <p class="r-c-title">
+                        类别
+                    </p>
+
+                    <ul class="r-c-u">
+                        <li>全部</li>
+                        <li>分类名称</li>
+                        <li>分类名称</li>
+                        <li>分类名称</li>
+                        <li>分类名称</li>
+                        <li>分类名称</li>
+                    </ul>
+                </section>
+                <section class="r-content">
+                    <p class="r-c-title">
+                        价格
+                    </p>
+
+                    <ul class="r-c-u">
+                        <li>不限</li>
+                        <li>500以下</li>
+                        <li class="smallfont">500-1000</li>
+                        <li class="smallfont">1000-2000</li>
+                        <li class="smallfont">2000-3000</li>
+                        <li class="smallfont">3000以上</li>
+                    </ul>
+                </section>
+                <section class="r-content">
+                    <p class="r-c-title">
+                        咨询师性别
+                    </p>
+
+                    <ul class="r-c-u">
+                        <li>不限</li>
+                        <li>女</li>
+                        <li>男</li>
+                    </ul>
+                </section>
+
+                <section class="r-content">
+                    <p class="r-c-title">
+                        排序方式
+                    </p>
+
+                    <ul class="r-c-u-h">
+                        <li>默认排序</li>
+                        <li>价格从高到低排序</li>
+                        <li>价格从低到高排序</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+
+    </div>
+
+</script>
+
+<script type="template/juicer" id="l-tpl">
+    <div class="left-slide">
+        <header>
+            <span class="mIcon m-icon0"></span>
+
+            <div class="l-content">
+                <p>亲爱的#昵称默认手机/用户#</p>
+
+                <p>祝您今天好心情</p>
+            </div>
+
+        </header>
+        <section class="top-wrapper">
+            <img src="../../images/pic.png">
+
+            <p>#昵称#默认手机号/未登录</p>
+        </section>
+
+        <ul>
+            <li>
+                <span class="mIcon m-icon1"></span>
+
+                <p>订单管理</p>
+            </li>
+            <li>
+                <span class="mIcon m-icon2"></span>
+
+                <p>我感兴趣</p>
+            </li>
+            <li>
+                <span class="mIcon m-icon3"></span>
+
+                <p>系统消息</p>
+            </li>
+            <li>
+                <span class="mIcon m-icon4"></span>
+
+                <p>礼券</p>
+            </li>
+            <li>
+                <span class="mIcon m-icon5"></span>
+
+                <p>设置</p>
+            </li>
+        </ul>
+
+        <p class="bottom-title">您是咨询师？</p>
+
+        <p class="bottom-content">客服电话：400-0000-0000</p>
+    </div>
+</script>
+
 <script src="../../lib/libAll.js"></script>
+<script src="../../widgets/slide/iscroll.js"></script>
+<script src="../../widgets/slide/index.js"></script>
 <script src="../../pages/index/index.js"></script>
 
 

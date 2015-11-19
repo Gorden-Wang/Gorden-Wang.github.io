@@ -1,5 +1,6 @@
 #page {
   max-width: 640px;
+  width: 100%;
   margin: auto;
   .page-wrapper {
     header {
@@ -161,8 +162,315 @@
 
       }
     }
+
+    .in-wrapper{
+      margin-bottom: 70px;
+      display: none;
+      .no-item{
+        margin-top: 40px;
+        p{
+          font-size: 14px;
+          color: #59463d;
+          margin: 15px 0px;
+          text-align: center;
+          white-space: pre;
+        }
+
+        .i-title{
+          font-size: 18px;
+          font-weight: 400;
+          color: #88c6c2;
+        }
+      }
+
+      .main-list{
+        padding: 0px 10px;
+        li{
+          display: flex;
+          margin-bottom: 22.5px;
+          .timewrapper{
+            width: 5em;
+            text-align: center;
+            margin-right: 10px;
+
+            .time{
+              color: #59463d;
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+
+            .delete{
+              font-size: 14px;
+              color: #88c6c2;
+
+            }
+          }
+          .contentlist{
+            flex: 1;
+
+            section{
+              margin-bottom: 10px;
+              background-color: #ebe5e2;
+              color: #59463d;
+              font-size: 12px;
+              padding: 7.5px 12.5px;
+              p{
+                line-height: 1.3em;
+              }
+            }
+
+          }
+        }
+      }
+
+      .fixedbtn{
+        background-color: white;
+        padding: 12px 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+        position: fixed;
+        bottom: 0px;
+        z-index: 10;
+        width: 100%;
+
+        .btn{
+          border-radius: 6px;
+          font-size: 14px;
+          color: #ffffff;
+          background-color: #88c6c2;
+          text-align: center;
+          padding: 8px 0px;
+
+
+        }
+
+      }
+    }
   }
 }
+
+#right-wrapper{
+  background: #FFF;
+  border-left: 1px solid #59463d;
+
+  .r-title {
+    position: relative;
+    background-color: #ede5e3;
+    font-size: 18px;
+    color: #59453e;
+    font-weight: 600;
+    padding: 12.5px 12.5px 5px 12.5px;
+    margin-bottom: 12.5px;
+    z-index: 20;
+
+
+    .head-title {
+      text-align: center;
+    }
+
+  }
+
+  .r-btn-w {
+    background-color: #ede5e3;
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    overflow: hidden;
+    .selected {
+      color: #59453e;
+    }
+    li {
+      width: 50%;
+      float: left;
+      text-align: left;
+      padding: 4px 0px;
+      color: #59463d;
+    }
+    li:last-of-type{
+      text-align: right;
+    }
+  }
+
+
+  .r-content{
+    padding: 12.5px 12.5px;
+    padding-top: 0px;
+    .r-c-title{
+      font-size: 14px;
+      color: #59463d;
+      padding-bottom: 12.5px;
+      border-bottom: 1px solid #59463d;
+    }
+    .r-c-u{
+      margin-top: 12.5px;
+      overflow: hidden;
+
+      li{
+        width: 30%;
+        float: left;
+        margin-bottom: 5px;
+        margin-right: 5%;
+        text-align: center;
+        padding: 3px 0px;
+        font-size: 12px;
+        color: #88c6c2;
+        border-radius: 4px;
+        border: 1px solid #88c6c2;
+      }
+      li.selected{
+        color: #ffffff;
+        background-color:#88c6c2;
+
+      }
+      li:nth-of-type(3n){
+        margin-right: 0px;
+      }
+    }
+
+    .r-c-u-h{
+      li{
+        text-align: center;
+        margin: 12.5px 0px;
+        color: #88c6c2;
+        border-radius: 4px;
+        border: 1px solid #88c6c2;
+
+      }
+      li.selected{
+        color: #ffffff;
+        background-color:#88c6c2;
+
+      }
+    }
+
+  }
+}
+
+#left-wrapper{
+  background-color: #ffffff;
+
+  .mIcon{
+    background-image: url(../../images/common/m-icon.png);
+    background-size: 300px 52px;
+    background-repeat: no-repeat;
+  }
+  .m-icon0{
+    display: inline-block;
+    width: 30px;
+    height: 23px;
+    background-position: 7px -24px;
+    margin-top: 5px;
+    margin-right: 10px;
+
+  }
+  .m-icon1{
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 15px;
+    width: 21px;
+    height: 21px;
+    background-position: -77px 0px;
+
+  }
+  .m-icon2{
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 15px;
+    width: 21px;
+    height: 21px;
+    background-position: -26px 0px;
+
+  }
+  .m-icon3{
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 15px;
+    width: 21px;
+    height: 21px;
+    background-position: -52px 0px;
+
+  }
+  .m-icon4{
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 15px;
+    width: 21px;
+    height: 21px;
+    background-position: 0px 0px;
+
+  }
+  .m-icon5{
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 15px;
+    width: 21px;
+    height: 21px;
+    background-position: -105px 0px;
+
+  }
+
+  header{
+    background-color: #ede5e3;
+    color: #59463d;
+    font-size: 14px;
+    display: flex;
+    padding: 12.5px 0px;
+
+    div{
+      flex: 1;
+    }
+
+  }
+  
+  .top-wrapper{
+    img{
+      display: block;
+      width: 75px;
+      height: 75px;
+      margin: 15px auto;
+      border-radius: 75px;
+      border: 1px solid #59463d;
+    }
+
+    p{
+      color: #88c6c2;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  ul{
+    margin-top: 25px;
+    padding: 0px 15px;
+    li{
+      border-top: 1px solid #59463d;
+      padding: 12.5px;
+      display: flex;
+
+      p{
+        flex: 1;
+      }
+
+    }
+
+    li:last-of-type{
+      border-bottom: 1px solid #59463d;
+    }
+  }
+
+  .bottom-title{
+    margin-top: 17.5px;
+    color: #88c6c2;
+    font-size: 14px;
+    text-align: center;
+  }
+  .bottom-content{
+    margin-top: 20px;
+    color: #59463d;
+    font-size: 12px;
+    text-align: center;
+  }
+
+ }
 
 @media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
   /* 兼容iphone 6 */
@@ -173,18 +481,16 @@
 @media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3.0) {
   /* 兼容iphone6 plus */
 
-  #page {
-    .des-wrapper {
 
-      .cer-wrapper {
 
-      }
-      .bk-img {
-        background-position: left top;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
+}
+
+@media (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2.0) {
+  /* 兼容iphone5S */
+
+  .smallfont{
+    font-size: 10px !important;
   }
+
 
 }

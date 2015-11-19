@@ -1,0 +1,87 @@
+#page {
+  max-width: 640px;
+  width: 100%;
+  margin: auto; }
+  #page .hs-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-position: -21px 0px;
+    margin-top: 10px; }
+  #page .header-icon {
+    background-image: url(../../images/common/header-icon.png);
+    background-size: 66.5px 16px;
+    background-repeat: no-repeat; }
+  #page .mIcon {
+    background-image: url(../../images/common/m-icon.png);
+    background-size: 300px 52px;
+    background-repeat: no-repeat; }
+  #page .m-icon0 {
+    display: inline-block;
+    width: 30px;
+    height: 23px;
+    background-position: 7px -24px;
+    margin-top: 5px;
+    margin-right: 10px; }
+  #page .search-wrapper {
+    display: flex;
+    padding: 15px 12.5px; }
+    #page .search-wrapper input {
+      display: block;
+      flex: 1;
+      border: 1px solid #59463d;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 0px 12.5px;
+      margin-left: 0px; }
+  #page .ul-wrapper {
+    padding: 12.5px 15px; }
+    #page .ul-wrapper li .img-wrapper {
+      height: 0px;
+      padding-bottom: 63.11475%;
+      position: relative; }
+      #page .ul-wrapper li .img-wrapper a {
+        display: block;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%; }
+        #page .ul-wrapper li .img-wrapper a img {
+          width: 100%;
+          height: 100%; }
+      #page .ul-wrapper li .img-wrapper .label-wrapper {
+        z-index: 5;
+        position: absolute;
+        right: 8px;
+        top: 7.5px;
+        background-color: rgba(235, 229, 226, 0.6);
+        padding: 1px 8px;
+        color: #59463d;
+        font-size: 14px;
+        border-radius: 6px;
+        font-weight: 400; }
+      #page .ul-wrapper li .img-wrapper .label-wrapper:nth-of-type(2) {
+        top: 40.5px; }
+    #page .ul-wrapper li .p-title {
+      color: #59463d;
+      margin: 10px 0px;
+      font-size: 14px;
+      font-weight: 400; }
+    #page .ul-wrapper li .tl-wrapper span {
+      display: inline-block;
+      border: 1px solid #88c6c2;
+      border-radius: 6px;
+      padding: 1px 8px;
+      color: #88c6c2;
+      margin-right: 7.5px;
+      font-size: 12px; }
+    #page .ul-wrapper li .p-content {
+      padding: 12.5px 7.5px;
+      background-color: #ebe5e2;
+      color: #59463d;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.2em;
+      margin: 12.5px 0px; }
+
+/*# sourceMappingURL=search.css.map */

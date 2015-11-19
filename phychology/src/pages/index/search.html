@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59453e"/>
+    <meta name="renderer" content="webkit">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="../../images/common/logo.png"/>
+    <link rel="apple-touch-startup-image" href="../../images/common/logo.png"/>
+    <link rel="shortcut icon" href="../../images/common/logo.png"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>搜索</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/index/search.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="page-wrapper">
+        <div class="search-wrapper">
+            <span class="mIcon m-icon0"></span>
+            <input class="searchInput" placeholder="请输入您要搜索的内容">
+            <span class="header-icon hs-icon"></span>
+        </div>
+        <section class="ul-wrapper" style="display: none">
+            <ul>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
+                    </div>
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
+                    </div>
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
+                    </div>
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
+                    </div>
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
+                    </div>
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
+                    </div>
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
+                    </div>
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
+                    </div>
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <a>
+                            <img src="../../images/index/li.png">
+                        </a>
+
+                        <div class="label-wrapper">
+                            分类1/分类2
+                        </div>
+                        <div class="label-wrapper">
+                            分类3/分类4
+                        </div>
+                    </div>
+                    <p class="p-title">
+                        产品标题正面产品标题正面产品标题正面
+                    </p>
+
+                    <p class="p-title" style="margin-bottom: 7.5px">
+                        咨询师
+                    </p>
+
+                    <div class="tl-wrapper">
+                        <span>咨询师标签</span>
+                        <span>咨询师标签</span>
+                    </div>
+                    <p class="p-content">
+                        咨询师寄语。个性说明。初期运营自己填写。我健康
+                        孩子才健康。受训经历。理念。丰富的经验。亲子教育
+                        非常重要。要关注自身成长等等最多不超过10字
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/index/search.js"></script>
+
+
+</body>
+</html>

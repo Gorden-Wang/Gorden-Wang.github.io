@@ -35,49 +35,85 @@
             that.dom = {
                 wrapper: $("#page"),
                 loading: $("#loading"),
-                tpl: $("#tpl")
+                tpl: $("#tpl"),
+                rWrapper : $("#right-wrapper"),
+                rtpl : $("#r-tpl"),
+                lWrapper : $("#left-wrapper"),
+                ltpl : $("#l-tpl"),
             }
         },
         renderUI: function () {
             var that = this;
+            that.RSLIDE = new Wlib.Slider({
+                wrapper: "#right-wrapper",
+                sibling : "#page",
+                scroll : "#scrollwrapper",
+                dir: "1",
+            });
+            that.LSLIDE = new Wlib.Slider({
+                wrapper: "#left-wrapper",
+                sibling : "#page",
+                scroll : "",
+                dir: "0"
+            });
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+            that.dom.rWrapper.html(juicer(that.dom.rtpl.html(), {}));
+            that.dom.lWrapper.html(juicer(that.dom.ltpl.html(), that.data));
+            that.RSLIDE.bindScroll();
+            that.LSLIDE.bindScroll();
             that.dom.loading.hide();
         },
         recacheDom: function () {
             var that = this;
-            that.dom.full = $(".full-img");
+            that.dom.tabs = $(".tab-wrapper li");
+            that.dom.mybtn = $("#mybtn");
+            that.dom.searchbtn = $("#searchbtn");
+            that.dom.filterbtn = $("#filterbtn");
+            that.dom.lbbtn = $(".m-icon0");
+            that.dom.filterLis = $(".r-content li");
+            that.dom.resetbtn = $("#resetbtn");
+            that.dom.filterSearchbtn = $("#filterSearchbtn");
         },
         bindEvent: function () {
             var that = this;
-            var btnText = "收起";
-            $(".swiper-slide").on("click", function () {
-                var src = $(this).find("img").attr("src");
-                that.dom.full.show().append("<a class><img src='" + src + "'></a>");
-            })
-            that.dom.full.on("click", function () {
-                $(this).html("");
-                $(this).hide();
-            });
-
-            $(".btn-wrapper").on("click", function () {
+            that.dom.tabs.on("click",function(){
                 var target = $(this).attr("data-target");
-                var text = $(this).attr("data-text");
-                $(target).toggle();
-                if ($(this).find("span").text() == "收起") {
-                    $(this).find("span").text(text);
-                } else {
-                    $(this).find("span").text("收起");
+                var nextTarget = $(this).siblings().attr("data-target");
+                var isSelect = $(this).hasClass("selected");
+                if(!isSelect){
+                    $(nextTarget).hide();
+                    $(target).show();
+                    $(this).addClass("selected").siblings().removeClass("selected");
                 }
-
-
             });
-            //add download
 
-            $(".down-header,footer,.btn-down").on("click", function () {
-                location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.zy.part_timejob"
+            that.dom.filterbtn.on("click",function(){
+                that.RSLIDE.slideIn();
             });
-            $(".des-wrapper").on("click",function(){
-                location.href = "../../pages/home/index.html?user_id="+that.data.data.product.userId;
+            that.dom.mybtn.on("click",function(){
+                that.LSLIDE.slideIn();
+            });
+            that.dom.lbbtn.on("click",function(){
+                that.LSLIDE.slideOut();
+            });
+            that.dom.searchbtn.on("click",function(){
+                win.location = "../../pages/index/search.html";
+            });
+
+            that.dom.filterLis.on("click",function(){
+                if(!$(this).hasClass("selected")){
+                    $(this).addClass("selected").siblings().removeClass("selected")
+                }
+            });
+            that.dom.resetbtn.on("click",function(){
+               that.dom.filterLis.not(".unreset").removeClass("selected");
+            });
+            that.dom.filterSearchbtn.on("click",function(){
+                that.dom.loading.show();
+                setTimeout(function(){
+                    that.RSLIDE.slideOut();
+                    that.dom.loading.hide();
+                },2000)
             })
 
         },
@@ -90,53 +126,6 @@
                 var lit = arr[1] > 0 ? '.5' : '';
                 return big + lit;
             });
-
-            juicer.register("makeTimeTitle", function (type) {
-
-                if (type == 2) {
-                    //    以下工作时间灵活可选或必须在以下时间完成工作
-                    return "以下工作时间灵活可选";
-                }
-                if (type == 3) {
-                    return "必须在以下时间完成工作"
-                }
-
-            });
-
-            juicer.register("makeAgeDis", function (min, max) {
-                    if (min != -1 && max != -1) {
-                        return min + "岁-" + max + "岁";
-                    }
-                    if (min != -1 && max == -1) {
-                        return "大于" + min + "岁"
-                    }
-                    if (min == -1 && max != -1) {
-                        return "小于" + max + "岁"
-                    }
-                    if (min == -1 && max == -1) {
-                        return "不要求"
-                    }
-                }
-            );
-            juicer.register("makeAudiDis", function (type) {
-                    // 0-不限 1-面试 2-不面试
-                    if (type == 0) {
-                        return "不限"
-                    }
-                    if (type == 1) {
-                        return "需面试"
-                    }
-                    if (type == 2) {
-                        return "不需面试"
-                    }
-                }
-            );
-
-            juicer.register("checkDisplayMore", function (arr, length) {
-                var length = length || 3;
-                return arr.length > length ? true : false;
-            });
-
 
         },
         getItems: function () {
