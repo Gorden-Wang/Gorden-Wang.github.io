@@ -112,6 +112,7 @@
                 that.dom.loading.show();
                 setTimeout(function(){
                     that.RSLIDE.slideOut();
+                    that.dom.resetbtn.trigger("click");
                     that.dom.loading.hide();
                 },2000)
             })
