@@ -204,10 +204,7 @@ td, th {
 
 
 body {
-    background-color: #FFF;max-width: 640px;
-    overflow: hidden;
-    position: relative;
-    width: 100%; }
+    background-color: #FFF;}
 
 
 #loading {
