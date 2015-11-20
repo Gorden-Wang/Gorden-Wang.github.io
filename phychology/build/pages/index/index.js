@@ -76,6 +76,9 @@
         },
         bindEvent: function () {
             var that = this;
+
+            FastClick.attach(document.body);
+
             that.dom.tabs.on("click",function(){
                 var target = $(this).attr("data-target");
                 var nextTarget = $(this).siblings().attr("data-target");

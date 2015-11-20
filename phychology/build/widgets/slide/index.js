@@ -90,11 +90,11 @@
                     "transform": "translate3d(-100%, 0px, 0px)",
                     "-webkit-transform": "translate3d(-100%, 0px, 0px)",
                     "width":"80%",
-                    "height":"100%",
                     "position":"absolute",
                     "top":"0px",
                     "overflow":"hidden",
-                    "z-index":"20"
+                    "z-index":"20",
+                    "height":$(window).height()
 
                 });
 
@@ -105,11 +105,11 @@
                     "-webkit-transform": "translate3d(100%, 0px, 0px)",
                     "width":"100%",
                     "padding-right":"20%",
-                    "height":"100%",
                     "position":"absolute",
                     "top":"0px",
                     "overflow":"hidden",
-                    "z-index":"20"
+                    "z-index":"20",
+                    "height":$(window).height()
                 });
             }
 
@@ -118,7 +118,7 @@
         },
         bindScroll : function(){
             var that = this;
-            var s = new scroll(that.opt.scroll || that.opt.wrapper, { scrollX: true, freeScroll: true,click:true});
+            var s = new scroll(that.opt.scroll || that.opt.wrapper, { scrollX: true, freeScroll: true,tap:true});
             return s;
         }
 

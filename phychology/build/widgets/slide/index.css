@@ -46,3 +46,6 @@
 
 body {
   overflow-x: hidden; }
+
+#scrollwrapper {
+  z-index: 10; }
