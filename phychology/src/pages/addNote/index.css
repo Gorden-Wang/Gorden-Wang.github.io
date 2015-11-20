@@ -54,7 +54,7 @@
   #page .fixedbtn {
     background-color: white;
     padding: 12px 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid #eeeae7;
     position: fixed;
     bottom: 0px;
     z-index: 10;
