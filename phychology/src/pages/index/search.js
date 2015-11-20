@@ -55,6 +55,8 @@
         bindEvent: function () {
             var that = this;
 
+            FastClick.attach(document.body);
+
             that.dom.back.on("click",function(){
                 win.history.back();
             });

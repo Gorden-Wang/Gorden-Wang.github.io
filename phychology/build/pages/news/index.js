@@ -49,7 +49,7 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.search = $(".hs-icon");
+            that.dom.lis = $(".ul02-widget li");
 
         },
         bindEvent: function () {
@@ -60,20 +60,10 @@
             that.dom.back.on("click",function(){
                 win.history.back();
             });
-            that.dom.search.on("click",function(){
-                that.dom.loading.show();
-                setTimeout(function(){
-                    $("section").show();
-                    that.dom.loading.hide();
-                },1000)
 
-            });
-
-            $("body").on("keydown",function(event){
-                if (event.keyCode == "13") {
-                    that.dom.search.trigger("click");
-                }
-            });
+            that.dom.lis.on("click",function(){
+                win.location = "../../pages/news/item.html"
+            })
 
 
         },

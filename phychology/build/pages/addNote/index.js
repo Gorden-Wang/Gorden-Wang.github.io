@@ -49,7 +49,6 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.search = $(".hs-icon");
 
         },
         bindEvent: function () {

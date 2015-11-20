@@ -1,0 +1,158 @@
+
+#page {
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+
+  .mIcon {
+    background-image: url(../../images/common/m-icon.png);
+    background-size: 300px 52px;
+    background-repeat: no-repeat;
+  }
+  .m-icon0 {
+    display: inline-block;
+    width: 30px;
+    height: 23px;
+    background-position: 7px -24px;
+    margin-top: 5px;
+    margin-right: 10px;
+
+  }
+
+  header.back-header {
+    background-color: #ebe5e2;
+    padding: 10px 0px;
+    font-size: 18px;
+    color: #59463d;
+    font-weight: 600;
+
+    .m-icon0 {
+      position: absolute;
+      left: 12.5px;
+      top: 6px;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .right-btn {
+      position: absolute;
+      right: 12.5px;
+      top: 15px;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+
+  .ul02-widget {
+    li {
+      padding: 15px;
+      display: flex;
+      border-bottom: 1px solid #ebe5e2;
+
+      /*
+      <li>
+                    <div class="left-content">
+                        <p class="time-content">YYYY-MM-DD 00:00:00</p>
+                        <p>#标题标题标题标题标题标题标题#<span>（未读）</span></p>
+                        <p>系统消息摘要文字系统消息摘要文字系统消息摘要文字系统消息摘要文字系统消息摘要文字</p>
+                    </div>
+                    <span class="r-icon"></span>
+                </li>
+      */
+
+      .left-content {
+        flex: 1;
+        font-size: 14px;
+        color: #59463d;
+
+        .time-content {
+          color: #ede5e3;
+          font-size: 12px;
+          text-align: right;
+
+        }
+
+        .li-title {
+          font-size: 14px;
+          color: #59453e;
+          span {
+            color: #88c6c2;
+          }
+        }
+        .li-content {
+          color: #a58a7c;
+          -ms-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          word-break: break-word;
+        }
+        p {
+          margin-bottom: 10px;
+        }
+        p:last-of-type {
+          margin-bottom: 0px;
+        }
+      }
+
+      .r-icon {
+        display: inline-block;
+        width: 10px;
+        height: 16px;
+        background-position: -22px -28px;
+        margin-left: 20px;
+        margin-top: 40px;
+      }
+
+    }
+  }
+
+  .content-wrapper{
+    padding: 20px;
+    .time-content {
+      color: #ede5e3;
+      font-size: 12px;
+      text-align: right;
+
+    }
+
+    .li-title {
+      font-size: 14px;
+      color: #59453e;
+      text-align: center;
+      font-weight: 600;
+
+      span {
+        color: #88c6c2;
+      }
+    }
+    .li-content {
+      color: #a58a7c;
+    }
+    p {
+      margin-bottom: 10px;
+      line-height: 1.3em;
+    }
+    p:last-of-type {
+      margin-bottom: 0px;
+    }
+
+    .btn{
+      border-radius: 6px;
+      font-size: 14px;
+      color: #ffffff;
+      background-color: #88c6c2;
+      text-align: center;
+      padding: 8px 0px;
+
+
+    }
+  }
+
+
+
+}
+

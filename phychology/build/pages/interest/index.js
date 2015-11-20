@@ -49,7 +49,9 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.search = $(".hs-icon");
+            that.dom.edite = $(".right-btn");
+            that.dom.list = $(".ul01-widget li");
+            that.dom.delete = $(".fixedbtn");
 
         },
         bindEvent: function () {
@@ -60,20 +62,31 @@
             that.dom.back.on("click",function(){
                 win.history.back();
             });
-            that.dom.search.on("click",function(){
-                that.dom.loading.show();
-                setTimeout(function(){
-                    $("section").show();
-                    that.dom.loading.hide();
-                },1000)
 
+            that.dom.edite.on("click",function(){
+                var text = $(this).text();
+
+                if(text == "编辑"){
+                    $(this).text("取消");
+
+
+                }else{
+
+                }
+
+                that.dom.list.find("span").toggleClass("spanshow");
+                that.dom.delete.toggleClass("hide");
             });
 
-            $("body").on("keydown",function(event){
-                if (event.keyCode == "13") {
-                    that.dom.search.trigger("click");
+            that.dom.list.find("span").on("click",function(){
+                if(!$(this).hasClass("selected")){
+                    $(this).addClass("selected");
+                }else{
+                    $(this).removeClass("selected");
                 }
             });
+
+
 
 
         },

@@ -73,6 +73,11 @@
             that.dom.filterLis = $(".r-content li");
             that.dom.resetbtn = $("#resetbtn");
             that.dom.filterSearchbtn = $("#filterSearchbtn");
+            that.dom.addNoteBtn = $(".fixedbtn");
+            that.dom.inetestbtn = $("#inetestbtn");
+            that.dom.newsbtn = $("#newsbtn");
+            that.dom.setbtn = $("#setbtn");
+
         },
         bindEvent: function () {
             var that = this;
@@ -118,6 +123,18 @@
                     that.dom.resetbtn.trigger("click");
                     that.dom.loading.hide();
                 },2000)
+            });
+            that.dom.addNoteBtn.on("click",function(){
+                win.location = "../../pages/addNote/index.html";
+            });
+            that.dom.inetestbtn.on("click",function(){
+                win.location = "../../pages/interest/index.html"
+            });
+            that.dom.newsbtn.on("click",function(){
+                win.location = "../../pages/news/index.html"
+            });
+            that.dom.setbtn.on("click",function(){
+                win.location = "../../pages/setting/index.html"
             })
 
         },
