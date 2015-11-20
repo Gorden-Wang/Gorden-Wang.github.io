@@ -77,6 +77,8 @@
             that.dom.inetestbtn = $("#inetestbtn");
             that.dom.newsbtn = $("#newsbtn");
             that.dom.setbtn = $("#setbtn");
+            //@TODO : 以后是点击任意左侧跳转login
+            that.dom.loginbtn = $(".top-wrapper");
 
         },
         bindEvent: function () {
@@ -135,6 +137,9 @@
             });
             that.dom.setbtn.on("click",function(){
                 win.location = "../../pages/setting/index.html"
+            });
+            that.dom.loginbtn.on("click",function(){
+                win.location = "../../pages/login/index.html"
             })
 
         },

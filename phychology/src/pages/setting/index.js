@@ -50,6 +50,7 @@
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
             that.dom.aboutbtn = $("#aboutbtn");
+            that.dom.modipwdbtn = $("#modipwdbtn");
 
         },
         bindEvent: function () {
@@ -63,7 +64,11 @@
 
             that.dom.aboutbtn.on("click",function(){
                 win.location = "../../pages/about/index.html"
-            })
+            });
+
+            that.dom.modipwdbtn.on("click",function(){
+                win.location = "../../pages/modipwd/index.html"
+            });
 
 
         },

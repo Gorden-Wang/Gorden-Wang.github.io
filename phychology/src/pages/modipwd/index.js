@@ -49,6 +49,9 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
+            that.dom.edite = $(".right-btn");
+            that.dom.list = $(".ul01-widget li");
+            that.dom.delete = $(".fixedbtn");
 
         },
         bindEvent: function () {
@@ -59,6 +62,32 @@
             that.dom.back.on("click",function(){
                 win.history.back();
             });
+
+            that.dom.edite.on("click",function(){
+                var text = $(this).text();
+
+                if(text == "编辑"){
+                    $(this).text("取消");
+
+
+                }else{
+
+                }
+
+                that.dom.list.find("span").toggleClass("spanshow");
+                that.dom.delete.toggleClass("hide");
+            });
+
+            that.dom.list.find("span").on("click",function(){
+                if(!$(this).hasClass("selected")){
+                    $(this).addClass("selected");
+                }else{
+                    $(this).removeClass("selected");
+                }
+            });
+
+
+
 
         },
         addJuicerHandler: function () {

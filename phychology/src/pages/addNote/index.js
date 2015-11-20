@@ -59,21 +59,6 @@
             that.dom.back.on("click",function(){
                 win.history.back();
             });
-            that.dom.search.on("click",function(){
-                that.dom.loading.show();
-                setTimeout(function(){
-                    $("section").show();
-                    that.dom.loading.hide();
-                },1000)
-
-            });
-
-            $("body").on("keydown",function(event){
-                if (event.keyCode == "13") {
-                    that.dom.search.trigger("click");
-                }
-            });
-
 
         },
         addJuicerHandler: function () {

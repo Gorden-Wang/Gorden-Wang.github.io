@@ -15,9 +15,9 @@
     <link rel="apple-touch-startup-image" href="../../images/common/logo.png"/>
     <link rel="shortcut icon" href="../../images/common/logo.png"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>设置</title>
+    <title>注册</title>
     <link href="../../lib/base.css" rel="stylesheet">
-    <link href="../../pages/setting/index.css" rel="stylesheet">
+    <link href="../../pages/register/index.css" rel="stylesheet">
 
     <style>
 
@@ -35,40 +35,51 @@
         <header class="back-header">
             <span class="mIcon m-icon0"></span>
 
-            <p>设置</p>
+            <p>注册</p>
         </header>
 
-        <section class="ul03-widget">
+        <section class="regist-top">
+            <p>创建你的专属账户</p>
+            <p>开启自我成长的**之旅</p>
+            <div class="b-img"></div>
 
-            <ul>
-                <li id="modipwdbtn">
-                    <div class="left-content">
-                        <p class="li-content">更换密码</p>
-                    </div>
-                    <span class="r-icon mIcon"></span>
-                </li>
-                <li id="aboutbtn">
-                    <div class="left-content">
-                        <p class="li-content">关于我们</p>
-                    </div>
-                    <span class="r-icon mIcon"></span>
-                </li>
-                <li>
-                    <div class="left-content">
-                        <p class="li-content">通知和铃声（这个H5做不了设置的）</p>
-                    </div>
-                    <span class="r-icon mIcon"></span>
-                </li>
-            </ul>
         </section>
 
-        <div class="btn01" style="margin-top: 40px;">
-            清除缓存
+
+
+        <section class="content-wrapper">
+
+            <div class="input-wrapper">
+                <input type="text" placeholder="请输入手机号">
+                <span class="input-button">获取验证码</span>
+            </div>
+
+            <div class="input-wrapper">
+                <input type="text" placeholder="请输入验证码">
+            </div>
+
+            <div class="input-wrapper">
+                <input type="password" placeholder="请设置密码（6-20位数字或字母）">
+                <span class="input-button mIcon pswview"></span>
+            </div>
+
+
+
+
+        </section>
+
+        <section class="policy-wrapper">
+            <span class="mIcon check-radio selected"></span>
+            <p>我已阅读并同意《用户协议》</p>
+        </section>
+
+        <div class="btn">
+            确认
         </div>
 
-        <div class="btn" style="margin-top: 12.5px;">
-            退出登录
-        </div>
+
+
+
 
 
     </div>
@@ -77,7 +88,7 @@
 </script>
 
 <script src="../../lib/libAll.js"></script>
-<script src="../../pages/setting/index.js"></script>
+<script src="../../pages/register/index.js"></script>
 
 
 </body>

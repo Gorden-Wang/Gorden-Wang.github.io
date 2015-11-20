@@ -49,6 +49,9 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
+            that.dom.forget = $(".forget");
+            that.dom.registbtn = $(".btn");
+
 
         },
         bindEvent: function () {
@@ -59,6 +62,19 @@
             that.dom.back.on("click",function(){
                 win.history.back();
             });
+
+
+
+            that.dom.forget.on("click",function(){
+                win.location = "../../pages/foget/index.html";
+            });
+
+            that.dom.registbtn.on("click",function(){
+                win.location = "../../pages/register/index.html";
+            });
+
+
+
 
         },
         addJuicerHandler: function () {

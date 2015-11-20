@@ -49,6 +49,8 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
+            that.dom.forget = $(".forget");
+
 
         },
         bindEvent: function () {
@@ -59,6 +61,15 @@
             that.dom.back.on("click",function(){
                 win.history.back();
             });
+
+
+
+            that.dom.forget.on("click",function(){
+                win.location = "../../pages/login/forget.html";
+            });
+
+
+
 
         },
         addJuicerHandler: function () {

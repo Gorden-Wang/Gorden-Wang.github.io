@@ -51,10 +51,6 @@
         border-radius: 6px;
         margin-bottom: 12.5px;
         color: #59463d; }
-  #page textarea::-webkit-input-placeholder {
-    color: #ebe5e2; }
-  #page textarea::-moz-placeholder {
-    color: #ebe5e2; }
   #page .fixedbtn {
     background-color: white;
     padding: 12px 20px;

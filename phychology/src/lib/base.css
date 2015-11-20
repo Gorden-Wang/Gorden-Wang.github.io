@@ -672,3 +672,9 @@ body {
 .wrap{
     margin-top: 14.0625%;
 }
+
+textarea::-webkit-input-placeholder { color:#ebe5e2; }
+textarea::-moz-placeholder { color:#ebe5e2; }
+
+input::-webkit-input-placeholder { color:#ebe5e2; }
+input::-moz-placeholder { color:#ebe5e2; }
