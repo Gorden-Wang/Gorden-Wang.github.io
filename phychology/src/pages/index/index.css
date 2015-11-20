@@ -4,12 +4,14 @@
   width: 100%;
   margin: auto; }
   #page .page-wrapper header {
-    position: relative;
     background-color: #ede5e3;
     font-size: 18px;
     color: #59453e;
     padding: 3px;
-    font-weight: 600; }
+    font-weight: 600;
+    z-index: 20;
+    position: fixed;
+    width: 100%; }
     #page .page-wrapper header .hl-icon {
       display: inline-block;
       position: absolute;
@@ -56,12 +58,13 @@
       padding: 10px 0px; }
   #page .page-wrapper section.img-wrapper {
     background-image: url(../../images/index/span.png);
-    background-position: center center;
     height: 0px;
     padding-bottom: 41.40625%;
     background-size: contain;
     position: relative;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    background-position: center 64px; }
     #page .page-wrapper section.img-wrapper .b-img {
       position: absolute;
       bottom: 0px;

@@ -4,12 +4,14 @@
   margin: auto;
   .page-wrapper {
     header {
-      position: relative;
       background-color: #ede5e3;
       font-size: 18px;
       color: #59453e;
       padding: 3px;
       font-weight: 600;
+      z-index: 20;
+      position: fixed;
+      width: 100%;
 
       .hl-icon {
         display: inline-block;
@@ -70,12 +72,14 @@
 
     section.img-wrapper {
       background-image: url(../../images/index/span.png);
-      background-position: center center;
+
       height: 0px;
       padding-bottom: percentage(265/640);
       background-size: contain;
       position: relative;
       background-repeat: no-repeat;
+      padding-top: 50px;
+      background-position: center 64px;
       .b-img {
         position: absolute;
         bottom: 0px;
@@ -416,6 +420,7 @@
     font-size: 14px;
     display: flex;
     padding: 12.5px 0px;
+
 
     div{
       flex: 1;
