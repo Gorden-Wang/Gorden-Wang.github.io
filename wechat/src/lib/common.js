@@ -254,7 +254,7 @@ window.Wlib = (function () {
             }
 
             var url = (function () {
-                var u = that.evn == "daily" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://182.92.216.40/adapter/api/requestH5?body=";
+                var u = that.evn == "daily" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://www.hmsgtech.com/adapter/api/requestH5?body=";
 
 
                 return u + JSON.stringify(body);

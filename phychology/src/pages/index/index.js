@@ -79,6 +79,7 @@
             that.dom.setbtn = $("#setbtn");
             //@TODO : 以后是点击任意左侧跳转login
             that.dom.loginbtn = $(".top-wrapper");
+            that.dom.items = $(".ul-wrapper li");
 
         },
         bindEvent: function () {
@@ -140,7 +141,10 @@
             });
             that.dom.loginbtn.on("click",function(){
                 win.location = "../../pages/login/index.html"
-            })
+            });
+            that.dom.items.on("click",function(){
+                win.location = "../../pages/item/index.html"
+            });
 
         },
         addJuicerHandler: function () {
