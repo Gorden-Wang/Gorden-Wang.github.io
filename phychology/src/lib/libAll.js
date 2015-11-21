@@ -909,9 +909,10 @@ window.Wlib = (function () {
         },
         alert: function (content, btn, callback) {
             var bgwrapper = $("<div class = 'fixed fadeIn animated'>" + content + "</div>");
-            bgwrapper.append("<button>btn</button>");
-            $("body").append(bgwrapper);
-            $(bgwrapper).find("button").on("click", function () {
+            bgwrapper.append(btn);
+            $("body").append(
+                bgwrapper);
+            $("body").find(".btn").on("click", function () {
                 callback ? callback() : $(bgwrapper).remove();
             })
 

@@ -80,6 +80,7 @@
             //@TODO : 以后是点击任意左侧跳转login
             that.dom.loginbtn = $(".top-wrapper");
             that.dom.items = $(".ul-wrapper li");
+            that.dom.orderbtn = $("#orderbtn");
 
         },
         bindEvent: function () {
@@ -144,6 +145,9 @@
             });
             that.dom.items.on("click",function(){
                 win.location = "../../pages/item/index.html"
+            });
+            that.dom.orderbtn.on("click",function(){
+                win.location = "../../pages/orderlist/index.html"
             });
 
         },

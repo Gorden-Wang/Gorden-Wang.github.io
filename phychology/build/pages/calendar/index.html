@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59453e"/>
+    <meta name="renderer" content="webkit">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="../../images/common/logo.png?version=0.1.5" type="text/css" rel="stylesheet"/>
+    <link href="../../images/common/logo.png?version=0.1.5" type="text/css" rel="stylesheet"/>
+    <link href="../../images/common/logo.png?version=0.1.5" type="text/css" rel="stylesheet"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>预约日历</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../pages/calendar/index.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="page-wrapper">
+        <header class="back-header">
+            <span class="mIcon m-icon0"></span>
+
+            <p>预约日历</p>
+        </header>
+
+        <section class="time-title">
+            <span class="prev mIcon"></span>
+
+            <p>201X年XX月XX日-201X年XX月XX日</p>
+            <span class="next mIcon"></span>
+        </section>
+
+        <section class="swiper-container swiper-container-horizontal" id="times">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+
+
+                    <div class="time-head">
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                    </div>
+                    <div class="times-wrapper">
+
+
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li class="indent">
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li class="indent">
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="swiper-slide">
+
+
+                    <div class="time-head">
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                        <div class="flex">
+                            <p>周一</p>
+
+                            <p>01/01</p>
+                        </div>
+                    </div>
+                    <div class="times-wrapper">
+
+
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li class="indent">
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li class="indent">
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <p>周一</p>
+
+                                <p>01/01</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                            <li>
+                                <p>00:00</p>
+
+                                <p>至</p>
+
+                                <p>00:00</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </section>
+
+        <footer class="fixedbtn">
+            <div class="btn">
+                下一步
+            </div>
+        </footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.5"></script>
+<script src="../../pages/calendar/index.js?version=0.1.5"></script>
+
+<script>
+    var swiper = new Swiper('#times', {
+        slidesPerView: 1,
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
+
+</script>
+
+
+</body>
+</html>

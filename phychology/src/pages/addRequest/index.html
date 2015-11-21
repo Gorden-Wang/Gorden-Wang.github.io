@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59453e"/>
+    <meta name="renderer" content="webkit">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="../../images/common/logo.png"/>
+    <link rel="apple-touch-startup-image" href="../../images/common/logo.png"/>
+    <link rel="shortcut icon" href="../../images/common/logo.png"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>咨询需求</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/addRequest/index.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="page-wrapper">
+        <header class="back-header">
+            <span class="mIcon m-icon0"></span>
+
+            <p>咨询需求</p>
+        </header>
+
+
+        <section class="main-wrapper">
+
+            <section class="section-wrapper">
+                <p>您的称呼</p>
+
+                <input type="text" placeholder="咨询师和您联系时怎样称呼您？可以留姓名或昵称">
+            </section>
+            <section class="section-wrapper">
+                <p>联系电话</p>
+
+                <input type="text" placeholder="#抓取#">
+            </section>
+            <section class="section-wrapper">
+                <div class="im-top">
+                    <p>您需要咨询哪方面问题？</p>
+
+                    <div class="b-img"></div>
+                </div>
+
+                <textarea placeholder="为了让咨询师预先对您的情况有所了解，您可以描述您希望咨询的问题：您遇到了什么困扰？什么事件让您想做咨询？问题的表现是什么？（选择输入，详情的描述可以帮咨询师预先作出准备。）"></textarea>
+            </section>
+
+            <section class="section-wrapper">
+                <div class="im-top">
+                    <p>您面对目前问题采取了什么应对？</p>
+
+                    <div class="b-img"></div>
+                </div>
+
+                <textarea placeholder="面对您上述的问题，您采取了什么样的态度？怎么处理的？（选择输入，不过详尽的描述可以帮咨询师预先作出准备。）"></textarea>
+            </section>
+
+            <section class="section-wrapper">
+                <div class="im-top">
+                    <p>个人情况描述</p>
+
+                    <div class="b-img"></div>
+                </div>
+
+                <p style="text-align: left">
+                    我们注重您的隐私。这里进描述您的个人情况即可，不需要提共任何具体的个人信息（如单位名称/真是姓名）
+                </p>
+            </section>
+
+            <section class="ul07-widget">
+                <ul>
+                    <li>
+                        <p>
+                            姓名
+                        </p>
+                        <select>
+                            <option>保密</option>
+                            <option>男</option>
+                            <option>女</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            年龄
+                        </p>
+                        <select>
+                            <option>保密</option>
+                            <option>10-20</option>
+                            <option>20-30</option>
+                            <option>30-40</option>
+                            <option>40-50</option>
+                            <option>50-60</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            教育程度
+                        </p>
+                        <select>
+                            <option>保密</option>
+                            <option>大专</option>
+                            <option>本科</option>
+                            <option>研究生</option>
+                            <option>博士</option>
+                            <option>博士后</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            职业属性
+                        </p>
+                        <select>
+                            <option>保密</option>
+                            <option>。。</option>
+                            <option>。。</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            婚姻状况
+                        </p>
+                        <select>
+                            <option>保密</option>
+                            <option>已婚</option>
+                            <option>未婚</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            是否有孩子
+                        </p>
+                        <select>
+                            <option>保密</option>
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            是否曾被寄养
+                        </p>
+                        <select>
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            是否接受过心理咨询
+                        </p>
+                        <select>
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                    <li>
+                        <p>
+                            近期是否身体有重大疾病，是否用药中
+                        </p>
+                        <select>
+                            <option>是</option>
+                            <option>否</option>
+                        </select>
+                        <span class="mIcon s-r"></span>
+                    </li>
+                </ul>
+            </section>
+
+
+
+        </section>
+
+        <footer class="fixedbtn">
+            <div class="btn">
+                提交
+            </div>
+        </footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/addRequest/index.js"></script>
+
+
+</body>
+</html>

@@ -49,7 +49,7 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.lis = $(".ul02-widget li");
+            that.dom.btn = $(".r-w");
 
         },
         bindEvent: function () {
@@ -61,9 +61,11 @@
                 win.history.back();
             });
 
-            that.dom.lis.on("click",function(){
-                win.location = "../../pages/news/item.html"
-            })
+
+
+            that.dom.btn.on("click",function(){
+                win.location = "../../pages/calendar/index.html"
+            });
 
 
         },

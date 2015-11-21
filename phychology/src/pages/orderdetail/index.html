@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59453e"/>
+    <meta name="renderer" content="webkit">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="../../images/common/logo.png"/>
+    <link rel="apple-touch-startup-image" href="../../images/common/logo.png"/>
+    <link rel="shortcut icon" href="../../images/common/logo.png"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>订单</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/orderdetail/index.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="page-wrapper">
+        <header class="back-header">
+            <span class="mIcon m-icon0"></span>
+
+            <p>订单</p>
+        </header>
+
+
+        <section class="ul05-widget">
+
+            <ul>
+                <li class="flex" >
+                    <img src="../../images/pic.png">
+                    <div class="l-w">
+                        <p>
+                            #标题标题标题标题标题标#
+                        </p>
+                        <p>
+                            #咨询师#<span class="tel">13811111111</span>
+                        </p>
+                        <p class="dark">
+                            (咨询师仅和您确认时间地点，订单相关请联络客服)
+                        </p>
+                        <p class="dark">
+                            订单编号：000000000
+                        </p>
+                        <p class="dark">
+                            订单状态：#状态#
+                        </p>
+                    </div>
+
+
+
+                </li>
+                <li>
+                    <p class="l-title">
+                        时间：
+                    </p>
+                    <p class="r-content">
+                        XXXX-MM-DD,星期X，00:00-00:00
+                    </p>
+                </li>
+                <li>
+                    <p class="l-title">
+                        地点:
+                    </p>
+                    <p class="r-content">
+                        #选择的具体地址#
+                    </p>
+                </li>
+                <li>
+                    <p class="l-title">
+                        单价：1500元/小时
+                    </p>
+                    <p class="r-content">
+                        时长：N小时
+                    </p>
+                </li>
+            </ul>
+
+            <p class="price">总价：XXXX元</p>
+
+
+            <p class="dark">
+                订单开始24小时之前您可以通过APP免费撤销。
+            </p>
+            <p class="dark">
+                订单开始前24小时内撤销订单将扣除30%费用。
+            </p>
+            <p class="dark">
+                订单开始后撤销订单扣除100%费用。
+            </p>
+            <p class="dark">
+                如因咨询师原因导致不能执行订单，
+            </p>
+            <p class="dark">
+                可以联系客服申请退款。
+            </p>
+        </section>
+
+        <footer class="fixedbtn">
+            <div class="btn">
+                #按钮对应状态#
+            </div>
+        </footer>
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/orderdetail/index.js"></script>
+
+
+</body>
+</html>

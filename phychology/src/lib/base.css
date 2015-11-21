@@ -330,18 +330,18 @@ body {
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
-        background-color: black;
+        background-color: #ebe5e2;
         -webkit-animation-timing-function: ease-in;
     }
 
     35% {
-        opacity: 0.8;
-        background-color: black;
+        opacity: 0.3;
+        background-color: #ebe5e2;
     }
 
     100% {
-        opacity: 0.8;
-        background-color: black;
+        opacity: 1;
+        background-color: #ebe5e2;
         -webkit-animation-timing-function: ease-out;
     }
 }
@@ -349,18 +349,18 @@ body {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        background-color: black;
+        background-color: #ebe5e2;
         -webkit-animation-timing-function: ease-in;
     }
 
     35% {
-        opacity: 0.8;
-        background-color: black;
+        opacity: 0.3;
+        background-color: #ebe5e2;
     }
 
     100% {
-        opacity: 0.8;
-        background-color: black;
+        opacity: 1;
+        background-color: #ebe5e2;
         -webkit-animation-timing-function: ease-out;
     }
 }
@@ -369,6 +369,16 @@ body {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 
+}
+
+.fadeIn p.title{
+    font-size: 18px;
+    color: #59463d;
+}
+.fadeIn p.content{
+    margin-top: 15px;
+    font-size: 15px;
+    color: #1a0b03;
 }
 
 @-webkit-keyframes slideDown {
@@ -673,8 +683,9 @@ body {
     margin-top: 14.0625%;
 }
 
-textarea::-webkit-input-placeholder { color:#ebe5e2; }
-textarea::-moz-placeholder { color:#ebe5e2; }
+textarea::-webkit-input-placeholder { color:#ebe5e2; font-size: 12px}
+textarea::-moz-placeholder { color:#ebe5e2;font-size: 12px }
 
-input::-webkit-input-placeholder { color:#ebe5e2; }
-input::-moz-placeholder { color:#ebe5e2; }
+input::-webkit-input-placeholder { color:#ebe5e2;font-size: 12px }
+input::-moz-placeholder { color:#ebe5e2; font-size: 12px}
+

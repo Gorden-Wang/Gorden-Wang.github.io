@@ -17,6 +17,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>商品详情</title>
     <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../pages/item/index.css" rel="stylesheet">
 
     <style>
@@ -134,7 +135,24 @@
         </section>
 
 
-        <section class="swiper-wrapper">
+        <section class= "swiper-container swiper-container-horizontal" id="pics">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic1.png"> </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic1.png"> </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic1.png"> </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic1.png"> </a>
+                </div>
+            </div>
+            <div class="swiper-button-next mIcon"></div>
+            <div class="swiper-button-prev mIcon"></div>
 
         </section>
 
@@ -197,8 +215,18 @@
 </script>
 
 <script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.5"></script>
 <script src="../../pages/item/index.js?version=0.1.5"></script>
 
+<script>
+    var swiper = new Swiper('#pics', {
+        slidesPerView: 1,
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
+
+</script>
 
 </body>
 </html>
