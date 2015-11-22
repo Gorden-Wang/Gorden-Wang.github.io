@@ -683,9 +683,9 @@ body {
     margin-top: 14.0625%;
 }
 
-textarea::-webkit-input-placeholder { color:#ebe5e2; font-size: 12px}
-textarea::-moz-placeholder { color:#ebe5e2;font-size: 12px }
+textarea::-webkit-input-placeholder { color:#a58a7c; font-size: 12px}
+textarea::-moz-placeholder { color:#a58a7c;font-size: 12px }
 
-input::-webkit-input-placeholder { color:#ebe5e2;font-size: 12px }
-input::-moz-placeholder { color:#ebe5e2; font-size: 12px}
+input::-webkit-input-placeholder { color:#a58a7c;font-size: 12px }
+input::-moz-placeholder { color:#a58a7c; font-size: 12px}
 

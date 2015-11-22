@@ -26,7 +26,11 @@
     padding: 10px 0px;
     font-size: 18px;
     color: #59463d;
-    font-weight: 600; }
+    font-weight: 600;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    top: 0px; }
     #page header.back-header .m-icon0 {
       position: absolute;
       left: 12.5px;
@@ -40,7 +44,8 @@
       font-size: 14px;
       font-weight: normal; }
   #page .main-wrapper {
-    padding: 0px 20px; }
+    padding: 0px 20px;
+    padding-top: 40px; }
     #page .main-wrapper .section-wrapper {
       margin: 25px 0px; }
       #page .main-wrapper .section-wrapper > p {
@@ -80,33 +85,38 @@
           margin: 5px 0px;
           color: #59463d;
           font-size: 14px; }
-    #page .main-wrapper .ul07-widget li {
-      display: flex;
-      border-bottom: 1px solid #ebe5e2;
-      padding: 15px 10px;
-      font-size: 14px;
-      color: #59463d; }
-      #page .main-wrapper .ul07-widget li p {
-        flex: 1; }
-      #page .main-wrapper .ul07-widget li select {
-        border: 0px;
-        background-color: transparent;
-        color: #88c6c2;
-        text-align: right;
-        direction: rtl; }
-      #page .main-wrapper .ul07-widget li .s-r {
-        display: inline-block;
-        width: 10px;
-        height: 15px;
-        background-position: -22px -28px;
-        margin-top: 3px;
-        margin-left: 10px; }
+    #page .main-wrapper .ul07-widget {
+      margin-bottom: 80px; }
+      #page .main-wrapper .ul07-widget li {
+        display: flex;
+        border-bottom: 1px solid #ebe5e2;
+        padding: 15px 10px;
+        font-size: 14px;
+        color: #59463d; }
+        #page .main-wrapper .ul07-widget li p {
+          flex: 1; }
+        #page .main-wrapper .ul07-widget li select {
+          border: 0px;
+          background-color: transparent;
+          color: #7dbfba;
+          text-align: right;
+          direction: rtl;
+          font-size: 14px; }
+        #page .main-wrapper .ul07-widget li .s-r {
+          display: inline-block;
+          width: 10px;
+          height: 15px;
+          background-position: -22px -28px;
+          margin-top: 3px;
+          margin-left: 10px; }
   #page .fixedbtn {
     background-color: white;
     padding: 12px 20px;
     border-top: 1px solid #eeeae7;
+    margin-top: 20px;
+    position: fixed;
     width: 100%;
-    margin-top: 15px; }
+    bottom: 0px; }
     #page .fixedbtn .btn {
       border-radius: 6px;
       font-size: 14px;

@@ -39,6 +39,10 @@
     font-size: 18px;
     color: #59463d;
     font-weight: 600;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    top: 0px;
 
     .m-icon0{
       position: absolute;
@@ -63,6 +67,7 @@
   .main-wrapper{
 
     padding: 0px 20px;
+    padding-top: 40px;
 
     .section-wrapper{
       margin: 25px 0px;
@@ -119,6 +124,7 @@
 
 
     .ul07-widget{
+      margin-bottom: 80px;
       li{
         display: flex;
         border-bottom: 1px solid #ebe5e2;
@@ -133,9 +139,10 @@
         select{
           border: 0px;
           background-color: transparent;
-          color: #88c6c2;
+          color: #7dbfba;
           text-align: right;
           direction: rtl;
+          font-size: 14px;
         }
 
         .s-r{
@@ -153,21 +160,22 @@
   }
 
 
-  .fixedbtn{
+  .fixedbtn {
     background-color: white;
     padding: 12px 20px;
     border-top: 1px solid #eeeae7;
+    margin-top: 20px;
+    position: fixed;
     width: 100%;
-    margin-top: 15px;
+    bottom: 0px;
 
-    .btn{
+    .btn {
       border-radius: 6px;
       font-size: 14px;
       color: #ffffff;
       background-color: #88c6c2;
       text-align: center;
       padding: 8px 0px;
-
 
     }
 

@@ -68,7 +68,7 @@
                 var top = "<p class='title'>您的订单已生成</p><p class='content'>请继续完成你的咨询需求</p>";
                 var btn = "<div class='btn'>完善咨询需求</div>";
                 Wlib.alert(top,btn,function(){
-                    win.location = "../../pages/pay/index.html"
+                    win.location = "../../pages/orderdetail/index.html"
                 });
             })
 
