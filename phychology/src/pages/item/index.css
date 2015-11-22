@@ -86,7 +86,7 @@
     padding: 0px 15px; }
     #page .des-wrapper .d-title {
       color: #59463d;
-      font-size: 18px;
+      font-size: 16px;
       text-align: center; }
     #page .des-wrapper .top-wrapper img {
       display: block;
@@ -172,17 +172,18 @@
     background-color: #ffffff;
     display: flex;
     align-items: center;
-    border-top: 1px solid #eeeae7; }
+    border-top: 1px solid #eeeae7;
+    z-index: 20; }
     #page footer.bottom-btn .l-w {
       flex: 1;
       text-align: center;
       color: #59463d; }
       #page footer.bottom-btn .l-w .p-price {
-        font-size: 18px;
+        font-size: 16px;
         color: #000; }
       #page footer.bottom-btn .l-w .p-unit {
         font-size: 14px;
-        margin-top: -9px; }
+        margin-top: -5px; }
     #page footer.bottom-btn .r-w {
       flex: 2;
       text-align: center; }

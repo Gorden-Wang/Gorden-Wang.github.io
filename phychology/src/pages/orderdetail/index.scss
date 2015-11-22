@@ -46,6 +46,7 @@
   }
 
   .ul05-widget {
+    margin-bottom: 80px;
     li {
       padding: 15px 20px;
       border-bottom: 1px solid #ebe5e2;
@@ -126,6 +127,9 @@
     padding: 12px 20px;
     border-top: 1px solid #eeeae7;
     margin-top: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
 
     .btn {
       border-radius: 6px;
