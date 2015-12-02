@@ -70,24 +70,24 @@
 
             <div class="box box_list_ys">
                 <div class="list_ys clearfix">
-                    <a href="../../pages/docdetail/index.html?doctorId=${item.doctor.doctorId}">
-                        <div class="Left"><img class="lazy-image" lazy-image="${item.doctor.snapshot}"/></div>
+                    <a href="../../pages/docorder/index.html?doctorId=${item.doctorId}">
+                        <div class="Left"><img class="lazy-image" lazy-image="${item.snapshot}"/></div>
                         <div class="Center">
-                            <div class="row_1">${item.doctor.name}</div>
-                            <div class="row_2">${makeTitle(item.doctor.title)}</div>
-                            <div class="row_2">${item.doctor.hospital}</div>
-                            <div class="row_2">擅长：${item.doctor.specialityName}</div>
+                            <div class="row_1">${item.name}</div>
+                            <div class="row_2">${item.titleName}</div>
+                            <div class="row_2">${item.hospital}</div>
+                            <div class="row_2">擅长：${item.specialitys}</div>
                         </div>
-                        <div class="Right d_${item.doctor.departmentId}">${item.doctor.className}</div>
+                        <div class="Right d_${item.departmentId}">${item.departmentName}</div>
                     </a>
                 </div>
-                {@each item.treatmentPlan as location , index}
+                {@each item.clinics as location , index}
 
                 <div class="address_ys clearfix">
-                    <a href="../../pages/docorder/index.html?doctorId=${item.doctor.doctorId}">
+                    <a href="../../pages/docorder/index.html?doctorId=${item.doctorId}">
                         <div class="Left radius-wrapper">${parseInt(index)+1}</div>
                         <div class="Center">
-                            <div class="row_1">${location}
+                            <div class="row_1">${location.address}
                                 <!--<span>明日可约</span>-->
                             </div>
                         </div>
@@ -113,24 +113,24 @@
 
     <div class="box box_list_ys">
         <div class="list_ys clearfix">
-            <a href="../../pages/docdetail/index.html">
-                <div class="Left"><img class="lazy-image" lazy-image="${item.doctor.snapshot}"/></div>
+            <a href="../../pages/docorder/index.html?doctorId=${item.doctorId}">
+                <div class="Left"><img class="lazy-image" lazy-image="${item.snapshot}"/></div>
                 <div class="Center">
-                    <div class="row_1">${item.doctor.name}</div>
-                    <div class="row_2">${makeTitle(item.doctor.title)}</div>
-                    <div class="row_2">${item.doctor.hospital}</div>
-                    <div class="row_2">擅长：${item.doctor.specialityName}</div>
+                    <div class="row_1">${item.name}</div>
+                    <div class="row_2">${item.titleName}</div>
+                    <div class="row_2">${item.hospital}</div>
+                    <div class="row_2">擅长：${item.specialitys}</div>
                 </div>
-                <div class="Right d_${item.doctor.departmentId}">${item.doctor.className}</div>
+                <div class="Right d_${item.departmentId}">${item.departmentName}</div>
             </a>
         </div>
-        {@each item.treatmentPlan as location , index}
+        {@each item.clinics as location , index}
 
         <div class="address_ys clearfix">
-            <a href="../../pages/docorder/index.html">
+            <a href="../../pages/docorder/index.html?doctorId=${item.doctorId}">
                 <div class="Left radius-wrapper">${parseInt(index)+1}</div>
                 <div class="Center">
-                    <div class="row_1">${location}
+                    <div class="row_1">${location.address}
                         <!--<span>明日可约</span>-->
                     </div>
                 </div>

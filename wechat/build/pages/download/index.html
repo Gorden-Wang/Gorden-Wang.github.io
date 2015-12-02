@@ -103,36 +103,42 @@
             </div>
         </div>
         <div class="content">
-            <h1>女性更年期如何保健？</h1>
+            <h1>${news.title}</h1>
             <p>
-                <span>来自：人民网</span>
-                <span>06-29 11:30</span>
+                <span>来自：${news.source}</span>
+                <span>${makeFuckTime(news.createtime)}</span>
             </p>
 
             <article>
-                妇女生命的三分之一时间将在绝经后度过。从中医角度来讲，脏燥症主要是由于阴血亏虚，阴阳失调，气机紊乱，心神不安所致。而目前，由于压力过大，暴饮暴食，长期熬夜，缺乏运动，使得人体内的阴阳极度失调，阴精耗损，虚火上扬，甚至很多30多岁的人就已经提前出现了更年期的症状，走向了衰老。但是，目前对于这个问题大多数人没有引起充分的重视，认为既然人都要经历更年期，脏燥就脏燥吧，慢慢就好了。
-                妇女生命的三分之一时间将在绝经后度过。从中医角度来讲，脏燥症主要是由于阴血亏虚，阴阳失调，气机紊乱，心神不安所致。而目前，由于压力过大，暴饮暴食，长期熬夜，缺乏运动，使得人体内的阴阳极度失调，阴精耗损，虚火上扬，甚至很多30多岁的人就已经提前出现了更年期的症状，走向了衰老。但是，目前对于这个问题大多数人没有引起充分的重视，认为既然人都要经历更年期，脏燥就脏燥吧，慢慢就好了。
+                {@each news.content as item}
+
+                {@if item.text}
+                <p>${item.text}</p>
+                {@/if}
+
+                {@if item.img}
+
+                <img class="lazy-image" lazy-image="${item.img}">
+                {@/if}
+
+                {@/each}
             </article>
 
+
             <ul class="coment">
+                {@each com as item}
+
                 <li>
                     <p>
-                        <span class="name">我是医生</span>
-                        <span class="time">06-29 11:30</span>
+                        <span class="name">${item.nickName}</span>
+                        <span class="time">${makeTime(item.createtime,true)}</span>
                     </p>
                     <p class="ad">
-                        我认为这是个很好的建议，我也会遵守的，这真是个好论坛帖子，我会继续关注。
+                        ${item.content}
                     </p>
                 </li>
-                <li>
-                    <p>
-                        <span class="name">我是医生</span>
-                        <span class="time">06-29 11:30</span>
-                    </p>
-                    <p class="ad">
-                        我认为这是个很好的建议，我也会遵守的，这真是个好论坛帖子，我会继续关注。
-                    </p>
-                </li>
+
+                {@/each}
             </ul>
             <div class="download-li">
                 下载查看更多内容
@@ -157,8 +163,7 @@
 </script>
 
 
-<script src="../../lib/zepto.js?version=0.1.2"></script>
-<script src="../../lib/juicer.js?version=0.1.2"></script>
+<script src="../../lib/libAll.js?version=0.1.2"></script>
 <script src="index.js?version=0.1.2"></script>
 
 </body>

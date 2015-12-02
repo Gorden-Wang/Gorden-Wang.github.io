@@ -76,7 +76,7 @@
                 <li class="o-title">
                     <div class="o-s ds-0${item.orderStatus}">${makeStatus(item.orderStatus)}</div>
                     <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
-                    <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
+                    <div class="o-t">${makeFuckTime(item.createtime)}下单</div>
                 </li>
                 <li class="o-main">
 
@@ -94,9 +94,9 @@
 
                             {@else if item.orderType == 1}
 
-                            <p>${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                            <p>${item.doctorName}(${item.titleName})</p>
                             <p>地点：${item.clinicName}</p>
-                            <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+                            <p>时间：${makeFuckTimeFuck(item.estimatedTime)}</p>
 
 
                             {@else}

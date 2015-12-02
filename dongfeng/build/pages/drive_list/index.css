@@ -1,0 +1,87 @@
+.d-list li {
+  font-size: 14px;
+  padding: 10px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  border-bottom: 1px solid #cfd0d0; }
+  .d-list li div {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
+    text-align: center; }
+  .d-list li .l-wrapper {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
+    max-width: 163px; }
+    .d-list li .l-wrapper p {
+      margin-top: 5px;
+      font-size: 14px; }
+    .d-list li .l-wrapper .d-image {
+      height: 0px;
+      position: relative;
+      padding-bottom: 53.57143%; }
+      .d-list li .l-wrapper .d-image a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px; }
+        .d-list li .l-wrapper .d-image a img {
+          width: 100%;
+          height: 100%; }
+  .d-list li .m-wrapper {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
+    -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+    display: inline-block;
+    padding: 0px 10px; }
+    .d-list li .m-wrapper p {
+      text-align: center;
+      width: 100%; }
+    .d-list li .m-wrapper .h1 {
+      font-size: 20px;
+      font-weight: 800; }
+    .d-list li .m-wrapper .map {
+      font-size: 10px;
+      color: #2e9fe2;
+      margin: 1.3em 0px; }
+      .d-list li .m-wrapper .map .l-image {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-position: -275px -12px; }
+      .d-list li .m-wrapper .map .r-image {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-position: -275px 0px; }
+    .d-list li .m-wrapper .tel {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background-position: -261px -20px; }
+  .d-list li .r-wrapper {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+       -moz-box-flex: 0;
+            flex: none;
+    width: 6em; }
+    .d-list li .r-wrapper .time {
+      color: #989898;
+      font-size: 10px; }
+    .d-list li .r-wrapper .status {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 0.3em; }
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+  .map {
+    margin: 1em 0px !important; } }

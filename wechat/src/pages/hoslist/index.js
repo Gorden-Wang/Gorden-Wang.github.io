@@ -107,9 +107,9 @@
         fetchDepartments: function () {
             var that = this;
             if (that.data.depList.length == 0) {
-                Wlib.SendRequest("253", {}, function (res) {
-                    if (res.errorcode == 0 && res.entity) {
-                        that.data.depList = res.entity;
+                Wlib.SendRequestNew("commonQuery","findClinicDepts", {}, function (res) {
+                    if (res.errorCode == 0 && res.value) {
+                        that.data.depList = res.value;
                         that.renderDepart();
                     }
                 });
@@ -121,20 +121,20 @@
         fetchHosList: function () {
             var that = this;
             var param = {
-                "deptId": that.data.departmentId || -1,
-                "city": that.data.locationId || -1,
-                "queryType": that.data.titleId || -1,
+                "departmentId": that.data.departmentId || -1,
+                "locationId": that.data.locationId || -1,
+                "selectType": that.data.titleId || -1,
                 latitude: that.data.latitude,
                 longitude: that.data.longitude,
                 firstResult: that.data.firstResult || 0,
                 maxResults: that.data.maxResults || 5
             }
 
-            Wlib.SendRequest("2027", param, function (res) {
+            Wlib.SendRequestNew("treatQuery","findClinics", param, function (res) {
                 //if (res.entity && res.entity.length > 0) {
-                that.data.hosList = res.entity || [];
+                that.data.hosList = res.value || [];
                 that.renderUI();
-                if (res.entity.length == that.data.maxResults) {
+                if (that.data.hosList.length == that.data.maxResults) {
                     that.bindNext(true);
                 }
                 that.recacheDom();
@@ -144,7 +144,7 @@
                 //}
                 that.dom.loading.hide();
 
-                if (!res.entity || res.entity.length == 0) {
+                if (!res.value || res.value.length == 0) {
                     Wlib.tips("没有查询到相关记录。")
                 }
 
@@ -203,25 +203,25 @@
             Wlib._bindScrollTobottom(function () {
                 that.data.firstResult = that.data.firstResult + that.data.maxResults;
                 var param = {
-                    "deptId": that.data.departmentId || -1,
-                    "city": that.data.locationId || -1,
-                    "queryType": that.data.titleId || -1,
+                    "departmentId": that.data.departmentId || -1,
+                    "locationId": that.data.locationId || -1,
+                    "selectType": that.data.titleId || -1,
                     firstResult: that.data.firstResult || 0,
                     maxResults: that.data.maxResults || 5
                 }
 
-                Wlib.SendRequest("2027", param, function (res) {
+                Wlib.SendRequestNew("treatQuery","findClinics", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
                     var data = {};
-                    data.hosList = res.entity || [];
+                    data.hosList = res.value || [];
                     var reshtml = juicer($("#itemtpl").html(), data);
                     $(".list-wrapper").append(reshtml);
                     Wlib._bindLazyLoad();
-                    if (res.entity.length == that.data.maxResults) {
+                    if (res.value.length == that.data.maxResults) {
                         that.bindNext(true);
                     }
-                    if (!res.entity || res.entity.length == 0) {
+                    if (!res.value || res.value.length == 0) {
                         Wlib.tips("没有查询到相关记录。")
                     }
 

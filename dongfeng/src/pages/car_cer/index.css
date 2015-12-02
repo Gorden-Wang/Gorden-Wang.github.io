@@ -1,0 +1,94 @@
+body {
+  background-color: #e5e6e9; }
+
+.top-banner {
+  display: flex;
+  padding-top: 10px;
+  background-color: white;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cfd0d0; }
+  .top-banner div {
+    flex: 1;
+    color: #989898;
+    font-size: 12px; }
+    .top-banner div img {
+      width: 80px;
+      height: 80px;
+      border-radius: 80px;
+      margin-bottom: 5px; }
+  .top-banner .t-left {
+    text-align: right;
+    margin-right: 40px;
+    position: relative; }
+    .top-banner .t-left p {
+      padding-right: 18px; }
+  .top-banner .t-right {
+    text-align: left; }
+    .top-banner .t-right p {
+      padding-left: 15px; }
+  .top-banner .t-left:after {
+    content: " ";
+    position: absolute;
+    right: 0px;
+    width: 22px;
+    height: 22px;
+    top: 60px;
+    background-image: url(../../images/center/sprites.png);
+    background-size: 285px 131px;
+    background-repeat: no-repeat;
+    background-position: -262px -109px; }
+
+.menu-wrapper {
+  background-color: white;
+  margin-top: 20px; }
+  .menu-wrapper li:last-of-type {
+    border-bottom: 0px; }
+  .menu-wrapper li {
+    padding: 15px;
+    border-bottom: 1px solid #cfd0d0;
+    margin-left: 25px;
+    display: flex;
+    padding-left: 0px;
+    color: #cccccc; }
+    .menu-wrapper li span {
+      margin-right: 15px; }
+    .menu-wrapper li p {
+      line-height: 30px; }
+    .menu-wrapper li input {
+      flex: 1;
+      text-align: right;
+      font-size: 14px;
+      line-height: 14px; }
+  .menu-wrapper li:first-of-type input {
+    padding-right: 15px; }
+  .menu-wrapper .m-r {
+    background-image: url(../../images/center/ri.png);
+    background-size: 8px 11px;
+    background-repeat: no-repeat;
+    background-position: right center; }
+
+.bottom-wrapper {
+  width: 90%;
+  margin: 10px auto; }
+  .bottom-wrapper p:first-of-type {
+    font-size: 15px;
+    color: #000; }
+    .bottom-wrapper p:first-of-type span {
+      color: #989898;
+      font-size: 14px; }
+  .bottom-wrapper p {
+    color: #989898;
+    font-size: 14px;
+    margin: 0.5em 0px; }
+
+.d-btn {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #e60021;
+  border-radius: 4px;
+  padding: 10px 0px;
+  width: 90%;
+  margin: 20px auto; }
+
+/*# sourceMappingURL=index.css.map */

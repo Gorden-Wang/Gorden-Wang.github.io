@@ -23,7 +23,7 @@
                 locationId: "1"//默认北京
             }
             that.data.cityList = win.CITYLIST;
-            localStorage.setItem("userId", Wlib.getRequestParam("userId"))
+            localStorage.setItem("userId", Wlib.getRequestParam("userId")||"");
         },
         cacheDom: function () {
             var that = this;
@@ -59,7 +59,7 @@
                 window.location = "../../pages/hoslist/index.html?locationId=" + that.data.locationId + "&latitude="+that.data.latitude+"&longitude="+that.data.longitude;
             });
             that.dom.person.on("click", function () {
-                window.location = "../../pages/person/index.html?locationId=" + that.data.locationId;
+                window.location = "../../pages/person/index.html?locationId=" + that.data.locationId+"&userId="+Wlib.getUserId();
             });
             that.dom.citySelect.on("change", function () {
                 that.data.locationId = $(this).val();
@@ -78,29 +78,20 @@
             }
 
             function showPosition(position) {
-                console.log(position)
-                // callback && callback({latitude: position.coords.latitude, longitude: position.coords.longitude})
-
-                //var myGeo = new BMap.Geocoder();
-                //myGeo.getLocation(new BMap.Point(  position.coords.longitude,position.coords.latitude), function(result){
-                //    if (result){
-                //        console.log(result);
-                //    }
-                //});
                 that.data.latitude = position.coords.latitude;
                 that.data.longitude = position.coords.longitude;
-                Wlib.SendRequest("1267", {
+                Wlib.SendRequestNew("commonQuery","locate", {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 }, function (res) {
-                    if (res.entity) {
+                    if (res.value) {
                         var CityList = {
                             "1": "",
                             "2": "",
                             "3": "",
                             "187": ""
                         };
-                        (res.entity.id in CityList) && that.dom.citySelect.val(res.entity.id);
+                        (res.value.id in CityList) && that.dom.citySelect.val(res.value.id);
                     }
                 })
             }

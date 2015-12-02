@@ -52,8 +52,8 @@
                 "clinicId": that.data.clinicId
             }
 
-            Wlib.SendRequest("2030", param, function (res) {
-                that.data.hos = res.entity;
+            Wlib.SendRequestNew("treatQuery","clinicInfo", param, function (res) {
+                that.data.hos = res.value;
                 //that.fetcPingjia(function(){
                 //    that.renderUI();
                 //    that.recacheDom();

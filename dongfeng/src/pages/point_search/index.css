@@ -1,0 +1,88 @@
+.top-banner {
+  width: 100%;
+  height: 0px;
+  padding-bottom: 48%;
+  position: relative; }
+  .top-banner a {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%; }
+    .top-banner a img {
+      width: 100%;
+      height: 100%; }
+  .top-banner .img-wrapper {
+    position: relative;
+    padding-top: 10%;
+    width: 100%; }
+    .top-banner .img-wrapper img {
+      width: 74px;
+      height: 74px;
+      display: block;
+      margin: auto;
+      border-radius: 74px; }
+    .top-banner .img-wrapper .p-wrapper {
+      text-align: center;
+      color: white;
+      margin-top: 1em; }
+      .top-banner .img-wrapper .p-wrapper span {
+        font-size: 18px;
+        background-image: url(../../images/point_search/coin.png);
+        background-size: 18px 18px;
+        background-position: right center;
+        background-repeat: no-repeat;
+        padding-right: 25px; }
+  .top-banner .btn-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    color: #000;
+    font-size: 20px;
+    display: flex;
+    font-weight: 800; }
+    .top-banner .btn-wrapper p {
+      flex: 1;
+      text-align: right;
+      margin-right: 20px; }
+    .top-banner .btn-wrapper p:last-of-type {
+      text-align: left; }
+
+.menu-wrapper {
+  background-color: white; }
+  .menu-wrapper .title div {
+    color: #666666 !important;
+    font-size: 14px !important; }
+  .menu-wrapper li {
+    padding: 15px;
+    border-bottom: 1px solid #cfd0d0;
+    display: flex;
+    padding-left: 0px;
+    font-size: 12px;
+    color: #989898; }
+    .menu-wrapper li div {
+      flex: 1;
+      text-align: center; }
+    .menu-wrapper li .bk-coint {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-image: url(../../images/point_search/coin.png);
+      -webkit-background-size: contain;
+      background-size: contain;
+      margin-left: 5px;
+      margin-top: 3px; }
+    .menu-wrapper li div:nth-of-type(2) {
+      color: #000;
+      font-size: 14px; }
+
+body {
+  background-color: #e5e6e9; }
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+  .img-wrapper {
+    padding-top: 10px !important; }
+
+  .p-wrapper {
+    margin-top: 0.5em !important; } }
+
+/*# sourceMappingURL=index.css.map */

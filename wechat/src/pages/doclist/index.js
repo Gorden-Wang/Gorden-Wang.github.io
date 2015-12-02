@@ -148,18 +148,18 @@
                     maxResults: that.data.maxResults || 5
                 }
 
-                Wlib.SendRequest("2034", param, function (res) {
+                Wlib.SendRequestNew("treatQuery","findDoctorAndClinics", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
                     var data = {};
-                    data.docList = res.entity || [];
+                    data.docList = res.value || [];
                     var reshtml = juicer($("#itemtpl").html(),data);
                     $(".list-wrapper").append(reshtml);
                     Wlib._bindLazyLoad();
-                    if(res.entity.length == that.data.maxResults){
+                    if(res.value.length == that.data.maxResults){
                         that.bindNext(true);
                     }
-                    if (!res.entity || res.entity.length == 0) {
+                    if (!res.value || res.value.length == 0) {
                         Wlib.tips("没有查询到相关记录。")
                     }
 
@@ -191,9 +191,9 @@
         fetchDepartments: function () {
             var that = this;
             if (that.data.depList.length == 0) {
-                Wlib.SendRequest("253", {}, function (res) {
-                    if (res.errorcode == 0 && res.entity) {
-                        that.data.depList = res.entity;
+                Wlib.SendRequestNew("commonQuery","findClinicDepts", {}, function (res) {
+                    if (res.errorcode == 0 && res.value) {
+                        that.data.depList = res.value;
                         that.renderDepart();
                     }
                 });
@@ -212,11 +212,11 @@
                 maxResults: that.data.maxResults || 5
             }
 
-            Wlib.SendRequest("2034", param, function (res) {
+            Wlib.SendRequestNew("treatQuery","findDoctorAndClinics", param, function (res) {
                 //if (res.entity && res.entity.length > 0) {
-                that.data.docList = res.entity || [];
+                that.data.docList = res.value || [];
                 that.renderUI();
-                if(res.entity && (res.entity.length == that.data.maxResults)){
+                if(res.value && (res.value.length == that.data.maxResults)){
                     that.bindNext(true);
                 }
                 that.recacheDom();
@@ -226,7 +226,7 @@
                 //}
                 that.dom.loading.hide();
 
-                if (!res.entity || res.entity.length == 0) {
+                if (!res.value || res.value.length == 0) {
                     Wlib.tips("没有查询到相关记录。")
                 }
 

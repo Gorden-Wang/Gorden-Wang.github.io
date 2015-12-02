@@ -54,9 +54,9 @@
         },
         getContactList: function () {
             var that = this;
-            Wlib.SendRequest("248", {userId: that.data.userId, firstResult: 0, maxResults: 3}, function (res) {
-                if (res.errorcode == 0) {
-                    that.data.conList = res.entity;
+            Wlib.SendRequestNew("treatOperate","findReserveProfiles", {userid: that.data.userId, firstResult: 0, maxResults: 3}, function (res) {
+                if (res.errorCode == 0) {
+                    that.data.conList = res.value;
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
@@ -132,21 +132,23 @@
         addOrder: function () {
             var that = this;
             var param = {
-                "treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
-                "userId": Wlib.getRequestParam("userId"),
+                //"treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
+                "userid": Wlib.getRequestParam("userId"),
                 "treatmentPlanDetailId": Wlib.getRequestParam("treatmentPlanDetailId"),
-                "reserveId": that.data.CONID
+                "profileId": that.data.CONID
             }
 
-            Wlib.SendRequest("2033", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","orderTreatmentPlan", param, function (res) {
 
                //@TODO 获取支付方式，去支付
-                if(res.errorcode == 0){
+                if(res.errorCode == 0){
                     //下单成功
 
                     alert("下单成功，去支付去。。需要提供支付接口。");
                     //location.href = '../../pages/orderdetail/index.html?orderId='+res.entity;
                     location.href = '../../pages/paysucc/index.html?orderId='+res.entity+"&userId="+Wlib.getRequestParam("userId");
+                }else{
+                    Wlib.tips(res.message);
                 }
 
 
@@ -155,20 +157,23 @@
         },
         addContact: function (callback) {
             var that = this;
+            //@TODO : rermark 患者备注
             var param = {
-                userName: that.dom.name.val(),
+                name: encodeURIComponent(that.dom.name.val()),
                 phone: that.dom.tel.val(),
                 idNumber: that.dom.idcode.val(),
-                userId: that.data.userId
+                userid: that.data.userId,
+                remark : ""
             }
 
-            Wlib.SendRequest("249", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","addReserveProfile", param, function (res) {
 
-                if (res.errorcode == 0) {
-                    that.data.CONID = res.entity;
+                if (res.errorCode == 0) {
+                    that.data.CONID = res.value.id;
                     callback && callback();
                 } else {
                     //@TODO
+                    Wlib.tips(res.message)
                 }
 
             });

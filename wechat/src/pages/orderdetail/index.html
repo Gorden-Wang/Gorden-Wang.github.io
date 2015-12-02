@@ -24,31 +24,31 @@
         <!--订单详情-->
         <div class="pjbox">
             <div class="secbox">
-                <div class="box_tit"><span class="wc">${makeStatus(de.orderRecord.orderStatus)}</span><span class="ord">${makeType(de.orderRecord.orderType)}订单：${de.orderRecord.id}</span><strong class="odtime">${makeFuckTime(de.orderRecord.orderDate)}下单</strong></div>
+                <div class="box_tit"><span class="wc">${makeStatus(de.orderStatus)}</span><span class="ord">${makeType(de.orderType)}订单：${de.id}</span><strong class="odtime">${makeFuckTime(de.createtime)}下单</strong></div>
             </div>
             <div class="secbox">
                 <div class="oddetail mb8">
                     <div class="details">
-                        <a style="display: block;" href="../../pages/docdetail/index.html?doctorId=${de.orderRecord.doctorId}">
-                            <span><i class="ys"></i>医生</span><strong>${de.orderRecord.doctorName}</strong><span class="more"></span>
+                        <a style="display: block;" href="../../pages/docdetail/index.html?doctorId=${de.doctorId}">
+                            <span><i class="ys"></i>医生</span><strong>${de.doctorName}</strong><span class="more"></span>
                         </a>
 
                     </div>
-                    <div class="details"><span><i class="ks"></i>科室</span><strong>${de.orderRecord.deptName}</strong></div>
+                    <div class="details"><span><i class="ks"></i>科室</span><strong>${de.clinicName}</strong></div>
                     <div class="details">
-                       <a style="display: block;" href="../../pages/hosdetail/index.html?clinicId=${de.orderRecord.clinicId}">
-                           <span><i class="dd"></i>地点</span><strong>${de.orderRecord.clinicName}</strong><span  class="more"></span>
+                       <a style="display: block;" href="../../pages/hosdetail/index.html?clinicId=${de.clinicId}">
+                           <span><i class="dd"></i>地点</span><strong>${de.clinicName}</strong><span  class="more"></span>
                        </a>
 
                     </div>
-                    <div class="details"><span><i class="sj"></i>时间</span><strong>${makeFuckTimeFuck(de.orderRecord.starttime)}</strong></div>
+                    <div class="details"><span><i class="sj"></i>时间</span><strong>${makeFuckTimeFuck(de.estimatedTime)}</strong></div>
                 </div>
             </div>
             <div class="secbox">
                 <div class="oddetail">
-                    <div class="details"><span><i class="ys"></i>姓名</span><strong>${de.reserveProfile.name}</strong></div>
-                    <div class="details"><span><i class="ks"></i>电话</span><strong>${de.reserveProfile.phone}</strong></div>
-                    <div class="details"><span><i class="dd"></i>总价</span><strong>${de.orderRecord.amount}元</strong></div>
+                    <div class="details"><span><i class="ys"></i>姓名</span><strong>${de.patinetName}</strong></div>
+                    <div class="details"><span><i class="ks"></i>电话</span><strong>${de.phone}</strong></div>
+                    <div class="details"><span><i class="dd"></i>总价</span><strong>${de.amount}元</strong></div>
                 </div>
             </div>
             <div class="rules">
@@ -65,8 +65,8 @@
             <div class="botbtns">
                 <div>
                     <a href="#">病历详情</a>
-                    <a href="../../pages/feedback/index.html?clinicId=${de.orderRecord.clinicId}&userId=${de.orderRecord.userId}&doctorId=${de.orderRecord.doctorId}&id=${de.orderRecord.id}">服务评价</a>
-                    <a href="#">再次购买</a>
+                    <a href="../../pages/feedback/index.html?clinicId=${de.clinicId}&userId=${de.userId}&doctorId=${de.doctorId}&id=${de.id}">服务评价</a>
+                    <a href="../../pages/docorder/index.html?doctorId=${de.doctorId}">再次购买</a>
                 </div>
             </div>
         </div>

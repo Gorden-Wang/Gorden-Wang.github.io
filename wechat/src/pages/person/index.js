@@ -7,36 +7,86 @@
     }
 
     Person.prototype = {
-        init : function(){
+        init: function () {
             var that = this;
+            that.cacheData();
             that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.fetchData();
+
         },
-        cacheDom : function(){
+        cacheDom: function () {
             var that = this;
             that.dom = {
-                wrapper : $("#page"),
-                loading : $("#loading"),
-                tpl : $("#tpl")
+                wrapper: $("#page"),
+                loading: $("#loading"),
+                tpl: $("#tpl")
             }
         },
-        renderUI : function(){
+        cacheData: function () {
             var that = this;
-            that.dom.wrapper.html(juicer(that.dom.tpl.html(),{}));
+            that.data = {};
+            that.data.userId = Wlib.getUserId();
+            that.data.location = Wlib.getRequestParam("locationId");
+            that.data.cityList = win.CITYLIST;
+        },
+        renderUI: function () {
+            var that = this;
+            that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+
+            $("select").val(that._makeCityName(that.data.location));
+
             that.dom.loading.hide();
         },
-        recacheDom : function(){
+        fetchData : function(){
           var that = this;
+            var param = {
+                "userid": that.data.userId
+            }
+
+            Wlib.SendRequestNew("treatOperate", "userOrderIndex", param, function (res) {
+                that.data.info = res.value;
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
+        },
+        recacheDom: function () {
+            var that = this;
             that.dom.banner = $(".banner");
         },
-        bindEvent : function(){
+        _makeCityName: function (str) {
             var that = this;
-            that.dom.banner.on("click",function(){
+            for (var i = 0; i < CITYLIST.length; i++) {
+                if (str == CITYLIST[i].id) {
+                    return CITYLIST[i].name;
+                }
+            }
+        },
+        addJuicerHandler: function () {
+            var that = this;
+            juicer.register("makeCityName", function (str) {
+                for (var i = 0; i < CITYLIST.length; i++) {
+                    if (str == CITYLIST[i].id) {
+                        return CITYLIST[i].name;
+                    }
+                }
+            });
+        },
+        bindEvent: function () {
+            var that = this;
+            that.dom.banner.on("click", function () {
                 var url = $(this).attr("data-href");
                 url && (window.location = url);
             });
+            $("#myOrder").on("click", function () {
+                location.href = "../../pages/orderList/index.html?userId=" + Wlib.getUserId();
+            });
+            $("#about").on("click",function(){
+                location.href = "../../pages/about/index.html";
+            });
+            $("#feedback").on("click",function(){
+                location.href = "../../pages/feedback/index.html";
+            })
         }
     }
 

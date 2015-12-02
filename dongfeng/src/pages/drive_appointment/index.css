@@ -1,0 +1,87 @@
+.car-center {
+  background-color: #e5e5e8; }
+  .car-center .top-banner {
+    background-color: #232327;
+    display: flex;
+    padding: 10px;
+    color: white; }
+    .car-center .top-banner .img-wrapper {
+      height: 0px;
+      position: relative;
+      width: 37.33333%;
+      padding-bottom: 20%;
+      align-items: center;
+      margin-top: 10px; }
+      .car-center .top-banner .img-wrapper a {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%; }
+      .car-center .top-banner .img-wrapper img {
+        width: 100%;
+        height: 100%; }
+    .car-center .top-banner .car-wrapper {
+      flex: 1;
+      text-align: left;
+      padding: 0px 15px; }
+      .car-center .top-banner .car-wrapper .car-title {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 5px; }
+      .car-center .top-banner .car-wrapper .car-price span {
+        font-size: 12px; }
+    .car-center .top-banner .car-change {
+      width: 2em;
+      line-height: 1.2em;
+      background-position: right center;
+      padding: 10px 0px;
+      background-image: url(../../images/drive_appointment/ri-icon.png);
+      background-size: 11px 20px;
+      background-repeat: no-repeat;
+      padding-right: 20px; }
+  .car-center .menu-wrapper {
+    background-color: white;
+    margin-top: 20px; }
+    .car-center .menu-wrapper li {
+      padding: 15px;
+      border-bottom: 1px solid #cfd0d0;
+      margin-left: 25px;
+      display: flex;
+      padding-left: 0px; }
+      .car-center .menu-wrapper li input {
+        flex: 1;
+        text-align: left;
+        font-size: 14px;
+        line-height: 14px; }
+      .car-center .menu-wrapper li span {
+        margin-right: 15px; }
+      .car-center .menu-wrapper li p {
+        line-height: 30px;
+        background-image: url(../../images/center/ri.png);
+        background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        flex: 1; }
+      .car-center .menu-wrapper li .m-r {
+        background-image: url(../../images/center/ri.png);
+        background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 15px; }
+
+.d-btn {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #e60021;
+  border-radius: 4px;
+  padding: 10px 0px;
+  width: 90%;
+  margin: 20px auto; }
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+  .img-wrapper {
+    margin-top: 20px !important; } }
+
+/*# sourceMappingURL=index.css.map */

@@ -25,7 +25,7 @@
         <div class="top-wrapper">
             <div class="box box_list_mz">
                 <div class="list_mz clearfix"><a href="../../pages/hosdetail/index.html?clinicId=${clinicId}">
-                    <div class="Left"><img src="${hos.snapshot}"/>></div>
+                    <div class="Left"><img src="${hos.images[0]}"/>></div>
                     <div class="Center">
                         <div class="row_1">${hos.name}</div>
                         <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong>
@@ -66,9 +66,9 @@
 
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    {@each originTimeList as item}
+                    {@each originTimeList as item,index}
 
-                    <div class="swiper-slide ${makeTimeListCheck(timeEnable)}">
+                    <div class="swiper-slide ${makeTimeListCheck(timeEnable,item.des,index)}">
                         <div>
                             <p class="year">${item.y}</p>
 
@@ -92,18 +92,18 @@
                     <div class="Left"><img src="${item.doctor.snapshot}"></div>
                     <div class="Center">
                         <div class="row_1">${item.doctor.name}</div>
-                        <div class="row_2">${makeTitle(item.doctor.title+"")}</div>
+                        <div class="row_2">${item.doctor.titleName}</div>
                         <div class="row_2">${item.doctor.hospital}</div>
                         <div class="row_2">擅长：${item.doctor.specialityName}</div>
                     </div>
-                    <div class="Right">${item.doctor.className}</div>
+                    <div class="Right">${item.doctor.departmentName}</div>
                     <div class="right-icon t-r"></div>
                 </a></div>
             </div>
             <div class="taochan-wrapper">
                 <p>
                     套餐费:
-                    <span>￥${item.price}</span>
+                    <span>￥${item.plan.price}</span>
                     (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
                 </p>
 
@@ -111,13 +111,13 @@
             </div>
             <div class="time-wrapper ">
                 <ul>
-                    {@each item.treatmentPlanDetails as timeItem}
+                    {@each item.planDetail as timeItem}
 
-                    {@if timeItem.finished == true}
-                    <li data-price="${item.price}" data-dep="${item.doctor.className}" data-add="${item.doctor.hospital}" data-name="${item.doctor.name}" data-time="${makeFuckTime(item.starttime)}" data-plan="${item.treatmentPlanId}" data-id="${item.id}" class="time-item">${timeItem.starttime}</li>
+                    {@if timeItem.state == 1}
+                    <li data-price="${item.plan.price}" data-dep="${item.doctor.departmentName}" data-add="${item.doctor.hospital}" data-name="${item.doctor.name}" data-time="${makeFuckTime(item.plan.starttime)}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
                     {@/if}
 
-                    {@if timeItem.finished == false}
+                    {@if timeItem.finished == 0}
                     <li  data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
                     {@/if}
 

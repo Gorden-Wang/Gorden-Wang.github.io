@@ -23,7 +23,8 @@
       padding-left: 20px;
       margin: 10px 0px;
       font-size: 14px;
-      height: 15px;
+      height: 18px;
+
       div:first-of-type {
         width: 2em;
         margin-right: 16px;
@@ -169,7 +170,7 @@
   .price-channel {
     background-color: white;
     margin-top: 11px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 
     ul {
       border-top: 1px solid #d1d1d1;
@@ -246,7 +247,6 @@
         border-bottom: 1px solid #d1d1d1;
         padding: 10px 0px;
         font-size: 14px;
-        line-height: px;
         color: #404040;
 
         div{
@@ -257,9 +257,12 @@
         .btn{
           border-radius: 4px;
           display: inline-block;
-          padding: 8px 10px;
+          padding: 10px 10px;
           color: white;
           background-color:#f86987;
+          line-height: 20px;
+          height: 20px;
+          margin-top: 5px
         }
         .dis{
           background-color:#d8d8d8;

@@ -1,8 +1,6 @@
 #page .wrap {
   margin-top: 0px;
   margin-bottom: 10px; }
-#page .Center div {
-  margin: 5px 0px; }
 #page .right-icon {
   display: inline-block;
   width: 9px;
@@ -21,7 +19,7 @@
   padding: 12px 30px 12px 10px;
   position: relative; }
   #page .top-wrapper .taochan-wrapper .right-icon {
-    top: 13px; }
+    top: 18px; }
   #page .top-wrapper .taochan-wrapper p {
     text-overflow: ellipsis;
     word-break: break-all;

@@ -98,6 +98,8 @@ article {
   line-height: 1.3em;
   color: #646464;
   margin-bottom: 20px; }
+  article img {
+    width: 100%; }
 
 footer {
   bottom: 0px;
@@ -321,7 +323,8 @@ iframe {
     width: 22px;
     height: 22px;
     border-radius: 22px;
-    margin-right: 10px; }
+    margin-right: 10px;
+    overflow: hidden; }
     .com-title-wrapper .img-wrapper img {
       width: 22px; }
   .com-title-wrapper > div {
@@ -360,5 +363,165 @@ iframe {
 
 .com-reply-wrapper + article {
   padding-top: 15px; }
+
+.imgs {
+  margin-bottom: 15px; }
+
+.swiper-slide {
+  height: 0px;
+  padding-bottom: 31%;
+  position: relative; }
+  .swiper-slide a {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%; }
+    .swiper-slide a img {
+      width: 100%;
+      height: 100%; }
+
+.reply .swiper-slide {
+  height: 0px;
+  padding-bottom: 18%;
+  position: relative; }
+
+.full-img {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none; }
+  .full-img a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-size: 480px 480px;
+    position: relative; }
+  .full-img img {
+    width: 100%;
+    vertical-align: middle;
+    height: auto;
+    display: block;
+    margin: auto; }
+
+.hide {
+  display: none; }
+
+#loading .loading-content {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  line-height: 100px;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -45px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 0px !important;
+  box-shadow: none !important;
+  display: block;
+  background-color: rgba(47, 34, 33, 0.9);
+  background-image: url(../../images/common/loading_new.gif);
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  line-height: 0px;
+  text-indent: -999em; }
+
+.tipsanimated {
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes tipsfadeIn {
+  0% {
+    opacity: 0;
+    background-color: black;
+    -webkit-animation-timing-function: ease-in; }
+  35% {
+    opacity: 0.8;
+    background-color: black; }
+  65% {
+    opacity: 0.8;
+    background-color: black; }
+  100% {
+    opacity: 0;
+    background-color: black;
+    -webkit-animation-timing-function: ease-out; } }
+@keyframes tipsfadeIn {
+  0% {
+    opacity: 0;
+    background-color: black;
+    -webkit-animation-timing-function: ease-in; }
+  35% {
+    opacity: 0.8;
+    background-color: black; }
+  65% {
+    opacity: 0.8;
+    background-color: black; }
+  100% {
+    opacity: 0;
+    background-color: black;
+    -webkit-animation-timing-function: ease-out; } }
+.tipsfadeIn {
+  -webkit-animation-name: tipsfadeIn;
+  animation-name: tipsfadeIn; }
+
+.fadeAnimate {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    display: none;
+    -webkit-animation-timing-function: ease-in; }
+  2% {
+    opacity: 0.2;
+    height: 100%;
+    -webkit-animation-timing-function: ease-in; }
+  100% {
+    opacity: 1;
+    height: 100%;
+    -webkit-animation-timing-function: ease-out; } }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-animation-timing-function: ease-in; }
+  2% {
+    opacity: 0.2;
+    height: 100%;
+    -webkit-animation-timing-function: ease-in; }
+  100% {
+    opacity: 1;
+    height: 100%;
+    -webkit-animation-timing-function: ease-out; } }
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+.fixed {
+  position: fixed;
+  top: 45%;
+  width: 80%;
+  margin: 0 10%;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  -webkit-box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  text-align: center;
+  z-index: 200; }
 
 /*# sourceMappingURL=index.css.map */

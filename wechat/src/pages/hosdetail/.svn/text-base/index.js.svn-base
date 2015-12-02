@@ -52,8 +52,8 @@
                 "clinicId": that.data.clinicId
             }
 
-            Wlib.SendRequest("2030", param, function (res) {
-                that.data.hos = res.entity;
+            Wlib.SendRequestNew("treatQuery","clinicInfo", param, function (res) {
+                that.data.hos = res.value;
                 //that.fetcPingjia(function(){
                 //    that.renderUI();
                 //    that.recacheDom();
@@ -110,7 +110,7 @@
             })
 
             $(".list_mz").on("click",function(event){
-                if($(event.target).hasClass("row_4")){
+                if($(event.target).hasClass("tel")){
                     var num = $(event.target).text();
                     $("body").append("<iframe src='tel:"+num+"'></iframe>")
                 }else{

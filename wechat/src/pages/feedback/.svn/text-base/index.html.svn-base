@@ -8,10 +8,10 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>用户反馈</title>
+    <title>服务评价</title>
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
     <link href="../../lib/all.css" rel="stylesheet">
-    <!--<link href="../../pages/feedback/index.css" rel="stylesheet">-->
+    <link href="../../pages/feedback/feed.css" rel="stylesheet">
 </head>
 <body>
 <div id="loading" class="loading">
@@ -23,23 +23,39 @@
 
 
         <div class="evalua">
-            <strong>服务打分</strong><span class="star star_red"></span><span class="star star_red"></span><span
-                class="star star_red"></span><span class="star star_red"></span><span class="star star_gray"></span>
+            <strong>医生点评</strong>
+            <div id="docrate"></div>
         </div>
         <div class="pjtext">
             <div class="textareabox">
-                <textarea placeholder="小伊为您服务怎么样，请写下评价吧，我会在您的关怀下成长的更好"></textarea>
+                <textarea id="doccontent" placeholder="医生为您服务感觉怎么样，请写下评价吧，我们会在您的关爱下成长的更好"></textarea>
             </div>
         </div>
-        <div class="submit_btn"><input type="button" value="提交"></div>
+
+    </div>
+
+    <div class="wrap">
+
+
+        <div class="evalua">
+            <strong>诊所点评</strong>
+            <div id="hosrate"></div>
+        </div>
+        <div class="pjtext">
+            <div class="textareabox">
+                <textarea  id="hoscontent" placeholder="诊所的环境如何，请写下评价吧，你的评价会带给她人更直观的感官噢"></textarea>
+            </div>
+        </div>
+
     </div>
 
 
+    <div class="submit_btn"><input id="addCom" type="button" value="提交"></div>
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/rate/index.js"></script>
 <script src="index.js"></script>
 
 </body>

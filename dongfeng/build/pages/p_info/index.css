@@ -1,0 +1,50 @@
+body {
+  background-color: #e5e6e9; }
+  body .top-banner {
+    margin: 15px 0px;
+    background-color: #ffffff;
+    padding: 15px 0px;
+    border-bottom: 1px solid #cfd0d0; }
+    body .top-banner .img-wrapper {
+      width: 84px;
+      height: 84px;
+      -webkit-border-radius: 84px;
+         -moz-border-radius: 84px;
+              border-radius: 84px;
+      display: block;
+      margin: auto;
+      position: relative; }
+      body .top-banner .img-wrapper img {
+        width: 100%;
+        height: 100%; }
+    body .top-banner .img-wrapper:before {
+      content: "V";
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      -webkit-border-radius: 20px;
+         -moz-border-radius: 20px;
+              border-radius: 20px;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      background-color: #ff0000;
+      color: white;
+      text-align: center;
+      z-index: 1; }
+  body .ul-widget {
+    background-color: white;
+    color: #7f7f7f; }
+    body .ul-widget li {
+      padding: 15px;
+      border-bottom: 1px solid #cfd0d0;
+      margin-left: 25px;
+      background-image: url(../../images/center/ri.png);
+      -webkit-background-size: 8px 11px;
+         -moz-background-size: 8px 11px;
+           -o-background-size: 8px 11px;
+              background-size: 8px 11px;
+      background-repeat: no-repeat;
+      background-position: 97% center; }
+    body .ul-widget li:last-of-type {
+      border-bottom: 0px; }

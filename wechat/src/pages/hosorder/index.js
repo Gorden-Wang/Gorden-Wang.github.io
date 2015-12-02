@@ -49,6 +49,7 @@
                 paginationClickable: true,
                 spaceBetween: 0,
             });
+            swiper.slideTo(that.data.fuckJ, 0, false);
             that.dom.loading.hide();
         },
         recacheDom: function () {
@@ -108,22 +109,36 @@
                 return res;
             });
 
-            juicer.register("makeTimeListCheck", function (arr) {
+            juicer.register("makeTimeListCheck", function (arr,des,index) {
                 var o = that.data.originTimeList;
                 var res = false;
-                for (var j = that.data.fuckJ || 0; j <= arr.length; j++) {
-                    if (res == true)
-                        break;
-                    for (var i = 0; i < o.length; i++) {
-                        if (arr[j] == o[i].des) {
-                            res = true;
-                            that.data.fuckJ = j + 1;
-                            break;
-                        }
-                    }
-                }
+                //for (var j = that.data.fuckJ || 0; j <= arr.length; j++) {
+                //    if (res == true)
+                //        break;
+                //    for (var i = 0; i < o.length; i++) {
+                //        if (arr[j] == o[i].des) {
+                //            res = true;
+                //            that.data.fuckJ = j + 1;
+                //            break;
+                //        }
+                //    }
+                //}
 
-                return res ? (that.data.fuckJ == 1 ? "selected" : "") : "dis";
+                //arr=[2018-01-01];
+
+                //
+                //for(var j = index;j<o.length;j++){
+                //    if(o[j].des.indexOf(arr) > -1){
+                //        res = true;
+                //    }
+                //}
+
+                if(des.indexOf(arr)>-1){
+                    that.data.fuckJ = index;
+                    return "selected"
+                }
+                return "dis";
+
 
             });
 
@@ -175,8 +190,8 @@
                 "clinicId": that.data.clinicId
             }
 
-            Wlib.SendRequest("2030", param, function (res) {
-                that.data.hos = res.entity;
+            Wlib.SendRequestNew("treatQuery","clinicInfo", param, function (res) {
+                that.data.hos = res.value;
                 //that.fetcPingjia(function(){
                 //    that.renderUI();
                 //    that.recacheDom();
@@ -197,14 +212,14 @@
             var that = this;
             var param = {
                 "clinicId": that.data.clinicId,
-                "deptId": that.data.departmentId,
+                "departmentId": that.data.departmentId,
                 "titleId": that.data.titleId
             }
 
-            Wlib.SendRequest("2028", param, function (res) {
-                if (res.entity) {
-                    that.data.timeEnable = res.entity;
-                    that.fetchDataByTime(res.entity[0], function () {
+            Wlib.SendRequestNew("treatQuery","findClinicTreatmentTime", param, function (res) {
+                if (res.value) {
+                    that.data.timeEnable = res.value;
+                    that.fetchDataByTime(res.value[0], function () {
                         that.renderUI();
                         that.recacheDom();
                         that.fetchDepartments();
@@ -265,7 +280,7 @@
                     obj = {
                         y: time.getFullYear(),
                         m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
-                        d: time.getDate(),
+                        d: time.getDate() < 10 ? "0"+time.getDate() : time.getDate(),
                         w: w
                     }
                     obj.des = obj.y + "-" + obj.m + "-" + obj.d
@@ -285,15 +300,15 @@
             var that = this;
             var param = {
                 "clinicId": that.data.clinicId,
-                "deptId": that.data.departmentId,
+                "departmentId": that.data.departmentId,
                 "titleId": that.data.titleId,
                 "date": str,
                 "firstResult": that.data.firstResult,
                 "maxResults": that.data.maxResults
             }
 
-            Wlib.SendRequest("2029", param, function (res) {
-                that.data.itemList = res.entity;
+            Wlib.SendRequestNew("treatQuery","findClinicTreatmentPlans", param, function (res) {
+                that.data.itemList = res.value;
                 callback && callback();
 
 
@@ -303,15 +318,15 @@
             var that = this;
             var param = {
                 "clinicId": that.data.clinicId,
-                "deptId": that.data.departmentId,
+                "departmentId": that.data.departmentId,
                 "titleId": that.data.titleId,
                 "date": str,
                 "firstResult": that.data.firstResult,
                 "maxResults": that.data.maxResults
             }
 
-            Wlib.SendRequest("2029", param, function (res) {
-                that.data.itemList = res.entity;
+            Wlib.SendRequestNew("treatQuery","findClinicTreatmentPlans", param, function (res) {
+                that.data.itemList = res.value;
 
 
             });
@@ -338,9 +353,9 @@
         fetchDepartments: function () {
             var that = this;
             if (that.data.depList.length == 0) {
-                Wlib.SendRequest("253", {}, function (res) {
-                    if (res.errorcode == 0 && res.entity) {
-                        that.data.depList = res.entity;
+                Wlib.SendRequestNew("commonQuery","findClinicDepts", {}, function (res) {
+                    if (res.errorCode == 0 && res.value) {
+                        that.data.depList = res.value;
                         that.renderDepart();
                     }
                 });
@@ -437,7 +452,6 @@
 
 
                 var param = [
-                    "treatmentPlanId=" + $(this).attr("data-plan"),
                     "userId=" + localStorage.getItem("userId"),
                     "treatmentPlanDetailId=" + $(this).attr("data-id"),
                     "doc=" + $(this).attr("data-name"),
@@ -449,7 +463,7 @@
 
                 var resparam = [].join.call(param, "&");
                 console.log(resparam)
-                //Wlib.SendRequest("2033", param, function (res) {
+                //Wlib.SendRequestNew("2033", param, function (res) {
                 //
                 //    console.log(res);
                 //    var nextparam = {

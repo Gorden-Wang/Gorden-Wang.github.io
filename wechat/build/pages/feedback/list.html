@@ -37,11 +37,11 @@
         </div>
         <ul>
 
-            {@each list.list as item}
+            {@each list.comments as item}
 
             <li>
                 <div class="top-li">
-                    <span>${item.owner.nickName}</span>
+                    <span>${item.nickName}</span>
                     <div>$${makeRate(item.sumScore)}</div>
                     <span>${makeTime(item.createtime)}</span>
                 </div>
@@ -62,11 +62,11 @@
 </script>
 
 <script type="template/juicer" id="tplItem">
-{@each res.list as item}
+{@each res.comments as item}
 
 <li>
     <div class="top-li">
-        <span>${item.owner.nickName}</span>
+        <span>${item.nickName}</span>
         <div>$${makeRate(item.sumScore)}</div>
         <span>${makeTime(item.createtime)}</span>
     </div>

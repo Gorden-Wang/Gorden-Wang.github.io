@@ -1,0 +1,94 @@
+.car-center{
+  background-color: #e5e5e8;
+
+
+  .menu-wrapper{
+    background-color: white;
+    margin-top: 20px;
+
+    li:last-of-type{
+      border-bottom: 0px;
+    }
+    li{
+      padding: 15px;
+      border-bottom: 1px solid #cfd0d0;
+      margin-left: 25px;
+      display: flex;
+      padding-left: 0px;
+
+      input{
+        flex: 1;
+        text-align: left;
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      span{
+        margin-right: 15px;
+      }
+
+      p{
+        line-height: 30px;
+        background-image: url(../../images/center/ri.png);
+        background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        flex: 1;
+      }
+
+      .m-r{
+        background-image: url(../../images/center/ri.png);
+        background-size: 8px 11px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 15px;
+      }
+    }
+  }
+}
+
+.d-btn {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #e60021;
+  border-radius: 4px;
+  padding: 10px 0px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.radio-wrapper{
+  display: flex;
+  &>div{
+    flex: 1;
+    margin-right: 25px;
+  }
+  &>div:last-of-type{
+    margin-right: 0px;
+  }
+  span{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 25px;
+  }
+
+  .icon-r1{
+    background-position: -194px 1px;
+  }
+  .icon-r2{
+    background-position: -208px 2px;
+  }
+}
+
+body{
+  background-color: #e5e5e8;
+}
+
+@media screen and (min-width: 320px) and (max-width: 320px) {
+  .img-wrapper{
+    margin-top:20px !important;
+  }
+
+}

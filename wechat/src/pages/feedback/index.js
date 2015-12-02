@@ -83,9 +83,9 @@
                 Wlib.tips("请为诊所填写评价");
                 return;
             }
-            Wlib.SendRequest("2036", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","addDoctorAndClinicComment", param, function (res) {
 
-                if(res.errorcode == 0){
+                if(res.errorCode == 0){
                     Wlib.tips("感谢您的反馈");
                     setTimeout(function(){
                         window.history.back();

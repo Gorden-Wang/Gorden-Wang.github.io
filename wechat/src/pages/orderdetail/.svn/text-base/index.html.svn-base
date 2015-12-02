@@ -24,21 +24,31 @@
         <!--订单详情-->
         <div class="pjbox">
             <div class="secbox">
-                <div class="box_tit"><span class="wc">已完成</span><span class="ord">门诊订单：010201</span><strong class="odtime">2015/08/02下单</strong></div>
+                <div class="box_tit"><span class="wc">${makeStatus(de.orderStatus)}</span><span class="ord">${makeType(de.orderType)}订单：${de.id}</span><strong class="odtime">${makeFuckTime(de.createtime)}下单</strong></div>
             </div>
             <div class="secbox">
                 <div class="oddetail mb8">
-                    <div class="details"><span><i class="ys"></i>医生</span><strong>王尼玛</strong><a href="#" class="more"></a></div>
-                    <div class="details"><span><i class="ks"></i>科室</span><strong>科室</strong></div>
-                    <div class="details"><span><i class="dd"></i>地点</span><strong>中关村店</strong><a href="#" class="more"></a></div>
-                    <div class="details"><span><i class="sj"></i>时间</span><strong>2015年08月19日  09:45</strong></div>
+                    <div class="details">
+                        <a style="display: block;" href="../../pages/docdetail/index.html?doctorId=${de.doctorId}">
+                            <span><i class="ys"></i>医生</span><strong>${de.doctorName}</strong><span class="more"></span>
+                        </a>
+
+                    </div>
+                    <div class="details"><span><i class="ks"></i>科室</span><strong>${de.clinicName}</strong></div>
+                    <div class="details">
+                       <a style="display: block;" href="../../pages/hosdetail/index.html?clinicId=${de.clinicId}">
+                           <span><i class="dd"></i>地点</span><strong>${de.clinicName}</strong><span  class="more"></span>
+                       </a>
+
+                    </div>
+                    <div class="details"><span><i class="sj"></i>时间</span><strong>${makeFuckTimeFuck(de.estimatedTime)}</strong></div>
                 </div>
             </div>
             <div class="secbox">
                 <div class="oddetail">
-                    <div class="details"><span><i class="ys"></i>姓名</span><strong>王尼玛</strong></div>
-                    <div class="details"><span><i class="ks"></i>电话</span><strong>13822222222</strong></div>
-                    <div class="details"><span><i class="dd"></i>总价</span><strong>10000元</strong></div>
+                    <div class="details"><span><i class="ys"></i>姓名</span><strong>${de.patinetName}</strong></div>
+                    <div class="details"><span><i class="ks"></i>电话</span><strong>${de.phone}</strong></div>
+                    <div class="details"><span><i class="dd"></i>总价</span><strong>${de.amount}元</strong></div>
                 </div>
             </div>
             <div class="rules">
@@ -55,8 +65,8 @@
             <div class="botbtns">
                 <div>
                     <a href="#">病历详情</a>
-                    <a href="#">服务评价</a>
-                    <a href="#">再次购买</a>
+                    <a href="../../pages/feedback/index.html?clinicId=${de.clinicId}&userId=${de.userId}&doctorId=${de.doctorId}&id=${de.id}">服务评价</a>
+                    <a href="../../pages/docorder/index.html?doctorId=${de.doctorId}">再次购买</a>
                 </div>
             </div>
         </div>
@@ -68,8 +78,7 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
+<script src="../../lib/libAll.js"></script>
 <script src="index.js"></script>
 
 </body>

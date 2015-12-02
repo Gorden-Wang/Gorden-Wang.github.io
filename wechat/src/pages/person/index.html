@@ -20,32 +20,21 @@
 <div id="page"></div>
 <script type="template/juicer" id="tpl">
     <div class="wrap">
-        <!--头部-->
-        <!--<div class="header">-->
-        <!--<div class="header_in">-->
-        <!--<span class="Btn_return"></span>线下门诊<strong class="Btn_function"></strong>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--banner-->
         <div class="section_box">
             <div class="section_nav">
                 <div class="address">
-                    <div class="input_address">
-                        <select>
-                            <option>北京</option>
-                            <option>上海</option>
-                            <option>广州</option>
-                            <option>深圳</option>
-                            <option>天津</option>
-                            <option>成都</option>
-                            <option>重庆</option>
-                            <option>成都</option>
-                            <option>沈阳</option>
-                            <option>不限</option>
+                    <div class="input_address" style="background:none">
+                        <select disabled>
+                            {@each cityList as item}
+
+                            <option value="${item.id}">${item.name}</option>
+
+                            {@/each}
                         </select>
                     </div>
                     <div class="hide_address"></div>
                 </div>
+
                 <div class="personal">
                     <div><img src="../../images/personal-central@2x.gif"/></div>
                 </div>
@@ -67,17 +56,17 @@
         <div class="box_yz">
 
             <div class="my-wrapper">
-                <div class="box-radius-wrapper">
+                <div class="box-radius-wrapper" id="myOrder" style="margin-left: auto;margin-right: auto;float: none;">
                     <img src="../../images/myorder.png">
                     <p>我的订单</p>
                 </div>
 
-                <div class="box-radius-wrapper">
-                    <div class="box-radius-inner">
-                        <img src="../../images/mybill.png">
-                        <p>我的病历</p>
-                    </div>
-                </div>
+                <!--<div class="box-radius-wrapper">-->
+                    <!--<div class="box-radius-inner">-->
+                        <!--<img src="../../images/mybill.png">-->
+                        <!--<p>我的病历</p>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
             <div class="list-widget border">
                 <span class="icon icon1"></span>
@@ -88,26 +77,26 @@
         </div>
 
 
-        <div class="box_yz">
-            <div class="list-widget">
-                <span class="icon icon2"></span>
-                <p class="content">账户余额</p>
-                <span class="right-icon"></span>
-            </div>
-            <div class="list-widget border">
-                <span class="icon icon3"></span>
-                <p class="content">我的红包</p>
-                <span class="right-icon"></span>
-            </div>
-        </div>
+        <!--<div class="box_yz">-->
+            <!--<div class="list-widget">-->
+                <!--<span class="icon icon2"></span>-->
+                <!--<p class="content">账户余额</p>-->
+                <!--<span class="right-icon"></span>-->
+            <!--</div>-->
+            <!--<div class="list-widget border">-->
+                <!--<span class="icon icon3"></span>-->
+                <!--<p class="content">我的红包</p>-->
+                <!--<span class="right-icon"></span>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div class="box_yz">
-            <div class="list-widget">
+            <div class="list-widget" id="about">
                 <span class="icon icon4"></span>
-                <p class="content">规则介绍</p>
+                <p class="content">关于我们</p>
                 <span class="right-icon"></span>
             </div>
-            <div class="list-widget border">
+            <div class="list-widget border" id="feedback">
                 <span class="icon icon5"></span>
                 <p class="content">意见反馈</p>
                 <span class="right-icon"></span>
@@ -120,8 +109,8 @@
 </script>
 
 
-<script src="../../lib/zepto.js"></script>
-<script src="../../lib/juicer.js"></script>
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/cityList/index.js"></script>
 <script src="index.js"></script>
 
 </body>
