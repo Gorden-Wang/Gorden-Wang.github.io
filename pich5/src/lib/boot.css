@@ -157,4 +157,31 @@ td, th {
   max-width: 640px;
   margin: 0 auto; }
 
+.index-icon {
+  background-image: url(../images/common/spirit.png);
+  background-size: 300px 100px;
+  background-repeat: no-repeat; }
+
+.icon1 {
+  background-position: 0px 0px; }
+
+.icon2 {
+  background-position: -46px 0px; }
+
+.icon3 {
+  background-position: -92px 0px; }
+
+.icon4 {
+  background-position: -137px 0px; }
+
+.icon5 {
+  background-position: -186px 0px; }
+
+.icon6 {
+  background-position: -220px 0px; }
+
+.icon7 {
+  background-position: -258px -1px;
+  transform: scale(1.4); }
+
 /*# sourceMappingURL=boot.css.map */

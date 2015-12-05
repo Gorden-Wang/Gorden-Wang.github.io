@@ -8,9 +8,9 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>线下门诊</title>
-    <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css" rel="stylesheet">
+    <title>广场</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../pages/index/index.css" rel="stylesheet">
 
 </head>
@@ -20,56 +20,344 @@
 </div>
 <div id="page"></div>
 <script type="template/juicer" id="tpl">
-    <div class="wrap">
-        <!--banner-->
-        <div class="banner bd_top" data-href="http://www.baidu.com"><img src="../../images/temp/img_2.jpg" /></div>
-        <!--地址-->
-        <div class="section_box">
-            <div class="section_nav">
-                <div class="address">
-                    <div class="input_address">
-                        <select>
-                            {@each cityList as item}
+    <div class="wrap container">
+        <header>
+            <ul>
+                <li class="selected">广场</li>
+                <li>兴趣圈</li>
+                <li>画友圈</li>
+            </ul>
+        </header>
 
-                            <option value="${item.id}">${item.name}</option>
+        <section class="imgs-wrapper swiper-container " id="pics">
+            <div class="swiper-wrapper swiper-container-horizontal">
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic.png"> </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic.png"> </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic.png"> </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="../../images/pic.png"> </a>
+                </div>
+            </div>
 
-                            {@/each}
+            <div class="swiper-pagination"></div>
+        </section>
 
+        <section class="tab-wrapper">
+            <ul>
+                <li>
+                    <span class="icon1 index-icon"></span>
+                    <p>搜藏资讯</p>
+                </li>
+                <li>
+                    <span class="icon2 index-icon"></span>
+                    <p>逛画廊</p>
+                </li>
+                <li>
+                    <span class="icon3 index-icon"></span>
+                    <p>我的关注</p>
+                </li>
+                <li>
+                    <span class="icon4 index-icon"></span>
+                    <p>附近</p>
+                </li>
+            </ul>
+        </section>
 
-                        </select>
+        <section class="ul-wrapper">
+            <div class="title-wrapper">
+                <span class="l-w">
+                    即将结束
+                </span>
+
+                <span class="r-w">
+                    MORE
+                    <span>|</span>
+                    更多
+                </span>
+            </div>
+
+            <ul class="items-wrapper">
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
+                        </div>
                     </div>
-                    <div class="hide_address"></div>
-                </div>
-                <div class="personal">
-                    <div><img src="../../images/personal-central@2x.gif" /></div>
-                </div>
-            </div>
-        </div>
-        <!--约诊-->
-        <div class="box_yz">
-            <div id="docItme" class="box box_list_yz">
-                <div class="list_yz clearfix">
-                    <a>
-                        <div class="Left"><img src="../../images/touxiang_1.png" /></div>
-                        <div class="Center">
-                            <div class="row_1">医生约诊</div>
+                    <span>刘文西</span>
+                </li>
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
                         </div>
-                        <div class="Right"></div>
-                    </a>
-                </div>
-            </div>
-            <div id="hosItme" class="box box_list_yz">
-                <div class="list_yz bd_none clearfix">
-                    <a >
-                        <div class="Left"><img src="../../images/touxiang_2.png" /></div>
-                        <div class="Center">
-                            <div class="row_1">诊所约诊</div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
                         </div>
-                        <div class="Right"></div>
-                    </a>
-                </div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
+                        </div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="ul-wrapper">
+            <div class="title-wrapper">
+                <span class="l-w">
+                    说画精选
+                </span>
+
+                 <span class="r-w">
+                    MORE
+                    <span>|</span>
+                    更多
+                </span>
             </div>
+
+            <ul class="items-wrapper">
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
+                        </div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
+                        </div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
+                        </div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+                <li>
+                    <div>
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+
+                        <div>
+                            已经结束
+                        </div>
+                    </div>
+                    <span>刘文西</span>
+                </li>
+            </ul>
+        </section>
+
+        <div class="hr">
+            <span>上新</span>
         </div>
+
+        <section class="ul-wrapper2">
+            <ul>
+                <li>
+                    <div class="t-w">
+                        <img src="../../images/pic.png">
+
+                        <div>
+                            <p>
+                                发帖人
+                                <span class="lv">V3</span>
+                            </p>
+
+                            <p>
+                                今天 15：52
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="i-w">
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+                        <div class="index-icon icon6">
+                            <span>拍卖</span>
+                        </div>
+
+                    </div>
+
+                    <p>刘文西</p>
+
+                    <div class="b-w">
+                        <p>
+                            ￥500000元
+                        </p>
+                        <p>
+                           <span class="index-icon icon7"></span> 喜欢18
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="t-w">
+                        <img src="../../images/pic.png">
+
+                        <div>
+                            <p>
+                                发帖人
+                                <span class="lv">V3</span>
+                            </p>
+
+                            <p>
+                                今天 15：52
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="i-w">
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+                        <div class="index-icon icon6">
+                            <span>拍卖</span>
+                        </div>
+
+                    </div>
+
+                    <p>刘文西</p>
+
+                    <div class="b-w">
+                        <p>
+                            ￥500000元
+                        </p>
+                        <p>
+                            <span class="index-icon icon7"></span> 喜欢18
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="t-w">
+                        <img src="../../images/pic.png">
+
+                        <div>
+                            <p>
+                                发帖人
+                                <span class="lv">V3</span>
+                            </p>
+
+                            <p>
+                                今天 15：52
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="i-w">
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+                        <div class="index-icon icon5">
+                            <span>出售</span>
+                        </div>
+
+                    </div>
+
+                    <p>刘文西</p>
+
+                    <div class="b-w">
+                        <p>
+                            ￥500000元
+                        </p>
+                        <p>
+                            <span class="index-icon icon7"></span> 喜欢18
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="t-w">
+                        <img src="../../images/pic.png">
+
+                        <div>
+                            <p>
+                                发帖人
+                                <span class="lv">V3</span>
+                            </p>
+
+                            <p>
+                                今天 15：52
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="i-w">
+                        <a>
+                            <img src="../../images/pic1.png">
+                        </a>
+                        <div class="index-icon icon5">
+                            <span>出售</span>
+                        </div>
+
+                    </div>
+
+                    <p>刘文西</p>
+
+                    <div class="b-w">
+                        <p>
+                            ￥500000元
+                        </p>
+                        <p>
+                            <span class="index-icon icon7"></span> 喜欢18
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
     </div>
 
@@ -77,8 +365,13 @@
 </script>
 
 <script src="../../lib/libAll.js"></script>
-<script src="../../widgets/cityList/index.js"></script>
+<script src="../../widgets/swiper/index.js"></script>
 <script src="../../pages/index/index.js"></script>
 
+<script>
+    var swiper = new Swiper('#pics', {
+        pagination: '.swiper-pagination'
+    });
+</script>
 </body>
 </html>
