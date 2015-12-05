@@ -1,0 +1,46 @@
+{
+  "name": "nodetest",
+  "version": "0.0.2",
+  "description": "a clam project",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "clam",
+    "Test"
+  ],
+  "devDependencies": {
+    "clam-util": "",
+    "glob": "^5.0.5",
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "",
+    "grunt-combohtml": "",
+    "grunt-connect-rewrite": "^0.2.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "",
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-contrib-copy": "",
+    "grunt-contrib-cssmin": "~0.5.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-less": "~0.5.0",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "",
+    "grunt-exec": "",
+    "grunt-mytps": "",
+    "grunt-newer": "^1.1.0",
+    "grunt-prompt": "~1.1.0",
+    "grunt-relativeurl": "",
+    "grunt-replace": "",
+    "grunt-template": "",
+    "http-rewrite-middleware": "^0.1.6",
+    "load-grunt-tasks": "^3.1.0",
+    "lodash": "^3.6.0"
+  },
+  "dependencies": {}
+}

@@ -53,7 +53,8 @@
         flex: 1;
         text-align: left;
         font-size: 14px;
-        line-height: 14px; }
+        line-height: 14px;
+        display: block; }
       .car-center .menu-wrapper li span {
         margin-right: 15px; }
       .car-center .menu-wrapper li p {

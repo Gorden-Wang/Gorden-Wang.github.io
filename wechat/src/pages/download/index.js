@@ -330,7 +330,7 @@
                 that.dom.loading.hide();
 
                 if (!res.value || res.value.length == 0) {
-                    Wlib.tips("没有查询到相关记录。")
+                    //Wlib.tips("没有查询到相关记录。")
                 }
 
             });
