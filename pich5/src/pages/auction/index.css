@@ -36,18 +36,95 @@
         padding: 2px 4px;
         border-radius: 4px;
         font-size: 14px; }
+    #page .wrap > .imgs-wrapper .follow-btn {
+      position: absolute;
+      z-index: 20;
+      top: 40px;
+      right: 0px;
+      padding: 5px 10px;
+      border-radius: 23px 0 0 23px;
+      background-color: #ffe326;
+      color: #794300;
+      font-size: 13px; }
   #page .price-wrapper {
     display: flex;
-    padding: 15px 10px;
+    padding: 10px 10px;
     align-items: center;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    border-bottom: 1px solid #efefef; }
     #page .price-wrapper > p {
       flex: 1;
       font-size: 30px;
       color: #f27373; }
-      #page .price-wrapper > p > span {
+      #page .price-wrapper > p > span:last-of-type {
         font-size: 12px;
         color: #cccccc; }
+      #page .price-wrapper > p > span:first-of-type {
+        font-size: 15px;
+        color: #4b4b4b; }
+  #page .time-wrapper {
+    background-color: #ffffff;
+    border-bottom: 1px solid #efefef;
+    padding: 15px 10px; }
+    #page .time-wrapper > p {
+      flex: 1;
+      font-size: 15px;
+      color: #363636; }
+      #page .time-wrapper > p .bold {
+        font-size: 17px;
+        font-weight: 400;
+        display: inline-block;
+        margin: 0px 5px;
+        color: #333; }
+  #page .pre-wrapper {
+    background-color: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid #efefef; }
+    #page .pre-wrapper .t-w {
+      display: flex;
+      align-items: center; }
+      #page .pre-wrapper .t-w > span {
+        font-size: 20px;
+        font-weight: 800;
+        background-color: #4dc0d1;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        text-align: center;
+        color: #ffffff; }
+      #page .pre-wrapper .t-w .t-m-w {
+        flex: 1;
+        margin: 0px 20px; }
+        #page .pre-wrapper .t-w .t-m-w > p {
+          font-size: 14px;
+          color: #575757; }
+        #page .pre-wrapper .t-w .t-m-w .hr-bg {
+          height: 1px;
+          background-color: #333333;
+          margin: 3px 0px; }
+        #page .pre-wrapper .t-w .t-m-w span {
+          color: #4DC0D3; }
+    #page .pre-wrapper .btn-w {
+      padding: 15px 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #ff6666;
+      text-align: center;
+      border-radius: 6px; }
+  #page .rekber-wrapper {
+    background-color: #ffffff;
+    padding: 10px; }
+    #page .rekber-wrapper ul {
+      display: flex; }
+    #page .rekber-wrapper li {
+      flex: 1; }
+      #page .rekber-wrapper li p {
+        font-size: 14px;
+        color: #5b5b5b;
+        text-align: center;
+        margin-bottom: 5px; }
   #page .label-icon {
     font-size: 14px;
     display: inline-block;
@@ -140,6 +217,15 @@
     top: -10px;
     /* z-index: 20; */
     left: 48%; }
+  #page .order-wrapper {
+    padding-bottom: 10px; }
+    #page .order-wrapper ul > li {
+      border-bottom-style: dashed !important; }
+      #page .order-wrapper ul > li .t-c {
+        color: #bfbfbf !important;
+        margin-top: 3px; }
+    #page .order-wrapper ul > li:first-of-type .t-t > span {
+      color: #f15d5d !important; }
   #page .ul-wrapper3 {
     display: flex;
     padding: 10px 10px;
