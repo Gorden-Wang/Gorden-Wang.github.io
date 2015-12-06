@@ -199,3 +199,16 @@ td, th {
      -moz-transform: scale(1.4);
        -o-transform: scale(1.4);
           transform: scale(1.4); }
+
+.icon8 {
+  background-position: -258px 0px; }
+
+.icon9 {
+  background-position: -201px -20px;
+  -webkit-transform: scale(1.4);
+     -moz-transform: scale(1.4);
+       -o-transform: scale(1.4);
+          transform: scale(1.4); }
+
+.icon10 {
+  background-position: 0px -44px; }

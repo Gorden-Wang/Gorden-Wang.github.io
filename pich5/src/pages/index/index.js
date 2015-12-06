@@ -14,7 +14,7 @@
             that.renderUI();
             that.recacheDom();
             that.bindEvent();
-            that.getPosition();
+            //that.getPosition();
         },
         cacheData: function () {
             var that = this;
