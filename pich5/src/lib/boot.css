@@ -448,6 +448,9 @@ td, th {
   opacity: 0;
   z-index: 100; }
 
+img {
+  background-color: whitesmoke; }
+
 .index-icon {
   background-image: url(../images/common/spirit.png);
   background-size: 300px 100px;

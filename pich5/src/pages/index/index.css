@@ -24,6 +24,19 @@
     #page .imgs-wrapper .back-img img {
       width: 100%;
       height: 100%; }
+    #page .imgs-wrapper .i-title {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      color: #ffffff;
+      padding: 10px 0px;
+      background-image: url(../../images/common/bg-top.png);
+      background-repeat: repeat-x;
+      background-size: contain; }
     #page .imgs-wrapper .swiper-wrapper {
       position: absolute;
       top: 0px;
@@ -35,14 +48,18 @@
     #page .imgs-wrapper .swiper-pagination {
       bottom: 35px; }
   #page .tab-wrapper {
-    border-radius: 45% 45% 0 0;
-    background-color: white;
     top: -30px;
     position: relative;
     z-index: 20;
-    padding-top: 50px; }
+    border-image: url(../../images/common/bg-center.png) 80 0 0 0 round;
+    border-top: 25px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px; }
     #page .tab-wrapper ul {
-      display: flex; }
+      display: flex;
+      background-color: white;
+      padding-top: 20px; }
       #page .tab-wrapper ul li {
         flex: 1;
         display: block;
@@ -152,11 +169,11 @@
     padding: 10px; }
     #page .ul-wrapper2 ul {
       overflow: hidden; }
-      #page .ul-wrapper2 ul li:last-of-type {
+      #page .ul-wrapper2 ul li:nth-of-type(2n) {
         margin-right: 0px; }
       #page .ul-wrapper2 ul li {
         width: 49%;
-        margin-right: 1%;
+        margin-right: 2%;
         float: left;
         margin-bottom: 15px; }
         #page .ul-wrapper2 ul li > p {
@@ -206,7 +223,7 @@
             height: 100%; }
         #page .ul-wrapper2 ul .i-w > div {
           position: absolute;
-          left: 0px;
+          left: -1px;
           top: 0px;
           z-index: 1;
           width: 34px;

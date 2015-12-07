@@ -31,18 +31,15 @@
 
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
+                {@each data.exhibition as item}
                 <div class="swiper-slide">
-                    <a class="back-img"> <img src="../../images/pic.png"> </a>
+                    <div class="i-title">
+                        ${item.title}
+                    </div>
+                    <a class="back-img"> <img src="${item.pic}"> </a>
                 </div>
-                <div class="swiper-slide">
-                    <a class="back-img"> <img src="../../images/pic.png"> </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="back-img"> <img src="../../images/pic.png"> </a>
-                </div>
-                <div class="swiper-slide">
-                    <a class="back-img"> <img src="../../images/pic.png"> </a>
-                </div>
+
+                {@/each}
             </div>
 
             <div class="swiper-pagination"></div>
@@ -83,54 +80,24 @@
             </div>
 
             <ul class="items-wrapper">
+                {@each data.endcoming as item , index}
+
+                {@if index < 4}
                 <li>
                     <div>
                         <a>
-                            <img src="../../images/pic1.png">
+                            <img lazy-image="${item.pic}" class="lazy-image">
                         </a>
 
                         <div>
-                            已经结束
+                           ${item.genre}
                         </div>
                     </div>
-                    <span>刘文西</span>
+                    <span>${item.author}</span>
                 </li>
-                <li>
-                    <div>
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
+                {@/if}
 
-                        <div>
-                            已经结束
-                        </div>
-                    </div>
-                    <span>刘文西</span>
-                </li>
-                <li>
-                    <div>
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
-
-                        <div>
-                            已经结束
-                        </div>
-                    </div>
-                    <span>刘文西</span>
-                </li>
-                <li>
-                    <div>
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
-
-                        <div>
-                            已经结束
-                        </div>
-                    </div>
-                    <span>刘文西</span>
-                </li>
+                {@/each}
             </ul>
         </section>
 
@@ -148,54 +115,20 @@
             </div>
 
             <ul class="items-wrapper">
+                {@each data.recommend as item}
+
                 <li>
                     <div>
                         <a>
-                            <img src="../../images/pic1.png">
+                            <img lazy-image="${item.picture}" class="lazy-image">
                         </a>
-
-                        <div>
-                            已经结束
-                        </div>
                     </div>
-                    <span>刘文西</span>
+                    <span>${item.title}</span>
                 </li>
-                <li>
-                    <div>
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
 
-                        <div>
-                            已经结束
-                        </div>
-                    </div>
-                    <span>刘文西</span>
-                </li>
-                <li>
-                    <div>
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
 
-                        <div>
-                            已经结束
-                        </div>
-                    </div>
-                    <span>刘文西</span>
-                </li>
-                <li>
-                    <div>
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
+                {@/each}
 
-                        <div>
-                            已经结束
-                        </div>
-                    </div>
-                    <span>刘文西</span>
-                </li>
             </ul>
         </section>
 
@@ -205,157 +138,65 @@
 
         <section class="ul-wrapper2">
             <ul>
+                {@each data.new_painting as item}
                 <li>
                     <div class="t-w">
-                        <img src="../../images/pic.png">
+                        <img lazy-image="${item.avatar}" class="lazy-image">
 
                         <div>
                             <p>
-                                发帖人
-                                <span class="lv">V3</span>
+                                ${item.nickname}
+                                <span class="lv">V${item.level}</span>
                             </p>
 
                             <p>
-                                今天 15：52
+                                ${item.add_time}
                             </p>
                         </div>
                     </div>
 
                     <div class="i-w">
                         <a>
-                            <img src="../../images/pic1.png">
+                            <img lazy-image="${item.pic}" class="lazy-image">
                         </a>
+                        {@if item.type == "拍卖"}
                         <div class="index-icon icon6">
                             <span>拍卖</span>
                         </div>
-
-                    </div>
-
-                    <p>刘文西</p>
-
-                    <div class="b-w">
-                        <p>
-                            ￥500000元
-                        </p>
-                        <p>
-                           <span class="index-icon icon7"></span> 喜欢18
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="t-w">
-                        <img src="../../images/pic.png">
-
-                        <div>
-                            <p>
-                                发帖人
-                                <span class="lv">V3</span>
-                            </p>
-
-                            <p>
-                                今天 15：52
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="i-w">
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
-                        <div class="index-icon icon6">
-                            <span>拍卖</span>
-                        </div>
-
-                    </div>
-
-                    <p>刘文西</p>
-
-                    <div class="b-w">
-                        <p>
-                            ￥500000元
-                        </p>
-                        <p>
-                            <span class="index-icon icon7"></span> 喜欢18
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="t-w">
-                        <img src="../../images/pic.png">
-
-                        <div>
-                            <p>
-                                发帖人
-                                <span class="lv">V3</span>
-                            </p>
-
-                            <p>
-                                今天 15：52
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="i-w">
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
+                        {@else if item.type == "出售"}
                         <div class="index-icon icon5">
                             <span>出售</span>
                         </div>
 
-                    </div>
-
-                    <p>刘文西</p>
-
-                    <div class="b-w">
-                        <p>
-                            ￥500000元
-                        </p>
-                        <p>
-                            <span class="index-icon icon7"></span> 喜欢18
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="t-w">
-                        <img src="../../images/pic.png">
-
-                        <div>
-                            <p>
-                                发帖人
-                                <span class="lv">V3</span>
-                            </p>
-
-                            <p>
-                                今天 15：52
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="i-w">
-                        <a>
-                            <img src="../../images/pic1.png">
-                        </a>
+                        {@else if item.type == "鉴定"}
                         <div class="index-icon icon5">
-                            <span>出售</span>
+                            <span>鉴定</span>
                         </div>
+
+                        {@else if item.type == "欣赏"}
+                        <div class="index-icon icon5">
+                            <span>欣赏</span>
+                        </div>
+
+                        {@/if}
 
                     </div>
 
-                    <p>刘文西</p>
+                    <p>${item.author}</p>
 
                     <div class="b-w">
                         <p>
-                            ￥500000元
+                            ￥${item.starting_price}元
                         </p>
                         <p>
-                            <span class="index-icon icon7"></span> 喜欢18
+                            <span class="index-icon icon7"></span> 喜欢${item.love_number}
                         </p>
                     </div>
                 </li>
+
+
+                {@/each}
+
             </ul>
         </section>
 
@@ -369,9 +210,7 @@
 <script src="../../pages/index/index.js"></script>
 
 <script>
-    var swiper = new Swiper('#pics', {
-        pagination: '.swiper-pagination'
-    });
+
 </script>
 </body>
 </html>

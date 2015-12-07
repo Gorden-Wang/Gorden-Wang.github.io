@@ -202,75 +202,51 @@ window.Wlib = (function () {
         getUserId: function () {
             return Wlib.getRequestParam("userId") || localStorage.getItem("userId") || "";
         },
-        SendRequest: function (method, data, success, error) {
+        SendRequest: function (path, data, method, success, error) {
             var that = this;
-            var body = {
-                "channel": "102",
-                "method": method,
-                "token": localStorage.getItem("token") || "",
-                "version": "1.0.2.0830",
-                "params": data
-            }
+
+            data = (function(d,m){
+                var res = "";
+                if(m == "POST"){
+                    res = d;
+                }else{
+                    for(var i in d){
+                        res+= i+"="+d[i]+"&";
+                    }
+                }
+
+                return res;
+            })(data,method);
 
             var url = (function () {
-                var u = that.evn == "daily" ? "http://182.92.216.40/xiaomianao/request?body=" : "http://182.92.118.70/xiaomianao/request?body=";
+                var u = that.evn == "daily" ? "http://115.159.100.197/index.php?r=" : "www.talkart.cc/index.php?r=";
 
 
-                return u + JSON.stringify(body);
+                return u;
             })();
 
-            $.ajax({
-                url: url + "&callback=?",
+            var obj = {
+                //url: url + "&callback=?",
                 dataType: "JSONP",
                 success: function (res) {
-                    success(res);
+                    success && success(res);
                 },
                 error: function (err) {
                     error && error(err);
                 }
-            })
-        },
-        SendRequestNew: function (method, next, data, success, error) {
-
-            var that = this;
-            var plateform = (function (str) {
-                if (str.match(/iPhone|iPod|iPad/)) {
-                    return 2
-                } else {
-                    return 1
-                }
-            })(navigator.userAgent);
-
-            var body = {
-                "deviceid": "",
-                "channel": "102",
-                "clientVersion": "H5",
-                "method": method,
-                "requestType": next,
-                "token": localStorage.getItem("token") || "",
-                "version": "1.0.2.0830",
-                "platform": plateform,
-                "params": data
             }
 
-            var url = (function () {
-                var u = document.domain != "www.hmsgtech.com" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://www.hmsgtech.com/adapter/api/requestH5?body=";
+            if(method == "POST"){
+                obj.url = url + path;
+                obj.data = data;
+                obj.dataType = "JSON";
+                obj.type = "POST";
+            }else{
+                obj.url = url + path + "&" + data + "callback=?";
+            }
 
+            $.ajax(obj);
 
-
-                return u + JSON.stringify(body);
-            })();
-
-            $.ajax({
-                url: url + "&callback=?",
-                dataType: "JSONP",
-                success: function (res) {
-                    success(res);
-                },
-                error: function (err) {
-                    error && error(err);
-                }
-            })
         },
         GetJsonData: function (url, success, error) {
             $.ajax({
@@ -298,6 +274,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 
