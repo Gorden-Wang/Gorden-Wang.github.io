@@ -52,20 +52,25 @@
         <section class="price-wrapper">
             <p>
                 <span>起拍价:</span>
-                ￥120000
+                ￥${data.starting_price}
                 <span>元</span>
             </p>
+            {@if data.size}
             <span class="label-icon">
-                143*88cm
+                ${data.size}
             </span>
+            {@else}
+            <span>暂无尺寸</span>
+            {@/if}
         </section>
 
         <section class="time-wrapper">
             <p>
                 <span>距结束:</span>
 
-                <span class="bold">21</span>天<span class="bold">7</span>时<span class="bold">13</span>分<span
-                    class="bold">12</span>秒
+                <span>${data.endtime}</span>
+                <!--<span class="bold">21</span>天<span class="bold">7</span>时<span class="bold">13</span>分<span-->
+                    <!--class="bold">12</span>秒-->
             </p>
         </section>
 
@@ -76,13 +81,13 @@
 
                 <div class="t-m-w">
                     <p>
-                        <span>3000</span>元
+                        <span>${data.new_price}</span>元
                     </p>
 
                     <p class="hr-bg"></p>
 
                     <p>
-                        人民币：三千元
+                        人民币：${data.rmb_big}
                     </p>
                 </div>
                 <span class="index-icon icon12"></span>
@@ -97,17 +102,17 @@
                 <li>
                     <p>起拍价</p>
 
-                    <p>3000</p>
+                    <p>${data.starting_price}</p>
                 </li>
                 <li>
                     <p>加价幅度</p>
 
-                    <p>200</p>
+                    <p>${data.range}</p>
                 </li>
                 <li>
                     <p>是否保真</p>
 
-                    <p>永久</p>
+                    <p>${data.fidelity}</p>
                 </li>
                 <li>
                     <p>延时周期</p>
@@ -402,15 +407,5 @@
 <script src="../../widgets/swiper/index.js"></script>
 <script src="../../pages/auction/index.js"></script>
 
-<script>
-    var swiper = new Swiper('#pics', {
-        pagination: '.swiper-pagination'
-    });
-    var swiper2 = new Swiper('#more', {
-        slidesPerView: 3.5,
-        paginationClickable: true,
-        spaceBetween: 5
-    });
-</script>
 </body>
 </html>
