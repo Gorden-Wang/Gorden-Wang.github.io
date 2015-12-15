@@ -1,10 +1,11 @@
 #page {
-  font-family: "HY"; }
+  font-family: "HY";
+  background-color: #efeff4; }
   #page .wrap {
     margin-top: 0px; }
   #page .user-wrapper {
     display: flex;
-    margin: 5px 0px;
+    margin: 5px 0px 10px 0px;
     padding: 10px 10px;
     background-color: #ffffff; }
     #page .user-wrapper .t-w {
@@ -56,10 +57,39 @@
         font-size: 14px;
         background-color: #4dc0d1;
         border-radius: 4px; }
+  #page .li-tabs {
+    margin-bottom: 10px; }
+    #page .li-tabs ul {
+      overflow: hidden;
+      background-color: #FFFFFF; }
+    #page .li-tabs li {
+      width: 25%;
+      float: left;
+      text-align: center;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      height: 0px;
+      padding-bottom: 25%;
+      position: relative; }
+      #page .li-tabs li a {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        padding-top: 33%; }
+      #page .li-tabs li p {
+        font-size: 13px;
+        color: #434343; }
+      #page .li-tabs li .gray {
+        color: #cccccc;
+        font-size: 10px; }
+    #page .li-tabs li:nth-of-type(4n) {
+      border-right: 0px; }
   #page .imgs-wrapper {
     width: 100%;
     height: 0px;
-    padding-bottom: 44.53125%; }
+    padding-bottom: 30.46875%; }
     #page .imgs-wrapper .back-img img {
       width: 100%;
       height: 100%; }
@@ -109,13 +139,63 @@
     padding: 0px !important;
     position: relative;
     margin-top: 19px;
-    margin-right: 5px; }
+    margin-right: 15px; }
+  #page .my-icon3 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: 0 -25px; }
+  #page .my-icon4 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -25px -25px; }
+  #page .my-icon5 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -50px -25px; }
+  #page .my-icon6 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -75px -25px; }
+  #page .my-icon7 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -100px -25px; }
+  #page .my-icon8 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -125px -25px; }
+  #page .my-icon9 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -150px -25px; }
+  #page .my-icon10 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -175px -25px; }
+  #page .my-icon11 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -150px 0px; }
+  #page .my-icon12 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-position: -175px 0px; }
   #page .right {
     width: 8px;
     height: 8px;
     border-top: 2px solid #c2c2c8;
     border-left: 2px solid #c2c2c8;
-    top: 40%;
+    top: -4px;
     right: 10px;
     overflow: hidden;
     -webkit-transform: rotate(135deg);
@@ -126,6 +206,7 @@
     transition: -webkit-transform .2s ease-in;
     background-color: transparent !important;
     border-radius: 0px !important;
-    padding: 0px !important; }
+    padding: 0px !important;
+    position: relative; }
 
 /*# sourceMappingURL=index.css.map */
