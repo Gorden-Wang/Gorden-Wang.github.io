@@ -1043,6 +1043,36 @@ window.Wlib = (function () {
 
             check();
         },
+        _scrollHide : function(offset,dom){
+
+            function interval() {
+                setTimeout(function () {
+                    check();
+                }, 1);
+            }
+
+            function detach() {
+                window.removeEventListener('scroll', interval, false);
+                window.removeEventListener('resize', interval, false);
+            }
+
+            function check() {
+                var  scrollTop = window.pageYOffset;
+                if (scrollTop  >= offset) {
+                    dom.show();
+                }else{
+                    dom.hide();
+                }
+            }
+
+
+            window.addEventListener('scroll', interval, false);
+            window.addEventListener('resize', interval, false);
+
+            check();
+
+
+        },
         getUserId: function () {
             return Wlib.getRequestParam("userId") || localStorage.getItem("userId") || "";
         },

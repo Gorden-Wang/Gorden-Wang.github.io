@@ -12,14 +12,18 @@
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            that.getData();
+            //that.getData();
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
         },
         cacheData: function () {
             var that = this;
 
             that.data = {
-                id: Wlib.getRequestParam("id")
+
             }
+
         },
         cacheDom: function () {
             var that = this;
@@ -36,14 +40,14 @@
         },
         recacheDom: function () {
             var that = this;
-            that.dom.moreLi = $("#more .swiper-slide");
-            that.dom.scrollTo = $(".icon10");
+
+            that.dom.newLi = $(".itemli li");
 
         },
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                return  Wlib.getRequestParam("id",url);
+                  return  Wlib.getRequestParam("id",url);
             });
             juicer.register("getType", function (type) {
                 var res = "";
@@ -54,7 +58,7 @@
                     case "拍卖":
                         res = "../../pages/auction/index.html";
                         break;
-                    //  @TODO : 鉴定，欣赏
+                //  @TODO : 鉴定，欣赏
 
                 }
                 return res;
@@ -63,20 +67,15 @@
         },
         bindEvent: function () {
             var that = this;
+
             FastClick.attach(document.body);
             var swiper = new Swiper('#pics', {
                 pagination: '.swiper-pagination'
             });
-            var swiper2 = new Swiper('#more', {
-                slidesPerView: 3.5,
-                paginationClickable: true,
-                spaceBetween: 5
-            });
 
+            Wlib._bindLazyLoad();
 
-            Wlib._scrollHide(100,that.dom.scrollTo);
-
-            that.dom.moreLi.on("click",function(){
+            that.dom.newLi.on("click",function(){
                 var id = $(this).attr("data-id");
                 var des = $(this).attr("data-url");
 
@@ -86,24 +85,13 @@
                 }
 
                 win.location = des + "?id="+id;
-            });
-
-            that.dom.scrollTo.on("click",function(){
-                $.scrollTo(0,500);
             })
-            Wlib._bindLazyLoad();
 
         },
         getData: function () {
             var that = this;
 
-            //@TODO : uid 已经验证手机号
-            var req = {
-                id : that.data.id,
-                uid : "",
-                token : ""
-            }
-            Wlib.SendRequest("default/api/info",req,"GET",function(data){
+            Wlib.SendRequest("default/api/square",{},"GET",function(data){
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();

@@ -69,8 +69,6 @@
                 <span>距结束:</span>
 
                 <span>${data.endtime}</span>
-                <!--<span class="bold">21</span>天<span class="bold">7</span>时<span class="bold">13</span>分<span-->
-                    <!--class="bold">12</span>秒-->
             </p>
         </section>
 
@@ -200,41 +198,25 @@
         </section>
 
         <section class="like-wrapper ul-wrapper3">
+            {@if data.interested.length > 0 }
             <ul>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
 
-                </li>
+                {@each data.interested as item}
                 <li>
                     <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
+                        <img lazy-image="${item.user_logo}" class="lazy-image">
                     </a>
 
                 </li>
 
+                {@/each}
             </ul>
+
+            {@else}
+            <div style=" -webkit-box-flex: 1;-webkit-flex: 1;-moz-box-flex: 1;flex: 1;">暂时没人感兴趣</div>
+            {@/if}
             <span>
-                125人，聊聊看>
+                ${data.interested_num}>
             </span>
         </section>
 
@@ -242,88 +224,50 @@
             <span class="index-icon icon9">
 
             </span>
+            {@if data.praise_list.length > 0}
             <ul>
+                {@each data.praise_list as item}
                 <li>
                     <a>
-                        <img src="../../images/pic.png">
+                        <img class="lazy-image" lazy-image="${item.logo}">
                     </a>
 
                 </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
+                {@/each}
             </ul>
+            {@else}
+            <span>还没有人点赞</span>
+
+            {@/if}
         </section>
 
         <section class="reply-wrapper ul-wrapper4">
             <ul>
+                {@each data.comments as item}
                 <li>
                     <div class="t-w">
-                        <img src="../../images/pic.png">
+                        <img class="lazy-image" lazy-image="${item.from_logo}">
 
                         <div class="r-w">
                             <div class="t-t">
                                 <p>
-                                    发帖人 <span class="lv">V3</span>
+                                    ${item.from_name} <span class="lv">V${item.from_level}</span>
                                 </p>
 
-                                <span> 今天 15：52 </span>
+                                <span> ${item.comm_time} </span>
                             </div>
 
                             <div class="t-c">
-                                回复<span>开心多多</span>：确实不错！确实不错！确实不错！确实不错！确实不错！确实不错！确实不错！确实不错！确实不错！
+                                {@if item.to_name}
+                                回复<span>${item.to_name}</span>：
+                                {@/if}
+                                ${item.content}
                             </div>
 
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="t-w">
-                        <img src="../../images/pic.png">
-
-                        <div class="r-w">
-                            <div class="t-t">
-                                <p>
-                                    发帖人 <span class="lv">V3</span>
-                                </p>
-
-                                <span> 今天 15：52 </span>
-                            </div>
-
-                            <div class="t-c">
-                                确实不错！
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
+                {@/each}
             </ul>
         </section>
 
@@ -339,50 +283,38 @@
 
             <section class="imgs-wrapper swiper-container " id="more">
                 <div class="swiper-wrapper swiper-container-horizontal">
-                    <div class="swiper-slide">
-                        <div class="i-w"><a> <img src="../../images/pic1.png"> </a>
+                    {@each data.infolist as item}
+                    <div class="swiper-slide" data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                        <div class="i-w"><a> <img lazy-image="${item.picture}" class="lazy-image"> </a>
 
-                            <div class="index-icon icon6"><span>拍卖</span></div>
-                        </div>
-                        <p>刘文西</p>
+                            {@if item.type == "拍卖"}
+                            <div class="index-icon icon6">
+                                <span>拍卖</span>
+                            </div>
+                            {@else if item.type == "出售"}
+                            <div class="index-icon icon5">
+                                <span>出售</span>
+                            </div>
 
-                        <div class="b-w">
-                            <p> ￥500000元 </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="i-w"><a> <img src="../../images/pic1.png"> </a>
+                            {@else if item.type == "鉴定"}
+                            <div class="index-icon icon13">
+                                <span>鉴定</span>
+                            </div>
 
-                            <div class="index-icon icon6"><span>拍卖</span></div>
-                        </div>
-                        <p>刘文西</p>
+                            {@else if item.type == "欣赏"}
+                            <div class="index-icon icon14">
+                                <span>欣赏</span>
+                            </div>
 
-                        <div class="b-w">
-                            <p> ￥500000元 </p>
+                            {@/if}
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="i-w"><a> <img src="../../images/pic1.png"> </a>
-
-                            <div class="index-icon icon6"><span>拍卖</span></div>
-                        </div>
-                        <p>刘文西</p>
+                        <p>${data.author}</p>
 
                         <div class="b-w">
-                            <p> ￥500000元 </p>
+                            <p> ￥${item.starting_price}元 </p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="i-w"><a> <img src="../../images/pic1.png"> </a>
-
-                            <div class="index-icon icon6"><span>拍卖</span></div>
-                        </div>
-                        <p>刘文西</p>
-
-                        <div class="b-w">
-                            <p> ￥500000元 </p>
-                        </div>
-                    </div>
+                    {@/each}
                 </div>
 
 
@@ -392,7 +324,7 @@
         </section>
 
         <section class="foot-btn">
-            <div>我的</div>
+            <div id="mybtn">我的</div>
             <div class="index-icon icon10"></div>
 
         </section>
@@ -405,6 +337,7 @@
 
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/swiper/index.js"></script>
+<script src="../../widgets/scrollto/index.js"></script>
 <script src="../../pages/auction/index.js"></script>
 
 </body>

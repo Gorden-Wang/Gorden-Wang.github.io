@@ -32,7 +32,7 @@
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
                 {@each data.exhibition as item}
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-id="${getId(item.url)}">
                     <div class="i-title">
                         ${item.title}
                     </div>
@@ -79,11 +79,11 @@
                 </span>
             </div>
 
-            <ul class="items-wrapper">
+            <ul class="items-wrapper itemli">
                 {@each data.endcoming as item , index}
 
                 {@if index < 4}
-                <li>
+                <li  data-id="${getId(item.url)}" data-url="${getType(item.type)}">
                     <div>
                         <a>
                             <img lazy-image="${item.pic}" class="lazy-image">
@@ -114,10 +114,10 @@
                 </span>
             </div>
 
-            <ul class="items-wrapper">
+            <ul class="items-wrapper itemli">
                 {@each data.recommend as item}
 
-                <li>
+                <li   data-id="${getId(item.url)}" data-url="${getType(item.type)}">
                     <div>
                         <a>
                             <img lazy-image="${item.picture}" class="lazy-image">
@@ -136,10 +136,10 @@
             <span>上新</span>
         </div>
 
-        <section class="ul-wrapper2">
+        <section class="ul-wrapper2 itemli">
             <ul>
                 {@each data.new_painting as item}
-                <li>
+                <li  data-id="${getId(item.url)}" data-url="${getType(item.type)}">
                     <div class="t-w">
                         <img lazy-image="${item.avatar}" class="lazy-image">
 
@@ -169,12 +169,12 @@
                         </div>
 
                         {@else if item.type == "鉴定"}
-                        <div class="index-icon icon5">
+                        <div class="index-icon icon13">
                             <span>鉴定</span>
                         </div>
 
                         {@else if item.type == "欣赏"}
-                        <div class="index-icon icon5">
+                        <div class="index-icon icon14">
                             <span>欣赏</span>
                         </div>
 

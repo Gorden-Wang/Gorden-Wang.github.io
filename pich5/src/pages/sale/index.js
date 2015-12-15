@@ -36,6 +36,9 @@
         },
         recacheDom: function () {
             var that = this;
+            that.dom.moreLi = $("#more .swiper-slide");
+            that.dom.scrollTo = $(".icon10");
+            that.dom.myBtn = $("#mybtn");
 
         },
         addJuicerHandler: function () {
@@ -50,7 +53,7 @@
                         res = "../../pages/sale/index.html";
                         break;
                     case "拍卖":
-                        res = "../../auction/index.html";
+                        res = "../../pages/auction/index.html";
                         break;
                     //  @TODO : 鉴定，欣赏
 
@@ -71,6 +74,28 @@
                 spaceBetween: 5
             });
 
+
+            Wlib._scrollHide(100,that.dom.scrollTo);
+
+            that.dom.moreLi.on("click",function(){
+                var id = $(this).attr("data-id");
+                var des = $(this).attr("data-url");
+
+                if(!id){
+                    Wlib.tips("已经下架");
+                    return;
+                }
+
+                win.location = des + "?id="+id;
+            });
+
+            that.dom.scrollTo.on("click",function(){
+                $.scrollTo(0,500);
+            });
+
+            that.dom.myBtn.on("click",function(){
+                win.location = "../../pages/my/index.html";
+            });
             Wlib._bindLazyLoad();
 
         },
