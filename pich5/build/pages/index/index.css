@@ -51,7 +51,7 @@
     #page .imgs-wrapper .swiper-pagination {
       bottom: 35px; }
   #page .tab-wrapper {
-    top: -30px;
+    top: -24px;
     position: relative;
     z-index: 20;
     -webkit-border-image: url(../../images/common/bg-center.png) 80 0 0 0 round;
