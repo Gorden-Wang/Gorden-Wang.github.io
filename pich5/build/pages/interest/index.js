@@ -87,12 +87,6 @@
 
             Wlib._bindLazyLoad();
 
-            var swiper2 = new Swiper('.itemsImg', {
-                slidesPerView: 3.5,
-                paginationClickable: true,
-                spaceBetween: 5
-            });
-
             that.dom.topLi.on("click",function(){
                 var isSelect = $(this).hasClass("selected");
 

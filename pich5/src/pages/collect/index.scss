@@ -10,72 +10,156 @@ body {
     margin-top: 0px;
   }
 
-  .f-icon {
-    background-image: url(../../images/common/footer.png);
-    background-size: 187.5px 75px;
+  .item-li {
+    li {
+      padding:0 10px;
+      background-color: #FFFFFF;
+      margin-bottom: 10px;
+      .t-w {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px dashed #d3d3d3;
+        padding: 10px 0;
+        img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+        }
+
+        .t-w-r{
+          flex:1;
+          margin-left: 15px;
+
+
+          p{
+            color: #45c7d7;
+            font-size: 15px;
+            margin-bottom: 5px;
+          }
+          span{
+            color : #a3a2a2;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .m-w{
+        color: #525252;
+        font-size: 15px;
+
+        .i-w {
+          width: 100%;
+          height: 0px;
+          padding-bottom: 100%;
+          position: relative;
+
+          a {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          & > div {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+            width: 34px;
+            height: 34px;
+            display: inline-block;
+            span {
+              color: #ffffff;
+              font-size: 10px;
+              display: inline-block;
+              transform: rotate(-45deg);
+              text-align: center;
+            }
+          }
+        }
+
+        &>p{
+          margin: 8px 0px;
+        }
+
+        .like-w{
+          margin-bottom: 8px;
+        }
+      }
+
+      .b-w{
+        border-top: 1px dashed #d3d3d3;
+        padding: 10px 0px;
+
+        li{
+          flex: 1;
+          text-align: center;
+          border-right: 1px solid #a3a2a2;
+        }
+        li:last-of-type{
+          border-right: 0;
+        }
+      }
+    }
+  }
+
+
+  .blue{
+    color:#38c9e3;
+  }
+  .flex{
+    display: flex;
+  }
+  .flex1{
+    flex: 1;
+    margin-left: 10px;
+  }
+  .c-icon{
+    background-image: url(../../images/collect/index.png);
+    background-size: 59px 37px;
     background-repeat: no-repeat;
     display: inline-block;
-    width: 37.5px;
-    height: 37.5px;
-    transform: scale(1.2);
   }
 
-  .f-3 {
-    background-position: -75px 0;
-    width: 38px;
+  .c-1{
+    width: 15px;
+    height: 15px;
   }
-
-  .top-header {
-    background-color: #ffffff;
-    display: flex;
-    padding: 15px 20px;
-
-    div:last-of-type {
-      margin: 0px 15px;
-      color: #918f8f;
-      font-size: 17px;
-
-      p:last-of-type {
-        font-size: 14px;
-      }
-    }
-
+  .c-2{
+    width: 15px;
+    height: 15px;
+    background-position:0 -20px;
   }
-
-  .list-wrapper {
-    margin: 15px 0px;
-
-    li {
-      padding: 10px 10px;
-      margin-bottom: 10px;
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-
-      span.dot{
-        background-color: #e5e5e5;
-        width: 10px;
-        height: 10px;
-        border-radius: 10px;
-        display: inline-block;
-      }
-
-      p{
-        flex: 1;
-        margin: 0px 15px;
-      }
-
-      span.del{
-        display: inline-block;
-        width: 3em;
-        padding: 3px 0.5em;
-        background-color: #eb6877;
-        color: #ffffff;
-        border-radius: 3px;
-        font-size: 13px;
-      }
-
-    }
+  .c-3{
+    width: 15px;
+    height: 15px;
+    background-position:-21px 1px;
+    margin-right: 5px;
+  }
+  .c-4{
+    width: 15px;
+    height: 15px;
+    background-position:-42px 1px;
+    margin-right: 5px;
+  }
+  .c-5{
+    width: 15px;
+    height: 15px;
+    background-position:-42px -20px;
+    margin-right: 5px;
+  }
+  .c-6{
+    width: 15px;
+    height: 15px;
+    background-position:-21px -20px;
+    margin-right: 5px;
   }
 
   .lastmargin {

@@ -10,16 +10,27 @@ body {
     background-color: #FFFFFF;
     margin-bottom: 10px; }
     #page .item-li li .t-w {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
-      align-items: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+              align-items: center;
       border-bottom: 1px dashed #d3d3d3;
       padding: 10px 0; }
       #page .item-li li .t-w img {
         width: 50px;
         height: 50px;
-        border-radius: 50px; }
+        -webkit-border-radius: 50px;
+           -moz-border-radius: 50px;
+                border-radius: 50px; }
       #page .item-li li .t-w .t-w-r {
-        flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
         margin-left: 15px; }
         #page .item-li li .t-w .t-w-r p {
           color: #45c7d7;
@@ -58,7 +69,10 @@ body {
             color: #ffffff;
             font-size: 10px;
             display: inline-block;
-            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+               -moz-transform: rotate(-45deg);
+                 -o-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
             text-align: center; }
       #page .item-li li .m-w > p {
         margin: 8px 0px; }
@@ -68,7 +82,10 @@ body {
       border-top: 1px dashed #d3d3d3;
       padding: 10px 0px; }
       #page .item-li li .b-w li {
-        flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
         text-align: center;
         border-right: 1px solid #a3a2a2; }
       #page .item-li li .b-w li:last-of-type {
@@ -76,13 +93,22 @@ body {
   #page .blue {
     color: #38c9e3; }
   #page .flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex; }
   #page .flex1 {
-    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
     margin-left: 10px; }
   #page .c-icon {
     background-image: url(../../images/collect/index.png);
-    background-size: 59px 37px;
+    -webkit-background-size: 59px 37px;
+       -moz-background-size: 59px 37px;
+         -o-background-size: 59px 37px;
+            background-size: 59px 37px;
     background-repeat: no-repeat;
     display: inline-block; }
   #page .c-1 {
@@ -114,5 +140,3 @@ body {
     margin-right: 5px; }
   #page .lastmargin {
     margin-bottom: 80px; }
-
-/*# sourceMappingURL=index.css.map */
