@@ -1,0 +1,147 @@
+body{
+  background-color: #efeff4;
+}
+#page {
+  font-family: "HY";
+  //background-color: #efeff4;
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+  .top-header {
+    background-color: #ffffff;
+    padding: 15px 0px 5px 0px;
+    .top-tab {
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 0px 40px;
+      border: 1px solid #ffe326;
+
+      li {
+        float: left;
+        width: 50%;
+        text-align: center;
+        padding: 10px 0px;
+        color: #774300;
+        font-size: 16px;
+      }
+      li.selected {
+        background-color: #ffe326;
+      }
+    }
+
+    .sta-tab {
+      display: flex;
+
+      li {
+        flex: 1;
+        text-align: center;
+        color: #774300;
+        font-size: 14px;
+        position: relative;
+        padding: 20px 0px 0px 0px;
+        span {
+          display: inline-block;
+          height: 25px;
+        }
+      }
+      li.selected span {
+        border-bottom: 2px solid #774300;
+      }
+    }
+  }
+
+  .list-wrapper {
+    margin: 15px 0px;
+
+    li {
+      padding: 10px 10px;
+      margin-bottom: 10px;
+      background-color: #ffffff;
+
+      .top-banner {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #c2c2c2;
+        padding-bottom: 10px;
+        img {
+          width: 35px;
+          height: 35px;
+          border-radius: 35px;
+          border: 1px solid #CCCCCC;
+          overflow: hidden;
+        }
+
+        p{
+          color: #414140;
+          flex: 1;
+          font-size: 15px;
+          margin:0 10px;
+
+        }
+        span{
+          color: #9a7107;
+          font-size: 15px;
+        }
+      }
+
+      .item-wrapper{
+        padding-top: 10px;
+        display: flex;
+
+        .left-img{
+          width: 80px;
+          height: 80px;
+          img{
+            width: 80px;
+            height: 80px;
+          }
+        }
+
+        .mid-wrapper{
+          margin: 0px 10px;
+          flex: 1;
+          color: #5b5b5a;
+          font-size: 10px;
+
+          .m-title{
+            height: 50px;
+            font-size: 14px;
+          }
+        }
+
+        .right-wrapper{
+          display: flex;
+          flex-direction: column-reverse;
+          font-size: 10px;
+          color: #eb535a;
+
+          .order-icon{
+            background-image: url(../../images/order/order.png);
+            background-size: 21px 8.5px;
+            background-repeat: no-repeat;
+          }
+
+          .o-1{
+            display: inline-block;
+            background-position: 0px 4px;
+            width: 12px;
+            height: 13px;
+          }
+          .o-2{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-position: -10px 2px;
+          }
+        }
+      }
+    }
+  }
+
+  .lastmargin{
+    margin-bottom: 80px;
+  }
+
+}

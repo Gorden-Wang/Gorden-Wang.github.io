@@ -12,14 +12,18 @@
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            that.getData();
+            //that.getData();
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
         },
         cacheData: function () {
             var that = this;
 
             that.data = {
-                id: Wlib.getRequestParam("id")
+
             }
+
         },
         cacheDom: function () {
             var that = this;
@@ -32,18 +36,31 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+            that._makeFooter();
             that.dom.loading.hide();
         },
         recacheDom: function () {
             var that = this;
-            that.dom.moreLi = $("#more .swiper-slide");
-            that.dom.scrollTo = $(".icon10");
-            that.dom.myBtn = $("#mybtn");
+
+            that.dom.topLi = $(".top-tab li");
+            that.dom.staLi = $(".sta-tab li");
+
+        },
+        _makeFooter : function(){
+          var that = this;
+            var data ={
+                classname: "f-5",
+                selected: true,
+                url: '',
+                id: ''
+            };
+
+            var footer = new Wlib.Footer($("#footer"), data,4);
         },
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                return  Wlib.getRequestParam("id",url);
+                  return  Wlib.getRequestParam("id",url);
             });
             juicer.register("getType", function (type) {
                 var res = "";
@@ -54,7 +71,7 @@
                     case "拍卖":
                         res = "../../pages/auction/index.html";
                         break;
-                    //  @TODO : 鉴定，欣赏
+                //  @TODO : 鉴定，欣赏
 
                 }
                 return res;
@@ -63,47 +80,38 @@
         },
         bindEvent: function () {
             var that = this;
-            var swiper = new Swiper('#pics', {
-                pagination: '.swiper-pagination'
-            });
-            var swiper2 = new Swiper('#more', {
-                slidesPerView: 3.5,
-                paginationClickable: true,
-                spaceBetween: 5
-            });
 
-            Wlib._scrollHide(100,that.dom.scrollTo);
+            FastClick.attach(document.body);
 
-            that.dom.moreLi.on("click",function(){
-                var id = $(this).attr("data-id");
-                var des = $(this).attr("data-url");
 
-                if(!id){
-                    Wlib.tips("已经下架");
+            Wlib._bindLazyLoad();
+
+            that.dom.topLi.on("click",function(){
+                var isSelect = $(this).hasClass("selected");
+
+                if(isSelect){
                     return;
                 }
 
-                win.location = des + "?id="+id;
-            });
-            that.dom.scrollTo.on("click",function(){
-                $.scrollTo(0,500);
+                $(this).addClass("selected").siblings().removeClass("selected");
             });
 
-            that.dom.myBtn.on("click",function(){
-                win.location = "../../pages/my/index.html";
+
+            that.dom.staLi.on("click",function(){
+                var isSelect = $(this).hasClass("selected");
+
+                if(isSelect){
+                    return;
+                }
+
+                $(this).addClass("selected").siblings().removeClass("selected");
             });
-            Wlib._bindLazyLoad();
+
         },
         getData: function () {
             var that = this;
 
-            //@TODO : uid 已经验证手机号
-            var req = {
-                id : that.data.id,
-                uid : "",
-                token : ""
-            }
-            Wlib.SendRequest("default/api/info",req,"GET",function(data){
+            Wlib.SendRequest("default/api/square",{},"GET",function(data){
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();

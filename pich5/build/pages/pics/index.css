@@ -1,0 +1,145 @@
+body {
+  background-color: #efeff4; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .top-header {
+    background-color: #ffffff; }
+    #page .top-header .top-img {
+      width: 100%;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      height: 130px; }
+      #page .top-header .top-img > img {
+        width: 100%;
+        height: 100%; }
+      #page .top-header .top-img .img-wrapper {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 50px;
+           -moz-border-radius: 50px;
+                border-radius: 50px;
+        overflow: hidden; }
+        #page .top-header .top-img .img-wrapper img {
+          width: 100%;
+          height: 100%; }
+    #page .top-header .sta-tab {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex; }
+      #page .top-header .sta-tab li {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
+        text-align: center;
+        color: #774300;
+        font-size: 14px;
+        position: relative;
+        padding: 20px 0px 0px 0px; }
+        #page .top-header .sta-tab li span {
+          display: inline-block;
+          height: 25px; }
+      #page .top-header .sta-tab li:after {
+        content: '';
+        width: 1px;
+        height: 1em;
+        position: absolute;
+        right: 0px;
+        background-color: #e5e5e5; }
+      #page .top-header .sta-tab li:last-of-type:after {
+        display: none; }
+      #page .top-header .sta-tab li.selected {
+        color: #ec6161; }
+  #page .list-wrapper {
+    margin: 15px 0px; }
+    #page .list-wrapper li {
+      padding: 10px 10px;
+      margin-bottom: 10px;
+      background-color: #ffffff; }
+      #page .list-wrapper li .top-banner {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+           -moz-box-align: center;
+                align-items: center;
+        border-bottom: 1px solid #c2c2c2;
+        padding-bottom: 10px; }
+        #page .list-wrapper li .top-banner p {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1;
+          font-size: 20px;
+          margin: 0 10px;
+          color: #05b7dd; }
+        #page .list-wrapper li .top-banner span {
+          color: #9a7107;
+          font-size: 15px; }
+      #page .list-wrapper li .item-wrapper {
+        padding-top: 10px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex; }
+        #page .list-wrapper li .item-wrapper .left-img {
+          width: 80px;
+          height: 80px; }
+          #page .list-wrapper li .item-wrapper .left-img img {
+            width: 80px;
+            height: 80px; }
+        #page .list-wrapper li .item-wrapper .mid-wrapper {
+          margin: 0px 10px;
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+             -moz-box-flex: 1;
+                  flex: 1;
+          color: #5b5b5a;
+          font-size: 10px; }
+          #page .list-wrapper li .item-wrapper .mid-wrapper .m-title {
+            height: 50px;
+            font-size: 14px; }
+        #page .list-wrapper li .item-wrapper .right-wrapper {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: flex;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+             -moz-box-align: center;
+                  align-items: center;
+          font-size: 10px;
+          color: #eb535a;
+          padding-left: 15px;
+          position: relative; }
+          #page .list-wrapper li .item-wrapper .right-wrapper p {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #008aa8;
+            -webkit-border-radius: 40px;
+               -moz-border-radius: 40px;
+                    border-radius: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #05b7dd;
+            left: 0px; }
+        #page .list-wrapper li .item-wrapper .right-wrapper:after {
+          content: "";
+          width: 1px;
+          height: 40px;
+          border: 1px dotted #b5b5b5;
+          left: 0px;
+          top: 19px;
+          position: absolute; }
+  #page .lastmargin {
+    margin-bottom: 80px; }

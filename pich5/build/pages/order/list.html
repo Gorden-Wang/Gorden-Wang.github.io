@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>我的订单</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../widgets/footer/index.css" rel="stylesheet">
+    <link href="../../pages/order/list.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+
+        <section class="top-header">
+            <ul class="top-tab">
+                <li class="selected" data-role="buyer">我买的</li>
+                <li data-role="seller">我卖的</li>
+            </ul>
+
+            <ul class="sta-tab">
+                <li class="selected">
+                    <span>代付款</span>
+                </li>
+                <li>
+                    <span>未发货</span>
+                </li>
+                <li>
+                    <span>待发货</span>
+                </li>
+                <li>
+                    <span>流拍</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="list-wrapper lastmargin">
+            <ul>
+                <li>
+                    <div class="top-banner">
+                        <img src="../../images/pic.png">
+                        <p>经受花开</p>
+                        <span>未发货</span>
+                    </div>
+
+                    <div class="item-wrapper">
+                        <div class="left-img">
+                            <img src="../../images/pic1.png">
+                        </div>
+                        <div class="mid-wrapper">
+                            <p class="m-title">XXXXXXXXXXXXXXXXXXX</p>
+                            <p>成交金额：￥50.00元</p>
+                            <p>发货期限：11月16日16：09</p>
+                        </div>
+                        <div class="right-wrapper">
+                         <p><span class="order-icon o-1"></span>   钱款 <span class="order-icon o-2"></span></p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="top-banner">
+                        <img src="../../images/pic.png">
+                        <p>经受花开</p>
+                        <span>未发货</span>
+                    </div>
+
+                    <div class="item-wrapper">
+                        <div class="left-img">
+                            <img src="../../images/pic1.png">
+                        </div>
+                        <div class="mid-wrapper">
+                            <p>XXXXXXXXXXXXXXXXXXX</p>
+                            <p>成交金额：￥50.00元</p>
+                            <p>发货期限：11月16日16：09</p>
+                        </div>
+                        <div class="right-wrapper">
+                            <p><span class="order-icon o-1"></span>   钱款 <span class="order-icon o-2"></span></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer id="footer"></footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/footer/index.js?version=0.1.2"></script>
+<script src="../../pages/order/list.js?version=0.1.2"></script>
+
+<script>
+
+</script>
+</body>
+</html>

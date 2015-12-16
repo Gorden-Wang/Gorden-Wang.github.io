@@ -1,0 +1,85 @@
+body {
+  background-color: #efeff4;
+}
+
+#page {
+  font-family: "HY";
+  //background-color: #efeff4;
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+  .f-icon {
+    background-image: url(../../images/common/footer.png);
+    background-size: 187.5px 75px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 37.5px;
+    height: 37.5px;
+    transform: scale(1.2);
+  }
+
+  .f-3 {
+    background-position: -75px 0;
+    width: 38px;
+  }
+
+  .top-header {
+    background-color: #ffffff;
+    display: flex;
+    padding: 15px 20px;
+
+    div:last-of-type {
+      margin: 0px 15px;
+      color: #918f8f;
+      font-size: 17px;
+
+      p:last-of-type {
+        font-size: 14px;
+      }
+    }
+
+  }
+
+  .list-wrapper {
+    margin: 15px 0px;
+
+    li {
+      padding: 10px 10px;
+      margin-bottom: 10px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+
+      span.dot{
+        background-color: #e5e5e5;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        display: inline-block;
+      }
+
+      p{
+        flex: 1;
+        margin: 0px 15px;
+      }
+
+      span.del{
+        display: inline-block;
+        width: 3em;
+        padding: 3px 0.5em;
+        background-color: #eb6877;
+        color: #ffffff;
+        border-radius: 3px;
+        font-size: 13px;
+      }
+
+    }
+  }
+
+  .lastmargin {
+    margin-bottom: 80px;
+  }
+
+}
