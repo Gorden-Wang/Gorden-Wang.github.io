@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>发布出售信息</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../widgets/footer/index.css" rel="stylesheet">
+    <link href="../../pages/post/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+
+        <section class="form-wrapper lastmargin">
+            <ul>
+                <li>
+                    <div>
+                        <p>
+                            <span class="p-icon p-1"></span>
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p>不让谁看</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="se-wrapper ">
+                <div class="flex split">
+                    <span class="title">
+                        作者
+                    </span>
+
+                    <div class="flex1 align-right">
+                        <input type="text" class="inputblock" placeholder="此处只填写作者姓名">
+                    </div>
+                </div>
+                <div class="flex">
+                    <span class="title">
+                    尺寸
+                </span>
+
+                    <div class="flex1 align-right">
+                        <input type="number" class="size"> <span class="sizex">x</span> <input type="number"
+                                                                                               class="size"> <span
+                            class="sizeSpan">cm</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="se-wrapper">
+                <div class="flex split">
+                    <span>
+                    价格
+                </span>
+
+                    <div class="flex1 flex">
+                        <input type="number" class="inputblock flex1" placeholder="合理的售价将倍受关注">
+                        <span class="baozhen">是否保真</span>
+                    </div>
+                </div>
+                <div class="flex">
+                    <span>
+                    加价幅度
+                </span>
+
+                    <div class="flex1 align-right">
+                        <input type="number" class="align-right"><span class="gray">元/每次</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="se-wrapper">
+                <textarea placeholder="作品详情"></textarea>
+            </div>
+
+            <div class="se-wrapper flex">
+                <span>
+                    分享
+                </span>
+
+                <div class="flex1 align-right">
+                    <span class="p-icon p-2"></span>
+                    <span class="p-icon p-3"></span>
+                    <span class="p-icon p-4"></span>
+                </div>
+            </div>
+            <div class="se-wrapper flex percent50">
+                <span class="p-icon p-5">
+
+                </span>
+
+                <div class="flex1">
+                    西安
+                </div>
+            </div>
+
+            <div class="button">
+                发布
+            </div>
+        </section>
+
+
+        <footer id="footer"></footer>
+
+    </div>
+
+    <div class="tips-wrapper">
+        <section>
+            <p>请给您的作品添加标签</p>
+            <ul class="lv1-wrapper">
+                <li class="selected">国画</li>
+                <li>书法</li>
+                <li>油画</li>
+                <li class="flex2">其它画种</li>
+                <li class="flex2">非书画类</li>
+            </ul>
+
+            <ul class="lv2-wrapper">
+                <li class="selected">雕塑</li>
+                <li>文房</li>
+                <li>瓷器</li>
+                <li>玉器</li>
+                <li>石器</li>
+                <li>陶瓷</li>
+                <li>木器</li>
+                <li>铜器</li>
+                <li>金银器</li>
+                <li class="selected">自定义</li>
+            </ul>
+
+            <div class="button tips-btn">下一步</div>
+        </section>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/footer/index.js"></script>
+<script src="../../pages/post/index.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

@@ -30,101 +30,52 @@
                 <div class="img-wrapper">
                     <img src="../../images/pic.png">
                 </div>
+                <p>asdfasdflmchusou</p>
             </div>
 
             <ul class="sta-tab">
                 <li class="selected">
-                    <span>出售</span>
+                    <span class="pics-icon p-1"></span> <span>出售</span>
                 </li>
                 <li>
-                    <span>拍卖</span>
+                    <span class="pics-icon p-2"></span> <span>拍卖</span>
                 </li>
                 <li>
-                    <span>欣赏</span>
+                    <span class="pics-icon p-3"></span> <span>欣赏</span>
                 </li>
                 <li>
-                    <span>求鉴</span>
+                    <span class="pics-icon p-4"></span> <span>求鉴</span>
                 </li>
                 <li>
-                    <span>文字</span>
+                    <span class="pics-icon p-5"></span> <span>文字</span>
                 </li>
             </ul>
         </section>
 
-        <section class="list-wrapper lastmargin">
+        <section class="ul-wrapper2 itemli lastmargin">
             <ul>
-                <li>
-                    <div class="top-banner">
-                        <p>今天</p>
-                    </div>
+                {@each i in range(0,5)}
+                <li data-id="18670" data-url="../../pages/auction/index.html">
+                    <div class="t-w"><img lazy-image="http://115.159.100.197/upload/users/150_1430789443317031.jpg"
+                                          class="" src="http://115.159.100.197/upload/users/150_1430789443317031.jpg">
 
-                    <div class="item-wrapper">
-                        <div class="left-img">
-                            <img src="../../images/pic1.png">
-                        </div>
-                        <div class="mid-wrapper">
-                            <p class="m-title">作者：XXX</p>
-                        </div>
-                        <div class="right-wrapper">
-                           <p>出售</p>
-                        </div>
+                        <div><p> 猫步妖娆 <span class="lv">V3</span></p>
+
+                            <p> 12月16日 16:30 </p></div>
                     </div>
+                    <div class="i-w"><a> <img lazy-image="http://115.159.100.197/upload/sale/32_1450254576248114.jpg"
+                                              class="" src="http://115.159.100.197/upload/sale/32_1450254576248114.jpg">
+                    </a>
+
+                        <div class="index-icon icon6"><span>拍卖</span></div>
+                    </div>
+                    <p>撒浪嘿</p>
+
+                    <div class="b-w"><p> ￥55555元 </p>
+
+                        <p><span class="index-icon icon7"></span> 喜欢0 </p></div>
                 </li>
-
-                <li>
-                    <div class="top-banner">
-                        <p>今天</p>
-                    </div>
-
-                    <div class="item-wrapper">
-                        <div class="left-img">
-                            <img src="../../images/pic1.png">
-                        </div>
-                        <div class="mid-wrapper">
-                            <p class="m-title">作者：XXX</p>
-                        </div>
-                        <div class="right-wrapper">
-                            <p>出售</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="top-banner">
-                        <p>今天</p>
-                    </div>
-
-                    <div class="item-wrapper">
-                        <div class="left-img">
-                            <img src="../../images/pic1.png">
-                        </div>
-                        <div class="mid-wrapper">
-                            <p class="m-title">作者：XXX</p>
-                        </div>
-                        <div class="right-wrapper">
-                            <p>出售</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="top-banner">
-                        <p>今天</p>
-                    </div>
-
-                    <div class="item-wrapper">
-                        <div class="left-img">
-                            <img src="../../images/pic1.png">
-                        </div>
-                        <div class="mid-wrapper">
-                            <p class="m-title">作者：XXX</p>
-                        </div>
-                        <div class="right-wrapper">
-                            <p>出售</p>
-                        </div>
-                    </div>
-                </li>
-
+                {@/each}
             </ul>
         </section>
 

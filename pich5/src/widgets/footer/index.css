@@ -17,7 +17,7 @@ footer#footer {
     footer#footer ul li.selected .f-2 {
       background-position: -36.5px -37.5px; }
     footer#footer ul li.selected .f-3 {
-      background-position: -75px -37.5px;
+      background-position: -75px 0px;
       width: 38px; }
     footer#footer ul li.selected .f-4 {
       background-position: -113px -37.5px; }
@@ -42,5 +42,32 @@ footer#footer {
       background-position: -113px 0; }
     footer#footer ul .f-5 {
       background-position: -152px 0; }
+
+.post-wrapper {
+  position: fixed;
+  z-index: 200;
+  bottom: 64px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  display: none; }
+  .post-wrapper .p-banner {
+    background-color: #ffe100;
+    padding: 3px 0px;
+    color: #e55e5e;
+    font-size: 12px; }
+  .post-wrapper ul {
+    background-color: rgba(217, 219, 219, 0.6);
+    color: #835314;
+    font-size: 14px;
+    padding: 10px 0; }
+  .post-wrapper li {
+    padding: 8px;
+    width: 90%;
+    margin: 0 auto 10px auto;
+    background-color: #ffffff;
+    border-radius: 6px; }
+  .post-wrapper li:last-of-type {
+    margin-bottom: 0px; }
 
 /*# sourceMappingURL=index.css.map */
