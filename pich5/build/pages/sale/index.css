@@ -354,6 +354,35 @@
         margin: 0px;
         color: #f27272;
         font-size: 13px; }
+  #page .bottom-wrapper {
+    padding: 10px;
+    background-color: #f7f7f7;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex; }
+    #page .bottom-wrapper .heart-w {
+      display: inline-block;
+      padding: 3px;
+      background-color: #ffffff;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      margin-right: 10px; }
+    #page .bottom-wrapper .saysometing {
+      background-color: #ffffff;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      padding: 3px;
+      color: #9c9c9c;
+      font-size: 14px; }
+    #page .bottom-wrapper .icon7 {
+      display: inline-block;
+      width: 10px;
+      height: 10px; }
+    #page .bottom-wrapper .icon9 {
+      margin-right: 0px; }
   #page .foot-btn {
     position: fixed;
     right: 10px;

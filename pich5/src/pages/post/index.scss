@@ -143,6 +143,12 @@ body {
     color: #764200;
   }
 
+  .tips-btn{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 10px 0px;
+  }
+
   div.split {
     border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px;
@@ -218,6 +224,7 @@ body {
       .lv2-wrapper{
         overflow: hidden;
         padding: 0px 10px;
+        margin-bottom: 10px;
 
 
         li{

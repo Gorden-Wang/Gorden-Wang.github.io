@@ -394,10 +394,80 @@
     }
   }
 
+  .lastmargin{
+    margin-bottom: 32px;
+  }
+  .bottom-wrapper{
+    padding: 10px;
+    background-color: #f7f7f7;
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 500;
+
+    .heart-w{
+      display: inline-block;
+      padding: 5px;
+      background-color: #ffffff;
+      border-radius: 4px;
+      margin-right: 10px;
+      width: 32px;
+      //transform: scale(2);
+    }
+
+    .saysometing{
+      background-color: #ffffff;
+      border-radius: 4px;
+      padding: 3px;
+      color:#9c9c9c;
+      font-size: 14px;
+      line-height: 26px;
+
+      flex: 1;
+    }
+
+    .buyBtn{
+      margin: 0px 10px;
+      background-color: #ff6666;
+      color: #FFFFFF;
+      padding: 5px 5px;
+      font-size: 14px;
+      border-radius: 4px;
+      line-height: 20px;
+    }
+
+    .backToHome{
+      background-color: #4dc0d1;
+      color: #FFFFFF;
+      padding: 5px 5px;
+      font-size: 14px;
+      border-radius: 4px;
+      line-height: 20px;
+    }
+
+    .icon7{
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 6px 0px 0px 5px;
+      transform: scale(2);
+    }
+    .icon9{
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin: 6px 0px 0px 3px;
+      transform: scale(1.5);
+    }
+
+  }
+
   .foot-btn{
     position: fixed;
-    right: 10px;
-    bottom: 20px;
+    right: 0px;
+    bottom: 40px;
     width: 44px;
     z-index: 500;
 
