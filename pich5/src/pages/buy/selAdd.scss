@@ -1,0 +1,48 @@
+body {
+  background-color: #efeff4;
+}
+
+#page {
+  font-family: "HY";
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+  .m-wrapper{
+    padding: 20px 10px;
+    &>div{
+      text-align: center;
+    }
+    p.title{
+      color: #9e9d9d;
+      margin: 10px 0px;
+    }
+  }
+
+  .b-icon{
+    background-image: url(../../images/buy/buy.png);
+    background-size: 105px 63px;
+    background-repeat: no-repeat;
+  }
+
+  .b-4{
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-position: -35px -31px;
+  }
+
+  .button {
+    border-radius: 10px;
+    background-color: rgb(255, 227, 38);
+    text-align: center;
+    padding: 12px;
+    color: #764200;
+    margin: 20px 0px;
+  }
+  .whitebtn{
+    background-color: #ffffff;
+    color: #000;
+  }
+}

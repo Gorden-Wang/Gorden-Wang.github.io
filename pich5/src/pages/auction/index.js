@@ -39,6 +39,7 @@
             that.dom.moreLi = $("#more .swiper-slide");
             that.dom.scrollTo = $(".icon10");
             that.dom.myBtn = $("#mybtn");
+            that.dom.buyBtn = $(".btn-w");
         },
         addJuicerHandler: function () {
             var that = this;

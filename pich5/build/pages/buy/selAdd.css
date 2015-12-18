@@ -1,0 +1,38 @@
+body {
+  background-color: #efeff4; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .m-wrapper {
+    padding: 20px 10px; }
+    #page .m-wrapper > div {
+      text-align: center; }
+    #page .m-wrapper p.title {
+      color: #9e9d9d;
+      margin: 10px 0px; }
+  #page .b-icon {
+    background-image: url(../../images/buy/buy.png);
+    -webkit-background-size: 105px 63px;
+       -moz-background-size: 105px 63px;
+         -o-background-size: 105px 63px;
+            background-size: 105px 63px;
+    background-repeat: no-repeat; }
+  #page .b-4 {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-position: -35px -31px; }
+  #page .button {
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
+    background-color: #ffe326;
+    text-align: center;
+    padding: 12px;
+    color: #764200;
+    margin: 20px 0px; }
+  #page .whitebtn {
+    background-color: #ffffff;
+    color: #000; }

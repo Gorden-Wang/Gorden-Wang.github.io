@@ -1,0 +1,199 @@
+body {
+  background-color: #efeff4;
+}
+
+#page {
+  font-family: "HY";
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+  .b-icon{
+    background-image: url(../../images/buy/buy.png);
+    background-size: 105px 63px;
+    background-repeat: no-repeat;
+  }
+  .b-1{
+    display: inline-block;
+    width: 18px;
+    height: 30px;
+    background-position: 0 0;
+  }
+  .b-2{
+    background-position: -37px 1px;
+  }
+  .b-3{
+    background-position: 0px -31px;
+  }
+  .b-4{
+    background-position: -35px -31px;
+  }
+  .b-5{
+    background-position: -70px -31px;
+  }
+
+  .sel-address{
+    display: flex;
+    background-color: #ffffff;
+    padding: 8px 10px;
+
+    div.add-wrapper{
+      flex: 1;
+      margin-left: 10px;
+
+      &>p{
+        color: #6c6c6b;
+      }
+      &>span{
+        color: #6c6c6b;
+        font-size: 12px;
+      }
+    }
+
+    div.add-wrapper:after{
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      background-image: url(../../images/buy/buy.png);
+      background-size: 105px 63px;
+      background-repeat: no-repeat;
+      background-position: -90px -9px;
+      position: absolute;
+      right: 0px;
+      top: 10px;
+    }
+
+  }
+
+  .item-wrapper{
+    margin: 10px 0px;
+    padding: 10px;
+    background-color: #ffffff;
+
+    &>p{
+      color: #6c6c6b;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #c2c2c2;
+    }
+
+    &>.c-center{
+      padding: 10px 0px;
+      display: flex;
+      border-bottom: 1px solid #c2c2c2;
+
+      img{
+        width: 80px;
+        height: 80px;
+      }
+
+      .c-content{
+        flex: 1;
+        color: #6c6c6b;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+    }
+
+    &>.c-bottom{
+      padding-top: 10px;
+      p{
+        margin-bottom: 8px;
+        color: #6c6c6b;
+        font-size: 14px;
+      }
+      p:last-of-type{
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  /*
+    <section class="sel-pay">
+              <p class="pay-title">
+                  支付金额:<span>￥450.00元</span>
+              </p>
+              <ul class="pay-ul">
+                 <li>
+                    <span class="b-icon b-2"></span>
+                    <div class="r-w">
+                        <span class="b-icon b-4"></span>
+                        <div>
+                            <p>微信支付</p>
+                            <span>使用微信支付，简单方便</span>
+                        </div>
+                    </div>
+                </li>
+              </ul>
+          </section>
+   */
+
+  .sel-pay{
+    background-color: #ffffff;
+    padding: 10px;
+
+    &>.pay-title{
+      color: #6c6c6b;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #c2c2c2;
+
+      span{
+        color: #e44e58;
+      }
+
+    }
+
+    .pay-ul{
+      li{
+        border-bottom: 1px solid #c2c2c2;
+        display: flex;
+        padding: 10px 0px;
+        align-items: center;
+
+        &>span.b-icon{
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+        }
+        &>div.r-w{
+          flex: 1;
+          display: flex;
+          align-items: center;
+
+          &>span.b-icon{
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            margin: 0px 10px;
+          }
+          &>div{
+            color: #9b9b99;
+          }
+          &>div>span{
+            font-size: 12px;
+          }
+        }
+      }
+      li.selected{
+        &>span.b-2{
+          background-position: -18px 1px;
+        }
+      }
+    }
+
+    .bank{
+      text-align: right;
+      color: #ed5d60;
+      margin: 10px 0px;
+    }
+
+    .button {
+      border-radius: 10px;
+      background-color: rgb(255, 227, 38);
+      text-align: center;
+      padding: 12px;
+      color: #764200;
+    }
+  }
+}

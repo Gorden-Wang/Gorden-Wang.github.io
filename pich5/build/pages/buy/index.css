@@ -1,0 +1,174 @@
+@charset "UTF-8";
+body {
+  background-color: #efeff4; }
+
+#page {
+  font-family: "HY";
+  /*
+    <section class="sel-pay">
+              <p class="pay-title">
+                  支付金额:<span>￥450.00元</span>
+              </p>
+              <ul class="pay-ul">
+                 <li>
+                    <span class="b-icon b-2"></span>
+                    <div class="r-w">
+                        <span class="b-icon b-4"></span>
+                        <div>
+                            <p>微信支付</p>
+                            <span>使用微信支付，简单方便</span>
+                        </div>
+                    </div>
+                </li>
+              </ul>
+          </section>
+   */ }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .b-icon {
+    background-image: url(../../images/buy/buy.png);
+    -webkit-background-size: 105px 63px;
+       -moz-background-size: 105px 63px;
+         -o-background-size: 105px 63px;
+            background-size: 105px 63px;
+    background-repeat: no-repeat; }
+  #page .b-1 {
+    display: inline-block;
+    width: 18px;
+    height: 30px;
+    background-position: 0 0; }
+  #page .b-2 {
+    background-position: -37px 1px; }
+  #page .b-3 {
+    background-position: 0px -31px; }
+  #page .b-4 {
+    background-position: -35px -31px; }
+  #page .b-5 {
+    background-position: -70px -31px; }
+  #page .sel-address {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    background-color: #ffffff;
+    padding: 8px 10px; }
+    #page .sel-address div.add-wrapper {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1;
+      margin-left: 10px; }
+      #page .sel-address div.add-wrapper > p {
+        color: #6c6c6b; }
+      #page .sel-address div.add-wrapper > span {
+        color: #6c6c6b;
+        font-size: 12px; }
+    #page .sel-address div.add-wrapper:after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      background-image: url(../../images/buy/buy.png);
+      -webkit-background-size: 105px 63px;
+         -moz-background-size: 105px 63px;
+           -o-background-size: 105px 63px;
+              background-size: 105px 63px;
+      background-repeat: no-repeat;
+      background-position: -90px -9px;
+      position: absolute;
+      right: 0px;
+      top: 10px; }
+  #page .item-wrapper {
+    margin: 10px 0px;
+    padding: 10px;
+    background-color: #ffffff; }
+    #page .item-wrapper > p {
+      color: #6c6c6b;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #c2c2c2; }
+    #page .item-wrapper > .c-center {
+      padding: 10px 0px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      border-bottom: 1px solid #c2c2c2; }
+      #page .item-wrapper > .c-center img {
+        width: 80px;
+        height: 80px; }
+      #page .item-wrapper > .c-center .c-content {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
+        color: #6c6c6b;
+        margin-left: 10px;
+        font-size: 14px; }
+    #page .item-wrapper > .c-bottom {
+      padding-top: 10px; }
+      #page .item-wrapper > .c-bottom p {
+        margin-bottom: 8px;
+        color: #6c6c6b;
+        font-size: 14px; }
+      #page .item-wrapper > .c-bottom p:last-of-type {
+        margin-bottom: 0px; }
+  #page .sel-pay {
+    background-color: #ffffff;
+    padding: 10px; }
+    #page .sel-pay > .pay-title {
+      color: #6c6c6b;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #c2c2c2; }
+      #page .sel-pay > .pay-title span {
+        color: #e44e58; }
+    #page .sel-pay .pay-ul li {
+      border-bottom: 1px solid #c2c2c2;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      padding: 10px 0px;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+              align-items: center; }
+      #page .sel-pay .pay-ul li > span.b-icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px; }
+      #page .sel-pay .pay-ul li > div.r-w {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+           -moz-box-align: center;
+                align-items: center; }
+        #page .sel-pay .pay-ul li > div.r-w > span.b-icon {
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          margin: 0px 10px; }
+        #page .sel-pay .pay-ul li > div.r-w > div {
+          color: #9b9b99; }
+        #page .sel-pay .pay-ul li > div.r-w > div > span {
+          font-size: 12px; }
+    #page .sel-pay .pay-ul li.selected > span.b-2 {
+      background-position: -18px 1px; }
+    #page .sel-pay .bank {
+      text-align: right;
+      color: #ed5d60;
+      margin: 10px 0px; }
+    #page .sel-pay .button {
+      -webkit-border-radius: 10px;
+         -moz-border-radius: 10px;
+              border-radius: 10px;
+      background-color: #ffe326;
+      text-align: center;
+      padding: 12px;
+      color: #764200; }

@@ -1,0 +1,61 @@
+body {
+  background-color: #efeff4;
+}
+
+#page {
+  font-family: "HY";
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+  .m-wrapper{
+    margin: 20px 0px;
+    ul{
+      background-color: #ffffff;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+
+      li{
+        border-bottom: 1px solid #cccccc;
+        display: flex;
+        padding: 15px 10px;
+        font-size: 14px;
+        &>span{
+          color: #454545;
+          width: 5em;
+        }
+
+        &>div{
+          flex: 1;
+          margin-left: 10px;
+
+          input,textarea{
+            display: block;
+            width: 100%;
+
+          }
+          textarea{
+            height: 100px;
+          }
+        }
+      }
+      li:last-of-type{
+        border-bottom: 0px;
+      }
+    }
+  }
+
+  .button {
+    border-radius: 10px;
+    background-color: rgb(255, 227, 38);
+    text-align: center;
+    padding: 12px;
+    color: #764200;
+    margin: 20px 0px;
+  }
+  .whitebtn{
+    background-color: #ffffff;
+    color: #000;
+  }
+}

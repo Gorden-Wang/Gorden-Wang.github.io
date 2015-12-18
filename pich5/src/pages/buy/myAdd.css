@@ -1,0 +1,43 @@
+body {
+  background-color: #efeff4; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .m-wrapper {
+    margin: 20px 0px; }
+    #page .m-wrapper ul {
+      background-color: #ffffff;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc; }
+      #page .m-wrapper ul li {
+        border-bottom: 1px solid #cccccc;
+        display: flex;
+        padding: 15px 10px;
+        font-size: 14px; }
+        #page .m-wrapper ul li > span {
+          color: #454545;
+          width: 5em; }
+        #page .m-wrapper ul li > div {
+          flex: 1;
+          margin-left: 10px; }
+          #page .m-wrapper ul li > div input, #page .m-wrapper ul li > div textarea {
+            display: block;
+            width: 100%; }
+          #page .m-wrapper ul li > div textarea {
+            height: 100px; }
+      #page .m-wrapper ul li:last-of-type {
+        border-bottom: 0px; }
+  #page .button {
+    border-radius: 10px;
+    background-color: #ffe326;
+    text-align: center;
+    padding: 12px;
+    color: #764200;
+    margin: 20px 0px; }
+  #page .whitebtn {
+    background-color: #ffffff;
+    color: #000; }
+
+/*# sourceMappingURL=myAdd.css.map */
