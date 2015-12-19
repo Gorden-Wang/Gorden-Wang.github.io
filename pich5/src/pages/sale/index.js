@@ -39,6 +39,7 @@
             that.dom.moreLi = $("#more .swiper-slide");
             that.dom.scrollTo = $(".icon10");
             that.dom.myBtn = $("#mybtn");
+            that.dom.buyBtn = $(".buyBtn");
 
         },
         addJuicerHandler: function () {
@@ -96,6 +97,9 @@
             that.dom.myBtn.on("click",function(){
                 win.location = "../../pages/my/index.html";
             });
+            that.dom.buyBtn.on("click",function(){
+                win.location = "../../pages/buy/index.html";
+            })
             Wlib._bindLazyLoad();
 
         },
