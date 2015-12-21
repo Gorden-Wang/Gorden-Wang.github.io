@@ -4,6 +4,8 @@
 (function (win, $) {
     var Index = function () {
         this.init();
+
+        Wlib.Weixin.goAuth();
     }
 
     Index.prototype = {

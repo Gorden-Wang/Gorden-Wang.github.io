@@ -199,7 +199,7 @@ window.Wlib = (function () {
 
             check();
         },
-        _scrollHide : function(offset,dom){
+        _scrollHide: function (offset, dom) {
 
             function interval() {
                 setTimeout(function () {
@@ -213,10 +213,10 @@ window.Wlib = (function () {
             }
 
             function check() {
-                var  scrollTop = window.pageYOffset;
-                if (scrollTop  >= offset) {
+                var scrollTop = window.pageYOffset;
+                if (scrollTop >= offset) {
                     dom.show();
-                }else{
+                } else {
                     dom.hide();
                 }
             }
@@ -232,21 +232,40 @@ window.Wlib = (function () {
         getUserId: function () {
             return Wlib.getRequestParam("userId") || localStorage.getItem("userId") || "";
         },
+        Weixin: {
+            isWeixin: function () {
+                return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
+            },
+            goAuth : function(){
+            //    https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&
+
+                var appid = "wx498cb5ef00ce19c6";
+                var redirect_uri = encodeURIComponent(window.location.href.split("#")[0]);
+                var response_type="code";
+                var scope = "snsapi_base";
+                var state=123;
+                var hash = "#wechat_redirect";
+                alert("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope+"&state="+state+hash)
+
+                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope+"&state="+state+hash;
+            }
+
+        },
         SendRequest: function (path, data, method, success, error) {
             var that = this;
 
-            data = (function(d,m){
+            data = (function (d, m) {
                 var res = "";
-                if(m == "POST"){
+                if (m == "POST") {
                     res = d;
-                }else{
-                    for(var i in d){
-                        res+= i+"="+d[i]+"&";
+                } else {
+                    for (var i in d) {
+                        res += i + "=" + d[i] + "&";
                     }
                 }
 
                 return res;
-            })(data,method);
+            })(data, method);
 
             var url = (function () {
                 var u = that.evn == "daily" ? "http://115.159.100.197/index.php?r=" : "www.talkart.cc/index.php?r=";
@@ -266,12 +285,12 @@ window.Wlib = (function () {
                 }
             }
 
-            if(method == "POST"){
+            if (method == "POST") {
                 obj.url = url + path;
                 obj.data = data;
                 obj.dataType = "JSON";
                 obj.type = "POST";
-            }else{
+            } else {
                 obj.url = url + path + "&" + data + "callback=?";
             }
 
