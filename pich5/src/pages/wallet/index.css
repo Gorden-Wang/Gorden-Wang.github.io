@@ -1,0 +1,57 @@
+body {
+  background-color: #efeff4; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .f-icon {
+    background-image: url(../../images/common/footer.png);
+    background-size: 187.5px 75px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 37.5px;
+    height: 37.5px;
+    transform: scale(1.2); }
+  #page .f-3 {
+    background-position: -75px 0;
+    width: 38px; }
+  #page .top-header {
+    background-color: #ffffff;
+    display: flex;
+    padding: 15px 20px; }
+    #page .top-header div:last-of-type {
+      margin: 0px 15px;
+      color: #918f8f;
+      font-size: 17px; }
+      #page .top-header div:last-of-type p:last-of-type {
+        font-size: 14px; }
+  #page .list-wrapper {
+    margin: 15px 0px; }
+    #page .list-wrapper li {
+      padding: 10px 10px;
+      margin-bottom: 10px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center; }
+      #page .list-wrapper li span.dot {
+        background-color: #e5e5e5;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        display: inline-block; }
+      #page .list-wrapper li p {
+        flex: 1;
+        margin: 0px 15px; }
+      #page .list-wrapper li span.del {
+        display: inline-block;
+        width: 3em;
+        padding: 3px 0.5em;
+        background-color: #eb6877;
+        color: #ffffff;
+        border-radius: 3px;
+        font-size: 13px; }
+  #page .lastmargin {
+    margin-bottom: 80px; }
+
+/*# sourceMappingURL=index.css.map */

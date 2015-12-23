@@ -8,11 +8,10 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>我的收藏</title>
+    <title>我的兴趣</title>
     <link href="../../lib/boot.css" rel="stylesheet">
-    <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../widgets/footer/index.css" rel="stylesheet">
-    <link href="../../pages/collect/index.css" rel="stylesheet">
+    <link href="../../pages/interest/index.css" rel="stylesheet">
 
 </head>
 <body>
@@ -23,102 +22,46 @@
 <script type="template/juicer" id="tpl">
     <div class="wrap container">
 
-        <section class="item-li lastmargin">
+        <section class="top-header">
+            <div class="f-icon f-3"></div>
+            <div>
+                <p>点击此处添加感兴趣的画家姓名</p>
+                <p>添加后与该画家相关的信息会在兴趣圈展示</p>
+            </div>
+        </section>
+
+        <section class="list-wrapper lastmargin">
             <ul>
-                {@each i in range(0,4)}
                 <li>
-                    <div class="t-w">
-                        <img src="../../images/pic.png">
-
-                        <div class="t-w-r">
-                            <p>经受花开</p>
-                            <span>今天 10:07 西安</span>
-                        </div>
-                    </div>
-
-                    <div class="m-w">
-                        <p>作者：刘文西</p>
-
-                        <div class="imgs-wrapper swiper-container itemsImg">
-                            <div class="swiper-wrapper swiper-container-horizontal">
-                                <div class="swiper-slide">
-                                    <div class="i-w">
-                                        <a> <img lazy-image="../../images/pic.png" class="lazy-image"> </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="i-w">
-                                        <a> <img lazy-image="../../images/pic.png" class="lazy-image"> </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="i-w">
-                                        <a> <img lazy-image="../../images/pic.png" class="lazy-image"> </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="i-w">
-                                        <a> <img lazy-image="../../images/pic.png" class="lazy-image"> </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="i-w">
-                                        <a> <img lazy-image="../../images/pic.png" class="lazy-image"> </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="i-w">
-                                        <a> <img lazy-image="../../images/pic.png" class="lazy-image"> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p class="m-w-n">
-                            有意者电联有意者电联有意者电联有意者电联有意者电联有意者电联有意者电联有意者电联有意者电联有意者电联
-                        </p>
-
-                        <div class="like-w flex">
-                            <span class="c-icon c-1 "></span>
-
-                            <p class="flex1 blue">胡瓜、杨修</p>
-                        </div>
-
-                        <div class="comment-w flex">
-                            <span class="c-icon c-2"></span>
-                            <ul>
-                                <li>
-                                    <p><span class="blue">木子：</span>表情。。。</p>
-                                </li>
-                                <li>
-                                    <p><span class="blue">树子：</span>表情。。。</p>
-                                </li>
-                                <li>
-                                    <p><span class="blue">森子：</span>表情。。。</p>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="b-w">
-                        <ul class="flex">
-                            <li>
-                                <span class="c-icon c-3"></span>3
-                            </li>
-                            <li>
-                                <span class="c-icon c-4"></span>3
-                            </li>
-                            <li>
-                                <span class="c-icon c-5"></span>3
-                            </li>
-                            <li>
-                                <span class="c-icon c-6"></span>
-                            </li>
-                        </ul>
-                    </div>
+                    <span class="dot"></span>
+                    <p>刘文西</p>
+                    <span class="del">删除</span>
                 </li>
-                {@/each}
+                <li>
+                    <span class="dot"></span>
+                    <p>刘文西</p>
+                    <span class="del">删除</span>
+                </li>
+                <li>
+                    <span class="dot"></span>
+                    <p>刘文西</p>
+                    <span class="del">删除</span>
+                </li>
+                <li>
+                    <span class="dot"></span>
+                    <p>刘文西</p>
+                    <span class="del">删除</span>
+                </li>
+                <li>
+                    <span class="dot"></span>
+                    <p>刘文西</p>
+                    <span class="del">删除</span>
+                </li>
+                <li>
+                    <span class="dot"></span>
+                    <p>刘文西</p>
+                    <span class="del">删除</span>
+                </li>
             </ul>
         </section>
 
@@ -130,9 +73,8 @@
 </script>
 
 <script src="../../lib/libAll.js"></script>
-<script src="../../widgets/swiper/index.js"></script>
 <script src="../../widgets/footer/index.js"></script>
-<script src="../../pages/collect/index.js"></script>
+<script src="../../pages/interest/index.js"></script>
 
 <script>
 
