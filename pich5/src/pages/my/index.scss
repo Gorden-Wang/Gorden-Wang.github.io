@@ -1,3 +1,5 @@
+@import "../../lib/util";
+
 #page {
   font-family: "HY";
   background-color: #efeff4;
@@ -5,7 +7,6 @@
   .wrap {
     margin-top: 0px;
   }
-
 
   .user-wrapper {
     display: flex;
@@ -47,13 +48,13 @@
           color: rgb(204, 204, 204);
         }
 
-        .slider{
+        .slider {
           height: 6px;
           width: 100%;
           background-color: #f9b5b5;
           border-radius: 4px;
           margin: 3px 0px;
-          p{
+          p {
             border-radius: 4px;
             height: 100%;
             background-color: #f15d5d;
@@ -85,27 +86,59 @@
     }
   }
 
-
-  .li-tabs{
+  .wallet-wrap {
+    @include flex-display();
+    @include bg-color(#FFF);
+    @include padding(10px, 10px);
     margin-bottom: 10px;
-    ul{
+
+    img {
+      width: 29.5px;
+      height: 36.5px;
+      display: block;
+      background-color: transparent;
+    }
+
+    div {
+      @include flex-item(1);
+      @include padding(0px, 10px);
+
+      p.title {
+        font-size: 13px;
+        color: rgb(67, 67, 67);
+        span{
+          color: #e3e3e3;
+        }
+      }
+      p.price{
+        font-size: 18px;
+        font-weight: 800;
+        color: #f15d5d;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .li-tabs {
+    margin-bottom: 10px;
+    ul {
       overflow: hidden;
       background-color: #FFFFFF;
     }
 
-    li{
-      width:25%;
+    li {
+      width: 25%;
       float: left;
       //padding: 25px 0px;
       text-align: center;
-      border-right:1px solid #e6e6e6;
-      border-bottom:1px solid #e6e6e6;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
 
       height: 0px;
-      padding-bottom:25%;
+      padding-bottom: 25%;
       position: relative;
 
-      a{
+      a {
         position: absolute;
         left: 0px;
         top: 0px;
@@ -115,18 +148,18 @@
 
       }
 
-      p{
+      p {
         font-size: 13px;
-        color:#434343;
+        color: #434343;
       }
 
-      .gray{
+      .gray {
         color: #cccccc;
         font-size: 10px;
       }
     }
 
-    li:nth-of-type(4n){
+    li:nth-of-type(4n) {
       border-right: 0px;
     }
   }
@@ -144,7 +177,7 @@
 
     }
 
-    .i-title{
+    .i-title {
       position: absolute;
       left: 0px;
       top: 0px;
@@ -175,13 +208,13 @@
     }
   }
 
-  .my-icon{
+  .my-icon {
     background-image: url(../../images/common/myspirit.png);
     background-size: 200px 50px;
     background-repeat: no-repeat;
   }
 
-  .my-icon1{
+  .my-icon1 {
     background-position: 0px 0px;
     display: inline-block;
     width: 33px;
@@ -194,7 +227,7 @@
 
   }
 
-  .my-icon2{
+  .my-icon2 {
     background-position: -33px 0px;
     display: inline-block;
     width: 18px;
@@ -206,62 +239,62 @@
     margin-right: 15px;
   }
 
-  .my-icon3{
+  .my-icon3 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: 0 -25px;
   }
-  .my-icon4{
+  .my-icon4 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -25px -25px;
   }
-  .my-icon5{
+  .my-icon5 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -50px -25px;
   }
-  .my-icon6{
+  .my-icon6 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -75px -25px;
   }
-  .my-icon7{
+  .my-icon7 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -100px -25px;
   }
-  .my-icon8{
+  .my-icon8 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -125px -25px;
   }
-  .my-icon9{
+  .my-icon9 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -150px -25px;
   }
-  .my-icon10{
+  .my-icon10 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -175px -25px;
   }
-  .my-icon11{
+  .my-icon11 {
     display: inline-block;
     width: 25px;
     height: 25px;
     background-position: -150px 0px;
 
   }
-  .my-icon12{
+  .my-icon12 {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -287,6 +320,5 @@
     padding: 0px !important;
     position: relative;
   }
-
 
 }

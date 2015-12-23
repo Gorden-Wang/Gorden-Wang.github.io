@@ -27,7 +27,9 @@ body {
     #page .btn-wrap .button {
       background-color: #ffe326;
       border: 1px solid #f6d30a;
-      border-radius: 6px;
+      -webkit-border-radius: 6px;
+         -moz-border-radius: 6px;
+              border-radius: 6px;
       font-size: 14px;
       color: #774300;
       text-align: center;
@@ -43,7 +45,10 @@ body {
       content: '';
       background-position: center center;
       background-repeat: no-repeat;
-      background-size: 89px 42px;
+      -webkit-background-size: 89px 42px;
+         -moz-background-size: 89px 42px;
+           -o-background-size: 89px 42px;
+              background-size: 89px 42px;
       background-image: url("../../images/wallet/wallet.png");
       width: 13px;
       height: 13px;
@@ -55,12 +60,21 @@ body {
     #page .btn-wrap .button.withdraw span {
       background-position: -15px 0; }
   #page .tab-ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
     text-align: center; }
     #page .tab-ul li {
       display: block;
-      flex: 1;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1;
       border-right: 1px solid #efefef; }
     #page .tab-ul li:last-of-type {
       border-right: 0px; }
@@ -74,11 +88,20 @@ body {
     background-color: #FFF;
     padding: 0px 10px; }
     #page .item-li li {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
       display: flex;
-      align-items: center; }
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+              align-items: center; }
       #page .item-li li div {
         display: block;
-        flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
         padding: 15px 0px;
         margin-left: 15px;
         border-bottom: 1px solid #efefef;
@@ -96,7 +119,10 @@ body {
   #page .w-icon {
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 89px 42px;
+    -webkit-background-size: 89px 42px;
+       -moz-background-size: 89px 42px;
+         -o-background-size: 89px 42px;
+            background-size: 89px 42px;
     background-image: url("../../images/wallet/wallet.png");
     display: inline-block;
     width: 25px;
@@ -109,6 +135,7 @@ body {
     background-position: -60px -17px; }
   #page .li-right-icon, #page .item-li li div:after {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAYAAABozQZiAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAPAAAAGgBUqfUHAAABR0lEQVQ4y53UvUoDQRSG4TfBSgURrBR1BRFRmW6KwUKjGIJNhNyShbdhZ+1v8C8RxCEORBzwCiwEURALwTSxyEmIxmRn98AW88HzHRiYzdzdP04B57SmYLR6JnCywB6wJN+NdT5Kgg+AhpznpGA+CButToAS8C3ZjBQshmzGaHUMFIEvySeBqnV+ZRDONJvNzsE6nwOOgBGJ3oC80eqh7+b2GK0qQAH4lGgCuLLO61gsBbdAHviQaBy4sM6vxmIpqAGbwLtEY0DZOr8Wi6WgDmwArxKNAqfW+a1YLAUeWAdeJBoGDq3z2z233W+s8wvAJTAtUQMoBWEpyAHXXVEtdHMEVICoa3MxmxLuGK3KQwGwCsz+gWcDbzsO9sUh8F8cCntwEvgLJ4UdnAYCZNPC9ubdNLCN92n9/BJBkFdlnV8GMFo9hUKAH3bVnFKX+XH+AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE0LTA3LTIyVDE2OjA3OjQ5KzA4OjAwNCq0NAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNC0wNy0yMlQxNjowNzo0OSswODowMEV3DIgAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) no-repeat right center;
-    background-size: 100%; }
-
-/*# sourceMappingURL=index.css.map */
+    -webkit-background-size: 100% 100%;
+       -moz-background-size: 100%;
+         -o-background-size: 100%;
+            background-size: 100%; }

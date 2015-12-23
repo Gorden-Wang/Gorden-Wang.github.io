@@ -41,6 +41,7 @@
             var that = this;
 
             that.dom.newLi = $(".itemli li");
+            that.dom.wallet = $(".wallet-wrap");
 
         },
         _makeFooter: function () {
@@ -95,6 +96,9 @@
                 }
 
                 win.location = des + "?id=" + id;
+            });
+            that.dom.wallet.on("click",function(){
+                win.location = "../../pages/wallet/index.html";
             })
 
         },

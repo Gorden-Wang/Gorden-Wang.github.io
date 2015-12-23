@@ -1,3 +1,5 @@
+@import "../../lib/util";
+
 body {
   background-color: #efeff4;
 }
@@ -10,76 +12,137 @@ body {
     margin-top: 0px;
   }
 
-  .f-icon {
-    background-image: url(../../images/common/footer.png);
-    background-size: 187.5px 75px;
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: 37.5px;
-    height: 37.5px;
-    transform: scale(1.2);
+  .header-wrap {
+    @include bg-color(#FFF);
+    @include padding(20px,0px);
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+
+    p.h-title {
+      text-align: center;
+      font-size: 16px;
+      color: rgb(67, 67, 67);
+    }
+    p.h-price {
+      text-align: center;
+      font-size: 30px;
+      font-family: "Microsoft YaHei";
+      color: rgb(241, 93, 93);
+      margin-bottom: 20px;
+    }
+
   }
 
-  .f-3 {
-    background-position: -75px 0;
-    width: 38px;
+  .btn-wrap {
+    @include padding(0px,20px);
+    
+    overflow: hidden;
+    margin-bottom: 20px;
+    .button {
+      @include bg-color(#ffe326);
+      @include border(#f6d30a);
+      @include border-radius(6px);
+      font-size: 14px;
+      color: #774300;
+      text-align: center;
+      padding: 8px;
+      width: 45%;
+      float: left;
+
+      span {
+        position: relative;
+        display: inline-block;
+      }
+    }
+    .button:first-of-type {
+      margin-right: 10%;
+    }
+    .button span {
+      content: '';
+      @include bg-img('../../images/wallet/wallet.png', 89px 42px);
+      width: 13px;
+      height: 13px;
+      top: 2px;
+      margin-right: 4px;
+      display: inline-block;
+    }
+
+    .button.payfor span {
+      background-position: 0 0;
+    }
+    .button.withdraw span {
+      background-position: -15px 0;
+    }
   }
 
-  .top-header {
-    background-color: #ffffff;
-    display: flex;
-    padding: 15px 20px;
+  .tab-ul {
+    @include flex-display();
+    text-align: center;
+    li{
+      @include flex-item(1);
+      border-right: 1px solid #efefef;
+    }
+    li:last-of-type{
+      border-right: 0px;
+    }
 
-    div:last-of-type {
-      margin: 0px 15px;
-      color: #918f8f;
-      font-size: 17px;
+    p {
+      color: #434343;
+      font-size: 14px;
+    }
+    span {
+      color: #f15d5d;
+      font-size: 12px;
+    }
+  }
 
-      p:last-of-type {
+  .item-li{
+    @include bg-color(#FFF);
+    @include padding(0px,10px);
+
+    li{
+      @include flex-display();
+
+      div{
+        @include flex-item(1);
+        @include padding(15px,0px);
+        margin-left: 15px;
+        border-bottom: 1px solid #efefef;
+        color: #4b4b4b;
         font-size: 14px;
+        position: relative;
       }
-    }
 
-  }
-
-  .list-wrapper {
-    margin: 15px 0px;
-
-    li {
-      padding: 10px 10px;
-      margin-bottom: 10px;
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-
-      span.dot{
-        background-color: #e5e5e5;
-        width: 10px;
-        height: 10px;
-        border-radius: 10px;
+      div:after{
+        @extend .li-right-icon;
+        content: '';
+        width: 0.6em;
+        height: 1em;
         display: inline-block;
+        right: 10px;
+        top: 35%;
+        position: absolute;
       }
-
-      p{
-        flex: 1;
-        margin: 0px 15px;
-      }
-
-      span.del{
-        display: inline-block;
-        width: 3em;
-        padding: 3px 0.5em;
-        background-color: #eb6877;
-        color: #ffffff;
-        border-radius: 3px;
-        font-size: 13px;
-      }
-
     }
   }
 
-  .lastmargin {
-    margin-bottom: 80px;
+  .w-icon{
+    @include bg-img('../../images/wallet/wallet.png', 89px 42px);
+    display: inline-block;
+    width: 25px;
+    height: 25px;
   }
-
+  .w-1{
+    background-position: 0 -17px;
+  }
+  .w-2{
+    background-position: -30px -17px;
+  }
+  .w-3{
+    background-position: -60px -17px;
+  }
+  .li-right-icon {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAYAAABozQZiAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAPAAAAGgBUqfUHAAABR0lEQVQ4y53UvUoDQRSG4TfBSgURrBR1BRFRmW6KwUKjGIJNhNyShbdhZ+1v8C8RxCEORBzwCiwEURALwTSxyEmIxmRn98AW88HzHRiYzdzdP04B57SmYLR6JnCywB6wJN+NdT5Kgg+AhpznpGA+CButToAS8C3ZjBQshmzGaHUMFIEvySeBqnV+ZRDONJvNzsE6nwOOgBGJ3oC80eqh7+b2GK0qQAH4lGgCuLLO61gsBbdAHviQaBy4sM6vxmIpqAGbwLtEY0DZOr8Wi6WgDmwArxKNAqfW+a1YLAUeWAdeJBoGDq3z2z233W+s8wvAJTAtUQMoBWEpyAHXXVEtdHMEVICoa3MxmxLuGK3KQwGwCsz+gWcDbzsO9sUh8F8cCntwEvgLJ4UdnAYCZNPC9ubdNLCN92n9/BJBkFdlnV8GMFo9hUKAH3bVnFKX+XH+AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE0LTA3LTIyVDE2OjA3OjQ5KzA4OjAwNCq0NAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNC0wNy0yMlQxNjowNzo0OSswODowMEV3DIgAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) no-repeat right center;
+    background-size: 100%;
+  }
 }

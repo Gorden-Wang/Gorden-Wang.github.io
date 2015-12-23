@@ -1,0 +1,45 @@
+$baseFontSize: 10px !default;
+
+@mixin border($color:#FFFFFF) {
+  border: 1px solid $color;
+}
+
+@mixin bg-color($color:#FFFFFF) {
+  background-color: $color;
+}
+
+@mixin bg-img($img:'http\:\/\/s\.youshop\.com\/ushop\/images\/common/bk\.png',$size:0 0) {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: $size;
+  @if $img {
+    background-image: url($img);
+  }
+}
+
+@mixin padding($tb,$lr) {
+  padding: $tb $lr;
+}
+
+@mixin flex-display(){
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-item($item:1){
+  display: block;
+  flex: $item;
+}
+@mixin center-block {
+  margin-left:auto;
+  margin-right:auto;
+}
+@mixin border-radius($radius:4px){
+  border-radius: $radius;
+}
+@mixin box-shadow-like-border{
+  box-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}

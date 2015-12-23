@@ -80,6 +80,40 @@
         -webkit-border-radius: 4px;
            -moz-border-radius: 4px;
                 border-radius: 4px; }
+  #page .wallet-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
+    background-color: #FFF;
+    padding: 10px 10px;
+    margin-bottom: 10px; }
+    #page .wallet-wrap img {
+      width: 29.5px;
+      height: 36.5px;
+      display: block;
+      background-color: transparent; }
+    #page .wallet-wrap div {
+      display: block;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1;
+      padding: 0px 10px; }
+      #page .wallet-wrap div p.title {
+        font-size: 13px;
+        color: #434343; }
+        #page .wallet-wrap div p.title span {
+          color: #e3e3e3; }
+      #page .wallet-wrap div p.price {
+        font-size: 18px;
+        font-weight: 800;
+        color: #f15d5d;
+        margin-top: 5px; }
   #page .li-tabs {
     margin-bottom: 10px; }
     #page .li-tabs ul {
