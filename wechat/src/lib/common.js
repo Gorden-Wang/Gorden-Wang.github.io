@@ -70,6 +70,42 @@ window.Wlib = (function () {
                 callback();
             }
         },
+        checkLogin: function () {
+            var that = this;
+            var userid = that.getUserid();
+            alert(userid);
+            var desurl = document.domain != "www.hmsgtech.com"  ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
+            alert(!that.isWeixin());
+            if (!that.isWeixin()) {
+                alert("请在微信中打开。");
+                return;
+            }
+
+            if (!userid) {
+                alert("aaa");
+                $.ajax({
+                    url: desurl + "?callback=?",
+                    dataType: "JSONP",
+                    success: function (res) {
+                        alert(JSON.stringify(res));
+
+                        location.href = res.value;
+                    },
+                    error: function (err) {
+                        alert("获取授权数据失败，请重试");
+                    }
+                })
+            }
+        },
+        getUserid: function () {
+            var that = this;
+            //request userid 优先级最高。
+            var id = that.getRequestParam("userid");
+            return id ? localStorage.setItem("userid",id) : localStorage.getItem("userid");
+        },
+        isWeixin: function () {
+            return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
+        },
         alert: function (content, btn, callback) {
             var bgwrapper = $("<div class = 'fixed fadeIn animated'>" + content + "</div>");
             bgwrapper.append("<button>btn</button>");
@@ -257,7 +293,6 @@ window.Wlib = (function () {
                 var u = document.domain != "www.hmsgtech.com" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://www.hmsgtech.com/adapter/api/requestH5?body=";
 
 
-
                 return u + JSON.stringify(body);
             })();
 
@@ -298,6 +333,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 
