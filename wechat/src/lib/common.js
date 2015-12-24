@@ -72,22 +72,22 @@ window.Wlib = (function () {
         },
         checkLogin: function () {
             var that = this;
+            //localStorage.clear();
+            that.checkExpire();
             var userid = that.getUserid();
-            alert(userid);
+            var token = that.getRequestParam("token");
+            token && localStorage.setItem("token",token);
             var desurl = document.domain != "www.hmsgtech.com"  ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
-            alert(!that.isWeixin());
-            if (!that.isWeixin()) {
-                alert("请在微信中打开。");
-                return;
-            }
+            //if (!that.isWeixin()) {
+            //    alert("请在微信中打开。");
+            //    return;
+            //}
 
             if (!userid) {
-                alert("aaa");
                 $.ajax({
-                    url: desurl + "?callback=?",
+                    url: desurl + "?callback=?&re_url="+encodeURIComponent(location.href),
                     dataType: "JSONP",
                     success: function (res) {
-                        alert(JSON.stringify(res));
 
                         location.href = res.value;
                     },
@@ -97,11 +97,27 @@ window.Wlib = (function () {
                 })
             }
         },
+        checkExpire : function(){
+          var that = this;
+            var ls_time = localStorage.getItem("time");
+            var now_time = new Date().getTime();
+            if(ls_time){
+                //超时25分钟
+                if(now_time-ls_time > 25*60*1000){
+                    localStorage.setItem("userId",'');
+                    localStorage.setItem("token",'');
+                    localStorage.setItem("time",now_time);
+                }
+            }else{
+                localStorage.setItem("time",now_time);
+            }
+        },
         getUserid: function () {
             var that = this;
             //request userid 优先级最高。
             var id = that.getRequestParam("userid");
-            return id ? localStorage.setItem("userid",id) : localStorage.getItem("userid");
+            id ? localStorage.setItem("userId",id) : localStorage.getItem("userId")
+            return id;
         },
         isWeixin: function () {
             return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
@@ -333,6 +349,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("daily", "");
+    return new lib("local", "");
 })($);
 
