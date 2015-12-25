@@ -19,7 +19,7 @@
 
             that.data = {
                 "treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
-                "userId": Wlib.getRequestParam("userId"),
+                "userId": Wlib.getUserid(),
                 "treatmentPlanDetailId": Wlib.getRequestParam("treatmentPlanDetailId"),
                 "doc": Wlib.getRequestParam("doc"),
                 "dep": Wlib.getRequestParam("dep"),

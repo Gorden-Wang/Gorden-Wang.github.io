@@ -9,6 +9,8 @@
     Index.prototype = {
         init: function () {
             var that = this;
+            Wlib.checkLogin();
+
             that.cacheData();
             that.cacheDom();
             that.renderUI();

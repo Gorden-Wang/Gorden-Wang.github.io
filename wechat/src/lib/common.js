@@ -70,6 +70,58 @@ window.Wlib = (function () {
                 callback();
             }
         },
+        checkLogin: function () {
+            var that = this;
+            //localStorage.clear();
+            that.checkExpire();
+            var userid = that.getUserid();
+            var token = that.getRequestParam("token");
+            token && localStorage.setItem("token",token);
+            var desurl = document.domain != "www.hmsgtech.com"  ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
+            //if (!that.isWeixin()) {
+            //    alert("请在微信中打开。");
+            //    return;
+            //}
+
+            if (!userid) {
+                $.ajax({
+                    url: desurl + "?callback=?&re_url="+encodeURIComponent(location.href),
+                    dataType: "JSONP",
+                    success: function (res) {
+
+                        location.href = res.value;
+                    },
+                    error: function (err) {
+                        alert("获取授权数据失败，请重试");
+                    }
+                })
+            }
+        },
+        checkExpire : function(){
+          var that = this;
+            var ls_time = localStorage.getItem("time");
+            var now_time = new Date().getTime();
+            if(ls_time){
+                //超时25分钟
+                if(now_time-ls_time > 25*60*1000){
+                    localStorage.setItem("userId",'');
+                    localStorage.setItem("token",'');
+                    localStorage.setItem("time",now_time);
+                }
+            }else{
+                localStorage.setItem("time",now_time);
+            }
+        },
+        getUserid: function () {
+            var that = this;
+            //request userid 优先级最高。
+            var id = that.getRequestParam("userid");
+            id ? localStorage.setItem("userId",id) : localStorage.getItem("userId")
+            return id;
+        },
+        isWeixin: function () {
+            return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
+        },
         alert: function (content, btn, callback) {
             var bgwrapper = $("<div class = 'fixed fadeIn animated'>" + content + "</div>");
             bgwrapper.append("<button>btn</button>");
@@ -257,7 +309,6 @@ window.Wlib = (function () {
                 var u = document.domain != "www.hmsgtech.com" ? "http://182.92.216.40/adapter/api/requestH5?body=" : "http://www.hmsgtech.com/adapter/api/requestH5?body=";
 
 
-
                 return u + JSON.stringify(body);
             })();
 
@@ -298,6 +349,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("local", "");
 })($);
 
