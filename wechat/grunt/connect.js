@@ -40,7 +40,7 @@ module.exports = exports = {
         hostname: '*'
     },
     rules: [
-        {from: '^/upay/(.*)$', to: '/$1'}
+        {from: '^/wechat/(.*)$', to: '/$1'}
     ],
     sslserver: {
         options: {

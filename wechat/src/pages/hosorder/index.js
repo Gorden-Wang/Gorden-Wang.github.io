@@ -6,14 +6,19 @@
         this.init();
     }
 
+    var URL = location.href.split("#")[0];
     DocList.prototype = {
         init: function () {
             var that = this;
-            that.addJuicerHandler();
-            that.cacheDom();
-            that.cacheData();
-            that.makeTimeList();
-            that.fetchData();
+            Wlib.wx.getJS(URL,function(){
+                that.addJuicerHandler();
+                that.cacheDom();
+                that.cacheData();
+                that.makeTimeList();
+                that.fetchData();
+                Wlib.wx.shareTo();
+            })
+
         },
         cacheDom: function () {
             var that = this;
@@ -29,8 +34,8 @@
 
             that.data = {};
             that.data.clinicId = Wlib.getRequestParam("clinicId");
-            that.data.departmentId = Wlib.getRequestParam("departmentId");
-            that.data.titleId = Wlib.getRequestParam("titleId");
+            that.data.departmentId = Wlib.getRequestParam("departmentId") || -1;
+            that.data.titleId = Wlib.getRequestParam("titleId") || -1;
             that.data.locationId = Wlib.getRequestParam("locationId");
             that.data.depList = [];
             that.data.firstResult = 0;
@@ -105,11 +110,13 @@
                     case '-1' :
                         res = '医生级别';
                         break;
+                    default:
+                        res = '医生级别';
                 }
                 return res;
             });
 
-            juicer.register("makeTimeListCheck", function (arr,des,index) {
+            juicer.register("makeTimeListCheck", function (arr, des, index) {
                 var o = that.data.originTimeList;
                 var res = false;
                 //for (var j = that.data.fuckJ || 0; j <= arr.length; j++) {
@@ -133,7 +140,7 @@
                 //    }
                 //}
 
-                if(des.indexOf(arr)>-1){
+                if (arr.length > 0 && des.indexOf(arr.join(",")) > -1) {
                     that.data.fuckJ = index;
                     return "selected"
                 }
@@ -190,7 +197,7 @@
                 "clinicId": that.data.clinicId
             }
 
-            Wlib.SendRequestNew("treatQuery","clinicInfo", param, function (res) {
+            Wlib.SendRequestNew("treatQuery", "clinicInfo", param, function (res) {
                 that.data.hos = res.value;
                 //that.fetcPingjia(function(){
                 //    that.renderUI();
@@ -212,11 +219,11 @@
             var that = this;
             var param = {
                 "clinicId": that.data.clinicId,
-                "departmentId": that.data.departmentId,
-                "titleId": that.data.titleId
+                "departmentId": that.data.departmentId || -1,
+                "titleId": that.data.titleId || -1
             }
 
-            Wlib.SendRequestNew("treatQuery","findClinicTreatmentTime", param, function (res) {
+            Wlib.SendRequestNew("treatQuery", "findClinicTreatmentTime", param, function (res) {
                 if (res.value) {
                     that.data.timeEnable = res.value;
                     that.fetchDataByTime(res.value[0], function () {
@@ -280,7 +287,7 @@
                     obj = {
                         y: time.getFullYear(),
                         m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
-                        d: time.getDate() < 10 ? "0"+time.getDate() : time.getDate(),
+                        d: time.getDate() < 10 ? "0" + time.getDate() : time.getDate(),
                         w: w
                     }
                     obj.des = obj.y + "-" + obj.m + "-" + obj.d
@@ -307,7 +314,7 @@
                 "maxResults": that.data.maxResults
             }
 
-            Wlib.SendRequestNew("treatQuery","findClinicTreatmentPlans", param, function (res) {
+            Wlib.SendRequestNew("treatQuery", "findClinicTreatmentPlans", param, function (res) {
                 that.data.itemList = res.value;
                 callback && callback();
 
@@ -325,7 +332,7 @@
                 "maxResults": that.data.maxResults
             }
 
-            Wlib.SendRequestNew("treatQuery","findClinicTreatmentPlans", param, function (res) {
+            Wlib.SendRequestNew("treatQuery", "findClinicTreatmentPlans", param, function (res) {
                 that.data.itemList = res.value;
 
 
@@ -353,7 +360,7 @@
         fetchDepartments: function () {
             var that = this;
             if (that.data.depList.length == 0) {
-                Wlib.SendRequestNew("commonQuery","findClinicDepts", {}, function (res) {
+                Wlib.SendRequestNew("commonQuery", "findClinicDepts", {}, function (res) {
                     if (res.errorCode == 0 && res.value) {
                         that.data.depList = res.value;
                         that.renderDepart();
@@ -438,6 +445,7 @@
             });
 
             that.dom.times.on("click", function () {
+                var that = this;
                 if ($(this).hasClass("selected")) {
                     return;
                 }
@@ -446,37 +454,24 @@
                 }
 
 
-                //如果没有登录 TODO : 删除localStorage
-
-                !!localStorage.getItem("userId") && localStorage.setItem("userId", "00000301");
-
-
                 var param = [
                     "userId=" + localStorage.getItem("userId"),
-                    "treatmentPlanDetailId=" + $(this).attr("data-id"),
-                    "doc=" + $(this).attr("data-name"),
-                    "dep=" + $(this).attr("data-dep"),
-                    "add=" + $(this).attr("data-add"),
-                    "time=" + $(this).attr("data-time") + " " + $(this).text(),
-                    "price=" + $(this).attr("data-price")
+                    "treatmentPlanDetailId=" + $(that).attr("data-id"),
+                    "doc=" + encodeURIComponent($(that).attr("data-name")),
+                    "dep=" + encodeURIComponent($(that).attr("data-dep")),
+                    "add=" + encodeURIComponent($(that).attr("data-add")),
+                    "time=" + encodeURIComponent($(that).attr("data-time") + " " + $(this).text()),
+                    "price=" + $(that).attr("data-price")*100
                 ]
 
                 var resparam = [].join.call(param, "&");
                 console.log(resparam)
-                //Wlib.SendRequestNew("2033", param, function (res) {
-                //
-                //    console.log(res);
-                //    var nextparam = {
-                //        doc : that.data.doc.name,
-                //        dep :
-                //    }
-                //
-                //    window.location.href = "../../pages/preorder/index.html?oid="+res.entity+"uid="+localStorage.getItem("userId");
-                //
-                //});
-                window.location.href = "../../pages/preorder/index.html?" + resparam;
+                //alert("../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid"))
+                //window.location.href = "../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid");
+                var u = "http://"+document.domain + "/wechat/pages/preorder/index.html?" + resparam;
+                Wlib.checkLogin(u,function () {
 
-
+                });
             })
         }
     }

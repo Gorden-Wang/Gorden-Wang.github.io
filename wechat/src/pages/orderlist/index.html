@@ -12,6 +12,7 @@
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
     <link href="../../lib/all.css" rel="stylesheet">
     <link href="../../pages/orderlist/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </head>
 <body>
 <div id="loading" class="loading">
@@ -84,7 +85,7 @@
 
                     </div>
                     <div class="o-con">
-                        <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
+                        <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}&userid=${userId}&token=${token}&openid=${openid}">
                             <!-- @TODO : A套餐是什么？-->
 
                             {@if item.orderType == 2}
@@ -119,17 +120,26 @@
                 </li>
                 <li class="o-b">
                     <div class="o-btn">
+                        {@if item.orderStatus == 1}
+                        <!-- 未付款-->
                         <div class="btn">
-                            <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userId=${item.userId}&doctorId=${item.doctorId}&id=${item.id}">
+                            <a class="topayBtn" data-oid="${item.id}" data-price="${item.amount}">
+                                去付款
+                            </a>
+                        </div>
+                        {@else if item.orderStatus == 2 || item.orderStatus == 3}
+                        <div class="btn">
+                            <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userid=${item.userId}&doctorId=${item.doctorId}&id=${item.id}&token=${token}">
                                 去评价
                             </a>
                         </div>
+                        {@/if}
                     </div>
                     <div class="o-p">
-                        单价：<span>￥${item.amount}</span><var>X1</var>
+                        单价：<span>￥${item.amount/100}</span><var>X1</var>
                     </div>
                     <div class="o-allp">
-                        合计：<span>￥${item.amount}</span>
+                        合计：<span>￥${item.amount/100}</span>
                     </div>
                 </li>
             </ul>
@@ -153,7 +163,7 @@
         <li class="o-title">
             <div class="o-s ds-0${item.orderStatus}">${makeStatus(item.orderStatus)}</div>
             <div class="o-id">${makeType(item.orderType)}：${item.id}</div>
-            <div class="o-t">${makeFuckTime(item.orderDate)}下单</div>
+            <div class="o-t">${makeFuckTime(item.createtime)}下单</div>
         </li>
         <li class="o-main">
 
@@ -161,13 +171,32 @@
 
             </div>
             <div class="o-con">
-                <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}">
+                <a style="display: block" href="../../pages/orderdetail/index.html?orderId=${item.id}&userid=${userId}&token=${token}&openid=${openid}">
                     <!-- @TODO : A套餐是什么？-->
+
+                    {@if item.orderType == 2}
+
+                    <p style="margin-top: 15px;">${item.doctorName}(${makeTitle(item.doctorTitle)})</p>
+                    <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+                    {@else if item.orderType == 1}
+
+                    <p>${item.doctorName}(${item.titleName})</p>
+                    <p>地点：${item.clinicName}</p>
+                    <p>时间：${makeFuckTimeFuck(item.estimatedTime)}</p>
+
+
+                    {@else}
+
                     <p>A套餐：关爱女性套餐</p>
 
                     <p>地点：${item.clinicName}</p>
 
                     <p>时间：${makeFuckTimeFuck(item.starttime)}</p>
+
+                    {@/if}
+
+
                 </a>
             </div>
             <div class="o-r Right">
@@ -177,17 +206,26 @@
         </li>
         <li class="o-b">
             <div class="o-btn">
+                {@if item.orderStatus == 1}
+                <!-- 未付款-->
                 <div class="btn">
-                    <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userId=${item.userId}&doctorId=${item.doctorId}&id=${item.id}">
-                    去评价
+                    <a class="topayBtn" data-oid="${item.id}" data-price="${item.amount}">
+                        去付款
                     </a>
                 </div>
+                {@else if item.orderStatus == 2 || item.orderStatus == 3}
+                <div class="btn">
+                    <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userid=${item.userId}&doctorId=${item.doctorId}&id=${item.id}&token=${token}">
+                        去评价
+                    </a>
+                </div>
+                {@/if}
             </div>
             <div class="o-p">
-                单价：<span>￥${item.amount}</span><var>X1</var>
+                单价：<span>￥${item.amount/100}</span><var>X1</var>
             </div>
             <div class="o-allp">
-                合计：<span>￥${item.amount}</span>
+                合计：<span>￥${item.amount/100}</span>
             </div>
         </li>
     </ul>

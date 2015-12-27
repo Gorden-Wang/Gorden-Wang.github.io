@@ -66,7 +66,7 @@
 
             Wlib.SendRequestNew("treatQuery","findDoctorComment", param, function (res) {
                 that.data.list = res.value;
-                that.data.COUNT = res.value.comments ? res.value.comments.length : res.value.length
+                that.data.COUNT = res.value.sumCount
                 console.log(that.data)
                 //that.dom.loading.hide();
                 that.renderUI();
@@ -101,8 +101,8 @@
                     if (res.value.comments && (res.value.comments.length == that.data.maxResults)) {
                         that.bindNext(true);
                     }
-                    if (!res.entity || res.entity.length == 0) {
-                        Wlib.tips("没有查询到相关记录。")
+                    if (!res.value.comments || res.value.comments.length == 0) {
+                        Wlib.tips("没有更多记录。")
                     }
 
                 });

@@ -5,18 +5,20 @@
     var Index = function () {
         this.init();
     }
+    var URL = location.href.split("?")[0];
 
     Index.prototype = {
         init: function () {
             var that = this;
-            Wlib.checkLogin();
+            Wlib.wx.getJS(URL,function(){
+                that.cacheData();
+                that.cacheDom();
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+                that.getPosition();
+            });
 
-            that.cacheData();
-            that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
-            that.getPosition();
         },
         cacheData: function () {
             var that = this;
@@ -65,7 +67,22 @@
             });
             that.dom.citySelect.on("change", function () {
                 that.data.locationId = $(this).val();
-            })
+            });
+            //wx.onMenuShareTimeline({
+            //    title: '伊健康-您身边的健康专家', // 分享标题
+            //    link: location.href, // 分享链接
+            //    imgUrl: 'http://test.hmsgtech.com/wechat/images/about/logo.png', // 分享图标
+            //    success: function () {
+            //        // 用户确认分享后执行的回调函数
+            //    },
+            //    cancel: function () {
+            //        // 用户取消分享后执行的回调函数
+            //    }
+            //});
+
+            //Wlib.wx.hideShare();
+
+            Wlib.wx.shareTo('伊健康-您身边的健康专家','',URL,'/images/about/logo.png');
         },
         getPosition: function () {
             var that = this;

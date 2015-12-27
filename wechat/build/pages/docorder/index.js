@@ -6,16 +6,17 @@
         this.init();
     }
 
+    var URL = location.href.split("#")[0];
     DoOrder.prototype = {
         init: function () {
             var that = this;
-            that.addJuicerHandler();
-            that.cacheData();
-            that.cacheDom();
-            //that.renderUI();
-            //that.recacheDom();
-            // that.bindEvent();
-            that.fetchData();
+            Wlib.wx.getJS(URL,function(){
+                that.addJuicerHandler();
+                that.cacheData();
+                that.cacheDom();
+                that.fetchData();
+            })
+
         },
         cacheDom: function () {
             var that = this;
@@ -201,7 +202,7 @@
             });
 
             juicer.register("getPrice", function () {
-                return that.data.docList[0].plan.price;
+                return that.data.docList[0].plan.price/100;
             });
             juicer.register("makeTime", function (time) {
 
@@ -300,6 +301,7 @@
                 $(this).find(".t-r").toggleClass("rightToogle")
             });
             that.dom.times.on("click", function () {
+                var self = this;
                 if ($(this).hasClass("selected")) {
                     return;
                 }
@@ -307,37 +309,24 @@
                     return;
                 }
 
-                //如果没有登录 TODO : 删除localStorage
-
-                !!localStorage.getItem("userId") && localStorage.setItem("userId", "00000301");
-
 
                 var param = [
-                    "treatmentPlanId="+ $(this).attr("data-plan"),
-                    "userId="+ localStorage.getItem("userId"),
-                    "treatmentPlanDetailId="+ $(this).attr("data-id"),
-                    "doc="+ that.data.doc.name,
-                    "dep="+ $("#res-dep").text(),
-                    "add="+ $("#res-add").text(),
-                    "time="+ $(this).attr("data-time")+" "+$(this).text(),
-                    "price="+that.data.docList[0].plan.price
+                    "treatmentPlanDetailId=" + $(self).attr("data-id"),
+                    "doc=" + encodeURIComponent(that.data.doc.name),
+                    "dep=" + encodeURIComponent($("#res-dep").text()),
+                    "add=" + encodeURIComponent($("#res-add").text()),
+                    "time=" + $(self).attr("data-time") + " " + $(this).text(),
+                    "price=" + that.data.docList[0].plan.price
                 ]
-                var resparam = [].join.call(param,"&");
-                console.log(resparam)
-                //Wlib.SendRequest("2033", param, function (res) {
-                //
-                //    console.log(res);
-                //    var nextparam = {
-                //        doc : that.data.doc.name,
-                //        dep :
-                //    }
-                //
-                //    window.location.href = "../../pages/preorder/index.html?oid="+res.entity+"uid="+localStorage.getItem("userId");
-                //
-                //});
-                window.location.href = "../../pages/preorder/index.html?"+resparam;
+
+                var resparam = [].join.call(param, "&");
+                //alert("../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid"))
+                //window.location.href = "../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid");
+                var u = "http://"+document.domain + "/wechat/pages/preorder/index.html?" + resparam;
+                Wlib.checkLogin(u,function () {
 
 
+                });
 
 
 
@@ -345,6 +334,8 @@
 
             //@TODO : 下一页。。
 
+
+            Wlib.wx.shareTo();
         }
 
     }

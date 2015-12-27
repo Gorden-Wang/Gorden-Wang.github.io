@@ -5,14 +5,19 @@
     var DocList = function () {
         this.init();
     }
-
+    var URL = location.href.split("#")[0];
     DocList.prototype = {
         init: function () {
             var that = this;
-            that.cacheData();
-            that.cacheDom();
-            that.addJuicerHandler();
-            that.fetchDocList();
+            Wlib.wx.getJS(URL,function(){
+                that.cacheData();
+                that.cacheDom();
+                that.addJuicerHandler();
+                that.fetchDocList();
+                Wlib.wx.shareTo();
+            });
+
+
 
         },
         cacheData: function () {

@@ -14,6 +14,7 @@
     <link href="../../lib/all.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </head>
 <body>
 <div id="loading" class="loading">
@@ -26,7 +27,7 @@
             <div class="box box_list_ys">
                 <div class="list_ys clearfix">
                     <a href="../../pages/docdetail/index.html?doctorId=${doc.doctorId}">
-                        <div class="Left"><img src="../../images/temp/img_3.png"/></div>
+                        <div class="Left"><img src="${doc.snapshot}"/></div>
                         <div class="Center">
                             <div class="row_1">${doc.name}</div>
                             <div class="row_2" id="res-til">${doc.titleName}</div>

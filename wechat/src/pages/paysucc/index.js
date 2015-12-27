@@ -42,7 +42,12 @@
         bindEvent : function(){
             var that = this;
             $(".submit_btn").on("click",function(){
-                win.location.href = "../../pages/orderdetail/index.html?orderId="+that.data.oid;
+                var url = "http://"+document.domain+"/wechat"+"/pages/orderdetail/index.html?orderId="+that.data.oid;
+                alert(url);
+                Wlib.forceLogin(url,function(){
+
+                })
+                //win.location.href = "../../pages/orderdetail/index.html?orderId="+that.data.oid;
             });
         }
     }

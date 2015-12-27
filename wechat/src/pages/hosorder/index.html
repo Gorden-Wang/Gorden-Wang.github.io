@@ -12,6 +12,7 @@
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
     <link href="../../lib/all.css" rel="stylesheet"/>
     <link href="../../widgets/swiper/index.css" rel="stylesheet"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
@@ -103,7 +104,7 @@
             <div class="taochan-wrapper">
                 <p>
                     套餐费:
-                    <span>￥${item.plan.price}</span>
+                    <span>￥${item.plan.price/100}</span>
                     (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
                 </p>
 
@@ -120,7 +121,6 @@
                     {@if timeItem.finished == 0}
                     <li  data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
                     {@/if}
-
                     {@/each}
                     <!--<li class="time-item">09:00</li>-->
                     <!--<li class="time-item">09:00</li>-->
