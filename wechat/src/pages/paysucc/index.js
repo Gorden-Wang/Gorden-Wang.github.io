@@ -43,7 +43,6 @@
             var that = this;
             $(".submit_btn").on("click",function(){
                 var url = "http://"+document.domain+"/wechat"+"/pages/orderdetail/index.html?orderId="+that.data.oid;
-                alert(url);
                 Wlib.forceLogin(url,function(){
 
                 })
