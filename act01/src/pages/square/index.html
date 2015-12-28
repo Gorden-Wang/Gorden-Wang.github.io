@@ -19,6 +19,22 @@
     <div class="loading-content">loading...</div>
 </div>
 <div id="page"></div>
+<div class="c-w flex" id="bottom">
+    <div class="l-m-w flex flex1">
+        <img src="../../images/logo.png">
+
+        <div class="r-w flex1">
+            <p style="color: #cc3b74;font-size: 17px;font-weight: normal">babylink</p>
+            <span style="color: #cc3b74;font-size: 15px;font-weight: normal">亲子社交平台</span>
+        </div>
+    </div>
+
+    <div class="r-m-w">
+        <div class="button">
+            免费下载
+        </div>
+    </div>
+</div>
 <script type="template/juicer" id="tpl">
     <header class="c-w flex">
         <div class="l-m-w flex flex1">
@@ -68,44 +84,22 @@
     </p>
 
     <div class="btn-wrap">
+        <div class="icon1"></div>
         <div class="button">
             逗一逗
         </div>
-        <div class="icon1">求扩散</div>
     </div>
 
-    <div class="like-wrap">
+    <div class="like-wrap flex">
         <span class="icon2"></span>
-        <ul>
+        <ul class="flex1">
+            {@each i in range(0,25)}
             <li>
                 <img src="../../images/pic.png">
             </li>
-            <li>
-                <img src="../../images/pic.png">
-            </li>
-            <li>
-                <img src="../../images/pic.png">
-            </li>
+            {@/each}
         </ul>
     </div>
-
-    <div class="c-w">
-        <div class="l-m-w">
-            <img src="../../images/pic.png">
-
-            <div class="r-w">
-                <p>小甜甜</p>
-                <span>3分钟前</span>
-            </div>
-        </div>
-
-        <div class="r-m-w">
-            <div class="button">
-                加关注
-            </div>
-        </div>
-    </div>
-
 
 
 </script>
