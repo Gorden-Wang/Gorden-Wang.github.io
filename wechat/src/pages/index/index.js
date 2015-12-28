@@ -63,7 +63,10 @@
                 window.location = "../../pages/hoslist/index.html?locationId=" + that.data.locationId + "&latitude="+that.data.latitude+"&longitude="+that.data.longitude;
             });
             that.dom.person.on("click", function () {
-                window.location = "../../pages/person/index.html?locationId=" + that.data.locationId+"&userId="+Wlib.getUserId();
+
+                var url = "http://"+document.domain+"/wechat"+"/pages/person/index.html?locationId=" + that.data.locationId;
+                Wlib.forceLogin(url,function(){});
+
             });
             that.dom.citySelect.on("change", function () {
                 that.data.locationId = $(this).val();

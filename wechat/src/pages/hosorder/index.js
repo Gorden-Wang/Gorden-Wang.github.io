@@ -455,13 +455,12 @@
 
 
                 var param = [
-                    "userId=" + localStorage.getItem("userId"),
                     "treatmentPlanDetailId=" + $(that).attr("data-id"),
                     "doc=" + encodeURIComponent($(that).attr("data-name")),
                     "dep=" + encodeURIComponent($(that).attr("data-dep")),
                     "add=" + encodeURIComponent($(that).attr("data-add")),
                     "time=" + encodeURIComponent($(that).attr("data-time") + " " + $(this).text()),
-                    "price=" + $(that).attr("data-price")*100
+                    "price=" + $(that).attr("data-price")
                 ]
 
                 var resparam = [].join.call(param, "&");

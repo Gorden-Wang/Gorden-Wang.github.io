@@ -6,12 +6,17 @@
         this.init();
     }
 
+    var URL = location.href.split("#")[0];
     Person.prototype = {
         init: function () {
             var that = this;
-            that.cacheData();
-            that.cacheDom();
-            that.fetchData();
+            Wlib.wx.getJS(URL,function(){
+                that.cacheData();
+                that.cacheDom();
+                that.fetchData();
+                Wlib.wx.shareTo();
+            })
+
 
         },
         cacheDom: function () {
@@ -25,7 +30,7 @@
         cacheData: function () {
             var that = this;
             that.data = {};
-            that.data.userId = Wlib.getUserId();
+            that.data.userId = Wlib.getUserid();
             that.data.location = Wlib.getRequestParam("locationId");
             that.data.cityList = win.CITYLIST;
         },
@@ -79,8 +84,11 @@
                 url && (window.location = url);
             });
             $("#myOrder").on("click", function () {
-                location.href = "../../pages/orderList/index.html?userId=" + Wlib.getUserId();
+                location.href = "../../pages/orderlist/index.html?userid=" + Wlib.getUserid()+"&token="+Wlib.getRequestParam("token");
             });
+            $("#orderPay").on("click",function(){
+                location.href = "../../pages/orderlist/index.html?orderStatus=1&orderType=-1&userid=" + Wlib.getUserid()+"&token="+Wlib.getRequestParam("token");
+            })
             $("#about").on("click",function(){
                 location.href = "../../pages/about/index.html";
             });
