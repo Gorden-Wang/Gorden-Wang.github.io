@@ -12,22 +12,18 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
 
-            //that.getItems();
+            that.getItems();
         },
         cacheData: function () {
             var that = this;
             that.data = {};
             that.data.param = {
-                id: Wlib.getRequestParam("productId"),
-                img_w: $("body").width(),
-                img_h: Math.floor(0.609375 * $("body").width()),
-                user_headimg_w: 100,
-                user_headimg_h: 100
-
+                member_id : Wlib.getRequestParam("member_id") || 1,
+                xiu_id : Wlib.getRequestParam("xiu_id") || 2
             }
         },
         cacheDom: function () {
@@ -146,10 +142,10 @@
 
             function callback(data) {
 
-                if (data.resultCode == "1") {
+                if (data.code === 0) {
                     //成功
 
-                    that.data.data = data.resultData;
+                    that.data.data = data.datas;
 
                     that.renderUI();
                     that.recacheDom();
@@ -160,7 +156,7 @@
 
 
                 } else {
-                    Wlib.tips(data.message);
+                    Wlib.tips("获取数据失败");
                 }
 
             }
@@ -178,7 +174,7 @@
             })(that.data.param);
 
 
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
+            Wlib.GetJsonData("Xiu/xiu_info?" + param, callback, callback);
 
         }
     }
