@@ -19,126 +19,142 @@
     <div class="loading-content">loading...</div>
 </div>
 <div id="page"></div>
-
-<script type="template/juicer" id="tpl">
-
-    <div class="head-wrap">
-        <a>
-            <img src="../../images/pic1.png">
-
-            <div class="over">
-                周末去烧烤
-            </div>
-        </a>
-    </div>
-
-    <div class="detail-wrap">
-        <ul>
-            <li>
-                活动地点：门头沟
-            </li>
-            <li>
-                报名截止：2015/12/31
-            </li>
-            <li>
-                报名时间：2015/12/31
-            </li>
-            <li>
-                报名地点：XXXX小区门口
-            </li>
-            <li>
-                上线人数：15人
-            </li>
-            <li>
-                活动费用：￥100
-            </li>
-            <li>
-                支付方式：线下收取
-            </li>
-            <li>
-                交通工具：自驾游
-            </li>
-            <li>
-                联系人：李XXX
-            </li>
-            <li>
-                联系电话：13855565456
-            </li>
-        </ul>
-
-        <div class="sm-img">
-            <img src="../../images/pic.png">
-
-            <p>小阿狸</p>
-        </div>
-    </div>
-
-    <div class="discribe wrap">
-        <p class="d-t">活动介绍</p>
-        <article>
-            烧烤的工具根据方法的不同有很多种，明火烤、炭火烤、
-            炉烤、泥烧、竹烤、铁板烧、石板烧、石子饭都算是烧烤的
-            范畴。影视剧中常能见到一个木棍穿着一只鸡或兔子在篝火
-            上烤来烤去的场景，就是属于明火烤。一些野外生存书上常
-            会讲到这种烤法，实际上这种烤法是不值得推荐的，对一般
-            人来说明火烧烤不宜掌握火候，而且明火烧烤更易产生对人
-            身体有害的物质。同时在野外生篝火对环境危害更大，很不
-            安全，建议不要尝试明火烧烤。几种烧烤方式比较起来只有
-            炭火烧烤*作方便，便于控制，对环境的伤害最小，可烤的食
-            品种类最丰富，建议大家野外烧烤都用炭火。炭火烧烤所用的
-            工具有：烧烤炉、碳、钎子、刀、鱼夹、牙签等等。
-        </article>
-    </div>
-
-    <div class="sub-wrap wrap">
-        <p>babylink已提供支持</p>
-        <article>
-            帐篷两个、玩具一套
-        </article>
-    </div>
-
-    <div class="attend-wrap wrap">
-        <p>参与人数(12人)</p>
-
-        <ul>
-            {@each i in range(0,25)}
-            <li>
-                <div class="sm-img">
-                    <img src="../../images/pic.png">
-
-                    <p>小阿狸</p>
-                </div>
-            </li>
-            {@/each}
-        </ul>
-    </div>
-
-    <div class="reply">
-        <div class="t-w">
-            <p>评论(<span>2</span>)</p>
-            <span>更多</span>
-        </div>
-
-        <ul>
-            {@each i in range(0,1)}
-            <li class="flex">
-                <img src="../../images/pic.png">
-                <div class="flex1">
-                    <div class="s-t-w flex">
-                        <p class="t-name flex1">小阿狸</p>
-                        <span>2015/10/17 08:31</span>
-                    </div>
-                    <p>明天去哪儿？</p>
-                </div>
-            </li>
-            {@/each}
-        </ul>
-
-    </div>
-
+<div id="bottom">
     <div class="button">
         我要去报名
     </div>
+</div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="m-wrap">
+        <div class="head-wrap">
+            <a>
+                <img src="../../images/pic1.png">
+
+                <div class="over">
+                    周末去烧烤
+                </div>
+            </a>
+        </div>
+
+        <div class="detail-wrap">
+            <ul>
+                <li>
+                    活动地点：门头沟
+                </li>
+                <li>
+                    报名截止：2015/12/31
+                </li>
+                <li>
+                    报名时间：2015/12/31
+                </li>
+                <li>
+                    报名地点：XXXX小区门口
+                </li>
+                <li>
+                    上线人数：15人
+                </li>
+                <li>
+                    活动费用：￥100
+                </li>
+                <li>
+                    支付方式：线下收取
+                </li>
+                <li>
+                    交通工具：自驾游
+                </li>
+                <li>
+                    联系人：李XXX
+                </li>
+                <li>
+                    联系电话：13855565456
+                </li>
+            </ul>
+
+            <div class="sm-img">
+                <img src="../../images/pic.png">
+
+                <p>小阿狸</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="discribe wrap">
+            <p class="d-t">活动介绍</p>
+            <article>
+                烧烤的工具根据方法的不同有很多种，明火烤、炭火烤、
+                炉烤、泥烧、竹烤、铁板烧、石板烧、石子饭都算是烧烤的
+                范畴。影视剧中常能见到一个木棍穿着一只鸡或兔子在篝火
+                上烤来烤去的场景，就是属于明火烤。一些野外生存书上常
+                会讲到这种烤法，实际上这种烤法是不值得推荐的，对一般
+                人来说明火烧烤不宜掌握火候，而且明火烧烤更易产生对人
+                身体有害的物质。同时在野外生篝火对环境危害更大，很不
+                安全，建议不要尝试明火烧烤。几种烧烤方式比较起来只有
+                炭火烧烤*作方便，便于控制，对环境的伤害最小，可烤的食
+                品种类最丰富，建议大家野外烧烤都用炭火。炭火烧烤所用的
+                工具有：烧烤炉、碳、钎子、刀、鱼夹、牙签等等。
+            </article>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="sub-wrap wrap">
+            <p class="d-t">babylink已提供支持</p>
+            <article style="text-indent: 0em">
+                帐篷两个、玩具一套
+            </article>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="attend-wrap wrap">
+            <p class="d-t">参与人数(12人)</p>
+
+            <ul class="pic-list">
+                {@each i in range(0,25)}
+                <li>
+                    <div class="sm-img">
+                        <img src="../../images/pic.png">
+
+                        <p>小阿狸</p>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="reply wrap">
+            <div class="t-w flex">
+                <p class="flex1">评论(<span>2</span>)</p>
+                <span>更多</span>
+            </div>
+
+            <ul class="re-ul">
+                {@each i in range(0,2)}
+                <li class="flex">
+                    <img src="../../images/pic.png">
+
+                    <div class="flex1">
+                        <div class="s-t-w flex">
+                            <p class="t-name flex1">小阿狸</p>
+                            <span>2015/10/17 08:31</span>
+                        </div>
+                        <p>明天去哪儿？</p>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+
+        </div>
+    </div>
+
+
+
 
 </script>
 

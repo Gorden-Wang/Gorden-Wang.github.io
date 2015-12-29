@@ -1,27 +1,26 @@
-#page {
+.m-wrap {
   max-width: 640px;
-  margin: 10px 10px;
+  margin: 5px 5px;
   background-color: #ffffff;
   border-radius: 6px;
   overflow: hidden;
   font-family: "Hiragino Sans GB";
-  padding: 12px 8px;
-  margin-bottom: 80px; }
-  #page .head-wrap {
+  padding: 12px 8px; }
+  .m-wrap .head-wrap {
     width: 100%;
     height: 0px;
     padding-bottom: 53.4375%;
     position: relative; }
-    #page .head-wrap a {
+    .m-wrap .head-wrap a {
       position: absolute;
       top: 0px;
       left: 0px;
       width: 100%;
       height: 100%; }
-      #page .head-wrap a img {
+      .m-wrap .head-wrap a img {
         width: 100%;
         height: 100%; }
-      #page .head-wrap a .over {
+      .m-wrap .head-wrap a .over {
         position: absolute;
         bottom: 0px;
         left: 0px;
@@ -32,7 +31,55 @@
         padding: 3px 10px;
         padding-left: 8%;
         margin-left: -5%; }
-  #page .like-wrap .icon2 {
+  .m-wrap .detail-wrap {
+    font-size: 13px;
+    color: #000;
+    padding: 10px 0px;
+    position: relative; }
+    .m-wrap .detail-wrap .sm-img {
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+  .m-wrap .wrap .d-t {
+    color: #c03b6e;
+    border-bottom: 1px solid #e5e6e4;
+    padding-bottom: 10px; }
+  .m-wrap .wrap article {
+    line-height: 1.3em;
+    text-indent: 2em;
+    padding-top: 8px;
+    text-align: justify; }
+  .m-wrap .wrap ul.pic-list {
+    overflow: hidden;
+    padding-top: 10px; }
+    .m-wrap .wrap ul.pic-list li {
+      float: left;
+      margin-bottom: 8px;
+      width: 16%; }
+  .m-wrap .wrap .t-w {
+    border-bottom: 1px solid #e5e6e4;
+    padding-bottom: 10px;
+    color: #000; }
+    .m-wrap .wrap .t-w p > span {
+      color: #c03b6e; }
+  .m-wrap .wrap .re-ul li {
+    padding: 10px 0px;
+    border-bottom: 1px solid #e5e6e4;
+    align-items: center; }
+  .m-wrap .wrap .re-ul img {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px; }
+  .m-wrap .wrap .re-ul .s-t-w {
+    font-size: 13px; }
+    .m-wrap .wrap .re-ul .s-t-w .t-name {
+      color: #c03b6e; }
+    .m-wrap .wrap .re-ul .s-t-w span {
+      color: #666464; }
+  .m-wrap .wrap .re-ul .p-content {
+    color: #666464;
+    font-size: 13px; }
+  .m-wrap .like-wrap .icon2 {
     background-image: url(../../images/heart.png);
     background-size: 14px 13px;
     display: inline-block;
@@ -40,9 +87,9 @@
     height: 13px;
     margin-right: 10px;
     margin-top: 5px; }
-  #page .like-wrap ul {
+  .m-wrap .like-wrap ul {
     overflow: hidden; }
-    #page .like-wrap ul li {
+    .m-wrap .like-wrap ul li {
       float: left;
       width: 23px;
       height: 23px;
@@ -50,7 +97,7 @@
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 5px; }
-      #page .like-wrap ul li img {
+      .m-wrap .like-wrap ul li img {
         width: 100%;
         height: 100%; }
 
@@ -61,13 +108,14 @@
   flex: 1; }
 
 .button {
-  width: 5em;
-  border-radius: 3px;
-  background-color: #c03b6e;
+  width: 90%;
+  margin: 15px auto;
+  background-color: #de4f55;
   color: #ffffff;
   text-align: center;
-  font-size: 13px;
-  padding: 3px 0px; }
+  font-size: 16px;
+  padding: 10px 0px;
+  border-radius: 6px; }
 
 #bottom {
   position: fixed;
@@ -75,7 +123,20 @@
   left: 0px;
   width: 100%;
   z-index: 10;
-  padding: 8px 15px;
   background-color: #FFFFFF; }
+
+.sm-img {
+  text-align: center; }
+  .sm-img img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px; }
+  .sm-img p {
+    font-size: 12px;
+    color: #010101;
+    margin-top: -5px; }
+
+#page {
+  margin-bottom: 85px; }
 
 /*# sourceMappingURL=index.css.map */
