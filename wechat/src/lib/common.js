@@ -89,7 +89,7 @@ window.Wlib = (function () {
                     dataType: "JSONP",
                     success: function (res) {
 
-                        location.href = res.value;
+                        location.replace(res.value);
                     },
                     error: function (err) {
                         alert("获取授权数据失败，请重试");
@@ -107,7 +107,7 @@ window.Wlib = (function () {
                 dataType: "JSONP",
                 success: function (res) {
 
-                    location.href = res.value;
+                    location.replace(res.value);
                 },
                 error: function (err) {
                     alert("获取授权数据失败，请重试");

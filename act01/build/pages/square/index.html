@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>秀逗--广场</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/square/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div class="c-w flex" id="bottom">
+    <div class="l-m-w flex flex1">
+        <img src="../../images/logo.png">
+
+        <div class="r-w flex1">
+            <p style="color: #cc3b74;font-size: 17px;font-weight: normal">babylink</p>
+            <span style="color: #cc3b74;font-size: 15px;font-weight: normal">亲子社交平台</span>
+        </div>
+    </div>
+
+    <div class="r-m-w">
+        <div class="button">
+            免费下载
+        </div>
+    </div>
+</div>
+<script type="template/juicer" id="tpl">
+    <header class="c-w flex">
+        <div class="l-m-w flex flex1">
+            <img src="../../images/pic.png">
+
+            <div class="r-w flex1">
+                <p>小甜甜</p>
+                <span>3分钟前</span>
+            </div>
+        </div>
+
+        <div class="r-m-w">
+            <div class="button">
+                加关注
+            </div>
+        </div>
+
+    </header>
+
+    <div class="img-wrap">
+        <a>
+            <img src="../../images/pic1.png">
+
+            <div class="tag">
+                <img src="../../images/pic.png">
+                <p>可爱死了，赞</p>
+            </div>
+
+            <div class="tag" style="left: 100px;top: 100px;">
+                <img src="../../images/pic.png">
+                <p>可爱死了，赞</p>
+            </div>
+
+            <div class="tag" style="left: 150px;top: 200px;">
+                <img src="../../images/pic.png">
+                <p>可爱死了，赞</p>
+            </div>
+        </a>
+    </div>
+
+    <p class="dou-wrap">
+        12逗
+    </p>
+
+    <p class="title-wrap">
+        家喵~每天都这样看着我。。家喵~每天都这样看着我。。家喵~每天都这样看着我。。家喵~每天都这样看着我。。家喵~每天都这样看着我。。
+    </p>
+
+    <div class="btn-wrap">
+        <div class="icon1"></div>
+        <div class="button">
+            逗一逗
+        </div>
+    </div>
+
+    <div class="like-wrap flex">
+        <span class="icon2"></span>
+        <ul class="flex1">
+            {@each i in range(0,25)}
+            <li>
+                <img src="../../images/pic.png">
+            </li>
+            {@/each}
+        </ul>
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../pages/square/index.js?version=0.1.5"></script>
+
+
+</body>
+</html>

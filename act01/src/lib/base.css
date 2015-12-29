@@ -668,9 +668,6 @@ body {
     z-index: 100;
 }
 
-.wrap{
-    margin-top: 14.0625%;
-}
 
 @media screen and (min-width: 640px) {
     #page{
