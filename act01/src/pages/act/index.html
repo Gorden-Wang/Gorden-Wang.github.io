@@ -20,109 +20,130 @@
 </div>
 <div id="page"></div>
 <div id="bottom">
-    <div class="btn-wrap">
-        <div class="l">
-            <p>现价</p>
-            <p>￥2239.00</p>
-        </div>
-        <div class="r">
-            <p>我要预订</p>
-            <p>￥22.00</p>
-        </div>
+    <div class="button">
+        我要去报名
     </div>
 </div>
 
 <script type="template/juicer" id="tpl">
 
-    <div class="head-wrap">
-        <a>
-            <img src="../../images/pic1.png">
-        </a>
-    </div>
-
-    <div class="de-wrap">
-        <div class="flex">
-            <span class="d-t">红蓝黄亲自团</span>
-
-            <p class="flex1 d-p">
-                价格：<span>￥200.00~$300.00</span>
-            </p>
-        </div>
-
-        <div class="d-location-wrap flex">
-            <p class="flex1">大兴区枣园路</p>
-
-            <span>800米</span>
-        </div>
-
-        <div class="d-time-wrap flex">
-            <span>
-                截止时间：2015/11/08 12:59
-            </span>
-
-            <p class="flex1">
-                <span>825人</span>预订
-            </p>
-        </div>
-
-        <div class="re-wrap">
-            <span style="margin-top: 8px;">还剩</span>
-            <ul>
-                <li>
-                    <span>8</span>天
-                </li>
-                <li>
-                    <span>8</span>时
-                </li>
-                <li>
-                    <span>8</span>分
-                </li>
-                <li>
-                    <span>8</span>秒
-                </li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="detail-wrap wrap-wi">
-        <p class="w-t">商品详情</p>
-
-        <div class="img-wrap">
+    <div class="m-wrap">
+        <div class="head-wrap">
             <a>
                 <img src="../../images/pic1.png">
+
+                <div class="over">
+                    ${data.title}
+                </div>
             </a>
         </div>
 
-        <article>
-            欢乐谷一日游双自由游门票，体验全家一起玩乐
-            的快乐。
-            亲子票限三人，早上八点到下午五点，所有的游
-            乐项目还有优惠。
-            机会难得，票数有限，有兴趣的家庭可以组团前
-            往。
-        </article>
-    </div>
+        <div class="detail-wrap">
+            <ul>
+                <li>
+                    活动地点：${data.activity_address}
+                </li>
+                <li>
+                    报名截止：${data.end_time}
+                </li>
+                <li>
+                    集合时间：${data.jihe_time}
+                </li>
+                <li>
+                    集合地点：${data.jihe_address}
+                </li>
+                <li>
+                    上线人数：${data.max_man}人
+                </li>
+                <li>
+                    活动费用：￥${data.price}
+                </li>
+                <li>
+                    支付方式：${data.pay_way}
+                </li>
+                <li>
+                    交通工具：${data.utils}
+                </li>
+                <li>
+                    联系人：${data.link_name}
+                </li>
+                <li>
+                    联系电话：${data.link_mobile}
+                </li>
+            </ul>
 
-    <div class="att-wrap wrap-wi">
-        <p class="w-t">预订须知</p>
-        <article>
-            参与人数越多，价格越低！
-            最终价格以活动截至时，参与人数的折扣为准
-            活动截至2天内须付清尾款
+            <div class="sm-img">
+                <img src="${data.member_avar}">
 
-        </article>
-    </div>
-
-    <div class="pay-wrap wrap-wi">
-        <p class="w-t">收货方式</p>
-        <div class="pay-ch" style="padding: 0px 10px;">
-            <p>到店支付</p>
-            <p class="">
-                联系方式：13999999999   XXXX
-            </p>
+                <p>${data.member_name}</p>
+            </div>
         </div>
     </div>
+
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="discribe wrap">
+            <p class="d-t">活动介绍</p>
+            <article>
+                ${data.info}
+            </article>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="sub-wrap wrap">
+            <p class="d-t">babylink已提供支持</p>
+            <article style="text-indent: 0em">
+                ${data.help}
+            </article>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="attend-wrap wrap">
+            <p class="d-t">参与人数(${data.log_list.length}人)</p>
+
+            <ul class="pic-list">
+                {@each data.log_list as item}
+                <li>
+                    <div class="sm-img">
+                        <img src="${item.member_avar}">
+
+                        <p>${item.member_name}</p>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="reply wrap">
+            <div class="t-w flex">
+                <p class="flex1">评论(<span>${data.commend_list.length}</span>)</p>
+                <span>更多</span>
+            </div>
+
+            <ul class="re-ul">
+                {@each data.commend_list as item}
+                <li class="flex">
+                    <img src="${item.from_userAvar}">
+
+                    <div class="flex1">
+                        <div class="s-t-w flex">
+                            <p class="t-name flex1">${item.from_userName}</p>
+                            <span>${item.add_time}</span>
+                        </div>
+                        <p>${item.info}</p>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+
+        </div>
+    </div>
+
+
 
 
 </script>

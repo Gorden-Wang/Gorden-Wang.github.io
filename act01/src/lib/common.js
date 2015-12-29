@@ -195,7 +195,7 @@ window.Wlib = (function () {
 
         GetJsonData: function (url, success, error) {
             $.ajax({
-                url: "http://za-yi.com/master/"+url,
+                url: "http://101.200.174.65/babyLink/mobile.php/mobile/"+url,
                 dataType : "jsonp",
                 method : "GET",
                 success: function (res) {
@@ -217,12 +217,19 @@ window.Wlib = (function () {
                     error && error(err);
                 }
             })
+        },
+        downLite : function(url){
+            if(url){
+                window.location = url;
+            }else{
+                Wlib.tips("程序员哥哥正在抓紧开发中。")
+            }
         }
 
     };
 
 
 
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 

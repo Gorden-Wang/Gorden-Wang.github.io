@@ -12,22 +12,15 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
 
-            //that.getItems();
+            that.getItems();
         },
         cacheData: function () {
             var that = this;
             that.data = {};
             that.data.param = {
-                id: Wlib.getRequestParam("productId"),
-                img_w: $("body").width(),
-                img_h: Math.floor(0.609375 * $("body").width()),
-                user_headimg_w: 100,
-                user_headimg_h: 100
-
+                member_id : Wlib.getRequestParam("member_id") || 1,
+                activity_id : Wlib.getRequestParam("activity_id") || 2
             }
         },
         cacheDom: function () {
@@ -83,59 +76,20 @@
         },
         addJuicerHandler: function () {
             var that = this;
-            juicer.register("makeRateImg", function (rate) {
+            juicer.register("makeTime", function (time) {
 
-                var arr = (rate + "").split(".");
-                var big = arr[0];
-                var lit = arr[1] > 0 ? '.5' : '';
-                return big + lit;
+                var v = new Date(time);
+                var obj = {
+                    y : v.getFullYear(),
+                    m : v.getMonth()+1,
+                    d : v.getDate(),
+                    h : v.getHours(),
+                    mm : v.getMinutes()+1
+                }
+
+                return obj.y+"/"+obj.m+"/"+obj.d+" "+obj.h+":"+obj.mm;
             });
 
-            juicer.register("makeTimeTitle", function (type) {
-
-                if (type == 2) {
-                    //    以下工作时间灵活可选或必须在以下时间完成工作
-                    return "以下工作时间灵活可选";
-                }
-                if (type == 3) {
-                    return "必须在以下时间完成工作"
-                }
-
-            });
-
-            juicer.register("makeAgeDis", function (min, max) {
-                    if (min != -1 && max != -1) {
-                        return min + "岁-" + max + "岁";
-                    }
-                    if (min != -1 && max == -1) {
-                        return "大于" + min + "岁"
-                    }
-                    if (min == -1 && max != -1) {
-                        return "小于" + max + "岁"
-                    }
-                    if (min == -1 && max == -1) {
-                        return "不要求"
-                    }
-                }
-            );
-            juicer.register("makeAudiDis", function (type) {
-                    // 0-不限 1-面试 2-不面试
-                    if (type == 0) {
-                        return "不限"
-                    }
-                    if (type == 1) {
-                        return "需面试"
-                    }
-                    if (type == 2) {
-                        return "不需面试"
-                    }
-                }
-            );
-
-            juicer.register("checkDisplayMore", function (arr, length) {
-                var length = length || 3;
-                return arr.length > length ? true : false;
-            });
 
 
         },
@@ -146,10 +100,10 @@
 
             function callback(data) {
 
-                if (data.resultCode == "1") {
+                if (data.code === 0) {
                     //成功
 
-                    that.data.data = data.resultData;
+                    that.data.data = data.datas;
 
                     that.renderUI();
                     that.recacheDom();
@@ -160,7 +114,7 @@
 
 
                 } else {
-                    Wlib.tips(data.message);
+                    Wlib.tips("获取活动详情失败");
                 }
 
             }
@@ -178,7 +132,7 @@
             })(that.data.param);
 
 
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
+            Wlib.GetJsonData("Activity/activity_info?" + param, callback, callback);
 
         }
     }
