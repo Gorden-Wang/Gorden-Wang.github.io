@@ -45,35 +45,10 @@
         },
         bindEvent: function () {
             var that = this;
-            var btnText = "收起";
-            $(".swiper-slide").on("click", function () {
-                var src = $(this).find("img").attr("src");
-                that.dom.full.show().append("<a class><img src='" + src + "'></a>");
-            })
-            that.dom.full.on("click", function () {
-                $(this).html("");
-                $(this).hide();
-            });
 
-            $(".btn-wrapper").on("click", function () {
-                var target = $(this).attr("data-target");
-                var text = $(this).attr("data-text");
-                $(target).toggle();
-                if ($(this).find("span").text() == "收起") {
-                    $(this).find("span").text(text);
-                } else {
-                    $(this).find("span").text("收起");
-                }
-
-
-            });
-            //add download
-
-            $(".down-header,footer,.btn-down").on("click", function () {
-                location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.zy.part_timejob"
-            });
-            $(".des-wrapper").on("click",function(){
-                location.href = "../../pages/home/index.html?user_id="+that.data.data.product.userId;
+            $(".button,.icon1").on("click",function(){
+                var url = that.data.data.enableDownload;
+                Wlib.downLite(url);
             })
 
         },
