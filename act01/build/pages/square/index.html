@@ -41,8 +41,8 @@
             <img src="../../images/pic.png">
 
             <div class="r-w flex1">
-                <p>小甜甜</p>
-                <span>3分钟前</span>
+                <p>${data.member_name}</p>
+                <span>${data.time}</span>
             </div>
         </div>
 
@@ -56,8 +56,9 @@
 
     <div class="img-wrap">
         <a>
-            <img src="../../images/pic1.png">
+            <img src="${data.image_url}">
 
+            <!--@TODO 没有 commen_list-->
             <div class="tag">
                 <img src="../../images/pic.png">
                 <p>可爱死了，赞</p>
@@ -74,13 +75,13 @@
             </div>
         </a>
     </div>
-
+<!--@TODO 12逗-->
     <p class="dou-wrap">
         12逗
     </p>
 
     <p class="title-wrap">
-        家喵~每天都这样看着我。。家喵~每天都这样看着我。。家喵~每天都这样看着我。。家喵~每天都这样看着我。。家喵~每天都这样看着我。。
+        ${data.info}
     </p>
 
     <div class="btn-wrap">
@@ -93,9 +94,9 @@
     <div class="like-wrap flex">
         <span class="icon2"></span>
         <ul class="flex1">
-            {@each i in range(0,25)}
+            {@each data.zan_list as item}
             <li>
-                <img src="../../images/pic.png">
+                <img src="${item.member_avar}">
             </li>
             {@/each}
         </ul>
