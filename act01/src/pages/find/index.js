@@ -12,22 +12,19 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
 
             //that.getItems();
+            that.getPosition();
         },
         cacheData: function () {
             var that = this;
             that.data = {};
             that.data.param = {
-                id: Wlib.getRequestParam("productId"),
-                img_w: $("body").width(),
-                img_h: Math.floor(0.609375 * $("body").width()),
-                user_headimg_w: 100,
-                user_headimg_h: 100
-
+                goods_id: Wlib.getRequestParam("goods_id") || 2,
+                type: 1
             }
         },
         cacheDom: function () {
@@ -42,6 +39,39 @@
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
             that.dom.loading.hide();
+
+            $("#or").text("￥" + that.data.data.goods_price);
+            $("#de").text("￥" + that.data.data.goods_dingjin);
+            that.counter(that.data.data.begin_time, that.data.data.end_time);
+        },
+        getPosition: function () {
+            var that = this;
+            var geolocationOptions = {timeout: 3000, enableHighAccuracy: true, maximumAge: 5000};
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition,showError,geolocationOptions);
+                }
+                else {
+                    Wlib.tips("没有定位到您的城市，请稍候再试")
+                }
+            }
+
+            function showPosition(position) {
+                that.data.param.latitude = position.coords.latitude;
+                that.data.param.longitude = position.coords.longitude;
+
+                that.getItems();
+            }
+
+            function showError(){
+                that.getItems();
+                that.data.param.latitude = 0;
+                that.data.param.longitude = 0;
+            }
+
+            getLocation();
+
+
         },
         recacheDom: function () {
             var that = this;
@@ -49,96 +79,71 @@
         },
         bindEvent: function () {
             var that = this;
-            var btnText = "收起";
-            $(".swiper-slide").on("click", function () {
-                var src = $(this).find("img").attr("src");
-                that.dom.full.show().append("<a class><img src='" + src + "'></a>");
-            })
-            that.dom.full.on("click", function () {
-                $(this).html("");
-                $(this).hide();
-            });
-
-            $(".btn-wrapper").on("click", function () {
-                var target = $(this).attr("data-target");
-                var text = $(this).attr("data-text");
-                $(target).toggle();
-                if ($(this).find("span").text() == "收起") {
-                    $(this).find("span").text(text);
-                } else {
-                    $(this).find("span").text("收起");
-                }
-
-
-            });
-            //add download
-
-            $(".down-header,footer,.btn-down").on("click", function () {
-                location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.zy.part_timejob"
-            });
-            $(".des-wrapper").on("click",function(){
-                location.href = "../../pages/home/index.html?user_id="+that.data.data.product.userId;
+            $(".btn-wrap").on("click", function () {
+                var url = that.data.data.enableDownload;
+                Wlib.downLite(url);
             })
 
         },
         addJuicerHandler: function () {
             var that = this;
-            juicer.register("makeRateImg", function (rate) {
+            juicer.register("makeDis", function (str) {
 
-                var arr = (rate + "").split(".");
-                var big = arr[0];
-                var lit = arr[1] > 0 ? '.5' : '';
-                return big + lit;
+                var arr = str.split(/\s{2}/), i = 0, res = "", len = arr.length;
+                for (i = 0; i < len; i++) {
+                    if (arr[i]) {
+                        res = res + "<p>" + arr[i] + "</p>";
+                    }
+                }
+                return res;
             });
-
-            juicer.register("makeTimeTitle", function (type) {
-
-                if (type == 2) {
-                    //    以下工作时间灵活可选或必须在以下时间完成工作
-                    return "以下工作时间灵活可选";
+            juicer.register("makeTime", function (str) {
+                var t = new Date(parseInt(str));
+                var obj = {
+                    y: t.getFullYear(),
+                    m: t.getMonth() + 1,
+                    d: t.getDay(),
+                    h: t.getHours(),
+                    mm: t.getMinutes() + 1,
+                    s: t.getSeconds()
                 }
-                if (type == 3) {
-                    return "必须在以下时间完成工作"
-                }
 
-            });
+                return obj.y + "/" + obj.m + "/" + obj.d + " " + obj.h + ":" + obj.mm;
 
-            juicer.register("makeAgeDis", function (min, max) {
-                    if (min != -1 && max != -1) {
-                        return min + "岁-" + max + "岁";
-                    }
-                    if (min != -1 && max == -1) {
-                        return "大于" + min + "岁"
-                    }
-                    if (min == -1 && max != -1) {
-                        return "小于" + max + "岁"
-                    }
-                    if (min == -1 && max == -1) {
-                        return "不要求"
-                    }
-                }
-            );
-            juicer.register("makeAudiDis", function (type) {
-                    // 0-不限 1-面试 2-不面试
-                    if (type == 0) {
-                        return "不限"
-                    }
-                    if (type == 1) {
-                        return "需面试"
-                    }
-                    if (type == 2) {
-                        return "不需面试"
-                    }
-                }
-            );
-
-            juicer.register("checkDisplayMore", function (arr, length) {
-                var length = length || 3;
-                return arr.length > length ? true : false;
             });
 
 
         },
+        counter: function (beg, end) {
+            var that = this,
+                day = $("#day"),
+                hour = $("hour"),
+                min = $("#min"),
+                sec = $("#sec")
+            time = end - beg;
+
+
+            function counter(t) {
+                var obj = {
+                    d: t.getDay(),
+                    h: t.getHours(),
+                    m: t.getMinutes() + 1,
+                    s: t.getSeconds()
+                }
+                day.html(obj.d);
+                hour.html(obj.h);
+                min.html(obj.m);
+                sec.html(obj.s);
+            }
+
+            setInterval(function () {
+                time = time - 1000;
+                counter(new Date(time - 1000));
+            }, 1000)
+
+        }
+
+        ,
         getItems: function () {
 
             var that = this;
@@ -146,11 +151,11 @@
 
             function callback(data) {
 
-                if (data.resultCode == "1") {
+                if (data.code === 0) {
                     //成功
 
-                    that.data.data = data.resultData;
-
+                    that.data.data = data.datas;
+                    that.data.data.mark.replace(/\S/g, '');
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
@@ -178,7 +183,7 @@
             })(that.data.param);
 
 
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
+            Wlib.GetJsonData("goods/goods_info?" + param, callback, callback);
 
         }
     }

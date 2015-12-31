@@ -23,11 +23,11 @@
     <div class="btn-wrap">
         <div class="l">
             <p>现价</p>
-            <p>￥2239.00</p>
+            <p id="or">￥2239.00</p>
         </div>
         <div class="r">
             <p>我要预订</p>
-            <p>￥22.00</p>
+            <p id="de">￥22.00</p>
         </div>
     </div>
 </div>
@@ -36,32 +36,32 @@
 
     <div class="head-wrap">
         <a>
-            <img src="../../images/pic1.png">
+            <img src="${data.images[0]}">
         </a>
     </div>
 
     <div class="de-wrap">
         <div class="flex">
-            <span class="d-t">红蓝黄亲自团</span>
+            <span class="d-t">${data.store_name}</span>
 
             <p class="flex1 d-p">
-                价格：<span>￥200.00~$300.00</span>
+                价格：<span>￥${data.goods_oprice}~￥${data.goods_baseprice}</span>
             </p>
         </div>
 
         <div class="d-location-wrap flex">
-            <p class="flex1">大兴区枣园路</p>
+            <p class="flex1">${data.address}</p>
 
-            <span>800米</span>
+            <span>${data.meters}</span>
         </div>
 
         <div class="d-time-wrap flex">
             <span>
-                截止时间：2015/11/08 12:59
+                截止时间：${makeTime(data.end_time)}
             </span>
 
             <p class="flex1">
-                <span>825人</span>预订
+                <span>${data.order_num}人</span>预订
             </p>
         </div>
 
@@ -69,16 +69,16 @@
             <span style="margin-top: 8px;">还剩</span>
             <ul>
                 <li>
-                    <span>8</span>天
+                    <span id="day">0</span>天
                 </li>
                 <li>
-                    <span>8</span>时
+                    <span id="hour">0</span>时
                 </li>
                 <li>
-                    <span>8</span>分
+                    <span id="min">0</span>分
                 </li>
                 <li>
-                    <span>8</span>秒
+                    <span id="sec">0</span>秒
                 </li>
             </ul>
         </div>
@@ -88,28 +88,23 @@
     <div class="detail-wrap wrap-wi">
         <p class="w-t">商品详情</p>
 
-        <div class="img-wrap">
-            <a>
-                <img src="../../images/pic1.png">
-            </a>
-        </div>
+        <!--<div class="img-wrap">-->
+            <!--<a>-->
+                <!--<img src="../../images/pic1.png">-->
+            <!--</a>-->
+        <!--</div>-->
 
         <article>
-            欢乐谷一日游双自由游门票，体验全家一起玩乐
-            的快乐。
-            亲子票限三人，早上八点到下午五点，所有的游
-            乐项目还有优惠。
-            机会难得，票数有限，有兴趣的家庭可以组团前
-            往。
+        $${data.info}
         </article>
+
+
     </div>
 
     <div class="att-wrap wrap-wi">
         <p class="w-t">预订须知</p>
         <article>
-            参与人数越多，价格越低！
-            最终价格以活动截至时，参与人数的折扣为准
-            活动截至2天内须付清尾款
+            $${makeDis(data.mark)}
 
         </article>
     </div>
@@ -117,9 +112,9 @@
     <div class="pay-wrap wrap-wi">
         <p class="w-t">收货方式</p>
         <div class="pay-ch" style="padding: 0px 10px;">
-            <p>到店支付</p>
+            <p>${data.buy_way}</p>
             <p class="">
-                联系方式：13999999999   XXXX
+                联系方式：${data.mobile}
             </p>
         </div>
     </div>

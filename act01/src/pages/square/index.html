@@ -59,25 +59,17 @@
             <img src="${data.image_url}">
 
             <!--@TODO 没有 commen_list-->
-            <div class="tag">
-                <img src="../../images/pic.png">
-                <p>可爱死了，赞</p>
+            {@each data.commend_list as item}
+            <div class="tag" style="left: ${item.position_x*100}%;top: ${item.position_y*100}%;">
+                <img src="${item.member_avar}">
+                <p>${item.info}</p>
             </div>
-
-            <div class="tag" style="left: 100px;top: 100px;">
-                <img src="../../images/pic.png">
-                <p>可爱死了，赞</p>
-            </div>
-
-            <div class="tag" style="left: 150px;top: 200px;">
-                <img src="../../images/pic.png">
-                <p>可爱死了，赞</p>
-            </div>
+            {@/each}
         </a>
     </div>
 <!--@TODO 12逗-->
     <p class="dou-wrap">
-        12逗
+        ${data.commend_list.length}逗
     </p>
 
     <p class="title-wrap">
