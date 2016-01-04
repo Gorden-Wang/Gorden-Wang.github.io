@@ -5,7 +5,8 @@
     var Index = function () {
         this.init();
 
-        Wlib.Weixin.goAuth();
+        //Wlib.Weixin.goAuth();
+        Wlib.wx.pay();
     }
 
     Index.prototype = {

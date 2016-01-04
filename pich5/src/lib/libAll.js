@@ -853,36 +853,6 @@ window.Wlib = (function () {
 
     lib.prototype = {
         config: function () {
-            var urls = {};
-            switch (this.evn) {
-                case 'publish' :
-                    urls.port = "https://ssl.instarekber.com/vshop/1/H5/";
-                    urls.portNew = "https://ssl.instarekber.com/ushop/h5/";
-                    urls.port2 = "https://ssl.instarekber.com/ushop";
-                    urls.apiPort = "http://api.instarekber.com";
-                    urls.loginPort = "https://login.instarekber.com/ushop";
-                    urls.instaUrl = "http://www.instarekber.com/eula.html";
-                    break;
-                case 'daily' :
-                    urls.port = "https://ssl-test.instarekber.com/vshop/1/H5/";
-                    urls.portNew = "https://ssl-test.instarekber.com/ushop/h5/";
-                    urls.port2 = "https://ssl-test.instarekber.com/ushop";
-                    urls.apiPort = "http://api.test.instarekber.com";
-                    urls.loginPort = "https://ssl-test.instarekber.com/ushop";
-                    urls.imUrlPort = "./chat/";
-                    urls.instaUrl = "http://www-test.instarekber.com/eula.html";
-                    break;
-                case 'local' :
-                    urls.port = "https://ssl-test.instarekber.com/vshop/1/H5/";
-                    urls.portNew = "https://ssl-test.instarekber.com/ushop/h5/";
-                    urls.port2 = "https://ssl-test.instarekber.com/ushop";
-                    urls.apiPort = "http://api.test.instarekber.com";
-                    urls.loginPort = "https://ssl-test.instarekber.com/ushop";
-                    urls.imUrlPort = "./chat/";
-                    urls.instaUrl = "http://www-test.instarekber.com/eula.html";
-                    break;
-            }
-            return urls;
         },
         getRequestParam: function (param, uri) {
             var value;
@@ -1076,25 +1046,6 @@ window.Wlib = (function () {
         getUserId: function () {
             return Wlib.getRequestParam("userId") || localStorage.getItem("userId") || "";
         },
-        Weixin: {
-            isWeixin: function () {
-                return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
-            },
-            goAuth : function(){
-            //    https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&
-
-                var appid = "wx498cb5ef00ce19c6";
-                var redirect_uri = encodeURIComponent(window.location.href.split("#")[0]);
-                var response_type="code";
-                var scope = "snsapi_base";
-                var state=123;
-                var hash = "#wechat_redirect";
-                alert("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope+"&state="+state+hash)
-
-                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope+"&state="+state+hash;
-            }
-
-        },
         SendRequest: function (path, data, method, success, error) {
             var that = this;
 
@@ -1164,6 +1115,109 @@ window.Wlib = (function () {
                     error && error(err);
                 }
             })
+        },
+        forceLogin: function (url, callback) {
+            var that = this;
+            //var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
+            var desurl = 'http://www.talkart.cc/index.php?r=wechat/wechat/pay';
+            $.ajax({
+                url: desurl + "?callback=?&re_url=" + encodeURIComponent(url || location.href),
+                dataType: "JSONP",
+                success: function (res) {
+                    alert(JSON.stringify(res))
+                    //location.replace(res.value);
+                },
+                error: function (err) {
+                    alert("获取授权数据失败，请重试");
+                }
+            })
+        },
+        wx : {
+            isWeixin: function () {
+                return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
+            },
+            auth : function(){
+                $.ajax({
+                    url : "http://www.talkart.cc/index.php?r=wechat/wechat/register",
+                    dataType : "JSONP",
+                    success : function(res){
+                        //@TODO : 存储uid token
+                    },
+                    error : function(){
+                        alert("服务器错误，请稍后重试。");
+                    }
+                })
+            },
+            getJSSign : function(url,callback){
+                var u = url || location.href.split("#")[0];
+                $.ajax({
+                    url : "http://www.talkart.cc/index.php?r=wechat/wechat/register",
+                    dataType : "JSONP",
+                    success : function(res){
+                        //@TODO :
+                        callback && callback();
+                    },
+                    error : function(){
+                        alert("服务器错误，请稍后重试。");
+                    }
+                })
+            },
+            //@TODO : 入参：data
+            jsConfig : function(data){
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: "wx9ade35641403eb00", // 必填，公众号的唯一标识
+                    timestamp: res.value.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: res.value.noncestr, // 必填，生成签名的随机串
+                    signature: res.value.sign,// 必填，签名，见附录1
+                    jsApiList: [
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ',
+                        'onMenuShareWeibo',
+                        'onMenuShareQZone',
+                        'hideMenuItems',
+                        'showMenuItems'
+                    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                });
+            },
+            hideMenu : function(){
+                wx.hideMenuItems({
+                    menuList: [
+                        "menuItem:share:qq",
+                        "menuItem:share:weiboApp",
+                        "menuItem:share:QZone",
+                        "menuItem:share:appMessage",
+                        "menuItem:share:timeline",
+                        "menuItem:copyUrl",
+                        "menuItem:openWithQQBrowser",
+                        "menuItem:openWithSafari",
+                        "menuItem:share:email",
+                        "menuItem:favorite"
+                    ], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                    success: function () {
+
+                    }
+                });
+            },
+            //TODO : 难道需要一个Oid或者金额什么的吗？
+            pay : function(url){
+                var that = this;
+                //var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
+                var desurl = 'http://www.talkart.cc/index.php?r=wechat/wechat/pay';
+                $.ajax({
+                    url: desurl + "&callback=?",
+                    dataType: "JSONP",
+                    success: function (res) {
+                        alert(JSON.stringify(res))
+                        //location.replace(res.value);
+                    },
+                    error: function (err) {
+                        alert("获取授权数据失败，请重试");
+                    }
+                })
+            }
+
         }
 
     };
