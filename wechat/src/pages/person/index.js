@@ -30,7 +30,7 @@
         cacheData: function () {
             var that = this;
             that.data = {};
-            that.data.userId = Wlib.getUserid();
+            that.data.userId = localStorage.getItem("userId");
             that.data.location = Wlib.getRequestParam("locationId");
             that.data.cityList = win.CITYLIST;
         },
@@ -84,16 +84,16 @@
                 url && (window.location = url);
             });
             $("#myOrder").on("click", function () {
-                location.href = "../../pages/orderlist/index.html?userid=" + Wlib.getUserid()+"&token="+Wlib.getRequestParam("token");
+                location.href = "../../pages/orderlist/index.html";
             });
             $("#orderPay").on("click",function(){
-                location.href = "../../pages/orderlist/index.html?orderStatus=1&orderType=-1&userid=" + Wlib.getUserid()+"&token="+Wlib.getRequestParam("token");
+                location.href = "../../pages/orderlist/index.html?orderStatus=1&orderType=-1";
             })
             $("#about").on("click",function(){
                 location.href = "../../pages/about/index.html";
             });
             $("#feedback").on("click",function(){
-                location.href = "../../pages/feedback/index.html";
+                location.href = "../../pages/tips/feedback.html";
             })
         }
     }

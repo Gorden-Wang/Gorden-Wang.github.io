@@ -103,12 +103,41 @@ window.Wlib = (function () {
         forceLogin: function (url, callback) {
             var that = this;
             var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
+            var nexturl = url || location.href;
+            if (!Wlib.getRequestParam("userid",nexturl)) {
+                $.ajax({
+                    url: desurl + "?callback=?&re_url=" + encodeURIComponent(nexturl),
+                    dataType: "JSONP",
+                    success: function (res) {
+
+                        location.replace(res.value);
+                    },
+                    error: function (err) {
+                        alert("获取授权数据失败，请重试");
+                    }
+                })
+            }else{
+                callback && callback();
+            }
+
+        },
+        getToken : function(callback){
+            //http://www.hmsgtech.com/wechatserver/login?callback=callback&userid=U000001304
+            var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/login" : "http://www.hmsgtech.com/wechatserver/login";
+
             $.ajax({
-                url: desurl + "?callback=?&re_url=" + encodeURIComponent(url || location.href),
+                url: desurl + "?callback=?&userid="+localStorage.getItem("userId"),
                 dataType: "JSONP",
                 success: function (res) {
+                    if(res.errorCode == 0){
+                        localStorage.setItem("token",res.value);
+                        callback && callback();
 
-                    location.replace(res.value);
+                    }else{
+                        alert("用户识别错误，请重新授权");
+                        window.location.href = "../../pages/index/index.html";
+                    }
+
                 },
                 error: function (err) {
                     alert("获取授权数据失败，请重试");
@@ -141,8 +170,8 @@ window.Wlib = (function () {
         isWeixin: function () {
             return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
         },
-        wx :{
-            getJS : function(url,callback){
+        wx: {
+            getJS: function (url, callback) {
                 var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/jsapiSign" : "http://www.hmsgtech.com/wechatserver/jsapiSign";
                 $.ajax({
                     url: desurl + "?callback=?&url=" + encodeURIComponent(url || location.href),
@@ -152,7 +181,7 @@ window.Wlib = (function () {
                         wx.config({
                             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                             appId: "wx9ade35641403eb00", // 必填，公众号的唯一标识
-                            timestamp:res.value.timestamp , // 必填，生成签名的时间戳
+                            timestamp: res.value.timestamp, // 必填，生成签名的时间戳
                             nonceStr: res.value.noncestr, // 必填，生成签名的随机串
                             signature: res.value.sign,// 必填，签名，见附录1
                             jsApiList: [
@@ -163,7 +192,7 @@ window.Wlib = (function () {
                                 'onMenuShareQZone',
                                 'hideMenuItems',
                                 'showMenuItems'
-                                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                         });
 
                         //默认关掉QQ相关，有下载着陆页面后再打开
@@ -172,9 +201,16 @@ window.Wlib = (function () {
                             menuList: [
                                 "menuItem:share:qq",
                                 "menuItem:share:weiboApp",
-                                "menuItem:share:QZone"
+                                "menuItem:share:QZone",
+                                "menuItem:share:appMessage",
+                                "menuItem:share:timeline",
+                                "menuItem:copyUrl",
+                                "menuItem:openWithQQBrowser",
+                                "menuItem:openWithSafari",
+                                "menuItem:share:email",
+                                "menuItem:favorite"
                             ], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                            success : function(){
+                            success: function () {
 
                             }
                         });
@@ -187,7 +223,7 @@ window.Wlib = (function () {
                     }
                 })
             },
-            shareTo : function(title,desc,link,img,success,cancel){
+            shareTo: function (title, desc, link, img, success, cancel) {
                 var urlPre = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechat" : "http://www.hmsgtech.com/wechat";
                 var t = title || "伊健康，您身边的健康专家";
                 var d = desc || "";
@@ -196,7 +232,7 @@ window.Wlib = (function () {
                 wx.onMenuShareTimeline({
                     title: t, // 分享标题
                     link: l, // 分享链接
-                    imgUrl:urlPre+i, //'../../images/about/logo.png', // 分享图标
+                    imgUrl: urlPre + i, //'../../images/about/logo.png', // 分享图标
                     success: function () {
                         success && success()
                     },
@@ -207,8 +243,8 @@ window.Wlib = (function () {
                 wx.onMenuShareAppMessage({
                     title: t, // 分享标题
                     link: l, // 分享链接,
-                    desc:d,
-                    imgUrl:urlPre+i, //'../../images/about/logo.png', // 分享图标
+                    desc: d,
+                    imgUrl: urlPre + i, //'../../images/about/logo.png', // 分享图标
                     success: function () {
                         success && success()
                     },
@@ -217,7 +253,7 @@ window.Wlib = (function () {
                     }
                 });
             },
-            hideShare : function(){
+            hideShare: function () {
                 wx.hideMenuItems({
                     menuList: [
                         "menuItem:exposeArticle",
@@ -425,28 +461,35 @@ window.Wlib = (function () {
                 success: function (res) {
                     if (res.errorCode == "1008") {
                         //token 无效，重新登录，去除url上的token，openid,userid,然后forceLogin
-                        var url = location.href
+                        //var url = location.href
+                        //
+                        //var domain = document.domain,
+                        //    u = location.href,
+                        //    p = location.protocol + "//",
+                        //    s = u.split("?")[1] || "",
+                        //    m = s.length > 0 ? s.split("&") : [],
+                        //    i = 0,
+                        //    len = m.length,
+                        //    des = [],
+                        //    url;
+                        //
+                        //for (i = 0; i < len; i++) {
+                        //    if (m[i].indexOf("userid") !== 0 && m[i].indexOf("userId") !== 0 && m[i].indexOf("token") !== 0 && m[i].indexOf("openid") !== 0) {
+                        //        des.push(m[i]);
+                        //    }
+                        //}
+                        //url = u.split("?")[0] + (des.length > 0 ? "?" + des.join("&") : "");
 
-                        var domain = document.domain,
-                            u = location.href,
-                            p = location.protocol+"//",
-                            s = u.split("?")[1] || "",
-                            m = s.length > 0 ? s.split("&") : [],
-                            i = 0,
-                            len = m.length,
-                            des=[],
-                            url;
+                        //alert("登录失效，重新授权");
+                        //
+                        //Wlib.forceLogin(url, function () {
+                        //});
 
-                        for (i = 0; i < len; i++) {
-                            if(m[i].indexOf("userid")!==0 && m[i].indexOf("userId")!==0 && m[i].indexOf("token")!==0 && m[i].indexOf("openid")!==0){
-                                des.push(m[i]);
-                            }
-                        }
-                        url = u.split("?")[0]+(des.length>0?"?"+des.join("&"):"");
+                       that.getToken(function(){
+                           that.SendRequestNew(method, next, data, success, error);
+                       });
 
-                        alert("登录失效，重新授权");
 
-                        Wlib.forceLogin(url,function(){});
 
                     }
 

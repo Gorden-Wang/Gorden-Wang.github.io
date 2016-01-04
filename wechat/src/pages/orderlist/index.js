@@ -5,17 +5,17 @@
     var DocList = function () {
         this.init();
     }
-
+    var URL = location.href.split("#")[0];
     DocList.prototype = {
         init: function () {
             var that = this;
-            that.cacheDom();
-            that.cacheData();
-            that.addJuicerHandler();
-            //that.renderUI();
-            //that.recacheDom();
-            //that.bindEvent();
-            that.fetchData();
+            Wlib.wx.getJS(URL,function(){
+                that.cacheDom();
+                that.cacheData();
+                that.addJuicerHandler();
+                that.fetchData();
+            });
+
         },
         cacheDom: function () {
             var that = this;
@@ -29,13 +29,13 @@
         cacheData: function () {
             var that = this;
             that.data = {
-                userId: Wlib.getRequestParam("userid"),
+                userId: localStorage.getItem("userId"),
                 orderStatus: Wlib.getRequestParam("orderStatus") || "-1",
                 orderType: Wlib.getRequestParam("orderType") || "-1",
                 firstResult: 0,
                 maxResults: 10,
-                token : Wlib.getRequestParam("token"),
-                openid : Wlib.getRequestParam("openid")
+                token : localStorage.getItem("token"),
+                openid : localStorage.getItem("openid")
             }
         },
         renderUI: function () {
@@ -130,10 +130,10 @@
                         res = '未付款';
                         break;
                     case 2 :
-                        res = '已付款';
+                        res = '待完成';
                         break;
                     case 3 :
-                        res = '已完成';
+                        res = '已付款';
                         break;
                     case 4 :
                         res = '已退款';
@@ -301,11 +301,7 @@
         },
         bindEvent: function () {
             var that = this;
-            var u = [
-                "userid="+Wlib.getRequestParam("userid"),
-                "token="+Wlib.getRequestParam("token"),
-                "openid="+Wlib.getRequestParam("openid")
-            ].join("&");
+
             that.dom.filter.on("click", function () {
                 that.dom.filterbox.toggle();
                 that.dom.overlay.toggleClass("fadeIn");
@@ -326,12 +322,12 @@
 
             $(".banner li").on("click", function () {
                 var orderStatus = $(this).attr("data-id");
-                win.location.replace('../../pages/orderlist/index.html?orderStatus=' + orderStatus + '&orderType=' + that.data.orderType+"&"+u);
+                win.location.replace('../../pages/orderlist/index.html?orderStatus=' + orderStatus + '&orderType=' + that.data.orderType);
             });
 
             $(".filterbox li").on("click", function () {
                 var orderType = $(this).attr("data-id");
-                win.location.replace('../../pages/orderlist/index.html?orderStatus=' + that.data.orderStatus + '&orderType=' + orderType + "&" +u);
+                win.location.replace('../../pages/orderlist/index.html?orderStatus=' + that.data.orderStatus + '&orderType=' + orderType);
             })
 
 
@@ -348,12 +344,12 @@
         payFor : function(oid,price){
             var that = this;
             var p = {
-                "userid": Wlib.getRequestParam("userid"),
+                "userid": localStorage.getItem("userId"),
                 "orderid" : oid,
                 "amount" : price,
                 "channel" : "weixin",
                 "clientIp" : "127.0.0.1",
-                "openid" : Wlib.getRequestParam("openid")
+                "openid" : localStorage.getItem("openid")
             }
             Wlib.SendRequestNew("pay","payOrder",p,function(res){
                 wx.config({

@@ -5,13 +5,16 @@
     var DocList = function () {
         this.init();
     }
-
+    var URL = location.href.split("?")[0];
     DocList.prototype = {
         init: function () {
             var that = this;
-            that.cacheData();
-            that.cacheDom();
-            that.getContactList();
+            Wlib.wx.getJS(URL,function(){
+                that.cacheData();
+                that.cacheDom();
+                that.getContactList();
+            });
+
 
         },
         cacheData: function () {
@@ -19,7 +22,7 @@
 
             that.data = {
                 "treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
-                "userId": Wlib.getUserId(),
+                "userId": localStorage.getItem("userId"),
                 "treatmentPlanDetailId": Wlib.getRequestParam("treatmentPlanDetailId"),
                 "doc": Wlib.getRequestParam("doc"),
                 "dep": Wlib.getRequestParam("dep"),
@@ -101,7 +104,7 @@
             that.dom.btn.on("click", function () {
                 var param = {
                     "treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
-                    "userId": Wlib.getRequestParam("userId"),
+                    "userId": localStorage.getItem("userId"),
                     "treatmentPlanDetailId": Wlib.getRequestParam("treatmentPlanDetailId"),
                     "reserveId": that.data.CONID
                 }
@@ -133,7 +136,7 @@
             var that = this;
             var param = {
                 //"treatmentPlanId": Wlib.getRequestParam("treatmentPlanId"),
-                "userid": Wlib.getRequestParam("userid"),
+                "userid": that.data.userId,
                 "treatmentPlanDetailId": Wlib.getRequestParam("treatmentPlanDetailId"),
                 "profileId": that.data.CONID
             }
@@ -151,12 +154,12 @@
 
                     var oid = res.value.id;
                     var p = {
-                        "userid": Wlib.getRequestParam("userid"),
+                        "userid": localStorage.getItem("userId"),
                         "orderid" : oid,
                         "amount" : parseFloat(that.data.price)*100,
                         "channel" : "weixin",
                         "clientIp" : "127.0.0.1",
-                        "openid" : Wlib.getRequestParam("openid")
+                        "openid" : localStorage.getItem("openid")
                     }
                     Wlib.SendRequestNew("pay","payOrder",p,function(res){
                         wx.config({
@@ -177,7 +180,6 @@
                                 paySign: res.value.result.paySign, // 支付签名
                                 success: function (v) {
                                     // 支付成功后的回调函数
-                                    alert(JSON.stringify(v));
                                     if(v.errMsg == "chooseWXPay:ok" ) {
                                         //支付成功
                                         location.href = '../../pages/paysucc/index.html?orderId='+res.value.orderid+"&userId="+res.value.userid;

@@ -5,15 +5,17 @@
     var Person = function () {
         this.init();
     }
-
+    var URL = location.href.split("#")[0];
     Person.prototype = {
         init : function(){
             var that = this;
-            that.cacheDom();
-            that.cacheData();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            Wlib.wx.getJS(URL,function(){
+                that.cacheDom();
+                that.cacheData();
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
         },
         cacheDom : function(){
             var that = this;
@@ -43,10 +45,7 @@
             var that = this;
             $(".submit_btn").on("click",function(){
                 var url = "http://"+document.domain+"/wechat"+"/pages/orderdetail/index.html?orderId="+that.data.oid;
-                Wlib.forceLogin(url,function(){
-
-                })
-                //win.location.href = "../../pages/orderdetail/index.html?orderId="+that.data.oid;
+                location.href = url;
             });
         }
     }
