@@ -235,6 +235,7 @@ module.exports = function (grunt) {
                             //'<link href="$1?version='+version+'" type="text/css" rel="stylesheet"/>'
                             replacement: function (tag) {
                                 var tt = tag.match(/<link[^>]+?href="([^"]+?)"[^>]*\/\s*>/)[1];
+                                console.log(tt);
                                 return '<link href="' + tt + '?version=' + versionTemp + '" type="text/css" rel="stylesheet"/>'
                                 //return 123;
                             }
