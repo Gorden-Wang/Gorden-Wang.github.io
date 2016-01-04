@@ -5,15 +5,17 @@
     var Person = function () {
         this.init();
     }
-
+    var URL = location.href.split("#")[0];
     Person.prototype = {
         init: function () {
             var that = this;
-            that.cacheDom();
-            that.renderUI();
-            that.recacheDom();
-            that.renderRate();
-            that.bindEvent();
+            Wlib.wx.getJS(URL,function() {
+                that.cacheDom();
+                that.renderUI();
+                that.recacheDom();
+                that.renderRate();
+                that.bindEvent();
+            });
         },
         cacheDom: function () {
             var that = this;

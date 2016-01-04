@@ -1,92 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset=utf-8>
+    <title>My first Three.js app</title>
+    <style>
+        body { margin: 0; }
+        canvas { width: 100%; height: 100% }
+    </style>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+<script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
-<header>
-    北京积分落户计算器
-</header>
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
 
-<ul class="tips">
+    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
 
-</ul>
+    camera.position.z = 5;
 
-<section class="section">
-    <h3>社保</h3>
-    <p>满1年=3分</p>
-    <input type="number" placeholder="请输入连续年限">
+    var render = function () {
+        requestAnimationFrame( render );
 
-</section>
+//        cube.rotation.x += 0.1;
+        cube.rotation.y += 0.1;
 
-<section class="section">
-    <h3>居所</h3>
-    <p>买房1年=1分 租房1年=0.5分</p>
-    <select>
-        <option>买房</option>
-        <option>租房</option>
-    </select>
-    <input type="number" placeholder="请输入连续年限">
-</section>
-<section class="section">
-    <h3>教育背景</h3>
-    <p>大学专科(含高职)9分 大学本科15分 硕士27分 博士39分</p>
-    <select>
-        <option>大专</option>
-        <option>本科</option>
-        <option>硕士</option>
-        <option>博士</option>
-    </select>
-    <p>多学位？</p>
-    <select>
-        <option>硕士</option>
-        <option>博士</option>
-    </select>
-</section>
-<section class="section">
-    <h3>居住地引导</h3>
-    <p>外移 搬出城六区(东城区、西城区、朝阳区、海淀区、丰台区、石景山区) 每满1年加2分</p>
-    <select>
-        <option>东城区</option>
-        <option>西城区</option>
-        <option>朝阳区</option>
-        <option>海淀区</option>
-        <option>丰台区</option>
-        <option>石景山区</option>
-    </select>
-    <select>
-        <option>东城区</option>
-        <option>西城区</option>
-        <option>朝阳区</option>
-        <option>海淀区</option>
-        <option>丰台区</option>
-        <option>石景山区</option>
-    </select>
-    <input type="number" placeholder="请输入连续年限">
-</section>
+        renderer.render(scene, camera);
+    };
 
-<section class="section">
-    <h3>居住地引导</h3>
-    <p>外移 搬出城六区(东城区、西城区、朝阳区、海淀区、丰台区、石景山区) 每满1年加2分</p>
-    <select>
-        <option>东城区</option>
-        <option>西城区</option>
-        <option>朝阳区</option>
-        <option>海淀区</option>
-        <option>丰台区</option>
-        <option>石景山区</option>
-    </select>
-    <select>
-        <option>东城区</option>
-        <option>西城区</option>
-        <option>朝阳区</option>
-        <option>海淀区</option>
-        <option>丰台区</option>
-        <option>石景山区</option>
-    </select>
-    <input type="number" placeholder="请输入连续年限">
-</section>
+    render();
+</script>
 </body>
 </html>

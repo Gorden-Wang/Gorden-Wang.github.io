@@ -5,14 +5,15 @@
     var Index = function () {
         this.init();
     }
-
+    var URL = location.href.split("#")[0];
     Index.prototype = {
         init: function () {
             var that = this;
-            that.cacheData();
-            that.cacheDom();
-            that.bindEvent();
-
+            Wlib.wx.getJS(URL,function() {
+                that.cacheData();
+                that.cacheDom();
+                that.bindEvent();
+            });
         },
         cacheData: function () {
             var that = this;

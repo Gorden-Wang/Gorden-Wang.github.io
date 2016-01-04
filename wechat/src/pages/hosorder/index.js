@@ -462,9 +462,7 @@
                 //alert("../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid"))
                 //window.location.href = "../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid");
                 var u = "http://"+document.domain + "/wechat/pages/preorder/index.html?" + resparam;
-                Wlib.checkLogin(u,function () {
-
-                });
+                location.href = u;
             })
         }
     }
