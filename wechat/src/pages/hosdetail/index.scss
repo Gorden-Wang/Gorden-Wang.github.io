@@ -5,7 +5,8 @@
 
   .Center{
     div{
-      margin: 5px 0px;
+      margin: 8px 0px;
+      line-height: 1em;
     }
   }
 
@@ -17,6 +18,7 @@
     background-size: 9px 16px;
     background-repeat: no-repeat;
   }
+  
 
   .t-r{
     position: absolute;
@@ -25,6 +27,9 @@
   }
   .rate-eles{
     margin-right: 15px;
+    i{
+      vertical-align: top;
+    }
     img{
       width: 15px;
     }

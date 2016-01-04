@@ -42,14 +42,15 @@
 
             $("#or").text("￥" + that.data.data.goods_price);
             $("#de").text("￥" + that.data.data.goods_dingjin);
-            that.counter(that.data.data.begin_time, that.data.data.end_time);
+            that.counter(that.data.data.begin_time*1000, that.data.data.end_time*1000);
         },
         getPosition: function () {
             var that = this;
             var geolocationOptions = {timeout: 3000, enableHighAccuracy: true, maximumAge: 5000};
+
             function getLocation() {
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition,showError,geolocationOptions);
+                    navigator.geolocation.getCurrentPosition(showPosition, showError, geolocationOptions);
                 }
                 else {
                     Wlib.tips("没有定位到您的城市，请稍候再试")
@@ -63,7 +64,7 @@
                 that.getItems();
             }
 
-            function showError(){
+            function showError() {
                 that.getItems();
                 that.data.param.latitude = 0;
                 that.data.param.longitude = 0;
@@ -98,7 +99,7 @@
                 return res;
             });
             juicer.register("makeTime", function (str) {
-                var t = new Date(parseInt(str));
+                var t = new Date(parseInt(str)*1000);
                 var obj = {
                     y: t.getFullYear(),
                     m: t.getMonth() + 1,
@@ -124,21 +125,20 @@
 
 
             function counter(t) {
-                var obj = {
-                    d: t.getDay(),
-                    h: t.getHours(),
-                    m: t.getMinutes() + 1,
-                    s: t.getSeconds()
-                }
-                day.html(obj.d);
-                hour.html(obj.h);
-                min.html(obj.m);
-                sec.html(obj.s);
+                //一天 ：24H * 3600
+                var dd = parseInt(t / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
+                var hh = parseInt(t / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
+                var mm = parseInt(t / 1000 / 60 % 60, 10);//计算剩余的分钟数
+                var ss = parseInt(t / 1000 % 60, 10);//计算剩余的秒数
+                day.html(dd);
+                hour.html(hh);
+                min.html(mm);
+                sec.html(ss);
             }
 
             setInterval(function () {
                 time = time - 1000;
-                counter(new Date(time - 1000));
+                counter(time);
             }, 1000)
 
         }

@@ -320,7 +320,23 @@ window.Wlib = (function () {
                     error && error(err);
                 }
             })
-        }
+        },
+        forceLogin: function (url, callback) {
+            var that = this;
+            //var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
+            var desurl = 'http://www.talkart.cc/index.php?r=wechat/wechat/pay';
+            $.ajax({
+                url: desurl + "?callback=?&re_url=" + encodeURIComponent(url || location.href),
+                dataType: "JSONP",
+                success: function (res) {
+                    alert(JSON.stringify(res))
+                    //location.replace(res.value);
+                },
+                error: function (err) {
+                    alert("获取授权数据失败，请重试");
+                }
+            })
+        },
 
     };
     return new lib("local", "");

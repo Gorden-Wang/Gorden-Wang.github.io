@@ -8,7 +8,7 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>医生详情</title>
+    <title>诊所详情</title>
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
     <link href="../../lib/all.css" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
@@ -26,7 +26,7 @@
                 <a>
                     <div class="Left"><img src="${hos.images[0]}" /></div>
                     <div class="Center">
-                        <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong></div>
+                        <div class="row_2" style="margin-top: 0px;">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong></div>
                         <div class="row_4">${hos.address}</div>
                         <div class="row_4 tel">${hos.tel}</div>
                     </div>
@@ -38,7 +38,7 @@
         <div class="tabbox">
             <div class="box">
                 <div class="tab_tit">
-                    <span class="tab_selected" id="hosdes">诊所介绍</span><span id="hostip">诊所须知</span>
+                    <span class="tab_selected" id="hosdes">综合介绍</span><span id="hostip">用户评价</span>
                 </div>
             </div>
             <div class="tabs">
@@ -57,10 +57,10 @@
 </script>
 
 
-<script src="../../lib/libAll.js?version=0.1.0"></script>
-<script src="../../widgets/cityList/index.js?version=0.1.0"></script>
-<script src="../../widgets/rate/index.js?version=0.1.0"></script>
-<script src="../../pages/hosdetail/index.js?version=0.1.0"></script>
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/cityList/index.js?version=0.1.2"></script>
+<script src="../../widgets/rate/index.js?version=0.1.2"></script>
+<script src="../../pages/hosdetail/index.js?version=0.1.2"></script>
 
 </body>
 </html>

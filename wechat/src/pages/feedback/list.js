@@ -23,14 +23,14 @@
                 tpl: $("#tpl")
             }
         },
-        cacheData : function(){
+        cacheData: function () {
             var that = this;
             that.data = {};
             that.data.doctorId = Wlib.getRequestParam("doctorId");
             that.data.firstResult = 0;
             that.data.maxResults = 15;
         },
-        renderUI: function (){
+        renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
             that.dom.loading.hide();
@@ -42,32 +42,44 @@
             var rate = new Rate({
                 rate: 3.0,
                 wrapper: '.rate-wrapper',
-                activeImg : '../../images/redstar.png',
-                defaultImg : '../../images/graystar.png',
-                halfImg : '../../images/halfstar.png'});
+                activeImg: '../../images/redstar.png',
+                defaultImg: '../../images/graystar.png',
+                halfImg: '../../images/halfstar.png'
+            });
             rate.init()
 
 
             var rate1 = new Rate({
                 rate: 3.0,
                 wrapper: '.top-li div',
-                activeImg : '../../images/redstar.png',
-                defaultImg : '../../images/graystar.png'});
+                activeImg: '../../images/redstar.png',
+                defaultImg: '../../images/graystar.png'
+            });
             rate1.init()
         },
 
-        fetchData : function(){
-          var that = this;
+        fetchData: function () {
+            var that = this;
             var param = {
                 "doctorId": that.data.doctorId,
-                "firstResult" : that.data.firstResult,
-                "maxResults" :  that.data.maxResults
+                "firstResult": that.data.firstResult,
+                "maxResults": that.data.maxResults
             }
 
-            Wlib.SendRequestNew("treatQuery","findDoctorComment", param, function (res) {
+            Wlib.SendRequestNew("treatQuery", "findDoctorComment", param, function (res) {
+
+                if (res.value == null || res.value.length == 0) {
+                    //说明没有数据，提示 3000后返回
+                    that.dom.loading.hide();
+                    Wlib.tips("还没有用户评价");
+                    setTimeout(function () {
+                        window.history.back();
+                    }, 3000);
+                    return;
+                }
+
                 that.data.list = res.value;
                 that.data.COUNT = res.value.sumCount
-                console.log(that.data)
                 //that.dom.loading.hide();
                 that.renderUI();
                 that.recacheDom();
@@ -80,18 +92,18 @@
             });
 
         },
-        bindNext :function(tag){
+        bindNext: function (tag) {
             var that = this;
 
             Wlib._bindScrollTobottom(function () {
                 that.data.firstResult = that.data.firstResult + that.data.maxResults;
                 var param = {
                     "doctorId": that.data.doctorId,
-                    "firstResult" : that.data.firstResult,
-                    "maxResults" :  that.data.maxResults
+                    "firstResult": that.data.firstResult,
+                    "maxResults": that.data.maxResults
                 }
 
-                Wlib.SendRequestNew("treatQuery","findDoctorComment", param, function (res) {
+                Wlib.SendRequestNew("treatQuery", "findDoctorComment", param, function (res) {
                     //if (res.entity && res.entity.length > 0) {
 
                     var data = {};
@@ -107,7 +119,9 @@
 
                 });
             }, tag)
-        },
+        }
+
+        ,
         addJuicerHandler: function () {
             var that = this;
 
@@ -117,7 +131,7 @@
                     rate: parseFloat(v),
                     activeImg: '../../images/redstar.png',
                     defaultImg: '../../images/graystar.png',
-                    halfImg : '../../images/halfstar.png'
+                    halfImg: '../../images/halfstar.png'
                 });
                 return rate.init()
             });
@@ -126,23 +140,21 @@
                 //2015/08/01
                 var time = new Date(v);
                 var obj = {
-                    y : time.getFullYear(),
-                    m : (time.getMonth()+1) <10 ? "0"+(time.getMonth()+1) : (time.getMonth()+1),
-                    d : time.getDate()
+                    y: time.getFullYear(),
+                    m: (time.getMonth() + 1) < 10 ? "0" + (time.getMonth() + 1) : (time.getMonth() + 1),
+                    d: time.getDate()
                 }
 
-                return obj.y+"/"+obj.m+"/"+obj.d;
+                return obj.y + "/" + obj.m + "/" + obj.d;
             });
 
             juicer.register("makePercen", function (v) {
-                return v*100;
+                return v * 100;
             });
 
 
-
-
-
-        },
+        }
+        ,
         recacheDom: function () {
             var that = this;
             that.dom.banner = $(".banner");

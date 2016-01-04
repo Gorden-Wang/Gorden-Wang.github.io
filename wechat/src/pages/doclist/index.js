@@ -197,7 +197,7 @@
             var that = this;
             if (that.data.depList.length == 0) {
                 Wlib.SendRequestNew("commonQuery","findClinicDepts", {}, function (res) {
-                    if (res.errorcode == 0 && res.value) {
+                    if (res.errorCode == 0 && res.value) {
                         that.data.depList = res.value;
                         that.renderDepart();
                     }

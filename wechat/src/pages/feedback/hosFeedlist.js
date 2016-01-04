@@ -65,17 +65,27 @@
             }
 
             Wlib.SendRequestNew("treatQuery","findClinicComment", param, function (res) {
-                that.data.list = res.value;
-                that.data.COUNT = res.value.comments ? res.value.comments.length : res.value.length
-                console.log(that.data)
-                //that.dom.loading.hide();
-                that.renderUI();
-                that.recacheDom();
-                //that.renderRate();
+                if(res.value && res.value.length >0){
+                    that.data.list = res.value;
+                    that.data.COUNT = res.value.comments ? res.value.comments.length : res.value.length
+                    console.log(that.data)
+                    //that.dom.loading.hide();
+                    that.renderUI();
+                    that.recacheDom();
+                    //that.renderRate();
 
-                if (res.value.comments && (res.value.comments.length == that.data.maxResults)) {
-                    that.bindNext(true);
+                    if (res.value.comments && (res.value.comments.length == that.data.maxResults)) {
+                        that.bindNext(true);
+                    }
+                }else{
+                    that.dom.loading.hide();
+                    Wlib.tips("没有用户评价");
+                    setTimeout(function(){
+                        window.history.back();
+                    },3000);
                 }
+
+
 
             });
 

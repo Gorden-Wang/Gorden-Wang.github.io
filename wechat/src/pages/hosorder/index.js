@@ -52,7 +52,7 @@
                 slidesPerView: 4,
                 centeredSlides: false,
                 paginationClickable: true,
-                spaceBetween: 0,
+                spaceBetween: 0
             });
             swiper.slideTo(that.data.fuckJ, 0, false);
             that.dom.loading.hide();
@@ -430,13 +430,7 @@
             });
 
             that.dom.tab2.on("click", function () {
-                if ($(this).hasClass("select")) {
-                    return;
-                }
-
-                $(this).addClass("select").siblings().removeClass("select");
-                that.dom.wrap2.show();
-                that.dom.wrap1.hide();
+                location.href = "../../pages/feedback/hosFeedList.html?clinicId="+that.data.clinicId;
             });
             that.dom.despro.find("div").on("click", function () {
                 var id = $(this).attr("data-id");
@@ -460,7 +454,7 @@
                     "dep=" + encodeURIComponent($(that).attr("data-dep")),
                     "add=" + encodeURIComponent($(that).attr("data-add")),
                     "time=" + encodeURIComponent($(that).attr("data-time") + " " + $(this).text()),
-                    "price=" + $(that).attr("data-price")
+                    "price=" + parseInt($(that).attr("data-price"))/100
                 ]
 
                 var resparam = [].join.call(param, "&");

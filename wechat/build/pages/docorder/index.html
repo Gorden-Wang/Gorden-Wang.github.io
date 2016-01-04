@@ -8,13 +8,13 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>医生列表</title>
+    <title>医生下单</title>
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
 
     <link href="../../lib/all.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.0"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.2"></script>
 </head>
 <body>
 <div id="loading" class="loading">
@@ -43,7 +43,11 @@
                 <p>
                     套餐费:
                     <span>￥${getPrice()}</span>
-                    (包含：门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，门诊费，挂号费，)
+                    (1、 请就诊人携带本人身份证件按时前往预约诊所进行就诊；
+                    2、 一个订单号仅限当日使用，过期失效；
+                    3、 考虑到可能涉及相关检查，建议预约人避免在经期就诊；
+                    4、 伊健康门诊暂不提供病床和手术服务；
+                    5、 鉴于医疗服务的特殊性，取消订单将收取一定比例的违约金，具体请详见退改条款)
                 </p>
 
                 <div class="right-icon t-r"></div>
@@ -130,10 +134,10 @@
 </script>
 
 
-<script src="../../lib/libAll.js?version=0.1.0"></script>
-<script src="../../widgets/cityList/index.js?version=0.1.0"></script>
-<script src="../../widgets/swiper/index.js?version=0.1.0"></script>
-<script src="../../pages/docorder/index.js?version=0.1.0"></script>
+<script src="../../lib/libAll.js?version=0.1.2"></script>
+<script src="../../widgets/cityList/index.js?version=0.1.2"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.2"></script>
+<script src="../../pages/docorder/index.js?version=0.1.2"></script>
 
 </body>
 </html>

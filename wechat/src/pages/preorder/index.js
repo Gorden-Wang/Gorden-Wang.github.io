@@ -153,7 +153,7 @@
                     var p = {
                         "userid": Wlib.getRequestParam("userid"),
                         "orderid" : oid,
-                        "amount" : that.data.price,
+                        "amount" : parseFloat(that.data.price)*100,
                         "channel" : "weixin",
                         "clientIp" : "127.0.0.1",
                         "openid" : Wlib.getRequestParam("openid")

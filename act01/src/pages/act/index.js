@@ -52,7 +52,7 @@
             var that = this;
             juicer.register("makeTime", function (time) {
 
-                var v = new Date(time);
+                var v = new Date(parseInt(time)*1000);
                 var obj = {
                     y : v.getFullYear(),
                     m : v.getMonth()+1,

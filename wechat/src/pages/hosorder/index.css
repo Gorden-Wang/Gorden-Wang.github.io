@@ -63,7 +63,7 @@
     padding: 12px 30px 12px 10px;
     position: relative; }
     #page .time-picker .taochan-wrapper .right-icon {
-      top: 13px; }
+      top: 19px; }
     #page .time-picker .taochan-wrapper p {
       text-overflow: ellipsis;
       word-break: break-all;
@@ -122,7 +122,7 @@
         color: #919191;
         text-align: center; }
         #page .time-picker .tiaokuan-wrapper ul li .right-icon {
-          top: 15px; }
+          top: 19px; }
 
 .des-wrapper .t-bar {
   overflow: hidden;
@@ -157,7 +157,8 @@
     left: 10%; }
 .des-wrapper .js, .des-wrapper .xz {
   padding: 20px;
-  background-color: #FFF; }
+  background-color: #FFF;
+  line-height: 1.2em; }
   .des-wrapper .js ul li, .des-wrapper .xz ul li {
     overflow: hidden; }
   .des-wrapper .js ul .list-style, .des-wrapper .xz ul .list-style {
@@ -283,5 +284,9 @@ a:visited, a {
   margin-left: 10px;
   line-height: 20px;
   vertical-align: sub; }
+
+@media screen and (min-width: 320px) and (max-width: 370px) {
+  .tiaokuan-wrapper li {
+    font-size: 14px !important; } }
 
 /*# sourceMappingURL=index.css.map */

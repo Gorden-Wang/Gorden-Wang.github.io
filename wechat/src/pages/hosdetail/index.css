@@ -1,7 +1,8 @@
 #page .wrap {
   margin-top: 0px; }
 #page .Center div {
-  margin: 5px 0px; }
+  margin: 8px 0px;
+  line-height: 1em; }
 #page .right-icon {
   display: inline-block;
   width: 9px;
@@ -15,6 +16,8 @@
   top: 45px; }
 #page .rate-eles {
   margin-right: 15px; }
+  #page .rate-eles i {
+    vertical-align: top; }
   #page .rate-eles img {
     width: 15px; }
 #page .row_2 {

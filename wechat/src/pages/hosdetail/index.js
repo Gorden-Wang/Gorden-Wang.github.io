@@ -100,12 +100,7 @@
 
             });
             that.dom.hostip.on("click",function(){
-                if($(this).hasClass("tab_selected")){
-                    return;
-                }
-                $(this).addClass("tab_selected").siblings().removeClass("tab_selected");
-                that.dom.tipwrapper.show();
-                that.dom.deswrapper.hide();
+               location.href = "../../pages/feedback/hosFeedList.html?clinicId="+that.data.clinicId;
 
             })
 
