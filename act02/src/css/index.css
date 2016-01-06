@@ -1,0 +1,151 @@
+.page-wrap {
+  min-width: 1200px;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  height: 100%; }
+  .page-wrap .left-wrap {
+    width: 195px;
+    float: left;
+    background-color: #ffffff;
+    height: 100%; }
+    .page-wrap .left-wrap .l-top-wrap {
+      background-image: url(../img/l-t-bg.png);
+      padding: 20px;
+      color: white;
+      overflow: hidden; }
+      .page-wrap .left-wrap .l-top-wrap .img-wrap {
+        float: left;
+        width: 58px;
+        height: 58px;
+        border-radius: 58px;
+        background-color: #dcdcdc;
+        border: 1px solid #ffffff;
+        padding: 3px; }
+        .page-wrap .left-wrap .l-top-wrap .img-wrap img {
+          width: 55px;
+          height: 55px;
+          margin: auto;
+          display: block; }
+      .page-wrap .left-wrap .l-top-wrap .name-wrap {
+        position: relative;
+        left: 10px;
+        top: 25px;
+        font-size: 14px;
+        font-family: "Heiti SC";
+        color: white; }
+    .page-wrap .left-wrap .ul-wrap .fi-title {
+      padding: 10px;
+      background-color: #ffffff;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid #dcdcdc; }
+      .page-wrap .left-wrap .ul-wrap .fi-title span {
+        width: 19px;
+        height: 19px;
+        float: left; }
+      .page-wrap .left-wrap .ul-wrap .fi-title p {
+        float: left;
+        left: 10px;
+        top: 0px;
+        position: relative;
+        font-size: 18px;
+        font-family: "Heiti SC";
+        color: black;
+        font-weight: 600; }
+    .page-wrap .left-wrap .ul-wrap .fi-title:after {
+      background: url(../img/right-icon.png) no-repeat right center;
+      background-size: 100%;
+      content: '';
+      width: 7px;
+      height: 11px;
+      position: absolute;
+      right: 17px;
+      top: 13px; }
+    .page-wrap .left-wrap .ul-wrap .fi-title.selected:after {
+      background: url(../img/down-icon.png) no-repeat right center;
+      background-size: 100%;
+      content: '';
+      width: 10px;
+      height: 7px;
+      position: absolute;
+      right: 17px;
+      top: 15px; }
+    .page-wrap .left-wrap .ul-wrap .fi-title.selected {
+      border-bottom: 0px; }
+    .page-wrap .left-wrap .ul-wrap ul {
+      background-color: #e7f2f7; }
+      .page-wrap .left-wrap .ul-wrap ul li {
+        padding: 10px 0px;
+        padding-left: 40px;
+        color: #1081b6; }
+      .page-wrap .left-wrap .ul-wrap ul li.li-selected {
+        background-color: #1081b6;
+        color: #ffffff;
+        margin-right: -7px;
+        position: relative; }
+      .page-wrap .left-wrap .ul-wrap ul li.li-selected:after {
+        position: absolute;
+        content: '';
+        background-image: url(../img/li-selected-triggle.png);
+        width: 7px;
+        height: 8px;
+        right: 0px;
+        bottom: -7px; }
+  .page-wrap .right-wrap {
+    height: 100%;
+    margin-left: 195px;
+    position: relative; }
+    .page-wrap .right-wrap .r-top-wrap .r-title-wrap {
+      background-color: #1081b6;
+      padding: 20px 20px;
+      font-size: 20px;
+      font-family: "Heiti SC";
+      color: white;
+      overflow: hidden; }
+      .page-wrap .right-wrap .r-top-wrap .r-title-wrap > p {
+        float: left; }
+      .page-wrap .right-wrap .r-top-wrap .r-title-wrap > .r-right-wrap {
+        float: right;
+        position: relative;
+        padding-left: 25px;
+        background-image: url(../img/r-title-img.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        height: 23px;
+        font-size: 16px;
+        vertical-align: text-bottom;
+        line-height: 28px; }
+        .page-wrap .right-wrap .r-top-wrap .r-title-wrap > .r-right-wrap span:last-of-type {
+          font-size: 18px;
+          display: inline-block;
+          margin-left: 10px; }
+    .page-wrap .right-wrap .r-top-wrap .r-tips-wrap {
+      background-color: #ffffff; }
+      .page-wrap .right-wrap .r-top-wrap .r-tips-wrap ul {
+        padding: 10.5px 20px;
+        overflow: hidden; }
+        .page-wrap .right-wrap .r-top-wrap .r-tips-wrap ul li {
+          width: 150px;
+          float: left;
+          text-align: center;
+          font-size: 15px;
+          font-family: "Heiti SC";
+          font-weight: 400; }
+          .page-wrap .right-wrap .r-top-wrap .r-tips-wrap ul li .tip-radius {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #0f85d7;
+            top: 4px;
+            position: relative;
+            left: 5px; }
+    .page-wrap .right-wrap .r-main-wrap {
+      background-color: #f0f0f0;
+      height: 100%; }
+
+/*# sourceMappingURL=index.css.map */

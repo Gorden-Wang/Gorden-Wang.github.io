@@ -133,7 +133,7 @@
                         res = '待完成';
                         break;
                     case 3 :
-                        res = '已付款';
+                        res = '已完成';
                         break;
                     case 4 :
                         res = '已退款';
