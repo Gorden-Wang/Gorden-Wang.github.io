@@ -86,7 +86,8 @@
         background-color: #1081b6;
         color: #ffffff;
         margin-right: -7px;
-        position: relative; }
+        position: relative;
+        z-index: 2; }
       .page-wrap .left-wrap .ul-wrap ul li.li-selected:after {
         position: absolute;
         content: '';
@@ -147,5 +148,102 @@
     .page-wrap .right-wrap .r-main-wrap {
       background-color: #f0f0f0;
       height: 100%; }
+      .page-wrap .right-wrap .r-main-wrap .m-title {
+        font-size: 16px;
+        padding: 20px;
+        font-family: "Heiti SC";
+        color: #646464; }
+        .page-wrap .right-wrap .r-main-wrap .m-title span:last-of-type {
+          color: #000;
+          font-weight: 600; }
+      .page-wrap .right-wrap .r-main-wrap .m-location {
+        padding: 0 20px;
+        color: #000; }
+        .page-wrap .right-wrap .r-main-wrap .m-location span:first-of-type {
+          background-image: url(../img/r-location.png);
+          padding-left: 15px;
+          background-position: left center;
+          background-repeat: no-repeat;
+          height: 15px;
+          display: inline-block;
+          color: #1081b6; }
+        .page-wrap .right-wrap .r-main-wrap .m-location span:last-of-type {
+          font-weight: 600; }
+      .page-wrap .right-wrap .r-main-wrap .tab-wrap {
+        padding: 20px;
+        overflow: hidden;
+        color: #1081b6; }
+        .page-wrap .right-wrap .r-main-wrap .tab-wrap ul {
+          overflow: hidden;
+          float: left; }
+          .page-wrap .right-wrap .r-main-wrap .tab-wrap ul li {
+            float: left;
+            margin-right: 20px;
+            padding: 5px 8px; }
+          .page-wrap .right-wrap .r-main-wrap .tab-wrap ul li.selected {
+            background-color: #1081b6;
+            color: #FFFFFF;
+            border-radius: 8px; }
+        .page-wrap .right-wrap .r-main-wrap .tab-wrap > p {
+          float: right;
+          position: relative; }
+          .page-wrap .right-wrap .r-main-wrap .tab-wrap > p span:first-of-type {
+            margin-right: 40px; }
+          .page-wrap .right-wrap .r-main-wrap .tab-wrap > p .refresh {
+            background-image: url(../img/r-refresh.png);
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            top: -5px;
+            right: 0px;
+            position: absolute; }
+      .page-wrap .right-wrap .r-main-wrap .m-m-wrap {
+        margin: 0px 20px;
+        padding: 20px;
+        background-color: #FFFFFF; }
+      .page-wrap .right-wrap .r-main-wrap .st4 {
+        padding: 20px 30px;
+        overflow: hidden;
+        font-size: 15px; }
+        .page-wrap .right-wrap .r-main-wrap .st4 .table:last-of-type {
+          border-right: 0px;
+          float: right; }
+        .page-wrap .right-wrap .r-main-wrap .st4 .table {
+          float: left;
+          width: 47%;
+          border-right: 1px solid #a2a2a2; }
+          .page-wrap .right-wrap .r-main-wrap .st4 .table .table-title {
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 600; }
+            .page-wrap .right-wrap .r-main-wrap .st4 .table .table-title span:first-of-type {
+              position: relative;
+              right: -5px; }
+            .page-wrap .right-wrap .r-main-wrap .st4 .table .table-title span.mid-splite {
+              background-image: url(../img/r-splite.png);
+              display: inline-block;
+              width: 15px;
+              height: 15px;
+              top: 5px;
+              position: relative;
+              background-size: contain; }
+            .page-wrap .right-wrap .r-main-wrap .st4 .table .table-title span:last-of-type {
+              position: relative;
+              top: 10px;
+              left: -8px; }
+          .page-wrap .right-wrap .r-main-wrap .st4 .table table {
+            width: 100%; }
+            .page-wrap .right-wrap .r-main-wrap .st4 .table table tr td:nth-of-type(2n) {
+              color: #1081b6;
+              line-height: 2em; }
+            .page-wrap .right-wrap .r-main-wrap .st4 .table table tr td {
+              text-align: center; }
+              .page-wrap .right-wrap .r-main-wrap .st4 .table table tr td span {
+                color: #a2a2a2;
+                display: inline-block;
+                margin-left: 5px; }
 
 /*# sourceMappingURL=index.css.map */

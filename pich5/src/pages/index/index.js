@@ -6,8 +6,8 @@
         this.init();
 
         //Wlib.Weixin.goAuth();
-        //Wlib.wx.pay();
-        Wlib.wx.auth();
+        Wlib.wx.pay();
+        //Wlib.wx.auth();
     }
 
     Index.prototype = {

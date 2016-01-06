@@ -107,6 +107,7 @@
           color: #ffffff;
           margin-right: -7px;
           position: relative;
+          z-index: 2;
         }
         li.li-selected:after {
           position: absolute;
@@ -192,6 +193,136 @@
     .r-main-wrap{
       background-color: #f0f0f0;
       height: 100%;
+      .m-title{
+        font-size: 16px;
+        padding: 20px;
+        font-family: "Heiti SC";
+        color: rgb( 100, 100, 100 );
+        span:last-of-type{
+          color: #000;
+          font-weight: 600;
+        }
+      }
+      .m-location{
+        padding:0 20px;
+        color: #000;
+        span:first-of-type{
+          background-image: url(../img/r-location.png);
+          padding-left: 15px;
+          background-position: left center;
+          background-repeat: no-repeat;
+          height: 15px;
+          display: inline-block;
+          color:#1081b6;
+        }
+        span:last-of-type{
+          font-weight: 600;
+        }
+      }
+
+      .tab-wrap{
+        padding: 20px;
+        overflow: hidden;
+        color:#1081b6;
+
+        ul{
+          overflow: hidden;
+          float: left;
+
+          li{
+            float: left;
+            margin-right: 20px;
+            padding: 5px 8px;
+          }
+
+          li.selected{
+            background-color:#1081b6 ;
+            color: #FFFFFF;
+            border-radius: 8px;
+          }
+        }
+        &>p{
+          float:right;
+          position: relative;
+          span:first-of-type{
+            margin-right: 40px;
+          }
+          .refresh{
+            background-image: url(../img/r-refresh.png);
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            top: -5px;
+            right: 0px;
+            position: absolute;
+          }
+        }
+      }
+
+      .m-m-wrap{
+        margin:0px 20px;
+        padding: 20px;
+        background-color: #FFFFFF;
+      }
+      .st4{
+        padding: 20px 30px;
+        overflow: hidden;
+        font-size: 15px;
+
+        .table:last-of-type{
+          border-right: 0px;
+          float: right;
+        }
+        .table{
+          float: left;
+          width: 47%;
+          border-right: 1px solid #a2a2a2;
+          .table-title{
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 600;
+            span:first-of-type{
+              position: relative;
+              right: -5px;
+            }
+            span.mid-splite{
+              background-image: url(../img/r-splite.png);
+              display: inline-block;
+              width: 15px;
+              height: 15px;
+              top: 5px;
+              position: relative;
+              background-size: contain;
+            }
+            span:last-of-type{
+              position: relative;
+              top: 10px;
+              left: -8px;
+            }
+
+          }
+          table{
+            width: 100%;
+            tr{
+              td:nth-of-type(2n){
+                color: #1081b6;
+                line-height: 2em;
+              }
+              td{
+                text-align: center;
+                span{
+                  color: #a2a2a2;
+                  display: inline-block;
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
   }
