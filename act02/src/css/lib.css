@@ -1,0 +1,359 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*全局样式*/
+html {
+    _background: url(about:blank);
+}
+
+body {
+    background: #eeeeee;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    -webkit-appearance: none;
+}
+
+a:visited,
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #333;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+}
+
+input[type="radio"] {
+    -webkit-appearance: radio;
+    vertical-align: sub;
+    margin-right: 3px;
+}
+
+body, html, h1, h2, h3, h4, p, ul, li, form, ol {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+body, input, textarea, select {
+    font-size: 14px;
+    font-family: "微软雅黑", arail, sans-sarif;
+    color: #333;
+}
+
+i {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    content: '\0020';
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    overflow: hidden
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+img {
+    border: none;
+    vertical-align: middle
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mt60 {
+    margin-top: 60px;
+}
+
+.mb8 {
+    margin-bottom: 8px;
+}
+
+.ptb15 {
+    padding: 15px 0;
+}
+
+.pt20 {
+    padding-top: 20px;
+}
+
+.pt30 {
+    padding-top: 30px;
+}
+
+.bd_bot {
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.bd_top {
+    border-bottom: 1px solid #d1d1d1;
+}
+
+input, button, select, textarea {
+    outline: none
+}
+
+textarea {
+    resize: none;
+}
+
+#loading {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    z-index: 99999;
+    background: transparent;
+
+}
+
+#loading .loading-content {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    line-height: 100px;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -45px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 0px !important;
+    box-shadow: none !important;
+    display: block;
+    background-color: rgba(47, 34, 33, 0.9);
+    background-image: url(../images/common/loading_new.gif);
+    background-size: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    line-height: 0px;
+    text-indent: -999em;
+}
+
+.tipsanimated {
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes tipsfadeIn {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@keyframes tipsfadeIn {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+.tipsfadeIn {
+    -webkit-animation-name: tipsfadeIn;
+    animation-name: tipsfadeIn;
+}
+
+/*with no close*/
+@-webkit-keyframes tipsfadeInNo {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@keyframes tipsfadeInNo {
+    0% {
+        opacity: 0;
+        background-color: black;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+    35% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    65% {
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: black;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+.tipsfadeInNo {
+    -webkit-animation-name: tipsfadeInNo;
+    animation-name: tipsfadeInNo;
+}
+
+.fadeAnimate {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        display: none;
+        -webkit-animation-timing-function: ease-in;
+    }
+    2% {
+        opacity: 0.2;
+        height: 100%;
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+    }
+    2% {
+        opacity: 0.2;
+        height: 100%;
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.fixed {
+    position: fixed;
+    top: 45%;
+    width: 80%;
+    margin: 0 10%;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    -webkit-box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    text-align: center;
+    z-index: 200;
+}
+
+
+
+
+
+
