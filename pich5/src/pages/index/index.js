@@ -3,11 +3,20 @@
  */
 (function (win, $) {
     var Index = function () {
-        this.init();
 
+
+        var that = this;
         //Wlib.Weixin.goAuth();
-        Wlib.wx.pay();
-        //Wlib.wx.auth();
+        //Wlib.wx.pay();
+        //Wlib.wx.auth(function(){
+            Wlib.wx.getJSSign('',function(data){
+                Wlib.wx.jsConfig(data,function(){
+                    Wlib.wx.hideMenu();
+                    that.init();
+                });
+            });
+
+        //});
     }
 
     Index.prototype = {

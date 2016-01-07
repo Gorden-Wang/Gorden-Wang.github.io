@@ -44,11 +44,11 @@
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                return  Wlib.getRequestParam("id",url);
+                return Wlib.getRequestParam("id", url);
             });
             juicer.register("getType", function (type) {
                 var res = "";
-                switch (type){
+                switch (type) {
                     case "出售":
                         res = "../../pages/sale/index.html";
                         break;
@@ -73,43 +73,78 @@
                 spaceBetween: 5
             });
 
-            Wlib._scrollHide(100,that.dom.scrollTo);
+            Wlib._scrollHide(100, that.dom.scrollTo);
 
-            that.dom.moreLi.on("click",function(){
+            that.dom.moreLi.on("click", function () {
                 var id = $(this).attr("data-id");
                 var des = $(this).attr("data-url");
 
-                if(!id){
+                if (!id) {
                     Wlib.tips("已经下架");
                     return;
                 }
 
-                win.location = des + "?id="+id;
+                win.location = des + "?id=" + id;
             });
-            that.dom.scrollTo.on("click",function(){
-                $.scrollTo(0,500);
+            that.dom.scrollTo.on("click", function () {
+                $.scrollTo(0, 500);
             });
 
-            that.dom.myBtn.on("click",function(){
+            that.dom.myBtn.on("click", function () {
                 win.location = "../../pages/my/index.html";
+            });
+
+            $(".follow-btn").on("click",function(){
+                that.addAttention();
             });
             Wlib._bindLazyLoad();
         },
         getData: function () {
             var that = this;
 
-            //@TODO : uid 已经验证手机号
             var req = {
-                id : that.data.id,
-                uid : "",
-                token : ""
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
             }
-            Wlib.SendRequest("default/api/info",req,"GET",function(data){
+            Wlib.SendRequest("default/api/info", req, "GET", function (data) {
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();
                 that.bindEvent();
             })
+
+        },
+        addAttention: function () {
+            /*
+             给某一个商品关注
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            if (that.data.data.focus == 0) {
+                //去关注
+                Wlib.SendRequest("default/picture/attention", req, "GET", function (data) {
+                    if(data.state == 1){
+                        Wlib.tips(data.message);
+                    }else{
+                        Wlib.tips("关注失败")
+                    }
+                });
+            } else {
+                //取消关注
+                Wlib.SendRequest("default/picture/attentionDel", req, "GET", function (data) {
+                    if(data.state == 1){
+                        Wlib.tips(data.message);
+                    }else{
+                        Wlib.tips("取消关注失败")
+                    }
+                });
+            }
+
 
         }
     }

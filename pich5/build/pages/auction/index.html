@@ -45,7 +45,12 @@
                 <span>收藏</span>
             </div>
             <div class="follow-btn">
+                {@if data.focus == 0}
                 关注此件
+                {@else}
+                取消关注
+                {@/if}
+
             </div>
         </section>
 
@@ -201,7 +206,7 @@
             {@if data.interested.length > 0 }
             <ul>
 
-                {@each data.interested as item}
+                {@each data.interested as item,index}
                 <li>
                     <a>
                         <img lazy-image="${item.user_logo}" class="lazy-image">

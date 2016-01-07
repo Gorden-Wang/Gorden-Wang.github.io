@@ -149,7 +149,9 @@
     #page .ul-wrapper3 ul {
       flex: 1;
       overflow: hidden;
-      display: flex; }
+      display: flex;
+      flex-wrap: wrap;
+      height: 30px; }
       #page .ul-wrapper3 ul li {
         margin-right: 10px;
         height: 30px;
