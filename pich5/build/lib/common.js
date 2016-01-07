@@ -325,7 +325,7 @@ window.Wlib = (function () {
             //@TODO : 入参：data
             jsConfig : function(data,callback){
                 wx.config({
-                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                     appId: data.appId, // 必填，公众号的唯一标识
                     timestamp: data.timestamp, // 必填，生成签名的时间戳
                     nonceStr: data.nonceStr, // 必填，生成签名的随机串
@@ -337,7 +337,10 @@ window.Wlib = (function () {
                         'onMenuShareWeibo',
                         'onMenuShareQZone',
                         'hideMenuItems',
-                        'showMenuItems'
+                        'showMenuItems',
+                        'chooseImage',
+                        'uploadImage',
+                        'previewImage'
                     ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                 });
                 callback && callback();
@@ -377,7 +380,38 @@ window.Wlib = (function () {
                         alert("获取授权数据失败，请重试");
                     }
                 })
+            },
+            previewImgs : function(current,urls){
+
+                wx.previewImage({
+                    current: current,
+                    urls: urls || [current]
+                });
+            },
+            chooseImgs : function(callback){
+                wx.chooseImage({
+                    count: 1, // 默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        callback && callback(res.localIds);
+                        //var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    }
+                });
+            },
+            upLoadImgs : function(id,callback){
+                alert(id);
+                wx.uploadImage({
+                    localId: id, // 需要上传的图片的本地ID，由chooseImage接口获得
+                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                    success: function (res) {
+                        alert(res);
+                        callback && callback(res.serverId);
+                        //var serverId = res.serverId; // 返回图片的服务器端ID
+                    }
+                });
             }
+
 
         }
 

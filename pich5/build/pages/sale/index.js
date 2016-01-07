@@ -99,7 +99,12 @@
             });
             that.dom.buyBtn.on("click",function(){
                 win.location = "../../pages/buy/index.html";
-            })
+            });
+            $("#pics .swiper-slide").on("click",function(){
+                var current = $(this).find("img").attr("src");
+                //   如果是个数组的话，直接穿进去就ok了。
+                Wlib.wx.previewImgs(current);
+            });
             Wlib._bindLazyLoad();
 
         },
