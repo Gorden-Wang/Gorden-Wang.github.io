@@ -12,6 +12,7 @@
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../pages/auction/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 </head>
 <body>
@@ -45,7 +46,12 @@
                 <span>收藏</span>
             </div>
             <div class="follow-btn">
+                {@if data.focus == 0}
                 关注此件
+                {@else}
+                取消关注
+                {@/if}
+
             </div>
         </section>
 
@@ -79,7 +85,7 @@
 
                 <div class="t-m-w">
                     <p>
-                        <span>${data.new_price}</span>元
+                        <span id="pricetext">${data.new_price}</span>元
                     </p>
 
                     <p class="hr-bg"></p>
@@ -201,7 +207,7 @@
             {@if data.interested.length > 0 }
             <ul>
 
-                {@each data.interested as item}
+                {@each data.interested as item,index}
                 <li>
                     <a>
                         <img lazy-image="${item.user_logo}" class="lazy-image">
@@ -325,7 +331,11 @@
 
         <section class="bottom-wrapper">
             <span class="heart-w">
-                <span class="index-icon icon7"></span>
+                {@if data.praise == 0 }
+                <span class="index-icon icon7" id="praise"></span>
+                {@else}
+                <span class="index-icon icon9" id="praise"></span>
+                {@/if}
             </span>
 
             <div class="saysometing">

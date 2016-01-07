@@ -11,7 +11,8 @@
     width: 195px;
     float: left;
     background-color: #ffffff;
-    height: 100%; }
+    height: 100%;
+    overflow-y: scroll; }
     .page-wrap .left-wrap .l-top-wrap {
       background-image: url(../img/l-t-bg.png);
       padding: 20px;
@@ -97,9 +98,9 @@
         right: 0px;
         bottom: -7px; }
   .page-wrap .right-wrap {
-    height: 100%;
     margin-left: 195px;
-    position: relative; }
+    position: relative;
+    overflow-y: scroll; }
     .page-wrap .right-wrap .r-top-wrap .r-title-wrap {
       background-color: #1081b6;
       padding: 20px 20px;
@@ -203,7 +204,8 @@
       .page-wrap .right-wrap .r-main-wrap .m-m-wrap {
         margin: 0px 20px;
         padding: 20px;
-        background-color: #FFFFFF; }
+        background-color: #FFFFFF;
+        margin-bottom: 30px; }
       .page-wrap .right-wrap .r-main-wrap .st4 {
         padding: 20px 30px;
         overflow: hidden;
@@ -245,5 +247,9 @@
                 color: #a2a2a2;
                 display: inline-block;
                 margin-left: 5px; }
+      .page-wrap .right-wrap .r-main-wrap .temp1 h3 {
+        color: #1081b6;
+        font-size: 16px;
+        text-align: center; }
 
 /*# sourceMappingURL=index.css.map */

@@ -212,6 +212,8 @@
       flex: 1;
       overflow: hidden;
       display: flex;
+      flex-wrap: wrap;
+      height: 30px;
       li {
         margin-right: 10px;
         height: 30px;

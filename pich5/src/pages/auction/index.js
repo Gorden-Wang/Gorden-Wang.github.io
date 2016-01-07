@@ -3,7 +3,15 @@
  */
 (function (win, $) {
     var Index = function () {
-        this.init();
+        var that = this;
+
+        Wlib.wx.getJSSign('',function(data){
+            Wlib.wx.jsConfig(data,function(){
+                Wlib.wx.hideMenu();
+                that.init();
+            });
+        });
+
     }
 
     Index.prototype = {
@@ -40,15 +48,18 @@
             that.dom.scrollTo = $(".icon10");
             that.dom.myBtn = $("#mybtn");
             that.dom.buyBtn = $(".btn-w");
+            that.dom.pricede = $(".icon11");
+            that.dom.priceadd = $(".icon12");
+            that.dom.pricewrap = $("#pricetext")
         },
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                return  Wlib.getRequestParam("id",url);
+                return Wlib.getRequestParam("id", url);
             });
             juicer.register("getType", function (type) {
                 var res = "";
-                switch (type){
+                switch (type) {
                     case "出售":
                         res = "../../pages/sale/index.html";
                         break;
@@ -73,43 +84,133 @@
                 spaceBetween: 5
             });
 
-            Wlib._scrollHide(100,that.dom.scrollTo);
+            Wlib._scrollHide(100, that.dom.scrollTo);
 
-            that.dom.moreLi.on("click",function(){
+            that.dom.moreLi.on("click", function () {
                 var id = $(this).attr("data-id");
                 var des = $(this).attr("data-url");
 
-                if(!id){
+                if (!id) {
                     Wlib.tips("已经下架");
                     return;
                 }
 
-                win.location = des + "?id="+id;
+                win.location = des + "?id=" + id;
             });
-            that.dom.scrollTo.on("click",function(){
-                $.scrollTo(0,500);
+            that.dom.scrollTo.on("click", function () {
+                $.scrollTo(0, 500);
             });
 
-            that.dom.myBtn.on("click",function(){
+            that.dom.myBtn.on("click", function () {
                 win.location = "../../pages/my/index.html";
+            });
+
+            $(".follow-btn").on("click",function(){
+                that.addAttention(this);
+            });
+            $("#praise").on("click",function(){
+                that.addPraise(this);
             });
             Wlib._bindLazyLoad();
         },
         getData: function () {
             var that = this;
 
-            //@TODO : uid 已经验证手机号
             var req = {
-                id : that.data.id,
-                uid : "",
-                token : ""
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
             }
-            Wlib.SendRequest("default/api/info",req,"GET",function(data){
+            Wlib.SendRequest("default/api/info", req, "GET", function (data) {
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();
                 that.bindEvent();
             })
+
+        },
+        addAttention: function (obj) {
+            /*
+             给某一个商品关注
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            that.dom.loading.show();
+            if (that.data.data.focus == 0) {
+                //去关注
+                Wlib.SendRequest("default/picture/attention", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("取消关注");
+                        that.data.data.focus = 1;
+
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("关注失败")
+                    }
+                });
+            } else {
+                //取消关注
+                Wlib.SendRequest("default/picture/attentionDel", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("关注此件");
+                        that.data.data.focus = 0;
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("取消关注失败")
+                    }
+                });
+            }
+
+
+        },
+        addPraise: function (obj) {
+            /*
+             给某一个商品关注
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            that.dom.loading.show();
+            if (that.data.data.praise == 0) {
+                //去关注
+                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).removeClass("icon7").addClass("icon9");
+                        that.data.data.praise = 1;
+
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("关注失败")
+                    }
+                });
+            } else {
+                //取消关注
+                Wlib.SendRequest("default/picture/praiseDel", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).removeClass("icon9").addClass("icon7");
+                        that.data.data.praise = 0;
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("取消关注失败")
+                    }
+                });
+            }
+
 
         }
     }

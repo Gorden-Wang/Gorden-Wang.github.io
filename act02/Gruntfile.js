@@ -530,7 +530,7 @@ module.exports = function (grunt) {
     grunt.registerTask('exec_build', '默认构建任务', function () {
         base = grunt.config('grunt_default') || base;
         var action =
-            ['setenv:publish',
+            [
                 'concat',
                 'clean:build',
                 'clean:mods',
@@ -563,7 +563,6 @@ module.exports = function (grunt) {
 
     // 默认构建任务
     grunt.registerTask('build', 'build to publish', function () {
-        setEvn('publish');
         var action = ['prompt:grunt_default', 'prompt:uglify', 'exec_build'];
         task.run(action);
     });

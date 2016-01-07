@@ -14,6 +14,8 @@
     float: left;
     background-color: #ffffff;
     height: 100%;
+    overflow-y: scroll;
+
 
     .l-top-wrap {
       background-image: url(../img/l-t-bg.png);
@@ -124,10 +126,9 @@
   }
 
   .right-wrap {
-    height: 100%;
     margin-left: 195px;
     position: relative;
-
+    overflow-y: scroll;
 
     .r-top-wrap{
       .r-title-wrap{
@@ -266,6 +267,7 @@
         margin:0px 20px;
         padding: 20px;
         background-color: #FFFFFF;
+        margin-bottom: 30px;
       }
       .st4{
         padding: 20px 30px;
@@ -321,6 +323,14 @@
               }
             }
           }
+        }
+      }
+
+      .temp1{
+        h3{
+          color: #1081b6;
+          font-size: 16px;
+          text-align: center;
         }
       }
     }

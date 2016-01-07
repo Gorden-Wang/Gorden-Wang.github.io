@@ -198,7 +198,10 @@
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
-      display: flex; }
+      display: flex;
+      -webkit-flex-wrap: wrap;
+              flex-wrap: wrap;
+      height: 30px; }
       #page .ul-wrapper3 ul li {
         margin-right: 10px;
         height: 30px;
