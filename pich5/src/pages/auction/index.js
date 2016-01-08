@@ -173,7 +173,7 @@
         },
         addPraise: function (obj) {
             /*
-             给某一个商品关注
+             给某一个商品点赞
              */
             var that = this;
             var req = {
@@ -198,7 +198,8 @@
                 });
             } else {
                 //取消关注
-                Wlib.SendRequest("default/picture/praiseDel", req, "GET", function (data) {
+                req.type = 2;
+                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
                     if(data.state == 1){
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
