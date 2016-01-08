@@ -9,6 +9,7 @@
             Wlib.wx.jsConfig(data,function(){
                 Wlib.wx.hideMenu();
                 that.init();
+
             });
         });
 
@@ -111,6 +112,27 @@
             $("#praise").on("click",function(){
                 that.addPraise(this);
             });
+            that.dom.pricede.on("click",function(){
+                var ori = parseInt(that.data.data.starting_price),val = parseInt(that.dom.pricewrap.text()),res = val-parseInt(that.data.data.range);
+
+                if(res>=ori){
+                    that.dom.pricewrap.text(res);
+                }
+
+
+
+            });
+            that.dom.priceadd.on("click",function(){
+                var val = parseInt(that.dom.pricewrap.text());
+                that.dom.pricewrap.text(val+parseInt(that.data.data.range));
+            });
+            $("#pics .swiper-slide").on("click",function(){
+               var current = $(this).find("img").attr("src");
+            //   如果是个数组的话，直接穿进去就ok了。
+                Wlib.wx.previewImgs(current);
+            });
+
+
             Wlib._bindLazyLoad();
         },
         getData: function () {

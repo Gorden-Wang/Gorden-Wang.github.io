@@ -3,7 +3,16 @@
  */
 (function (win, $) {
     var Index = function () {
-        this.init();
+        var that = this;
+
+        Wlib.wx.getJSSign('',function(data){
+            Wlib.wx.jsConfig(data,function(){
+                Wlib.wx.hideMenu();
+                that.init();
+
+            });
+        });
+
     }
 
     Index.prototype = {
@@ -40,6 +49,9 @@
             that.dom.scrollTo = $(".icon10");
             that.dom.myBtn = $("#mybtn");
             that.dom.buyBtn = $(".btn-w");
+            that.dom.pricede = $(".icon11");
+            that.dom.priceadd = $(".icon12");
+            that.dom.pricewrap = $("#pricetext")
         },
         addJuicerHandler: function () {
             var that = this;
@@ -95,7 +107,41 @@
             });
 
             $(".follow-btn").on("click",function(){
-                that.addAttention();
+                that.addAttention(this);
+            });
+            $("#praise").on("click",function(){
+                that.addPraise(this);
+            });
+            that.dom.pricede.on("click",function(){
+                var ori = parseInt(that.data.data.starting_price),val = parseInt(that.dom.pricewrap.text()),res = val-parseInt(that.data.data.range);
+
+                if(res>=ori){
+                    that.dom.pricewrap.text(res);
+                }
+
+
+
+            });
+            that.dom.priceadd.on("click",function(){
+                var val = parseInt(that.dom.pricewrap.text());
+                that.dom.pricewrap.text(val+parseInt(that.data.data.range));
+            });
+            $("#pics .swiper-slide").on("click",function(){
+               var current = $(this).find("img").attr("src");
+            //   如果是个数组的话，直接穿进去就ok了。
+                Wlib.wx.previewImgs(current);
+            });
+
+            $("li").on("click",function(){
+               Wlib.wx.chooseImgs(function(ids){
+                   for(var i = 0,len=ids.length;i++;i<len){
+                       alert(ids[i])
+                       Wlib.wx.upLoadImgs(ids[i],function(id){
+                           alert(id);
+                       });
+                   }
+
+               })
             });
             Wlib._bindLazyLoad();
         },
@@ -115,7 +161,7 @@
             })
 
         },
-        addAttention: function () {
+        addAttention: function (obj) {
             /*
              给某一个商品关注
              */
@@ -125,12 +171,18 @@
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token")
             }
+            that.dom.loading.show();
             if (that.data.data.focus == 0) {
                 //去关注
                 Wlib.SendRequest("default/picture/attention", req, "GET", function (data) {
                     if(data.state == 1){
+                        that.dom.loading.hide();
                         Wlib.tips(data.message);
+                        $(obj).html("取消关注");
+                        that.data.data.focus = 1;
+
                     }else{
+                        that.dom.loading.hide();
                         Wlib.tips("关注失败")
                     }
                 });
@@ -138,8 +190,54 @@
                 //取消关注
                 Wlib.SendRequest("default/picture/attentionDel", req, "GET", function (data) {
                     if(data.state == 1){
+                        that.dom.loading.hide();
                         Wlib.tips(data.message);
+                        $(obj).html("关注此件");
+                        that.data.data.focus = 0;
                     }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("取消关注失败")
+                    }
+                });
+            }
+
+
+        },
+        addPraise: function (obj) {
+            /*
+             给某一个商品关注
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            that.dom.loading.show();
+            if (that.data.data.praise == 0) {
+                //去关注
+                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).removeClass("icon7").addClass("icon9");
+                        that.data.data.praise = 1;
+
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("关注失败")
+                    }
+                });
+            } else {
+                //取消关注
+                Wlib.SendRequest("default/picture/praiseDel", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).removeClass("icon9").addClass("icon7");
+                        that.data.data.praise = 0;
+                    }else{
+                        that.dom.loading.hide();
                         Wlib.tips("取消关注失败")
                     }
                 });

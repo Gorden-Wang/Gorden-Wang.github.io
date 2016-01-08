@@ -5,12 +5,14 @@
     var Index = function () {
 
 
+        var that = this;
         //Wlib.Weixin.goAuth();
         //Wlib.wx.pay();
         //Wlib.wx.auth(function(){
             Wlib.wx.getJSSign('',function(data){
                 Wlib.wx.jsConfig(data,function(){
-                    this.init();
+                    Wlib.wx.hideMenu();
+                    that.init();
                 });
             });
 
