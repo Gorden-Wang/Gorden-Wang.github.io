@@ -21,7 +21,7 @@
 
     var arr = [], arr1 = [], obj = {};
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
         obj = {
             value: 1,
             name: "rose" + i,
@@ -49,7 +49,7 @@
         }
         arr.push(obj);
         obj1 = {
-            value: 10 * i + 10,
+            value: 20 * i + 10,
             name: "rose" + i,
             itemStyle: {
                 normal: {
@@ -61,7 +61,7 @@
                     },
                     color: "rgba(0,0,0,0.5)",
                     borderWidth: "2",
-                    borderColor : "#000"
+                    borderColor: "#000"
                 },
                 emphasis: {
                     label: {
@@ -88,7 +88,6 @@
                 var myChart = ec.init(document.getElementById('main'));
 
                 var option = {
-                            backgroundColor: "rgba(0,0,0,0.4)",
                             series: [
 //                                {
 //                                    name: '面积模式',
@@ -114,17 +113,31 @@
 //                                    startAngle : 20,
                                     data: arr1,
                                     markPoint: {
-                                        symbol: 'emptyCircle',
-                                        symbolSize: 180,
-                                        effect: {
-                                            loop: false,
-                                            show: false,
-                                            scaleSize: 1,
-                                            color: 'rgba(250,225,50,0.8)',
-                                            period: 0
-                                        },
-                                        data: [{x: '50%', y: '50%'}]
+
+                                        data: [
+                                            {
+                                            x: '50%',
+                                                y: '50%',
+                                                symbol: 'emptyCircle',
+                                                symbolSize: 150,
+                                                effect: {
+                                                    loop: false,
+                                                    show: false,
+                                                    scaleSize: 1,
+                                                    color: 'rgba(250,225,50,0.8)',
+                                                    period: 0
+                                                }}, {x: '50%', y: '50%',symbol: 'emptyCircle',
+                                                symbolSize: 190,
+                                                effect: {
+                                                    loop: false,
+                                                    show: false,
+                                                    scaleSize: 1,
+                                                    color: 'rgba(250,225,50,0.8)',
+                                                    period: 0
+                                                },}]
                                     }
+
+
                                 }
                             ]
                         }
