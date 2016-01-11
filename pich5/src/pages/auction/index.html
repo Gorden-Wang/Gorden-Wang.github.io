@@ -36,7 +36,11 @@
 
             <div class="bottom-btns">
                 <span id="complain">举报</span>
+                {@if data.collect == 0}
                 <span id="collect">收藏</span>
+                {@else}
+                <span id="collect">已收藏</span>
+                {@/if}
             </div>
             <div class="follow-btn">
                 {@if data.focus == 0}
@@ -228,37 +232,39 @@
 
         <section class="reply-wrapper ul-wrapper4">
             <ul>
-                {@each data.comments as item}
-                <li>
-                    <div class="t-w">
-                        <img class="lazy-image" lazy-image="${item.from_logo}">
+                {@each data.comments as item,index}
+                    <li>
+                        <div class="t-w">
+                            <img class="lazy-image" lazy-image="${item.from_logo}">
 
-                        <div class="r-w">
-                            <div class="t-t">
-                                <p>
-                                    ${item.from_name} <span class="lv">V${item.from_level}</span>
-                                </p>
+                            <div class="r-w">
+                                <div class="t-t">
+                                    <p>
+                                        ${item.from_name} <span class="lv">V${item.from_level}</span>
+                                    </p>
 
-                                <span> ${item.comm_time} </span>
+                                    <span> ${item.comm_time} </span>
+                                </div>
+
+                                <div class="t-c">
+                                    {@if item.to_name}
+                                    回复<span>${item.to_name}</span>：
+                                    {@/if}
+                                    ${item.content}
+                                </div>
+
                             </div>
-
-                            <div class="t-c">
-                                {@if item.to_name}
-                                回复<span>${item.to_name}</span>：
-                                {@/if}
-                                ${item.content}
-                            </div>
-
                         </div>
-                    </div>
-                </li>
+                    </li>
                 {@/each}
             </ul>
         </section>
 
+        {@if data.comments.length == 15}
         <div class="more-btn">
             查看更多评论
         </div>
+        {@/if}
 
         <section class="other-wrapper ul-wrapper2 lastmargin">
             <p class="hr">
@@ -318,10 +324,10 @@
             </span>
 
             <div class="saysometing">
-                说点什么吧...
+                <input type="text" placeholder="说点什么吧..." style="width: 100%">
             </div>
             <div class="backToHome">
-                首页
+                确定
             </div>
         </section>
 

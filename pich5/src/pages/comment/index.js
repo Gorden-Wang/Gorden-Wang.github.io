@@ -27,7 +27,8 @@
             var that = this;
 
             that.data = {
-                id: Wlib.getRequestParam("id")
+                id: Wlib.getRequestParam("id"),
+                comm_id : Wlib.getRequestParam("comm_id")
             }
         },
         cacheDom: function () {
@@ -80,15 +81,6 @@
         },
         bindEvent: function () {
             var that = this;
-            var swiper = new Swiper('#pics', {
-                pagination: '.swiper-pagination'
-            });
-            var swiper2 = new Swiper('#more', {
-                slidesPerView: 3.5,
-                paginationClickable: true,
-                spaceBetween: 5,
-                lazyLoading : true
-            });
 
             Wlib._scrollHide(100, that.dom.scrollTo);
 
@@ -142,12 +134,7 @@
             $("#pics .swiper-slide").on("click", function () {
                 var current = $(this).find("img").attr("src");
                 //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current,that.data.data.pic);
-            });
-
-            that.dom.moreComm.on("click",function(){
-                var comm_id = that.data.data.comments[14].id;
-                location.href = '../../comment/index.html?id='+that.data.id+"&comm_id="+comm_id;
+                Wlib.wx.previewImgs(current);
             });
 
 
@@ -159,9 +146,10 @@
             var req = {
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
-                token: localStorage.getItem("token")
+                token: localStorage.getItem("token"),
+                comm_id : that.data.comm_id
             }
-            Wlib.SendRequest("default/api/info", req, "GET", function (data) {
+            Wlib.SendRequest("default/picture/delayDiscuss", req, "GET", function (data) {
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();
@@ -390,7 +378,6 @@
                     Wlib.tips("评论失败");
                 }
             });
-            that.dom.commText.val("");
         }
     }
 

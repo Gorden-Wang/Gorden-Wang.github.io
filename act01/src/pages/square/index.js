@@ -38,6 +38,7 @@
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
             that.dom.loading.hide();
+            that.resetTag();
         },
         recacheDom: function () {
             var that = this;
@@ -51,6 +52,22 @@
                 Wlib.downLite(url);
             })
 
+        },
+        resetTag : function(){
+            var that = this;
+            var tags = $(".tag");
+            tags.each(function(i,v){
+               console.log($(v).height());
+                if($(v).height() > 28){
+                    $(v).css({
+                        right : "10px",
+                        left : "auto"
+                    })
+                }
+                $(v).css({
+                    opacity : "1"
+                })
+            });
         },
         addJuicerHandler: function () {
             var that = this;
