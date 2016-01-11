@@ -35,8 +35,8 @@
             <div class="swiper-pagination"></div>
 
             <div class="bottom-btns">
-                <span>举报</span>
-                <span>收藏</span>
+                <span id="complain">举报</span>
+                <span id="collect">收藏</span>
             </div>
             <div class="follow-btn">
                 {@if data.focus == 0}
@@ -147,18 +147,22 @@
 
         <section class="order-wrapper ul-wrapper4">
             <ul>
-                {@each data.comments as item}
+                {@each data.bidder_list as item,index}
                 <li>
                     <div class="t-w">
-                        <img src="../../images/pic.png">
+                        <img src="${item.avator}">
 
                         <div class="r-w">
                             <div class="t-t">
                                 <p>
-                                    发帖人 <span class="lv">V3</span>
+                                    ${item.user_name} <span class="lv">V${item.level}</span>
                                 </p>
 
-                                <span> 领先：￥3000元 </span>
+                                {@if index == 0}
+                                <span> 领先：￥${item.bidder}元 </span>
+                                {@else}
+                                <span> 出局：￥${item.bidder}元 </span>
+                                {@/if}
                             </div>
 
                             <div class="t-c">
@@ -266,7 +270,7 @@
                 <div class="swiper-wrapper swiper-container-horizontal">
                     {@each data.infolist as item}
                     <div class="swiper-slide" data-id="${getId(item.url)}" data-url="${getType(item.type)}">
-                        <div class="i-w"><a> <img lazy-image="${item.picture}" class="lazy-image"> </a>
+                        <div class="i-w"><a> <img data-src="${item.picture}" class="swiper-lazy"> </a>
 
                             {@if item.type == "拍卖"}
                             <div class="index-icon icon6">

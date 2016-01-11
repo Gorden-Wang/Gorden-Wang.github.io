@@ -5,8 +5,8 @@
     var Index = function () {
         var that = this;
 
-        Wlib.wx.getJSSign('',function(data){
-            Wlib.wx.jsConfig(data,function(){
+        Wlib.wx.getJSSign('', function (data) {
+            Wlib.wx.jsConfig(data, function () {
                 Wlib.wx.hideMenu();
                 that.init();
 
@@ -108,30 +108,35 @@
                 win.location = "../../pages/my/index.html";
             });
 
-            $(".follow-btn").on("click",function(){
+            $(".follow-btn").on("click", function () {
                 that.addAttention(this);
             });
-            $("#praise").on("click",function(){
+            $("#praise").on("click", function () {
                 that.addPraise(this);
             });
-            that.dom.pricede.on("click",function(){
-                var ori = parseInt(that.data.data.starting_price),val = parseInt(that.dom.pricewrap.text()),res = val-parseInt(that.data.data.range);
+            that.dom.pricede.on("click", function () {
+                var ori = parseInt(that.data.data.starting_price), val = parseInt(that.dom.pricewrap.text()), res = val - parseInt(that.data.data.range);
 
-                if(res>=ori){
+                if (res >= ori) {
                     that.dom.pricewrap.text(res);
                 }
 
 
-
             });
-            that.dom.priceadd.on("click",function(){
+            that.dom.priceadd.on("click", function () {
                 var val = parseInt(that.dom.pricewrap.text());
-                that.dom.pricewrap.text(val+parseInt(that.data.data.range));
+                that.dom.pricewrap.text(val + parseInt(that.data.data.range));
             });
-            $("#pics .swiper-slide").on("click",function(){
-               var current = $(this).find("img").attr("src");
-            //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current,that.data.data.pic);
+            $("#complain").on("click", function () {
+                that.addComplain(this);
+            });
+            $("#collect").on("click", function () {
+                that.addCollect(this);
+            });
+            $("#pics .swiper-slide").on("click", function () {
+                var current = $(this).find("img").attr("src");
+                //   如果是个数组的话，直接穿进去就ok了。
+                Wlib.wx.previewImgs(current);
             });
 
 
@@ -167,13 +172,13 @@
             if (that.data.data.focus == 0) {
                 //去关注
                 Wlib.SendRequest("default/picture/attention", req, "GET", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).html("取消关注");
                         that.data.data.focus = 1;
 
-                    }else{
+                    } else {
                         that.dom.loading.hide();
                         Wlib.tips("关注失败")
                     }
@@ -181,12 +186,12 @@
             } else {
                 //取消关注
                 Wlib.SendRequest("default/picture/attentionDel", req, "GET", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).html("关注此件");
                         that.data.data.focus = 0;
-                    }else{
+                    } else {
                         that.dom.loading.hide();
                         Wlib.tips("取消关注失败")
                     }
@@ -195,7 +200,7 @@
 
 
         },
-        addPraise: function (obj) {
+        addPraise: function(obj) {
             /*
              给某一个商品点赞
              */
@@ -210,19 +215,20 @@
             if (that.data.data.praise == 0) {
                 //去点赞
                 Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).removeClass("icon7").addClass("icon9");
                         that.data.data.praise = 1;
                         //that.dom.praiseList.prepend('<li><a><img src="'+localStoarge.getItem("avatar")+'"></a></li>')
 
-                    }else{
+                    } else {
                         that.dom.loading.hide();
-                        Wlib.tips("关注失败")
+                        Wlib.tips("点赞失败")
                     }
                 });
             } else {
+
                 //取消关注
                 req.type = 2;
                 Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
@@ -231,9 +237,77 @@
                         Wlib.tips(data.message);
                         $(obj).removeClass("icon9").addClass("icon7");
                         that.data.data.praise = 0;
-                    }else{
+                    } else {
                         that.dom.loading.hide();
-                        Wlib.tips("取消关注失败")
+                        Wlib.tips("取消点赞失败")
+                    }
+                });
+            }
+
+
+        },
+        addComplain: function (obj) {
+            /*
+             给某一个商品投诉
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type: 1
+            }
+            that.dom.loading.show();
+            Wlib.SendRequest("default/picture/complain", req, "POST", function (data) {
+                if (data.state == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips("举报成功");
+
+                } else {
+                    that.dom.loading.hide();
+                    Wlib.tips("举报失败");
+                }
+            });
+
+
+        },
+        addCollect: function (obj) {
+            /*
+             给某一个商品收藏
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type : 1
+            }
+            that.dom.loading.show();
+            if (that.data.data.collect == 0) {
+                //去收藏
+                Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("取消收藏");
+                        that.data.data.collect = 1;
+
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("收藏失败")
+                    }
+                });
+            } else {
+                //取消收藏
+                Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("收藏")
+                        that.data.data.collect = 0;
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("取消收藏失败")
                     }
                 });
             }

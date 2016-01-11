@@ -37,7 +37,7 @@
         },
         renderUI: function () {
             var that = this;
-            that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+            that.dom.wrapper.prepend(juicer(that.dom.tpl.html(), that.data));
             that.dom.loading.hide();
 
             $("#or").text("￥" + that.data.data.goods_price);

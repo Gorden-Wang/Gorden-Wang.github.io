@@ -237,10 +237,11 @@ window.Wlib = (function () {
             }
 
             if (method == "POST") {
-                obj.url = url + path;
-                obj.data = data;
-                obj.dataType = "JSON";
-                obj.type = "POST";
+                    obj.url = url + path;
+                    obj.data = data;
+                    obj.dataType = "JSON";
+                    obj.type = "POST";
+
             } else {
                 obj.url = url + path + "&" + data + "callback=?";
             }
