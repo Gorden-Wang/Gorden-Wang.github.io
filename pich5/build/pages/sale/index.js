@@ -72,7 +72,8 @@
             var swiper2 = new Swiper('#more', {
                 slidesPerView: 3.5,
                 paginationClickable: true,
-                spaceBetween: 5
+                spaceBetween: 5,
+                lazyLoading : true
             });
 
 
@@ -103,7 +104,7 @@
             $("#pics .swiper-slide").on("click",function(){
                 var current = $(this).find("img").attr("src");
                 //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current);
+                Wlib.wx.previewImgs(current,that.data.data.pic);
             });
             Wlib._bindLazyLoad();
 
@@ -114,8 +115,8 @@
             //@TODO : uid 已经验证手机号
             var req = {
                 id : that.data.id,
-                uid : "",
-                token : ""
+                uid : localStorage.getItem("uid"),
+                token : localStorage.getItem("token")
             }
             Wlib.SendRequest("default/api/info",req,"GET",function(data){
                 that.data.data = data;

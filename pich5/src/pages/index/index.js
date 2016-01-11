@@ -8,7 +8,7 @@
         var that = this;
         //Wlib.Weixin.goAuth();
         //Wlib.wx.pay();
-        //Wlib.wx.auth(function(){
+        Wlib.wx.auth(function(){
             Wlib.wx.getJSSign('',function(data){
                 Wlib.wx.jsConfig(data,function(){
                     Wlib.wx.hideMenu();
@@ -16,7 +16,7 @@
                 });
             });
 
-        //});
+        });
     }
 
     Index.prototype = {

@@ -25,10 +25,11 @@
 
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
-                {#TODO 不知道几个图片}
+                {@each data.minipic as item}
                 <div class="swiper-slide">
-                    <a class="back-img"> <img src="${data.pic}"> </a>
+                    <a class="back-img"> <img src="${item}"> </a>
                 </div>
+                {@/each}
             </div>
 
             <div class="swiper-pagination"></div>
@@ -163,7 +164,7 @@
                 <div class="swiper-wrapper swiper-container-horizontal">
                     {@each data.infolist as item}
                     <div class="swiper-slide" data-id="${getId(item.url)}" data-url="${getType(item.type)}">
-                        <div class="i-w"><a> <img lazy-image="${item.picture}" class="lazy-image"> </a>
+                        <div class="i-w"><a> <img data-src="${item.picture}" class="swiper-lazy"> </a>
 
                             {@if item.type == "拍卖"}
                             <div class="index-icon icon6">
