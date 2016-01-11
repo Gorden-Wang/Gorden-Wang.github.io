@@ -3,7 +3,14 @@
  */
 (function (win, $) {
     var Index = function () {
-        this.init();
+        var that = this;
+        Wlib.wx.getJSSign('',function(data){
+            Wlib.wx.jsConfig(data,function(){
+                Wlib.wx.hideMenu();
+                that.init();
+
+            });
+        });
     }
 
     Index.prototype = {
@@ -20,9 +27,7 @@
         cacheData: function () {
             var that = this;
 
-            that.data = {
-
-            }
+            that.data = {}
 
         },
         cacheDom: function () {
@@ -45,34 +50,35 @@
             that.dom.topLi = $(".lv1-wrapper li");
             that.dom.staLi = $(".lv2-wrapper li");
             that.dom.nextBtn = $(".tips-btn");
+            that.dom.imgs = $("#imgs");
 
         },
-        _makeFooter : function(){
-          var that = this;
-            var data ={
+        _makeFooter: function () {
+            var that = this;
+            var data = {
                 classname: "f-3",
                 selected: true,
                 url: '',
                 id: ''
             };
 
-            var footer = new Wlib.Footer($("#footer"), data,2);
+            var footer = new Wlib.Footer($("#footer"), data, 2);
         },
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                  return  Wlib.getRequestParam("id",url);
+                return Wlib.getRequestParam("id", url);
             });
             juicer.register("getType", function (type) {
                 var res = "";
-                switch (type){
+                switch (type) {
                     case "出售":
                         res = "../../pages/sale/index.html";
                         break;
                     case "拍卖":
                         res = "../../pages/auction/index.html";
                         break;
-                //  @TODO : 鉴定，欣赏
+                    //  @TODO : 鉴定，欣赏
 
                 }
                 return res;
@@ -87,10 +93,10 @@
 
             Wlib._bindLazyLoad();
 
-            that.dom.topLi.on("click",function(){
+            that.dom.topLi.on("click", function () {
                 var isSelect = $(this).hasClass("selected");
 
-                if(isSelect){
+                if (isSelect) {
                     return;
                 }
 
@@ -98,24 +104,37 @@
             });
 
 
-            that.dom.staLi.on("click",function(){
+            that.dom.staLi.on("click", function () {
                 var isSelect = $(this).hasClass("selected");
 
-                if(isSelect){
+                if (isSelect) {
                     return;
                 }
 
                 $(this).addClass("selected").siblings().removeClass("selected");
             });
 
-            that.dom.nextBtn.on("click",function(){
+            that.dom.nextBtn.on("click", function () {
                 $(".tips-wrapper").remove();
-            })
+            });
+
+            $("#addPic").on("click", function () {
+                Wlib.wx.chooseImgs(function (ids) {
+                    //现实ID image.src = ids[0]
+                    that.dom.imgs.prepend("<li><div><img src='" + ids[0] + "'></div></li>");
+                    for (var i = 0, len = ids.length; i < len; i++) {
+                        Wlib.wx.upLoadImgs(ids[i], function (id) {
+                            alert(id);
+                        });
+                    }
+
+                })
+            });
         },
         getData: function () {
             var that = this;
 
-            Wlib.SendRequest("default/api/square",{},"GET",function(data){
+            Wlib.SendRequest("default/api/square", {}, "GET", function (data) {
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();

@@ -51,7 +51,8 @@
             that.dom.buyBtn = $(".btn-w");
             that.dom.pricede = $(".icon11");
             that.dom.priceadd = $(".icon12");
-            that.dom.pricewrap = $("#pricetext")
+            that.dom.pricewrap = $("#pricetext");
+            that.dom.praiseList = $("#praise_list");
         },
         addJuicerHandler: function () {
             var that = this;
@@ -82,7 +83,8 @@
             var swiper2 = new Swiper('#more', {
                 slidesPerView: 3.5,
                 paginationClickable: true,
-                spaceBetween: 5
+                spaceBetween: 5,
+                lazyLoading : true
             });
 
             Wlib._scrollHide(100, that.dom.scrollTo);
@@ -129,7 +131,7 @@
             $("#pics .swiper-slide").on("click",function(){
                var current = $(this).find("img").attr("src");
             //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current);
+                Wlib.wx.previewImgs(current,that.data.data.pic);
             });
 
 
@@ -201,17 +203,19 @@
             var req = {
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
-                token: localStorage.getItem("token")
+                token: localStorage.getItem("token"),
+                type : 1
             }
             that.dom.loading.show();
             if (that.data.data.praise == 0) {
-                //去关注
+                //去点赞
                 Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
                     if(data.state == 1){
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).removeClass("icon7").addClass("icon9");
                         that.data.data.praise = 1;
+                        //that.dom.praiseList.prepend('<li><a><img src="'+localStoarge.getItem("avatar")+'"></a></li>')
 
                     }else{
                         that.dom.loading.hide();
@@ -235,7 +239,49 @@
             }
 
 
-        }
+        },
+        addAttention: function (obj) {
+            /*
+             给某一个商品关注
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            that.dom.loading.show();
+            if (that.data.data.focus == 0) {
+                //去关注
+                Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("取消关注");
+                        that.data.data.focus = 1;
+
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("关注失败")
+                    }
+                });
+            } else {
+                //取消关注
+                Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
+                    if(data.state == 1){
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("关注此件");
+                        that.data.data.focus = 0;
+                    }else{
+                        that.dom.loading.hide();
+                        Wlib.tips("取消关注失败")
+                    }
+                });
+            }
+
+
+        },
     }
 
     var index = new Index();

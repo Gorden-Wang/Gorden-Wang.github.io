@@ -103,7 +103,7 @@
             $("#pics .swiper-slide").on("click",function(){
                 var current = $(this).find("img").attr("src");
                 //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current);
+                Wlib.wx.previewImgs(current,that.data.data.pic);
             });
             Wlib._bindLazyLoad();
 

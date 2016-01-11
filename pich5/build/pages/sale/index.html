@@ -25,10 +25,11 @@
 
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
-                {#TODO 不知道几个图片}
+                {@each data.minipic as item}
                 <div class="swiper-slide">
-                    <a class="back-img"> <img src="${data.pic}"> </a>
+                    <a class="back-img"> <img src="${item}"> </a>
                 </div>
+                {@/each}
             </div>
 
             <div class="swiper-pagination"></div>

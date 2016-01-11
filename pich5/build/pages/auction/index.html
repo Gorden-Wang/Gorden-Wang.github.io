@@ -25,10 +25,11 @@
 
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
-                {#TODO 不知道几个图片}
+                {@each data.minipic as item}
                 <div class="swiper-slide">
-                    <a class="back-img"> <img src="${data.pic}"> </a>
+                    <a class="back-img"> <img src="${item}"> </a>
                 </div>
+                {@/each}
             </div>
 
             <div class="swiper-pagination"></div>
@@ -119,18 +120,18 @@
         </section>
 
         <section class="seller-wrapper">
-            <div class="t-w"><img src="../../images/pic.png">
+            <div class="t-w"><img src="${data.avatar}">
 
                 <div>
-                    <p> 发帖人 <span class="lv">V3</span></p>
+                    <p> ${data.author} <span class="lv">V${data.level}</span></p>
 
-                    <p> 今天 15：52 </p>
+                    <p> ${data.add_time} </p>
                 </div>
             </div>
 
             <div>
                 <p>
-                    <span class="blue">10</span>条信息
+                    <span class="blue">${data.post_nums}</span>条信息
                 </p>
                 <span>联系Ta~</span>
 
@@ -138,7 +139,7 @@
         </section>
 
         <section class="note-wrapper">
-            <p>刘文西作品，46*88厘米，喜欢如朋友私聊。</p>
+            <p>${data.content}</p>
 
 
         </section>
@@ -146,6 +147,7 @@
 
         <section class="order-wrapper ul-wrapper4">
             <ul>
+                {@each data.comments as item}
                 <li>
                     <div class="t-w">
                         <img src="../../images/pic.png">
@@ -166,26 +168,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="t-w">
-                        <img src="../../images/pic.png">
-
-                        <div class="r-w">
-                            <div class="t-t">
-                                <p>
-                                    发帖人 <span class="lv">V3</span>
-                                </p>
-
-                                <span> 出局：￥2800元 </span>
-                            </div>
-
-                            <div class="t-c">
-                                15-11-27 17:04:35
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
+                {@/each}
             </ul>
 
             <p class="hr">
@@ -223,7 +206,7 @@
 
             </span>
             {@if data.praise_list.length > 0}
-            <ul>
+            <ul id="praise_list">
                 {@each data.praise_list as item}
                 <li>
                     <a>
