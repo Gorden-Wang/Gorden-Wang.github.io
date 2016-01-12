@@ -1,0 +1,72 @@
+#page {
+  font-family: "HY";
+  background-color: #f7f7f7;
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+  .ul-wrapper4 {
+    background-color: #ffffff;
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #efefef;
+      .t-w {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+          margin-right: 10px;
+        }
+        & > div {
+          flex: 1;
+          font-size: 13px;
+
+          .lv {
+            font-size: 13px;
+            background-color: #fdd102;
+            color: #ffffff;
+            display: inline-block;
+            padding: 0px 3px;
+            margin-left: 5px;
+          }
+
+          & > p:first-of-type {
+            //margin-bottom: 3px;
+            color: rgb(76, 191, 209);
+          }
+          & > p:last-of-type {
+            color: rgb(204, 204, 204);
+          }
+
+          .t-t {
+            display: flex;
+
+            p {
+              flex: 1;
+              color: rgb(77, 192, 209);
+            }
+            & > span {
+              color: rgb(191, 191, 191);
+            }
+          }
+
+          .t-c {
+            color: rgb(125, 97, 97);
+            line-height: 1.2em;
+
+            span {
+              display: inline-block;
+              color: #4dc0d1;
+              margin: 0px 3px;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
