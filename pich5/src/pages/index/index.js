@@ -8,7 +8,7 @@
         var that = this;
         //Wlib.Weixin.goAuth();
         //Wlib.wx.pay();
-        Wlib.wx.auth(function(){
+        //Wlib.wx.auth(function(){
             Wlib.wx.getJSSign('',function(data){
                 Wlib.wx.jsConfig(data,function(){
                     Wlib.wx.hideMenu();
@@ -16,7 +16,7 @@
                 });
             });
 
-        });
+        //});
     }
 
     Index.prototype = {
@@ -40,7 +40,10 @@
             that.dom = {
                 wrapper: $("#page"),
                 loading: $("#loading"),
-                tpl: $("#tpl")
+                tpl: $("#tpl"),
+                tab1 : $("#tab1"),
+                tab2 : $("#tab2"),
+                tab3 : $("#tab3")
             }
         },
         renderUI: function () {
@@ -52,6 +55,8 @@
             var that = this;
 
             that.dom.newLi = $(".itemli li");
+            that.dom.goApp = $(".icon2");
+            that.dom.mainwrap = $("#wrap");
 
         },
         addJuicerHandler: function () {
@@ -95,19 +100,31 @@
                 }
 
                 win.location = des + "?id="+id;
-            })
+            });
+
+            that.dom.goApp.on("click",function(){
+                Wlib.tips("请下载APP体验更多功能");
+                location.href = "http://www.talkart.cc/index.php?r=default/index/download";
+            });
 
         },
         getData: function () {
             var that = this;
 
+
             Wlib.SendRequest("default/api/square",{},"GET",function(data){
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();
+                that.rTab(that.data);
+
                 that.bindEvent();
             })
 
+        },
+        rTab : function(data){
+            var that = this;
+            that.dom.mainwrap.html(juicer(that.dom.tab1.html(), data));
         }
     }
 
