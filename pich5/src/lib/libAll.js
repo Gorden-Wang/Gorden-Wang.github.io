@@ -1063,7 +1063,7 @@ window.Wlib = (function () {
             })(data, method);
 
             var url = (function () {
-                var u = that.evn == "daily" ? "http://115.159.100.197/index.php?r=" : "www.talkart.cc/index.php?r=";
+                var u = that.evn == "daily" ? "http://115.159.100.197/index.php?r=" : "http://www.talkart.cc/index.php?r=";
 
 
                 return u;

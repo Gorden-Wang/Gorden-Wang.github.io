@@ -35,8 +35,12 @@
             <div class="swiper-pagination"></div>
 
             <div class="bottom-btns">
-                <span>举报</span>
-                <span>收藏</span>
+                <span id="complain">举报</span>
+                {@if data.collect == 0}
+                <span id="collect">收藏</span>
+                {@else}
+                <span id="collect">已收藏</span>
+                {@/if}
             </div>
         </section>
 
@@ -208,13 +212,13 @@
             </span>
 
             <div class="saysometing">
-                说点什么吧...
+                <input type="text" placeholder="说点什么吧..." style="width: 100%">
             </div>
             <div class="buyBtn">
                 立即购买
             </div>
             <div class="backToHome">
-                首页
+                确定
             </div>
         </section>
 

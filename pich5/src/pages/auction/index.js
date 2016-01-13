@@ -56,6 +56,7 @@
             that.dom.sendComm = $(".backToHome");
             that.dom.commText = $(".saysometing input");
             that.dom.moreComm = $(".more-btn");
+            that.dom.preorder = $(".btn-w");
         },
         addJuicerHandler: function () {
             var that = this;
@@ -146,8 +147,12 @@
             });
 
             that.dom.moreComm.on("click",function(){
-                var comm_id = that.data.data.comments[14].id;
-                location.href = '../../comment/index.html?id='+that.data.id+"&comm_id="+comm_id;
+                Wlib.tips("下载APP查看更多评论。");
+                location.href = "http://www.talkart.cc/index.php?r=default/index/download";
+            });
+
+            that.dom.preorder.on("click",function(){
+               that.preOrder();
             });
 
 
@@ -300,7 +305,7 @@
                     if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
-                        $(obj).html("取消收藏");
+                        $(obj).html("已收藏");
                         that.data.data.collect = 1;
 
                     } else {
@@ -388,6 +393,30 @@
                 } else {
                     that.dom.loading.hide();
                     Wlib.tips("评论失败");
+                }
+            });
+            that.dom.commText.val("");
+        },
+        preOrder : function(){
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                money: that.dom.pricewrap.html()
+            };
+            that.dom.loading.show();
+            Wlib.SendRequest("default/api/bid", req, "POST", function (data) {
+                if (data.state == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips("出价成功");
+                    setTimeout(function(){
+                        location.reload();
+                    },3000)
+
+                } else {
+                    that.dom.loading.hide();
+                    Wlib.tips(data.message);
                 }
             });
             that.dom.commText.val("");

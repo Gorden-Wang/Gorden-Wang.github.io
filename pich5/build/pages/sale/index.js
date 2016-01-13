@@ -40,6 +40,9 @@
             that.dom.scrollTo = $(".icon10");
             that.dom.myBtn = $("#mybtn");
             that.dom.buyBtn = $(".buyBtn");
+            that.dom.sendComm = $(".backToHome");
+            that.dom.commText = $(".saysometing input");
+            that.dom.moreComm = $(".more-btn");
 
         },
         addJuicerHandler: function () {
@@ -106,6 +109,21 @@
                 //   如果是个数组的话，直接穿进去就ok了。
                 Wlib.wx.previewImgs(current,that.data.data.pic);
             });
+
+            $("#complain").on("click", function () {
+                that.addComplain(this);
+            });
+            $("#collect").on("click", function () {
+                that.addCollect(this);
+            });
+            that.dom.sendComm.on("click",function(){
+                that.sendComm();
+            });
+            that.dom.moreComm.on("click",function(){
+                Wlib.tips("下载APP查看更多评论。");
+                location.href = "http://www.talkart.cc/index.php?r=default/index/download";
+            });
+
             Wlib._bindLazyLoad();
 
         },
@@ -125,6 +143,99 @@
                 that.bindEvent();
             })
 
+        },
+        addComplain: function (obj) {
+            /*
+             给某一个商品投诉
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type: 1
+            }
+            that.dom.loading.show();
+            Wlib.SendRequest("default/picture/complain", req, "POST", function (data) {
+                if (data.state == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips("举报成功");
+
+                } else {
+                    that.dom.loading.hide();
+                    Wlib.tips("举报失败");
+                }
+            });
+
+
+        },
+        addCollect: function (obj) {
+            /*
+             给某一个商品收藏
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type : 1
+            }
+            that.dom.loading.show();
+            if (that.data.data.collect == 0) {
+                //去收藏
+                Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("已收藏");
+                        that.data.data.collect = 1;
+
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("收藏失败")
+                    }
+                });
+            } else {
+                //取消收藏
+                Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).html("收藏")
+                        that.data.data.collect = 0;
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("取消收藏失败")
+                    }
+                });
+            }
+
+
+        },
+        sendComm : function(){
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type: 1,
+                content : that.dom.commText.val()
+            }
+            that.dom.loading.show();
+            Wlib.SendRequest("default/picture/comment", req, "POST", function (data) {
+                if (data.state == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips("评论成功");
+                    setTimeout(function(){
+                        location.reload();
+                    },3000)
+
+                } else {
+                    that.dom.loading.hide();
+                    Wlib.tips("评论失败");
+                }
+            });
+            that.dom.commText.val("");
         }
     }
 

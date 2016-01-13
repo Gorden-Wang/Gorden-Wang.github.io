@@ -152,32 +152,38 @@
         <section class="order-wrapper ul-wrapper4">
             <ul>
                 {@each data.bidder_list as item,index}
-                <li>
-                    <div class="t-w">
-                        <img src="${item.avator}">
+                    {@if index < 5}
+                    <li>
+                        <div class="t-w">
+                            <img src="${item.avator}">
 
-                        <div class="r-w">
-                            <div class="t-t">
-                                <p>
-                                    ${item.user_name} <span class="lv">V${item.level}</span>
-                                </p>
+                            <div class="r-w">
+                                <div class="t-t">
+                                    <p>
+                                        ${item.user_name} <span class="lv">V${item.level}</span>
+                                    </p>
 
-                                {@if index == 0}
-                                <span> 领先：￥${item.bidder}元 </span>
-                                {@else}
-                                <span> 出局：￥${item.bidder}元 </span>
-                                {@/if}
+                                    {@if index == 0}
+                                    <span> 领先：￥${item.bidder}元 </span>
+                                    {@else}
+                                    <span> 出局：￥${item.bidder}元 </span>
+                                    {@/if}
+                                </div>
+
+                                <div class="t-c">
+                                    15-11-27 17:04:35
+                                </div>
+
                             </div>
-
-                            <div class="t-c">
-                                15-11-27 17:04:35
-                            </div>
-
                         </div>
-                    </div>
-                </li>
+                    </li>
+                    {@/if}
                 {@/each}
             </ul>
+
+            <div class="more-btn">
+                查看更多出价
+            </div>
 
             <p class="hr">
                 <span>
@@ -260,11 +266,9 @@
             </ul>
         </section>
 
-        {@if data.comments.length == 15}
         <div class="more-btn">
             查看更多评论
         </div>
-        {@/if}
 
         <section class="other-wrapper ul-wrapper2 lastmargin">
             <p class="hr">
