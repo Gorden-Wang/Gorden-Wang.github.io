@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script src="../../lib/zepto.js"></script>
+<script src="../../lib/strophe.js"></script>
+<script src="../../lib/easemob.im-1.0.7.js"></script>
+<script src="../../lib/easemob.im.config.js"></script>
+
+<script>
+    (function () {
+        var conn = null;
+
+        conn = new Easemob.im.Connection();
+
+
+//       登录：
+
+
+        conn.init({
+            onOpened: function () {
+                alert("登录成功");
+                conn.setPresence();
+            }
+        });
+
+
+        function open(connect, user, pwd) {
+            connect.open({
+                user: "",
+                pwd: "",
+                appKey: 'easemob-demo#chatdemoui'
+            });
+        }
+
+        function sendText(connect,to,msg,type){
+            connect.sendTextMessage({
+                to : to,
+                msg : msg,
+                type : type || "chat"
+            })
+        }
+
+        function handleTextMsg(msg){
+            var from = msg.from,type=msg.type,content=msg.data;
+
+            if(type == "groupchat"){
+
+            }else{
+                //单个消息
+            }
+        }
+
+
+
+
+    })();
+</script>
+</body>
+</html>
