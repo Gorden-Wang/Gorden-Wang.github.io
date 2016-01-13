@@ -15,13 +15,13 @@
 <div id="loading">
     <div class="loading-content">loading...</div>
 </div>
-<div id="page" style="position: absolute;top: 0px;width: 100%;bottom: 0px;">
-    <div id="test" style="overflow: hidden;top: 0px;bottom: 0px;">
+<div id="page" style="position: absolute;top: 0px;height: 100%;width: 100%;bottom: 0px;">
+    <div id="test" style="height:100%;overflow: hidden;top: 0px;bottom: 0px;">
         <ul id="chatpanel">
 
         </ul>
     </div>
-    <div id="footer" style="position: fixed">
+    <div id="footer">
         <div id="chatBottomBox">
             <div id="textBox">
                 <input type="text" id="content" placeholder="Enter the chat"/>
@@ -34,39 +34,39 @@
 <script src="../../lib/strophe.js"></script>
 <script src="../../lib/easemob.im-1.0.7.js"></script>
 <script src="../../lib/easemob.im.config.js"></script>
-<script src="../../widgets/scrollto/index.js"></script>
 
 <script>
     (function () {
         var conn = null,
                 appKey = "etang114-shuohua#shuohua";
 
-        var loading = $("#loading"),
-                wrap = $("#chatpanel"),
-                send = $("#btnSend"),
-                content = $("#content");
+        var loading = $("#loading");
 
         conn = new Easemob.im.Connection();
 
 
 //       登录：
 
-        loading.hide();
 
         conn.init({
             onOpened: function () {
-//                alert("登录成功");
+                alert("登录成功");
                 conn.setPresence();
-            },
-            onTextMessage : handleTextMsg
+            }
+
         });
 
-        open(conn,'','');
+        open(conn,'8296','bc05d9961476642c6aba1a88a939467c');
+
+        setInterval(function(){
+            sendText(conn,"8297","abc")
+        },1000);
+
 
         function open(connect, user, pwd) {
             connect.open({
-                user: "8297",
-                pwd: "eef1dd163438faffd491bd9e3f05f0d6",
+                user: "8296",
+                pwd: "bc05d9961476642c6aba1a88a939467c",
                 appKey: appKey
 
                 /*
@@ -94,23 +94,8 @@
 
             } else {
                 //单个消息
-              var re = '<li><div class="receiver"><span class="avatar" style="background:url(http://10.1.4.104:18000/11775-1441769926.jpg?w=110&amp;h=110&amp;cp=1);background-size: 100%;"></span><div class="message-content">'+msg.data+'</div></div></li>'
-                wrap.append(re);
-                $.scrollTo("max",500);
-
-
             }
         }
-
-
-        send.on("click",function(){
-            sendText(conn,"8296","abc");
-            var re = '<li style="margin: 10px 0 0px;"><div class="sender"><div class="message-content">'+content.val()+'</div><span class="avatar" style="background:url(http://10.1.4.104:18000/11775-1441769926.jpg?w=110&amp;h=110&amp;cp=1);background-size: 100%;"></span></div></li>';
-            wrap.append(re);
-            content.val("");
-            $.scrollTo("max",500);
-
-        })
 
 
     })();
