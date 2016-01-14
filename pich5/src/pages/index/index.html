@@ -24,9 +24,9 @@
     <div class="wrap container">
         <header>
             <ul>
-                <li class="selected">广场</li>
-                <li>兴趣圈</li>
-                <li>画友圈</li>
+                <li class="selected" tpl-id="tab1">广场</li>
+                <li tpl-id="tab2">兴趣圈</li>
+                <li tpl-id="tab3">画友圈</li>
             </ul>
         </header>
 
@@ -49,7 +49,6 @@
         <div id="wrap"></div>
 
 
-
     </div>
 
 
@@ -63,18 +62,22 @@
         <ul>
             <li>
                 <span class="icon1 index-icon"></span>
+
                 <p>搜藏资讯</p>
             </li>
             <li>
                 <span class="icon2 index-icon"></span>
+
                 <p>逛画廊</p>
             </li>
             <li>
                 <span class="icon3 index-icon"></span>
+
                 <p>我的关注</p>
             </li>
             <li>
                 <span class="icon4 index-icon"></span>
+
                 <p>附近</p>
             </li>
         </ul>
@@ -97,7 +100,7 @@
             {@each data.endcoming as item , index}
 
             {@if index < 4}
-            <li  data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
                 <div>
                     <a>
                         <img lazy-image="${item.pic}" class="lazy-image">
@@ -131,7 +134,7 @@
         <ul class="items-wrapper itemli">
             {@each data.recommend as item}
 
-            <li   data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
                 <div>
                     <a>
                         <img lazy-image="${item.picture}" class="lazy-image">
@@ -153,7 +156,7 @@
     <section class="ul-wrapper2 itemli">
         <ul>
             {@each data.new_painting as item}
-            <li  data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
                 <div class="t-w">
                     <img lazy-image="${item.avatar}" class="lazy-image">
 
@@ -202,6 +205,7 @@
                     <p>
                         ￥${item.starting_price}元
                     </p>
+
                     <p>
                         <span class="index-icon icon7"></span> 喜欢${item.love_number}
                     </p>
@@ -213,6 +217,92 @@
 
         </ul>
     </section>
+</script>
+
+<script type="template/juicer" id="tab2">
+
+    <section class="ul-wrap">
+        <ul>
+            <li>
+                <div class="top-li">
+                    <div class="t-w flex1">
+                        <img lazy-image="http://115.159.100.197/upload/users/150_1452654728711973.jpg" class=""
+                             src="http://115.159.100.197/upload/users/150_1452654728711973.jpg">
+
+                        <div>
+                            <p> Ggg <span class="lv">V1</span></p>
+
+                            <p> 01月13日 16:08 </p>
+                        </div>
+                    </div>
+                    <div class="top-tag cx">
+                        出售
+                    </div>
+                </div>
+
+                <div class="mid-li">
+                    <p>作者：test</p>
+                    <ul class="img-list">
+                        <li>
+                            <a>
+                                <img lazy-image="http://115.159.100.197/upload/sale/32_1452657112913805.jpg" class=""
+                                     src="http://115.159.100.197/upload/sale/32_1452657112913805.jpg">
+                            </a>
+
+                        </li>
+                    </ul>
+                    <p>
+                        content display here!content display here!content display here!content display here!content
+                        display here!content display here!content display here!content display here!
+                    </p>
+
+                    <div class="like-wrap">
+                        <span>赞</span>
+                        <p>abc edf author display here</p>
+                    </div>
+                    <div class="like-wrap">
+                        <span>评</span>
+                        <ul>
+                            <li>
+                                <span>gorden:</span>反反复复
+                            </li>
+                            <li>
+                                <span>gorden:</span>反反复复
+                            </li>
+                            <li>
+                                <span>gorden:</span>反反复复
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="bot-li">
+                    <ul>
+                        <li>
+                            <span class="index-icon icon9" id="praise"></span>2
+                        </li>
+                        <li>
+
+                        </li>
+                        <li>
+
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </li>
+        </ul>
+
+    </section>
+
+</script>
+
+<script type="template/juicer" id="tab3">
+ I am tab3
 </script>
 
 <script src="../../lib/libAll.js"></script>
