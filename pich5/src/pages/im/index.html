@@ -2,61 +2,115 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title></title>
+    <link rel="stylesheet" href="index.css">
 </head>
-<body>
+<body style="position: absolute;top: 0px;height: 100%;width: 100%;bottom: 0px;">
+<div id="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page" style="position: absolute;top: 0px;width: 100%;bottom: 0px;">
+    <div id="test" style="overflow: hidden;top: 0px;bottom: 0px;">
+        <ul id="chatpanel">
 
-
-<script src="../../lib/zepto.js"></script>
+        </ul>
+    </div>
+    <div id="footer" style="position: fixed">
+        <div id="chatBottomBox">
+            <div id="textBox">
+                <input type="text" id="content" placeholder="Enter the chat"/>
+            </div>
+            <button id="btnSend">Kirim</button>
+        </div>
+    </div>
+</div>
+<script src="../../lib/libAll.js"></script>
 <script src="../../lib/strophe.js"></script>
 <script src="../../lib/easemob.im-1.0.7.js"></script>
 <script src="../../lib/easemob.im.config.js"></script>
+<script src="../../widgets/scrollto/index.js"></script>
 
 <script>
     (function () {
-        var conn = null;
+        var conn = null,
+                appKey = "etang114-shuohua#shuohua";
+
+        var loading = $("#loading"),
+                wrap = $("#chatpanel"),
+                send = $("#btnSend"),
+                content = $("#content");
 
         conn = new Easemob.im.Connection();
 
 
 //       登录：
 
+        loading.hide();
 
         conn.init({
             onOpened: function () {
-                alert("登录成功");
+//                alert("登录成功");
                 conn.setPresence();
-            }
+            },
+            onTextMessage : handleTextMsg
         });
 
+        open(conn,'','');
 
         function open(connect, user, pwd) {
             connect.open({
-                user: "",
-                pwd: "",
-                appKey: 'easemob-demo#chatdemoui'
+                user: "8297",
+                pwd: "eef1dd163438faffd491bd9e3f05f0d6",
+                appKey: appKey
+
+                /*
+                 apiUrl : Easemob.im.config.apiURL,
+                 user : user,
+                 accessToken : token,
+                 //连接时提供appkey
+                 appKey : Easemob.im.config.appkey
+                 */
             });
         }
 
-        function sendText(connect,to,msg,type){
+        function sendText(connect, to, msg, type) {
             connect.sendTextMessage({
-                to : to,
-                msg : msg,
-                type : type || "chat"
+                to: to,
+                msg: msg,
+                type: type || "chat"
             })
         }
 
-        function handleTextMsg(msg){
-            var from = msg.from,type=msg.type,content=msg.data;
+        function handleTextMsg(msg) {
+            var from = msg.from, type = msg.type, content = msg.data;
 
-            if(type == "groupchat"){
+            if (type == "groupchat") {
 
-            }else{
+            } else {
                 //单个消息
+              var re = '<li><div class="receiver"><span class="avatar" style="background:url(http://10.1.4.104:18000/11775-1441769926.jpg?w=110&amp;h=110&amp;cp=1);background-size: 100%;"></span><div class="message-content">'+msg.data+'</div></div></li>'
+                wrap.append(re);
+                $.scrollTo("max",500);
+
+
             }
         }
 
 
+        send.on("click",function(){
+            sendText(conn,"8296","abc");
+            var re = '<li style="margin: 10px 0 0px;"><div class="sender"><div class="message-content">'+content.val()+'</div><span class="avatar" style="background:url(http://10.1.4.104:18000/11775-1441769926.jpg?w=110&amp;h=110&amp;cp=1);background-size: 100%;"></span></div></li>';
+            wrap.append(re);
+            content.val("");
+            $.scrollTo("max",500);
+
+        })
 
 
     })();

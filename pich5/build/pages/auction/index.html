@@ -12,7 +12,7 @@
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../pages/auction/index.css" rel="stylesheet">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.2"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.3"></script>
 
 </head>
 <body>
@@ -36,7 +36,11 @@
 
             <div class="bottom-btns">
                 <span id="complain">举报</span>
+                {@if data.collect == 0}
                 <span id="collect">收藏</span>
+                {@else}
+                <span id="collect">已收藏</span>
+                {@/if}
             </div>
             <div class="follow-btn">
                 {@if data.focus == 0}
@@ -148,32 +152,38 @@
         <section class="order-wrapper ul-wrapper4">
             <ul>
                 {@each data.bidder_list as item,index}
-                <li>
-                    <div class="t-w">
-                        <img src="${item.avator}">
+                    {@if index < 5}
+                    <li>
+                        <div class="t-w">
+                            <img src="${item.avator}">
 
-                        <div class="r-w">
-                            <div class="t-t">
-                                <p>
-                                    ${item.user_name} <span class="lv">V${item.level}</span>
-                                </p>
+                            <div class="r-w">
+                                <div class="t-t">
+                                    <p>
+                                        ${item.user_name} <span class="lv">V${item.level}</span>
+                                    </p>
 
-                                {@if index == 0}
-                                <span> 领先：￥${item.bidder}元 </span>
-                                {@else}
-                                <span> 出局：￥${item.bidder}元 </span>
-                                {@/if}
+                                    {@if index == 0}
+                                    <span> 领先：￥${item.bidder}元 </span>
+                                    {@else}
+                                    <span> 出局：￥${item.bidder}元 </span>
+                                    {@/if}
+                                </div>
+
+                                <div class="t-c">
+                                    15-11-27 17:04:35
+                                </div>
+
                             </div>
-
-                            <div class="t-c">
-                                15-11-27 17:04:35
-                            </div>
-
                         </div>
-                    </div>
-                </li>
+                    </li>
+                    {@/if}
                 {@/each}
             </ul>
+
+            <div class="more-btn">
+                查看更多出价
+            </div>
 
             <p class="hr">
                 <span>
@@ -228,30 +238,30 @@
 
         <section class="reply-wrapper ul-wrapper4">
             <ul>
-                {@each data.comments as item}
-                <li>
-                    <div class="t-w">
-                        <img class="lazy-image" lazy-image="${item.from_logo}">
+                {@each data.comments as item,index}
+                    <li>
+                        <div class="t-w">
+                            <img class="lazy-image" lazy-image="${item.from_logo}">
 
-                        <div class="r-w">
-                            <div class="t-t">
-                                <p>
-                                    ${item.from_name} <span class="lv">V${item.from_level}</span>
-                                </p>
+                            <div class="r-w">
+                                <div class="t-t">
+                                    <p>
+                                        ${item.from_name} <span class="lv">V${item.from_level}</span>
+                                    </p>
 
-                                <span> ${item.comm_time} </span>
+                                    <span> ${item.comm_time} </span>
+                                </div>
+
+                                <div class="t-c">
+                                    {@if item.to_name}
+                                    回复<span>${item.to_name}</span>：
+                                    {@/if}
+                                    ${item.content}
+                                </div>
+
                             </div>
-
-                            <div class="t-c">
-                                {@if item.to_name}
-                                回复<span>${item.to_name}</span>：
-                                {@/if}
-                                ${item.content}
-                            </div>
-
                         </div>
-                    </div>
-                </li>
+                    </li>
                 {@/each}
             </ul>
         </section>
@@ -318,10 +328,10 @@
             </span>
 
             <div class="saysometing">
-                说点什么吧...
+                <input type="text" placeholder="说点什么吧..." style="width: 100%">
             </div>
             <div class="backToHome">
-                首页
+                确定
             </div>
         </section>
 
@@ -337,10 +347,10 @@
 
 </script>
 
-<script src="../../lib/libAll.js?version=0.1.2"></script>
-<script src="../../widgets/swiper/index.js?version=0.1.2"></script>
-<script src="../../widgets/scrollto/index.js?version=0.1.2"></script>
-<script src="../../pages/auction/index.js?version=0.1.2"></script>
+<script src="../../lib/libAll.js?version=0.1.3"></script>
+<script src="../../widgets/swiper/index.js?version=0.1.3"></script>
+<script src="../../widgets/scrollto/index.js?version=0.1.3"></script>
+<script src="../../pages/auction/index.js?version=0.1.3"></script>
 
 </body>
 </html>

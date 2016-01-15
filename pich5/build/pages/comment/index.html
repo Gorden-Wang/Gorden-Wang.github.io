@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>拍卖</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../pages/comment/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.3"></script>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+        <section class="reply-wrapper ul-wrapper4">
+            <ul>
+                {@each data.comments as item}
+
+                    <li>
+                        <div class="t-w">
+                            <img class="lazy-image" lazy-image="${item.from_logo}">
+
+                            <div class="r-w">
+                                <div class="t-t">
+                                    <p>
+                                        ${item.from_name} <span class="lv">V${item.from_level}</span>
+                                    </p>
+
+                                    <span> ${item.comm_time} </span>
+                                </div>
+
+                                <div class="t-c">
+                                    {@if item.to_name}
+                                    回复<span>${item.to_name}</span>：
+                                    {@/if}
+                                    ${item.content}
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                {@/each}
+            </ul>
+        </section>
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.3"></script>
+<script src="../../pages/comment/index.js?version=0.1.3"></script>
+
+</body>
+</html>
