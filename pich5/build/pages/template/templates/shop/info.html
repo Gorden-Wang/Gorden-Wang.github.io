@@ -24,9 +24,9 @@
     <div class="wrap container">
         <header>
             <ul>
-                <li class="selected">广场</li>
-                <li>兴趣圈</li>
-                <li>画友圈</li>
+                <li class="selected" tpl-id="tab1">广场</li>
+                <li tpl-id="tab2">兴趣圈</li>
+                <li tpl-id="tab3">画友圈</li>
             </ul>
         </header>
 
@@ -46,29 +46,45 @@
             <div class="swiper-pagination"></div>
         </section>
 
-        <section class="tab-wrapper">
-            <ul>
-                <li>
-                    <span class="icon1 index-icon"></span>
-                    <p>搜藏资讯</p>
-                </li>
-                <li>
-                    <span class="icon2 index-icon"></span>
-                    <p>逛画廊</p>
-                </li>
-                <li>
-                    <span class="icon3 index-icon"></span>
-                    <p>我的关注</p>
-                </li>
-                <li>
-                    <span class="icon4 index-icon"></span>
-                    <p>附近</p>
-                </li>
-            </ul>
-        </section>
+        <div id="wrap"></div>
 
-        <section class="ul-wrapper">
-            <div class="title-wrapper">
+
+    </div>
+
+
+</script>
+
+
+<script type="template/juicer" id="tab1">
+
+
+    <section class="tab-wrapper">
+        <ul>
+            <li>
+                <span class="icon1 index-icon"></span>
+
+                <p>搜藏资讯</p>
+            </li>
+            <li>
+                <span class="icon2 index-icon"></span>
+
+                <p>逛画廊</p>
+            </li>
+            <li>
+                <span class="icon3 index-icon"></span>
+
+                <p>我的关注</p>
+            </li>
+            <li>
+                <span class="icon4 index-icon"></span>
+
+                <p>附近</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="ul-wrapper">
+        <div class="title-wrapper">
                 <span class="l-w">
                     即将结束
                 </span>
@@ -78,32 +94,32 @@
                     <span>|</span>
                     更多
                 </span>
-            </div>
+        </div>
 
-            <ul class="items-wrapper itemli">
-                {@each data.endcoming as item , index}
+        <ul class="items-wrapper itemli">
+            {@each data.endcoming as item , index}
 
-                {@if index < 4}
-                <li  data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+            {@if index < 4}
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                <div>
+                    <a>
+                        <img lazy-image="${item.pic}" class="lazy-image">
+                    </a>
+
                     <div>
-                        <a>
-                            <img lazy-image="${item.pic}" class="lazy-image">
-                        </a>
-
-                        <div>
-                           ${item.genre}
-                        </div>
+                        ${item.genre}
                     </div>
-                    <span>${item.author}</span>
-                </li>
-                {@/if}
+                </div>
+                <span>${item.author}</span>
+            </li>
+            {@/if}
 
-                {@/each}
-            </ul>
-        </section>
+            {@/each}
+        </ul>
+    </section>
 
-        <section class="ul-wrapper">
-            <div class="title-wrapper">
+    <section class="ul-wrapper">
+        <div class="title-wrapper">
                 <span class="l-w">
                     说画精选
                 </span>
@@ -113,97 +129,208 @@
                     <span>|</span>
                     更多
                 </span>
-            </div>
-
-            <ul class="items-wrapper itemli">
-                {@each data.recommend as item}
-
-                <li   data-id="${getId(item.url)}" data-url="${getType(item.type)}">
-                    <div>
-                        <a>
-                            <img lazy-image="${item.picture}" class="lazy-image">
-                        </a>
-                    </div>
-                    <span>${item.title}</span>
-                </li>
-
-
-                {@/each}
-
-            </ul>
-        </section>
-
-        <div class="hr">
-            <span>上新</span>
         </div>
 
-        <section class="ul-wrapper2 itemli">
-            <ul>
-                {@each data.new_painting as item}
-                <li  data-id="${getId(item.url)}" data-url="${getType(item.type)}">
-                    <div class="t-w">
-                        <img lazy-image="${item.avatar}" class="lazy-image">
+        <ul class="items-wrapper itemli">
+            {@each data.recommend as item}
 
-                        <div>
-                            <p>
-                                ${item.nickname}
-                                <span class="lv">V${item.level}</span>
-                            </p>
-
-                            <p>
-                                ${item.add_time}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="i-w">
-                        <a>
-                            <img lazy-image="${item.pic}" class="lazy-image">
-                        </a>
-                        {@if item.type == "拍卖"}
-                        <div class="index-icon icon6">
-                            <span>拍卖</span>
-                        </div>
-                        {@else if item.type == "出售"}
-                        <div class="index-icon icon5">
-                            <span>出售</span>
-                        </div>
-
-                        {@else if item.type == "鉴定"}
-                        <div class="index-icon icon13">
-                            <span>鉴定</span>
-                        </div>
-
-                        {@else if item.type == "欣赏"}
-                        <div class="index-icon icon14">
-                            <span>欣赏</span>
-                        </div>
-
-                        {@/if}
-
-                    </div>
-
-                    <p>${item.author}</p>
-
-                    <div class="b-w">
-                        <p>
-                            ￥${item.starting_price}元
-                        </p>
-                        <p>
-                            <span class="index-icon icon7"></span> 喜欢${item.love_number}
-                        </p>
-                    </div>
-                </li>
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                <div>
+                    <a>
+                        <img lazy-image="${item.picture}" class="lazy-image">
+                    </a>
+                </div>
+                <span>${item.title}</span>
+            </li>
 
 
-                {@/each}
+            {@/each}
 
-            </ul>
-        </section>
+        </ul>
+    </section>
 
+    <div class="hr">
+        <span>上新</span>
     </div>
 
+    <section class="ul-wrapper2 itemli">
+        <ul>
+            {@each data.new_painting as item}
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                <div class="t-w">
+                    <img lazy-image="${item.avatar}" class="lazy-image">
 
+                    <div>
+                        <p>
+                            ${item.nickname}
+                            <span class="lv">V${item.level}</span>
+                        </p>
+
+                        <p>
+                            ${item.add_time}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="i-w">
+                    <a>
+                        <img lazy-image="${item.pic}" class="lazy-image">
+                    </a>
+                    {@if item.type == "拍卖"}
+                    <div class="index-icon icon6">
+                        <span>拍卖</span>
+                    </div>
+                    {@else if item.type == "出售"}
+                    <div class="index-icon icon5">
+                        <span>出售</span>
+                    </div>
+
+                    {@else if item.type == "鉴定"}
+                    <div class="index-icon icon13">
+                        <span>鉴定</span>
+                    </div>
+
+                    {@else if item.type == "欣赏"}
+                    <div class="index-icon icon14">
+                        <span>欣赏</span>
+                    </div>
+
+                    {@/if}
+
+                </div>
+
+                <p>${item.author}</p>
+
+                <div class="b-w">
+                    <p>
+                        ￥${item.starting_price}元
+                    </p>
+
+                    <p>
+                        <span class="index-icon icon7"></span> 喜欢${item.love_number}
+                    </p>
+                </div>
+            </li>
+
+
+            {@/each}
+
+        </ul>
+    </section>
+</script>
+
+<script type="template/juicer" id="tab2">
+
+    <section class="ul-wrap">
+        <ul>
+
+        </ul>
+
+    </section>
+
+</script>
+
+<script type="template/juicer" id="tab3">
+    <section class="ul-wrap">
+        <ul>
+
+        </ul>
+
+    </section>
+</script>
+
+<script type="template/juicer" id="picli">
+    {@each data.list as item}
+    <li data-id="${item.id}" data-url="${getFuckType(item.type)}">
+        <div class="top-li">
+            <div class="t-w flex1">
+                <img lazy-image="${item.logo}" class="lazy-image">
+
+                <div>
+                    <p> ${item.nickname} <span class="lv">V${item.level}</span></p>
+
+                    <p> ${item.add_time} </p>
+                </div>
+            </div>
+            {@if item.type == 1}
+            <div class="top-tag pm">
+                拍卖
+            </div>
+            {@else if item.type == 2}
+            <div class="top-tag cx">
+                出售
+            </div>
+
+            {@else if item.type == 3}
+
+            <div class="top-tag wz">
+                文字
+            </div>
+            {@else if item.type == 4}
+            <div class="top-tag jd">
+                鉴定
+            </div>
+            {@else if item.type == 5}
+            <div class="top-tag xs">
+                欣赏
+            </div>
+            {@/if}
+        </div>
+
+        <div class="mid-li">
+            <p>作者：${item.author}</p>
+            <ul class="img-list">
+                {@each item.pic as img}
+                <li>
+                    <a>
+                        <img lazy-image="${img}" class="lazy-image">
+                    </a>
+
+                </li>
+                {@/each}
+            </ul>
+            <p>
+                ${item.content}
+            </p>
+
+            {@if item.love.length > 0 }
+            <div class="like-wrap">
+                <span>赞</span>
+                <p>
+                    ${makeLoveDis(item.love)}
+                </p>
+            </div>
+            {@/if}
+            {@if item.comment.length > 0}
+            <div class="like-wrap">
+                <span>评</span>
+                <ul>
+                    {@each item.comment as com}
+                    <li>
+                        <span>${com.from_name}:</span>${com.content}
+                    </li>
+                    {@/each}
+                </ul>
+            </div>
+            {@/if}
+
+        </div>
+
+        <!--<div class="bot-li">-->
+        <!--<ul>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+    </li>
+    {@/each}
 </script>
 
 <script src="../../lib/libAll.js?version=0.1.3"></script>

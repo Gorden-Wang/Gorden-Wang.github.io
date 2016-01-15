@@ -8,7 +8,7 @@
         var that = this;
         //Wlib.Weixin.goAuth();
         //Wlib.wx.pay();
-        //Wlib.wx.auth(function(){
+        Wlib.wx.auth(function(){
         Wlib.wx.getJSSign('', function (data) {
             Wlib.wx.jsConfig(data, function () {
                 Wlib.wx.hideMenu();
@@ -16,7 +16,7 @@
             });
         });
 
-        //});
+        });
     }
 
     Index.prototype = {
@@ -43,7 +43,8 @@
                 tpl: $("#tpl"),
                 tab1: $("#tab1"),
                 tab2: $("#tab2"),
-                tab3: $("#tab3")
+                tab3: $("#tab3"),
+                picli : $("#picli")
             }
         },
         renderUI: function () {
@@ -55,13 +56,15 @@
             var that = this;
 
             that.dom.newLi = $(".itemli li");
-            that.dom.goApp = $(".icon2");
             that.dom.mainwrap = $("#wrap");
             that.dom.tab = $("header li");
+            that.dom.goApp = $(".icon2");
 
         },
         recacheDom2: function () {
             var that = this;
+            that.dom.tabul = $(".ul-wrap ul");
+
 
         },
         addJuicerHandler: function () {
@@ -83,7 +86,28 @@
                 }
                 return res;
             });
+            juicer.register("makeLoveDis", function (data) {
+               var a =  data.map(function(v){
+                    return v.name;
+                })
+                return a.join(",");
+            });
+            juicer.register("getFuckType", function (type) {
+                var res = "";
+                switch (type) {
+                    case "2":
+                        //出售
+                        res = "../../pages/sale/index.html";
+                        break;
+                    case "1":
+                        //拍卖
+                        res = "../../pages/auction/index.html";
+                        break;
+                    //  @TODO : 鉴定，欣赏
 
+                }
+                return res;
+            });
         },
         bindEvent: function () {
             var that = this;
@@ -123,6 +147,18 @@
 
         },
         bindEvent2 : function(){
+            Wlib._bindLazyLoad();
+            $(".ul-wrap li").on("click",function(){
+                var id = $(this).attr("data-id");
+                var des = $(this).attr("data-url");
+
+                if (!id) {
+                    Wlib.tips("已经下架");
+                    return;
+                }
+
+                win.location = des + "?id=" + id;
+            });
 
         },
         getData: function (id,callback) {
@@ -137,6 +173,8 @@
 
                 callback && callback(id,that.data);
 
+                that.recacheDom();
+
                 that.bindEvent();
 
             })
@@ -144,15 +182,16 @@
         },
         rTab: function (id) {
             var that = this;
+            that.data = {};
             switch (id) {
                 case "#tab1" :
                     that.getData(id,handler);
                     break;
                 case "#tab2":
-                    that.getFriendData(id,handler);
+                    that.getInterestData(id,handler);
                     break;
                 case "#tab3":
-                    that.getPicData(id,handler);
+                    that.getFriendData(id,handler);
                     break;
             }
 
@@ -161,7 +200,7 @@
             }
 
         },
-        getPicData: function (id,callback) {
+        getFriendData: function (id,callback) {
             var that = this;
 
             var req = {
@@ -172,10 +211,19 @@
                 that.data.data = data;
                 callback && callback(id,that.data);
                 that.recacheDom2();
+                if(data.list.length > 0){
+                    //next
+                    that.dom.tabul.append(juicer(that.dom.picli.html(),that.data));
+                }
+                if(data.list.length == 10){
+                    //next
+                    that.bindNext(true,'',true);
+                }
+
                 that.bindEvent2();
             })
         },
-        getFriendData: function (id,callback) {
+        getInterestData: function (id,callback) {
             var that = this;
 
             var req = {
@@ -186,8 +234,44 @@
                 that.data.data = data;
                 callback && callback(id,that.data);
                 that.recacheDom2();
+                if(data.list.length > 0){
+                    //next
+                    that.dom.tabul.append(juicer(that.dom.picli.html(),that.data));
+                }
+                if(data.list.length == 10){
+                    //next
+                    that.bindNext(true);
+                }
+
                 that.bindEvent2();
             })
+        },
+        bindNext: function (tag,id,des) {
+            var that = this;
+
+            Wlib._bindScrollTobottom(function () {
+                var req = {
+                    token: localStorage.getItem("token"),
+                    uid: localStorage.getItem("uid"),
+                    infoid : id || that.data.data.list[9].id
+                };
+                var re = des ? "default/api/friends" : "default/api/interest";
+                Wlib.SendRequest(re, req, "GET", function (data) {
+                    var d = {};
+                    d.data = data;
+                    if(data.list.length == 0){
+                        return;
+                    }
+                    that.dom.tabul.append(juicer(that.dom.picli.html(),d));
+                    if(data.list.length == 10){
+                        that.bindNext(true,data.list[9].id);
+                    }
+                    //Wlib._bindLazyLoad();
+                    that.bindEvent2();
+                })
+            },tag)
+
+
         }
     }
 

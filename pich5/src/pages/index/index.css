@@ -262,9 +262,12 @@
   #page #wrap {
     background-color: #FFF; }
   #page .ul-wrap {
-    margin-top: 20px; }
+    margin-top: 20px;
+    background: whitesmoke; }
     #page .ul-wrap > ul > li {
-      padding: 10px 0px; }
+      padding: 10px 0px;
+      margin-bottom: 15px;
+      background: white; }
     #page .ul-wrap .top-li {
       display: flex;
       border-bottom: 1px dotted #CCCCCC;
@@ -342,7 +345,8 @@
         margin-right: 2%;
         height: 0px;
         padding-bottom: 32%;
-        position: relative; }
+        position: relative;
+        margin-bottom: 10px; }
         #page .ul-wrap .img-list li a {
           position: absolute;
           top: 0px;
@@ -368,7 +372,8 @@
         margin-right: 10px; }
       #page .ul-wrap .like-wrap p, #page .ul-wrap .like-wrap ul {
         color: #37b8cb;
-        flex: 1; }
+        flex: 1;
+        font-size: 12px; }
       #page .ul-wrap .like-wrap li {
         color: #6a5252;
         font-size: 12px; }

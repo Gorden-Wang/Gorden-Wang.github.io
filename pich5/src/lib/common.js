@@ -417,6 +417,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("local", "");
+    return new lib("publish", "");
 })($);
 

@@ -372,8 +372,11 @@
   }
   .ul-wrap{
     margin-top: 20px;
+    background: whitesmoke;
     &>ul>li{
       padding:10px 0px ;
+      margin-bottom: 15px;
+      background: white;
     }
     .top-li{
       display: flex;
@@ -480,6 +483,9 @@
         height: 0px;
         padding-bottom: 32%;
         position: relative;
+        margin-bottom: 10px;
+
+
         a{
           position: absolute;
           top: 0px;
@@ -512,6 +518,7 @@
       p,ul{
         color: #37b8cb;
         flex: 1;
+        font-size: 12px;
       }
       li{
         color: #6a5252;

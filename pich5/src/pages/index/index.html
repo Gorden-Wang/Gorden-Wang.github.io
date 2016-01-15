@@ -223,78 +223,7 @@
 
     <section class="ul-wrap">
         <ul>
-            <li>
-                <div class="top-li">
-                    <div class="t-w flex1">
-                        <img lazy-image="http://115.159.100.197/upload/users/150_1452654728711973.jpg" class=""
-                             src="http://115.159.100.197/upload/users/150_1452654728711973.jpg">
 
-                        <div>
-                            <p> Ggg <span class="lv">V1</span></p>
-
-                            <p> 01月13日 16:08 </p>
-                        </div>
-                    </div>
-                    <div class="top-tag cx">
-                        出售
-                    </div>
-                </div>
-
-                <div class="mid-li">
-                    <p>作者：test</p>
-                    <ul class="img-list">
-                        <li>
-                            <a>
-                                <img lazy-image="http://115.159.100.197/upload/sale/32_1452657112913805.jpg" class=""
-                                     src="http://115.159.100.197/upload/sale/32_1452657112913805.jpg">
-                            </a>
-
-                        </li>
-                    </ul>
-                    <p>
-                        content display here!content display here!content display here!content display here!content
-                        display here!content display here!content display here!content display here!
-                    </p>
-
-                    <div class="like-wrap">
-                        <span>赞</span>
-                        <p>abc edf author display here</p>
-                    </div>
-                    <div class="like-wrap">
-                        <span>评</span>
-                        <ul>
-                            <li>
-                                <span>gorden:</span>反反复复
-                            </li>
-                            <li>
-                                <span>gorden:</span>反反复复
-                            </li>
-                            <li>
-                                <span>gorden:</span>反反复复
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div class="bot-li">
-                    <ul>
-                        <li>
-                            <span class="index-icon icon9" id="praise"></span>2
-                        </li>
-                        <li>
-
-                        </li>
-                        <li>
-
-                        </li>
-                        <li>
-
-                        </li>
-                    </ul>
-                </div>
-
-            </li>
         </ul>
 
     </section>
@@ -302,7 +231,106 @@
 </script>
 
 <script type="template/juicer" id="tab3">
- I am tab3
+    <section class="ul-wrap">
+        <ul>
+
+        </ul>
+
+    </section>
+</script>
+
+<script type="template/juicer" id="picli">
+    {@each data.list as item}
+    <li data-id="${item.id}" data-url="${getFuckType(item.type)}">
+        <div class="top-li">
+            <div class="t-w flex1">
+                <img lazy-image="${item.logo}" class="lazy-image">
+
+                <div>
+                    <p> ${item.nickname} <span class="lv">V${item.level}</span></p>
+
+                    <p> ${item.add_time} </p>
+                </div>
+            </div>
+            {@if item.type == 1}
+            <div class="top-tag pm">
+                拍卖
+            </div>
+            {@else if item.type == 2}
+            <div class="top-tag cx">
+                出售
+            </div>
+
+            {@else if item.type == 3}
+
+            <div class="top-tag wz">
+                文字
+            </div>
+            {@else if item.type == 4}
+            <div class="top-tag jd">
+                鉴定
+            </div>
+            {@else if item.type == 5}
+            <div class="top-tag xs">
+                欣赏
+            </div>
+            {@/if}
+        </div>
+
+        <div class="mid-li">
+            <p>作者：${item.author}</p>
+            <ul class="img-list">
+                {@each item.pic as img}
+                <li>
+                    <a>
+                        <img lazy-image="${img}" class="lazy-image">
+                    </a>
+
+                </li>
+                {@/each}
+            </ul>
+            <p>
+                ${item.content}
+            </p>
+
+            {@if item.love.length > 0 }
+            <div class="like-wrap">
+                <span>赞</span>
+                <p>
+                    ${makeLoveDis(item.love)}
+                </p>
+            </div>
+            {@/if}
+            {@if item.comment.length > 0}
+            <div class="like-wrap">
+                <span>评</span>
+                <ul>
+                    {@each item.comment as com}
+                    <li>
+                        <span>${com.from_name}:</span>${com.content}
+                    </li>
+                    {@/each}
+                </ul>
+            </div>
+            {@/if}
+
+        </div>
+
+        <!--<div class="bot-li">-->
+        <!--<ul>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+    </li>
+    {@/each}
 </script>
 
 <script src="../../lib/libAll.js"></script>
