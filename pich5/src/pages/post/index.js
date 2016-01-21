@@ -26,6 +26,20 @@
 
             that.data = {};
             that.data.newArr=[];
+            that.data.picData = [];
+            that.data.type = Wlib.getRequestParam("tag")
+            that.data.picType = (function(type){
+                var res = 5;
+                switch (type){
+                    case 1 :
+                        res = 3;
+                        break;
+                    case 2 :
+                        res = 2;
+                        break;
+                }
+                return res;
+            })(that.data.type)
 
         },
         cacheDom: function () {
@@ -174,33 +188,23 @@
                     return;
                 }
 
-                //
-                //function addPic(data){
-                //    Wlib.SendRequest("default/person/uploadPic", data, "POST", function (data) {
-                //        console.log(data);
-                //    })
-                //}
+
 
 
                 for(var i=0;i<$(this)[0].files.length;i++){
                     var d = new FormData();
                     d.append("pic",$(this)[0].files[i]);
-                    d.append("type",2);
+                    d.append("type",that.data.picType);
                     Wlib.SendRequest("default/person/uploadPic", d, "POST", function (data) {
                         $("#imgs").prepend("<li class='img-tag'><div><img src='"+data.url+"'></div></li>")
+                        that.data.picData.push(data.path);
                         if($(".img-tag").length==9){
                             $("#addPic").hide();
                         }
                     })
                 }
 
-                //var d = new FormData();
-                //d.append("pic",$(this)[0].files[0]);
-                //d.append("type",2);
-                //console.log($(this)[0].files)
-                //Wlib.SendRequest("default/person/uploadPic", d, "POST", function (data) {
-                //    console.log(data);
-                //})
+
             });
         },
         makeSubTag : function(obj){
