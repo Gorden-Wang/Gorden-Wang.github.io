@@ -86,10 +86,10 @@
                         res = '未付款';
                         break;
                     case 2 :
-                        res = '已付款';
+                        res = '待完成';
                         break;
                     case 3 :
-                        res = '已完成';
+                        res = '已付款';
                         break;
                     case 4 :
                         res = '已退款';
@@ -245,7 +245,29 @@
                 var oid = $(this).attr("data-oid");
                 var price = $(this).attr("data-price");
                 that.payFor(oid, price);
-            })
+            });
+
+            $("#canFor").on("click",function(){
+                var oid = $(this).attr("data-oid");
+                var otype = $(this).attr("data-orderType");
+                //that.cannFor(oid,userid,otype);
+                var p = {
+                    "userid": localStorage.getItem("userId"),
+                    "orderid" : oid,
+                    "orderType":otype
+                };
+                Wlib.SendRequestNew("treatOperate","cancelOrder",p,function(res){
+                    if(res.errorCode == 0){
+                        //成功
+                        location.reload();
+                    }else{
+                        Wlib.tips(res.message);
+                    }
+                });
+            });
+
+
+
         },
         payFor: function (oid, price) {
             var that = this;

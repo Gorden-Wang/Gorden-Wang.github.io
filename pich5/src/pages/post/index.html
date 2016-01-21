@@ -26,6 +26,7 @@
         <section class="form-wrapper lastmargin">
             <ul id="imgs">
                 <li id="addPic">
+                    <input id="fileInput" name="pic" type="file" multiple="true" accept="image/jpeg,image/png,image/jpg">
                     <div>
                         <p>
                             <span class="p-icon p-1"></span>
@@ -124,33 +125,59 @@
 
     <div class="tips-wrapper">
         <section>
-            <p>请给您的作品添加标签</p>
+            <p class="t-title">请给您的作品添加标签</p>
             <ul class="lv1-wrapper">
-                <li class="selected">国画</li>
-                <li>书法</li>
-                <li>油画</li>
-                <li class="flex2">其它画种</li>
-                <li class="flex2">非书画类</li>
+                {@each getArray(data.category) as item,index}
+                {@if index == 0}
+                <li class="selected ${makeClass(item.type)}" data-index="${index}">${item.type}</li>
+                {@else}
+                <li class="${makeClass(item.type)}" data-index="${index}">${item.type}</li>
+                {@/if}
+                {@/each}
+
             </ul>
 
-            <ul class="lv2-wrapper">
-                <li class="selected">雕塑</li>
-                <li>文房</li>
-                <li>瓷器</li>
-                <li>玉器</li>
-                <li>石器</li>
-                <li>陶瓷</li>
-                <li>木器</li>
-                <li>铜器</li>
-                <li>金银器</li>
-                <li class="selected">自定义</li>
-            </ul>
+            <div class="tip-tab-wrap">
+
+            </div>
+
 
             <div class="button tips-btn">下一步</div>
         </section>
 
     </div>
 
+
+</script>
+
+<script type="template/juicer" id="tagtpl">
+    <p class="t-subtitle">点击选择</p>
+
+    <div class="hr"><span>小类</span></div>
+
+    <ul class="lv2-wrapper">
+        {@each sort as item,index}
+        {@if index == 0}
+        <li class="selected">${item}</li>
+        {@else}
+        <li>${item}</li>
+        {@/if}
+        {@/each}
+
+    </ul>
+    {@if times && times.length>0}
+    <div class="hr"><span>年代</span></div>
+
+    <ul class="lv2-wrapper times-tag">
+        {@each times as item,index}
+        {@if index == 0}
+        <li class="selected">${item}</li>
+        {@else}
+        <li>${item}</li>
+        {@/if}
+        {@/each}
+    </ul>
+    {@/if}
 
 </script>
 

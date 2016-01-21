@@ -10,9 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>订单列表</title>
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
-    <link href="../../lib/all.css?version=0.2.2" type="text/css" rel="stylesheet"/>
-    <link href="../../pages/orderlist/index.css?version=0.2.2" type="text/css" rel="stylesheet"/>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.2"></script>
+    <link href="../../lib/all.css?version=0.2.5" type="text/css" rel="stylesheet"/>
+    <link href="../../pages/orderlist/index.css?version=0.2.5" type="text/css" rel="stylesheet"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.5"></script>
 </head>
 <body>
 <div id="loading" class="loading">
@@ -127,10 +127,16 @@
                                 去付款
                             </a>
                         </div>
-                        {@else if item.orderStatus == 2 || item.orderStatus == 3}
+                        {@else if item.orderStatus == 2}
                         <div class="btn">
                             <a href="../../pages/feedback/index.html?clinicId=${item.clinicId}&userid=${item.userId}&doctorId=${item.doctorId}&id=${item.id}&token=${token}">
                                 去评价
+                            </a>
+                        </div>
+                        {@else if item.orderStatus == 3}
+                        <div class="btn">
+                            <a class="tocanBtn" data-oid="${item.id}" data-orderType="${item.orderType}">
+                                取消订单
                             </a>
                         </div>
                         {@/if}
@@ -234,8 +240,8 @@
 </script>
 
 
-<script src="../../lib/libAll.js?version=0.2.2"></script>
-<script src="index.js?version=0.2.2"></script>
+<script src="../../lib/libAll.js?version=0.2.5"></script>
+<script src="index.js?version=0.2.5"></script>
 
 </body>
 </html>

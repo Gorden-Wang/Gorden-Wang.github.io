@@ -1,1 +1,141 @@
-body{background-color:#efeff4}#page{font-family:HY}#page .wrap{margin-top:0}#page .header-wrap{background-color:#FFF;padding:20px 0;padding-bottom:0;margin-bottom:10px}#page .header-wrap p.h-title{text-align:center;font-size:16px;color:#434343}#page .header-wrap p.h-price{text-align:center;font-size:30px;font-family:"Microsoft YaHei";color:#f15d5d;margin-bottom:20px}#page .btn-wrap{padding:0 20px;overflow:hidden;margin-bottom:20px}#page .btn-wrap .button{background-color:#ffe326;border:1px solid #f6d30a;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;font-size:14px;color:#774300;text-align:center;padding:8px;width:45%;float:left}#page .btn-wrap .button span{position:relative;display:inline-block}#page .btn-wrap .button:first-of-type{margin-right:10%}#page .btn-wrap .button span{content:'';background-position:center center;background-repeat:no-repeat;-webkit-background-size:89px 42px;-moz-background-size:89px 42px;-o-background-size:89px 42px;background-size:89px 42px;background-image:url(../../images/wallet/wallet.png);width:13px;height:13px;top:2px;margin-right:4px;display:inline-block}#page .btn-wrap .button.payfor span{background-position:0 0}#page .btn-wrap .button.withdraw span{background-position:-15px 0}#page .tab-ul{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;align-items:center;text-align:center}#page .tab-ul li{display:block;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;flex:1;border-right:1px solid #efefef}#page .tab-ul li:last-of-type{border-right:0}#page .tab-ul p{color:#434343;font-size:14px}#page .tab-ul span{color:#f15d5d;font-size:12px}#page .item-li{background-color:#FFF;padding:0 10px}#page .item-li li{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;align-items:center}#page .item-li li div{display:block;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;flex:1;padding:15px 0;margin-left:15px;border-bottom:1px solid #efefef;color:#4b4b4b;font-size:14px;position:relative}#page .item-li li div:after{content:'';width:.6em;height:1em;display:inline-block;right:10px;top:35%;position:absolute}#page .w-icon{background-position:center center;background-repeat:no-repeat;-webkit-background-size:89px 42px;-moz-background-size:89px 42px;-o-background-size:89px 42px;background-size:89px 42px;background-image:url(../../images/wallet/wallet.png);display:inline-block;width:25px;height:25px}#page .w-1{background-position:0 -17px}#page .w-2{background-position:-30px -17px}#page .w-3{background-position:-60px -17px}#page .li-right-icon,#page .item-li li div:after{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAYAAABozQZiAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAPAAAAGgBUqfUHAAABR0lEQVQ4y53UvUoDQRSG4TfBSgURrBR1BRFRmW6KwUKjGIJNhNyShbdhZ+1v8C8RxCEORBzwCiwEURALwTSxyEmIxmRn98AW88HzHRiYzdzdP04B57SmYLR6JnCywB6wJN+NdT5Kgg+AhpznpGA+CButToAS8C3ZjBQshmzGaHUMFIEvySeBqnV+ZRDONJvNzsE6nwOOgBGJ3oC80eqh7+b2GK0qQAH4lGgCuLLO61gsBbdAHviQaBy4sM6vxmIpqAGbwLtEY0DZOr8Wi6WgDmwArxKNAqfW+a1YLAUeWAdeJBoGDq3z2z233W+s8wvAJTAtUQMoBWEpyAHXXVEtdHMEVICoa3MxmxLuGK3KQwGwCsz+gWcDbzsO9sUh8F8cCntwEvgLJ4UdnAYCZNPC9ubdNLCN92n9/BJBkFdlnV8GMFo9hUKAH3bVnFKX+XH+AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE0LTA3LTIyVDE2OjA3OjQ5KzA4OjAwNCq0NAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNC0wNy0yMlQxNjowNzo0OSswODowMEV3DIgAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) no-repeat right center;-webkit-background-size:100% 100%;-moz-background-size:100%;-o-background-size:100%;background-size:100%}
+body {
+  background-color: #efeff4; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .header-wrap {
+    background-color: #FFF;
+    padding: 20px 0px;
+    padding-bottom: 0px;
+    margin-bottom: 10px; }
+    #page .header-wrap p.h-title {
+      text-align: center;
+      font-size: 16px;
+      color: #434343; }
+    #page .header-wrap p.h-price {
+      text-align: center;
+      font-size: 30px;
+      font-family: "Microsoft YaHei";
+      color: #f15d5d;
+      margin-bottom: 20px; }
+  #page .btn-wrap {
+    padding: 0px 20px;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    #page .btn-wrap .button {
+      background-color: #ffe326;
+      border: 1px solid #f6d30a;
+      -webkit-border-radius: 6px;
+         -moz-border-radius: 6px;
+              border-radius: 6px;
+      font-size: 14px;
+      color: #774300;
+      text-align: center;
+      padding: 8px;
+      width: 45%;
+      float: left; }
+      #page .btn-wrap .button span {
+        position: relative;
+        display: inline-block; }
+    #page .btn-wrap .button:first-of-type {
+      margin-right: 10%; }
+    #page .btn-wrap .button span {
+      content: '';
+      background-position: center center;
+      background-repeat: no-repeat;
+      -webkit-background-size: 89px 42px;
+         -moz-background-size: 89px 42px;
+           -o-background-size: 89px 42px;
+              background-size: 89px 42px;
+      background-image: url("../../images/wallet/wallet.png");
+      width: 13px;
+      height: 13px;
+      top: 2px;
+      margin-right: 4px;
+      display: inline-block; }
+    #page .btn-wrap .button.payfor span {
+      background-position: 0 0; }
+    #page .btn-wrap .button.withdraw span {
+      background-position: -15px 0; }
+  #page .tab-ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
+    text-align: center; }
+    #page .tab-ul li {
+      display: block;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+         -moz-box-flex: 1;
+              flex: 1;
+      border-right: 1px solid #efefef; }
+    #page .tab-ul li:last-of-type {
+      border-right: 0px; }
+    #page .tab-ul p {
+      color: #434343;
+      font-size: 14px; }
+    #page .tab-ul span {
+      color: #f15d5d;
+      font-size: 12px; }
+  #page .item-li {
+    background-color: #FFF;
+    padding: 0px 10px; }
+    #page .item-li li {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+              align-items: center; }
+      #page .item-li li div {
+        display: block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+           -moz-box-flex: 1;
+                flex: 1;
+        padding: 15px 0px;
+        margin-left: 15px;
+        border-bottom: 1px solid #efefef;
+        color: #4b4b4b;
+        font-size: 14px;
+        position: relative; }
+      #page .item-li li div:after {
+        content: '';
+        width: 0.6em;
+        height: 1em;
+        display: inline-block;
+        right: 10px;
+        top: 35%;
+        position: absolute; }
+  #page .w-icon {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 89px 42px;
+       -moz-background-size: 89px 42px;
+         -o-background-size: 89px 42px;
+            background-size: 89px 42px;
+    background-image: url("../../images/wallet/wallet.png");
+    display: inline-block;
+    width: 25px;
+    height: 25px; }
+  #page .w-1 {
+    background-position: 0 -17px; }
+  #page .w-2 {
+    background-position: -30px -17px; }
+  #page .w-3 {
+    background-position: -60px -17px; }
+  #page .li-right-icon, #page .item-li li div:after {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAYAAABozQZiAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAPAAAAGgBUqfUHAAABR0lEQVQ4y53UvUoDQRSG4TfBSgURrBR1BRFRmW6KwUKjGIJNhNyShbdhZ+1v8C8RxCEORBzwCiwEURALwTSxyEmIxmRn98AW88HzHRiYzdzdP04B57SmYLR6JnCywB6wJN+NdT5Kgg+AhpznpGA+CButToAS8C3ZjBQshmzGaHUMFIEvySeBqnV+ZRDONJvNzsE6nwOOgBGJ3oC80eqh7+b2GK0qQAH4lGgCuLLO61gsBbdAHviQaBy4sM6vxmIpqAGbwLtEY0DZOr8Wi6WgDmwArxKNAqfW+a1YLAUeWAdeJBoGDq3z2z233W+s8wvAJTAtUQMoBWEpyAHXXVEtdHMEVICoa3MxmxLuGK3KQwGwCsz+gWcDbzsO9sUh8F8cCntwEvgLJ4UdnAYCZNPC9ubdNLCN92n9/BJBkFdlnV8GMFo9hUKAH3bVnFKX+XH+AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE0LTA3LTIyVDE2OjA3OjQ5KzA4OjAwNCq0NAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNC0wNy0yMlQxNjowNzo0OSswODowMEV3DIgAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC) no-repeat right center;
+    -webkit-background-size: 100% 100%;
+       -moz-background-size: 100%;
+         -o-background-size: 100%;
+            background-size: 100%; }

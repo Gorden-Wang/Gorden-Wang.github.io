@@ -113,13 +113,13 @@
                     return;
                 }
 
-                if (that.data.CONID) {
-                    //去下单就ok了
-
-                    that.addOrder();
-
-                    return;
-                }
+                //if (that.data.CONID) {
+                //    //去下单就ok了
+                //
+                //    that.addOrder();
+                //
+                //    return;
+                //}
 
 
                 //添加联系人再下单
@@ -215,6 +215,12 @@
                 idNumber: that.dom.idcode.val(),
                 userid: that.data.userId,
                 remark : ""
+            };
+
+            var reg=/^[\u2E80-\u9FFF]+$/;
+            if(!reg.test(that.dom.name.val()) || that.dom.name.val().length < 2 || that.dom.name.val().length > 4){
+                Wlib.tips("请输入2-4位汉字");
+                return;
             }
 
             Wlib.SendRequestNew("treatOperate","addReserveProfile", param, function (res) {

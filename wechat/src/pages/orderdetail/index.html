@@ -52,14 +52,19 @@
                     <div class="details"><span><i class="dd"></i>总价</span><strong>${de.amount/100}元</strong></div>
                 </div>
             </div>
-            <div class="botbtns">
+            <div class="botbtns" style="margin-top: 10px;">
                 <div style="overflow: hidden">
                     {@if de.orderStatus == 1}
                     <!-- 未付款-->
                     <a id="payFor" style="width: 80%;" data-oid="${de.id}" data-price="${de.amount}">去付款</a>
-                    {@else if de.orderStatus == 2 || de.orderStatus == 3}
-                    <a href="#">病历详情</a>
+                    {@else if de.orderStatus == 2}
+                    <!--<a href="#">病历详情</a>-->
                     <a href="../../pages/feedback/index.html?clinicId=${de.clinicId}&userId=${de.userId}&doctorId=${de.doctorId}&id=${de.id}">服务评价</a>
+                    <a href="../../pages/docorder/index.html?doctorId=${de.doctorId}">再次购买</a>
+
+                    {@else if de.orderStatus == 3}
+
+                    <a id="canFor" data-oid="${de.id}" data-orderType="${de.orderType}">取消订单</a>
                     <a href="../../pages/docorder/index.html?doctorId=${de.doctorId}">再次购买</a>
 
                     {@/if}

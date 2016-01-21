@@ -237,10 +237,18 @@ window.Wlib = (function () {
             }
 
             if (method == "POST") {
-                    obj.url = url + path;
-                    obj.data = data;
-                    obj.dataType = "JSON";
-                    obj.type = "POST";
+                obj.url = url + path;
+                obj.data = data;
+                obj.dataType = "JSON";
+                obj.type = "POST";
+                //上传图片处理
+                console.log(data)
+                if (data.toString().indexOf("FormData") > 0) {
+                    obj.enctype = 'multipart/form-data';
+                    obj.cache = false;
+                    obj.contentType = false;
+                    obj.processData = false;
+                }
 
             } else {
                 obj.url = url + path + "&" + data + "callback=?";
@@ -275,6 +283,7 @@ window.Wlib = (function () {
         },
         forceLogin: function (url, callback) {
             var that = this;
+
             //var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
             var desurl = 'http://www.talkart.cc/index.php?r=wechat/wechat/pay';
             $.ajax({
@@ -289,42 +298,56 @@ window.Wlib = (function () {
                 }
             })
         },
-        wx : {
+        wx: {
             isWeixin: function () {
                 return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);
             },
-            auth : function(callback){
-                $.ajax({
-                    url : "http://www.talkart.cc/index.php?r=wechat/wechat/register",
-                    dataType : "JSONP",
-                    success : function(res){
-                        //@TODO : 存储uid token
-                        localStorage.setItem("uid",res.uid);
-                        localStorage.setItem("token",res.token);
-                        localStorage.setItem("avatar",res.avatar);
-                        callback && callback();
-                    },
-                    error : function(){
-                        alert("服务器错误，请稍后重试。");
-                    }
-                })
+            auth: function (callback, url) {
+                ////http://www.talkart.cc/index.php?r=wechat%2Fwechat%2Fauthoriztion&url=http://www.talkart.cc/wechat/pages/index/index.html
+                var url = encodeURIComponent(url || location.href.split("#")[0]);
+                if (Wlib.getRequestParam("uid") && Wlib.getRequestParam("token")) {
+                    localStorage.setItem("uid", Wlib.getRequestParam("uid"));
+                    localStorage.setItem("token", Wlib.getRequestParam("token"));
+                    Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
+                }
+
+                if (localStorage.getItem("uid") && localStorage.getItem("token")) {
+                    callback && callback();
+                } else {
+                    $.ajax({
+                        url: "http://www.talkart.cc/index.php?r=wechat/wechat/authoriztion&url=" + url,
+                        dataType: "JSONP",
+                        success: function (res) {
+                            //@TODO : 存储uid token
+                            //localStorage.setItem("uid",res.uid);
+                            //localStorage.setItem("token",res.token);
+                            //localStorage.setItem("avatar",res.avatar);
+                            //callback && callback();
+                            location.href = res.url;
+                        },
+                        error: function () {
+                            alert("服务器错误，请稍后重试。");
+                        }
+                    })
+                }
+
             },
-            getJSSign : function(url,callback){
+            getJSSign: function (url, callback) {
                 var u = url || location.href.split("#")[0];
                 $.ajax({
-                    url : "http://www.talkart.cc/index.php?r=wechat/wechat/jsapiSign&url="+u+"&callback=?",
-                    dataType : "JSONP",
-                    success : function(res){
+                    url: "http://www.talkart.cc/index.php?r=wechat/wechat/jsapiSign&url=" + u + "&callback=?",
+                    dataType: "JSONP",
+                    success: function (res) {
                         //@TODO :
                         callback && callback(res);
                     },
-                    error : function(){
+                    error: function () {
                         alert("服务器错误，请稍后重试。");
                     }
                 })
             },
             //@TODO : 入参：data
-            jsConfig : function(data,callback){
+            jsConfig: function (data, callback) {
                 wx.config({
                     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                     appId: data.appId, // 必填，公众号的唯一标识
@@ -346,7 +369,7 @@ window.Wlib = (function () {
                 });
                 callback && callback();
             },
-            hideMenu : function(){
+            hideMenu: function () {
                 wx.hideMenuItems({
                     menuList: [
                         "menuItem:share:qq",
@@ -366,7 +389,7 @@ window.Wlib = (function () {
                 });
             },
             //TODO : 难道需要一个Oid或者金额什么的吗？
-            pay : function(url){
+            pay: function (url) {
                 var that = this;
                 //var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
                 var desurl = 'http://www.talkart.cc/index.php?r=wechat/wechat/pay';
@@ -382,14 +405,14 @@ window.Wlib = (function () {
                     }
                 })
             },
-            previewImgs : function(current,urls){
+            previewImgs: function (current, urls) {
 
                 wx.previewImage({
                     current: current,
                     urls: urls || [current]
                 });
             },
-            chooseImgs : function(callback){
+            chooseImgs: function (callback) {
                 wx.chooseImage({
                     count: 9, // 默认9
                     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -400,7 +423,7 @@ window.Wlib = (function () {
                     }
                 });
             },
-            upLoadImgs : function(id,callback){
+            upLoadImgs: function (id, callback) {
                 alert(id);
                 wx.uploadImage({
                     localId: id, // 需要上传的图片的本地ID，由chooseImage接口获得
@@ -417,6 +440,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("local", "");
+    return new lib("daily", "");
 })($);
 

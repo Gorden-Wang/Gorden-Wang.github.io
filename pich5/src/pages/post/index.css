@@ -1,6 +1,14 @@
 body {
   background-color: #efeff4; }
 
+#addPic input {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0; }
+
 #page {
   font-family: "HY"; }
   #page .wrap {
@@ -145,15 +153,33 @@ body {
       top: 20%;
       border-radius: 10px;
       overflow: hidden; }
-      #page .tips-wrapper section p {
+      #page .tips-wrapper section p.t-title {
         background-color: #f17575;
         font-size: 15px;
         color: #ffffff;
         padding: 10px;
         text-align: center; }
+      #page .tips-wrapper section p.t-subtitle {
+        text-align: center;
+        font-size: 13px;
+        color: #d2d2d2; }
+      #page .tips-wrapper section .hr {
+        font-size: 18px;
+        height: 1px;
+        text-align: center;
+        background-color: #cccccc;
+        margin: 20px; }
+        #page .tips-wrapper section .hr span {
+          display: inline-block;
+          background-color: #ffffff;
+          color: #d2d2d2;
+          padding: 0px 10px;
+          position: relative;
+          top: -0.8em;
+          font-size: 13px; }
       #page .tips-wrapper section .lv1-wrapper {
         display: flex;
-        margin-bottom: 40px; }
+        margin-bottom: 10px; }
         #page .tips-wrapper section .lv1-wrapper li {
           padding: 5px 0;
           flex: 1;

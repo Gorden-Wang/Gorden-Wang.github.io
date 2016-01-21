@@ -8,13 +8,14 @@
         var that = this;
         //Wlib.Weixin.goAuth();
         //Wlib.wx.pay();
-        Wlib.wx.auth(function(){
-        Wlib.wx.getJSSign('', function (data) {
-            Wlib.wx.jsConfig(data, function () {
-                Wlib.wx.hideMenu();
-                that.init();
+        Wlib.wx.auth(function () {
+            Wlib.wx.getJSSign('', function (data) {
+                Wlib.wx.jsConfig(data, function () {
+                    Wlib.wx.hideMenu();
+                    that.init();
+                    localStorage.clear();
+                });
             });
-        });
 
         });
     }
@@ -25,7 +26,7 @@
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            that.getData("#tab1",function(id,data){
+            that.getData("#tab1", function (id, data) {
                 that.dom.mainwrap.html(juicer($(id).html(), data));
             });
         },
@@ -44,7 +45,7 @@
                 tab1: $("#tab1"),
                 tab2: $("#tab2"),
                 tab3: $("#tab3"),
-                picli : $("#picli")
+                picli: $("#picli")
             }
         },
         renderUI: function () {
@@ -87,7 +88,7 @@
                 return res;
             });
             juicer.register("makeLoveDis", function (data) {
-               var a =  data.map(function(v){
+                var a = data.map(function (v) {
                     return v.name;
                 })
                 return a.join(",");
@@ -139,16 +140,19 @@
             that.dom.tab.on("click", function () {
                 var is = $(this).hasClass("selected");
                 var tag = $(this).attr("tpl-id");
+
                 if (!is) {
+                    that.dom.loading.show();
                     $(this).addClass("selected").siblings().removeClass("selected");
                     that.rTab("#" + tag, that.data[tag]);
                 }
+
             });
 
         },
-        bindEvent2 : function(){
+        bindEvent2: function () {
             Wlib._bindLazyLoad();
-            $(".ul-wrap li").on("click",function(){
+            $(".ul-wrap li").on("click", function () {
                 var id = $(this).attr("data-id");
                 var des = $(this).attr("data-url");
 
@@ -161,7 +165,7 @@
             });
 
         },
-        getData: function (id,callback) {
+        getData: function (id, callback) {
             var that = this;
 
 
@@ -171,7 +175,7 @@
 
                 that.recacheDom();
 
-                callback && callback(id,that.data);
+                callback && callback(id, that.data);
 
                 that.recacheDom();
 
@@ -185,22 +189,23 @@
             that.data = {};
             switch (id) {
                 case "#tab1" :
-                    that.getData(id,handler);
+                    that.getData(id, handler);
                     break;
                 case "#tab2":
-                    that.getInterestData(id,handler);
+                    that.getInterestData(id, handler);
                     break;
                 case "#tab3":
-                    that.getFriendData(id,handler);
+                    that.getFriendData(id, handler);
                     break;
             }
 
-            function handler(id,data){
+            function handler(id, data) {
                 that.dom.mainwrap.html(juicer($(id).html(), data));
+                that.dom.loading.hide();
             }
 
         },
-        getFriendData: function (id,callback) {
+        getFriendData: function (id, callback) {
             var that = this;
 
             var req = {
@@ -209,21 +214,25 @@
             };
             Wlib.SendRequest("default/api/friends", req, "GET", function (data) {
                 that.data.data = data;
-                callback && callback(id,that.data);
+                callback && callback(id, that.data);
                 that.recacheDom2();
-                if(data.list.length > 0){
+                if (data.list.length > 0) {
                     //next
-                    that.dom.tabul.append(juicer(that.dom.picli.html(),that.data));
+                    that.dom.tabul.append(juicer(that.dom.picli.html(), that.data));
                 }
-                if(data.list.length == 10){
+                if (data.list.length == 10) {
                     //next
-                    that.bindNext(true,'',true);
+                    that.bindNext(true, '', true);
+                }
+                if(data.list.length == 0){
+                    Wlib.tips("您的画友没有发布任何作品～");
+                    that.dom.loading.hide();
                 }
 
                 that.bindEvent2();
             })
         },
-        getInterestData: function (id,callback) {
+        getInterestData: function (id, callback) {
             var that = this;
 
             var req = {
@@ -232,44 +241,50 @@
             };
             Wlib.SendRequest("default/api/interest", req, "GET", function (data) {
                 that.data.data = data;
-                callback && callback(id,that.data);
+                callback && callback(id, that.data);
                 that.recacheDom2();
-                if(data.list.length > 0){
+                if (data.list.length > 0) {
                     //next
-                    that.dom.tabul.append(juicer(that.dom.picli.html(),that.data));
+                    that.dom.tabul.append(juicer(that.dom.picli.html(), that.data));
                 }
-                if(data.list.length == 10){
+                if (data.list.length == 10) {
                     //next
                     that.bindNext(true);
+                }
+
+                alert(data.list)
+                if(data.list.length == 0){
+                    Wlib.tips("兴趣圈没有数据");
+                    that.dom.loading.hide();
                 }
 
                 that.bindEvent2();
             })
         },
-        bindNext: function (tag,id,des) {
+        bindNext: function (tag, id, des) {
             var that = this;
 
             Wlib._bindScrollTobottom(function () {
                 var req = {
                     token: localStorage.getItem("token"),
                     uid: localStorage.getItem("uid"),
-                    infoid : id || that.data.data.list[9].id
+                    infoid: id || that.data.data.list[9].id
                 };
                 var re = des ? "default/api/friends" : "default/api/interest";
                 Wlib.SendRequest(re, req, "GET", function (data) {
                     var d = {};
                     d.data = data;
-                    if(data.list.length == 0){
+                    if (data.list.length == 0) {
                         return;
                     }
-                    that.dom.tabul.append(juicer(that.dom.picli.html(),d));
-                    if(data.list.length == 10){
-                        that.bindNext(true,data.list[9].id);
+                    that.dom.tabul.append(juicer(that.dom.picli.html(), d));
+                    if (data.list.length == 10) {
+                        that.bindNext(true, data.list[9].id);
                     }
                     //Wlib._bindLazyLoad();
                     that.bindEvent2();
                 })
-            },tag)
+            }, tag)
 
 
         }
