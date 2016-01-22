@@ -127,7 +127,7 @@ body {
   #page span.gray {
     color: #b1b0b0;
     margin-left: 10px; }
-  #page span.baozhen {
+  #page span.baozhen, #page select.baozhen {
     display: inline-block;
     padding: 3px;
     background-color: #eb6877;

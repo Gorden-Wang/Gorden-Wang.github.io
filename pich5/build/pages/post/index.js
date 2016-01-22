@@ -26,6 +26,20 @@
 
             that.data = {};
             that.data.newArr=[];
+            that.data.picData = [];
+            that.data.type = Wlib.getRequestParam("tag")
+            that.data.picType = (function(type){
+                var res = 5;
+                switch (type){
+                    case 1 :
+                        res = 3;
+                        break;
+                    case 2 :
+                        res = 2;
+                        break;
+                }
+                return res;
+            })(that.data.type)
 
         },
         cacheDom: function () {
@@ -147,7 +161,7 @@
 
 
             that.dom.nextBtn.on("click", function () {
-                $(".tips-wrapper").remove();
+                $(".tips-wrapper").hide();
             });
 
             //$("#addPic").on("click", function () {
@@ -164,13 +178,58 @@
             //});
 
             $("#fileInput").on("change",function(){
-                var d = new FormData();
-                d.append("pic",$(this)[0].files[0]);
-                d.append("type",2);
-                console.log(d);
-                Wlib.SendRequest("default/person/uploadPic", d, "POST", function (data) {
-                    console.log(data);
-                })
+
+                if($(this)[0].files.length > 9){
+                    Wlib.tips("最多只能选择9张图片");
+                    return;
+                }
+                if($(".img-tag").length + $(this)[0].files.length > 9){
+                    Wlib.tips("您还能选择"+(9-$(".img-tag").length)+"张图片");
+                    return;
+                }
+
+
+
+
+                for(var i=0;i<$(this)[0].files.length;i++){
+                    var d = new FormData();
+                    d.append("pic",$(this)[0].files[i]);
+                    d.append("type",that.data.picType);
+                    Wlib.SendRequest("default/person/uploadPic", d, "POST", function (data) {
+                        $("#imgs").prepend("<li class='img-tag'><div><img src='"+data.url+"'></div></li>")
+                        that.data.picData.push(data.path);
+                        if($(".img-tag").length==9){
+                            $("#addPic").hide();
+                        }
+                    })
+                }
+
+
+            });
+
+            $("#sendBtn").on("click",function(){
+               var param = {
+                   uid : localStorage.getItem("uid"),
+                   token : localStorage.getItem("token"),
+                   checkcode : '',
+                   content : $("#content").val(),
+                   type : Wlib.getRequestParam("tag"),
+                   title : $("#title").val() || "",
+                   size1 : $("#size1").val() || "",
+                   size2 : $("#size2").val() || "",
+                   range : $("#range").val() || "",
+                   starting_price : $("#starting_price").val() || "",
+                   fidelity : "",//是否保真
+                   end_time : "",//结束时间
+                   address : "",//TODO address
+                   compile : '',
+                   category : that.data.category,
+                   sort : that.data.sort,
+                   times : that.data.times,
+                   ban_look : "",
+                   pictures : ""//todo
+
+               }
             });
         },
         makeSubTag : function(obj){

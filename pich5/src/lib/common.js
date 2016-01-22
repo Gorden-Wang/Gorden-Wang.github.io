@@ -309,6 +309,7 @@ window.Wlib = (function () {
                     localStorage.setItem("uid", Wlib.getRequestParam("uid"));
                     localStorage.setItem("token", Wlib.getRequestParam("token"));
                     Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
+                    localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
                 }
 
                 if (localStorage.getItem("uid") && localStorage.getItem("token")) {

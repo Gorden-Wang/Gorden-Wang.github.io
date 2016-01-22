@@ -161,7 +161,7 @@
 
 
             that.dom.nextBtn.on("click", function () {
-                $(".tips-wrapper").remove();
+                $(".tips-wrapper").hide();
             });
 
             //$("#addPic").on("click", function () {
@@ -205,6 +205,31 @@
                 }
 
 
+            });
+
+            $("#sendBtn").on("click",function(){
+               var param = {
+                   uid : localStorage.getItem("uid"),
+                   token : localStorage.getItem("token"),
+                   checkcode : '',
+                   content : $("#content").val(),
+                   type : Wlib.getRequestParam("tag"),
+                   title : $("#title").val() || "",
+                   size1 : $("#size1").val() || "",
+                   size2 : $("#size2").val() || "",
+                   range : $("#range").val() || "",
+                   starting_price : $("#starting_price").val() || "",
+                   fidelity : "",//是否保真
+                   end_time : $("#end_time").val() || "",//结束时间
+                   address : "",//TODO address
+                   compile : '',
+                   category : that.data.category,
+                   sort : that.data.sort,
+                   times : that.data.times,
+                   ban_look : "",
+                   pictures : ""//todo
+
+               }
             });
         },
         makeSubTag : function(obj){
