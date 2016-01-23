@@ -94,6 +94,18 @@
                     case 4 :
                         res = '已退款';
                         break;
+                    case 5 :
+                        res = "付款失败";
+                        break;
+                    case 6 :
+                        res = "已完成";
+                        break;
+                    case 7 :
+                        res = "已回收";
+                        break;
+                    case 8 :
+                        res = "退款中";
+                        break;
                 }
                 return res;
             });

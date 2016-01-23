@@ -222,6 +222,17 @@
                 Wlib.tips("请输入2-4位汉字");
                 return;
             }
+            var telreg = /^1\d{10}$/;
+            if(!telreg.test(that.dom.tel.val())){
+                Wlib.tips("请输入正确的手机号码");
+                return
+            }
+
+            if(that.data.CONID){
+                callback && callback();
+                return;
+            }
+
 
             Wlib.SendRequestNew("treatOperate","addReserveProfile", param, function (res) {
 

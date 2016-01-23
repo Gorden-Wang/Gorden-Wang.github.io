@@ -1,0 +1,85 @@
+body {
+  background-color: #ffe326;
+}
+
+
+#page {
+  font-family: "HY";
+
+
+  .wrap{
+    z-index: 1;
+  }
+  p{
+    color: #6a5252;
+    text-align: center;
+    margin: 40px 0px;
+  }
+
+//<div class="form-contain">
+//<input type="tel">
+//</div>
+
+  .form-contain{
+    padding: 12px 8px;
+    background-color: white;
+    margin: 0px 10px 10px 10px;
+    border-radius: 4px;
+
+
+
+    input{
+      display: block;
+      width: 100%;
+      font-size: 14px;
+      background-color: transparent;
+    }
+  }
+
+  .button {
+    background-color: #d6b31b;
+    text-align: center;
+    padding: 12px;
+    color: #e3cc7c;
+    margin: 0px 10px 40px 10px;
+    border-radius: 4px;
+  }
+
+  .loverlay{
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+
+  }
+
+  .fixebottom{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    z-index: 5;
+
+    p{
+      margin: 20px 0px;
+    }
+
+    .button{
+      margin-bottom: 20px;
+    }
+    .confirm{
+      background-color: #ffe326;
+      color: #7b4901;
+    }
+    .canl{
+      background-color: #fff192;
+      color: #7b4901;
+    }
+  }
+
+
+}
