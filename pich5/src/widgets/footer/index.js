@@ -90,11 +90,11 @@
                 });
 
                 $("#postsale").one("click",function(){
-                    win.location = "../../pages/post/index.html?tag=1";
+                    win.location = "../../pages/post/index.html?tag=2";
                 });
 
                 $("#postaution").one("click",function(){
-                    win.location = "../../pages/post/index.html?tag=2";
+                    win.location = "../../pages/post/index.html?tag=1";
                 });
                 $("#postother").one("click",function(){
                     win.location = "../../pages/post/index.html?tag=1";

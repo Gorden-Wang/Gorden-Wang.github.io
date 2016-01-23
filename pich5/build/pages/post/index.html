@@ -12,7 +12,7 @@
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/footer/index.css" rel="stylesheet">
     <link href="../../pages/post/index.css" rel="stylesheet">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.3"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.5"></script>
 
 </head>
 <body>
@@ -26,6 +26,7 @@
         <section class="form-wrapper lastmargin">
             <ul id="imgs">
                 <li id="addPic">
+                    <input id="fileInput" name="pic" type="file" multiple="true" accept="image/jpeg,image/png,image/jpg">
                     <div>
                         <p>
                             <span class="p-icon p-1"></span>
@@ -46,7 +47,7 @@
                     </span>
 
                     <div class="flex1 align-right">
-                        <input type="text" class="inputblock" placeholder="此处只填写作者姓名">
+                        <input type="text" id="author" class="inputblock" placeholder="此处只填写作者姓名">
                     </div>
                 </div>
                 <div class="flex">
@@ -55,7 +56,7 @@
                 </span>
 
                     <div class="flex1 align-right">
-                        <input type="number" class="size"> <span class="sizex">x</span> <input type="number"
+                        <input type="number" class="size" id="size1"> <span class="sizex">x</span> <input id="size2" type="number"
                                                                                                class="size"> <span
                             class="sizeSpan">cm</span>
                     </div>
@@ -70,7 +71,7 @@
                 </span>
 
                     <div class="flex1 flex">
-                        <input type="number" class="inputblock flex1" placeholder="合理的售价将倍受关注">
+                        <input type="number" id="starting_price" class="inputblock flex1" placeholder="合理的售价将倍受关注">
                         <span class="baozhen">是否保真</span>
                     </div>
                 </div>
@@ -80,7 +81,7 @@
                 </span>
 
                     <div class="flex1 align-right">
-                        <input type="number" class="align-right" style="width: 5em;"><span class="gray">元/每次</span>
+                        <input type="number" id="range" class="align-right" style="width: 5em;"><span class="gray">元/每次</span>
                     </div>
                 </div>
 
@@ -88,20 +89,20 @@
             </div>
 
             <div class="se-wrapper">
-                <textarea placeholder="作品详情"></textarea>
+                <textarea id="content" placeholder="作品详情"></textarea>
             </div>
 
-            <div class="se-wrapper flex">
-                <span>
-                    分享
-                </span>
+            <!--<div class="se-wrapper flex">-->
+                <!--<span>-->
+                    <!--分享-->
+                <!--</span>-->
 
-                <div class="flex1 align-right">
-                    <span class="p-icon p-2"></span>
-                    <span class="p-icon p-3"></span>
-                    <span class="p-icon p-4"></span>
-                </div>
-            </div>
+                <!--<div class="flex1 align-right">-->
+                    <!--<span class="p-icon p-2"></span>-->
+                    <!--<span class="p-icon p-3"></span>-->
+                    <!--<span class="p-icon p-4"></span>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="se-wrapper flex percent50">
                 <span class="p-icon p-5">
 
@@ -112,7 +113,7 @@
                 </div>
             </div>
 
-            <div class="button">
+            <div class="button" id="sendBtn">
                 发布
             </div>
         </section>
@@ -124,27 +125,22 @@
 
     <div class="tips-wrapper">
         <section>
-            <p>请给您的作品添加标签</p>
+            <p class="t-title">请给您的作品添加标签</p>
             <ul class="lv1-wrapper">
-                <li class="selected">国画</li>
-                <li>书法</li>
-                <li>油画</li>
-                <li class="flex2">其它画种</li>
-                <li class="flex2">非书画类</li>
+                {@each getArray(data.category) as item,index}
+                {@if index == 0}
+                <li class="selected ${makeClass(item.type)}" data-index="${index}">${item.type}</li>
+                {@else}
+                <li class="${makeClass(item.type)}" data-index="${index}">${item.type}</li>
+                {@/if}
+                {@/each}
+
             </ul>
 
-            <ul class="lv2-wrapper">
-                <li class="selected">雕塑</li>
-                <li>文房</li>
-                <li>瓷器</li>
-                <li>玉器</li>
-                <li>石器</li>
-                <li>陶瓷</li>
-                <li>木器</li>
-                <li>铜器</li>
-                <li>金银器</li>
-                <li class="selected">自定义</li>
-            </ul>
+            <div class="tip-tab-wrap">
+
+            </div>
+
 
             <div class="button tips-btn">下一步</div>
         </section>
@@ -154,9 +150,40 @@
 
 </script>
 
-<script src="../../lib/libAll.js?version=0.1.3"></script>
-<script src="../../widgets/footer/index.js?version=0.1.3"></script>
-<script src="../../pages/post/index.js?version=0.1.3"></script>
+<script type="template/juicer" id="tagtpl">
+    <p class="t-subtitle">点击选择</p>
+
+    <div class="hr"><span>小类</span></div>
+
+    <ul class="lv2-wrapper">
+        {@each sort as item,index}
+        {@if index == 0}
+        <li class="selected">${item}</li>
+        {@else}
+        <li>${item}</li>
+        {@/if}
+        {@/each}
+
+    </ul>
+    {@if times && times.length>0}
+    <div class="hr"><span>年代</span></div>
+
+    <ul class="lv2-wrapper times-tag">
+        {@each times as item,index}
+        {@if index == 0}
+        <li class="selected">${item}</li>
+        {@else}
+        <li>${item}</li>
+        {@/if}
+        {@/each}
+    </ul>
+    {@/if}
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../widgets/footer/index.js?version=0.1.5"></script>
+<script src="../../pages/post/index.js?version=0.1.5"></script>
 
 <script>
 
