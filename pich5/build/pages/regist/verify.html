@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>获取验证码</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../pages/regist/verify.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.5"></script>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+        <p>我们已发送验证码到您的手机</p>
+
+        <p class="tel">${makeTel()}</p>
+
+        <div class="input-wrap">
+            <div class="input"><input type="number"></div>
+
+            <div class="button disable"><span>60</span>秒后重新获取</div>
+        </div>
+
+        <div class="button" id="next">确认</div>
+        <p class="no-code">收不到验证码？</p>
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../pages/regist/verify.js?version=0.1.5"></script>
+
+<script>
+
+</script>
+</body>
+</html>

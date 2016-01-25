@@ -109,7 +109,17 @@
             });
 
             that.dom.myBtn.on("click", function () {
-                win.location = "../../pages/my/index.html";
+                if(localStorage.getItem("isbind") == 1){
+                    win.location = "../../pages/my/index.html";
+                }else{
+                    Wlib.tips("请绑定手机号，获取更多特权");
+                    setTimeout(function(){
+                        win.location = "../../pages/regist/index.html";
+                    },3000);
+
+
+                }
+
             });
 
             $(".follow-btn").on("click", function () {

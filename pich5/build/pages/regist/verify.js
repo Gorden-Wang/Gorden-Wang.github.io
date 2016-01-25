@@ -28,7 +28,6 @@
 
             that.data = {};
             that.data.desTel = Wlib.getRequestParam("tel");
-            that.data.code = localStorage.getItem("code");
 
 
         },
@@ -68,71 +67,27 @@
 
             FastClick.attach(document.body);
 
-            that.makeCountDown(function () {
+            that.makeCountDown(function(){
                 that.dom.reSend.removeClass("disable");
                 that.dom.reSend.html("重新获取");
             });
 
-            that.dom.reSend.on("click", function () {
-                var self = this;
+            that.dom.reSend.on("click",function(){
                 var dis = $(this).hasClass("disable");
-                if (dis) {
+                if(dis){
                     return;
                 }
+                //@TODO send Request
 
-                that.sendCode(function () {
-                    $(self).addClass("disable").html("<span>60</span>秒后重新获取");
-                    that.makeCountDown(function () {
-                        that.dom.reSend.removeClass("disable");
-                        that.dom.reSend.html("重新获取");
-                    });
+                $(this).addClass("disable").html("<span>60</span>秒后重新获取");
+                that.makeCountDown(function(){
+                    that.dom.reSend.removeClass("disable");
+                    that.dom.reSend.html("重新获取");
                 });
 
-
-            });
-            that.dom.confirm.on("click", function () {
-                that.bindTel(function () {
-                    //@TODO 判断是出价，立即购买，还是去我。
-                    localStorage.setItem();
-
-                })
-            });
+            })
 
 
-        },
-        sendCode: function (callback) {
-            var that = this;
-            var req = {
-                phone: that.data.desTel,
-                type: 5
-            };
-            Wlib.SendRequest("default/index/getCode", req, "GET", function (data) {
-                if (data.state == 0) {
-                    Wlib.tips(data.message);
-                } else {
-                    localStorage.setItem("code", data.code);
-                    callback && callback();
-                }
-            });
-        },
-        bindTel: function (callback) {
-            var that = this;
-            var req = {
-                uid: localStorage.getItem("uid"),
-                token: localStorage.getItem("token"),
-                phone: that.data.desTel,
-                open_id: localStorage.getItem("openid"),
-                code: that.dom.codeInput.val()
-            }
-
-            Wlib.SendRequest("wechat/wechat/bindphone", req, "GET", function (data) {
-                if (data.state == 0) {
-                    Wlib.tips(data.message);
-                } else {
-                    localStorage.setItem("code", "");
-                    callback && callback();
-                }
-            });
         },
         makeCountDown: function (callback) {
             var that = this;

@@ -219,7 +219,7 @@
 
             var reg=/^[\u2E80-\u9FFF]+$/;
             if(!reg.test(that.dom.name.val()) || that.dom.name.val().length < 2 || that.dom.name.val().length > 4){
-                Wlib.tips("请输入2-4位汉字");
+                Wlib.tips("姓名请输入2-4位汉字");
                 return;
             }
             var telreg = /^1\d{10}$/;

@@ -57,44 +57,28 @@
 
             FastClick.attach(document.body);
 
-            that.dom.next.on("click", function () {
+            that.dom.next.on("click",function(){
                 var val = that.dom.input.val();
-                if (/^1\d{10}$/.test(val)) {
+                if(/^1\d{10}$/.test(val)){
                     that.dom.confirmtel.text(that.dom.input.val());
                     that.dom.overlay.show();
 
-                } else {
+                }else{
                     Wlib.tips("请输入正确的手机号");
                 }
             });
 
-            that.dom.confim.on("click", function () {
-                that.sendCode(function(){
-                    win.location = "./verify.html?tel=" + that.dom.input.val();
-                });
+            that.dom.confim.on("click",function(){
+                //@TODO send Request
+                win.location = "./verify.html?tel="+that.dom.input.val();
             });
 
-            that.dom.canl.on("click", function () {
+            that.dom.canl.on("click",function(){
                 that.dom.overlay.hide();
             })
 
 
-        },
-        sendCode: function (callback) {
-            var that = this;
-            var tel = that.dom.input.val();
-            var req = {
-                phone : that.dom.input.val(),
-                type : 5
-            };
-            Wlib.SendRequest("default/index/getCode", req, "GET", function (data) {
-                if(data.state == 0){
-                    Wlib.tips(data.message);
-                }else{
-                    localStorage.setItem("code",data.code);
-                    callback && callback();
-                }
-            });
+
         }
 
     }

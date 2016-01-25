@@ -14,6 +14,7 @@
                     Wlib.wx.hideMenu();
                     that.init();
                     localStorage.clear();
+                    //alert(localStorage.getItem("isbind"))
                 });
             });
 

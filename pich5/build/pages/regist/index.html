@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>绑定手机号</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../pages/regist/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.5"></script>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+        <p>请输入手机号</p>
+
+        <div class="form-contain">
+            <input type="tel" placeholder="请输入手机号">
+        </div>
+
+        <div class="button" id="next">下一步</div>
+    </div>
+
+    <div class="loverlay">
+        <div class="fixebottom">
+            <p>将发送验证码到手机：<span id="confirmtel"></span></p>
+
+            <div class="btn-wrap">
+                <div class="button confirm">
+                    确认
+                </div>
+                <div class="button canl">
+                    取消
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../pages/regist/index.js?version=0.1.5"></script>
+
+<script>
+
+</script>
+</body>
+</html>
