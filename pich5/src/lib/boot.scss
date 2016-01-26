@@ -693,3 +693,11 @@ img{
 //  //举报
 //  background-position: -86px -49px;
 //}
+
+.alert-bg{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  height: 100%;
+  z-index: 501;
+}

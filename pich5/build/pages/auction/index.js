@@ -88,7 +88,7 @@
                 slidesPerView: 3.5,
                 paginationClickable: true,
                 spaceBetween: 5,
-                lazyLoading : true
+                lazyLoading: true
             });
 
             Wlib._scrollHide(100, that.dom.scrollTo);
@@ -109,13 +109,13 @@
             });
 
             that.dom.myBtn.on("click", function () {
-                if(localStorage.getItem("isbind") == 1){
+                if (localStorage.getItem("isbind") == 1) {
                     win.location = "../../pages/my/index.html";
-                }else{
+                } else {
                     Wlib.tips("请绑定手机号，获取更多特权");
-                    setTimeout(function(){
+                    setTimeout(function () {
                         win.location = "../../pages/regist/index.html";
-                    },3000);
+                    }, 3000);
 
 
                 }
@@ -147,22 +147,22 @@
             $("#collect").on("click", function () {
                 that.addCollect(this);
             });
-            that.dom.sendComm.on("click",function(){
-               that.sendComm();
+            that.dom.sendComm.on("click", function () {
+                that.sendComm();
             });
             $("#pics .swiper-slide").on("click", function () {
                 var current = $(this).find("img").attr("src");
                 //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current,that.data.data.pic);
+                Wlib.wx.previewImgs(current, that.data.data.pic);
             });
 
-            that.dom.moreComm.on("click",function(){
+            that.dom.moreComm.on("click", function () {
                 Wlib.tips("下载APP查看更多评论。");
                 location.href = "http://www.talkart.cc/index.php?r=default/index/download";
             });
 
-            that.dom.preorder.on("click",function(){
-               that.preOrder();
+            that.dom.preorder.on("click", function () {
+                that.preOrder();
             });
 
 
@@ -226,7 +226,7 @@
 
 
         },
-        addPraise: function(obj) {
+        addPraise: function (obj) {
             /*
              给某一个商品点赞
              */
@@ -235,7 +235,7 @@
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token"),
-                type : 1
+                type: 1
             }
             that.dom.loading.show();
             if (that.data.data.praise == 0) {
@@ -258,7 +258,7 @@
                 //取消关注
                 req.type = 2;
                 Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).removeClass("icon9").addClass("icon7");
@@ -306,7 +306,7 @@
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token"),
-                type : 1
+                type: 1
             }
             that.dom.loading.show();
             if (that.data.data.collect == 0) {
@@ -354,13 +354,13 @@
             if (that.data.data.focus == 0) {
                 //去关注
                 Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).html("取消关注");
                         that.data.data.focus = 1;
 
-                    }else{
+                    } else {
                         that.dom.loading.hide();
                         Wlib.tips("关注失败")
                     }
@@ -368,12 +368,12 @@
             } else {
                 //取消关注
                 Wlib.SendRequest("default/picture/collect", req, "GET", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         that.dom.loading.hide();
                         Wlib.tips(data.message);
                         $(obj).html("关注此件");
                         that.data.data.focus = 0;
-                    }else{
+                    } else {
                         that.dom.loading.hide();
                         Wlib.tips("取消关注失败")
                     }
@@ -382,23 +382,23 @@
 
 
         },
-        sendComm : function(){
+        sendComm: function () {
             var that = this;
             var req = {
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token"),
                 type: 1,
-                content : that.dom.commText.val()
+                content: that.dom.commText.val()
             }
             that.dom.loading.show();
             Wlib.SendRequest("default/picture/comment", req, "POST", function (data) {
                 if (data.state == 1) {
                     that.dom.loading.hide();
                     Wlib.tips("评论成功");
-                    setTimeout(function(){
+                    setTimeout(function () {
                         location.reload();
-                    },3000)
+                    }, 3000)
 
                 } else {
                     that.dom.loading.hide();
@@ -407,7 +407,7 @@
             });
             that.dom.commText.val("");
         },
-        preOrder : function(){
+        preOrder: function () {
             var that = this;
             var req = {
                 id: that.data.id,
@@ -415,14 +415,26 @@
                 token: localStorage.getItem("token"),
                 money: that.dom.pricewrap.html()
             };
+
+
+            if (localStorage.getItem("isbind") == 0) {
+                Wlib.alert("绑定手机号，以便卖家可以联系到您。", "确定", function () {
+                    localStorage.setItem("bindNextAction", "auction");
+                    localStorage.setItem("bindNextObj", JSON.stringify(req));
+                    win.location = "../../pages/regist/index.html";
+                });
+                return;
+            }
+
             that.dom.loading.show();
+
             Wlib.SendRequest("default/api/bid", req, "POST", function (data) {
                 if (data.state == 1) {
                     that.dom.loading.hide();
                     Wlib.tips("出价成功");
-                    setTimeout(function(){
+                    setTimeout(function () {
                         location.reload();
-                    },3000)
+                    }, 3000)
 
                 } else {
                     that.dom.loading.hide();

@@ -14,24 +14,8 @@
   position: absolute;
   right: 10px;
   top: 45px; }
-#page .top-wrapper .taochan-wrapper {
-  background-color: #fff7fa;
-  padding: 12px 30px 12px 10px;
-  position: relative; }
-  #page .top-wrapper .taochan-wrapper .right-icon {
-    top: 18px; }
-  #page .top-wrapper .taochan-wrapper p {
-    text-overflow: ellipsis;
-    word-break: break-all;
-    white-space: nowrap;
-    overflow: hidden;
-    color: #b4b4b4; }
-    #page .top-wrapper .taochan-wrapper p span {
-      color: #9bb8f8;
-      font-size: 20px; }
 #page .top-wrapper .tiaokuan-wrapper {
   background-color: #FFF;
-  border-top: 1px solid #d1d1d1;
   border-bottom: 0px; }
   #page .top-wrapper .tiaokuan-wrapper ul {
     overflow: hidden; }
@@ -92,7 +76,7 @@
     -webkit-background-size: 16px 16px;
     background-size: 16px 16px;
     background-image: url(../../images/order/icon1.png);
-    margin-bottom: 15px; }
+    margin-bottom: 8px; }
   #page .time-picker .icon2 {
     -webkit-background-size: 13px 17.5px;
     background-size: 13px 17.5px;
@@ -214,9 +198,26 @@
 
 .rightToogle {
   transform: rotate(90deg);
-  transition-duration: 100ms; }
+  transition-duration: 100ms;
+  top: 45px !important; }
 
 a:visited, a {
   color: #919191; }
+
+.taochan-wrapper {
+  background-color: #fff7fa;
+  padding: 12px 30px 12px 10px;
+  position: relative; }
+  .taochan-wrapper .right-icon {
+    top: 20px !important; }
+  .taochan-wrapper p {
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #b4b4b4; }
+    .taochan-wrapper p span {
+      color: #9bb8f8;
+      font-size: 20px; }
 
 /*# sourceMappingURL=index.css.map */

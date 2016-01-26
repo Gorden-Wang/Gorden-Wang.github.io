@@ -201,8 +201,8 @@
                 return res;
             });
 
-            juicer.register("getPrice", function () {
-                return that.data.docList[0].plan.price/100;
+            juicer.register("getPrice", function (item) {
+                return item.plan.price/100;
             });
             juicer.register("makeTime", function (time) {
 
@@ -316,7 +316,7 @@
                     "dep=" + encodeURIComponent($("#res-dep").text()),
                     "add=" + encodeURIComponent($("#res-add").text()),
                     "time=" + $(self).attr("data-time") + " " + $(this).text(),
-                    "price=" + parseInt(that.data.docList[0].plan.price)/100
+                    "price=" + parseInt($(self).attr("data-price"))/100
                 ]
 
                 var resparam = [].join.call(param, "&");

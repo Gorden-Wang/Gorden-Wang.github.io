@@ -11,10 +11,10 @@
     <title>医生下单</title>
     <!--<link href="../../lib/base.css" rel="stylesheet">-->
 
-    <link href="../../lib/all.css?version=0.3.0" type="text/css" rel="stylesheet"/>
-    <link href="../../widgets/swiper/index.css?version=0.3.0" type="text/css" rel="stylesheet"/>
+    <link href="../../lib/all.css?version=0.3.5" type="text/css" rel="stylesheet"/>
+    <link href="../../widgets/swiper/index.css?version=0.3.5" type="text/css" rel="stylesheet"/>
     <link href="index.css" rel="stylesheet">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.3.0"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.3.5"></script>
 </head>
 <body>
 <div id="loading" class="loading">
@@ -38,19 +38,6 @@
                         <div class="right-icon t-r"></div>
                     </a>
                 </div>
-            </div>
-            <div class="taochan-wrapper">
-                <p>
-                    门诊费:
-                    <span>￥${getPrice()}</span>
-                    (1、 请就诊人携带本人身份证件按时前往预约诊所进行就诊；
-                    2、 一个订单号仅限当日使用，过期失效；
-                    3、 考虑到可能涉及相关检查，建议预约人避免在经期就诊；
-                    4、 伊健康门诊暂不提供病床和手术服务；
-                    5、 鉴于医疗服务的特殊性，取消订单将收取一定比例的违约金，具体请详见退改条款)
-                </p>
-
-                <div class="right-icon t-r"></div>
             </div>
             <div class="tiaokuan-wrapper bottom-radius">
                 <ul>
@@ -84,13 +71,13 @@
 
 
         <div class="time-picker box_yz bottom-radius">
-            <div class="box box_list_ys top-radius">
+            <div class="box box_list_ys top-radius" style="padding-bottom: 8px">
 
                 <div class="top-banner">
                         $${makeTime(item.plan.starttime)}
                 </div>
 
-                <div class="list_ys clearfix">
+                <div class="list_ys clearfix" style="padding-bottom: 0px;">
                     <a href="../../pages/hosdetail/index.html?clinicId=${item.plan.clinicId}">
                         <div class="Center">
                             <div class="row_1 icon1">${item.plan.name}</div>
@@ -99,13 +86,26 @@
                     </a>
                 </div>
             </div>
+            <div class="taochan-wrapper">
+                <p>
+                    门诊费:
+                    <span>￥${getPrice(item)}</span>
+                    (1、 请就诊人携带本人身份证件按时前往预约诊所进行就诊；
+                    2、 一个订单号仅限当日使用，过期失效；
+                    3、 考虑到可能涉及相关检查，建议预约人避免在经期就诊；
+                    4、 伊健康门诊暂不提供病床和手术服务；
+                    5、 鉴于医疗服务的特殊性，取消订单将收取一定比例的违约金，具体请详见退改条款)
+                </p>
+
+                <div class="right-icon t-r"></div>
+            </div>
 
             <div class="time-wrapper ">
                 <ul>
                     {@each item.planDetail as timeItem}
 
                     {@if timeItem.state == 1}
-                    <li data-time="${makeFuckTime(item.plan.starttime)}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    <li data-time="${makeFuckTime(item.plan.starttime)}" data-price="${item.plan.price}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
                     {@else}
                     <li  data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
                     {@/if}
@@ -134,10 +134,10 @@
 </script>
 
 
-<script src="../../lib/libAll.js?version=0.3.0"></script>
-<script src="../../widgets/cityList/index.js?version=0.3.0"></script>
-<script src="../../widgets/swiper/index.js?version=0.3.0"></script>
-<script src="../../pages/docorder/index.js?version=0.3.0"></script>
+<script src="../../lib/libAll.js?version=0.3.5"></script>
+<script src="../../widgets/cityList/index.js?version=0.3.5"></script>
+<script src="../../widgets/swiper/index.js?version=0.3.5"></script>
+<script src="../../pages/docorder/index.js?version=0.3.5"></script>
 
 </body>
 </html>

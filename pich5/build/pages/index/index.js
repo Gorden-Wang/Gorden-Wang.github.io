@@ -13,7 +13,7 @@
                 Wlib.wx.jsConfig(data, function () {
                     Wlib.wx.hideMenu();
                     that.init();
-                    localStorage.clear();
+                    //localStorage.clear();
                     //alert(localStorage.getItem("isbind"))
                 });
             });

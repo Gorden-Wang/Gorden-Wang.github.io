@@ -85,7 +85,8 @@
             var tel = that.dom.input.val();
             var req = {
                 phone : that.dom.input.val(),
-                type : 5
+                type : 5,
+                open_id : localStorage.getItem("openid")
             };
             Wlib.SendRequest("default/index/getCode", req, "GET", function (data) {
                 if(data.state == 0){

@@ -31,29 +31,8 @@
   }
 
   .top-wrapper{
-    .taochan-wrapper{
-      background-color: #fff7fa;
-      padding: 12px 30px 12px 10px;
-      position: relative;
-      .right-icon{
-        top: 18px;
-      }
-      p{
-        text-overflow: ellipsis;
-        word-break: break-all;
-        white-space: nowrap;
-        overflow: hidden;
-        color: #b4b4b4;
-        span{
-          color: #9bb8f8;
-          font-size: 20px;
-        }
-      }
-
-    }
     .tiaokuan-wrapper{
       background-color: #FFF;
-      border-top: 1px solid #d1d1d1;
       border-bottom: 0px;
 
       ul{
@@ -139,7 +118,7 @@
       -webkit-background-size: 16px 16px;
       background-size: 16px 16px;
       background-image: url(../../images/order/icon1.png);
-      margin-bottom: 15px;
+      margin-bottom: 8px;
     }
     .icon2{
       -webkit-background-size: 13px 17.5px;
@@ -306,8 +285,30 @@
 .rightToogle{
   transform: rotate(90deg);
   transition-duration : 100ms;
+  top: 45px !important;
 }
 
 a:visited, a{
   color: #919191;;
+}
+
+.taochan-wrapper{
+  background-color: #fff7fa;
+  padding: 12px 30px 12px 10px;
+  position: relative;
+  .right-icon{
+    top: 20px !important;
+  }
+  p{
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #b4b4b4;
+    span{
+      color: #9bb8f8;
+      font-size: 20px;
+    }
+  }
+
 }

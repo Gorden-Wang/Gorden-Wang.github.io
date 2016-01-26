@@ -93,7 +93,32 @@
             that.dom.confirm.on("click", function () {
                 that.bindTel(function () {
                     //@TODO 判断是出价，立即购买，还是去我。
-                    localStorage.setItem();
+                    localStorage.setItem("isbind","1");
+                    var action = localStorage.getItem("bindNextAction"),
+                        obj = localStorage.getItem("bindNextObj") && JSON.parse(localStorage.getItem("bindNextObj"));
+
+                    if(action == "my"){
+                        win.location.href = "../../pages/my/index.html";
+                        return;
+                    }
+                    if(action == "auction"){
+                        //去出价
+
+                        Wlib.SendRequest("default/api/bid", obj, "POST", function (data) {
+                            if (data.state == 1) {
+                                //that.dom.loading.hide();
+                                Wlib.tips("出价成功");
+                                setTimeout(function () {
+                                    win.location.href = "../../pages/auction/index.html?id="+obj.id;
+                                }, 3000);
+
+                            } else {
+                                that.dom.loading.hide();
+                                Wlib.tips(data.message);
+                            }
+                        });
+
+                    }
 
                 })
             });
@@ -104,7 +129,8 @@
             var that = this;
             var req = {
                 phone: that.data.desTel,
-                type: 5
+                type: 5,
+                open_id : localStorage.getItem("openid")
             };
             Wlib.SendRequest("default/index/getCode", req, "GET", function (data) {
                 if (data.state == 0) {

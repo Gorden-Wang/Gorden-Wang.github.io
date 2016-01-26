@@ -69,7 +69,7 @@
                 <div class="swiper-wrapper">
                     {@each originTimeList as item,index}
 
-                    <div class="swiper-slide ${makeTimeListCheck(timeEnable,item.des,index)}">
+                    <div class="swiper-slide ${makeTimeListCheck(timeEnable,item.des,index)}" data-time="${item.des}">
                         <div>
                             <p class="year">${item.y}</p>
 
