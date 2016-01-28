@@ -10,6 +10,24 @@
     DocList.prototype = {
         init: function () {
             var that = this;
+
+            if( location.pathname.indexOf("/share/") > -1){
+
+                Wlib.forceLogin(URL,function(){
+                    Wlib.wx.getJS(URL,function(){
+                        that.addJuicerHandler();
+                        that.cacheDom();
+                        that.cacheData();
+                        that.makeTimeList();
+                        that.fetchData();
+                    });
+                    localStorage.setItem("userId", Wlib.getRequestParam("userid")||"");
+                    localStorage.setItem("token", Wlib.getRequestParam("token")||"");
+                    localStorage.setItem("openid", Wlib.getRequestParam("openid")||"");
+                });
+                return;
+            }
+
             Wlib.wx.getJS(URL,function(){
                 that.addJuicerHandler();
                 that.cacheDom();
@@ -477,7 +495,16 @@
                 //window.location.href = "../../pages/preorder/index.html?" + resparam+"&openid="+Wlib.getRequestParam("openid");
                 var u = "http://"+document.domain + "/wechat/pages/preorder/index.html?" + resparam;
                 location.href = u;
-            })
+            });
+
+
+            var _url = (function(){
+                if( location.pathname.indexOf("/share/") > -1){
+                    return Wlib.addShareParam(location.href);
+                }
+                return location.href.replace(/hosorder/,'share').replace(/index.html/,'hosorder.html');
+            })();
+            Wlib.wx.shareTo('妇产名医诊号限量发布，速来约','三甲名医，五星环境，不排队看妇产---伊健康',_url);
         }
     }
 

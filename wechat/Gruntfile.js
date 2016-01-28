@@ -97,12 +97,12 @@ module.exports = function (grunt) {
             tpl: {
                 files: [
                     {
-                        src: 'build/pages/index/index.html',
-                        dest: 'build/pages/template/templates/shop/info.html'
+                        src: 'build/pages/hosorder/index.html',
+                        dest: 'build/pages/share/hosorder.html'
                     },
                     {
-                        src: 'build/pages/item/index.html',
-                        dest: 'build/pages/template/templates/item/info.html'
+                        src: 'build/pages/docorder/index.html',
+                        dest: 'build/pages/share/docorder.html'
                     }
                 ]
             }

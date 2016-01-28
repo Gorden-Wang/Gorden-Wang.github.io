@@ -189,7 +189,7 @@
                                     }
 
                                 },
-                                cancel : function(res){
+                                cancel : function(v){
                                     location.href = "../../pages/orderdetail/index.html?orderId="+res.value.orderid
                                     //errMsg : cooseWXPay:ok
                                     //location.href = '../../pages/paysucc/index.html?orderId='+res.value.orderid+"&userId="+Wlib.getRequestParam("userId");
@@ -234,7 +234,7 @@
             }
 
 
-            Wlib.SendRequestNew("treatOperate","addReserveProfile", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","addReserveProfileIfExist", param, function (res) {
 
                 if (res.errorCode == 0) {
                     that.data.CONID = res.value.id;

@@ -5,7 +5,8 @@
     var Index = function () {
         this.init();
     }
-    var URL = location.href.split("?")[0];
+    var URL = location.href.split("#")[0];
+
 
     Index.prototype = {
         init: function () {
