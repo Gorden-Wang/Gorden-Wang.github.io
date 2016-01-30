@@ -220,7 +220,7 @@
                    range : $("#range").val() || "",
                    starting_price : $("#starting_price").val() || "",
                    fidelity : "",//是否保真
-                   end_time : "",//结束时间
+                   end_time : $("#end_time").val() || "",//结束时间
                    address : "",//TODO address
                    compile : '',
                    category : that.data.category,

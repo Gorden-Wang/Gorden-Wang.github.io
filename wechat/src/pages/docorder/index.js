@@ -10,6 +10,23 @@
     DoOrder.prototype = {
         init: function () {
             var that = this;
+
+            if( location.pathname.indexOf("/share/") > -1){
+
+                Wlib.forceLogin(URL,function(){
+                    Wlib.wx.getJS(URL,function(){
+                        that.addJuicerHandler();
+                        that.cacheData();
+                        that.cacheDom();
+                        that.fetchData();
+                    });
+                    localStorage.setItem("userId", Wlib.getRequestParam("userid")||"");
+                    localStorage.setItem("token", Wlib.getRequestParam("token")||"");
+                    localStorage.setItem("openid", Wlib.getRequestParam("openid")||"");
+                });
+                return;
+            }
+
             Wlib.wx.getJS(URL,function(){
                 that.addJuicerHandler();
                 that.cacheData();
@@ -201,8 +218,8 @@
                 return res;
             });
 
-            juicer.register("getPrice", function () {
-                return that.data.docList[0].plan.price/100;
+            juicer.register("getPrice", function (item) {
+                return item.plan.price/100;
             });
             juicer.register("makeTime", function (time) {
 
@@ -316,7 +333,7 @@
                     "dep=" + encodeURIComponent($("#res-dep").text()),
                     "add=" + encodeURIComponent($("#res-add").text()),
                     "time=" + $(self).attr("data-time") + " " + $(this).text(),
-                    "price=" + parseInt(that.data.docList[0].plan.price)/100
+                    "price=" + parseInt($(self).attr("data-price"))/100
                 ]
 
                 var resparam = [].join.call(param, "&");
@@ -335,7 +352,14 @@
             //@TODO : 下一页。。
 
 
-            Wlib.wx.shareTo();
+            //shareTo: function (title, desc, link, img, success, cancel) {
+            var _url = (function(){
+                if( location.pathname.indexOf("/share/") > -1){
+                    return Wlib.addShareParam(location.href);
+                }
+                return location.href.replace(/docorder/,'share').replace(/index.html/,'docorder.html');
+            })();
+            Wlib.wx.shareTo(that.data.doc.name+'专家的妇产诊号发布，速来约','三甲名医，五星环境，不排队看妇产---伊健康',_url);
         }
 
     }

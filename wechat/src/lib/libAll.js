@@ -104,21 +104,48 @@ window.Wlib = (function () {
             var that = this;
             var desurl = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechatserver/wechatLoginUrl" : "http://www.hmsgtech.com/wechatserver/wechatLoginUrl";
             var nexturl = url || location.href;
-            if (!Wlib.getRequestParam("userid",nexturl)) {
-                $.ajax({
-                    url: desurl + "?callback=?&re_url=" + encodeURIComponent(nexturl),
-                    dataType: "JSONP",
-                    success: function (res) {
 
-                        location.replace(res.value);
-                    },
-                    error: function (err) {
-                        alert("获取授权数据失败，请重试");
-                    }
-                })
+            if( location.pathname.indexOf("/share/") > -1){
+                //如果是share出去的页面
+                if( Wlib.getRequestParam("share")=="true" && !Wlib.getRequestParam("userid",nexturl)){
+                    //如果没有进行授权
+                    $.ajax({
+                        url: desurl + "?callback=?&re_url=" + encodeURIComponent(nexturl),
+                        dataType: "JSONP",
+                        success: function (res) {
+
+                            location.replace(res.value);
+                        },
+                        error: function (err) {
+                            alert("获取授权数据失败，请重试");
+                        }
+                    })
+                }else{
+                    //已经进行授权
+
+                    callback && callback();
+                }
+
             }else{
-                callback && callback();
+                //不是share出去的页面
+                if (!Wlib.getRequestParam("userid",nexturl)) {
+                    $.ajax({
+                        url: desurl + "?callback=?&re_url=" + encodeURIComponent(nexturl),
+                        dataType: "JSONP",
+                        success: function (res) {
+
+                            location.replace(res.value);
+                        },
+                        error: function (err) {
+                            alert("获取授权数据失败，请重试");
+                        }
+                    })
+                }else{
+                    callback && callback();
+                }
             }
+
+
 
         },
         getToken : function(callback){
@@ -197,23 +224,25 @@ window.Wlib = (function () {
 
                         //默认关掉QQ相关，有下载着陆页面后再打开
 
-                        wx.hideMenuItems({
-                            menuList: [
-                                "menuItem:share:qq",
-                                "menuItem:share:weiboApp",
-                                "menuItem:share:QZone",
-                                "menuItem:share:appMessage",
-                                "menuItem:share:timeline",
-                                "menuItem:copyUrl",
-                                "menuItem:openWithQQBrowser",
-                                "menuItem:openWithSafari",
-                                "menuItem:share:email",
-                                "menuItem:favorite"
-                            ], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                            success: function () {
+                        wx.ready(function(){
+                            wx.hideMenuItems({
+                                menuList: [
+                                    "menuItem:share:qq",
+                                    "menuItem:share:weiboApp",
+                                    "menuItem:share:QZone",
+                                    "menuItem:share:appMessage",
+                                    "menuItem:share:timeline",
+                                    "menuItem:copyUrl",
+                                    "menuItem:openWithQQBrowser",
+                                    "menuItem:openWithSafari",
+                                    "menuItem:share:email",
+                                    "menuItem:favorite"
+                                ], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                                success: function () {
 
-                            }
-                        });
+                                }
+                            });
+                        })
 
                         callback && callback();
 
@@ -224,10 +253,21 @@ window.Wlib = (function () {
                 })
             },
             shareTo: function (title, desc, link, img, success, cancel) {
+                wx.showMenuItems({
+                    menuList : [
+                        "menuItem:share:appMessage",
+                        "menuItem:share:timeline"
+                    ],
+                    success : function(){
+
+                    }
+
+                });
+
                 var urlPre = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechat" : "http://www.hmsgtech.com/wechat";
                 var t = title || "伊健康，您身边的健康专家";
                 var d = desc || "";
-                var l = link || location.href.split("#")[0];
+                var l = addShareParam(link || location.href.split("#")[0]);
                 var i = img || "/images/about/logo.png";
                 wx.onMenuShareTimeline({
                     title: t, // 分享标题
@@ -252,6 +292,25 @@ window.Wlib = (function () {
                         cancel && cancel()
                     }
                 });
+
+                function addShareParam(url){
+                    var res = '',
+                        doarr = url.split("?"),
+                        first = doarr[0],
+                        param = doarr.length > 0 ? doarr[1].split("&") : [],
+                        resArr = [];
+
+                    for(var i = 0 ;i <param.length;i++){
+                        if(param[i].indexOf("userid=",0)==0 || param[i].indexOf("token=",0)==0 || param[i].indexOf("share=",0) == 0){
+
+                        }else{
+                            console.log(param[i]);
+                            resArr.push(param[i]);
+                        }
+                    }
+                    resArr.push("share=true");
+                    return first+"?"+resArr.join("&");
+                }
             },
             hideShare: function () {
                 wx.hideMenuItems({
@@ -279,6 +338,24 @@ window.Wlib = (function () {
                 $(this).remove();
                 callback && callback();
             })
+        },
+        addShareParam : function(url){
+            var res = '',
+                doarr = url.split("?"),
+                first = doarr[0],
+                param = doarr.length > 0 ? doarr[1].split("&") : [],
+                resArr = [];
+
+            for(var i = 0 ;i <param.length;i++){
+                if(param[i].indexOf("userid=",0)==0 || param[i].indexOf("token=",0)==0 || param[i].indexOf("share=",0) == 0 || param[i].indexOf("openid=",0) == 0){
+
+                }else{
+                    console.log(param[i]);
+                    resArr.push(param[i]);
+                }
+            }
+            resArr.push("share=true");
+            return first+"?"+resArr.join("&");
         },
         confirm: function (tle, btnA, btnB, submit_fun, cancel_fun) {
             var _d = document;

@@ -189,7 +189,7 @@
                                     }
 
                                 },
-                                cancel : function(res){
+                                cancel : function(v){
                                     location.href = "../../pages/orderdetail/index.html?orderId="+res.value.orderid
                                     //errMsg : cooseWXPay:ok
                                     //location.href = '../../pages/paysucc/index.html?orderId='+res.value.orderid+"&userId="+Wlib.getRequestParam("userId");
@@ -219,7 +219,7 @@
 
             var reg=/^[\u2E80-\u9FFF]+$/;
             if(!reg.test(that.dom.name.val()) || that.dom.name.val().length < 2 || that.dom.name.val().length > 4){
-                Wlib.tips("请输入2-4位汉字");
+                Wlib.tips("姓名请输入2-4位汉字");
                 return;
             }
             var telreg = /^1\d{10}$/;
@@ -234,7 +234,7 @@
             }
 
 
-            Wlib.SendRequestNew("treatOperate","addReserveProfile", param, function (res) {
+            Wlib.SendRequestNew("treatOperate","addReserveProfileIfExist", param, function (res) {
 
                 if (res.errorCode == 0) {
                     that.data.CONID = res.value.id;

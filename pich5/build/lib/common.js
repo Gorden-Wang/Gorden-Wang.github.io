@@ -41,12 +41,15 @@ window.Wlib = (function () {
             }
         },
         alert: function (content, btn, callback) {
-            var bgwrapper = $("<div class = 'fixed fadeIn animated'>" + content + "</div>");
-            bgwrapper.append("<button>btn</button>");
+            var sty = "color: white;text-align: center;font-size: 15px;margin-top: 20px; width: 5em;height: 3em;"
+            var bgwrapper = $("<div class = 'fixed fadeIn animated' style='z-index: 502'>" + content + "</div>");
+            bgwrapper.append("<button style='"+sty+"'>"+btn+"</button>");
+            $("body").append("<div class='alert-bg'></div>");
             $("body").append(bgwrapper);
             $(bgwrapper).find("button").on("click", function () {
-                callback ? callback() : $(bgwrapper).remove();
+                callback ? callback() : $(bgwrapper).remove(),$(".alert-bg").remove();
             })
+
 
         },
         remove_alert: function (callback) {
@@ -310,6 +313,7 @@ window.Wlib = (function () {
                     localStorage.setItem("token", Wlib.getRequestParam("token"));
                     Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
                     localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
+                    localStorage.setItem("openid",Wlib.getRequestParam("open_id"));
                 }
 
                 if (localStorage.getItem("uid") && localStorage.getItem("token")) {

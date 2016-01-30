@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>诊所下单</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/all.css" rel="stylesheet"/>
+    <link href="../../widgets/swiper/index.css" rel="stylesheet"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <link href="../../pages/hosorder/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<div id="overlay" class="fadeAnimate"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap">
+        <div class="top-wrapper">
+            <div class="box box_list_mz">
+                <div class="list_mz clearfix"><a href="../../pages/hosdetail/index.html?clinicId=${clinicId}">
+                    <div class="Left"><img src="${hos.images[0]}"/>></div>
+                    <div class="Center">
+                        <div class="row_1">${hos.name}</div>
+                        <div class="row_2">$${makeRate(hos.sumScore)}<strong>${hos.sumScore}分</strong>
+                        </div>
+                        <div class="row_3">${hos.address}</div>
+                    </div>
+                    <div class="Right"></div>
+                </a></div>
+            </div>
+        </div>
+        <div class="banner-fix">
+            <!--筛选条件-->
+            <div class="screenbox mb8">
+                <div class="screening clearfix">
+                    <div id="seldep" class="screen_left">科室</div>
+                    <div id="selpro" class="screen_right">${makeTitle(titleId)}</div>
+                </div>
+            </div>
+            <div id="desdep" class="conditbox">
+                <div class="condit"><span class="ks_bx"></span>不限</div>
+                <div class="condit"><span class="ks_fk"></span>妇科</div>
+                <div class="condit"><span class="ks_ck"></span>产科</div>
+                <div class="condit"><span class="ks_ek"></span>儿科</div>
+                <div class="condit"><span class="ks_pfk"></span>皮肤科</div>
+                <div class="condit"><span class="ks_zxk"></span>整形科</div>
+            </div>
+            <div id="despro" class="conditbox conditbox_ys">
+                <div class="condit" data-id="-1">不限</div>
+                <div class="condit" data-id="1">主任医师</div>
+                <div class="condit" data-id="2">副主任医师</div>
+                <div class="condit" data-id="3">主治医师</div>
+                <div class="condit" data-id="4">住院医师</div>
+            </div>
+        </div>
+
+        <div class="data-picker box_yz">
+            <span class="right-icon rota pre"></span>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {@each originTimeList as item,index}
+
+                    <div class="swiper-slide ${makeTimeListCheck(timeEnable,item.des,index)}" data-time="${item.des}">
+                        <div>
+                            <p class="year">${item.y}</p>
+
+                            <p class="day">${item.m}月${item.d}日</p>
+                            <span class="week">${item.w}</span>
+                        </div>
+                    </div>
+
+                    {@/each}
+
+                </div>
+            </div>
+            <span class="right-icon next"></span>
+        </div>
+
+        {@each itemList as item }
+
+        <div class="time-picker box_yz bottom-radius">
+            <div class="box box_list_ys top-radius">
+                <div class="list_ys clearfix"><a href="../../pages/docdetail/index.html?doctorId=${item.doctor.doctorId}">
+                    <div class="Left"><img src="${item.doctor.snapshot}"></div>
+                    <div class="Center">
+                        <div class="row_1">${item.doctor.name}</div>
+                        <div class="row_2">${item.doctor.titleName}</div>
+                        <div class="row_2">${item.doctor.hospital}</div>
+                        <div class="row_2">擅长：${item.doctor.specialityName}</div>
+                    </div>
+                    <div class="Right">${item.doctor.departmentName}</div>
+                    <div class="right-icon t-r"></div>
+                </a></div>
+            </div>
+            <div class="taochan-wrapper">
+                <p>
+                    门诊费:
+                    <span>￥${item.plan.price/100}</span>
+                    (1、 请就诊人携带本人身份证件按时前往预约诊所进行就诊；
+                    2、 一个订单号仅限当日使用，过期失效；
+                    3、 考虑到可能涉及相关检查，建议预约人避免在经期就诊；
+                    4、 伊健康门诊暂不提供病床和手术服务；
+                    5、 鉴于医疗服务的特殊性，取消订单将收取一定比例的违约金，具体请详见退改条款)
+                </p>
+
+                <div class="right-icon t-r"></div>
+            </div>
+            <div class="time-wrapper ">
+                <ul>
+                    {@each item.planDetail as timeItem}
+
+                    {@if timeItem.state == 1}
+                    <li data-price="${item.plan.price}" data-dep="${item.doctor.departmentName}" data-add="${item.doctor.hospital}" data-name="${item.doctor.name}" data-time="${makeFuckTime(item.plan.starttime)}" data-id="${timeItem.id}" class="time-item">${timeItem.starttime}</li>
+                    {@/if}
+
+                    {@if timeItem.finished == 0}
+                    <li  data-id="${timeItem.id}" class="time-item dis">${timeItem.starttime}</li>
+                    {@/if}
+                    {@/each}
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item dis">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                    <!--<li class="time-item">09:00</li>-->
+                </ul>
+            </div>
+            <div class="tiaokuan-wrapper bottom-radius">
+                <ul>
+                    <li>
+                        <a href="../../pages/tips/index.html">
+                            服务须知
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../pages/tips/terms.html">
+                            退改条款
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../pages/feedback/list.html?doctorId=${item.doctor.doctorId}">
+                            用户评价
+                            <div class="right-icon t-r"></div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+        {@/each}
+
+
+        <div class="des-wrapper">
+            <ul class="t-bar">
+                <li id="tab1" class="select">
+                    综合介绍
+                </li>
+                <li id="tab2">
+                    用户评价
+                </li>
+            </ul>
+            <div class="js">
+                <!--<ul>-->
+                <!--<li>-->
+                <!--<div class="list-style"></div>-->
+                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="list-style"></div>-->
+                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="list-style"></div>-->
+                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="list-style"></div>-->
+                <!--<p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>-->
+                <!--</li>-->
+                <!--</ul>-->
+                ${hos.description}
+            </div>
+            <div class="xz">
+                <ul>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                    <li>
+                        <div class="list-style"></div>
+                        <p>笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉笨套餐巴拉巴拉</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</script>
+
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/cityList/index.js"></script>
+<script src="../../widgets/rate/index.js"></script>
+<script src="../../widgets/swiper/index.js"></script>
+<script src="../../pages/hosorder/index.js"></script>
+
+</body>
+</html>

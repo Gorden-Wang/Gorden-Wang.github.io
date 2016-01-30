@@ -72,7 +72,14 @@
 
                     <div class="flex1 flex">
                         <input type="number" id="starting_price" class="inputblock flex1" placeholder="合理的售价将倍受关注">
-                        <span class="baozhen">是否保真</span>
+                        <!--<span class="baozhen">是否保真</span>-->
+                        <select class="baozhen" style="background-color: transparent;color: black">
+                            <option>是否保真</option>
+                            <option>否</option>
+                            <option>10天</option>
+                            <option>30天</option>
+                            <option>永久</option>
+                        </select>
                     </div>
                 </div>
                 <div class="flex">
@@ -86,6 +93,10 @@
                 </div>
 
 
+            </div>
+
+            <div class="se-wrapper">
+               <input type="datetime-local" id="end_time" style="height: 40px;;display: block;width: 100%;background-color: transparent" placeholder="请输入结束日期">
             </div>
 
             <div class="se-wrapper">
