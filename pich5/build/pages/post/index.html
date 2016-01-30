@@ -74,11 +74,11 @@
                         <input type="number" id="starting_price" class="inputblock flex1" placeholder="合理的售价将倍受关注">
                         <!--<span class="baozhen">是否保真</span>-->
                         <select class="baozhen" style="background-color: transparent;color: black">
-                            <option>是否保真</option>
-                            <option>否</option>
-                            <option>10天</option>
-                            <option>30天</option>
-                            <option>永久</option>
+                            <option value="-1">是否保真</option>
+                            <option value="0">否</option>
+                            <option value="1">10天</option>
+                            <option value="2">30天</option>
+                            <option value="3">永久</option>
                         </select>
                     </div>
                 </div>
@@ -123,6 +123,10 @@
                     西安
                 </div>
             </div>
+            <div class="se-wrapper flex percent50">
+                <input id="code" type="number" placeholder="请输入验证码">
+                <img src="${makeCode()}">
+            </div>
 
             <div class="button" id="sendBtn">
                 发布
@@ -157,6 +161,8 @@
         </section>
 
     </div>
+
+
 
 
 </script>

@@ -112,10 +112,10 @@
                 if (localStorage.getItem("isbind") == 1) {
                     win.location = "../../pages/my/index.html";
                 } else {
-                    Wlib.tips("请绑定手机号，获取更多特权");
-                    setTimeout(function () {
+                    Wlib.alert("绑定手机号，以便卖家可以联系到您。", "确定", function () {
+                        localStorage.setItem("bindNextAction", "my");
                         win.location = "../../pages/regist/index.html";
-                    }, 3000);
+                    });
 
 
                 }

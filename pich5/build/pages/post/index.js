@@ -20,6 +20,7 @@
             that.cacheData();
             that.cacheDom();
             that.getTags();
+            Wlib.wx.getLocation();
         },
         cacheData: function () {
             var that = this;
@@ -135,6 +136,9 @@
             juicer.register("makeClass", function (str) {
                 return str.length >= 4 ? "flex2" : "";
             });
+            juicer.register("makeCode", function (str) {
+                return "http://115.159.100.197/index.php?r=default/index/verify";
+            });
 
         },
         bindEvent: function () {
@@ -211,7 +215,7 @@
                var param = {
                    uid : localStorage.getItem("uid"),
                    token : localStorage.getItem("token"),
-                   checkcode : '',
+                   checkcode : $("#code").val() || "",
                    content : $("#content").val(),
                    type : Wlib.getRequestParam("tag"),
                    title : $("#title").val() || "",
@@ -219,7 +223,7 @@
                    size2 : $("#size2").val() || "",
                    range : $("#range").val() || "",
                    starting_price : $("#starting_price").val() || "",
-                   fidelity : "",//是否保真
+                   fidelity : $(".baozhen").val(),//是否保真
                    end_time : $("#end_time").val() || "",//结束时间
                    address : "",//TODO address
                    compile : '',
@@ -227,9 +231,10 @@
                    sort : that.data.sort,
                    times : that.data.times,
                    ban_look : "",
-                   pictures : ""//todo
-
+                   pictures : that.data.picData.join(",")//todo
                }
+
+                console.log(param);
             });
         },
         makeSubTag : function(obj){
@@ -266,7 +271,14 @@
                 that.bindEvent();
             })
 
+        },
+        getPicVericode : function(){
+            var that = this;
+            Wlib.SendRequest("default/index/verify",{},"GET",function(data){
+               console.log(data);
+            });
         }
+
     }
 
     var index = new Index();
