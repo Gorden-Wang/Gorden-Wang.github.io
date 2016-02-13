@@ -337,6 +337,35 @@ window.Wlib = (function () {
                 }
 
             },
+            forceLogin: function (callback, url) {
+                ////http://www.talkart.cc/index.php?r=wechat%2Fwechat%2Fauthoriztion&url=http://www.talkart.cc/wechat/pages/index/index.html
+                var url = encodeURIComponent(url || location.href.split("#")[0]);
+                if (Wlib.getRequestParam("uid") && Wlib.getRequestParam("token")) {
+                    localStorage.setItem("uid", Wlib.getRequestParam("uid"));
+                    localStorage.setItem("token", Wlib.getRequestParam("token"));
+                    Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
+                    localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
+                    localStorage.setItem("openid",Wlib.getRequestParam("open_id"));
+
+                    callback && callback();
+                }else{
+                    $.ajax({
+                        url: "http://www.talkart.cc/index.php?r=wechat/wechat/authoriztion&url=" + url,
+                        dataType: "JSONP",
+                        success: function (res) {
+                            //@TODO : 存储uid token
+                            //localStorage.setItem("uid",res.uid);
+                            //localStorage.setItem("token",res.token);
+                            //localStorage.setItem("avatar",res.avatar);
+                            //callback && callback();
+                            location.href = res.url;
+                        },
+                        error: function () {
+                            alert("服务器错误，请稍后重试。");
+                        }
+                    })
+                }
+            },
             getJSSign: function (url, callback) {
                 var u = url || location.href.split("#")[0];
                 $.ajax({

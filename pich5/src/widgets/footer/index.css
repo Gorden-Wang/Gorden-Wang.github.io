@@ -70,4 +70,12 @@ footer#footer {
   .post-wrapper li:last-of-type {
     margin-bottom: 0px; }
 
+.w-open {
+  display: flex; }
+  .w-open span {
+    flex: 1;
+    border-right: 1px solid #835314; }
+  .w-open span:last-of-type {
+    border-right: 0px; }
+
 /*# sourceMappingURL=index.css.map */

@@ -96,8 +96,28 @@
                 $("#postaution").one("click",function(){
                     win.location = "../../pages/post/index.html?tag=1";
                 });
-                $("#postother").one("click",function(){
-                    win.location = "../../pages/post/index.html?tag=1";
+                $("#postother").one("click",function(e){
+                    var isOpen = $(this).hasClass("w-open");
+                    if(isOpen){
+                        //跳走
+
+                    }else{
+                        $(this).html('<span>作品欣赏</span><span>文字信息</span><span>非书画类</span>');
+                        $(this).addClass("w-open");
+                        $(this).find("span").one("click",function(){
+                            if($(this).html() == "作品欣赏"){
+                                    win.location = "../../pages/post/like.html";
+                            }
+                            if($(this).html() == "文字信息"){
+                                win.location = "../../pages/post/font.html";
+                            }
+                            if($(this).html() == "非书画类"){
+                                win.location = "../../pages/post/none.html";
+
+                            }
+                        })
+                    }
+                    //win.location = "../../pages/post/index.html?tag=1";
                 });
 
             });

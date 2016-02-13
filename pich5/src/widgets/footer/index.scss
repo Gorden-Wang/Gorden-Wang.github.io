@@ -99,3 +99,14 @@ footer#footer {
   }
 
 }
+
+.w-open{
+  display: flex;
+  span{
+    flex: 1;
+    border-right: 1px solid #835314;
+  }
+  span:last-of-type{
+    border-right: 0px;
+  }
+}
