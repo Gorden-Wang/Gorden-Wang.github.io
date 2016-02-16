@@ -8,7 +8,7 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>发布拍卖信息</title>
+    <title>发布信息</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/footer/index.css" rel="stylesheet">
     <link href="../../pages/post/index.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 
             <div class="se-wrapper ">
                 <div class="flex split">
-                    <span class="title">
+                    <span class="title" id="titleOrAuthor">
                         作者
                     </span>
 
@@ -65,7 +65,7 @@
             </div>
 
             <div class="se-wrapper">
-                <div class="flex split">
+                <div class="flex {@if data.type == 2}split{@/if}">
                     <span>
                     价格
                 </span>
@@ -73,6 +73,7 @@
                     <div class="flex1 flex">
                         <input type="number" id="starting_price" class="inputblock flex1" placeholder="合理的售价将倍受关注">
                         <!--<span class="baozhen">是否保真</span>-->
+                       {@if data.type == 1}
                         <select class="baozhen" style="background-color: transparent;color: black">
                             <option value="-1">是否保真</option>
                             <option value="0">否</option>
@@ -80,8 +81,10 @@
                             <option value="2">30天</option>
                             <option value="3">永久</option>
                         </select>
+                        {@/if}
                     </div>
                 </div>
+                {@if data.type == 1}
                 <div class="flex">
                     <span>
                     加价幅度
@@ -91,13 +94,15 @@
                         <input type="number" id="range" class="align-right" style="width: 5em;"><span class="gray">元/每次</span>
                     </div>
                 </div>
-
+                {@/if}
 
             </div>
 
+            {@if data.type == 1}
             <div class="se-wrapper">
                <input type="datetime-local" id="end_time" style="height: 40px;;display: block;width: 100%;background-color: transparent" placeholder="请输入结束日期">
             </div>
+            {@/if}
 
             <div class="se-wrapper">
                 <textarea id="content" placeholder="作品详情"></textarea>
@@ -119,13 +124,13 @@
 
                 </span>
 
-                <div class="flex1">
+                <div class="flex1" id="address">
                     西安
                 </div>
             </div>
             <div class="se-wrapper flex percent50">
                 <input id="code" type="number" placeholder="请输入验证码">
-                <img src="${makeCode()}">
+                <img src="${makeCode()}" id="verycode">
             </div>
 
             <div class="button" id="sendBtn">

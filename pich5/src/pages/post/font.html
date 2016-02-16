@@ -56,7 +56,7 @@
             </div>
             <div class="se-wrapper flex percent50">
                 <input id="code" type="number" placeholder="请输入验证码">
-                <img src="${makeCode()}">
+                <img src="${makeCode()}" id="verycode">
             </div>
 
             <div class="button" id="sendBtn">
@@ -68,30 +68,6 @@
         <footer id="footer"></footer>
 
     </div>
-
-    <div class="tips-wrapper" style="display: none">
-        <section>
-            <p class="t-title">请给您的作品添加标签</p>
-            <ul class="lv1-wrapper">
-                {@each getArray(data.category) as item,index}
-                {@if index == 0}
-                <li class="selected ${makeClass(item.type)}" data-index="${index}">${item.type}</li>
-                {@else}
-                <li class="${makeClass(item.type)}" data-index="${index}">${item.type}</li>
-                {@/if}
-                {@/each}
-            </ul>
-
-            <div class="tip-tab-wrap">
-
-            </div>
-
-
-            <div class="button tips-btn">下一步</div>
-        </section>
-
-    </div>
-
 
 </script>
 

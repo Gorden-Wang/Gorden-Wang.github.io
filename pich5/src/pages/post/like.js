@@ -218,15 +218,16 @@
                     token : localStorage.getItem("token"),
                     checkcode : $("#code").val() || "",
                     content : $("#content").val(),
-                    type : Wlib.getRequestParam("tag"),
-                    title : $("#title").val() || "",
+                    type : 7,
+                    author : $("#author").val(),
+                    title : $("#author").val() || "",
                     size1 : $("#size1").val() || "",
                     size2 : $("#size2").val() || "",
                     range : $("#range").val() || "",
                     starting_price : $("#starting_price").val() || "",
                     fidelity : $(".baozhen").val(),//是否保真
                     end_time : $("#end_time").val() || "",//结束时间
-                    address : "",//TODO address
+                    address : $("#address").text().trim() || "西安",//TODO address
                     compile : '',
                     category : that.data.category,
                     sort : that.data.sort,
@@ -236,7 +237,18 @@
                 }
 
                 console.log(param);
+
+                Wlib.SendRequest("default/publish/postInfo", param, "POST", function (data) {
+                    if(data.state == 1){
+                        //成功
+                        window.location.href = "../../pages/pics/index.html";
+                    }
+                })
             });
+
+            $("#verycode").on("click",function(){
+                $(this).attr("src","http://115.159.100.197/index.php?r=default/index/verify");
+            })
         },
         makeSubTag : function(obj){
             var that = this;
