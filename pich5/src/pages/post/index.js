@@ -235,6 +235,12 @@
                }
 
                 console.log(param);
+
+                Wlib.SendRequest("default/publish/postInfo", param, "POST", function (data) {
+                    console.log(data);
+                })
+
+
             });
         },
         makeSubTag : function(obj){
