@@ -118,22 +118,14 @@
             </ul>
         </section>
 
-        <div style="padding: 20px 0px;background-color: #FFF">
+        <div style="padding: 20px 0px;background-color: #FFF;margin-bottom: 60px;">
             <section class="imgs-wrapper swiper-container " id="pics">
                 <div class="swiper-wrapper swiper-container-horizontal">
-                    <div class="swiper-slide">
-                        <a class="back-img"> <img src="../../images/pic1.png"> </a>
+                   {@each banner.list as item}
+                    <div class="swiper-slide" data-id="${item.id}" data-type="${item.type}">
+                        <a class="back-img"> <img src="${item.picture}"> </a>
                     </div>
-                    <div class="swiper-slide">
-                        <a class="back-img"> <img src="../../images/pic1.png"> </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a class="back-img"> <img src="../../images/pic1.png"> </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a class="back-img"> <img src="../../images/pic1.png"> </a>
-                    </div>
-
+                    {@/each}
                 </div>
 
                 <div class="swiper-pagination"></div>
