@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>发布文字信息</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../widgets/footer/index.css" rel="stylesheet">
+    <link href="../../pages/post/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.7"></script>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+
+        <section class="form-wrapper lastmargin">
+
+
+
+
+
+
+            <div class="se-wrapper" style="margin-top: 20px">
+                <textarea id="content" placeholder="作品详情"></textarea>
+            </div>
+
+            <!--<div class="se-wrapper flex">-->
+            <!--<span>-->
+            <!--分享-->
+            <!--</span>-->
+
+            <!--<div class="flex1 align-right">-->
+            <!--<span class="p-icon p-2"></span>-->
+            <!--<span class="p-icon p-3"></span>-->
+            <!--<span class="p-icon p-4"></span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="se-wrapper flex percent50">
+                <span class="p-icon p-5">
+
+                </span>
+
+                <div class="flex1">
+                    西安
+                </div>
+            </div>
+            <div class="se-wrapper flex percent50">
+                <input id="code" type="number" placeholder="请输入验证码">
+                <img src="${makeCode()}" id="verycode">
+            </div>
+
+            <div class="button" id="sendBtn">
+                发布
+            </div>
+        </section>
+
+
+        <footer id="footer"></footer>
+
+    </div>
+
+</script>
+
+<script type="template/juicer" id="tagtpl">
+    <p class="t-subtitle">点击选择</p>
+
+    <div class="hr"><span>小类</span></div>
+
+    <ul class="lv2-wrapper">
+        {@each sort as item,index}
+        {@if index == 0}
+        <li class="selected">${item}</li>
+        {@else}
+        <li>${item}</li>
+        {@/if}
+        {@/each}
+
+    </ul>
+    {@if times && times.length>0}
+    <div class="hr"><span>年代</span></div>
+
+    <ul class="lv2-wrapper times-tag">
+        {@each times as item,index}
+        {@if index == 0}
+        <li class="selected">${item}</li>
+        {@else}
+        <li>${item}</li>
+        {@/if}
+        {@/each}
+    </ul>
+    {@/if}
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.7"></script>
+<script src="../../widgets/footer/index.js?version=0.1.7"></script>
+<script src="../../pages/post/font.js?version=0.1.7"></script>
+
+<script>
+
+</script>
+</body>
+</html>

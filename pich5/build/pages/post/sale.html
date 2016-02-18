@@ -8,7 +8,7 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>发布信息</title>
+    <title>发布出售信息</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/footer/index.css" rel="stylesheet">
     <link href="../../pages/post/index.css" rel="stylesheet">
@@ -26,7 +26,9 @@
         <section class="form-wrapper lastmargin">
             <ul id="imgs">
                 <li id="addPic">
-                    <input id="fileInput" name="pic" type="file" multiple="true" accept="image/jpeg,image/png,image/jpg">
+                    <input id="fileInput" name="pic" type="file" multiple="true"
+                           accept="image/jpeg,image/png,image/jpg">
+
                     <div>
                         <p>
                             <span class="p-icon p-1"></span>
@@ -42,7 +44,7 @@
 
             <div class="se-wrapper ">
                 <div class="flex split">
-                    <span class="title" id="titleOrAuthor">
+                    <span class="title">
                         作者
                     </span>
 
@@ -56,8 +58,9 @@
                 </span>
 
                     <div class="flex1 align-right">
-                        <input type="number" class="size" id="size1"> <span class="sizex">x</span> <input id="size2" type="number"
-                                                                                               class="size"> <span
+                        <input type="number" class="size" id="size1"> <span class="sizex">x</span> <input id="size2"
+                                                                                                          type="number"
+                                                                                                          class="size"> <span
                             class="sizeSpan">cm</span>
                     </div>
                 </div>
@@ -65,72 +68,47 @@
             </div>
 
             <div class="se-wrapper">
-                <div class="flex {@if data.type == 2}split{@/if}">
+                <div class="flex">
                     <span>
                     价格
                 </span>
 
                     <div class="flex1 flex">
-                        <input type="number" id="starting_price" class="inputblock flex1" placeholder="合理的售价将倍受关注">
+                        <input type="number" id="starting_price" class="inputblock flex1" placeholder="不填写则默认为‘协商’">
                         <!--<span class="baozhen">是否保真</span>-->
-                       {@if data.type == 1}
-                        <select class="baozhen" style="background-color: transparent;color: black">
-                            <option value="-1">是否保真</option>
-                            <option value="0">否</option>
-                            <option value="1">10天</option>
-                            <option value="2">30天</option>
-                            <option value="3">永久</option>
-                        </select>
-                        {@/if}
                     </div>
                 </div>
-                {@if data.type == 1}
-                <div class="flex">
-                    <span>
-                    加价幅度
-                </span>
-
-                    <div class="flex1 align-right">
-                        <input type="number" id="range" class="align-right" style="width: 5em;"><span class="gray">元/每次</span>
-                    </div>
-                </div>
-                {@/if}
 
             </div>
 
-            {@if data.type == 1}
-            <div class="se-wrapper">
-               <input type="datetime-local" id="end_time" style="height: 40px;;display: block;width: 100%;background-color: transparent" placeholder="请输入结束日期">
-            </div>
-            {@/if}
 
             <div class="se-wrapper">
                 <textarea id="content" placeholder="作品详情"></textarea>
             </div>
 
             <!--<div class="se-wrapper flex">-->
-                <!--<span>-->
-                    <!--分享-->
-                <!--</span>-->
+            <!--<span>-->
+            <!--分享-->
+            <!--</span>-->
 
-                <!--<div class="flex1 align-right">-->
-                    <!--<span class="p-icon p-2"></span>-->
-                    <!--<span class="p-icon p-3"></span>-->
-                    <!--<span class="p-icon p-4"></span>-->
-                <!--</div>-->
+            <!--<div class="flex1 align-right">-->
+            <!--<span class="p-icon p-2"></span>-->
+            <!--<span class="p-icon p-3"></span>-->
+            <!--<span class="p-icon p-4"></span>-->
+            <!--</div>-->
             <!--</div>-->
             <div class="se-wrapper flex percent50">
                 <span class="p-icon p-5">
 
                 </span>
 
-                <div class="flex1" id="address">
+                <div class="flex1">
                     西安
                 </div>
             </div>
             <div class="se-wrapper flex percent50">
                 <input id="code" type="number" placeholder="请输入验证码">
-                <img src="${makeCode()}" id="verycode">
+                <img src="${makeCode()}">
             </div>
 
             <div class="button" id="sendBtn">
@@ -143,7 +121,7 @@
 
     </div>
 
-    <div class="tips-wrapper">
+    <div class="tips-wrapper" style="display: none">
         <section>
             <p class="t-title">请给您的作品添加标签</p>
             <ul class="lv1-wrapper">
@@ -154,7 +132,6 @@
                 <li class="${makeClass(item.type)}" data-index="${index}">${item.type}</li>
                 {@/if}
                 {@/each}
-
             </ul>
 
             <div class="tip-tab-wrap">
@@ -166,8 +143,6 @@
         </section>
 
     </div>
-
-
 
 
 </script>
@@ -205,7 +180,7 @@
 
 <script src="../../lib/libAll.js?version=0.1.7"></script>
 <script src="../../widgets/footer/index.js?version=0.1.7"></script>
-<script src="../../pages/post/index.js?version=0.1.7"></script>
+<script src="../../pages/post/sale.js?version=0.1.7"></script>
 
 <script>
 

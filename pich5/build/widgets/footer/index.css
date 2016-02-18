@@ -83,3 +83,17 @@ footer#footer {
             border-radius: 6px; }
   .post-wrapper li:last-of-type {
     margin-bottom: 0px; }
+
+.w-open {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex; }
+  .w-open span {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1;
+    border-right: 1px solid #835314; }
+  .w-open span:last-of-type {
+    border-right: 0px; }
