@@ -78,6 +78,10 @@
                 }
                 return res;
             });
+            juicer.register("makePercentage",function(s,n){
+                s = parseInt(s),n=parseInt(n);
+                return (s/(s+n))*100+"%";
+            })
 
         },
         bindEvent: function () {
@@ -103,7 +107,12 @@
             });
             that.dom.wallet.on("click",function(){
                 win.location = "../../pages/wallet/index.html";
-            })
+            });
+            $(".swiper-slide").on("click",function(){
+                //data-id="${item.id}" data-type="${item.type}"
+                var id = $(this).attr("data-id"),type=$(this).attr("data-type"),itype=$(this).attr("data-itype");
+                win.location.href = window.location.protocol+"//"+document.domain+"/index.php?r=default/share/index&id="+id+"&itype="+itype;
+            });
 
         },
         getData: function () {
@@ -125,7 +134,11 @@
         },
         getUserData : function(callback){
             var that = this;
-            callback();
+            Wlib.SendRequest("default/person/myInfo", {uid:localStorage.getItem("uid"),token:localStorage.getItem("token")}, "GET", function (data) {
+                that.data.user = data;
+                !that.data.user.logo && (that.data.user.logo = localStorage.getItem("avatar"));
+                callback && callback();
+            })
         },
         getBannerData : function(callback){
 

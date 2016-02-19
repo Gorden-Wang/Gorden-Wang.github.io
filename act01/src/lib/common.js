@@ -195,7 +195,7 @@ window.Wlib = (function () {
 
         GetJsonData: function (url, success, error) {
             $.ajax({
-                url: "http://101.200.174.65/babyLink/mobile.php/mobile/"+url,
+                url: "http://app.chinababylink.com/mobile.php/Mobile/"+url,
                 dataType : "jsonp",
                 method : "GET",
                 success: function (res) {
