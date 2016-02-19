@@ -1004,7 +1004,7 @@ window.Wlib = (function () {
                 var winHeight = window.innerHeight, scrollTop = window.pageYOffset, i = 0, con, img, offset;
 
                 offset = $("body").height();
-                if (scrollTop + winHeight + 50 >= offset) {
+                if (scrollTop + winHeight + 100 >= offset) {
                     detach();
                     callback && tag && callback();
                 }

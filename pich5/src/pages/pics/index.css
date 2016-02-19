@@ -175,5 +175,9 @@ body {
     width: 16px;
     height: 13px !important;
     background-position: -71px 0px; }
+  #page .sale0 {
+    background-color: #ffe326; }
+  #page .sale1 {
+    background-color: #4dc0d1; }
 
 /*# sourceMappingURL=index.css.map */

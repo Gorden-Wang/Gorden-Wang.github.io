@@ -13,9 +13,13 @@
             that.cacheData();
             that.cacheDom();
             //that.getData();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+
+            that.getAllData(function(){
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
+
         },
         cacheData: function () {
             var that = this;
@@ -111,6 +115,26 @@
                 that.recacheDom();
                 that.bindEvent();
             })
+
+        },
+        getAllData : function(callback){
+            var that = this;
+            that.getBannerData(function(){
+                that.getUserData(callback);
+            });
+        },
+        getUserData : function(callback){
+            var that = this;
+            callback();
+        },
+        getBannerData : function(callback){
+
+            var that = this;
+            Wlib.SendRequest("default/person/pushInfo", {}, "GET", function (data) {
+                that.data.banner = data;
+                callback && callback();
+            })
+
 
         }
     }

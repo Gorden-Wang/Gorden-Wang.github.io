@@ -1,26 +1,24 @@
 /**
- * Created by gorden on 15/7/31.
+ * Created by gorden on 16/2/1.
  */
-(function (win, $) {
-    var Index = function () {
-        var that = this;
-        Wlib.wx.getJSSign('', function (data) {
-            Wlib.wx.jsConfig(data, function () {
-                Wlib.wx.hideMenu();
-                that.init();
 
-            });
-        });
+(function(win,$){
+    function Sale(){
+
     }
 
-    Index.prototype = {
+    Sale.prototype = {
         init: function () {
             var that = this;
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            that.getTags();
-            Wlib.wx.getLocation();
+            //that.getTags();   放开方法，添加最后的几个方法
+            //Wlib.wx.getLocation();
+
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
         },
         cacheData: function () {
             var that = this;
@@ -28,7 +26,7 @@
             that.data = {};
             that.data.newArr=[];
             that.data.picData = [];
-            that.data.type = Wlib.getRequestParam("tag");
+            that.data.type = Wlib.getRequestParam("tag")
             that.data.picType = (function(type){
                 var res = 5;
                 switch (type){
@@ -118,6 +116,9 @@
             });
 
             juicer.register("getArray", function (data) {
+                if(!data){
+                    return [];
+                }
                 if(that.data.newArr.length > 0){
                     return that.data.newArr;
                 }
@@ -159,13 +160,6 @@
                 $(this).addClass("selected").siblings().removeClass("selected");
                 that.makeSubTag(that.data.newArr[parseInt($(this).attr("data-index"))]);
                 that.data.category = $(this).text();
-
-            //   判断是不是 非书画类目
-                var tag = $(this).text();
-                if(tag == "非书画类"){
-                    $("#titleOrAuthor").text("标题");
-                    $("#author").attr("placeholder","此处只填写标题");
-                }
             });
 
 
@@ -219,36 +213,35 @@
             });
 
             $("#sendBtn").on("click",function(){
-               var param = {
-                   uid : localStorage.getItem("uid"),
-                   token : localStorage.getItem("token"),
-                   checkcode : $("#code").val() || "",
-                   content : $("#content").val(),
-                   type : Wlib.getRequestParam("tag"),
-                   author : $("#author").val(),
-                   title : $("#author").val() || "",
-                   size1 : $("#size1").val() || "",
-                   size2 : $("#size2").val() || "",
-                   range : $("#range").val() || "",
-                   starting_price : $("#starting_price").val() || "",
-                   fidelity : $(".baozhen").val(),//是否保真
-                   end_time : $("#end_time").val() || "",//结束时间
-                   address : $("#address").text().trim() || "西安",//TODO address
-                   compile : '',
-                   category : that.data.category,
-                   sort : that.data.sort,
-                   times : that.data.times,
-                   ban_look : "",
-                   pictures : that.data.picData.join(",")//todo
-               }
+                var param = {
+                    uid : localStorage.getItem("uid"),
+                    token : localStorage.getItem("token"),
+                    checkcode : $("#code").val() || "",
+                    content : $("#content").val(),
+                    type : 3,
+                    author : $("#author").val(),
+                    title : $("#author").val() || "",
+                    size1 : $("#size1").val() || "",
+                    size2 : $("#size2").val() || "",
+                    range : $("#range").val() || "",
+                    starting_price : $("#starting_price").val() || "",
+                    fidelity : $(".baozhen").val(),//是否保真
+                    end_time : $("#end_time").val() || "",//结束时间
+                    address : $("#address").text().trim() || "西安",//TODO address
+                    compile : '',
+                    category : that.data.category,
+                    sort : that.data.sort,
+                    times : that.data.times,
+                    ban_look : "",
+                    pictures : that.data.picData.join(",")//todo
+                }
 
                 console.log(param);
 
                 Wlib.SendRequest("default/publish/postInfo", param, "POST", function (data) {
-
                     if(data.state == 1){
                         //成功
-                        //window.location.href = "../../pages/pics/index.html";
+                        window.location.href = "../../pages/pics/index.html";
                     }
                 })
             });
@@ -258,7 +251,7 @@
             })
         },
         makeSubTag : function(obj){
-          var that = this;
+            var that = this;
             $(".tip-tab-wrap").html(juicer(that.dom.tagtpl.html(),obj.next));
 
             that.dom.staLi = $(".lv2-wrapper li");
@@ -295,13 +288,15 @@
         getPicVericode : function(){
             var that = this;
             Wlib.SendRequest("default/index/verify",{},"GET",function(data){
-               console.log(data);
+                console.log(data);
             });
         }
 
+
     }
 
-    var index = new Index();
+    var sale = new Sale();
+    sale.init();
 
 
-})(window, $);
+})(window,$)

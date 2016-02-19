@@ -52,28 +52,31 @@
             </ul>
         </section>
 
-        <section class="ul-wrapper2 itemli lastmargin">
+        <section class="ul-wrapper2 itemli lastmargin" id="mainList">
             <ul>
-                {@each i in range(0,5)}
-                <li data-id="18670" data-url="../../pages/auction/index.html">
-                    <div class="t-w"><img lazy-image="http://115.159.100.197/upload/users/150_1430789443317031.jpg"
-                                          class="" src="http://115.159.100.197/upload/users/150_1430789443317031.jpg">
+                {@each list.list as item}
+                <li data-url="../../pages/auction/index.html">
+                    <a href="">
+                        <div class="i-w"><a> <img class="lazy-image" lazy-image="${item.pic}">
+                        </a>
 
-                        <div><p> 猫步妖娆 <span class="lv">V3</span></p>
+                            {@if item.sale==0}
+                            <div class="index-icon icon6"><span>
+                                未售
+                            </span></div>
+                            {@else}
+                            <div class="index-icon icon6"><span>
+                                已售
+                            </span></div>
+                            {@/if}
 
-                            <p> 12月16日 16:30 </p></div>
-                    </div>
-                    <div class="i-w"><a> <img lazy-image="http://115.159.100.197/upload/sale/32_1450254576248114.jpg"
-                                              class="" src="http://115.159.100.197/upload/sale/32_1450254576248114.jpg">
+                        </div>
+                        <p>${item.author}</p>
+
+                        <div class="b-w"><p> 转发${item.share_num} </p>
+
+                            <p><span class="index-icon icon7"></span> 喜欢${item.love_number} </p></div>
                     </a>
-
-                        <div class="index-icon icon6"><span>拍卖</span></div>
-                    </div>
-                    <p>撒浪嘿</p>
-
-                    <div class="b-w"><p> ￥55555元 </p>
-
-                        <p><span class="index-icon icon7"></span> 喜欢0 </p></div>
                 </li>
                 {@/each}
             </ul>
@@ -86,6 +89,9 @@
 
 </script>
 
+<script type="template/juicer" id="sale-item">
+
+</script>
 <script src="../../lib/libAll.js?version=0.1.7"></script>
 <script src="../../widgets/footer/index.js?version=0.1.7"></script>
 <script src="../../pages/pics/index.js?version=0.1.7"></script>
