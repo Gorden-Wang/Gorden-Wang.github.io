@@ -26,7 +26,8 @@
             that.data = {};
             that.data.newArr=[];
             that.data.picData = [];
-            that.data.type = Wlib.getRequestParam("tag")
+            that.data.type = Wlib.getRequestParam("tag");
+            that.data.islook = Wlib.getRequestParam("look") ? true : false;
             that.data.picType = (function(type){
                 var res = 5;
                 switch (type){
@@ -218,7 +219,7 @@
                     token : localStorage.getItem("token"),
                     checkcode : $("#code").val() || "",
                     content : $("#content").val(),
-                    type : 7,
+                    type : that.data.islook ? 6 : 7,
                     author : $("#author").val(),
                     title : $("#author").val() || "",
                     size1 : $("#size1").val() || "",

@@ -1,6 +1,7 @@
-body{
+body {
   background-color: #efeff4;
 }
+
 #page {
   font-family: "HY";
   //background-color: #efeff4;
@@ -12,19 +13,27 @@ body{
   .top-header {
     background-color: #ffffff;
 
-
-    .top-img{
+    .top-img {
       width: 100%;
       position: relative;
       top: 0px;
       left: 0px;
-      height: 130px;
-      &>img{
-        width: 100%;
-        height: 100%;
+      height: 0px;
+      padding-bottom: 50%;
+      overflow: hidden;
+
+      a{
+        display: flex;
+        align-items: center;
+        & > img {
+          width: 100%;
+          //height: 100%;
+        }
       }
 
-      .img-wrapper{
+
+
+      .img-wrapper {
         position: absolute;
         right: 15px;
         bottom: 30px;
@@ -33,20 +42,19 @@ body{
         border-radius: 50px;
         overflow: hidden;
         z-index: 10;
-        img{
+        img {
           width: 100%;
           height: 100%;
         }
       }
 
-      p{
+      p {
         position: absolute;
         right: 15px;
         bottom: 10px;
         color: #ffffff;
       }
     }
-
 
     .sta-tab {
       display: flex;
@@ -65,15 +73,15 @@ body{
         }
       }
 
-      li:after{
+      li:after {
         content: '';
         width: 1px;
         height: 1em;
         position: absolute;
         right: 0px;
-        background-color:#e5e5e5 ;
+        background-color: #e5e5e5;
       }
-      li:last-of-type:after{
+      li:last-of-type:after {
         display: none;
       }
       li.selected {
@@ -82,44 +90,44 @@ body{
     }
   }
 
-  .ul-wrapper2{
+  .ul-wrapper2 {
     padding: 10px;
     background-color: white;
-    ul{
+    ul {
       overflow: hidden;
-      li:nth-of-type(2n){
+      li:nth-of-type(2n) {
         margin-right: 0px;
       }
-      li{
+      li {
         width: 49%;
         margin-right: 2%;
         float: left;
         margin-bottom: 15px;
 
-        &>p{
+        & > p {
           font-size: 14px;
-          color: rgb( 106, 82, 82 );
+          color: rgb(106, 82, 82);
           text-align: center;
           padding: 10px 0px;
           background-color: #fbfbfb;
         }
       }
 
-      .t-w{
+      .t-w {
         display: flex;
         align-items: center;
 
-        img{
+        img {
           width: 30px;
           height: 30px;
           border-radius: 30px;
           margin-right: 10px;
         }
-        &>div{
+        & > div {
           flex: 1;
           font-size: 13px;
 
-          .lv{
+          .lv {
             font-size: 13px;
             background-color: #fdd102;
             color: #ffffff;
@@ -128,26 +136,25 @@ body{
             margin-left: 5px;
           }
 
-
-          &>p:first-of-type{
+          & > p:first-of-type {
             //margin-bottom: 3px;
-            color: rgb( 76, 191, 209 );
+            color: rgb(76, 191, 209);
           }
-          &>p:last-of-type{
-            color: rgb( 204, 204, 204 );
+          & > p:last-of-type {
+            color: rgb(204, 204, 204);
           }
 
         }
       }
 
-      .i-w{
+      .i-w {
         width: 100%;
         height: 0px;
         padding-bottom: 100%;
         position: relative;
         margin-top: 10px;
 
-        a{
+        a {
           position: absolute;
           left: 0px;
           top: 0px;
@@ -156,13 +163,13 @@ body{
           overflow: hidden;
           border-radius: 8px 8px 0px 0px;
 
-          img{
+          img {
             width: 100%;
             height: 100%;
           }
         }
 
-        &>div{
+        & > div {
           position: absolute;
           left: -1px;
           top: 0px;
@@ -170,7 +177,7 @@ body{
           width: 34px;
           height: 34px;
           display: inline-block;
-          span{
+          span {
             color: #ffffff;
             font-size: 10px;
             display: inline-block;
@@ -180,29 +187,29 @@ body{
         }
       }
 
-      .b-w{
+      .b-w {
         border-top: 1px solid #CCCCCC;
         padding: 10px 0px;
         display: flex;
         background-color: #fbfbfb;
         border-radius: 0px 0px 8px 8px;
 
-        p{
+        p {
           flex: 1;
           text-align: center;
         }
-        p:first-of-type{
-          color: rgb( 242, 114, 114 );
+        p:first-of-type {
+          color: rgb(242, 114, 114);
           font-size: 13px;
           text-align: center;
           border-right: 1px solid #CCCCCC;
         }
 
-        p:last-of-type{
+        p:last-of-type {
           font-size: 13px;
-          color: rgb( 106, 82, 82 );
+          color: rgb(106, 82, 82);
 
-          span{
+          span {
             display: inline-block;
             width: 10px;
             height: 10px;
@@ -213,46 +220,68 @@ body{
     }
   }
 
-  .lastmargin{
+  .lastmargin {
     margin-bottom: 80px;
   }
 
-  .pics-icon{
+  .pics-icon {
     background-image: url(../../images/pics/pics.png);
     background-size: 87px 29px;
     background-repeat: no-repeat;
     display: inline-block;
   }
 
-  .p-1{
+  .p-1 {
     width: 13px;
     height: 13px !important;
   }
-  .p-2{
+  .p-2 {
     width: 14px;
     height: 13px !important;
     background-position: -17px 0;
   }
-  .p-3{
+  .p-3 {
     width: 16px;
     height: 13px !important;
     background-position: -34px 0;
   }
-  .p-4{
+  .p-4 {
     width: 16px;
     height: 13px !important;
     background-position: -50px 0px;
   }
-  .p-5{
+  .p-5 {
     width: 16px;
     height: 13px !important;
     background-position: -71px 0px;
   }
 
-  .sale0{
-    background-color: rgba(255, 227, 38,1);
+  .sale0 {
+    background-color: rgba(255, 227, 38, 1);
   }
-  .sale1{
+  .sale1 {
     background-color: #4dc0d1;
   }
+
+  .width-all {
+    width: 100% !important;
+    .items {
+      .item-label {
+        width: 100%;
+        color:#4dc0d1;
+        font-size:16px;
+      }
+      .item-li {
+        width: 100%;
+        & > li {
+          width: 100%;
+          background-color: #efeff4;
+          padding: 10px 5px;
+          color: #774300;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
 }

@@ -11,7 +11,7 @@
     <title>出售</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
-    <link href="../../pages/sale/index.css" rel="stylesheet">
+    <link href="../../pages/text/index.css" rel="stylesheet">
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 </head>
@@ -23,38 +23,7 @@
 <script type="template/juicer" id="tpl">
     <div class="wrap container">
 
-        <section class="imgs-wrapper swiper-container " id="pics">
-            <div class="swiper-wrapper swiper-container-horizontal">
-                {@each data.minipic as item}
-                <div class="swiper-slide">
-                    <a class="back-img"> <img src="${item}"> </a>
-                </div>
-                {@/each}
-            </div>
 
-            <div class="swiper-pagination"></div>
-
-            <div class="bottom-btns">
-                <span id="complain">举报</span>
-                {@if data.collect == 0}
-                <span id="collect">收藏</span>
-                {@else}
-                <span id="collect">已收藏</span>
-                {@/if}
-            </div>
-        </section>
-
-        <section class="price-wrapper">
-            <p>￥${data.starting_price}<span>元</span></p>
-            {@if data.size}
-            <span class="label-icon">
-                ${data.size}
-            </span>
-
-            {@else}
-            <span>暂无尺寸</span>
-            {@/if}
-        </section>
 
         <section class="seller-wrapper">
             <div class="t-w"><img src=${data.avatar}>
@@ -78,35 +47,19 @@
         <section class="note-wrapper">
             <p>${data.content}</p>
 
-            <p class="hr">
-                <span>
-                    ta们也刘文西作品感兴趣
-                </span>
-            </p>
+            <div class="btns">
+                <div class="bottom-btns">
+                    {@if data.collect == 0}
+                    <span id="collect">收藏</span>
+                    {@else}
+                    <span id="collect">已收藏</span>
+                    {@/if}
+                    <span id="complain">举报</span>
+
+                </div>
+            </div>
         </section>
 
-        <section class="like-wrapper ul-wrapper3">
-            {@if data.interested.length > 0 }
-            <ul>
-
-                {@each data.interested as item}
-                <li>
-                    <a>
-                        <img src="../../images/pic.png">
-                    </a>
-
-                </li>
-
-                {@/each}
-            </ul>
-
-            {@else}
-            <div style=" -webkit-box-flex: 1;-webkit-flex: 1;-moz-box-flex: 1;flex: 1;">暂时没人感兴趣</div>
-            {@/if}
-            <span>
-                ${data.interested_num}>
-            </span>
-        </section>
 
         <section class="heart-wrapper ul-wrapper3">
             <span class="index-icon icon9">
@@ -208,7 +161,7 @@
 
         <section class="bottom-wrapper">
             <span class="heart-w">
-                {@if data.praise == 0 }
+               {@if data.praise == 0 }
                 <span class="index-icon icon7" id="praise"></span>
                 {@else}
                 <span class="index-icon icon9" id="praise"></span>
@@ -218,10 +171,10 @@
             <div class="saysometing">
                 <input type="text" placeholder="说点什么吧..." style="width: 100%">
             </div>
-            <div class="buyBtn">
-                立即购买
-            </div>
-            <div class="backToHome">
+            <!--<div class="buyBtn">-->
+                <!--立即购买-->
+            <!--</div>-->
+            <div class="backToHome" style="margin-left: 15px">
                 确定
             </div>
         </section>
@@ -241,7 +194,7 @@
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/swiper/index.js"></script>
 <script src="../../widgets/scrollto/index.js"></script>
-<script src="../../pages/sale/index.js"></script>
+<script src="../../pages/text/index.js"></script>
 
 </body>
 </html>

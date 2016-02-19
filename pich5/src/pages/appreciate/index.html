@@ -11,7 +11,7 @@
     <title>出售</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
-    <link href="../../pages/sale/index.css" rel="stylesheet">
+    <link href="../../pages/appreciate/index.css" rel="stylesheet">
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 </head>
@@ -42,18 +42,6 @@
                 <span id="collect">已收藏</span>
                 {@/if}
             </div>
-        </section>
-
-        <section class="price-wrapper">
-            <p>￥${data.starting_price}<span>元</span></p>
-            {@if data.size}
-            <span class="label-icon">
-                ${data.size}
-            </span>
-
-            {@else}
-            <span>暂无尺寸</span>
-            {@/if}
         </section>
 
         <section class="seller-wrapper">
@@ -208,7 +196,7 @@
 
         <section class="bottom-wrapper">
             <span class="heart-w">
-                {@if data.praise == 0 }
+               {@if data.praise == 0 }
                 <span class="index-icon icon7" id="praise"></span>
                 {@else}
                 <span class="index-icon icon9" id="praise"></span>
@@ -218,10 +206,10 @@
             <div class="saysometing">
                 <input type="text" placeholder="说点什么吧..." style="width: 100%">
             </div>
-            <div class="buyBtn">
-                立即购买
-            </div>
-            <div class="backToHome">
+            <!--<div class="buyBtn">-->
+                <!--立即购买-->
+            <!--</div>-->
+            <div class="backToHome" style="margin-left: 15px">
                 确定
             </div>
         </section>
@@ -241,7 +229,7 @@
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/swiper/index.js"></script>
 <script src="../../widgets/scrollto/index.js"></script>
-<script src="../../pages/sale/index.js"></script>
+<script src="../../pages/appreciate/index.js"></script>
 
 </body>
 </html>

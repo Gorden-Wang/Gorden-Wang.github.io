@@ -12,10 +12,14 @@ body {
       position: relative;
       top: 0px;
       left: 0px;
-      height: 130px; }
-      #page .top-header .top-img > img {
-        width: 100%;
-        height: 100%; }
+      height: 0px;
+      padding-bottom: 50%;
+      overflow: hidden; }
+      #page .top-header .top-img a {
+        display: flex;
+        align-items: center; }
+        #page .top-header .top-img a > img {
+          width: 100%; }
       #page .top-header .top-img .img-wrapper {
         position: absolute;
         right: 15px;
@@ -179,5 +183,19 @@ body {
     background-color: #ffe326; }
   #page .sale1 {
     background-color: #4dc0d1; }
+  #page .width-all {
+    width: 100% !important; }
+    #page .width-all .items .item-label {
+      width: 100%;
+      color: #4dc0d1;
+      font-size: 16px; }
+    #page .width-all .items .item-li {
+      width: 100%; }
+      #page .width-all .items .item-li > li {
+        width: 100%;
+        background-color: #efeff4;
+        padding: 10px 5px;
+        color: #774300;
+        font-size: 14px; }
 
 /*# sourceMappingURL=index.css.map */

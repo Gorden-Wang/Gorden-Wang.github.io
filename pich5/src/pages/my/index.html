@@ -24,17 +24,18 @@
     <div class="wrap container">
 
         <section class="user-wrapper">
-            <div class="t-w"><img src="http://115.159.100.197/upload/users/150_1450076962663873.png">
+            <div class="t-w"><img src="${user.logo}">
 
                 <div>
-                    <p><span>给狗狗 </span><span class=" my-icon my-icon1">V2</span></p>
+                    <p><span>${user.nickname} </span><span class=" my-icon my-icon1">V${user.level.level}</span></p>
 
-                    <p style="margin: 3px 0px;">说画号：000007 </p>
-
+                    {@if user.name}
+                    <p style="margin: 3px 0px;">说画号：${user.name} </p>
+                    {@/if}
                     <div class="slider">
-                        <p style="width: 40%"></p>
+                        <p style="width: ${makePercentage(user.level.score,user.level.need_score)}"></p>
                     </div>
-                    <p>距离5级还有2710积分</p>
+                    <p>距离${user.level.level+1}级还有${user.level.need_score}积分</p>
                 </div>
             </div>
             <div style="position: relative">
@@ -43,24 +44,24 @@
             </div>
         </section>
 
-        <section class="wallet-wrap">
-            <img src="../../images/common/wallet-icon.png">
-            <div>
-                <p class="title">我的钱包<span>(元)</span></p>
-                <p class="price">￥1254450.00</p>
-            </div>
-        </section>
+        <!--<section class="wallet-wrap">-->
+            <!--<img src="../../images/common/wallet-icon.png">-->
+            <!--<div>-->
+                <!--<p class="title">我的钱包<span>(元)</span></p>-->
+                <!--<p class="price">￥1254450.00</p>-->
+            <!--</div>-->
+        <!--</section>-->
 
         <section class="li-tabs">
             <ul>
-                <li>
-                    <a href="../../pages/order/list.html">
-                        <span class="my-icon my-icon3"></span>
+                <!--<li>-->
+                    <!--<a href="../../pages/order/list.html">-->
+                        <!--<span class="my-icon my-icon3"></span>-->
 
-                        <p>我的订单</p>
-                    </a>
+                        <!--<p>我的订单</p>-->
+                    <!--</a>-->
 
-                </li>
+                <!--</li>-->
                 <li>
                     <a href="../../pages/pics/index.html">
                         <span class="my-icon my-icon4"></span>
@@ -122,7 +123,7 @@
             <section class="imgs-wrapper swiper-container " id="pics">
                 <div class="swiper-wrapper swiper-container-horizontal">
                    {@each banner.list as item}
-                    <div class="swiper-slide" data-id="${item.id}" data-type="${item.type}">
+                    <div class="swiper-slide" data-id="${item.id}" data-type="${item.type}" data-itype="${item.itype}">
                         <a class="back-img"> <img src="${item.picture}"> </a>
                     </div>
                     {@/each}
