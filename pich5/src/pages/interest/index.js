@@ -20,9 +20,7 @@
         cacheData: function () {
             var that = this;
 
-            that.data = {
-
-            }
+            that.data = {}
 
         },
         cacheDom: function () {
@@ -42,40 +40,28 @@
         recacheDom: function () {
             var that = this;
 
-            that.dom.topLi = $(".top-tab li");
-            that.dom.staLi = $(".sta-tab li");
-            that.dom.itemLi = $(".list-wrapper li");
+            that.dom.topWrapper = $(".top-header");
+            that.dom.addBtn = $(".f-3");
+            that.dom.input = $("input");
+            that.dom.saveBtn = $(".right-w");
+            that.dom.inputWrap = $(".input-wrapper");
 
         },
-        _makeFooter : function(){
-          var that = this;
-            var data ={
+        _makeFooter: function () {
+            var that = this;
+            var data = {
                 classname: "f-5",
                 selected: true,
                 url: '',
                 id: ''
             };
 
-            var footer = new Wlib.Footer($("#footer"), data,4);
+            var footer = new Wlib.Footer($("#footer"), data, 4);
         },
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                  return  Wlib.getRequestParam("id",url);
-            });
-            juicer.register("getType", function (type) {
-                var res = "";
-                switch (type){
-                    case "出售":
-                        res = "../../pages/sale/index.html";
-                        break;
-                    case "拍卖":
-                        res = "../../pages/auction/index.html";
-                        break;
-                //  @TODO : 鉴定，欣赏
-
-                }
-                return res;
+                return Wlib.getRequestParam("id", url);
             });
 
         },
@@ -84,39 +70,43 @@
 
             FastClick.attach(document.body);
 
+            that.dom.addBtn.on("click", function () {
+                that.dom.topWrapper.hide();
+                that.dom.inputWrap.show();
+            });
 
-            Wlib._bindLazyLoad();
-
-            that.dom.topLi.on("click",function(){
-                var isSelect = $(this).hasClass("selected");
-
-                if(isSelect){
-                    return;
-                }
-
-                $(this).addClass("selected").siblings().removeClass("selected");
+            that.dom.saveBtn.on("click", function () {
+                that.dom.loading.show();
+                that.optIntrest(1,that.dom.input.val());
             });
 
 
-            that.dom.staLi.on("click",function(){
-                var isSelect = $(this).hasClass("selected");
+        },
+        optIntrest : function(type,name){
+            //type : 1 add  2  remove
+            var that = this;
+            var req = {
+                type : type,
+                uid : localStorage.getItem("uid"),
+                token : localStorage.getItem("token"),
+                painter : name
+            };
 
-                if(isSelect){
-                    return;
+            Wlib.SendRequest("default/person/interest", req, "POST", function (data) {
+                if(data.state == 1){
+                    Wlib.tips("操作成功");
+                    that.dom.loading.hide();
                 }
-
-                $(this).addClass("selected").siblings().removeClass("selected");
-            });
-
-            that.dom.itemLi.on("click",function(){
-                win.location = "detail.html"
             })
         },
         getData: function () {
             var that = this;
-
-            Wlib.SendRequest("default/api/square",{},"GET",function(data){
-                that.data.data = data;
+            var req = {
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            };
+            Wlib.SendRequest("default/person/myInterest", req, "GET", function (data) {
+                that.data.list = data;
                 that.renderUI();
                 that.recacheDom();
                 that.bindEvent();

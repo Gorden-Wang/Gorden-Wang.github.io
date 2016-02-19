@@ -29,6 +29,7 @@ body {
     background-color: #ffffff;
     display: flex;
     padding: 15px 20px;
+    align-items: center;
 
     div:last-of-type {
       margin: 0px 15px;
@@ -80,6 +81,35 @@ body {
 
   .lastmargin {
     margin-bottom: 80px;
+  }
+
+  .input-wrapper{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+
+
+    div.left-w{
+      flex: 1;
+      border: 1px solid #e6e6e6;
+      margin-right: 10px;
+
+      input{
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 5px;
+      }
+    }
+    div.right-w{
+      display: inline-block;
+      text-align: center;
+      background-color: #4cbfd1;
+      padding: 8px;
+      color: white;
+      width: 4em;
+      font-size: 14px;
+    }
   }
 
 }

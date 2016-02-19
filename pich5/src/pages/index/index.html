@@ -156,7 +156,7 @@
     <section class="ul-wrapper2 itemli">
         <ul>
             {@each data.new_painting as item}
-            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type,item.id)}">
                 <div class="t-w">
                     <img lazy-image="${item.avatar}" class="lazy-image">
 
@@ -241,7 +241,7 @@
 
 <script type="template/juicer" id="picli">
     {@each data.list as item}
-    <li data-id="${item.id}" data-url="${getFuckType(item.type)}">
+    <li data-id="${item.id}" data-url="${getFuckType(item.type,item.id)}">
         <div class="top-li">
             <div class="t-w flex1">
                 <img lazy-image="${item.logo}" class="lazy-image">

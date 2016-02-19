@@ -159,7 +159,7 @@
         },
         getTopImg : function(){
           var that = this;
-            Wlib.SendRequest("default/person/personInfo",{fid:1487},"GET",function(data){
+            Wlib.SendRequest("default/person/personInfo",{fid:localStorage.getItem("uid")},"GET",function(data){
 
                 $("#topImg").attr("src",data.visualize);
 

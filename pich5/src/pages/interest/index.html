@@ -10,8 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>我的兴趣</title>
     <link href="../../lib/boot.css" rel="stylesheet">
-    <link href="../../widgets/footer/index.css" rel="stylesheet">
-    <link href="../../pages/interest/index.css" rel="stylesheet">
+    <link href="../../widgets/footer/index.css" rel="stylesheet"/>
+    <link href="../../pages/interest/index.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -22,11 +22,20 @@
 <script type="template/juicer" id="tpl">
     <div class="wrap container">
 
-        <section class="top-header">
-            <div class="f-icon f-3"></div>
-            <div>
-                <p>点击此处添加感兴趣的画家姓名</p>
-                <p>添加后与该画家相关的信息会在兴趣圈展示</p>
+        <section class="top-header" style="padding-right: 0px;padding-left: 10px;">
+            <div class="f-icon f-3" style="padding: 0px;"></div>
+            <div style="margin-right: 3px">
+                <p style="font-size: 13px;margin-bottom: 5px;">点击此处添加感兴趣的画家姓名</p>
+                <p style="font-size: 13px;">添加后与该画家相关的信息会在兴趣圈展示</p>
+            </div>
+        </section>
+
+        <section class="input-wrapper" style="display: none">
+            <div class="left-w">
+                <input type="text" placeholder="请输入画家名字">
+            </div>
+            <div class="right-w">
+                添加
             </div>
         </section>
 

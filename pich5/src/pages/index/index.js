@@ -83,7 +83,12 @@
                     case "拍卖":
                         res = "../../pages/auction/index.html";
                         break;
-                    //  @TODO : 鉴定，欣赏
+                    case "鉴定" :
+                        res = "../../pages/identify/index.html";
+                        break;
+                    case "欣赏" :
+                        res = "../../pages/appreciate/index.html";
+                        break;
 
                 }
                 return res;
@@ -95,17 +100,28 @@
                 return a.join(",");
             });
             juicer.register("getFuckType", function (type) {
-                var res = "";
+                var res = "",type=parseInt(type);
                 switch (type) {
-                    case "2":
-                        //出售
-                        res = "../../pages/sale/index.html";
+                    case 2:
+                        //        出售
+                        res = '../../pages/sale/index.html';
                         break;
-                    case "1":
-                        //拍卖
-                        res = "../../pages/auction/index.html";
+                    case 1 :
+                        //        拍卖
+                        res = '../../pages/auction/index.html';
                         break;
-                    //  @TODO : 鉴定，欣赏
+                    case 7 :
+                        //        欣赏
+                        res = '../../pages/appreciate/index.html';
+                        break;
+                    case 6 :
+                        //        鉴定
+                        res = '../../pages/identify/index.html';
+                        break;
+                    case 3 :
+                        //        文字
+                        res = '../../pages/text/index.html';
+                        break;
 
                 }
                 return res;

@@ -19,7 +19,8 @@ body {
   #page .top-header {
     background-color: #ffffff;
     display: flex;
-    padding: 15px 20px; }
+    padding: 15px 20px;
+    align-items: center; }
     #page .top-header div:last-of-type {
       margin: 0px 15px;
       color: #918f8f;
@@ -53,5 +54,26 @@ body {
         font-size: 13px; }
   #page .lastmargin {
     margin-bottom: 80px; }
+  #page .input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white; }
+    #page .input-wrapper div.left-w {
+      flex: 1;
+      border: 1px solid #e6e6e6;
+      margin-right: 10px; }
+      #page .input-wrapper div.left-w input {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 5px; }
+    #page .input-wrapper div.right-w {
+      display: inline-block;
+      text-align: center;
+      background-color: #4cbfd1;
+      padding: 8px;
+      color: white;
+      width: 4em;
+      font-size: 14px; }
 
 /*# sourceMappingURL=index.css.map */
