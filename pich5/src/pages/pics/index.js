@@ -18,6 +18,7 @@
             that.recacheDom();
             that.bindEvent();
             that.getSaleData();
+            that.getTopImg();
         },
         cacheData: function () {
             var that = this;
@@ -63,13 +64,41 @@
 
             var footer = new Wlib.Footer($("#footer"), data,4);
         },
+
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getPic", function () {
                   //@TODO 头像和昵称
                   return  localStorage.getItem("")
             });
+            juicer.register("makeURL", function (type,id) {
+                var t = parseInt(type),res="";
+                switch (t){
+                    case 2:
+                //        出售
+                        res = '../../pages/sale/index.html?id='+id;
+                        break;
+                    case 1 :
+                //        拍卖
+                        res = '../../pages/auction/index.html?id='+id;
+                        break;
+                    case 7 :
+                //        欣赏
+                        res = '../../pages/appreciate/index.html?id='+id;
+                        break;
+                    case 6 :
+                        //        鉴定
+                        res = '../../pages/identify/index.html?id='+id;
+                        break;
+                    case 3 :
+                        //        文字
+                        res = '../../pages/text/index.html?id='+id;
+                        break;
+                }
 
+                return res;
+
+            });
 
 
         },
@@ -102,6 +131,9 @@
                 $(this).addClass("selected").siblings().removeClass("selected");
                 that.SELTAG = tag;
                 that.dom.mainlist.html("");
+                //$(window).off("scroll");
+                window.onscroll = null
+
                 switch(tag){
                     case 1 :
                         that.getSaleData();
@@ -124,6 +156,27 @@
             that.dom.itemLi.on("click",function(){
                 win.location = "detail.html"
             })
+        },
+        getTopImg : function(){
+          var that = this;
+            Wlib.SendRequest("default/person/personInfo",{fid:1487},"GET",function(data){
+
+                $("#topImg").attr("src",data.visualize);
+
+            });
+        },
+        getMultiDataDes : function(data){
+          var that = this;
+            var list = [];
+            for(var i in data){
+                for(var j in data[i]){
+                    list.push(data[i][j]);
+                }
+            }
+            return {
+                length : list.length,
+                lastId : list.length-1 > 0 && list[list.length-1].id
+            }
         },
         getSaleData : function(){
             var that = this;
@@ -197,18 +250,18 @@
         },
         getTextData : function(){
             var that = this;
-            Wlib.SendRequest("default/gallery/text",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+            Wlib.SendRequest("default/gallery/webtext",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
                 if(data.list.length == 0){
                     Wlib.tips("没有更多数据");
                     return;
                 }
 
-                that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
-                Wlib._bindLazyLoad();
-                if(data.list.length == 20){
+                that.dom.mainlist.append(juicer($("#text-item").html(),{list : data}));
+                var dataDes = that.getMultiDataDes(data.list);
+                if(dataDes.length == 20){
                     that.bindNext();
-                    that.LASTID = data.list[19].id;
+                    that.LASTID = dataDes.lastId;
                 }
 
             });
@@ -274,14 +327,14 @@
                 }
                 if(that.SELTAG == 5){
                     //出售
-                    Wlib.SendRequest("default/gallery/text",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                    Wlib.SendRequest("default/gallery/webtext",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
-                        that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                        that.dom.mainlist.append(juicer($("#text-item").html(),{list : data}));
                         that.recacheDom();
-                        Wlib._bindLazyLoad();
-                        if(data.list.length == 20){
+                        var dataDes = that.getMultiDataDes(data.list);
+                        if(dataDes.length == 20){
                             that.bindNext();
-                            that.LASTID = data.list[19].id;
+                            that.LASTID = dataDes.lastId;
                         }
 
                     });

@@ -34,19 +34,19 @@
             </div>
 
             <ul class="sta-tab">
-                <li class="selected">
+                <li class="selected" data-tag="1">
                     <span class="pics-icon p-1"></span> <span>出售</span>
                 </li>
-                <li>
+                <li data-tag="2">
                     <span class="pics-icon p-2"></span> <span>拍卖</span>
                 </li>
-                <li>
+                <li data-tag="3">
                     <span class="pics-icon p-3"></span> <span>欣赏</span>
                 </li>
-                <li>
+                <li data-tag="4">
                     <span class="pics-icon p-4"></span> <span>求鉴</span>
                 </li>
-                <li>
+                <li data-tag="5">
                     <span class="pics-icon p-5"></span> <span>文字</span>
                 </li>
             </ul>
@@ -54,31 +54,6 @@
 
         <section class="ul-wrapper2 itemli lastmargin" id="mainList">
             <ul>
-                {@each list.list as item}
-                <li data-url="../../pages/auction/index.html">
-                    <a href="">
-                        <div class="i-w"><a> <img class="lazy-image" lazy-image="${item.pic}">
-                        </a>
-
-                            {@if item.sale==0}
-                            <div class="index-icon icon6"><span>
-                                未售
-                            </span></div>
-                            {@else}
-                            <div class="index-icon icon6"><span>
-                                已售
-                            </span></div>
-                            {@/if}
-
-                        </div>
-                        <p>${item.author}</p>
-
-                        <div class="b-w"><p> 转发${item.share_num} </p>
-
-                            <p><span class="index-icon icon7"></span> 喜欢${item.love_number} </p></div>
-                    </a>
-                </li>
-                {@/each}
             </ul>
         </section>
 
@@ -90,7 +65,49 @@
 </script>
 
 <script type="template/juicer" id="sale-item">
+    {@each list.list as item}
+    <li data-url="../../pages/auction/index.html">
+        <a href="">
+            <div class="i-w"><a> <img class="lazy-image" lazy-image="${item.pic}">
+            </a>
 
+                {@if item.type == 2}
+                    {@if item.sale==0}
+                    <div class="index-icon icon6"><span>
+                                    未售
+                                </span></div>
+                    {@else}
+                    <div class="index-icon icon6"><span>
+                                    已售
+                                </span></div>
+                    {@/if}
+                {@else if item.type == 1}
+
+                    {@if item.genre==1}
+                    <div class="index-icon icon6"><span>
+                                    流拍
+                                </span></div>
+                    {@else if item.genre == 2}
+                    <div class="index-icon icon6"><span>
+                                    成交
+                                </span></div>
+                    {@else if item.genre == 3}
+                    <div class="index-icon icon6"><span>
+                                    正在拍卖
+                                </span></div>
+                    {@/if}
+
+                {@/if}
+
+            </div>
+            <p>${item.author}</p>
+
+            <div class="b-w"><p> 转发${item.share_num} </p>
+
+                <p><span class="index-icon icon7"></span> 喜欢${item.love_number} </p></div>
+        </a>
+    </li>
+    {@/each}
 </script>
 <script src="../../lib/libAll.js?version=0.1.7"></script>
 <script src="../../widgets/footer/index.js?version=0.1.7"></script>

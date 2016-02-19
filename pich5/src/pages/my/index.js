@@ -115,17 +115,6 @@
             });
 
         },
-        getData: function () {
-            var that = this;
-
-            Wlib.SendRequest("default/api/square", {}, "GET", function (data) {
-                that.data.data = data;
-                that.renderUI();
-                that.recacheDom();
-                that.bindEvent();
-            })
-
-        },
         getAllData : function(callback){
             var that = this;
             that.getBannerData(function(){
@@ -138,7 +127,7 @@
                 that.data.user = data;
                 !that.data.user.logo && (that.data.user.logo = localStorage.getItem("avatar"));
                 callback && callback();
-            })
+            });
         },
         getBannerData : function(callback){
 
@@ -147,8 +136,6 @@
                 that.data.banner = data;
                 callback && callback();
             })
-
-
         }
     }
 

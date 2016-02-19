@@ -232,7 +232,7 @@
                    range : $("#range").val() || "",
                    starting_price : $("#starting_price").val() || "",
                    fidelity : $(".baozhen").val(),//是否保真
-                   end_time : $("#end_time").val() || "",//结束时间
+                   end_time : Wlib.getTimeZone($("#end_time").val() || ""),//结束时间
                    address : $("#address").text().trim() || "西安",//TODO address
                    compile : '',
                    category : that.data.category,
@@ -248,7 +248,7 @@
 
                     if(data.state == 1){
                         //成功
-                        //window.location.href = "../../pages/pics/index.html";
+                        window.location.href = "../../pages/pics/index.html";
                     }
                 })
             });

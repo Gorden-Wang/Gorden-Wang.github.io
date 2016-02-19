@@ -1145,6 +1145,21 @@ window.Wlib = (function () {
                 }
             })
         },
+        getTimeZone : function(re){
+            if(!re){
+                return "";
+            }
+           //var date = new Date(new Date(re).getTime()-8*3600*1000);
+           // var y = date.getFullYear(),
+           //     m = (date.getMonth()+ 1)<10 ? "0"+(date.getMonth()+ 1) : (date.getMonth()+ 1),
+           //     d = date.getDate()<10 ? "0"+date.getDate() : date.getDate(),
+           //     h = date.getHours()<10 ? "0"+date.getHours() : date.getHours(),
+           //     mm = (date.getMinutes())<10? "0"+date.getMinutes() : date.getMinutes();
+           // return y+"-"+m+"-"+d+" "+h+":"+mm;
+            return re.replace("T"," ");
+
+
+        },
         wx: {
             isWeixin: function () {
                 return !!(navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1);

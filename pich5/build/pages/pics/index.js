@@ -13,10 +13,11 @@
             that.cacheData();
             that.cacheDom();
             //that.getData();
+
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
             that.getSaleData();
-            //that.renderUI();
-            //that.recacheDom();
-            //that.bindEvent();
         },
         cacheData: function () {
             var that = this;
@@ -32,8 +33,8 @@
             that.dom = {
                 wrapper: $("#page"),
                 loading: $("#loading"),
-                tpl: $("#tpl"),
-                mainlist : $("#mainList")
+                tpl: $("#tpl")
+
             }
         },
         renderUI: function () {
@@ -48,6 +49,7 @@
             that.dom.topLi = $(".top-tab li");
             that.dom.staLi = $(".sta-tab li");
             that.dom.itemLi = $(".list-wrapper li");
+            that.dom.mainlist = $("#mainList ul");
 
         },
         _makeFooter : function(){
@@ -63,23 +65,12 @@
         },
         addJuicerHandler: function () {
             var that = this;
-            juicer.register("getId", function (url) {
-                  return  Wlib.getRequestParam("id",url);
+            juicer.register("getPic", function () {
+                  //@TODO 头像和昵称
+                  return  localStorage.getItem("")
             });
-            juicer.register("getType", function (type) {
-                var res = "";
-                switch (type){
-                    case "出售":
-                        res = "../../pages/sale/index.html";
-                        break;
-                    case "拍卖":
-                        res = "../../pages/auction/index.html";
-                        break;
-                //  @TODO : 鉴定，欣赏
 
-                }
-                return res;
-            });
+
 
         },
         bindEvent: function () {
@@ -88,7 +79,7 @@
             FastClick.attach(document.body);
 
 
-            Wlib._bindLazyLoad();
+
 
             that.dom.topLi.on("click",function(){
                 var isSelect = $(this).hasClass("selected");
@@ -103,12 +94,31 @@
 
             that.dom.staLi.on("click",function(){
                 var isSelect = $(this).hasClass("selected");
-
+                var tag = parseInt($(this).attr("data-tag"));
                 if(isSelect){
                     return;
                 }
 
                 $(this).addClass("selected").siblings().removeClass("selected");
+                that.SELTAG = tag;
+                that.dom.mainlist.html("");
+                switch(tag){
+                    case 1 :
+                        that.getSaleData();
+                        break;
+                    case 2 :
+                        that.getAuctionData();
+                        break;
+                    case 3 :
+                        that.getAppreciateData();
+                        break;
+                    case 4 :
+                        that.getIdentifyData();
+                        break;
+                    case 5 :
+                        that.getTextData();
+                        break;
+                }
             });
 
             that.dom.itemLi.on("click",function(){
@@ -119,10 +129,83 @@
             var that = this;
             Wlib.SendRequest("default/gallery/sale",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
-                that.renderUI();
-                that.recacheDom();
-                that.bindEvent();
+                if(data.list.length == 0){
+                    Wlib.tips("没有更多数据");
+                    return;
+                }
+                that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                Wlib._bindLazyLoad();
+                if(data.list.length == 20){
+                    that.bindNext();
+                    that.LASTID = data.list[19].id;
+                }
 
+            });
+        },
+        getAuctionData : function(){
+            var that = this;
+            Wlib.SendRequest("default/gallery/auction",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+                that.data.list = data;
+                if(data.list.length == 0){
+                    Wlib.tips("没有更多数据");
+                    return;
+                }
+                that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                Wlib._bindLazyLoad();
+                if(data.list.length == 20){
+                    that.bindNext();
+                    that.LASTID = data.list[19].id;
+                }
+
+            });
+        },
+        getAppreciateData : function(){
+            var that = this;
+            Wlib.SendRequest("default/gallery/appreciate",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+                that.data.list = data;
+                if(data.list.length == 0){
+                    Wlib.tips("没有更多数据");
+                    return;
+                }
+
+                that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                Wlib._bindLazyLoad();
+                if(data.list.length == 20){
+                    that.bindNext();
+                    that.LASTID = data.list[19].id;
+                }
+
+            });
+        },
+        getIdentifyData : function(){
+            var that = this;
+            Wlib.SendRequest("default/gallery/identify",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+                that.data.list = data;
+                if(data.list.length == 0){
+                    Wlib.tips("没有更多数据");
+                    return;
+                }
+
+                that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                Wlib._bindLazyLoad();
+                if(data.list.length == 20){
+                    that.bindNext();
+                    that.LASTID = data.list[19].id;
+                }
+
+            });
+        },
+        getTextData : function(){
+            var that = this;
+            Wlib.SendRequest("default/gallery/text",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+                that.data.list = data;
+                if(data.list.length == 0){
+                    Wlib.tips("没有更多数据");
+                    return;
+                }
+
+                that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                Wlib._bindLazyLoad();
                 if(data.list.length == 20){
                     that.bindNext();
                     that.LASTID = data.list[19].id;
@@ -137,10 +220,9 @@
                     //出售
                     Wlib.SendRequest("default/gallery/sale",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
-                        //that.renderUI();
-                        that.dom.mainlist.append(juicer($("#sale-item").html(),data));
+                        that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
                         that.recacheDom();
-                        that.bindEvent();
+                        Wlib._bindLazyLoad();
                         if(data.list.length == 20){
                             that.bindNext();
                             that.LASTID = data.list[19].id;
@@ -148,7 +230,63 @@
 
                     });
                 }
-            });
+                if(that.SELTAG == 2){
+                    //出售
+                    Wlib.SendRequest("default/gallery/auction",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                        that.data.list = data;
+                        that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                        that.recacheDom();
+                        Wlib._bindLazyLoad();
+                        if(data.list.length == 20){
+                            that.bindNext();
+                            that.LASTID = data.list[19].id;
+                        }
+
+                    });
+                }
+                if(that.SELTAG == 3){
+                    //出售
+                    Wlib.SendRequest("default/gallery/appreciate",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                        that.data.list = data;
+                        that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                        that.recacheDom();
+                        Wlib._bindLazyLoad();
+                        if(data.list.length == 20){
+                            that.bindNext();
+                            that.LASTID = data.list[19].id;
+                        }
+
+                    });
+                }
+                if(that.SELTAG == 4){
+                    //出售
+                    Wlib.SendRequest("default/gallery/identify",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                        that.data.list = data;
+                        that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                        that.recacheDom();
+                        Wlib._bindLazyLoad();
+                        if(data.list.length == 20){
+                            that.bindNext();
+                            that.LASTID = data.list[19].id;
+                        }
+
+                    });
+                }
+                if(that.SELTAG == 5){
+                    //出售
+                    Wlib.SendRequest("default/gallery/text",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                        that.data.list = data;
+                        that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
+                        that.recacheDom();
+                        Wlib._bindLazyLoad();
+                        if(data.list.length == 20){
+                            that.bindNext();
+                            that.LASTID = data.list[19].id;
+                        }
+
+                    });
+                }
+            },true);
         }
     }
 

@@ -241,7 +241,7 @@
                 Wlib.SendRequest("default/publish/postInfo", param, "POST", function (data) {
                     if(data.state == 1){
                         //成功
-                        window.location.href = "../../pages/pics/index.html";
+                        //window.location.href = "../../pages/pics/index.html";
                     }
                 })
             });

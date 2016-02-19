@@ -116,15 +116,16 @@
             $("#collect").on("click", function () {
                 that.addCollect(this);
             });
-            $("#praise").on("click", function () {
-                that.addPraise(this);
-            });
             that.dom.sendComm.on("click",function(){
                 that.sendComm();
             });
             that.dom.moreComm.on("click",function(){
                 Wlib.tips("下载APP查看更多评论。");
                 location.href = "http://www.talkart.cc/index.php?r=default/index/download";
+            });
+
+            $("#praise").on("click", function () {
+                that.addPraise(this);
             });
 
             Wlib._bindLazyLoad();
@@ -145,6 +146,52 @@
                 that.recacheDom();
                 that.bindEvent();
             })
+
+        },
+        addPraise: function (obj) {
+            /*
+             给某一个商品点赞
+             */
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type: 1
+            }
+            that.dom.loading.show();
+            if (that.data.data.praise == 0) {
+                //去点赞
+                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).removeClass("icon7").addClass("icon9");
+                        that.data.data.praise = 1;
+                        //that.dom.praiseList.prepend('<li><a><img src="'+localStoarge.getItem("avatar")+'"></a></li>')
+
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("点赞失败")
+                    }
+                });
+            } else {
+
+                //取消关注
+                req.type = 2;
+                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips(data.message);
+                        $(obj).removeClass("icon9").addClass("icon7");
+                        that.data.data.praise = 0;
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("取消点赞失败")
+                    }
+                });
+            }
+
 
         },
         addComplain: function (obj) {
@@ -209,52 +256,6 @@
                     } else {
                         that.dom.loading.hide();
                         Wlib.tips("取消收藏失败")
-                    }
-                });
-            }
-
-
-        },
-        addPraise: function (obj) {
-            /*
-             给某一个商品点赞
-             */
-            var that = this;
-            var req = {
-                id: that.data.id,
-                uid: localStorage.getItem("uid"),
-                token: localStorage.getItem("token"),
-                type: 1
-            }
-            that.dom.loading.show();
-            if (that.data.data.praise == 0) {
-                //去点赞
-                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
-                    if (data.state == 1) {
-                        that.dom.loading.hide();
-                        Wlib.tips(data.message);
-                        $(obj).removeClass("icon7").addClass("icon9");
-                        that.data.data.praise = 1;
-                        //that.dom.praiseList.prepend('<li><a><img src="'+localStoarge.getItem("avatar")+'"></a></li>')
-
-                    } else {
-                        that.dom.loading.hide();
-                        Wlib.tips("点赞失败")
-                    }
-                });
-            } else {
-
-                //取消关注
-                req.type = 2;
-                Wlib.SendRequest("default/picture/praise", req, "GET", function (data) {
-                    if (data.state == 1) {
-                        that.dom.loading.hide();
-                        Wlib.tips(data.message);
-                        $(obj).removeClass("icon9").addClass("icon7");
-                        that.data.data.praise = 0;
-                    } else {
-                        that.dom.loading.hide();
-                        Wlib.tips("取消点赞失败")
                     }
                 });
             }
