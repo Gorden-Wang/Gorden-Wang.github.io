@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>鉴赏</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../pages/identify/index.css" rel="stylesheet">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.1"></script>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+
+        <section class="imgs-wrapper swiper-container " id="pics">
+            <div class="swiper-wrapper swiper-container-horizontal">
+                {@each data.minipic as item}
+                <div class="swiper-slide">
+                    <a class="back-img"> <img src="${item}"> </a>
+                </div>
+                {@/each}
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+            <div class="bottom-btns">
+                <span id="complain">举报</span>
+                {@if data.collect == 0}
+                <span id="collect">收藏</span>
+                {@else}
+                <span id="collect">已收藏</span>
+                {@/if}
+            </div>
+        </section>
+
+        <section class="seller-wrapper">
+            <div class="t-w"><img src=${data.avatar}>
+
+                <div>
+                    <p> ${data.author} <span class="lv">V${data.level}</span></p>
+
+                    <p> ${data.add_time} </p>
+                </div>
+            </div>
+
+            <div>
+                <p>
+                    <span class="blue">${data.post_nums}</span>条信息
+                </p>
+                <span>联系Ta~</span>
+
+            </div>
+        </section>
+
+        <section class="note-wrapper">
+            <p>${data.content}</p>
+
+            <div class="battle-wrapper">
+                <span class="b-label betrue">
+                    <span>看真</span>
+                </span>
+                <div class="b-hr">
+                    <span>1</span>
+                    <div class="br-w">
+                        <div class="b-r-color" style="width: 10%;"></div>
+                    </div>
+                    <span>5</span>
+                </div>
+
+                <span class="b-label befalse">
+                   <span>看假</span>
+                </span>
+
+            </div>
+
+
+            <p class="hr">
+                <span>
+                    ta们也刘文西作品感兴趣
+                </span>
+            </p>
+        </section>
+
+        <section class="like-wrapper ul-wrapper3">
+            {@if data.interested.length > 0 }
+            <ul>
+
+                {@each data.interested as item}
+                <li>
+                    <a>
+                        <img src="../../images/pic.png">
+                    </a>
+
+                </li>
+
+                {@/each}
+            </ul>
+
+            {@else}
+            <div style=" -webkit-box-flex: 1;-webkit-flex: 1;-moz-box-flex: 1;flex: 1;">暂时没人感兴趣</div>
+            {@/if}
+            <span>
+                ${data.interested_num}>
+            </span>
+        </section>
+
+        <section class="heart-wrapper ul-wrapper3">
+            <span class="index-icon icon9">
+
+            </span>
+            <ul>
+                {@each data.praise_list as item}
+                <li>
+                    <a>
+                        <img class="lazy-image" lazy-image="${item.logo}">
+                    </a>
+
+                </li>
+                {@/each}
+            </ul>
+        </section>
+
+        <section class="reply-wrapper ul-wrapper4">
+            <ul>
+                {@each data.comments as item}
+                <li>
+                    <div class="t-w">
+                        <img class="lazy-image" lazy-image="${item.from_logo}">
+
+                        <div class="r-w">
+                            <div class="t-t">
+                                <p>
+                                    ${item.from_name} <span class="lv">V${item.from_level}</span>
+                                </p>
+
+                                <span> ${item.comm_time} </span>
+                            </div>
+
+                            <div class="t-c">
+                                {@if item.to_name}
+                                 回复<span>${item.to_name}</span>：
+                                {@/if}
+                                ${item.content}
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+        </section>
+
+        <div class="more-btn">
+            查看更多评论
+        </div>
+
+        <section class="other-wrapper ul-wrapper2 lastmargin">
+            <p class="hr">
+                <span>店主其他藏品</span>
+            </p>
+
+
+            <section class="imgs-wrapper swiper-container " id="more">
+                <div class="swiper-wrapper swiper-container-horizontal">
+                    {@each data.infolist as item}
+                    <div class="swiper-slide" data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                        <div class="i-w"><a> <img data-src="${item.picture}" class="swiper-lazy"> </a>
+
+                            {@if item.type == "拍卖"}
+                            <div class="index-icon icon6">
+                                <span>拍卖</span>
+                            </div>
+                            {@else if item.type == "出售"}
+                            <div class="index-icon icon5">
+                                <span>出售</span>
+                            </div>
+
+                            {@else if item.type == "鉴定"}
+                            <div class="index-icon icon13">
+                                <span>鉴定</span>
+                            </div>
+
+                            {@else if item.type == "欣赏"}
+                            <div class="index-icon icon14">
+                                <span>欣赏</span>
+                            </div>
+
+                            {@/if}
+                        </div>
+                        <p>${data.author}</p>
+
+                        <div class="b-w">
+                            <p> ￥${item.starting_price}元 </p>
+                        </div>
+                    </div>
+                    {@/each}
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+        <section class="bottom-wrapper">
+            <span class="heart-w">
+               {@if data.praise == 0 }
+                <span class="index-icon icon7" id="praise"></span>
+                {@else}
+                <span class="index-icon icon9" id="praise"></span>
+                {@/if}
+            </span>
+
+            <div class="saysometing">
+                <input type="text" placeholder="说点什么吧..." style="width: 100%">
+            </div>
+            <!--<div class="buyBtn">-->
+                <!--立即购买-->
+            <!--</div>-->
+            <div class="backToHome" style="margin-left: 15px">
+                确定
+            </div>
+        </section>
+
+        <section class="foot-btn">
+            <div id="mybtn">我的</div>
+            <div class="index-icon icon10"></div>
+
+        </section>
+
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.2.1"></script>
+<script src="../../widgets/swiper/index.js?version=0.2.1"></script>
+<script src="../../widgets/scrollto/index.js?version=0.2.1"></script>
+<script src="../../pages/identify/index.js?version=0.2.1"></script>
+
+</body>
+</html>

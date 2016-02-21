@@ -12,10 +12,10 @@
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            //that.getData();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getData();
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
         },
         cacheData: function () {
             var that = this;
@@ -80,9 +80,13 @@
                 that.optIntrest(1,that.dom.input.val());
             });
 
+            $(".del").on("click",function(){
+                that.optIntrest(2,$(this).attr("data-name"),$(this).parent());
+            })
+
 
         },
-        optIntrest : function(type,name){
+        optIntrest : function(type,name,obj){
             //type : 1 add  2  remove
             var that = this;
             var req = {
@@ -96,6 +100,19 @@
                 if(data.state == 1){
                     Wlib.tips("操作成功");
                     that.dom.loading.hide();
+
+
+                    if(type == 1){
+                    //    添加
+                        var li = $('<li><span class="dot"></span><p>'+name+'</p><span class="del" data-name="'+name+'">删除</span></li>')
+                        $(".list-wrapper ul").append(li);
+                        $(li).find(".del").on("click",function(){
+                            that.optIntrest(2,$(this).attr("data-name"),li);
+                        })
+                    }
+                    if(type == 2){
+                        $(obj).remove();
+                    }
                 }
             })
         },
@@ -107,9 +124,14 @@
             };
             Wlib.SendRequest("default/person/myInterest", req, "GET", function (data) {
                 that.data.list = data;
+
                 that.renderUI();
                 that.recacheDom();
                 that.bindEvent();
+
+                if(data.list.length == 0){
+                    Wlib.tips("还没有感兴趣的画家")
+                }
             })
 
         }

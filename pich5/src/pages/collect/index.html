@@ -8,10 +8,10 @@
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>我的兴趣</title>
+    <title>我的收藏</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/footer/index.css" rel="stylesheet">
-    <link href="../../pages/interest/index.css" rel="stylesheet">
+    <link href="../../pages/collect/index.css" rel="stylesheet">
 
 </head>
 <body>
@@ -22,46 +22,10 @@
 <script type="template/juicer" id="tpl">
     <div class="wrap container">
 
-        <section class="top-header">
-            <div class="f-icon f-3"></div>
-            <div>
-                <p>点击此处添加感兴趣的画家姓名</p>
-                <p>添加后与该画家相关的信息会在兴趣圈展示</p>
-            </div>
-        </section>
 
-        <section class="list-wrapper lastmargin">
-            <ul>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
+        <section class="ul-wrap lastmargin">
+            <ul id="mainWrap">
+
             </ul>
         </section>
 
@@ -72,9 +36,105 @@
 
 </script>
 
+<script type="template/juicer" id="picli">
+    {@each data.list as item}
+    <li data-id="${item.id}" onclick="goToPage('${getFuckType(item.type,item.id)}')">
+        <div class="top-li">
+            <div class="t-w flex1">
+                <img lazy-image="${item.logo}" class="lazy-image">
+
+                <div>
+                    <p> ${item.nickname} <span class="lv">V${item.level}</span></p>
+
+                    <p> ${item.add_time} </p>
+                </div>
+            </div>
+            {@if item.type == 1}
+            <div class="top-tag pm">
+                拍卖
+            </div>
+            {@else if item.type == 2}
+            <div class="top-tag cx">
+                出售
+            </div>
+
+            {@else if item.type == 3}
+
+            <div class="top-tag wz">
+                文字
+            </div>
+            {@else if item.type == 4}
+            <div class="top-tag jd">
+                鉴定
+            </div>
+            {@else if item.type == 5}
+            <div class="top-tag xs">
+                欣赏
+            </div>
+            {@/if}
+        </div>
+
+        <div class="mid-li">
+            <p>作者：${item.author}</p>
+            <ul class="img-list">
+                {@each item.pic as img}
+                <li>
+                    <a>
+                        <img lazy-image="${img}" class="lazy-image">
+                    </a>
+
+                </li>
+                {@/each}
+            </ul>
+            <p>
+                ${item.content}
+            </p>
+
+            {@if item.love.length > 0 }
+            <div class="like-wrap">
+                <span>赞</span>
+                <p>
+                    ${makeLoveDis(item.love)}
+                </p>
+            </div>
+            {@/if}
+            {@if item.comment.length > 0}
+            <div class="like-wrap">
+                <span>评</span>
+                <ul>
+                    {@each item.comment as com}
+                    <li>
+                        <span>${com.from_name}:</span>${com.content}
+                    </li>
+                    {@/each}
+                </ul>
+            </div>
+            {@/if}
+
+        </div>
+
+        <!--<div class="bot-li">-->
+        <!--<ul>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<span class="index-icon icon9" id="praise"></span>2-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+    </li>
+    {@/each}
+</script>
+<script>function goToPage(url){
+    window.location.href = url;
+}</script>
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/footer/index.js"></script>
-<script src="../../pages/interest/index.js"></script>
+<script src="../../pages/collect/index.js"></script>
 
 <script>
 

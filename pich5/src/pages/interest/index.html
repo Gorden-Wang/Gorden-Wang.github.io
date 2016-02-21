@@ -41,36 +41,13 @@
 
         <section class="list-wrapper lastmargin">
             <ul>
+                {@each list.list as item}
                 <li>
                     <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
+                    <p>${item}</p>
+                    <span class="del" data-name="${item}">删除</span>
                 </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
-                <li>
-                    <span class="dot"></span>
-                    <p>刘文西</p>
-                    <span class="del">删除</span>
-                </li>
+                {@/each}
             </ul>
         </section>
 

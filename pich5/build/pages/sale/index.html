@@ -12,7 +12,7 @@
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../pages/sale/index.css" rel="stylesheet">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.7"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.1"></script>
 
 </head>
 <body>
@@ -208,7 +208,11 @@
 
         <section class="bottom-wrapper">
             <span class="heart-w">
-                <span class="index-icon icon7"></span>
+                {@if data.praise == 0 }
+                <span class="index-icon icon7" id="praise"></span>
+                {@else}
+                <span class="index-icon icon9" id="praise"></span>
+                {@/if}
             </span>
 
             <div class="saysometing">
@@ -234,10 +238,10 @@
 
 </script>
 
-<script src="../../lib/libAll.js?version=0.1.7"></script>
-<script src="../../widgets/swiper/index.js?version=0.1.7"></script>
-<script src="../../widgets/scrollto/index.js?version=0.1.7"></script>
-<script src="../../pages/sale/index.js?version=0.1.7"></script>
+<script src="../../lib/libAll.js?version=0.2.1"></script>
+<script src="../../widgets/swiper/index.js?version=0.2.1"></script>
+<script src="../../widgets/scrollto/index.js?version=0.2.1"></script>
+<script src="../../pages/sale/index.js?version=0.2.1"></script>
 
 </body>
 </html>

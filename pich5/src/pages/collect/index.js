@@ -12,10 +12,8 @@
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            //that.getData();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getData();
+
         },
         cacheData: function () {
             var that = this;
@@ -23,6 +21,7 @@
             that.data = {
 
             }
+            that.PAGE=1;
 
         },
         cacheDom: function () {
@@ -60,22 +59,39 @@
         },
         addJuicerHandler: function () {
             var that = this;
-            juicer.register("getId", function (url) {
-                  return  Wlib.getRequestParam("id",url);
-            });
-            juicer.register("getType", function (type) {
-                var res = "";
-                switch (type){
-                    case "出售":
-                        res = "../../pages/sale/index.html";
+            juicer.register("getFuckType", function (type,id) {
+                var res = "",type=parseInt(type);
+                switch (type) {
+                    case 2:
+                        //        出售
+                        res = '../../pages/sale/index.html?id='+id;
                         break;
-                    case "拍卖":
-                        res = "../../pages/auction/index.html";
+                    case 1 :
+                        //        拍卖
+                        res = '../../pages/auction/index.html?id='+id;
                         break;
-                //  @TODO : 鉴定，欣赏
+                    case 7 :
+                        //        欣赏
+                        res = '../../pages/appreciate/index.html?id='+id;
+                        break;
+                    case 6 :
+                        //        鉴定
+                        res = '../../pages/identify/index.html?id='+id;
+                        break;
+                    case 3 :
+                        //        文字
+                        res = '../../pages/text/index.html?id='+id;
+                        break;
 
                 }
                 return res;
+            });
+
+            juicer.register("makeLoveDis", function (data) {
+                var a = data.map(function (v) {
+                    return v.name;
+                })
+                return a.join(",");
             });
 
         },
@@ -87,46 +103,46 @@
 
             Wlib._bindLazyLoad();
 
-            var swiper2 = new Swiper('.itemsImg', {
-                slidesPerView: 3.5,
-                paginationClickable: true,
-                spaceBetween: 5
-            });
-
-            that.dom.topLi.on("click",function(){
-                var isSelect = $(this).hasClass("selected");
-
-                if(isSelect){
-                    return;
-                }
-
-                $(this).addClass("selected").siblings().removeClass("selected");
-            });
 
 
-            that.dom.staLi.on("click",function(){
-                var isSelect = $(this).hasClass("selected");
 
-                if(isSelect){
-                    return;
-                }
 
-                $(this).addClass("selected").siblings().removeClass("selected");
-            });
 
-            that.dom.itemLi.on("click",function(){
-                win.location = "detail.html"
-            })
+
         },
         getData: function () {
             var that = this;
 
-            Wlib.SendRequest("default/api/square",{},"GET",function(data){
+            Wlib.SendRequest("default/person/myCollect",{uid:localStorage.getItem("uid"),token:localStorage.getItem("token"),page:that.PAGE},"GET",function(data){
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();
+                $("#mainWrap").append(juicer($("#picli").html(),{data : data}));
                 that.bindEvent();
+
+                if(data.list.length == 10){
+                    //说明还有下一页
+                    that.PAGE ++;
+                    that.getCollect();
+                }
             })
+
+        },
+        getCollect : function(){
+            var that = this;
+        //    default/person/myCollect
+            Wlib._bindScrollTobottom(function(){
+                Wlib.SendRequest("default/person/myCollect",{uid:localStorage.getItem("uid"),token:localStorage.getItem("token"),page:that.PAGE},"GET",function(data){
+                    var tps = $(juicer($("#picli").html(),{data : data}));
+                    $("#mainWrap").append(tps);
+                    Wlib._bindLazyLoad();
+                    if(data.list.length == 10){
+                        //说明还有下一页
+                        that.PAGE ++;
+                        that.getCollect();
+                    }
+                })
+            },true);
 
         }
     }

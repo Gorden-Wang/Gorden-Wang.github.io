@@ -139,7 +139,7 @@
                 return str.length >= 4 ? "flex2" : "";
             });
             juicer.register("makeCode", function (str) {
-                return "http://115.159.100.197/index.php?r=default/index/verify";
+                return location.protocol + "//"+document.domain+"/index.php?r=default/index/verify";
             });
 
         },
@@ -248,7 +248,7 @@
             });
 
             $("#verycode").on("click",function(){
-                $(this).attr("src","http://115.159.100.197/index.php?r=default/index/verify");
+                $(this).attr("src",location.protocol + "//"+document.domain+"/index.php?r=default/index/verify");
             })
         },
         makeSubTag : function(obj){

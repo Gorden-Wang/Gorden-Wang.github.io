@@ -12,7 +12,7 @@
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
     <link href="../../pages/index/index.css" rel="stylesheet">
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.1.7"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.1"></script>
 
 </head>
 <body>
@@ -156,7 +156,7 @@
     <section class="ul-wrapper2 itemli">
         <ul>
             {@each data.new_painting as item}
-            <li data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+            <li data-id="${getId(item.url)}" data-url="${getType(item.type,item.id)}">
                 <div class="t-w">
                     <img lazy-image="${item.avatar}" class="lazy-image">
 
@@ -241,7 +241,7 @@
 
 <script type="template/juicer" id="picli">
     {@each data.list as item}
-    <li data-id="${item.id}" data-url="${getFuckType(item.type)}">
+    <li data-id="${item.id}" data-url="${getFuckType(item.type,item.id)}">
         <div class="top-li">
             <div class="t-w flex1">
                 <img lazy-image="${item.logo}" class="lazy-image">
@@ -333,9 +333,9 @@
     {@/each}
 </script>
 
-<script src="../../lib/libAll.js?version=0.1.7"></script>
-<script src="../../widgets/swiper/index.js?version=0.1.7"></script>
-<script src="../../pages/index/index.js?version=0.1.7"></script>
+<script src="../../lib/libAll.js?version=0.2.1"></script>
+<script src="../../widgets/swiper/index.js?version=0.2.1"></script>
+<script src="../../pages/index/index.js?version=0.2.1"></script>
 
 <script>
 

@@ -222,10 +222,7 @@ window.Wlib = (function () {
             })(data, method);
 
             var url = (function () {
-                var u = that.evn == "daily" ? "http://115.159.100.197/index.php?r=" : "http://www.talkart.cc/index.php?r=";
-
-
-                return u;
+                return location.protocol + "//"+document.domain+"/index.php?r=";
             })();
 
             var obj = {
@@ -501,6 +498,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("daily", "");
+    return new lib("publish", "");
 })($);
 

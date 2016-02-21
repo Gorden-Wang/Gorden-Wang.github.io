@@ -1,6 +1,7 @@
 /**
  * Created by gorden on 15/7/31.
  */
+
 (function (win, $) {
     var Index = function () {
         this.init();
