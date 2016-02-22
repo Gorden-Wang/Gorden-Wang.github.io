@@ -78,6 +78,7 @@
         getData : function(callback){
             var that = this;
             Wlib.SendRequest("default/set/getCoin",{uid:localStorage.getItem("uid"),token:localStorage.getItem("token")},"GET",function(data){
+                that.data.data = data;
                 callback && callback();
             });
         }
