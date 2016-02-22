@@ -269,7 +269,6 @@
                     that.bindNext(true);
                 }
 
-                alert(data.list)
                 if(data.list.length == 0){
                     Wlib.tips("兴趣圈没有数据");
                     that.dom.loading.hide();

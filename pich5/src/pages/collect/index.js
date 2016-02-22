@@ -120,6 +120,10 @@
                 $("#mainWrap").append(juicer($("#picli").html(),{data : data}));
                 that.bindEvent();
 
+                if(data.list.length == 0){
+                    Wlib.tips("还没有收藏任何作品。")
+                }
+
                 if(data.list.length == 10){
                     //说明还有下一页
                     that.PAGE ++;
@@ -136,6 +140,7 @@
                     var tps = $(juicer($("#picli").html(),{data : data}));
                     $("#mainWrap").append(tps);
                     Wlib._bindLazyLoad();
+
                     if(data.list.length == 10){
                         //说明还有下一页
                         that.PAGE ++;
