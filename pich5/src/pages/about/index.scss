@@ -1,0 +1,134 @@
+@import "../../lib/util";
+body{
+  background-color: #f3f3f3;
+}
+#page {
+  font-family: "HY";
+  //background-color: #efeff4;
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+
+  .top-banner{
+    text-align: center;
+
+
+
+      &>img{
+        margin: 30px auto;
+        width: 85px;
+        height: 85px;
+      }
+
+  }
+
+
+  .ul-wrap{
+    background-color: #FFF;
+
+    li{
+      padding: 0px 0px 0px 10px;
+      position: relative;
+      color: #434343;
+
+      div{
+        display: flex;
+        align-items: center;
+        &>span:first-of-type{
+          display: inline;
+          width: 45px;
+          height: 45px;
+          img{
+            width: 100%;
+            border-radius: 17px;
+          }
+        }
+
+        &>p{
+          margin: 0px 0px 0px 15px;
+          font-size: 15px;
+          color: #434343;
+          flex: 1;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid #e6e6e6;
+        }
+
+      }
+      .right{
+        display: inline-block;
+        color: #fff;
+        font-size: 14px;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid #c2c2c8;
+        border-left: 2px solid #c2c2c8;
+        top: 27px;
+        right: 10px;
+        overflow: hidden;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+        -webkit-transition: -webkit-transform .2s ease-in;
+        transition: -webkit-transform .2s ease-in;
+        background-color: transparent!important;
+        -webkit-border-radius: 0!important;
+        -moz-border-radius: 0!important;
+        border-radius: 0!important;
+        padding: 0!important;
+        position: absolute;
+      }
+    }
+  }
+
+
+}
+
+.fuckred:after{
+  content: '';
+  display: inline-block;
+  background-color: #e46755;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+}
+
+#tip{
+  position: fixed;
+  z-index: 500;
+  width: 80%;
+  left: 10%;
+  top: 40%;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 8px;
+  color: white;
+
+  .t-title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding: 5px;
+  }
+  #content{
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.8em;
+    padding: 10px 10px;
+  }
+}
+
+.overlay{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+}
