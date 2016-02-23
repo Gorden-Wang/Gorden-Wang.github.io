@@ -1,0 +1,33 @@
+body {
+  background-color: #f3f3f3; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .main-wrap {
+    margin: 15px 10px 30px 10px;
+    background-color: white;
+    border-radius: 8px; }
+    #page .main-wrap .aree-wrap {
+      padding: 10px; }
+      #page .main-wrap .aree-wrap textarea {
+        width: 100%;
+        height: 250px;
+        font-size: 14px; }
+    #page .main-wrap .input-wrap {
+      padding: 15px 10px;
+      border-top: 1px dashed #dfdfdf;
+      font-size: 14px; }
+      #page .main-wrap .input-wrap input {
+        width: 100%; }
+  #page .big-btn {
+    margin: 0px 10px;
+    text-align: center;
+    padding: 15px;
+    color: #FFF;
+    font-size: 16px;
+    background-color: #4ebfd1;
+    border-radius: 6px; }
+
+/*# sourceMappingURL=index.css.map */
