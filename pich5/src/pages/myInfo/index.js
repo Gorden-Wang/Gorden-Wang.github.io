@@ -15,11 +15,11 @@
             that.cacheDom();
             //that.getData();
 
-            //that.getData(function(){
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
-            //});
+            that.getData(function(){
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
 
         },
         cacheData: function () {
@@ -51,18 +51,21 @@
         },
         _makeFooter: function () {
             var that = this;
-            var data = {
+            var data ={
                 classname: "f-5",
                 selected: true,
                 url: '',
                 id: ''
             };
 
-            var footer = new Wlib.Footer($("#footer"), data, 4);
+            var footer = new Wlib.Footer($("#footer"), data,4);
         },
         addJuicerHandler: function () {
             var that = this;
 
+            juicer.register("getMyLogo",function(){
+                return localStorage.getItem("avatar")
+            })
 
         },
         bindEvent: function () {
@@ -70,28 +73,26 @@
 
             FastClick.attach(document.body);
 
-            $(".big-btn").on("click", function () {
-                var req = {
-                    uid: localStorage.getItem("uid"),
-                    token: localStorage.getItem("token"),
-                    content: $("textarea").val(),
-                    phone: $("input").val()
-                }
-
-                if(req.content == ""){
-                    Wlib.tips("请写下宝贵意见~");
-                    return;
-                }
-
-                that.dom.loading.show();
-                Wlib.SendRequest("default/person/advise",req,"POST",function(data){
-                    that.dom.loading.hide();
-                    if(data.state == 1){
-                        Wlib.tips("意见反馈成功");
-                        history.back();
-                    }
-                });
+            $("#help").on("click",function(){
+                window.location.href = "http://www.talkart.cc/index.php?r=default/news/help";
             });
+
+            $("#agree").on("click",function(){
+                window.location.href = "http://www.talkart.cc/index.php?r=default/news/agreement";
+            });
+            $("#feedback").on("click",function(){
+                location.href = "../../pages/feedback/index.html";
+            });
+        },
+        getData :function(callback){
+            var that = this;
+
+            //default/person/personInfo
+
+            Wlib.SendRequest("default/person/personInfo", {fid:localStorage.getItem("uid")}, "GET", function (data) {
+                that.data.data = data;
+                callback && callback();
+            })
         }
 
 

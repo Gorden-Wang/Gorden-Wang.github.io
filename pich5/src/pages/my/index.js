@@ -115,6 +115,10 @@
                 win.location.href = window.location.protocol+"//"+document.domain+"/index.php?r=default/share/index&id="+id+"&itype="+itype;
             });
 
+            $(".user-wrapper").on("click",function(){
+                win.location.href = "../../pages/myInfo/index.html";
+            })
+
         },
         getAllData : function(callback){
             var that = this;
