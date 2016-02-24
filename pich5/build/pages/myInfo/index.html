@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>我的信息</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../pages/myInfo/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+        <section class="ul-wrap">
+            <ul>
+                <li style="padding: 10px 10px;">
+                    <div style="padding-right: 5px">
+                        <p>
+                            <span>
+                                头像
+                            </span>
+                        </p>
+
+                        <img id="myLogo" src="${getMyLogo()}">
+                    </div>
+                </li>
+                <li>
+                    <a href="../../pages/myInfo/editeInfo.html?nickname=${data.nickname}">
+                        <div>
+
+
+                            <p>
+                            <span>
+                             昵称
+                             </span>
+                            </p>
+                            <span>${data.nickname}</span>
+                        </div>
+                    </a>
+                    <span class="right"></span>
+                </li>
+                <li>
+                    <a href="../../pages/myInfo/editeInfo.html?sex=${data.sex}">
+                        <div>
+                            <p>
+                            <span>
+                             性别
+                             </span>
+                            </p>
+                            <span>${makeSex(data.sex)}</span>
+                        </div>
+                    </a>
+                    <span class="right"></span>
+                </li>
+                <li>
+                    <a href="../../pages/myInfo/editeInfo.html?name=${data.name}">
+                        <div>
+                            <p>
+                            <span>
+                             说画号
+                             </span>
+                            </p>
+                            <span>${data.name}</span>
+                        </div>
+                    </a>
+                    <span class="right"></span>
+                </li>
+                <li onclick="openQCode()">
+
+                    <div>
+                        <p>
+                            <span>
+                             二维码
+                             </span>
+                        </p>
+                        <span class="my-icon my-icon2">
+
+                        </span>
+                    </div>
+                    <span class="right"></span>
+                </li>
+                <li>
+                    <a href="../../pages/myInfo/editeInfo.html?QQ=${data.QQ}">
+                        <div>
+                            <p>
+                            <span>
+                             微信
+                             </span>
+                            </p>
+                            <span>${data.QQ}</span>
+                        </div>
+                    </a>
+                    <span class="right"></span>
+                </li>
+                <li>
+                    <div>
+                        <p>
+                            <span>
+                             手机
+                             </span>
+                        </p>
+                        <span style="color: #ccc">${data.phone}</span>
+                    </div>
+                </li>
+                <li>
+                    <a href="../../pages/myInfo/editeInfo.html?email=${data.email}">
+                        <div>
+                            <p>
+                            <span>
+                             邮箱
+                             </span>
+                            </p>
+                            <span>${data.email}</span>
+                        </div>
+                    </a>
+                    <span class="right"></span>
+                </li>
+                <li style="border-bottom: 0px;">
+                    <a href="../../pages/myInfo/editeInfo.html?signature=${data.signature}">
+                        <div>
+                            <p>
+                            <span>
+                             签名
+                             </span>
+                            </p>
+                            <span>${data.signature}</span>
+                        </div>
+                    </a>
+                    <span class="right"></span>
+                </li>
+            </ul>
+        </section>
+
+        <div class="overlay" style="display: none" onclick="hideQcode()"></div>
+        <div class="img-wrap"  style="display: none">
+            <img src='${getQCode()}'>
+        </div>
+        <footer id="footer"></footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.2.5"></script>
+<script src="../../widgets/footer/index.js?version=0.2.5"></script>
+<script src="../../pages/myInfo/index.js?version=0.2.5"></script>
+<script>
+    function openQCode(){
+        $(".overlay").show();
+        $(".img-wrap").show();
+    }
+
+    function hideQcode(){
+        $(".overlay").hide();
+        $(".img-wrap").hide();
+    }
+</script>
+</body>
+</html>

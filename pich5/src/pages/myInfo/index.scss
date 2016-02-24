@@ -20,10 +20,14 @@ body{
       color: #434343;
       border-bottom: 1px solid #e6e6e6;
       font-size: 13px;
+      &>a{
+        display: block;
+      }
       div{
         display: flex;
         align-items: center;
         padding-right: 30px;
+        color:#434343;
         &>p{
 
           color: #434343;
@@ -115,6 +119,17 @@ body{
   width: 100%;
   height: 100%;
   z-index: 400;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.img-wrap{
+  z-index: 500;
+  top: 25%;
+  position: fixed;
+  left: 10%;
+  width: 80%;
+  text-align: center;
+
 }
 
 .my-icon2 {

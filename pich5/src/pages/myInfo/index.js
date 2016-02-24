@@ -65,7 +65,14 @@
 
             juicer.register("getMyLogo",function(){
                 return localStorage.getItem("avatar")
-            })
+            });
+            juicer.register("makeSex",function(d){
+                return d == 1 ? "男" : "女";
+            });
+
+            juicer.register("getQCode", function () {
+                return location.protocol + "//"+document.domain+"/index.php?r="+"default/set/getQrcode&uid="+localStorage.getItem("uid");
+            });
 
         },
         bindEvent: function () {
@@ -89,7 +96,7 @@
 
             //default/person/personInfo
 
-            Wlib.SendRequest("default/person/personInfo", {fid:localStorage.getItem("uid")}, "GET", function (data) {
+            Wlib.SendRequest("default/person/myInfo", {uid:localStorage.getItem("uid"),token:localStorage.getItem("token")}, "GET", function (data) {
                 that.data.data = data;
                 callback && callback();
             })
