@@ -23,7 +23,7 @@
         <section class="ul-wrap">
             <ul>
                 <li style="padding: 10px 10px;">
-                    <div style="padding-right: 15px">
+                    <div style="padding-right: 5px">
                         <p>
                             <span>
                                 头像
@@ -32,51 +32,51 @@
 
                         <img id="myLogo" src="${getMyLogo()}">
                     </div>
-                    <span class="right" style="top: 38px;"></span>
                 </li>
                 <li>
-                    <div>
+                    <a href="../../pages/myInfo/editeInfo.html?nickname=${data.nickname}">
+                        <div>
 
 
-                        <p>
+                            <p>
                             <span>
                              昵称
                              </span>
-                        </p>
-                        <span>${data.nickname}</span>
-                    </div>
+                            </p>
+                            <span>${data.nickname}</span>
+                        </div>
+                    </a>
                     <span class="right"></span>
                 </li>
                 <li>
-                    <div>
-
-
-                        <p>
+                    <a href="../../pages/myInfo/editeInfo.html?sex=${data.sex}">
+                        <div>
+                            <p>
                             <span>
                              性别
                              </span>
-                        </p>
-                        <span>男</span>
-                    </div>
+                            </p>
+                            <span>${makeSex(data.sex)}</span>
+                        </div>
+                    </a>
                     <span class="right"></span>
                 </li>
                 <li>
-                    <div>
-
-
-                        <p>
+                    <a href="../../pages/myInfo/editeInfo.html?name=${data.name}">
+                        <div>
+                            <p>
                             <span>
                              说画号
                              </span>
-                        </p>
-                        <span>abc123</span>
-                    </div>
+                            </p>
+                            <span>${data.name}</span>
+                        </div>
+                    </a>
                     <span class="right"></span>
                 </li>
-                <li>
+                <li onclick="openQCode()">
+
                     <div>
-
-
                         <p>
                             <span>
                              二维码
@@ -89,57 +89,61 @@
                     <span class="right"></span>
                 </li>
                 <li>
-                    <div>
-
-
-                        <p>
+                    <a href="../../pages/myInfo/editeInfo.html?QQ=${data.QQ}">
+                        <div>
+                            <p>
                             <span>
                              微信
                              </span>
-                        </p>
-                        <span>wangshiqing</span>
-                    </div>
+                            </p>
+                            <span>${data.QQ}</span>
+                        </div>
+                    </a>
                     <span class="right"></span>
                 </li>
                 <li>
                     <div>
-
-
                         <p>
                             <span>
                              手机
                              </span>
                         </p>
-                        <span>18510249866</span>
+                        <span style="color: #ccc">${data.phone}</span>
                     </div>
-                    <span class="right"></span>
                 </li>
                 <li>
-                    <div>
-
-
-                        <p>
+                    <a href="../../pages/myInfo/editeInfo.html?email=${data.email}">
+                        <div>
+                            <p>
                             <span>
                              邮箱
                              </span>
-                        </p>
-                        <span>wangshiqing@weidian.com</span>
-                    </div>
+                            </p>
+                            <span>${data.email}</span>
+                        </div>
+                    </a>
                     <span class="right"></span>
                 </li>
                 <li style="border-bottom: 0px;">
-                    <div>
-                        <p>
+                    <a href="../../pages/myInfo/editeInfo.html?signature=${data.signature}">
+                        <div>
+                            <p>
                             <span>
                              签名
                              </span>
-                        </p>
-                        <span>abcdefg</span>
-                    </div>
+                            </p>
+                            <span>${data.signature}</span>
+                        </div>
+                    </a>
                     <span class="right"></span>
                 </li>
             </ul>
         </section>
+
+        <div class="overlay" style="display: none" onclick="hideQcode()"></div>
+        <div class="img-wrap"  style="display: none">
+            <img src='${getQCode()}'>
+        </div>
         <footer id="footer"></footer>
 
     </div>
@@ -150,9 +154,16 @@
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/footer/index.js"></script>
 <script src="../../pages/myInfo/index.js"></script>
-
 <script>
+    function openQCode(){
+        $(".overlay").show();
+        $(".img-wrap").show();
+    }
 
+    function hideQcode(){
+        $(".overlay").hide();
+        $(".img-wrap").hide();
+    }
 </script>
 </body>
 </html>

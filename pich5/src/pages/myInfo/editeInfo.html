@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>我的信息</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../pages/myInfo/editeInfo.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+
+        {@if key != "sex" && key != "signature"}
+        <div class="input-wrap">
+            <input type="text" value="${val}" placeholder="${makePlaceHolder()}">
+        </div>
+        {@/if}
+
+        {@if key == "signature"}
+        <div class="input-wrap">
+            <textarea style="width: 100%;height: 100px;"  placeholder="${makePlaceHolder()}">${val}</textarea>
+        </div>
+
+        {@/if}
+
+        {@if key == "sex"}
+        <ul class="sex-wrap">
+            <li data-tag="1">
+                男
+                {@if val === "1"}
+                <span class="right"></span>
+                {@/if}
+            </li>
+            <li data-tag="0" style="border-bottom: 0px">
+                女
+                {@if val === "0"}
+                ${val}
+                <span class="right"></span>
+                {@/if}
+            </li>
+        </ul>
+        {@/if}
+
+
+        {@if key != "sex"}
+        <div class="big-btn">
+            保存
+        </div>
+        {@/if}
+
+
+        <footer id="footer"></footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../widgets/footer/index.js"></script>
+<script src="../../pages/myInfo/editeInfo.js"></script>
+
+
+</body>
+</html>
