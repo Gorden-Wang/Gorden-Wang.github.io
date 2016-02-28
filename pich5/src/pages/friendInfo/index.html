@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>详细资料</title>
+    <link href="../../lib/boot.css" rel="stylesheet">
+    <link href="../../pages/friendInfo/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+<script type="template/juicer" id="tpl">
+    <div class="wrap container">
+
+        <section class="top-wrap">
+            <div class="t-user">
+                <span>
+                    <img src="${data.logo}">
+                </span>
+
+                <div class="t-de">
+                    <span style="color: #4cbfd1;">${data.nickname}</span>
+
+                    <span class="my-icon my-icon1">v${data.level}</span>
+
+                    <span  class="sex${data.sex} inline">性</span>
+
+                    <span style="background-color: #4dc0d1;" class="inline">${data.city}</span>
+                    {@if data.name}
+                    <p style="font-size: 13px;margin-top: 20px;">说画号：${data.name}</p>
+                    {@/if}
+                </div>
+            </div>
+
+            <div class="sign" style="font-size: 13px">
+                <span>个性签名:</span>
+
+                <p>${data.signature}</p>
+            </div>
+        </section>
+
+
+        <section class="ul-wrap">
+            <ul>
+                {@if data.phone}
+                <li>
+                    <div>
+                        <span>手机</span>
+
+                        <p>${data.phone}</p>
+                    </div>
+                </li>
+                {@/if}
+                {@if data.QQ}
+                <li>
+                    <div>
+                        <span>微信</span>
+
+                        <p>${data.QQ}</p>
+                    </div>
+                </li>
+                {@/if}
+                {@if data.email}
+                <li>
+                    <div>
+                        <span>邮箱</span>
+
+                        <p>${data.email}</p>
+                    </div>
+                    <!--<span class="right"></span>-->
+                </li>
+                {@/if}
+                <li>
+                    <div>
+                        <span>画廊</span>
+                    </div>
+                    <span class="right"></span>
+                </li>
+                <li id="pic">
+                    <div>
+                        <span>相册</span>
+
+                        {@if data.pic.length > 0}
+                        <div class="imgs">
+                            {@each data.minpic as item,index}
+
+                            {@if index<3}
+                            <div class="img">
+                                <a>
+                                    <img src="${item}">
+                                </a>
+                            </div>
+                            {@/if}
+
+                            {@/each}
+                        </div>
+                        {@/if}
+
+
+                    </div>
+
+                    {@if data.pic.length > 0}
+                    <span class="right reset"></span>
+                    {@else}
+                    <span class="right"></span>
+                    {@/if}
+
+                </li>
+            </ul>
+        </section>
+        <footer id="footer"></footer>
+
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/friendInfo/index.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

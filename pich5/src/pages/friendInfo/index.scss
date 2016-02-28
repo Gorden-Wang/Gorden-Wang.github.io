@@ -1,0 +1,219 @@
+@import "../../lib/util";
+body{
+  background-color: #f3f3f3;
+}
+#page {
+  font-family: "HY";
+  //background-color: #efeff4;
+
+  .wrap {
+    margin-top: 0px;
+  }
+
+
+  .top-wrap{
+    background-color: #FFF;
+    margin-bottom: 15px;
+    padding: 10px;
+
+    .t-user{
+      display: flex;
+      padding: 10px 0px;
+      align-items: center;
+      &>span{
+        width: 60px;
+        height: 60px;
+        border-radius: 60px;
+        background-color: #f3f3f3;
+      }
+
+      &>.t-de{
+        margin-left: 15px;
+        span{
+          margin-right: 10px;
+          color: #FFF;
+          font-size: 12px;
+        }
+
+        .inline{
+          display: inline-block;
+          padding: 3px 5px;
+        }
+      }
+    }
+
+    .sign{
+      display: flex;
+      p{
+        flex: 1;
+        margin-left: 10px;
+      }
+    }
+  }
+
+
+  .ul-wrap{
+    background-color: #FFF;
+
+    li{
+      padding: 20px 10px;
+      position: relative;
+      border-bottom: 1px solid #e6e6e6;
+      font-size: 13px;
+      color: #434343;
+
+      &>div{
+        display: flex;
+        align-items: center;
+        &>span:first-of-type{
+          display: inline;
+        }
+
+        &>p{
+          margin-left: 10px;
+          font-size: 15px;
+          color: #434343;
+          flex: 1;
+          text-align: right;
+        }
+
+        &>.imgs{
+          flex: 1;
+          overflow: hidden;
+          margin-left: 20px;
+
+          .img{
+            width: 60px;
+            height: 60px;
+            float:left;
+            margin-right: 10px;
+            position: relative;
+
+            a{
+              position: absolute;
+              left: 0px;
+              top: 0px;
+              width: 100%;
+              height: 100%;
+              background-color: #f3f3f3;
+            }
+          }
+        }
+
+      }
+      .right{
+        display: inline-block;
+        color: #fff;
+        font-size: 14px;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid #c2c2c8;
+        border-left: 2px solid #c2c2c8;
+        top: 22px;
+        right: 10px;
+        overflow: hidden;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+        -webkit-transition: -webkit-transform .2s ease-in;
+        transition: -webkit-transform .2s ease-in;
+        background-color: transparent!important;
+        -webkit-border-radius: 0!important;
+        -moz-border-radius: 0!important;
+        border-radius: 0!important;
+        padding: 0!important;
+        position: absolute;
+      }
+
+      .right.reset{
+        top: 45px;
+      }
+    }
+
+    li:last-of-type{
+      border-bottom: 0px;
+    }
+  }
+
+
+}
+
+.fuckred:after{
+  content: '';
+  display: inline-block;
+  background-color: #e46755;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+}
+
+#tip{
+  position: fixed;
+  z-index: 500;
+  width: 80%;
+  left: 10%;
+  top: 40%;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 8px;
+  color: white;
+
+  .t-title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding: 5px;
+  }
+  #content{
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.8em;
+    padding: 10px 10px;
+  }
+}
+
+.overlay{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+}
+
+.my-icon1 {
+  background-position: 0px 0px;
+  display: inline-block;
+  width: 33px;
+  height: 15px;
+  text-align: right;
+  font-size: 12px;
+  color: white;
+  line-height: 15px;
+  padding-right: 3px;
+}
+
+.my-icon {
+  background-image: url(../../images/common/myspirit.png);
+  background-size: 200px 50px;
+  background-repeat: no-repeat;
+}
+
+.sex1{
+  background-image: url(../../images/common/daman.png);
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-indent: -999em;
+}
+
+.sex0{
+  background-image: url(../../images/common/dawoman.png);
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-indent: -999em;
+}

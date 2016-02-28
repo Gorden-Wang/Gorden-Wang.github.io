@@ -159,7 +159,8 @@
         },
         getTopImg : function(){
           var that = this;
-            Wlib.SendRequest("default/person/personInfo",{fid:localStorage.getItem("uid")},"GET",function(data){
+            Wlib.getRequestParam()
+            Wlib.SendRequest("default/person/personInfo",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid")},"GET",function(data){
 
                 $("#topImg").attr("src",data.visualize);
 
@@ -180,7 +181,7 @@
         },
         getSaleData : function(){
             var that = this;
-            Wlib.SendRequest("default/gallery/sale",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+            Wlib.SendRequest("default/gallery/sale",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
                 if(data.list.length == 0){
                     Wlib.tips("没有更多数据");
@@ -197,7 +198,7 @@
         },
         getAuctionData : function(){
             var that = this;
-            Wlib.SendRequest("default/gallery/auction",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+            Wlib.SendRequest("default/gallery/auction",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
                 if(data.list.length == 0){
                     Wlib.tips("没有更多数据");
@@ -214,7 +215,7 @@
         },
         getAppreciateData : function(){
             var that = this;
-            Wlib.SendRequest("default/gallery/appreciate",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+            Wlib.SendRequest("default/gallery/appreciate",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
                 if(data.list.length == 0){
                     Wlib.tips("没有更多数据");
@@ -232,7 +233,7 @@
         },
         getIdentifyData : function(){
             var that = this;
-            Wlib.SendRequest("default/gallery/identify",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+            Wlib.SendRequest("default/gallery/identify",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
                 if(data.list.length == 0){
                     Wlib.tips("没有更多数据");
@@ -250,7 +251,7 @@
         },
         getTextData : function(){
             var that = this;
-            Wlib.SendRequest("default/gallery/webtext",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
+            Wlib.SendRequest("default/gallery/webtext",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:0},"GET",function(data){
                 that.data.list = data;
                 if(data.list.length == 0){
                     Wlib.tips("没有更多数据");
@@ -271,7 +272,7 @@
             Wlib._bindScrollTobottom(function(){
                 if(that.SELTAG == 1){
                     //出售
-                    Wlib.SendRequest("default/gallery/sale",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                    Wlib.SendRequest("default/gallery/sale",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
                         that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
                         that.recacheDom();
@@ -285,7 +286,7 @@
                 }
                 if(that.SELTAG == 2){
                     //出售
-                    Wlib.SendRequest("default/gallery/auction",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                    Wlib.SendRequest("default/gallery/auction",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
                         that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
                         that.recacheDom();
@@ -299,7 +300,7 @@
                 }
                 if(that.SELTAG == 3){
                     //出售
-                    Wlib.SendRequest("default/gallery/appreciate",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                    Wlib.SendRequest("default/gallery/appreciate",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
                         that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
                         that.recacheDom();
@@ -313,7 +314,7 @@
                 }
                 if(that.SELTAG == 4){
                     //出售
-                    Wlib.SendRequest("default/gallery/identify",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                    Wlib.SendRequest("default/gallery/identify",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
                         that.dom.mainlist.append(juicer($("#sale-item").html(),{list : data}));
                         that.recacheDom();
@@ -327,7 +328,7 @@
                 }
                 if(that.SELTAG == 5){
                     //出售
-                    Wlib.SendRequest("default/gallery/webtext",{fid:localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
+                    Wlib.SendRequest("default/gallery/webtext",{fid:Wlib.getRequestParam("fid") || localStorage.getItem("uid"),token:localStorage.getItem("token"),infoid:that.LASTID},"GET",function(data){
                         that.data.list = data;
                         that.dom.mainlist.append(juicer($("#text-item").html(),{list : data}));
                         that.recacheDom();
