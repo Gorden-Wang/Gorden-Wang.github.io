@@ -98,9 +98,20 @@
                 $.scrollTo(0,500);
             });
 
-            that.dom.myBtn.on("click",function(){
-                win.location = "../../pages/my/index.html";
+            that.dom.myBtn.on("click", function () {
+                if (localStorage.getItem("isbind") == 1) {
+                    win.location = "../../pages/my/index.html";
+                } else {
+                    Wlib.alert("绑定手机号，以便卖家可以联系到您。", "确定", function () {
+                        localStorage.setItem("bindNextAction", "my");
+                        win.location = "../../pages/regist/index.html";
+                    });
+
+
+                }
+
             });
+
             that.dom.buyBtn.on("click",function(){
                 win.location = "../../pages/buy/index.html";
             });

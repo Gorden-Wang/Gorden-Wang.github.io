@@ -29,6 +29,7 @@
             that.cacheDom();
             that.getData("#tab1", function (id, data) {
                 that.dom.mainwrap.html(juicer($(id).html(), data));
+                that._makeFooter();
             });
         },
         cacheData: function () {
@@ -52,6 +53,7 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+
             that.dom.loading.hide();
         },
         recacheDom: function () {
@@ -68,6 +70,17 @@
             that.dom.tabul = $(".ul-wrap ul");
 
 
+        },
+        _makeFooter: function () {
+            var that = this;
+            var data = {
+                classname: "f-4",
+                selected: true,
+                url: '',
+                id: ''
+            };
+
+            that.FOOTER = new Wlib.Footer($("#footer"), data, 3);
         },
         addJuicerHandler: function () {
             var that = this;
@@ -100,7 +113,7 @@
                 return a.join(",");
             });
             juicer.register("getFuckType", function (type) {
-                var res = "",type=parseInt(type);
+                var res = "", type = parseInt(type);
                 switch (type) {
                     case 2:
                         //        出售
@@ -218,6 +231,9 @@
 
             function handler(id, data) {
                 that.dom.mainwrap.html(juicer($(id).html(), data));
+                if ($("#footer ul").length == 0) {
+                    that._makeFooter();
+                }
                 that.dom.loading.hide();
             }
 
@@ -241,7 +257,7 @@
                     //next
                     that.bindNext(true, '', true);
                 }
-                if(data.list.length == 0){
+                if (data.list.length == 0) {
                     Wlib.tips("您的画友没有发布任何作品～");
                     that.dom.loading.hide();
                 }
@@ -269,7 +285,7 @@
                     that.bindNext(true);
                 }
 
-                if(data.list.length == 0){
+                if (data.list.length == 0) {
                     Wlib.tips("兴趣圈没有数据");
                     that.dom.loading.hide();
                 }
