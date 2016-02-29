@@ -138,6 +138,10 @@
                 location.href = "http://www.talkart.cc/index.php?r=default/index/download";
             });
 
+            $(".seller-wrapper").on("click",function(){
+                location.href = "../../pages/friendInfo/index.html?fid="+that.data.data.user_id;
+            });
+
             Wlib._bindLazyLoad();
 
         },
