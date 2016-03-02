@@ -20,7 +20,7 @@
             {
                 classname: "f-1",
                 selected: false,
-                url: '../../pages/index/index.html',
+                url: '',
                 id: ''
             },
             {
@@ -38,13 +38,13 @@
             {
                 classname: "f-4",
                 selected: false,
-                url: '',
+                url: '../../pages/index/index.html',
                 id: ''
             },
             {
                 classname: "f-5",
                 selected: false,
-                url: '',
+                url: '../../pages/my/index.html',
                 id: ''
             }
         ];
@@ -71,6 +71,15 @@
                 if ($(this).hasClass("selected")) {
                     return;
                 }
+
+                if($(this).find(".f-5").length > 0 && localStorage.getItem("isbind") == 0){
+                    Wlib.alert("绑定手机号，以便卖家可以联系到您。", "确定", function () {
+                        localStorage.setItem("bindNextAction", "my");
+                        win.location = "../../pages/regist/index.html";
+                    });
+                    return;
+                }
+
                 var url = $(this).attr("data-url");
                 url && (win.location = url);
             });
