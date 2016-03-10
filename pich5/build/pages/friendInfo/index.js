@@ -1,6 +1,7 @@
 /**
  * Created by gorden on 15/7/31.
  */
+
 (function (win, $) {
     var Index = function () {
         this.init();
@@ -13,16 +14,18 @@
             that.cacheData();
             that.cacheDom();
             //that.getData();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+
+            that.getData(function () {
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
+
         },
         cacheData: function () {
             var that = this;
 
-            that.data = {
-
-            }
+            that.data = {}
 
         },
         cacheDom: function () {
@@ -36,46 +39,29 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
-            //that._makeFooter();
             that.dom.loading.hide();
         },
         recacheDom: function () {
             var that = this;
 
-            that.dom.wxadd = $("#wxadd");
-
+            that.dom.newLi = $(".itemli li");
+            that.dom.wallet = $(".wallet-wrap");
 
         },
-        _makeFooter : function(){
-          var that = this;
-            var data ={
+        _makeFooter: function () {
+            var that = this;
+            var data = {
                 classname: "f-5",
                 selected: true,
                 url: '',
                 id: ''
             };
 
-            var footer = new Wlib.Footer($("#footer"), data,4);
+            var footer = new Wlib.Footer($("#footer"), data, 4);
         },
         addJuicerHandler: function () {
             var that = this;
-            juicer.register("getId", function (url) {
-                  return  Wlib.getRequestParam("id",url);
-            });
-            juicer.register("getType", function (type) {
-                var res = "";
-                switch (type){
-                    case "出售":
-                        res = "../../pages/sale/index.html";
-                        break;
-                    case "拍卖":
-                        res = "../../pages/auction/index.html";
-                        break;
-                //  @TODO : 鉴定，欣赏
 
-                }
-                return res;
-            });
 
         },
         bindEvent: function () {
@@ -83,26 +69,27 @@
 
             FastClick.attach(document.body);
 
-            that.dom.wxadd.on("click",function(){
-                win.location = "index.html"
-            });
-
-            Wlib._bindLazyLoad();
-
-
-
-        },
-        getData: function () {
-            var that = this;
-
-            Wlib.SendRequest("default/api/square",{},"GET",function(data){
-                that.data.data = data;
-                that.renderUI();
-                that.recacheDom();
-                that.bindEvent();
+            $("#pic").on("click",function(){
+                location.href = "../../pages/pics/index.html?fid="+Wlib.getRequestParam("fid");
             })
 
+        },
+
+        getData: function (callback) {
+            var that = this;
+
+            var req = {
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                fid: Wlib.getRequestParam("fid")
+            };
+            Wlib.SendRequest("default/friend/friendInfo", req, "GET", function (data) {
+                that.data.data = data;
+                callback && callback();
+            })
         }
+
+
     }
 
     var index = new Index();
