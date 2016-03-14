@@ -156,9 +156,11 @@
 
                     that.data.data = data.datas;
                     that.data.data.mark.replace(/\S/g, '');
+                    $("#bottom").show();
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
+                    $("title").text(data.store_name);
 
 
                     console.log(that.data.data)

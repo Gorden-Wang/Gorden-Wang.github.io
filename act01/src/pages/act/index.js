@@ -82,6 +82,7 @@
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
+                    $("title").text(that.data.data.title);
 
 
                     console.log(that.data.data)

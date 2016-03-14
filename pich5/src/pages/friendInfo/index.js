@@ -71,7 +71,29 @@
 
             $("#pic").on("click",function(){
                 location.href = "../../pages/pics/index.html?fid="+Wlib.getRequestParam("fid");
-            })
+            });
+
+            $("#im-wrap").on("click",function(){
+                if(that.data.data.is_black == 0){
+                    //加好友
+
+                    var req = {
+                        uid: localStorage.getItem("uid"),
+                        token: localStorage.getItem("token"),
+                        fid: Wlib.getRequestParam("fid")
+                    };
+                    Wlib.SendRequest("default/friend/addFriend", req, "GET", function (data) {
+                        if(data.state == 1){
+                            Wlib.tips("发送申请成功。");
+                            $(this).html("已申请");
+                        }else{
+                            Wlib.tips("");
+                        }
+                    })
+                }else{
+                    //去IM
+                }
+            });
 
         },
 

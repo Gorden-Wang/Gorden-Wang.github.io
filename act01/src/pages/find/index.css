@@ -193,7 +193,8 @@
   left: 0px;
   width: 100%;
   z-index: 10;
-  background-color: #FFFFFF; }
+  background-color: #FFFFFF;
+  display: none; }
   #bottom .btn-wrap {
     overflow: hidden; }
     #bottom .btn-wrap div {

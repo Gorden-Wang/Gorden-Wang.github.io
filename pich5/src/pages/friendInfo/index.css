@@ -165,4 +165,13 @@ body {
   background-position: center center;
   text-indent: -999em; }
 
+#im-wrap {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  background-color: #4dc0d1;
+  color: white; }
+
 /*# sourceMappingURL=index.css.map */
