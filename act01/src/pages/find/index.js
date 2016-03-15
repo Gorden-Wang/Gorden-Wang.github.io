@@ -160,7 +160,7 @@
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
-                    $("title").text(data.store_name);
+                    $("title").text(data.datas.store_name);
 
 
                     console.log(that.data.data)
