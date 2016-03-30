@@ -1,0 +1,42 @@
+body{
+  background-color: #f4f4f4;
+  .wrap{
+    margin: auto;
+    max-width: 640px;
+    padding: 10px;
+    margin-bottom:30px;
+
+    .clearIndent{
+      text-align: 0;
+    }
+
+    section{
+      *{
+        margin:0px;
+      }
+      margin: 10px 0px;
+      p.ap-title{
+        font-size: 15px;
+        color: #404040
+      }
+
+      p{
+        font-size: 13px;
+        color: #999;
+        line-height: 1.5em;
+      }
+
+    }
+    .bottom-style{
+      text-align: center;
+    }
+
+
+  }
+
+  .protocol{
+    p{
+      color: #999999;
+    }
+  }
+}
