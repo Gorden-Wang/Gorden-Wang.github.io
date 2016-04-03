@@ -54,7 +54,15 @@
                 wrapper: "#left-wrapper",
                 sibling : "#page",
                 scroll : "",
-                dir: "0"
+                dir: "0",
+                slideOutCallback : function(){
+                    setTimeout(function(){
+                        that.dom.ImgWrap.css({
+                            'margin-top' : '52px'
+                        });
+                    },290);
+
+                }
             });
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
             that.dom.rWrapper.html(juicer(that.dom.rtpl.html(), {}));
@@ -81,6 +89,9 @@
             that.dom.loginbtn = $(".top-wrapper");
             that.dom.items = $(".ul-wrapper li");
             that.dom.orderbtn = $("#orderbtn");
+            that.dom.ImgWrap = $("section.img-wrapper");
+            that.dom.profile = $("#profile");
+            that.dom.money = $("#money");
 
         },
         bindEvent: function () {
@@ -104,6 +115,9 @@
             });
             that.dom.mybtn.on("click",function(){
                 that.LSLIDE.slideIn();
+                that.dom.ImgWrap.css({
+                    'margin-top' : '0'
+                });
             });
             that.dom.lbbtn.on("click",function(){
                 that.LSLIDE.slideOut();
@@ -149,7 +163,12 @@
             that.dom.orderbtn.on("click",function(){
                 win.location = "../../pages/orderlist/index.html"
             });
-
+            that.dom.profile.on("click",function(){
+               win.location = '../../pages/profile/index.html';
+            });
+            that.dom.money.on("click",function(){
+                win.location = '../../pages/money/index.html';
+            });
         },
         addJuicerHandler: function () {
             var that = this;

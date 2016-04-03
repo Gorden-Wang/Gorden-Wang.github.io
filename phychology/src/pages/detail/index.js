@@ -42,17 +42,14 @@
             var that = this;
 
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
-
+            that.IScroll = new IScroll(document.querySelector(".p-detail"));
             that.dom.loading.hide();
         },
         recacheDom: function () {
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.edite = $(".right-btn");
-            that.dom.filterW = $(".filter-wrapper");
-            that.dom.overlay = $(".slide-overlay");
-            that.dom.li = $(".ul01-widget li");
+            that.dom.replyBtn = $(".reply-btn");
 
         },
         bindEvent: function () {
@@ -64,19 +61,23 @@
                 win.history.back();
             });
 
-            that.dom.edite.on("click",function(){
+            //that.dom.submit.on("click",function(){
+            //
+            //
+            //
+            //    win.location = "../../pages/pay/index.html"
+            //
+            //});
+            that.dom.replyBtn.on("click",function(){
 
-                that.dom.filterW.toggle();
-                that.dom.overlay.toggle();
+                var top = "<div class='J-box'><textarea palceholder='输入'></textarea></div>";
+                var btn = "<div class='btn'>确定</div>";
+                Wlib.alert(top,btn,function(){
+                    $(".fadeIn").remove();
+                });
 
-            });
 
-            that.dom.overlay.on("click",function(){
-                that.dom.edite.trigger("click");
-            });
 
-            that.dom.li.on("click",function(){
-                win.location = "../../pages/detail/index.html";
             })
 
 

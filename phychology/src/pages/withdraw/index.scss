@@ -1,0 +1,136 @@
+
+#page {
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+
+  .mIcon {
+    background-image: url(../../images/common/m-icon.png);
+    background-size: 300px 52px;
+    background-repeat: no-repeat;
+  }
+  .m-icon0 {
+    display: inline-block;
+    width: 30px;
+    height: 23px;
+    background-position: 7px -24px;
+    margin-top: 5px;
+    margin-right: 10px;
+
+  }
+
+  header.back-header {
+    background-color: #ebe5e2;
+    padding: 10px 0px;
+    font-size: 18px;
+    color: #59463d;
+    font-weight: 600;
+    position: relative;
+
+    .m-icon0 {
+      position: absolute;
+      left: 12.5px;
+      top: 6px;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .right-btn {
+      position: absolute;
+      right: 12.5px;
+      top: 15px;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+
+  /*
+ <section class="wrap">
+            <div class="top-wrap flex">
+                <span>体现金额:</span>
+                <p>5000.00元</p>
+            </div>
+
+            <p>请输入提现支付宝账户:</p>
+
+            <div class="fomr-wrap">
+                <input type="text" placeholder="输入">
+            </div>
+
+        </section>
+  */
+
+  section.wrap {
+    padding: 35px 20px;
+    margin-top: 0px;
+
+    .flex {
+      display: flex;
+    }
+
+    .top-wrap{
+      color: #59463d;
+      font-size:14px;
+      padding-bottom:30px;
+      border-bottom: 1px solid #eeeae7;
+
+      p{
+        flex: 1;
+        text-align: right;
+      }
+    }
+
+    &>p{
+      margin-top: 30px;
+      color: #59463d;
+      font-size:14px;
+      padding-bottom:12.5px;
+    }
+
+    div.form-wrap{
+      border: 1px solid #eeeae7;
+      border-radius: 4px;
+      input{
+        padding: 12px;
+      }
+    }
+  }
+
+  .fixedbtn {
+    background-color: white;
+    padding: 12px 20px;
+    border-top: 1px solid #eeeae7;
+    margin-top: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+
+    .btn {
+      border-radius: 6px;
+      font-size: 14px;
+      color: #ffffff;
+      background-color: #88c6c2;
+      text-align: center;
+      padding: 8px 0px;
+
+    }
+
+  }
+}
+
+
+.fadeIn{
+  top:30%;
+  .btn{
+    border-radius: 6px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #88c6c2;
+    text-align: center;
+    padding: 8px 0px;
+    margin-top: 15px;
+
+  }
+}

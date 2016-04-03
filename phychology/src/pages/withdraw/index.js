@@ -49,10 +49,7 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.edite = $(".right-btn");
-            that.dom.filterW = $(".filter-wrapper");
-            that.dom.overlay = $(".slide-overlay");
-            that.dom.li = $(".ul01-widget li");
+            that.dom.submit = $(".fixedbtn");
 
         },
         bindEvent: function () {
@@ -64,19 +61,16 @@
                 win.history.back();
             });
 
-            that.dom.edite.on("click",function(){
+            that.dom.submit.on("click",function(){
 
-                that.dom.filterW.toggle();
-                that.dom.overlay.toggle();
+                var top = "<p class='title'>您的提现申请已提交</p><p class='content'>一般3-7个工作日可到账,请耐心等待</p>";
+                var btn = "<div class='btn'>确定</div>";
+                Wlib.alert(top,btn,function(){
+                    win.history.back();
+                });
 
-            });
 
-            that.dom.overlay.on("click",function(){
-                that.dom.edite.trigger("click");
-            });
 
-            that.dom.li.on("click",function(){
-                win.location = "../../pages/detail/index.html";
             })
 
 

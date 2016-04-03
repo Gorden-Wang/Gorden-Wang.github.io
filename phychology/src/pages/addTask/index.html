@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59453e"/>
+    <meta name="renderer" content="webkit">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="../../images/common/logo.png"/>
+    <link rel="apple-touch-startup-image" href="../../images/common/logo.png"/>
+    <link rel="shortcut icon" href="../../images/common/logo.png"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>提交需求</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/addTask/index.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="page-wrapper">
+        <header class="back-header">
+            <span class="mIcon m-icon0"></span>
+
+            <p>提交需求</p>
+        </header>
+
+        <section class="c-wrap">
+            <p class="c-tip">
+                只需简单描述您的需求,我们将有专业的项目经理与您联络,为您推荐最佳解决方案.
+            </p>
+
+            <div class="im-top">
+                <p>我想要...</p>
+                <div class="b-img"></div>
+            </div>
+
+            <ul class="tags-wrap">
+                {@each i in range(0,5)}
+                <li class="tag-item">
+                    微博微信运营
+                </li>
+                {@/each}
+                <li class="tag-item add-btn select">
+                    其他
+                </li>
+            </ul>
+
+            <div class="input-wrap tag-input" style="margin:0 10px;">
+                <input type="text" placeholder="输入">
+            </div>
+
+
+            <div class="im-top">
+                <p>预算</p>
+                <div class="b-img"></div>
+            </div>
+
+            <div class="flex center" style="margin-top: 17px;">
+                <p style="width: 50%;">您预估的预算金额:</p>
+
+                <div class="flex flex1 center">
+                    <span>￥</span>
+                    <div class="input-wrap">
+                        <input type="number" placeholder="不低于200元" style="width: auto;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="im-top">
+                <p>说明您的需求</p>
+                <div class="b-img"></div>
+            </div>
+
+
+            <div class="input-wrap" style="margin-top: 17px;">
+                <textarea placeholder="输入"></textarea>
+            </div>
+
+
+            <div class="im-top">
+                <p>留下方便的联系方式</p>
+                <div class="b-img"></div>
+            </div>
+
+            <ul class="form-ul">
+                <li class="flex">
+                <span>
+                    姓名:
+                </span>
+                    <div class="input-wrap">
+                        <input type="text">
+                    </div>
+                </li>
+                <li class="flex">
+                <span>
+                    微信:
+                </span>
+                    <div class="input-wrap">
+                        <input type="text">
+                    </div>
+                </li>
+                <li class="flex">
+                <span>
+                    QQ:
+                </span>
+                    <div class="input-wrap">
+                        <input type="number">
+                    </div>
+                </li>
+                <li class="flex">
+                <span>
+                    邮箱:
+                </span>
+                    <div class="input-wrap">
+                        <input type="email">
+                    </div>
+                </li>
+            </ul>
+
+        </section>
+
+
+        <footer class="fixedbtn">
+            <div class="btn">
+                提交
+            </div>
+        </footer>
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/addTask/index.js"></script>
+
+
+</body>
+</html>

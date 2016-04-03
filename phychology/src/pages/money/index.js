@@ -49,10 +49,7 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.edite = $(".right-btn");
-            that.dom.filterW = $(".filter-wrapper");
-            that.dom.overlay = $(".slide-overlay");
-            that.dom.li = $(".ul01-widget li");
+            that.dom.submit = $(".fixedbtn");
 
         },
         bindEvent: function () {
@@ -64,19 +61,10 @@
                 win.history.back();
             });
 
-            that.dom.edite.on("click",function(){
+            that.dom.submit.on("click",function(){
 
-                that.dom.filterW.toggle();
-                that.dom.overlay.toggle();
+                win.location.href = '../../pages/withdraw/index.html';
 
-            });
-
-            that.dom.overlay.on("click",function(){
-                that.dom.edite.trigger("click");
-            });
-
-            that.dom.li.on("click",function(){
-                win.location = "../../pages/detail/index.html";
             })
 
 

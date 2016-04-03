@@ -62,6 +62,9 @@
                 that.NEXTWRAPPER.removeClass("r-slide-in-main");
             }
             that.OVERLAY.fadeOut();
+            if(that.opt.slideOutCallback){
+                that.opt.slideOutCallback();
+            }
 
 
         },

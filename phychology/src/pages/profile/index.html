@@ -15,9 +15,9 @@
     <link rel="apple-touch-startup-image" href="../../images/common/logo.png"/>
     <link rel="shortcut icon" href="../../images/common/logo.png"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>我提交的需求</title>
+    <title>个人资料</title>
     <link href="../../lib/base.css" rel="stylesheet">
-    <link href="../../pages/news/index.css" rel="stylesheet">
+    <link href="../../pages/profile/index.css" rel="stylesheet">
 
     <style>
 
@@ -34,42 +34,58 @@
     <div class="page-wrapper">
         <header class="back-header">
             <span class="mIcon m-icon0"></span>
-            <p>我提交的需求</p>
+
+            <p>个人资料</p>
         </header>
 
-        <section class="ul02-widget">
 
-            <ul>
-                {@each i in range(0,5)}
-                <li>
-                    <div class="left-content">
-                        <div class="t-wrap">
-                            <p class="li-title">#需求名称#
-                                <!--<span>（未读）</span>-->
-                            </p>
-                            <span class="t-status">
-                                #需求单状态#
-                            </span>
-                        </div>
+        <ul class="form-ul">
+            <li class="flex">
+                <span>
+                    姓名:
+                </span>
+                <div class="input-wrap">
+                    <input type="text">
+                </div>
+            </li>
+            <li class="flex">
+                <span>
+                    微信:
+                </span>
+                <div class="input-wrap">
+                    <input type="text">
+                </div>
+            </li>
+            <li class="flex">
+                <span>
+                    QQ:
+                </span>
+                <div class="input-wrap">
+                    <input type="number">
+                </div>
+            </li>
+            <li class="flex">
+                <span>
+                    邮箱:
+                </span>
+                <div class="input-wrap">
+                    <input type="email">
+                </div>
+            </li>
+        </ul>
 
-                        <!--<p class="li-content">系统消息摘要文字系统消息摘要文字系统消息摘要文字系统消息摘要文字系统消息摘要文字</p>-->
-                        <p class="time-content">YYYY-MM-DD 00:00:00</p>
-                    </div>
-                    <span class="r-icon mIcon"></span>
-                </li>
-                {@/each}
-            </ul>
-
-        </section>
-
-
+        <footer class="fixedbtn">
+            <div class="btn">
+                保存
+            </div>
+        </footer>
     </div>
 
 
 </script>
 
 <script src="../../lib/libAll.js"></script>
-<script src="../../pages/news/index.js"></script>
+<script src="../../pages/profile/index.js"></script>
 
 
 </body>

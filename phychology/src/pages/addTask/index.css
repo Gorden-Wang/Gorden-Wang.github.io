@@ -1,0 +1,202 @@
+@charset "UTF-8";
+#page {
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+  /*
+  <div class="flex">
+                <p>您预估的预算金额:</p>
+
+                <div class="input-wrap">
+                    ￥<input type="number" placeholder="不低于200元">
+                </div>
+            </div>
+            */ }
+  #page .mIcon {
+    background-image: url(../../images/common/m-icon.png);
+    background-size: 300px 52px;
+    background-repeat: no-repeat; }
+  #page .m-icon0 {
+    display: inline-block;
+    width: 30px;
+    height: 23px;
+    background-position: 7px -24px;
+    margin-top: 5px;
+    margin-right: 10px; }
+  #page header.back-header {
+    background-color: #ebe5e2;
+    padding: 10px 0px;
+    font-size: 18px;
+    color: #59463d;
+    font-weight: 600; }
+    #page header.back-header .m-icon0 {
+      position: absolute;
+      left: 12.5px;
+      top: 6px; }
+    #page header.back-header p {
+      text-align: center; }
+    #page header.back-header .right-btn {
+      position: absolute;
+      right: 12.5px;
+      top: 15px;
+      font-size: 14px;
+      font-weight: normal; }
+  #page .c-wrap {
+    padding: 20px 15px;
+    color: #59463d;
+    margin-bottom: 60px; }
+    #page .c-wrap .c-tip {
+      margin: 15px;
+      padding: 10px;
+      text-align: center;
+      background-color: #ebe5e2;
+      margin-bottom: 0px; }
+    #page .c-wrap .tags-wrap {
+      padding: 0px 10px;
+      overflow: hidden;
+      margin-top: 17.5px; }
+      #page .c-wrap .tags-wrap li {
+        width: 48%;
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 10px;
+        color: #88c6c2;
+        border: 1px solid #88c6c2;
+        padding: 4px 0px;
+        border-radius: 4px; }
+      #page .c-wrap .tags-wrap li.select {
+        background-color: #88c6c2;
+        color: white;
+        font-weight: 200; }
+      #page .c-wrap .tags-wrap li:nth-of-type(2n) {
+        float: right; }
+      #page .c-wrap .tags-wrap li:nth-of-type(2n+1) {
+        float: left; }
+    #page .c-wrap .tag-input {
+      display: none; }
+    #page .c-wrap .input-wrap {
+      border: 1px solid  #eeeae7;
+      border-radius: 4px; }
+      #page .c-wrap .input-wrap input {
+        padding: 7px;
+        width: 100%;
+        font-size: 14px; }
+      #page .c-wrap .input-wrap textarea {
+        width: 100%;
+        height: 150px;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 7px; }
+    #page .c-wrap .flex {
+      display: flex; }
+    #page .c-wrap .flex1 {
+      flex: 1; }
+    #page .c-wrap .center {
+      align-items: center;
+      justify-content: center; }
+    #page .c-wrap .form-ul {
+      padding: 25px 20px; }
+      #page .c-wrap .form-ul li {
+        padding: 20px 0; }
+      #page .c-wrap .form-ul .flex {
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        #page .c-wrap .form-ul .flex span {
+          color: #59463d;
+          margin-right: 40px;
+          width: 3em; }
+        #page .c-wrap .form-ul .flex div {
+          flex: 1; }
+          #page .c-wrap .form-ul .flex div input {
+            display: block;
+            width: 100%;
+            border: 1px solid #eeeae7;
+            border-radius: 4px;
+            padding: 7px; }
+    #page .c-wrap .im-top {
+      position: relative;
+      padding: 20px 0px; }
+      #page .c-wrap .im-top .b-img {
+        position: absolute;
+        bottom: 0px;
+        width: 20%;
+        height: 4px;
+        border-radius: 4px;
+        background-color: #a5897d;
+        left: 40%; }
+      #page .c-wrap .im-top p {
+        text-align: center;
+        margin: 5px 0px;
+        color: #1a0b03;
+        font-size: 16px;
+        font-weight: 400; }
+    #page .c-wrap .pro-title {
+      color: #1a0b03;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px; }
+    #page .c-wrap .pro-content {
+      color: #1a0b03;
+      font-size: 12px;
+      text-align: left;
+      background-color: #ebe5e2;
+      padding: 10px; }
+    #page .c-wrap .reply-btn {
+      text-align: center;
+      width: 8em;
+      color: #88c6c2;
+      border: 1px solid #88c6c2;
+      border-radius: 4px;
+      padding: 8px 0px;
+      margin: 10px auto 0px auto;
+      font-size: 12px; }
+    #page .c-wrap .reply-box {
+      border: 1px solid #ebe5e2;
+      padding: 10px;
+      font-size: 12px;
+      margin-top: 10px;
+      color: #1a0b03; }
+      #page .c-wrap .reply-box .p-title {
+        font-weight: 200; }
+      #page .c-wrap .reply-box .r-time {
+        color: #a58a7c;
+        text-align: right;
+        margin-top: 10px; }
+  #page .fixedbtn {
+    background-color: white;
+    padding: 12px 20px;
+    border-top: 1px solid #eeeae7;
+    margin-top: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px; }
+    #page .fixedbtn .btn {
+      border-radius: 6px;
+      font-size: 14px;
+      color: #ffffff;
+      background-color: #88c6c2;
+      text-align: center;
+      padding: 8px 0px; }
+
+.fadeIn {
+  top: 35%; }
+  .fadeIn .btn {
+    border-radius: 6px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #88c6c2;
+    text-align: center;
+    padding: 8px 0px;
+    margin-top: 15px; }
+  .fadeIn .J-box {
+    height: 200px;
+    border: 1px solid #1a0b03;
+    margin-top: 20px; }
+  .fadeIn textarea {
+    width: 100%;
+    height: 100%;
+    padding: 20px; }
+
+/*# sourceMappingURL=index.css.map */

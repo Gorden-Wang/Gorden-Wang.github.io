@@ -47,20 +47,10 @@
 
   .ul02-widget {
     li {
-      padding: 15px;
+      padding: 30px 20px;
       display: flex;
       border-bottom: 1px solid #ebe5e2;
-
-      /*
-      <li>
-                    <div class="left-content">
-                        <p class="time-content">YYYY-MM-DD 00:00:00</p>
-                        <p>#标题标题标题标题标题标题标题#<span>（未读）</span></p>
-                        <p>系统消息摘要文字系统消息摘要文字系统消息摘要文字系统消息摘要文字系统消息摘要文字</p>
-                    </div>
-                    <span class="r-icon"></span>
-                </li>
-      */
+      align-items: center;
 
       .left-content {
         flex: 1;
@@ -68,15 +58,23 @@
         color: #59463d;
 
         .time-content {
-          color: #ede5e3;
+          color: #1a0b03;
           font-size: 12px;
           text-align: right;
+
+        }
+
+        .t-wrap{
+          display: flex;
+          margin-bottom:10px;
+
 
         }
 
         .li-title {
           font-size: 14px;
           color: #59453e;
+          flex:1;
           span {
             color: #88c6c2;
           }

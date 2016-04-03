@@ -42,17 +42,15 @@
             var that = this;
 
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
-
             that.dom.loading.hide();
         },
         recacheDom: function () {
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.edite = $(".right-btn");
-            that.dom.filterW = $(".filter-wrapper");
-            that.dom.overlay = $(".slide-overlay");
-            that.dom.li = $(".ul01-widget li");
+            that.dom.commitBtn = $(".fixedbtn");
+            that.dom.tags = $(".tag-item");
+            that.dom.tagInput = $(".tag-input");
 
         },
         bindEvent: function () {
@@ -64,20 +62,38 @@
                 win.history.back();
             });
 
-            that.dom.edite.on("click",function(){
 
-                that.dom.filterW.toggle();
-                that.dom.overlay.toggle();
 
+
+            that.dom.commitBtn.on("click",function(){
+
+                var top = "<p class='title'>您的需求已经提交.</p><p class='content'>接下来我们的项目经理会与您联系,并确认需求细节.您也可以加客服微信‘zayiapp’进行咨询</p>";
+                var btn = "<div class='btn'>朕知道了</div>";
+                Wlib.alert(top,btn,function(){
+                    $(".fadeIn").remove();
+                });
             });
 
-            that.dom.overlay.on("click",function(){
-                that.dom.edite.trigger("click");
-            });
 
-            that.dom.li.on("click",function(){
-                win.location = "../../pages/detail/index.html";
-            })
+
+            that.dom.tags.on("click",function(){
+                var isAdd = $(this).hasClass("add-btn"),
+                    isSel = $(this).hasClass("select");
+
+                if(!isSel){
+                    $(this).addClass("select").siblings().removeClass("select");
+
+                    if(isAdd){
+                        that.dom.tagInput.show();
+                        return;
+                    }
+                    var top = "<p class='title'>tag解释.</p><p class='content' style='text-align: left'>假字假字假字假字假字假字假字</p>";
+                    var btn = "<div class='btn'>确定</div>";
+                    Wlib.alert(top,btn,function(){
+                        $(".fadeIn").remove();
+                    });
+                }
+            });
 
 
         },
