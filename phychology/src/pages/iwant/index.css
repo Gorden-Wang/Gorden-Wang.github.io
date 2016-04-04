@@ -77,7 +77,7 @@
     #page .c-wrap .input-wrap {
       border: 1px solid  #eeeae7;
       border-radius: 4px; }
-      #page .c-wrap .input-wrap input {
+      #page .c-wrap .input-wrap input, #page .c-wrap .input-wrap select {
         padding: 7px;
         width: 100%;
         font-size: 14px; }
@@ -87,6 +87,8 @@
         font-size: 14px;
         line-height: 16px;
         padding: 7px; }
+      #page .c-wrap .input-wrap select {
+        color: #88c6c2; }
     #page .c-wrap .flex {
       display: flex; }
     #page .c-wrap .flex1 {
@@ -95,7 +97,8 @@
       align-items: center;
       justify-content: center; }
     #page .c-wrap .form-ul {
-      padding: 25px 20px; }
+      padding: 25px 20px;
+      padding-top: 0px; }
       #page .c-wrap .form-ul li {
         padding: 20px 0; }
       #page .c-wrap .form-ul .flex {

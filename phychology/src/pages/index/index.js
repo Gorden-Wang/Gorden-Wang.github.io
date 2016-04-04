@@ -92,6 +92,8 @@
             that.dom.ImgWrap = $("section.img-wrapper");
             that.dom.profile = $("#profile");
             that.dom.money = $("#money");
+            that.dom.addTask = $("#addTask");
+            that.dom.iwant = $("#iwant");
 
         },
         bindEvent: function () {
@@ -168,6 +170,13 @@
             });
             that.dom.money.on("click",function(){
                 win.location = '../../pages/money/index.html';
+            });
+
+            that.dom.addTask.on("click",function(){
+                win.location = '../../pages/addTask/index.html';
+            });
+            that.dom.iwant.on("click",function(){
+                win.location = '../../pages/iwant/index.html';
             });
         },
         addJuicerHandler: function () {

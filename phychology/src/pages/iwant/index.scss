@@ -106,7 +106,7 @@
     .input-wrap{
       border:1px solid  #eeeae7;
       border-radius: 4px;
-      input{
+      input,select{
         padding: 7px;
         width:100%;
         //line-height:16px;
@@ -120,6 +120,11 @@
         line-height:16px;
         padding:7px;
       }
+      
+      select{
+        color: #88c6c2;
+      }
+
     }
 
     .flex{
