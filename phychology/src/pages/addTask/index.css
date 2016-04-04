@@ -95,7 +95,8 @@
       align-items: center;
       justify-content: center; }
     #page .c-wrap .form-ul {
-      padding: 25px 20px; }
+      padding: 25px 20px;
+      padding-top: 0px; }
       #page .c-wrap .form-ul li {
         padding: 20px 0; }
       #page .c-wrap .form-ul .flex {

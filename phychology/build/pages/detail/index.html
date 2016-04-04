@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#59453e"/>
+    <meta name="renderer" content="webkit">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="../../images/common/logo.png?version=0.1.5" type="text/css" rel="stylesheet"/>
+    <link href="../../images/common/logo.png?version=0.1.5" type="text/css" rel="stylesheet"/>
+    <link href="../../images/common/logo.png?version=0.1.5" type="text/css" rel="stylesheet"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>项目详情</title>
+    <link href="../../lib/base.css" rel="stylesheet">
+    <link href="../../pages/detail/index.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page"></div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="page-wrapper">
+        <header class="back-header">
+            <span class="mIcon m-icon0"></span>
+
+            <p>项目详情</p>
+        </header>
+
+        <section class="c-wrap">
+            <p class="p-title">
+                项目名称:#项目标题#
+            </p>
+
+            <p class="p-sub">
+                #订单号 XXXXXX-XXXXXX#
+            </p>
+
+            <p style="text-align: center;margin-top: 5px;">
+                <span class="p-status">
+                #订单状态#
+            </span>
+            </p>
+
+
+            <div class="p-detail">
+                <div class="d-wrap">
+                    <p>项目名称</p>
+                    <p>可以拖动滑动查看</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                    <p>项目名称</p>
+                </div>
+            </div>
+
+            <p class="p-price">
+                #00.00#元
+            </p>
+            <p class="p-backprice">
+                #00.00#元
+            </p>
+            <p class="p-realprice">
+                #00.00#元
+            </p>
+
+            <div class="im-top">
+                <p>项目进展</p>
+                <div class="b-img"></div>
+            </div>
+
+            {@each i in range(0,5)}
+
+            <div class="pro-title">
+                X月X日,星期X
+            </div>
+
+            <div class="pro-content">
+                后台客服更新B订单沟通记录=项目进展.假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字假字
+            </div>
+            {@if i%2}
+            <div class="reply-btn">
+                回复进展
+            </div>
+
+            {@else}
+
+            <div class="reply-box">
+                <p class="r-title">
+                    【我的回复】
+                </p>
+                <p class="r-content">
+                    用户回复假字用户回复假字用户回复假字用户回复假字用户回复假字用户回复假字用户回复假字
+                </p>
+                <p class="r-time">
+                    XXXX年XX月XX日 星期X 24:00
+                </p>
+            </div>
+
+            {@/if}
+            {@/each}
+        </section>
+
+
+
+        <footer class="fixedbtn">
+            <div class="btn">
+                #按钮对应状态#
+            </div>
+        </footer>
+    </div>
+
+
+</script>
+
+<script src="../../lib/libAll.js?version=0.1.5"></script>
+<script src="../../widgets/slide/iscroll.js?version=0.1.5"></script>
+<script src="../../pages/detail/index.js?version=0.1.5"></script>
+
+
+</body>
+</html>
