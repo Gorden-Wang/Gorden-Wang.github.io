@@ -11,6 +11,7 @@
     <title>出售</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../widgets/eidte/index.css" rel="stylesheet">
     <link href="../../pages/sale/index.css" rel="stylesheet">
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
@@ -55,6 +56,7 @@
             <span>暂无尺寸</span>
             {@/if}
         </section>
+
 
         <section class="seller-wrapper">
             <div class="t-w"><img src=${data.avatar}>
@@ -142,7 +144,7 @@
 
                             <div class="t-c">
                                 {@if item.to_name}
-                                 回复<span>${item.to_name}</span>：
+                                回复<span>${item.to_name}</span>：
                                 {@/if}
                                 ${item.content}
                             </div>
@@ -241,6 +243,7 @@
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/swiper/index.js"></script>
 <script src="../../widgets/scrollto/index.js"></script>
+<script src="../../widgets/eidte/index.js"></script>
 <script src="../../pages/sale/index.js"></script>
 
 </body>

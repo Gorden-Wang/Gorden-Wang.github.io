@@ -1,0 +1,39 @@
+.edite-wrapper{
+  padding:10px;
+  background-color: #FFF;
+  margin:10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex:1;
+
+  .modify-sel{
+    flex:1;
+    span{
+      display: inline-block;
+      width: 3em;
+      padding:8px 0px;
+      text-align: center;
+      background-color: #ff6666;
+      color: #FFFFFF;
+      font-size: 13px;
+      margin-right:10px;
+      border-radius: 2px;
+    }
+  }
+
+  .share-btn{
+    padding:8px 15px;
+    text-align: center;
+    background-color: #ff6666;
+    color: #FFFFFF;
+    font-size: 13px;
+    margin-right:10px;
+    border-radius: 2px;
+
+    span{
+      font-size: 10px;
+    }
+  }
+
+}

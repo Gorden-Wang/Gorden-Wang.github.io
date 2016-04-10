@@ -40,7 +40,27 @@
                         break;
                 }
                 return res;
-            })(that.data.type)
+            })(that.data.type);
+            that.data.id = Wlib.getRequestParam("id");
+            that.data.proData = {};
+
+        },
+        getProInfo : function(callback){
+          var that = this;
+
+            var req = {
+                id : that.data.id,
+                uid : localStorage.getItem("uid"),
+                token : localStorage.getItem("token")
+            }
+            if(that.data.id){
+                Wlib.SendRequest("default/api/info",req,"GET",function(data){
+                    that.data.proData = data;
+                    callback && callback();
+                });
+            }else{
+                callback && callback();
+            }
 
         },
         cacheDom: function () {
@@ -84,17 +104,20 @@
             Wlib.SendRequest("default/info/taglist", req, "GET", function (data) {
                 console.log(data);
                 that.data.data = data;
-                that.renderUI();
-                that.makeSubTag(that.data.newArr[0]);
-                that.recacheDom();
-                that.bindEvent();
+                that.getProInfo(function(){
+                    that.renderUI();
+                    that.makeSubTag(that.data.newArr[0]);
+                    that.recacheDom();
+                    that.bindEvent();
 
 
-                //    init data
+                    //    init data
 
-                that.data.category = that.data.newArr[0].type;
-                that.data.sort = that.data.newArr[0].next.sort[0];
-                that.data.times = that.data.newArr[0].next.times[0];
+                    that.data.category = that.data.newArr[0].type;
+                    that.data.sort = that.data.newArr[0].next.sort[0];
+                    that.data.times = that.data.newArr[0].next.times[0];
+                });
+
             });
         },
         addJuicerHandler: function () {
@@ -138,6 +161,13 @@
             });
             juicer.register("makeCode", function (str) {
                 return location.protocol + "//"+document.domain+"/index.php?r=default/index/verify";
+            });
+            juicer.register("makeSize", function (str) {
+                var res=[];
+                if(str){
+                    res = str.replace('cm','').split("*");
+                }
+                return res;
             });
 
         },
@@ -241,6 +271,10 @@
                    ban_look : "",
                    pictures : that.data.picData.join(",")//todo
                }
+
+                if(that.data.id){
+                    param.compile = that.data.id;
+                }
 
                 console.log(param);
 

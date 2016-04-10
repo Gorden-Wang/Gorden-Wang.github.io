@@ -64,7 +64,7 @@
 <script type="template/juicer" id="sale-item">
     {@each list.list as item}
     <li onclick="goToPage('${makeURL(item.type,item.id)}')">
-        <div class="i-w"><a> <img class="lazy-image" lazy-image="${item.pic}"></a>
+        <div class="i-w"><a> <img class="lazy-image" lazy-image="${item.pic[0]}"></a>
             {@if item.type == 2}
             {@if item.sale==0}
             <div class="index-icon icon6"><span>

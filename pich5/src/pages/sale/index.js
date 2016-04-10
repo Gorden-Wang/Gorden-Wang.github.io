@@ -18,7 +18,8 @@
             var that = this;
 
             that.data = {
-                id: Wlib.getRequestParam("id")
+                id: Wlib.getRequestParam("id"),
+                edite : Wlib.getRequestParam("edite")
             }
         },
         cacheDom: function () {
@@ -32,6 +33,14 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
+            if(that.data.edite){
+                var obj = {
+                    wrapper : $(".seller-wrapper"),
+                    proId : that.data.id,
+                    editeUrl : '../../pages/post/index.html?id='+that.data.id+"&tag=2"
+                }
+                var e = new EditeProduct(obj);
+            }
             that.dom.loading.hide();
         },
         recacheDom: function () {

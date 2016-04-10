@@ -73,26 +73,27 @@
             });
             juicer.register("makeURL", function (type,id) {
                 var t = parseInt(type),res="";
+                var isMy = Wlib.getRequestParam("fid") ? "" : "&edite=true";
                 switch (t){
                     case 2:
                 //        出售
-                        res = '../../pages/sale/index.html?id='+id;
+                        res = '../../pages/sale/index.html?id='+id + isMy;
                         break;
                     case 1 :
                 //        拍卖
-                        res = '../../pages/auction/index.html?id='+id;
+                        res = '../../pages/auction/index.html?id='+id + isMy;
                         break;
                     case 7 :
                 //        欣赏
-                        res = '../../pages/appreciate/index.html?id='+id;
+                        res = '../../pages/appreciate/index.html?id='+id + isMy;
                         break;
                     case 6 :
                         //        鉴定
-                        res = '../../pages/identify/index.html?id='+id;
+                        res = '../../pages/identify/index.html?id='+id + isMy;
                         break;
                     case 3 :
                         //        文字
-                        res = '../../pages/text/index.html?id='+id;
+                        res = '../../pages/text/index.html?id='+id + isMy;
                         break;
                 }
 
