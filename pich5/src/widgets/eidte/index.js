@@ -45,7 +45,17 @@
                 shareDom = $("#J_share");
 
             delDom.on("click",function(e){
-                alert("click 删除");
+                //alert("click 删除");
+                //default/person/deletePhoto  GET  uid token id
+
+                var req = {
+                    id: that.opt.proId,
+                    uid: localStorage.getItem("uid"),
+                    token: localStorage.getItem("token")
+                }
+                Wlib.SendRequest("default/person/deletePhoto", req, "GET", function (data) {
+                    history.back();
+                })
                 e.stopPropagation();
             });
             editeDom.on("click",function(e){
