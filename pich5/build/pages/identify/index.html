@@ -11,6 +11,7 @@
     <title>鉴赏</title>
     <link href="../../lib/boot.css" rel="stylesheet">
     <link href="../../widgets/swiper/index.css" rel="stylesheet">
+    <link href="../../widgets/eidte/index.css" rel="stylesheet">
     <link href="../../pages/identify/index.css" rel="stylesheet">
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.6"></script>
 
@@ -84,16 +85,17 @@
 
             </div>
 
-
+            {@if data.interested}
             <p class="hr">
                 <span>
                     ta们也刘文西作品感兴趣
                 </span>
             </p>
+            {@/if}
         </section>
 
+        {@if data.interested && data.interested.length > 0 }
         <section class="like-wrapper ul-wrapper3">
-            {@if data.interested.length > 0 }
             <ul>
 
                 {@each data.interested as item}
@@ -106,15 +108,13 @@
 
                 {@/each}
             </ul>
-
-            {@else}
-            <div style=" -webkit-box-flex: 1;-webkit-flex: 1;-moz-box-flex: 1;flex: 1;">暂时没人感兴趣</div>
-            {@/if}
             <span>
                 ${data.interested_num}>
             </span>
-        </section>
 
+        </section>
+        {@/if}
+        {@if data.praise_list}
         <section class="heart-wrapper ul-wrapper3">
             <span class="index-icon icon9">
 
@@ -130,7 +130,9 @@
                 {@/each}
             </ul>
         </section>
+        {@/if}
 
+        {@if data.comments}
         <section class="reply-wrapper ul-wrapper4">
             <ul>
                 {@each data.comments as item}
@@ -149,7 +151,7 @@
 
                             <div class="t-c">
                                 {@if item.to_name}
-                                 回复<span>${item.to_name}</span>：
+                                回复<span>${item.to_name}</span>：
                                 {@/if}
                                 ${item.content}
                             </div>
@@ -164,7 +166,10 @@
         <div class="more-btn">
             查看更多评论
         </div>
+        {@/if}
 
+
+        {@if data.infolist}
         <section class="other-wrapper ul-wrapper2 lastmargin">
             <p class="hr">
                 <span>店主其他藏品</span>
@@ -212,6 +217,8 @@
 
 
         </section>
+        {@/if}
+
 
         <section class="bottom-wrapper">
             <span class="heart-w">
@@ -247,6 +254,7 @@
 
 <script src="../../lib/libAll.js?version=0.2.6"></script>
 <script src="../../widgets/swiper/index.js?version=0.2.6"></script>
+<script src="../../widgets/eidte/index.js?version=0.2.6"></script>
 <script src="../../widgets/scrollto/index.js?version=0.2.6"></script>
 <script src="../../pages/identify/index.js?version=0.2.6"></script>
 

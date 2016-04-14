@@ -2,8 +2,8 @@
  * Created by gorden on 16/2/1.
  */
 
-(function(win,$){
-    function Sale(){
+(function (win, $) {
+    function Sale() {
 
     }
 
@@ -16,21 +16,23 @@
             //that.getTags();   放开方法，添加最后的几个方法
             //Wlib.wx.getLocation();
 
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getProInfo(function () {
+                that.renderUI();
+                that.recacheDom();
+                that.bindEvent();
+            });
         },
         cacheData: function () {
             var that = this;
 
             that.data = {};
-            that.data.newArr=[];
+            that.data.newArr = [];
             that.data.picData = [];
             that.data.type = Wlib.getRequestParam("tag");
             that.data.islook = Wlib.getRequestParam("look") ? true : false;
-            that.data.picType = (function(type){
+            that.data.picType = (function (type) {
                 var res = 5;
-                switch (type){
+                switch (type) {
                     case 1 :
                         res = 3;
                         break;
@@ -39,7 +41,9 @@
                         break;
                 }
                 return res;
-            })(that.data.type)
+            })(that.data.type);
+            that.data.id = Wlib.getRequestParam("id");
+            that.data.proData = {};
 
         },
         cacheDom: function () {
@@ -48,7 +52,7 @@
                 wrapper: $("#page"),
                 loading: $("#loading"),
                 tpl: $("#tpl"),
-                tagtpl : $("#tagtpl")
+                tagtpl: $("#tagtpl")
             }
         },
         renderUI: function () {
@@ -81,19 +85,22 @@
             var that = this;
             var req = {};
             Wlib.SendRequest("default/info/taglist", req, "GET", function (data) {
-                console.log(data);
                 that.data.data = data;
-                that.renderUI();
-                that.makeSubTag(that.data.newArr[0]);
-                that.recacheDom();
-                that.bindEvent();
+                that.getProInfo(function () {
+                    that.renderUI();
+                    that.makeSubTag(that.data.newArr[0]);
+                    that.recacheDom();
+                    that.bindEvent();
 
 
-                //    init data
+                    //    init data
 
-                that.data.category = that.data.newArr[0].type;
-                that.data.sort = that.data.newArr[0].next.sort[0];
-                that.data.times = that.data.newArr[0].next.times[0];
+                    that.data.category = that.data.newArr[0].type;
+                    that.data.sort = that.data.newArr[0].next.sort[0];
+                    that.data.times = that.data.newArr[0].next.times[0];
+                })
+
+
             });
         },
         addJuicerHandler: function () {
@@ -117,14 +124,14 @@
             });
 
             juicer.register("getArray", function (data) {
-                if(!data){
+                if (!data) {
                     return [];
                 }
-                if(that.data.newArr.length > 0){
+                if (that.data.newArr.length > 0) {
                     return that.data.newArr;
                 }
                 var arr = [];
-                for(var i in data){
+                for (var i in data) {
                     var obj = {};
                     obj.type = i;
                     obj.next = data[i];
@@ -139,7 +146,7 @@
                 return str.length >= 4 ? "flex2" : "";
             });
             juicer.register("makeCode", function (str) {
-                return location.protocol + "//"+document.domain+"/index.php?r=default/index/verify";
+                return location.protocol + "//" + document.domain + "/index.php?r=default/index/verify";
             });
 
         },
@@ -164,8 +171,6 @@
             });
 
 
-
-
             that.dom.nextBtn.on("click", function () {
                 $(".tips-wrapper").hide();
             });
@@ -183,28 +188,26 @@
             //    })
             //});
 
-            $("#fileInput").on("change",function(){
+            $("#fileInput").on("change", function () {
 
-                if($(this)[0].files.length > 9){
+                if ($(this)[0].files.length > 9) {
                     Wlib.tips("最多只能选择9张图片");
                     return;
                 }
-                if($(".img-tag").length + $(this)[0].files.length > 9){
-                    Wlib.tips("您还能选择"+(9-$(".img-tag").length)+"张图片");
+                if ($(".img-tag").length + $(this)[0].files.length > 9) {
+                    Wlib.tips("您还能选择" + (9 - $(".img-tag").length) + "张图片");
                     return;
                 }
 
 
-
-
-                for(var i=0;i<$(this)[0].files.length;i++){
+                for (var i = 0; i < $(this)[0].files.length; i++) {
                     var d = new FormData();
-                    d.append("pic",$(this)[0].files[i]);
-                    d.append("type",that.data.picType);
+                    d.append("pic", $(this)[0].files[i]);
+                    d.append("type", that.data.picType);
                     Wlib.SendRequest("default/person/uploadPic", d, "POST", function (data) {
-                        $("#imgs").prepend("<li class='img-tag'><div><img src='"+data.url+"'></div></li>")
+                        $("#imgs").prepend("<li class='img-tag'><div><img src='" + data.url + "'></div></li>")
                         that.data.picData.push(data.path);
-                        if($(".img-tag").length==9){
+                        if ($(".img-tag").length == 9) {
                             $("#addPic").hide();
                         }
                     })
@@ -213,50 +216,54 @@
 
             });
 
-            $("#sendBtn").on("click",function(){
+            $("#sendBtn").on("click", function () {
                 var param = {
-                    uid : localStorage.getItem("uid"),
-                    token : localStorage.getItem("token"),
-                    checkcode : $("#code").val() || "",
-                    content : $("#content").val(),
-                    type : that.data.islook ? 6 : 7,
-                    author : $("#author").val(),
-                    title : $("#author").val() || "",
-                    size1 : $("#size1").val() || "",
-                    size2 : $("#size2").val() || "",
-                    range : $("#range").val() || "",
-                    starting_price : $("#starting_price").val() || "",
-                    fidelity : $(".baozhen").val(),//是否保真
-                    end_time : $("#end_time").val() || "",//结束时间
-                    address : $("#address").text().trim() || "西安",//TODO address
-                    compile : '',
-                    category : that.data.category,
-                    sort : that.data.sort,
-                    times : that.data.times,
-                    ban_look : "",
-                    pictures : that.data.picData.join(",")//todo
+                    uid: localStorage.getItem("uid"),
+                    token: localStorage.getItem("token"),
+                    checkcode: $("#code").val() || "",
+                    content: $("#content").val(),
+                    type: that.data.islook ? 6 : 7,
+                    author: $("#author").val(),
+                    title: $("#author").val() || "",
+                    size1: $("#size1").val() || "",
+                    size2: $("#size2").val() || "",
+                    range: $("#range").val() || "",
+                    starting_price: $("#starting_price").val() || "",
+                    fidelity: $(".baozhen").val(),//是否保真
+                    end_time: $("#end_time").val() || "",//结束时间
+                    address: $("#address").text().trim() || "西安",//TODO address
+                    compile: '',
+                    category: that.data.category,
+                    sort: that.data.sort,
+                    times: that.data.times,
+                    ban_look: "",
+                    pictures: that.data.picData.join(",")//todo
+                }
+
+                if (that.data.id) {
+                    param.compile = that.data.id;
                 }
 
                 console.log(param);
 
                 Wlib.SendRequest("default/publish/postInfo", param, "POST", function (data) {
-                    if(data.state == 1){
+                    if (data.state == 1) {
                         //成功
                         window.location.href = "../../pages/pics/index.html";
                     }
                 })
             });
 
-            $("#verycode").on("click",function(){
-                $(this).attr("src",location.protocol + "//"+document.domain+"/index.php?r=default/index/verify");
+            $("#verycode").on("click", function () {
+                $(this).attr("src", location.protocol + "//" + document.domain + "/index.php?r=default/index/verify");
             })
         },
-        makeSubTag : function(obj){
+        makeSubTag: function (obj) {
             var that = this;
-            $(".tip-tab-wrap").html(juicer(that.dom.tagtpl.html(),obj.next));
+            $(".tip-tab-wrap").html(juicer(that.dom.tagtpl.html(), obj.next));
 
             that.dom.staLi = $(".lv2-wrapper li");
-            if(!obj.next.times){
+            if (!obj.next.times) {
                 that.data.times = "";
             }
             that.dom.staLi.on("click", function () {
@@ -267,9 +274,9 @@
                 }
 
                 $(this).addClass("selected").siblings().removeClass("selected");
-                if($(this).hasClass("times-tag")){
+                if ($(this).hasClass("times-tag")) {
                     that.data.times = $(this).text();
-                }else{
+                } else {
                     that.data.sort = $(this).text();
                 }
 
@@ -286,12 +293,30 @@
             })
 
         },
-        getPicVericode : function(){
+        getPicVericode: function () {
             var that = this;
-            Wlib.SendRequest("default/index/verify",{},"GET",function(data){
+            Wlib.SendRequest("default/index/verify", {}, "GET", function (data) {
                 console.log(data);
             });
-        }
+        },
+        getProInfo: function (callback) {
+            var that = this;
+
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            if (that.data.id) {
+                Wlib.SendRequest("default/api/info", req, "GET", function (data) {
+                    that.data.proData = data;
+                    callback && callback();
+                });
+            } else {
+                callback && callback();
+            }
+
+        },
 
 
     }
@@ -300,4 +325,4 @@
     sale.init();
 
 
-})(window,$)
+})(window, $)
