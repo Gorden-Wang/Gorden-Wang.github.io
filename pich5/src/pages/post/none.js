@@ -1,24 +1,26 @@
 /**
- * Created by gorden on 16/2/1.
+ * Created by gorden on 15/7/31.
  */
+(function (win, $) {
+    var Index = function () {
+        var that = this;
+        Wlib.wx.getJSSign('', function (data) {
+            Wlib.wx.jsConfig(data, function () {
+                Wlib.wx.hideMenu();
+                that.init();
 
-(function(win,$){
-    function Sale(){
-
+            });
+        });
     }
 
-    Sale.prototype = {
+    Index.prototype = {
         init: function () {
             var that = this;
             that.addJuicerHandler();
             that.cacheData();
             that.cacheDom();
-            //that.getTags();   放开方法，添加最后的几个方法
-            //Wlib.wx.getLocation();
-
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getTags();
+            Wlib.wx.getLocation();
         },
         cacheData: function () {
             var that = this;
@@ -26,7 +28,7 @@
             that.data = {};
             that.data.newArr=[];
             that.data.picData = [];
-            that.data.type = Wlib.getRequestParam("tag")
+            that.data.type = Wlib.getRequestParam("tag");
             that.data.picType = (function(type){
                 var res = 5;
                 switch (type){
@@ -38,7 +40,27 @@
                         break;
                 }
                 return res;
-            })(that.data.type)
+            })(that.data.type);
+            that.data.id = Wlib.getRequestParam("id");
+            that.data.proData = {};
+
+        },
+        getProInfo : function(callback){
+            var that = this;
+
+            var req = {
+                id : that.data.id,
+                uid : localStorage.getItem("uid"),
+                token : localStorage.getItem("token")
+            }
+            if(that.data.id){
+                Wlib.SendRequest("default/api/info",req,"GET",function(data){
+                    that.data.proData = data;
+                    callback && callback();
+                });
+            }else{
+                callback && callback();
+            }
 
         },
         cacheDom: function () {
@@ -82,17 +104,20 @@
             Wlib.SendRequest("default/info/taglist", req, "GET", function (data) {
                 console.log(data);
                 that.data.data = data;
-                that.renderUI();
-                that.makeSubTag(that.data.newArr[0]);
-                that.recacheDom();
-                that.bindEvent();
+                that.getProInfo(function(){
+                    that.renderUI();
+                    that.makeSubTag(that.data.newArr[0]);
+                    that.recacheDom();
+                    that.bindEvent();
 
 
-                //    init data
+                    //    init data
 
-                that.data.category = that.data.newArr[0].type;
-                that.data.sort = that.data.newArr[0].next.sort[0];
-                that.data.times = that.data.newArr[0].next.times[0];
+                    that.data.category = that.data.newArr[0].type;
+                    that.data.sort = that.data.newArr[0].next.sort[0];
+                    that.data.times = that.data.newArr[0].next.times[0];
+                });
+
             });
         },
         addJuicerHandler: function () {
@@ -116,9 +141,6 @@
             });
 
             juicer.register("getArray", function (data) {
-                if(!data){
-                    return [];
-                }
                 if(that.data.newArr.length > 0){
                     return that.data.newArr;
                 }
@@ -140,6 +162,13 @@
             juicer.register("makeCode", function (str) {
                 return location.protocol + "//"+document.domain+"/index.php?r=default/index/verify";
             });
+            juicer.register("makeSize", function (str) {
+                var res=[];
+                if(str){
+                    res = str.replace('cm','').split("*");
+                }
+                return res;
+            });
 
         },
         bindEvent: function () {
@@ -160,6 +189,13 @@
                 $(this).addClass("selected").siblings().removeClass("selected");
                 that.makeSubTag(that.data.newArr[parseInt($(this).attr("data-index"))]);
                 that.data.category = $(this).text();
+
+                //   判断是不是 非书画类目
+                var tag = $(this).text();
+                if(tag == "非书画类"){
+                    $("#titleOrAuthor").text("标题");
+                    $("#author").attr("placeholder","此处只填写标题");
+                }
             });
 
 
@@ -219,14 +255,15 @@
                     checkcode : $("#code").val() || "",
                     content : $("#content").val(),
                     type : Wlib.getRequestParam("tag"),
-                    title : $("#title").val() || "",
+                    author : $("#author").val(),
+                    title : $("#author").val() || "",
                     size1 : $("#size1").val() || "",
                     size2 : $("#size2").val() || "",
                     range : $("#range").val() || "",
                     starting_price : $("#starting_price").val() || "",
                     fidelity : $(".baozhen").val(),//是否保真
-                    end_time : $("#end_time").val() || "",//结束时间
-                    address : "",//TODO address
+                    end_time : Wlib.getTimeZone($("#end_time").val() || ""),//结束时间
+                    address : $("#address").text().trim() || "西安",//TODO address
                     compile : '',
                     category : that.data.category,
                     sort : that.data.sort,
@@ -235,8 +272,24 @@
                     pictures : that.data.picData.join(",")//todo
                 }
 
+                if(that.data.id){
+                    param.compile = that.data.id;
+                }
+
                 console.log(param);
+
+                Wlib.SendRequest("default/publish/postInfo", param, "POST", function (data) {
+
+                    if(data.state == 1){
+                        //成功
+                        window.location.href = "../../pages/pics/index.html";
+                    }
+                })
             });
+
+            $("#verycode").on("click",function(){
+                $(this).attr("src",location.protocol + "//"+document.domain+"/index.php?r=default/index/verify");
+            })
         },
         makeSubTag : function(obj){
             var that = this;
@@ -280,11 +333,9 @@
             });
         }
 
-
     }
 
-    var sale = new Sale();
-    sale.init();
+    var index = new Index();
 
 
-})(window,$)
+})(window, $);

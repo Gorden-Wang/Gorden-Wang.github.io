@@ -79,7 +79,7 @@
                         <input type="number" id="starting_price" class="inputblock flex1" placeholder="合理的售价将倍受关注"
                                value="{@if proData.starting_price}${proData.starting_price}{@/if}">
                         <!--<span class="baozhen">是否保真</span>-->
-                        {@if type == 1}
+                        {@if type == 1 || type == 11}
                         <select class="baozhen" style="background-color: transparent;color: black">
                             <option value="-1">是否保真</option>
                             <option value="0">否</option>
@@ -90,7 +90,7 @@
                         {@/if}
                     </div>
                 </div>
-                {@if type == 1}
+                {@if type == 1 || type == 11}
                 <div class="flex">
                     <span>
                     加价幅度
@@ -105,7 +105,7 @@
 
             </div>
 
-            {@if type == 1}
+            {@if type == 1 || type == 11}
             <div class="se-wrapper">
                 <input type="datetime-local" id="end_time"
                        style="height: 40px;;display: block;width: 100%;background-color: transparent"
@@ -161,6 +161,17 @@
         <section>
             <p class="t-title">请给您的作品添加标签</p>
             <ul class="lv1-wrapper">
+                {@if type == 10 || type == 11}
+
+                {@each getArray(data.category) as item,index}
+                {@if index == getArray(data.category).length-1}
+                <li class="selected ${makeClass(item.type)}" data-index="${index}">${item.type}</li>
+
+                {@/if}
+                {@/each}
+
+                {@else}
+
                 {@each getArray(data.category) as item,index}
                 {@if index == 0}
                 <li class="selected ${makeClass(item.type)}" data-index="${index}">${item.type}</li>
@@ -168,6 +179,10 @@
                 <li class="${makeClass(item.type)}" data-index="${index}">${item.type}</li>
                 {@/if}
                 {@/each}
+
+
+                {@/if}
+
 
             </ul>
 

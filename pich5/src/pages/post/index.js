@@ -106,7 +106,11 @@
                 that.data.data = data;
                 that.getProInfo(function(){
                     that.renderUI();
-                    that.makeSubTag(that.data.newArr[0]);
+                    if(that.data.type == 10 || that.data.type == 11){
+                        that.makeSubTag(that.data.newArr[that.data.newArr.length-1]);
+                    }else{
+                        that.makeSubTag(that.data.newArr[0]);
+                    }
                     that.recacheDom();
                     that.bindEvent();
 

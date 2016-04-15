@@ -1,0 +1,42 @@
+.J-overLay {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10; }
+
+.J-Con-Wrap {
+  top: 30%;
+  border-radius: 4px;
+  background-color: #FFF;
+  width: 80%;
+  left: 10%;
+  position: absolute;
+  z-index: 20;
+  text-align: center;
+  padding: 20px;
+  padding-bottom: 0px; }
+  .J-Con-Wrap .J-con-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #363636; }
+  .J-Con-Wrap .J-con-sub {
+    font-size: 10px;
+    color: #f66;
+    margin-bottom: 10px; }
+  .J-Con-Wrap .J-con-btns {
+    margin: 0 -20px;
+    border-top: 1px solid #efefef;
+    display: flex; }
+    .J-Con-Wrap .J-con-btns .J-con-btn {
+      flex: 1;
+      border-right: 1px solid #efefef;
+      padding: 10px 0;
+      font-size: 13px;
+      color: #4DC0D3; }
+    .J-Con-Wrap .J-con-btns .J-con-btn:first-of-type {
+      color: #5b5b5b; }
+
+/*# sourceMappingURL=index.css.map */

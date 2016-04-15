@@ -1,33 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head lang="zh-cn">
-    <meta charset="UTF-8">
+<html lang="en">
+<head>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     <meta content="telephone=no" name="format-detection"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <title>发布信息</title>
     <link href="../../lib/boot.css" rel="stylesheet">
-    <link href="../../widgets/footer/index.css" rel="stylesheet">
-    <link href="../../widgets/confirm/index.css" rel="stylesheet">
-    <!--<link href="../../pages/post/index.css" rel="stylesheet">-->
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
+    <link href="index.css" rel="stylesheet">
 </head>
 <body>
-<div id="loading" class="loading">
-    <div class="loading-content">loading...</div>
-</div>
-<div id="page"></div>
-
-
 
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/confirm/index.js"></script>
-<script src="../../widgets/footer/index.js"></script>
-<!--<script src="../../pages/post/index.js"></script>-->
 <script>
     var Confirm = new Confirm({
         title : "请选择发布类型",
@@ -47,12 +33,6 @@
             }
         ]
     });
-
-    $("#loading").hide();
-</script>
-
-<script>
-
 </script>
 </body>
 </html>
