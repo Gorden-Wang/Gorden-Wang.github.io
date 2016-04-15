@@ -1170,6 +1170,7 @@ window.Wlib = (function () {
                     Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
                     localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
                     localStorage.setItem("openid",Wlib.getRequestParam("open_id"));
+                    localStorage.setItem("imtoken",Wlib.getRequestParam("password"));
                 }
 
                 if (localStorage.getItem("uid") && localStorage.getItem("token")) {
@@ -1202,6 +1203,7 @@ window.Wlib = (function () {
                     Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
                     localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
                     localStorage.setItem("openid",Wlib.getRequestParam("open_id"));
+                    localStorage.setItem("imtoken",Wlib.getRequestParam("password"));
 
                     callback && callback();
                 }else{
