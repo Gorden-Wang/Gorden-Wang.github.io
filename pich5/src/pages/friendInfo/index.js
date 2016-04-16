@@ -74,7 +74,7 @@
             });
 
             $("#im-wrap").on("click",function(){
-                if(that.data.data.is_black == 0){
+                if(that.data.data.is_friend == 0){
                     //加好友
 
                     var req = {
@@ -87,11 +87,13 @@
                             Wlib.tips("发送申请成功。");
                             $(this).html("已申请");
                         }else{
-                            Wlib.tips("");
+                            Wlib.tips(data.message);
                         }
                     })
                 }else{
                     //去IM
+
+                    location.href = '../../pages/im/index.html?fid='+Wlib.getRequestParam("fid")+"&pic="+that.data.data.logo;
                 }
             });
 

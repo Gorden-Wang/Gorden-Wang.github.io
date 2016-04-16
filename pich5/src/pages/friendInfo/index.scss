@@ -25,6 +25,11 @@ body{
         height: 60px;
         border-radius: 60px;
         background-color: #f3f3f3;
+
+        img{
+          width:100%;
+          height:100%;
+        }
       }
 
       &>.t-de{
@@ -96,6 +101,11 @@ body{
               width: 100%;
               height: 100%;
               background-color: #f3f3f3;
+
+              img{
+                width:100%;
+                height:100%;
+              }
             }
           }
         }

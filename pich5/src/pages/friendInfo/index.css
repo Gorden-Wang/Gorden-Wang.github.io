@@ -18,6 +18,9 @@ body {
         height: 60px;
         border-radius: 60px;
         background-color: #f3f3f3; }
+        #page .top-wrap .t-user > span img {
+          width: 100%;
+          height: 100%; }
       #page .top-wrap .t-user > .t-de {
         margin-left: 15px; }
         #page .top-wrap .t-user > .t-de span {
@@ -68,6 +71,9 @@ body {
               width: 100%;
               height: 100%;
               background-color: #f3f3f3; }
+              #page .ul-wrap li > div > .imgs .img a img {
+                width: 100%;
+                height: 100%; }
       #page .ul-wrap li .right {
         display: inline-block;
         color: #fff;

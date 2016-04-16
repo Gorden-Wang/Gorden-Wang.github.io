@@ -46,7 +46,7 @@
         </section>
 
         <section class="price-wrapper">
-            <p>￥${data.starting_price}<span>元</span></p>
+            <p>{@if data.starting_price}￥${data.starting_price}<span>元</span>{@else}价格协商{@/if}</p>
             {@if data.size}
             <span class="label-icon">
                 ${data.size}

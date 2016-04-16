@@ -95,6 +95,14 @@
                         //        文字
                         res = '../../pages/text/index.html?id='+id + isMy;
                         break;
+                    case 10 :
+                        //出售
+                        res = '../../pages/sale/index.html?id='+id + isMy;
+                        break;
+                    case 11 :
+                        //        拍卖
+                        res = '../../pages/auction/index.html?id='+id + isMy;
+                        break;
                 }
 
                 return res;

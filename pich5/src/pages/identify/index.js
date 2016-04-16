@@ -33,11 +33,11 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
-            if(that.data.edite){
+            if (that.data.edite) {
                 var obj = {
-                    wrapper : $(".seller-wrapper"),
-                    proId : that.data.id,
-                    editeUrl : '../../pages/post/like.html?look=true&id='+that.data.id
+                    wrapper: $(".seller-wrapper"),
+                    proId: that.data.id,
+                    editeUrl: '../../pages/post/like.html?look=true&id=' + that.data.id
                 }
                 var e = new EditeProduct(obj);
             }
@@ -57,11 +57,11 @@
         addJuicerHandler: function () {
             var that = this;
             juicer.register("getId", function (url) {
-                return  Wlib.getRequestParam("id",url);
+                return Wlib.getRequestParam("id", url);
             });
             juicer.register("getType", function (type) {
                 var res = "";
-                switch (type){
+                switch (type) {
                     case "出售":
                         res = "../../pages/sale/index.html";
                         break;
@@ -74,6 +74,16 @@
                 return res;
             });
 
+            juicer.register("getPercentage", function (t, f) {
+                t = t - 0;
+                f = f - 0;
+                if (f == 0 && t == 0) {
+                    return "50%";
+                }
+                return (t * 100 / (t + f)) + "%";
+            });
+
+
         },
         bindEvent: function () {
             var that = this;
@@ -85,38 +95,38 @@
                 slidesPerView: 3.5,
                 paginationClickable: true,
                 spaceBetween: 5,
-                lazyLoading : true
+                lazyLoading: true
             });
 
 
-            Wlib._scrollHide(100,that.dom.scrollTo);
+            Wlib._scrollHide(100, that.dom.scrollTo);
 
-            that.dom.moreLi.on("click",function(){
+            that.dom.moreLi.on("click", function () {
                 var id = $(this).attr("data-id");
                 var des = $(this).attr("data-url");
 
-                if(!id){
+                if (!id) {
                     Wlib.tips("已经下架");
                     return;
                 }
 
-                win.location = des + "?id="+id;
+                win.location = des + "?id=" + id;
             });
 
-            that.dom.scrollTo.on("click",function(){
-                $.scrollTo(0,500);
+            that.dom.scrollTo.on("click", function () {
+                $.scrollTo(0, 500);
             });
 
-            that.dom.myBtn.on("click",function(){
+            that.dom.myBtn.on("click", function () {
                 win.location = "../../pages/my/index.html";
             });
-            that.dom.buyBtn.on("click",function(){
+            that.dom.buyBtn.on("click", function () {
                 win.location = "../../pages/buy/index.html";
             });
-            $("#pics .swiper-slide").on("click",function(){
+            $("#pics .swiper-slide").on("click", function () {
                 var current = $(this).find("img").attr("src");
                 //   如果是个数组的话，直接穿进去就ok了。
-                Wlib.wx.previewImgs(current,that.data.data.pic);
+                Wlib.wx.previewImgs(current, that.data.data.pic);
             });
 
             $("#complain").on("click", function () {
@@ -125,10 +135,10 @@
             $("#collect").on("click", function () {
                 that.addCollect(this);
             });
-            that.dom.sendComm.on("click",function(){
+            that.dom.sendComm.on("click", function () {
                 that.sendComm();
             });
-            that.dom.moreComm.on("click",function(){
+            that.dom.moreComm.on("click", function () {
                 Wlib.tips("下载APP查看更多评论。");
                 location.href = "http://www.talkart.cc/index.php?r=default/index/download";
             });
@@ -137,11 +147,46 @@
                 that.addPraise(this);
             });
 
-            $(".seller-wrapper").on("click",function(){
-                location.href = "../../pages/friendInfo/index.html?fid="+that.data.data.user_id;
+            $(".seller-wrapper").on("click", function () {
+                location.href = "../../pages/friendInfo/index.html?fid=" + that.data.data.user_id;
+            });
+
+            $(".betrue").on("click", function () {
+                that.beIdentify();
+            });
+            $(".befalse").on("click", function () {
+                that.beIdentify(false);
             });
 
             Wlib._bindLazyLoad();
+
+        },
+        beIdentify: function (tag) {
+            //be trure or false
+            var that = this;
+            var req = {
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token"),
+                type: tag || true
+            }
+            if (that.data.data.isidentify == 0 || that.data.data.isidentify == "") {
+                that.dom.loading.show();
+                Wlib.SendRequest("default/person/identify", req, "POST", function (data) {
+                    if (data.state == 1) {
+                        that.dom.loading.hide();
+                        Wlib.tips("操作成功");
+                        setTimeout(function () {
+                            location.reload();
+                        }, 3000);
+                    } else {
+                        that.dom.loading.hide();
+                        Wlib.tips("操作失败");
+                    }
+                });
+            } else {
+                Wlib.tips("您已经发表过观点~");
+            }
 
         },
         getData: function () {
@@ -149,11 +194,11 @@
 
             //@TODO : uid 已经验证手机号
             var req = {
-                id : that.data.id,
-                uid : localStorage.getItem("uid"),
-                token : localStorage.getItem("token")
+                id: that.data.id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
             }
-            Wlib.SendRequest("default/api/info",req,"GET",function(data){
+            Wlib.SendRequest("default/api/info", req, "GET", function (data) {
                 that.data.data = data;
                 that.renderUI();
                 that.recacheDom();
@@ -241,7 +286,7 @@
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token"),
-                type : 1
+                type: 1
             }
             that.dom.loading.show();
             if (that.data.data.collect == 0) {
@@ -275,23 +320,23 @@
 
 
         },
-        sendComm : function(){
+        sendComm: function () {
             var that = this;
             var req = {
                 id: that.data.id,
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token"),
                 type: 1,
-                content : that.dom.commText.val()
+                content: that.dom.commText.val()
             }
             that.dom.loading.show();
             Wlib.SendRequest("default/picture/comment", req, "POST", function (data) {
                 if (data.state == 1) {
                     that.dom.loading.hide();
                     Wlib.tips("评论成功");
-                    setTimeout(function(){
+                    setTimeout(function () {
                         location.reload();
-                    },3000)
+                    }, 3000)
 
                 } else {
                     that.dom.loading.hide();

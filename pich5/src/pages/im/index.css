@@ -85,7 +85,7 @@ p {
     #chatpanel li .message-content {
       border-radius: 5px;
       display: inline-block;
-      padding: 9px 16px;
+      padding: 4px 16px;
       word-break: break-all;
       text-align: left;
       position: relative;
@@ -114,7 +114,8 @@ p {
       background-color: #fff;
       color: #000;
       margin-right: 80px;
-      line-height: 30px; }
+      line-height: 30px;
+      top: 8px; }
       #chatpanel .sender .message-content:before {
         content: "";
         border-bottom: 7px solid transparent;
@@ -137,7 +138,8 @@ p {
       background-color: #b1ed8b;
       color: #000;
       margin-left: 70px;
-      line-height: 30px; }
+      line-height: 30px;
+      top: 8px; }
       #chatpanel .receiver .message-content:before {
         content: "";
         border-bottom: 7px solid transparent;
@@ -199,10 +201,18 @@ p {
   box-sizing: border-box;
   z-index: 99999; }
   #footer #textBox {
-    border: 1px solid #e6e6e6;
     background-color: #fff;
     border-radius: 4px;
-    width: 100%; }
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    #footer #textBox input {
+      display: block; }
+    #footer #textBox img {
+      margin-left: 10px;
+      width: 30px;
+      height: 20px; }
   #footer #content {
     padding: 4px 10px;
     line-height: 22px;

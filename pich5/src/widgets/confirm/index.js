@@ -42,7 +42,7 @@
             $("#J-Con-Sale").on("click",function(){
                 win.location.href = "../../pages/post/index.html?tag=10"
             });
-            $("#J-Con-Sale").on("click",function(){
+            $("#J-Con-Auo").on("click",function(){
                 win.location.href = "../../pages/post/index.html?tag=11"
             });
         }
