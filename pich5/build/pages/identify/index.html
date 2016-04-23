@@ -72,11 +72,11 @@
                     <span>看真</span>
                 </span>
                 <div class="b-hr">
-                    <span>1</span>
+                    <span>${data.identify_true}</span>
                     <div class="br-w">
-                        <div class="b-r-color" style="width: 10%;"></div>
+                        <div class="b-r-color" style="width: ${getPercentage(data.identify_true,data.identify_false)};"></div>
                     </div>
-                    <span>5</span>
+                    <span>${data.identify_false}</span>
                 </div>
 
                 <span class="b-label befalse">

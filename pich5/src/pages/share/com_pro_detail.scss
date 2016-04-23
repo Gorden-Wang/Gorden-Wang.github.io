@@ -1,0 +1,209 @@
+body {
+  background-color: #ebebeb;
+  font-family: HiraginoSansGB-W3, 'Hiragino Sans GB', Arial, Monaco, tahoma, arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  header {
+    background-color: #000;
+    text-align: center;
+    border-bottom: 1px solid #ffe629;
+
+    .swiper-wrapper {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+    }
+    .imgs-wrapper {
+      width: 100%;
+      height: 0px;
+      padding-bottom: 100%;
+      position: relative;
+    }
+
+    .back-img {
+      img {
+        height: 100%;
+        text-align: center;
+      }
+    }
+
+    .imgs-overlay {
+      position: absolute;
+      bottom: 0px;
+      height: 30px;
+      width: 100%;
+      padding: 0px 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      font-size: 12px;
+
+      .l-con {
+        flex: 1;
+        text-align: left;
+        #cuIndex {
+          color: #ffe326;
+        }
+        #cuIndex ~ span {
+          left: -4px;
+          position: relative;
+        }
+      }
+      .r-con {
+        & > span {
+          font-size: 10px;
+        }
+      }
+    }
+
+  }
+  .main {
+    .price-wrap {
+      display: flex;
+      padding: 15px 10px;
+      background-color: #ffffff;
+      align-items: center;
+
+      .price {
+        color: #f16158;
+        flex: 1;
+      }
+      .size {
+        color: #794300;
+        //background-color: #ffe326;
+        font-size: 12px;
+        border-width: 0px 7px 0px 20px;
+        display: inline-block;
+        height: 28px;
+
+        border-right: 5px;
+        border-image-source: url(../../images/share/tag-left.png);
+        border-image-slice: 0 7 0 20 fill;
+
+        & > span {
+          display: flex;
+          background-color: #ffe326;
+          height: 28px;
+          align-items: center;
+        }
+
+      }
+    }
+
+    .disc {
+      margin: 5px 0px;
+      background-color: #ffffff;
+
+      .tags-wrap {
+        padding: 12px 6px;
+        word-wrap: normal;
+
+        span {
+          display: inline-block;
+          color: #ffffff;
+          margin-right: 5px;
+          border-radius: 13px;
+          padding: 2px 5px;
+          margin-bottom: 6px;
+          font-size: 11px;
+        }
+        span:last-of-type {
+          margin-right: 0px;
+        }
+        .c1 {
+          background-color: #f37474;
+        }
+        .c2 {
+          background-color: #95bb2f;
+        }
+        .c3 {
+          background-color: #4dc0d1;
+        }
+        .c4 {
+          background-color: #8f76f8;
+        }
+      }
+
+      .disc-content {
+        padding: 0px 8px 15px 8px;
+        color: #666666;
+      }
+    }
+
+    .com-wrap {
+      margin: 5px 0px;
+      display: flex;
+      padding: 10px;
+      background-color: #ffffff;
+      align-items: center;
+
+      .l-img {
+        width:38px;
+        height: 38px;
+        border-radius: 100%;
+        overflow: hidden;
+        margin-right:10px;
+        img{
+          width:100%;
+          height:100%;
+        }
+      }
+
+      .r-con{
+        flex: 1;
+        font-size: 11px;
+        p.title{
+          color: #6a5252;
+        }
+        p.dis{
+          color: #b8b8b8;
+        }
+      }
+
+      .right{
+        border-top:2px solid #c3c3c8;
+        border-right:2px solid #c3c3c8;
+        display: inline-block;
+        width:10px;
+        height:10px;
+        transform:rotate(45deg)
+      }
+    }
+
+    .detail{
+      padding:15px 12px;
+      background-color: #ffffff;
+      font-size: 11px;
+      .d-title{
+        color: #b8b8b8;
+
+        &>span{
+          border-bottom: 1px solid  #ffe326;
+          display: inline-block;
+          padding-bottom:1px;
+        }
+      }
+
+      .d-sub{
+        color: #4f4f4f;
+        margin-bottom:15px;
+      }
+
+      .addLocation:after{
+        content: '';
+        background-image: url(../../images/share/com_detail_combo.png);
+        background-size: 10px 25px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width:10px;
+        height:10px;
+        background-position: 0 -14px;
+      }
+    }
+  }
+}

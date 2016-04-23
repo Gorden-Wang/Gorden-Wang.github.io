@@ -1,0 +1,193 @@
+body {
+  background-color: #ebebeb;
+  font-family: HiraginoSansGB-W3, 'Hiragino Sans GB', Arial, Monaco, tahoma, arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ffe629;
+    .com-logo {
+      width: 50px;
+      height: 50px;
+      margin: auto;
+      margin-bottom: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .com-title > span {
+      color: #6a5252;
+      border-bottom: 1px solid #ffe629;
+    }
+    & > span {
+      background-color: #c5ad86;
+      color: #ffffff;
+      font-size: 12px;
+      display: inline-block;
+      padding: 2px;
+      margin: 10px 0px;
+    }
+    &>p{
+      font-size: 11px;
+      color: #999999;
+    }
+
+  }
+
+  .ul-wrapper2{
+    padding: 10px;
+    ul{
+      overflow: hidden;
+      li:nth-of-type(2n){
+        margin-right: 0px;
+      }
+      li{
+        width: 49%;
+        margin-right: 2%;
+        float: left;
+        margin-bottom: 15px;
+
+        &>p{
+          font-size: 10px;
+          color: #6a5252;
+          text-align: center;
+          padding: 8px 0px;
+          background-color: #fbfbfb;
+        }
+      }
+
+      .t-w{
+        display: flex;
+        align-items: center;
+
+        img{
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+          margin-right: 10px;
+        }
+        &>div{
+          flex: 1;
+          font-size: 13px;
+
+          .lv{
+            font-size: 12px;
+            line-height: 13px;
+            background-color: #fdd102;
+            color: #ffffff;
+            display: inline-block;
+            padding: 0px 3px;
+            margin-left: 5px;
+          }
+
+
+          &>p:first-of-type{
+            //margin-bottom: 3px;
+            color: rgb( 76, 191, 209 );
+          }
+          &>p:last-of-type{
+            color: rgb( 204, 204, 204 );
+          }
+
+        }
+      }
+
+      .i-w{
+        width: 100%;
+        height: 0px;
+        padding-bottom: 100%;
+        position: relative;
+        margin-top: 10px;
+
+        a{
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 8px 8px 0px 0px;
+
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        &>div{
+          position: absolute;
+          left: -1px;
+          top: 0px;
+          z-index: 1;
+          width: 34px;
+          height: 34px;
+          display: inline-block;
+          span{
+            color: #ffffff;
+            font-size: 10px;
+            display: inline-block;
+            transform: rotate(-45deg);
+            text-align: center;
+          }
+        }
+      }
+
+      .b-w{
+        border-top: 1px solid #CCCCCC;
+        padding: 10px 0px;
+        display: flex;
+        background-color: #fbfbfb;
+        border-radius: 0px 0px 8px 8px;
+
+        p{
+          flex: 1;
+          text-align: center;
+        }
+        p:first-of-type{
+          color: #6a5252;
+          font-size: 10px;
+          text-align: center;
+          border-right: 1px solid #CCCCCC;
+        }
+
+        p:first-of-type:before{
+          content: '';
+          display: inline-block;
+          width:10px;
+          height:10px;
+          background-image: url(../../images/share/com_pro_list_icon1.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
+        p:last-of-type{
+          font-size: 10px;
+          color: #6a5252;
+
+          //span{
+          //  display: inline-block;
+          //  width: 15px;
+          //  height: 15px;
+          //  margin-right: 5px;
+          //}
+        }
+
+        p:last-of-type:before{
+          content: '';
+          display: inline-block;
+          width:11px;
+          height:11px;
+          background-image: url(../../images/share/com_pro_list_icon2.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-right:2px;
+        }
+      }
+    }
+  }
+
+}
