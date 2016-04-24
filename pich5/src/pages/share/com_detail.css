@@ -43,12 +43,12 @@ body {
       background-image: url(../../images/share/com_detial_loc.png); }
   body .ul-wrap {
     margin: 6px; }
-    body .ul-wrap li {
+    body .ul-wrap li > a {
       margin-bottom: 6px;
       background-color: #FFF;
       display: flex;
       border-radius: 6px; }
-      body .ul-wrap li .l-img {
+      body .ul-wrap li > a .l-img {
         width: 80px;
         height: 103px;
         display: flex;
@@ -56,36 +56,114 @@ body {
         justify-content: center;
         text-align: center;
         vertical-align: middle; }
-        body .ul-wrap li .l-img img {
+        body .ul-wrap li > a .l-img img {
           width: 100%; }
-      body .ul-wrap li .r-con {
+      body .ul-wrap li > a .r-con {
         flex: 1;
         padding-left: 12px;
         padding-right: 12px; }
-        body .ul-wrap li .r-con .r-t-wrap {
+        body .ul-wrap li > a .r-con .r-t-wrap {
           display: flex;
           align-items: center;
           justify-content: center;
           height: 35px;
           border-bottom: 1px dashed #cccccc;
           font-size: 11px; }
-          body .ul-wrap li .r-con .r-t-wrap p {
+          body .ul-wrap li > a .r-con .r-t-wrap p {
             flex: 1;
             color: #6a5252; }
-          body .ul-wrap li .r-con .r-t-wrap span {
+          body .ul-wrap li > a .r-con .r-t-wrap span {
             color: #ffffff;
             background-color: #c5ad86;
             padding: 0px 6px;
             border-radius: 2px 0px 0px 2px; }
-        body .ul-wrap li .r-con .r-b-wrap {
+        body .ul-wrap li > a .r-con .r-b-wrap {
           color: #999999;
           font-size: 10px; }
-          body .ul-wrap li .r-con .r-b-wrap p:first-of-type {
+          body .ul-wrap li > a .r-con .r-b-wrap p:first-of-type {
             margin-top: 8px;
             padding-left: 12px; }
-          body .ul-wrap li .r-con .r-b-wrap p:last-of-type {
+          body .ul-wrap li > a .r-con .r-b-wrap p:last-of-type {
             font-size: 10px;
             padding-left: 12px; }
+  body .ul-wrapper3 {
+    display: flex;
+    padding: 10px 10px;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    background-color: #ffffff; }
+    body .ul-wrapper3 ul {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      height: 30px; }
+      body .ul-wrapper3 ul li {
+        margin-right: 10px;
+        height: 30px;
+        position: relative;
+        width: 30px; }
+        body .ul-wrapper3 ul li a {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          overflow: hidden; }
+          body .ul-wrapper3 ul li a img {
+            width: 100%;
+            height: 100%; }
+    body .ul-wrapper3 > span {
+      font-size: 13px;
+      color: #f27272;
+      width: 8em; }
+    body .ul-wrapper3 span.icon9 {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-right: 20px; }
+  body .ul-wrapper4 {
+    background-color: #ffffff; }
+    body .ul-wrapper4 li {
+      padding: 10px;
+      border-bottom: 1px solid #efefef; }
+      body .ul-wrapper4 li .t-w {
+        display: flex;
+        align-items: center; }
+        body .ul-wrapper4 li .t-w img {
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+          margin-right: 10px; }
+        body .ul-wrapper4 li .t-w > div {
+          flex: 1;
+          font-size: 13px; }
+          body .ul-wrapper4 li .t-w > div .lv {
+            font-size: 13px;
+            background-color: #fdd102;
+            color: #ffffff;
+            display: inline-block;
+            padding: 0px 3px;
+            margin-left: 5px; }
+          body .ul-wrapper4 li .t-w > div > p:first-of-type {
+            color: #4cbfd1; }
+          body .ul-wrapper4 li .t-w > div > p:last-of-type {
+            color: #cccccc; }
+          body .ul-wrapper4 li .t-w > div .t-t {
+            display: flex; }
+            body .ul-wrapper4 li .t-w > div .t-t p {
+              flex: 1;
+              color: #4dc0d1; }
+            body .ul-wrapper4 li .t-w > div .t-t > span {
+              color: #bfbfbf; }
+          body .ul-wrapper4 li .t-w > div .t-c {
+            color: #7d6161;
+            line-height: 1.2em; }
+            body .ul-wrapper4 li .t-w > div .t-c span {
+              display: inline-block;
+              color: #4dc0d1;
+              margin: 0px 3px; }
   body .combolIcon {
     background-image: url(../../images/share/com_detail_combo.png);
     background-size: 10px 25px;

@@ -222,6 +222,9 @@ window.Wlib = (function () {
             })(data, method);
 
             var url = (function () {
+                if(document.domain == 'localhost'){
+                    return "http://115.159.100.197/index.php?r=";
+                }
                 return location.protocol + "//"+document.domain+"/index.php?r=";
             })();
 
@@ -500,6 +503,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 

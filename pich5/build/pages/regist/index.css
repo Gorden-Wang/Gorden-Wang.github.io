@@ -1,1 +1,57 @@
-body{background-color:#ffe326}#page{font-family:HY}#page .wrap{z-index:1}#page p{color:#6a5252;text-align:center;margin:40px 0}#page .form-contain{padding:12px 8px;background-color:#fff;margin:0 10px 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}#page .form-contain input{display:block;width:100%;font-size:14px;background-color:transparent}#page .button{background-color:#d6b31b;text-align:center;padding:12px;color:#e3cc7c;margin:0 10px 40px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}#page .loverlay{position:absolute;width:100%;top:0;bottom:0;height:100%;background-color:rgba(0,0,0,.3);display:none}#page .fixebottom{position:fixed;bottom:0;left:0;width:100%;background-color:#fff;z-index:5}#page .fixebottom p{margin:20px 0}#page .fixebottom .button{margin-bottom:20px}#page .fixebottom .confirm{background-color:#ffe326;color:#7b4901}#page .fixebottom .canl{background-color:#fff192;color:#7b4901}
+body {
+  background-color: #ffe326; }
+
+#page {
+  font-family: "HY"; }
+  #page .wrap {
+    z-index: 1; }
+  #page p {
+    color: #6a5252;
+    text-align: center;
+    margin: 40px 0px; }
+  #page .form-contain {
+    padding: 12px 8px;
+    background-color: white;
+    margin: 0px 10px 10px 10px;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px; }
+    #page .form-contain input {
+      display: block;
+      width: 100%;
+      font-size: 14px;
+      background-color: transparent; }
+  #page .button {
+    background-color: #d6b31b;
+    text-align: center;
+    padding: 12px;
+    color: #e3cc7c;
+    margin: 0px 10px 40px 10px;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px; }
+  #page .loverlay {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none; }
+  #page .fixebottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    z-index: 5; }
+    #page .fixebottom p {
+      margin: 20px 0px; }
+    #page .fixebottom .button {
+      margin-bottom: 20px; }
+    #page .fixebottom .confirm {
+      background-color: #ffe326;
+      color: #7b4901; }
+    #page .fixebottom .canl {
+      background-color: #fff192;
+      color: #7b4901; }

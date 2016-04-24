@@ -6,7 +6,8 @@ body {
   body header .imgs-wrapper {
     width: 100%;
     height: 0px;
-    padding-bottom: 51.25%; }
+    padding-bottom: 51.25%;
+    background-color: #000; }
   body header .back-img img {
     width: 100%;
     text-align: center; }
@@ -65,12 +66,12 @@ body {
       color: #f07379; }
   body .main-wrap .ul-wrap {
     margin: 6px; }
-    body .main-wrap .ul-wrap li {
+    body .main-wrap .ul-wrap li > a {
       margin-bottom: 6px;
       background-color: #FFF;
       display: flex;
       border-radius: 6px; }
-      body .main-wrap .ul-wrap li .l-img {
+      body .main-wrap .ul-wrap li > a .l-img {
         width: 80px;
         height: 103px;
         display: flex;
@@ -78,32 +79,32 @@ body {
         justify-content: center;
         text-align: center;
         vertical-align: middle; }
-        body .main-wrap .ul-wrap li .l-img img {
+        body .main-wrap .ul-wrap li > a .l-img img {
           width: 100%; }
-      body .main-wrap .ul-wrap li .r-con {
+      body .main-wrap .ul-wrap li > a .r-con {
         flex: 1;
         padding-left: 12px; }
-        body .main-wrap .ul-wrap li .r-con .r-t-wrap {
+        body .main-wrap .ul-wrap li > a .r-con .r-t-wrap {
           display: flex;
           align-items: center;
           justify-content: center;
           height: 35px;
           border-bottom: 1px dashed #cccccc;
           font-size: 11px; }
-          body .main-wrap .ul-wrap li .r-con .r-t-wrap p {
+          body .main-wrap .ul-wrap li > a .r-con .r-t-wrap p {
             flex: 1;
             color: #6a5252; }
-          body .main-wrap .ul-wrap li .r-con .r-t-wrap span {
+          body .main-wrap .ul-wrap li > a .r-con .r-t-wrap span {
             color: #ffffff;
             background-color: #c5ad86;
             padding: 0px 6px;
             border-radius: 2px 0px 0px 2px; }
-        body .main-wrap .ul-wrap li .r-con .r-b-wrap {
+        body .main-wrap .ul-wrap li > a .r-con .r-b-wrap {
           color: #999999;
           font-size: 11px; }
-          body .main-wrap .ul-wrap li .r-con .r-b-wrap p:first-of-type {
+          body .main-wrap .ul-wrap li > a .r-con .r-b-wrap p:first-of-type {
             margin-top: 8px; }
-          body .main-wrap .ul-wrap li .r-con .r-b-wrap p:last-of-type {
+          body .main-wrap .ul-wrap li > a .r-con .r-b-wrap p:last-of-type {
             font-size: 10px; }
 
 /*# sourceMappingURL=com_list.css.map */

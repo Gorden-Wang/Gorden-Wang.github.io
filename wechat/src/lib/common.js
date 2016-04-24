@@ -252,16 +252,19 @@ window.Wlib = (function () {
                 })
             },
             shareTo: function (title, desc, link, img, success, cancel) {
-                wx.showMenuItems({
-                    menuList : [
-                        "menuItem:share:appMessage",
-                        "menuItem:share:timeline"
-                    ],
-                    success : function(){
+                wx.ready(function(){
+                    wx.showMenuItems({
+                        menuList : [
+                            "menuItem:share:appMessage",
+                            "menuItem:share:timeline"
+                        ],
+                        success : function(){
 
-                    }
+                        }
 
+                    });
                 });
+
 
                 var urlPre = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechat" : "http://www.hmsgtech.com/wechat";
                 var t = title || "伊健康，您身边的健康专家";
@@ -603,6 +606,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 

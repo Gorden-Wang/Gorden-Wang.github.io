@@ -13,13 +13,15 @@
         init: function () {
             this.cacheData();
             this.cacheDom();
-            this.renderUI();
-            this.bindEvent();
+            this.fetchData();
         },
         cacheData: function () {
             var that = this;
 
-            that.data = {}
+            that.data = {};
+            that.data.req = {
+                id : Wlib.getRequestParam("id")
+            }
 
         },
         cacheDom: function () {
@@ -52,6 +54,20 @@
             });
             Wlib._bindLazyLoad();
         },
+
+        fetchData : function(){
+            var that = this;
+            Wlib.SendRequest("default/expo/collectibles", that.data.req, "GET", function (data) {
+                if (data.state == 1) {
+                    that.data.data = data;
+                    that.renderUI();
+                    that.bindEvent();
+
+                } else {
+                    Wlib.tips("系统繁忙,请稍后再试~")
+                }
+            });
+        }
 
     }
 

@@ -24,19 +24,15 @@
     <header>
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
+                {@each banner as item}
                 <div class="swiper-slide">
 
-                    <a class="back-img"> <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F"> </a>
+                    <a class="back-img">
+                        <img class="swiper-lazy"
+                             data-src="${item.picture}">
+                    </a>
                 </div>
-                <div class="swiper-slide">
-
-                    <a class="back-img"> <img src="../../images/pic1.png"> </a>
-                </div>
-                <div class="swiper-slide">
-
-                    <a class="back-img"> <img src="../../images/pic1.png"> </a>
-                </div>
-
+                {@/each}
             </div>
 
             <div class="swiper-pagination"></div>
@@ -46,12 +42,12 @@
     <section class="main-wrap">
         <div class="tabs">
             <ul>
-                <li class="sel">
+                <li data-type="" class="sel">
                     <span class="tabItem">
                       <i class="icon1 icon"></i> <b>预展中</b>
                     </span>
                 </li>
-                <li>
+                <li data-type="2">
                     <span class="tabItem">
                         <i class="icon2 icon"></i><b>已结束</b>
                     </span>
@@ -61,80 +57,35 @@
 
         <div class="ul-wrap">
             <ul>
-                <li>
-                    <div class="l-img">
-                        <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F">
-                    </div>
 
-                    <div class="r-con">
-                        <div class="r-t-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <span>北京</span>
-                        </div>
-
-                        <div class="r-b-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <p>拍卖日期.2016年02月27日 - 03月03日</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="l-img">
-                        <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F">
-                    </div>
-
-                    <div class="r-con">
-                        <div class="r-t-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <span>北京</span>
-                        </div>
-
-                        <div class="r-b-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <p>拍卖日期.2016年02月27日 - 03月03日</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="l-img">
-                        <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F">
-                    </div>
-
-                    <div class="r-con">
-                        <div class="r-t-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <span>北京</span>
-                        </div>
-
-                        <div class="r-b-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <p>拍卖日期.2016年02月27日 - 03月03日</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="l-img">
-                        <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F">
-                    </div>
-
-                    <div class="r-con">
-                        <div class="r-t-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <span>北京</span>
-                        </div>
-
-                        <div class="r-b-wrap">
-                            <p>北京保利国际拍卖有限公司</p>
-                            <p>拍卖日期.2016年02月27日 - 03月03日</p>
-                        </div>
-                    </div>
-                </li>
             </ul>
         </div>
 
     </section>
 
 
+</script>
+
+<script type="template/juicer" id="tplItem">
+    {@each list as item}
+    <li data-url="../../pages/share/com——detail.html?id=${item.id}">
+        <div class="l-img">
+            <img class="lazy-image" lazy-image="${item.logo}">
+        </div>
+
+        <div class="r-con">
+            <div class="r-t-wrap">
+                <p>${item.apellation}</p>
+                <span>${item.city}</span>
+            </div>
+
+            <div class="r-b-wrap">
+                <p>${item.expo_name}</p>
+                <p>${item.previewtime}</p>
+            </div>
+        </div>
+    </li>
+    {@/each}
 </script>
 
 <script src="../../lib/libAll.js?version=0.2.8"></script>

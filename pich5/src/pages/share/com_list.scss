@@ -8,6 +8,8 @@ body {
       width: 100%;
       height: 0px;
       padding-bottom: percentage(328/640);
+      background-color: #000;
+
     }
 
     .back-img {
@@ -101,7 +103,7 @@ body {
     .ul-wrap {
       margin: 6px;
 
-      li {
+      li>a {
         margin-bottom: 6px;
         background-color: #FFF;
         display: flex;

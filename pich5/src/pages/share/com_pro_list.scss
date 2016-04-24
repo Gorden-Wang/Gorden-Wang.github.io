@@ -50,7 +50,10 @@ body {
         margin-right: 2%;
         float: left;
         margin-bottom: 15px;
+        &>a{
+          display: block;
 
+        }
         &>p{
           font-size: 10px;
           color: #6a5252;

@@ -24,10 +24,11 @@
     <header>
         <section class="imgs-wrapper swiper-container " id="pics">
             <div class="swiper-wrapper swiper-container-horizontal">
-                {@each i in range(0,10)}
-                <div class="swiper-slide">
-                    <a class="back-img"> <img class="swiper-lazy"
-                                              data-src="http://www.talkart.cc/upload/sale/32_1461403357419499.jpg">
+                {@each data.list as item}
+                <div class="swiper-slide" data-title="${item.title}" data-lot="${item.lot}">
+                    <a class="back-img">
+                        <img class="swiper-lazy"
+                                              data-src="${item.picture}">
                         <div class="swiper-lazy-preloader"></div>
                     </a>
                 </div>
@@ -37,11 +38,11 @@
             <div class="imgs-overlay">
                 <p class="l-con">
                     <span id="cuIndex">1</span>
-                    <span>/328</span>
+                    <span>/${data.list.length}</span>
                 </p>
 
                 <span class="r-con">
-                    LOT号：<span>0024</span>
+                    LOT号：<span>${data.list[0].lot}</span>
                 </span>
             </div>
         </section>

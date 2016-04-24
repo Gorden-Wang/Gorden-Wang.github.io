@@ -58,7 +58,7 @@ body {
   .ul-wrap {
     margin: 6px;
 
-    li {
+    li>a {
       margin-bottom: 6px;
       background-color: #FFF;
       display: flex;
@@ -118,6 +118,119 @@ body {
       }
     }
 
+  }
+
+  .ul-wrapper3 {
+    display: flex;
+    padding: 10px 10px;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    background-color: #ffffff;
+    ul {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      height: 30px;
+      li {
+        margin-right: 10px;
+        height: 30px;
+        position: relative;
+        width: 30px;
+        a {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    & > span {
+      font-size: 13px;
+      color: rgb(242, 114, 114);
+      width: 8em;
+    }
+
+    span.icon9 {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-right: 20px;
+    }
+
+  }
+
+  .ul-wrapper4 {
+    background-color: #ffffff;
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #efefef;
+      .t-w {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+          margin-right: 10px;
+        }
+        & > div {
+          flex: 1;
+          font-size: 13px;
+
+          .lv {
+            font-size: 13px;
+            background-color: #fdd102;
+            color: #ffffff;
+            display: inline-block;
+            padding: 0px 3px;
+            margin-left: 5px;
+          }
+
+          & > p:first-of-type {
+            //margin-bottom: 3px;
+            color: rgb(76, 191, 209);
+          }
+          & > p:last-of-type {
+            color: rgb(204, 204, 204);
+          }
+
+          .t-t {
+            display: flex;
+
+            p {
+              flex: 1;
+              color: rgb(77, 192, 209);
+            }
+            & > span {
+              color: rgb(191, 191, 191);
+            }
+          }
+
+          .t-c {
+            color: rgb(125, 97, 97);
+            line-height: 1.2em;
+
+            span {
+              display: inline-block;
+              color: #4dc0d1;
+              margin: 0px 3px;
+            }
+          }
+
+        }
+      }
+    }
   }
 
   .combolIcon {

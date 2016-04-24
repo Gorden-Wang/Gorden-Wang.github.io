@@ -22,22 +22,22 @@
 <script type="template/juicer" id="tpl">
     <header>
         <div class="com-logo">
-            <img src="../../images/pic.png">
+            <img src="${data.logo}">
         </div>
         <div class="com-title">
             <span>
-                北京保利国际拍卖有限公司
+                ${data.apellation}
             </span>
 
         </div>
         <span>
-            2016迎春拍卖会
+            ${data.expo_name}
         </span>
         <div class="b-btn">
-            <div class="btn" id="tel">
+            <div class="btn" id="tel" data-num="${data.tel}">
 
             </div>
-            <div class="btn" id="loc">
+            <div class="btn" id="loc" data-add="${data.longitude},${data.latitude}">
 
             </div>
         </div>
@@ -45,50 +45,80 @@
 
     <div class="ul-wrap">
         <ul>
+            {@each data.list as item}
             <li>
-                <div class="l-img">
-                    <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F">
-                </div>
-
-                <div class="r-con">
-                    <div class="r-t-wrap">
-                        <p>中国书画近现代专场(332)</p>
+                <a href="../../pages/share/com_pro_list.html?id=${item.id}">
+                    <div class="l-img">
+                        <img lazy-image="${item.thumbnail}" class="lazy-image">
                     </div>
 
-                    <div class="r-b-wrap">
-                        <p class="r-b-time combolIcon timeicon">
-                            <!--<span class="combolIcon timeicon"></span>-->
-                            <span>2016年2月27日-3月1日</span></p>
-                        <p class="r-b-loc combolIcon locicon">
-                            <!--<span class="combolIcon locicon"></span>-->
-                            <span>东京圆顶饭店璞利斯姆大厅东京圆顶饭店璞利斯姆</span>
-                        </p>
+                    <div class="r-con">
+                        <div class="r-t-wrap">
+                            <p>${item.room_name})</p>
+                        </div>
+
+                        <div class="r-b-wrap">
+                            <p class="r-b-time combolIcon timeicon">
+                                <span>${item.previewtime}</span></p>
+                            <p class="r-b-loc combolIcon locicon">
+                                <!--<span class="combolIcon locicon"></span>-->
+                                <span>${item.address}</span>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </li>
-            <li>
-                <div class="l-img">
-                    <img src="http://r4.ykimg.com/05100000566F8E0767BC3D79FC0B746F">
-                </div>
-
-                <div class="r-con">
-                    <div class="r-t-wrap">
-                        <p>中国书画近现代专场中国书画近现代专场(332)</p>
-                    </div>
-
-                    <div class="r-b-wrap">
-                        <p class="r-b-time combolIcon timeicon">
-                            <!--<span class="combolIcon timeicon"></span>-->
-                            <span>2016年2月27日-3月1日</span></p>
-                        <p class="r-b-loc combolIcon locicon">
-                            <!--<span class="combolIcon locicon"></span>-->
-                            <span>东京圆顶饭店璞利斯姆大厅东京圆顶饭店璞利斯姆</span>
-                        </p>
-                    </div>
-                </div>
-            </li>
+            {@/each}
         </ul>
     </div>
+
+    <section class="heart-wrapper ul-wrapper3">
+            <span class="index-icon icon9">
+
+            </span>
+        {@if data.love.length > 0}
+        <ul id="praise_list">
+            {@each data.love as item}
+            <li>
+                <a>
+                    <img class="lazy-image" lazy-image="${item.minlogo}">
+                </a>
+
+            </li>
+            {@/each}
+        </ul>
+        {@/if}
+    </section>
+
+    <section class="reply-wrapper ul-wrapper4">
+        <ul>
+            {@each data.comment as item,index}
+            <li>
+                <div class="t-w">
+                    <img class="lazy-image" lazy-image="${item.from_logo}">
+
+                    <div class="r-w">
+                        <div class="t-t">
+                            <p>
+                                ${item.from_name}
+                            </p>
+
+                            <span> ${item.comm_time} </span>
+                        </div>
+
+                        <div class="t-c">
+                            {@if item.to_name}
+                            回复<span>${item.to_name}</span>：
+                            {@/if}
+                            ${item.content}
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            {@/each}
+        </ul>
+    </section>
 </script>
 
 <script src="../../lib/libAll.js"></script>
