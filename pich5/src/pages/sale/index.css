@@ -48,21 +48,20 @@
       #page .price-wrapper > p > span {
         font-size: 12px;
         color: #cccccc; }
-  #page .label-icon {
-    font-size: 14px;
-    display: inline-block;
+  #page .size {
     color: #794300;
-    border-image: url(../../images/common/label.png) 0 0 0 16 round;
-    border-left: 15px solid transparent;
-    border-top: 0px;
-    border-bottom: 0px;
-    padding: 3px;
-    position: relative;
-    background-color: #ffe326;
-    border-radius: 0px 4px 4px 0px;
-    padding-left: 0px; }
-    #page .label-icon span {
-      background-color: #ffe326; }
+    font-size: 12px;
+    border-width: 0px 7px 0px 20px;
+    display: inline-block;
+    height: 28px;
+    border-right: 5px;
+    border-image-source: url(../../images/share/tag-left.png);
+    border-image-slice: 0 7 0 20 fill; }
+    #page .size > span {
+      display: flex;
+      background-color: #ffe326;
+      height: 28px;
+      align-items: center; }
   #page .seller-wrapper {
     display: flex;
     margin: 5px 0px;

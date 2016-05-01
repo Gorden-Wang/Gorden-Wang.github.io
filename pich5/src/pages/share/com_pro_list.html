@@ -40,8 +40,8 @@
 
     <section class="ul-wrapper2">
         <ul>
-            {@each data.list as item}
-            <li onclick="location.href='../../pages/share/com_pro_detail.html?id=${item.id}'">
+            {@each data.list as item,index}
+            <li onclick="location.href='../../pages/share/com_pro_detail.html?id=${req.room_id}&index=${index}'">
                 <div class="i-w">
                     <a>
                         <img class="lazy-image" lazy-image="${item.picture}">

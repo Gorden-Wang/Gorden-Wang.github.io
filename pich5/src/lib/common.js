@@ -43,11 +43,11 @@ window.Wlib = (function () {
         alert: function (content, btn, callback) {
             var sty = "color: white;text-align: center;font-size: 15px;margin-top: 20px; width: 5em;height: 3em;"
             var bgwrapper = $("<div class = 'fixed fadeIn animated' style='z-index: 502'>" + content + "</div>");
-            bgwrapper.append("<button style='"+sty+"'>"+btn+"</button>");
+            bgwrapper.append("<button style='" + sty + "'>" + btn + "</button>");
             $("body").append("<div class='alert-bg'></div>");
             $("body").append(bgwrapper);
             $(bgwrapper).find("button").on("click", function () {
-                callback ? callback() : $(bgwrapper).remove(),$(".alert-bg").remove();
+                callback ? callback() : $(bgwrapper).remove(), $(".alert-bg").remove();
             })
 
 
@@ -222,10 +222,10 @@ window.Wlib = (function () {
             })(data, method);
 
             var url = (function () {
-                if(document.domain == 'localhost'){
+                if (document.domain == 'localhost') {
                     return "http://115.159.100.197/index.php?r=";
                 }
-                return location.protocol + "//"+document.domain+"/index.php?r=";
+                return location.protocol + "//" + document.domain + "/index.php?r=";
             })();
 
             var obj = {
@@ -301,18 +301,18 @@ window.Wlib = (function () {
                 }
             })
         },
-        getTimeZone : function(re){
-            if(!re){
+        getTimeZone: function (re) {
+            if (!re) {
                 return "";
             }
-           //var date = new Date(new Date(re).getTime()-8*3600*1000);
-           // var y = date.getFullYear(),
-           //     m = (date.getMonth()+ 1)<10 ? "0"+(date.getMonth()+ 1) : (date.getMonth()+ 1),
-           //     d = date.getDate()<10 ? "0"+date.getDate() : date.getDate(),
-           //     h = date.getHours()<10 ? "0"+date.getHours() : date.getHours(),
-           //     mm = (date.getMinutes())<10? "0"+date.getMinutes() : date.getMinutes();
-           // return y+"-"+m+"-"+d+" "+h+":"+mm;
-            return re.replace("T"," ");
+            //var date = new Date(new Date(re).getTime()-8*3600*1000);
+            // var y = date.getFullYear(),
+            //     m = (date.getMonth()+ 1)<10 ? "0"+(date.getMonth()+ 1) : (date.getMonth()+ 1),
+            //     d = date.getDate()<10 ? "0"+date.getDate() : date.getDate(),
+            //     h = date.getHours()<10 ? "0"+date.getHours() : date.getHours(),
+            //     mm = (date.getMinutes())<10? "0"+date.getMinutes() : date.getMinutes();
+            // return y+"-"+m+"-"+d+" "+h+":"+mm;
+            return re.replace("T", " ");
 
 
         },
@@ -327,9 +327,9 @@ window.Wlib = (function () {
                     localStorage.setItem("uid", Wlib.getRequestParam("uid"));
                     localStorage.setItem("token", Wlib.getRequestParam("token"));
                     Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
-                    localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
-                    localStorage.setItem("openid",Wlib.getRequestParam("open_id"));
-                    localStorage.setItem("imtoken",Wlib.getRequestParam("password"));
+                    localStorage.setItem("isbind", Wlib.getRequestParam("isbind"));
+                    localStorage.setItem("openid", Wlib.getRequestParam("open_id"));
+                    localStorage.setItem("imtoken", Wlib.getRequestParam("password"));
                 }
 
                 if (localStorage.getItem("uid") && localStorage.getItem("token")) {
@@ -360,12 +360,12 @@ window.Wlib = (function () {
                     localStorage.setItem("uid", Wlib.getRequestParam("uid"));
                     localStorage.setItem("token", Wlib.getRequestParam("token"));
                     Wlib.getRequestParam("avatar") && localStorage.setItem("avatar", Wlib.getRequestParam("avatar"));
-                    localStorage.setItem("isbind",Wlib.getRequestParam("isbind"));
-                    localStorage.setItem("openid",Wlib.getRequestParam("open_id"));
-                    localStorage.setItem("imtoken",Wlib.getRequestParam("password"));
+                    localStorage.setItem("isbind", Wlib.getRequestParam("isbind"));
+                    localStorage.setItem("openid", Wlib.getRequestParam("open_id"));
+                    localStorage.setItem("imtoken", Wlib.getRequestParam("password"));
 
                     callback && callback();
-                }else{
+                } else {
                     $.ajax({
                         url: "http://www.talkart.cc/index.php?r=wechat/wechat/authoriztion&url=" + url,
                         dataType: "JSONP",
@@ -381,6 +381,16 @@ window.Wlib = (function () {
                             alert("服务器错误，请稍后重试。");
                         }
                     })
+                }
+            },
+            checkLogin: function (callback, url) {
+                var that = this;
+                if (localStorage.getItem("uid") && localStorage.getItem("token")) {
+                    //认为已经登录过了.不需要授权.
+                    callback && callback();
+                    return;
+                } else {
+                    Wlib.wx.forceLogin(callback, url);
                 }
             },
             getJSSign: function (url, callback) {
@@ -421,23 +431,73 @@ window.Wlib = (function () {
                 callback && callback();
             },
             hideMenu: function () {
-                wx.hideMenuItems({
-                    menuList: [
-                        "menuItem:share:qq",
-                        "menuItem:share:weiboApp",
-                        "menuItem:share:QZone",
-                        "menuItem:share:appMessage",
-                        "menuItem:share:timeline",
-                        "menuItem:copyUrl",
-                        "menuItem:openWithQQBrowser",
-                        "menuItem:openWithSafari",
-                        "menuItem:share:email",
-                        "menuItem:favorite"
-                    ], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                    success: function () {
+                wx.ready(function () {
+                    wx.hideMenuItems({
+                        menuList: [
+                            "menuItem:share:qq",
+                            "menuItem:share:weiboApp",
+                            "menuItem:share:QZone",
+                            "menuItem:share:appMessage",
+                            "menuItem:share:timeline",
+                            "menuItem:copyUrl",
+                            "menuItem:openWithQQBrowser",
+                            "menuItem:openWithSafari",
+                            "menuItem:share:email",
+                            "menuItem:favorite"
+                        ], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                        success: function () {
 
-                    }
+                        }
+                    });
                 });
+
+            },
+            shareTo: function (title, desc, link, img, success, cancel) {
+                wx.ready(function () {
+                    wx.showMenuItems({
+                        menuList: [
+                            "menuItem:share:appMessage",
+                            "menuItem:share:timeline"
+                        ],
+                        success: function () {
+
+                        }
+
+                    });
+
+
+                    var urlPre = document.domain != "www.hmsgtech.com" ? "http://test.hmsgtech.com/wechat" : "http://www.hmsgtech.com/wechat";
+                    var t = title || "说画";
+                    var d = desc || "";
+                    //var l = addShareParam(link || location.href.split("#")[0]);
+                    var i = img || "/images/about/logo.png";
+                    wx.onMenuShareTimeline({
+                        title: t, // 分享标题
+                        desc : desc,
+                        link: link, // 分享链接
+                        imgUrl: img, //'../../images/about/logo.png', // 分享图标
+                        success: function () {
+                            success && success()
+                        },
+                        cancel: function () {
+                            cancel && cancel()
+                        }
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: t, // 分享标题
+                        link: link, // 分享链接,
+                        desc: desc,
+                        imgUrl: img, //'../../images/about/logo.png', // 分享图标
+                        success: function () {
+                            success && success()
+                        },
+                        cancel: function () {
+                            cancel && cancel()
+                        }
+                    });
+                });
+
+
             },
             //TODO : 难道需要一个Oid或者金额什么的吗？
             pay: function (url) {
@@ -486,7 +546,7 @@ window.Wlib = (function () {
                     }
                 });
             },
-            getLocation : function(){
+            getLocation: function () {
                 wx.getLocation({
                     type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
                     success: function (res) {
@@ -503,6 +563,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("daily", "");
+    return new lib("publish", "");
 })($);
 

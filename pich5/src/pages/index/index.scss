@@ -286,6 +286,18 @@
           &>p:first-of-type{
             //margin-bottom: 3px;
             color: rgb( 76, 191, 209 );
+            display: flex;
+
+            span.name-wrap{
+              display: block;
+              flex:1;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              word-break: break-all;
+              overflow: hidden;
+            }
+
+
           }
           &>p:last-of-type{
             color: rgb( 204, 204, 204 );
@@ -439,6 +451,18 @@
         &>p:first-of-type{
           //margin-bottom: 3px;
           color: rgb( 76, 191, 209 );
+          display: flex;
+
+          span.name-wrap{
+            display: block;
+            flex:1;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+          }
+
+
         }
         &>p:last-of-type{
           color: rgb( 204, 204, 204 );

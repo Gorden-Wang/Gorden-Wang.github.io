@@ -10,10 +10,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>广场</title>
     <link href="../../lib/boot.css" rel="stylesheet">
-    <link href="../../widgets/swiper/index.css?version=0.2.8" type="text/css" rel="stylesheet"/>
-    <link href="../../pages/index/index.css?version=0.2.8" type="text/css" rel="stylesheet"/>
-    <link href="../../widgets/footer/index.css?version=0.2.8" type="text/css" rel="stylesheet"/>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.8"></script>
+    <link href="../../widgets/swiper/index.css?version=0.6.2" type="text/css" rel="stylesheet"/>
+    <link href="../../pages/index/index.css?version=0.6.2" type="text/css" rel="stylesheet"/>
+    <link href="../../widgets/footer/index.css?version=0.6.2" type="text/css" rel="stylesheet"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.6.2"></script>
 
 </head>
 <body>
@@ -159,11 +159,17 @@
             {@each data.new_painting as item}
             <li data-id="${getId(item.url)}" data-url="${getType(item.type,item.id)}">
                 <div class="t-w">
+                    {@if item.avatar}
                     <img lazy-image="${item.avatar}" class="lazy-image">
+                    {@else}
+                    <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                    {@/if}
 
                     <div>
                         <p>
-                            ${item.nickname}
+                            <span class="name-wrap">
+                                ${item.nickname}
+                            </span>
                             <span class="lv">V${item.level}</span>
                         </p>
 
@@ -246,10 +252,15 @@
     <li data-id="${item.id}" data-url="${getFuckType(item.type,item.id)}">
         <div class="top-li">
             <div class="t-w flex1">
+                {@if item.logo}
                 <img lazy-image="${item.logo}" class="lazy-image">
-
+                {@else}
+                <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                {@/if}
                 <div>
-                    <p> ${item.nickname} <span class="lv">V${item.level}</span></p>
+                    <p>
+                        <span class="name-wrap">${item.nickname}</span><span class="lv">V${item.level}</span>
+                    </p>
 
                     <p> ${item.add_time} </p>
                 </div>
@@ -335,10 +346,10 @@
     {@/each}
 </script>
 
-<script src="../../lib/libAll.js?version=0.2.8"></script>
-<script src="../../widgets/swiper/index.js?version=0.2.8"></script>
-<script src="../../widgets/footer/index.js?version=0.2.8"></script>
-<script src="../../pages/index/index.js?version=0.2.8"></script>
+<script src="../../lib/libAll.js?version=0.6.2"></script>
+<script src="../../widgets/swiper/index.js?version=0.6.2"></script>
+<script src="../../widgets/footer/index.js?version=0.6.2"></script>
+<script src="../../pages/index/index.js?version=0.6.2"></script>
 
 <script>
 

@@ -3,7 +3,16 @@
  */
 (function (win, $) {
     var Index = function () {
-        this.init();
+        var that = this;
+
+        Wlib.wx.checkLogin(function () {
+            Wlib.wx.getJSSign('', function (data) {
+                Wlib.wx.jsConfig(data, function () {
+                    Wlib.wx.hideMenu();
+                    that.init();
+                });
+            });
+        });
     }
 
     Index.prototype = {
@@ -73,6 +82,9 @@
                 }
                 return res;
             });
+            juicer.register("makeHackInputDisplay", function (uid) {
+                return uid == localStorage.getItem("uid") ? false : true;
+            });
 
             juicer.register("getPercentage", function (t, f) {
                 t = t - 0;
@@ -85,8 +97,23 @@
 
 
         },
+        shareWX: function () {
+            var that = this;
+            setTimeout(function(){
+                var obj = {
+                    title: '微拍时代 全民说画',
+                    desc: that.data.data.author + '作品正在鉴赏',
+                    link: 'http://wx.talkart.cn/pages/identify/index.html?id='+Wlib.getRequestParam('id'),
+                    img: that.data.data.minipic[0]
+                }
+
+                Wlib.wx.shareTo(obj.title,obj.desc,obj.link,obj.img);
+            },200);
+
+        },
         bindEvent: function () {
             var that = this;
+            that.shareWX();
             FastClick.attach(document.body);
             var swiper = new Swiper('#pics', {
                 pagination: '.swiper-pagination'
@@ -158,8 +185,55 @@
                 that.beIdentify(false);
             });
 
+            $(".ul-wrapper4 li").on("click", function () {
+                var self = this;
+                var isMy = $(this).find('input').length == 0 ? true : false;
+                var id = $(this).attr("data-id");
+                var feedbackId = $(this).attr("data-fromId");
+                var name = $(this).attr("data-name");
+
+                //tle, btnA, btnB, submit_fun, cancel_fun
+                if(isMy){
+                    Wlib.confirm("确定要删除这条评论吗?",['取消'],['确认'],function(){
+                        that.deleCommon(id,function(){
+                            $(self).remove();
+                        });
+                    });
+                }else{
+                    //add placeholder
+
+                    that.dom.commText.attr("placeholder","回复"+name+":").focus();
+                    that.FEEDBACKID = feedbackId;
+                    $.scrollTo(5000, 200);
+
+
+                }
+
+            });
+
             Wlib._bindLazyLoad();
 
+        },
+        deleCommon : function(id,callback){
+            var that = this;
+            var req = {
+                id: id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            that.dom.loading.show();
+
+            Wlib.SendRequest("default/person/deleteComment", req, "GET", function (data) {
+                if (data.state == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips("删除评论成功");
+                    callback && callback();
+
+                } else {
+                    that.dom.loading.hide();
+                    Wlib.tips("删除评论失败")
+                }
+            });
         },
         beIdentify: function (tag) {
             //be trure or false
@@ -329,6 +403,7 @@
                 type: 1,
                 content: that.dom.commText.val()
             }
+            that.FEEDBACKID && (req.fid=that.FEEDBACKID);
             that.dom.loading.show();
             Wlib.SendRequest("default/picture/comment", req, "POST", function (data) {
                 if (data.state == 1) {

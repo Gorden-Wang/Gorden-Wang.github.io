@@ -30,7 +30,7 @@
             <div class="t-w"><img src=${data.avatar}>
 
                 <div>
-                    <p> ${data.author} <span class="lv">V${data.level}</span></p>
+                    <p> ${data.nickname} <span class="lv">V${data.level}</span></p>
 
                     <p> ${data.add_time} </p>
                 </div>
@@ -69,7 +69,7 @@
             <ul>
                 {@each data.praise_list as item}
                 <li>
-                    <a>
+                    <a href="../../pages/friendInfo/index.html?fid=${item.user_id}">
                         <img class="lazy-image" lazy-image="${item.logo}">
                     </a>
 
@@ -80,11 +80,17 @@
 
         <section class="reply-wrapper ul-wrapper4">
             <ul>
-                {@each data.comments as item}
-                <li>
+                {@each data.comments as item,index}
+                <li data-id="${item.id}" data-name="${item.from_name}" data-fromId="${item.from_id}">
+                    {@if makeHackInputDisplay(item.from_id)}
+                    <input type="text">
+                    {@/if}
                     <div class="t-w">
-                        <img class="lazy-image" lazy-image="${item.from_logo}">
-
+                        {@if item.from_logo}
+                        <img lazy-image="${item.from_logo}" class="lazy-image">
+                        {@else}
+                        <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                        {@/if}
                         <div class="r-w">
                             <div class="t-t">
                                 <p>
@@ -96,7 +102,7 @@
 
                             <div class="t-c">
                                 {@if item.to_name}
-                                 回复<span>${item.to_name}</span>：
+                                回复<span>${item.to_name}</span>：
                                 {@/if}
                                 ${item.content}
                             </div>

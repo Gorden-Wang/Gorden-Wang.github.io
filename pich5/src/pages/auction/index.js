@@ -5,14 +5,14 @@
     var Index = function () {
         var that = this;
 
-        Wlib.wx.getJSSign('', function (data) {
-            Wlib.wx.jsConfig(data, function () {
-                Wlib.wx.hideMenu();
-                that.init();
-
+        Wlib.wx.checkLogin(function () {
+            Wlib.wx.getJSSign('', function (data) {
+                Wlib.wx.jsConfig(data, function () {
+                    Wlib.wx.hideMenu();
+                    that.init();
+                });
             });
         });
-
     }
 
     Index.prototype = {
@@ -30,6 +30,22 @@
                 id: Wlib.getRequestParam("id")
             };
             that.data.edite = Wlib.getRequestParam("edite");
+
+        },
+
+        shareWX: function () {
+            var that = this;
+            setTimeout(function(){
+                var obj = {
+                    title: '微拍时代 全民说画',
+                    desc: that.data.data.author + '作品正在拍卖,距离结束还有'+ that.CTIME,
+                    link: 'http://wx.talkart.cn/pages/auction/index.html?id='+Wlib.getRequestParam('id'),
+                    img: that.data.data.minipic[0]
+                }
+
+                Wlib.wx.shareTo(obj.title,obj.desc,obj.link,obj.img);
+            },1000);
+
         },
         cacheDom: function () {
             var that = this;
@@ -42,11 +58,11 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
-            if(that.data.edite){
+            if (that.data.edite) {
                 var obj = {
-                    wrapper : $(".seller-wrapper"),
-                    proId : that.data.id,
-                    editeUrl : '../../pages/post/index.html?id='+that.data.id+"&tag=1"
+                    wrapper: $(".seller-wrapper"),
+                    proId: that.data.id,
+                    editeUrl: '../../pages/post/index.html?id=' + that.data.id + "&tag=1"
                 }
                 var e = new EditeProduct(obj);
             }
@@ -86,10 +102,16 @@
                 }
                 return res;
             });
+            juicer.register("makeHackInputDisplay", function (uid) {
+                return uid == localStorage.getItem("uid") ? false : true;
+            });
 
         },
         bindEvent: function () {
             var that = this;
+
+            that.shareWX();
+
             var swiper = new Swiper('#pics', {
                 pagination: '.swiper-pagination'
             });
@@ -174,8 +196,34 @@
                 that.preOrder();
             });
 
-            $(".seller-wrapper").on("click",function(){
-                location.href = "../../pages/friendInfo/index.html?fid="+that.data.data.user_id;
+            $(".seller-wrapper").on("click", function () {
+                location.href = "../../pages/friendInfo/index.html?fid=" + that.data.data.user_id;
+            });
+
+            $(".reply-wrapper.ul-wrapper4 li").on("click", function () {
+                var self = this;
+                var isMy = $(this).find('input').length == 0 ? true : false;
+                var id = $(this).attr("data-id");
+                var feedbackId = $(this).attr("data-fromId");
+                var name = $(this).attr("data-name");
+
+                //tle, btnA, btnB, submit_fun, cancel_fun
+                if (isMy) {
+                    Wlib.confirm("确定要删除这条评论吗?", ['取消'], ['确认'], function () {
+                        that.deleCommon(id, function () {
+                            $(self).remove();
+                        });
+                    });
+                } else {
+                    //add placeholder
+
+                    that.dom.commText.attr("placeholder", "回复" + name + ":").focus();
+                    that.FEEDBACKID = feedbackId;
+                    $.scrollTo(5000, 200);
+
+
+                }
+
             });
 
 
@@ -191,10 +239,78 @@
             }
             Wlib.SendRequest("default/api/info", req, "GET", function (data) {
                 that.data.data = data;
+
                 that.renderUI();
+                that.renderCountDown(that.data.data.remains);
                 that.recacheDom();
                 that.bindEvent();
             })
+
+        },
+        renderCountDown: function (s) {
+            var that = this;
+            var res = "";
+            var wrap = $("#countdown");
+            var priceWrap = $("#newPrice");
+            var nextPriceWrap = $("#pricetext");
+            var priceDisplayWrap = $("#priceDisplayWrap");
+            var inter = setInterval(function () {
+                if (s < 0) {
+                    wrap.html('已结束');
+                    $(".btn-w").addClass("dis");
+                    return;
+                }
+                s -= 1;
+                res = that._getDisplay(that._getDateObj(s));
+                wrap.html(res);
+                that.CTIME = res;
+
+                that.getPrice(priceWrap, nextPriceWrap, priceDisplayWrap);
+
+            }, 1000);
+        },
+        _getDateObj: function (s) {
+
+            var dd = parseInt(s / (24 * 3600));
+            var h = parseInt((s - dd * 24 * 3600) / 3600);
+            var m = parseInt((s - dd * 24 * 3600 - h * 3600) / 60);
+            var ss = s - dd * 24 * 3600 - h * 3600 - m * 60;
+            var obj = {
+                dd: dd < 10 ? "0" + dd : dd,
+                hh: h < 10 ? "0" + h : h,
+                mm: m < 10 ? "0" + m : m,
+                ss: ss < 10 ? "0" + ss : ss
+            }
+            return obj;
+        },
+        _getDisplay: function (obj) {
+            var that = this;
+            var res = '';
+
+            return obj.dd + "天" + obj.hh + "时" + obj.mm + "分" + obj.ss + "秒";
+        },
+        getPrice: function (obj, next, dis) {
+            var that = this;
+
+            function getPrice() {
+                var req = {
+                    id: that.data.id,
+                    uid: localStorage.getItem("uid"),
+                    token: localStorage.getItem("token")
+                }
+                Wlib.SendRequest("default/picture/pushprice", req, "GET", function (data) {
+                    var price = data.bidder;
+                    price != $(obj).html().replace('￥', '') && $(obj).html("￥" + price);
+
+                    if (price != that.data.data.new_price) {
+                        $(next).html(parseInt(price) + parseInt(that.data.data.range));
+                        $(dis).html("当前价:")
+                    }
+
+                });
+            }
+
+            getPrice();
 
         },
         addAttention: function (obj) {
@@ -310,6 +426,27 @@
 
 
         },
+        deleCommon: function (id, callback) {
+            var that = this;
+            var req = {
+                id: id,
+                uid: localStorage.getItem("uid"),
+                token: localStorage.getItem("token")
+            }
+            that.dom.loading.show();
+
+            Wlib.SendRequest("default/person/deleteComment", req, "GET", function (data) {
+                if (data.state == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips("删除评论成功");
+                    callback && callback();
+
+                } else {
+                    that.dom.loading.hide();
+                    Wlib.tips("删除评论失败")
+                }
+            });
+        },
         addCollect: function (obj) {
             /*
              给某一个商品收藏
@@ -402,8 +539,9 @@
                 uid: localStorage.getItem("uid"),
                 token: localStorage.getItem("token"),
                 type: 1,
-                content: that.dom.commText.val()
+                content: that.dom.commText.val(),
             }
+            that.FEEDBACKID && (req.fid = that.FEEDBACKID);
             that.dom.loading.show();
             Wlib.SendRequest("default/picture/comment", req, "POST", function (data) {
                 if (data.state == 1) {

@@ -28,7 +28,7 @@
                 <div class="swiper-slide" data-title="${item.title}" data-lot="${item.lot}">
                     <a class="back-img">
                         <img class="swiper-lazy"
-                                              data-src="${item.picture}">
+                             data-src="${item.picture}">
                         <div class="swiper-lazy-preloader"></div>
                     </a>
                 </div>
@@ -48,93 +48,97 @@
         </section>
     </header>
 
-    <div class="main">
-        <div class="price-wrap">
-            <p class="price">
-                估价 22,200,000-52,500,000 RMB
-            </p>
+    <section class="main-wrap swiper-container" id="main">
+        <div class="swiper-wrapper swiper-container-horizontal">
+
+            {@each data.list as item}
+
+            <div class="main swiper-slide swiper-slide-active swiper-no-swiping">
+                <div class="price-wrap">
+                    <p class="price">
+                        估价 ${item.appraisal} ${item.currency}
+                    </p>
 
             <span class="size">
                 <span>
-                    143×68cm
+                    ${item.dimension}
                 </span>
             </span>
-        </div>
+                </div>
 
-        <div class="disc">
-            <div class="tags-wrap">
-                <span class="c1">
-                    刘文西陕北小女孩
-                </span>
-                 <span class="c2">
-                    纸本设色
-                </span>
-                 <span class="c3">
-                    甲申（1944年）作
-                </span>
-                 <span class="c4">
-                    册页
-                </span>
-            </div>
 
-            <p class="disc-content">
-                题识：甲申秋初，曲阜小瑜孔宪英写于海上思撷馆。钤印：孔英、小瑜、孔子七十二世孙著录说明：甲申秋初，曲阜小瑜孔宪英写于海上思撷馆。钤印，孔英、小瑜、孔子七十二世孙甲申秋初，曲阜小瑜孔宪英写于海上思撷馆。钤印，孔英、小瑜、孔子七十二
-            </p>
-        </div>
+                <div class="disc">
+                    {@if item.title}
+                    <div class="tags-wrap">
+                        $${makeTags(item.title)}
+                    </div>
 
-        <div class="com-wrap">
-            <div class="l-img">
-                <img src="../../images/pic.png">
-            </div>
-            <div class="r-con">
-                <p class="title">
-                    保利拍卖
-                </p>
-                <p class="dis">
-                    中国近现代书画三（民国逢源作品藏扇面专场）
-                </p>
-            </div>
-            <div class="right"></div>
-        </div>
+                    {@/if}
 
-        <div class="detail">
-            <p class="d-title">
+
+                    <p class="disc-content">
+                        题识：甲申秋初，曲阜小瑜孔宪英写于海上思撷馆。钤印：孔英、小瑜、孔子七十二世孙著录说明：甲申秋初，曲阜小瑜孔宪英写于海上思撷馆。钤印，孔英、小瑜、孔子七十二世孙甲申秋初，曲阜小瑜孔宪英写于海上思撷馆。钤印，孔英、小瑜、孔子七十二
+                    </p>
+                </div>
+
+                <div class="com-wrap">
+                    <div class="l-img">
+                        <img src="${data.thumbnail}">
+                    </div>
+                    <div class="r-con">
+                        <p class="title">
+                            ${data.company_name}
+                        </p>
+                        <p class="dis">
+                            ${data.room_name}
+                        </p>
+                    </div>
+                    <div class="right"></div>
+                </div>
+
+                <div class="detail">
+                    <p class="d-title">
                 <span>
                     拍卖时间
                 </span>
-            </p>
-            <p class="d-sub">
-                2016-04-15 下午14.00
-            </p>
-            <p class="d-title">
+                    </p>
+                    <p class="d-sub">
+                        ${data.auctiontime}
+                    </p>
+                    <p class="d-title">
                 <span>
                     拍卖地点
                 </span>
-            </p>
-            <p class="d-sub addLocation">
-                北京保利国际拍卖有限公司保利大厦3层1011
-            </p>
-            <p class="d-title">
+                    </p>
+                    <p class="d-sub addLocation">
+                        ${data.auction_addr}
+                    </p>
+                    <p class="d-title">
                 <span>
                     预展时间
                 </span>
-            </p>
-            <p class="d-sub">
-                2016年3月1日-5日 下午14.00-下午6:00
-            </p>
-            <p class="d-title">
+                    </p>
+                    <p class="d-sub">
+                        ${data.previewtime}
+                    </p>
+                    <p class="d-title">
                 <span>
                     预展地点
                 </span>
-            </p>
-            <p class="d-sub addLocation">
-                北京保利国际拍卖有限公司保利大厦3层1011
-            </p>
+                    </p>
+                    <p class="d-sub addLocation">
+                        ${data.preview_addr}
+                    </p>
+                </div>
+            </div>
+
+            {@/each}
+
+
         </div>
-    </div>
+    </section>
 
 </script>
-
 <script src="../../lib/libAll.js"></script>
 <script src="../../widgets/swiper/index.js"></script>
 <script src="../../pages/share/com_pro_detail.js"></script>

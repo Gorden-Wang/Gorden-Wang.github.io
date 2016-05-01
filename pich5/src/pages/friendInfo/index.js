@@ -25,7 +25,9 @@
         cacheData: function () {
             var that = this;
 
-            that.data = {}
+            that.data = {
+                is_share : Wlib.getRequestParam("share")
+            }
 
         },
         cacheDom: function () {

@@ -10,9 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>拍卖预展公司列表</title>
     <link href="../../lib/boot.css" rel="stylesheet">
-    <link href="../../widgets/swiper/index.css?version=0.2.8" type="text/css" rel="stylesheet"/>
-    <link href="../../pages/share/com_list.css?version=0.2.8" type="text/css" rel="stylesheet"/>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.2.8"></script>
+    <link href="../../widgets/swiper/index.css?version=0.6.2" type="text/css" rel="stylesheet"/>
+    <link href="../../pages/share/com_list.css?version=0.6.2" type="text/css" rel="stylesheet"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.6.2"></script>
 
 </head>
 <body>
@@ -30,6 +30,7 @@
                     <a class="back-img">
                         <img class="swiper-lazy"
                              data-src="${item.picture}">
+                        <div class="swiper-lazy-preloader"></div>
                     </a>
                 </div>
                 {@/each}
@@ -68,7 +69,8 @@
 
 <script type="template/juicer" id="tplItem">
     {@each list as item}
-    <li data-url="../../pages/share/com——detail.html?id=${item.id}">
+    <li>
+        <a href="../../pages/share/com_detail.html?id=${item.id}">
         <div class="l-img">
             <img class="lazy-image" lazy-image="${item.logo}">
         </div>
@@ -84,13 +86,14 @@
                 <p>${item.previewtime}</p>
             </div>
         </div>
+        </a>
     </li>
     {@/each}
 </script>
 
-<script src="../../lib/libAll.js?version=0.2.8"></script>
-<script src="../../widgets/swiper/index.js?version=0.2.8"></script>
-<script src="../../pages/share/com_list.js?version=0.2.8"></script>
+<script src="../../lib/libAll.js?version=0.6.2"></script>
+<script src="../../widgets/swiper/index.js?version=0.6.2"></script>
+<script src="../../pages/share/com_list.js?version=0.6.2"></script>
 
 <script>
 

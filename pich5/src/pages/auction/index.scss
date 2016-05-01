@@ -189,24 +189,25 @@
     }
   }
 
-  .label-icon {
-
-    font-size: 14px;
-    display: inline-block;
+  .size {
     color: #794300;
-    border-image: url(../../images/common/label.png) 0 0 0 16 round;
-    //border: 0px;
-    border-left: 15px solid transparent;
-    border-top: 0px;
-    border-bottom: 0px;
-    padding: 3px;
-    position: relative;
-    background-color: #ffe326;
-    border-radius: 0px 4px 4px 0px;
-    padding-left: 0px;
-    span {
-      background-color: rgb(255, 227, 38);
+    //background-color: #ffe326;
+    font-size: 12px;
+    border-width: 0px 7px 0px 20px;
+    display: inline-block;
+    height: 28px;
+
+    border-right: 5px;
+    border-image-source: url(../../images/share/tag-left.png);
+    border-image-slice: 0 7 0 20 fill;
+
+    & > span {
+      display: flex;
+      background-color: #ffe326;
+      height: 28px;
+      align-items: center;
     }
+
   }
 
   .seller-wrapper {
@@ -386,6 +387,16 @@
     li {
       padding: 10px;
       border-bottom: 1px solid #efefef;
+      position: relative;
+      &>input{
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        z-index: 5;
+        opacity: 0;
+      }
       .t-w {
         display: flex;
         align-items: center;

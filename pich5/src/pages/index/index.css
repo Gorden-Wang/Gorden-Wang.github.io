@@ -203,7 +203,15 @@
             padding: 0px 3px;
             margin-left: 5px; }
           #page .ul-wrapper2 ul .t-w > div > p:first-of-type {
-            color: #4cbfd1; }
+            color: #4cbfd1;
+            display: flex; }
+            #page .ul-wrapper2 ul .t-w > div > p:first-of-type span.name-wrap {
+              display: block;
+              flex: 1;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              word-break: break-all;
+              overflow: hidden; }
           #page .ul-wrapper2 ul .t-w > div > p:last-of-type {
             color: #cccccc; }
       #page .ul-wrapper2 ul .i-w {
@@ -313,7 +321,15 @@
           padding: 0px 3px;
           margin-left: 5px; }
         #page .ul-wrap .t-w > div > p:first-of-type {
-          color: #4cbfd1; }
+          color: #4cbfd1;
+          display: flex; }
+          #page .ul-wrap .t-w > div > p:first-of-type span.name-wrap {
+            display: block;
+            flex: 1;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden; }
         #page .ul-wrap .t-w > div > p:last-of-type {
           color: #cccccc; }
     #page .ul-wrap .top-tag {

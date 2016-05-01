@@ -41,7 +41,8 @@
         renderUI: function () {
             var that = this;
             that.dom.wrapper.html(juicer(that.dom.tpl.html(), that.data));
-            that._makeFooter();
+            //@TODO for 5-1
+            //that._makeFooter();
             that.dom.loading.hide();
         },
         recacheDom: function () {

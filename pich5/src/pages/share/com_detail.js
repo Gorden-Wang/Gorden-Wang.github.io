@@ -53,7 +53,7 @@
         },
         fetchData : function(){
             var that = this;
-            Wlib.SendRequest("default/expo/concert", that.data.req, "GET", function (data) {
+            that.SendRequest("default/expo/concert", that.data.req, "GET", function (data) {
                 if (data.state == 1) {
                    that.data.data = data;
                     that.renderUI();
@@ -64,7 +64,58 @@
                     Wlib.tips("系统繁忙,请稍后再试~")
                 }
             });
+        },
+        SendRequest: function (path, data, method, success, error) {
+            var that = this;
+
+            data = (function (d, m) {
+                var res = "";
+                if (m == "POST") {
+                    res = d;
+                } else {
+                    for (var i in d) {
+                        res += i + "=" + d[i] + "&";
+                    }
+                }
+
+                return res;
+            })(data, method);
+
+            var url = 'http://wx.talkart.cc/index.php?r=';
+
+            var obj = {
+                //url: url + "&callback=?",
+                dataType: "JSONP",
+                success: function (res) {
+                    success && success(res);
+                },
+                error: function (err) {
+                    error && error(err);
+                }
+            }
+
+            if (method == "POST") {
+                obj.url = url + path;
+                obj.data = data;
+                obj.dataType = "JSON";
+                obj.type = "POST";
+                //上传图片处理
+                console.log(data)
+                if (data.toString().indexOf("FormData") > 0) {
+                    obj.enctype = 'multipart/form-data';
+                    obj.cache = false;
+                    obj.contentType = false;
+                    obj.processData = false;
+                }
+
+            } else {
+                obj.url = url + path + "&" + data + "callback=?";
+            }
+
+            $.ajax(obj);
+
         }
+
 
     }
 

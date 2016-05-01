@@ -55,13 +55,17 @@
 
         <section class="price-wrapper">
             <p>
-                <span>起拍价:</span>
-                ￥${data.starting_price}
+                <span id="priceDisplayWrap">
+                    ${data.new_price == data.starting_price ? '起拍价:' : '当前价:'}
+                </span>
+                <span id="newPrice">￥${data.new_price}</span>
                 <span>元</span>
             </p>
             {@if data.size}
-            <span class="label-icon">
-                ${data.size}
+            <span class="size">
+                <span>
+                    ${data.size}
+                </span>
             </span>
             {@else}
             <span>暂无尺寸</span>
@@ -72,7 +76,7 @@
             <p>
                 <span>距结束:</span>
 
-                <span>${data.endtime}</span>
+                <span id="countdown">${data.endtime}</span>
             </p>
         </section>
 
@@ -83,7 +87,7 @@
 
                 <div class="t-m-w">
                     <p>
-                        <span id="pricetext">${data.new_price}</span>元
+                        <span id="pricetext">${data.new_price == data.starting_price ? data.starting_price : parseInt(data.new_price)+parseInt(data.range)}</span>元
                     </p>
 
                     <p class="hr-bg"></p>
@@ -128,7 +132,7 @@
             <div class="t-w"><img src="${data.avatar}">
 
                 <div>
-                    <p> ${data.author} <span class="lv">V${data.level}</span></p>
+                    <p> ${data.nickname} <span class="lv">V${data.level}</span></p>
 
                     <p> ${data.add_time} </p>
                 </div>
@@ -172,7 +176,7 @@
                                 </div>
 
                                 <div class="t-c">
-                                    15-11-27 17:04:35
+                                    ${item.add_time}
                                 </div>
 
                             </div>
@@ -188,7 +192,7 @@
 
             <p class="hr">
                 <span>
-                    ta们也对刘文西作品感兴趣
+                    ta们也对${data.author}作品感兴趣
                 </span>
             </p>
         </section>
@@ -199,8 +203,12 @@
 
                 {@each data.interested as item,index}
                 <li>
-                    <a>
+                    <a href="../../pages/friendInfo/index.html?fid=${item.id}">
+                        {@if item.user_logo}
                         <img lazy-image="${item.user_logo}" class="lazy-image">
+                        {@else}
+                        <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                        {@/if}
                     </a>
 
                 </li>
@@ -224,8 +232,12 @@
             <ul id="praise_list">
                 {@each data.praise_list as item}
                 <li>
-                    <a>
-                        <img class="lazy-image" lazy-image="${item.logo}">
+                    <a href="../../pages/friendInfo/index.html?fid=${item.user_id}">
+                        {@if item.logo}
+                        <img lazy-image="${item.logo}" class="lazy-image">
+                        {@else}
+                        <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                        {@/if}
                     </a>
 
                 </li>
@@ -240,10 +252,16 @@
         <section class="reply-wrapper ul-wrapper4">
             <ul>
                 {@each data.comments as item,index}
-                    <li>
+                <li data-id="${item.id}" data-name="${item.from_name}" data-fromId="${item.from_id}">
+                        {@if makeHackInputDisplay(item.from_id)}
+                        <input type="text">
+                        {@/if}
                         <div class="t-w">
-                            <img class="lazy-image" lazy-image="${item.from_logo}">
-
+                            {@if item.from_logo}
+                            <img lazy-image="${item.from_logo}" class="lazy-image">
+                            {@else}
+                            <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                            {@/if}
                             <div class="r-w">
                                 <div class="t-t">
                                     <p>
@@ -280,7 +298,7 @@
             <section class="imgs-wrapper swiper-container " id="more">
                 <div class="swiper-wrapper swiper-container-horizontal">
                     {@each data.infolist as item}
-                    <div class="swiper-slide" data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                    <div class="swiper-slide" data-id="${item.id}" data-url="${getType(item.type)}">
                         <div class="i-w"><a> <img data-src="${item.picture}" class="swiper-lazy"> </a>
 
                             {@if item.type == "拍卖"}
@@ -337,7 +355,8 @@
         </section>
 
         <section class="foot-btn">
-            <div id="mybtn">我的</div>
+            <!--@TODO:for 5-1-->
+            <!--<div id="mybtn">我的</div>-->
             <div class="index-icon icon10"></div>
 
         </section>

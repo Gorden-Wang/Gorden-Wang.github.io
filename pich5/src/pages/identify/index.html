@@ -49,7 +49,7 @@
             <div class="t-w"><img src=${data.avatar}>
 
                 <div>
-                    <p> ${data.author} <span class="lv">V${data.level}</span></p>
+                    <p> ${data.nickname} <span class="lv">V${data.level}</span></p>
 
                     <p> ${data.add_time} </p>
                 </div>
@@ -88,32 +88,38 @@
             {@if data.interested}
             <p class="hr">
                 <span>
-                    ta们也刘文西作品感兴趣
+                    ta们也对${data.author}作品感兴趣
                 </span>
             </p>
             {@/if}
         </section>
 
-        {@if data.interested && data.interested.length > 0 }
         <section class="like-wrapper ul-wrapper3">
+            {@if data.interested.length > 0 }
             <ul>
 
-                {@each data.interested as item}
+                {@each data.interested as item,index}
                 <li>
-                    <a>
-                        <img src="../../images/pic.png">
+                    <a href="../../pages/friendInfo/index.html?fid=${item.id}">
+                        {@if item.user_logo}
+                        <img lazy-image="${item.user_logo}" class="lazy-image">
+                        {@else}
+                        <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                        {@/if}
                     </a>
 
                 </li>
 
                 {@/each}
             </ul>
+
+            {@else}
+            <div style=" -webkit-box-flex: 1;-webkit-flex: 1;-moz-box-flex: 1;flex: 1;">暂时没人感兴趣</div>
+            {@/if}
             <span>
                 ${data.interested_num}>
             </span>
-
         </section>
-        {@/if}
         {@if data.praise_list}
         <section class="heart-wrapper ul-wrapper3">
             <span class="index-icon icon9">
@@ -122,8 +128,12 @@
             <ul>
                 {@each data.praise_list as item}
                 <li>
-                    <a>
-                        <img class="lazy-image" lazy-image="${item.logo}">
+                    <a href="../../pages/friendInfo/index.html?fid=${item.id}">
+                        {@if item.logo}
+                        <img lazy-image="${item.logo}" class="lazy-image">
+                        {@else}
+                        <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                        {@/if}
                     </a>
 
                 </li>
@@ -135,11 +145,17 @@
         {@if data.comments}
         <section class="reply-wrapper ul-wrapper4">
             <ul>
-                {@each data.comments as item}
-                <li>
+                {@each data.comments as item,index}
+                <li data-id="${item.id}" data-name="${item.from_name}" data-fromId="${item.from_id}">
+                    {@if makeHackInputDisplay(item.from_id)}
+                    <input type="text">
+                    {@/if}
                     <div class="t-w">
-                        <img class="lazy-image" lazy-image="${item.from_logo}">
-
+                        {@if item.from_logo}
+                        <img lazy-image="${item.from_logo}" class="lazy-image">
+                        {@else}
+                        <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                        {@/if}
                         <div class="r-w">
                             <div class="t-t">
                                 <p>
@@ -179,7 +195,7 @@
             <section class="imgs-wrapper swiper-container " id="more">
                 <div class="swiper-wrapper swiper-container-horizontal">
                     {@each data.infolist as item}
-                    <div class="swiper-slide" data-id="${getId(item.url)}" data-url="${getType(item.type)}">
+                    <div class="swiper-slide"  data-id="${item.id}" data-url="${getType(item.type)}">
                         <div class="i-w"><a> <img data-src="${item.picture}" class="swiper-lazy"> </a>
 
                             {@if item.type == "拍卖"}

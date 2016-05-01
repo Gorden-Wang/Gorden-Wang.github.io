@@ -701,3 +701,80 @@ img{
   height: 100%;
   z-index: 501;
 }
+
+
+#_confirm_content {
+  padding: 0;
+  top: 25%
+}
+
+#_confirm_content>p {
+  padding: 20px;
+  word-break: break-word
+}
+
+#_confirm_shadowA,#_confirm_shadowB,#_confirm_shadowC,#_confirm_shadowD {
+  display: block;
+  overflow: hidden
+}
+
+#_confirm_shadowA,#_confirm_shadowB {
+  width: 100%;
+  height: 1px
+}
+
+#_confirm_shadowC,#_confirm_shadowD {
+  width: 1px;
+  height: 95%;
+  float: left
+}
+
+#_confirm_shadowA {
+  background: -webkit-gradient(linear,left top,right top,from(rgba(47,34,33,.1)),color-stop(0.35,#6e6262),color-stop(0.5,#6e6262),color-stop(0.65,#6e6262),to(rgba(47,34,33,.1)));
+  background: -webkit-linear-gradient(left,rgba(47,34,33,.1),#6e6262,#6e6262,#6e6262,rgba(47,34,33,.1));
+  background: -moz-linear-gradient(left,rgba(47,34,33,.1),#6e6262,#6e6262,#6e6262,rgba(47,34,33,.1));
+  background: -o-linear-gradient(left,rgba(47,34,33,.1),#6e6262,#6e6262,#6e6262,rgba(47,34,33,.1))
+}
+
+#_confirm_shadowB {
+  background: -webkit-gradient(linear,left top,right top,from(rgba(47,34,33,.1)),color-stop(0.35,#2f2121),color-stop(0.5,#2f2121),color-stop(0.65,#2f2121),to(rgba(47,34,33,.1)));
+  background: -webkit-linear-gradient(left,rgba(47,34,33,.1),#2f2121,#2f2121,#2f2121,rgba(47,34,33,.1));
+  background: -moz-linear-gradient(left,rgba(47,34,33,.1),#2f2121,#2f2121,#2f2121,rgba(47,34,33,.1));
+  background: -o-linear-gradient(left,rgba(47,34,33,.1),#2f2121,#2f2121,#2f2121,rgba(47,34,33,.1))
+}
+
+#_confirm_shadowC {
+  background: -webkit-gradient(linear,50% 0,50% 100%,from(#6e6262),to(rgba(47,34,33,.1)));
+  background: -webkit-linear-gradient(90deg,rgba(47,34,33,.1),#6e6262);
+  background: -moz-linear-gradient(90deg,rgba(47,34,33,.1),#6e6262);
+  background: -o-linear-gradient(90deg,rgba(47,34,33,.1),#6e6262)
+}
+
+#_confirm_shadowD {
+  background: -webkit-gradient(linear,50% 0,50% 100%,from(#2f2121),to(rgba(47,34,33,.1)));
+  background: -webkit-linear-gradient(90deg,rgba(47,34,33,.1),#2f2121);
+  background: -moz-linear-gradient(90deg,rgba(47,34,33,.1),#2f2121);
+  background: -o-linear-gradient(90deg,rgba(47,34,33,.1),#2f2121)
+}
+
+#_confirm_btnW {
+  width: 100%;
+  height: auto;
+  line-height: 1.5em;
+  overflow: hidden
+}
+
+#_confirm_btnA,#_confirm_btnB {
+  width: 49%;
+  height: 100%;
+  font-size: 18px;
+  padding: 15px 0
+}
+
+#_confirm_btnA {
+  float: left
+}
+
+#_confirm_btnB {
+  float: right
+}

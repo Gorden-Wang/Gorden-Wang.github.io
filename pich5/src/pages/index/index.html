@@ -159,11 +159,17 @@
             {@each data.new_painting as item}
             <li data-id="${getId(item.url)}" data-url="${getType(item.type,item.id)}">
                 <div class="t-w">
+                    {@if item.avatar}
                     <img lazy-image="${item.avatar}" class="lazy-image">
+                    {@else}
+                    <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                    {@/if}
 
                     <div>
                         <p>
-                            ${item.nickname}
+                            <span class="name-wrap">
+                                ${item.nickname}
+                            </span>
                             <span class="lv">V${item.level}</span>
                         </p>
 
@@ -246,10 +252,15 @@
     <li data-id="${item.id}" data-url="${getFuckType(item.type,item.id)}">
         <div class="top-li">
             <div class="t-w flex1">
+                {@if item.logo}
                 <img lazy-image="${item.logo}" class="lazy-image">
-
+                {@else}
+                <img lazy-image="../../images/default_logo.jpg" class="lazy-image">
+                {@/if}
                 <div>
-                    <p> ${item.nickname} <span class="lv">V${item.level}</span></p>
+                    <p>
+                        <span class="name-wrap">${item.nickname}</span><span class="lv">V${item.level}</span>
+                    </p>
 
                     <p> ${item.add_time} </p>
                 </div>
