@@ -1,1 +1,56 @@
-body{background-color:#f3f3f3}#page{font-family:HY;background-color:#efeff4}#page .wrap{margin-top:0}#page .top-banner{background-color:#fbef8d;text-align:center;padding:20px 0}#page .top-banner p{margin:20px 0;color:#6a5252;font-size:14px}#page .top-banner p:first-of-type{font-size:16px}#page .top-banner div{margin:auto}#page .top-banner div img{width:160px;height:160px;-webkit-border-radius:160px;-moz-border-radius:160px;border-radius:160px}#page .ul-wrap{margin:15px 0;background-color:#FFF}#page .ul-wrap li{padding:15px 10px;position:relative;color:#434343}#page .ul-wrap li .right{display:inline-block;color:#fff;font-size:14px;width:8px;height:8px;border-top:2px solid #c2c2c8;border-left:2px solid #c2c2c8;top:20px;right:10px;overflow:hidden;-webkit-transform:rotate(135deg);-moz-transform:rotate(135deg);-o-transform:rotate(135deg);transform:rotate(135deg);-webkit-transition:-webkit-transform .2s ease-in;transition:-webkit-transform .2s ease-in;background-color:transparent!important;-webkit-border-radius:0!important;-moz-border-radius:0!important;border-radius:0!important;padding:0!important;position:absolute}
+body {
+  background-color: #f3f3f3; }
+
+#page {
+  font-family: "HY";
+  background-color: #efeff4; }
+  #page .wrap {
+    margin-top: 0px; }
+  #page .top-banner {
+    background-color: #fbef8d;
+    text-align: center;
+    padding: 20px 0px; }
+    #page .top-banner p {
+      margin: 20px 0;
+      color: #6a5252;
+      font-size: 14px; }
+    #page .top-banner p:first-of-type {
+      font-size: 16px; }
+    #page .top-banner div {
+      margin: auto; }
+      #page .top-banner div img {
+        width: 160px;
+        height: 160px;
+        -webkit-border-radius: 160px;
+           -moz-border-radius: 160px;
+                border-radius: 160px; }
+  #page .ul-wrap {
+    margin: 15px 0;
+    background-color: #FFF; }
+    #page .ul-wrap li {
+      padding: 15px 10px;
+      position: relative;
+      color: #434343; }
+      #page .ul-wrap li .right {
+        display: inline-block;
+        color: #fff;
+        font-size: 14px;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid #c2c2c8;
+        border-left: 2px solid #c2c2c8;
+        top: 20px;
+        right: 10px;
+        overflow: hidden;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+        -webkit-transition: -webkit-transform .2s ease-in;
+        transition: -webkit-transform .2s ease-in;
+        background-color: transparent !important;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        position: absolute; }

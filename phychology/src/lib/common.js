@@ -12,31 +12,11 @@ window.Wlib = (function () {
             var urls = {};
             switch (this.evn) {
                 case 'publish' :
-                    urls.port = "https://ssl.instarekber.com/vshop/1/H5/";
-                    urls.portNew = "https://ssl.instarekber.com/ushop/h5/";
-                    urls.port2 = "https://ssl.instarekber.com/ushop";
-                    urls.apiPort = "http://api.instarekber.com";
-                    urls.loginPort = "https://login.instarekber.com/ushop";
-                    urls.instaUrl = "http://www.instarekber.com/eula.html";
-                    break;
+
                 case 'daily' :
-                    urls.port = "https://ssl-test.instarekber.com/vshop/1/H5/";
-                    urls.portNew = "https://ssl-test.instarekber.com/ushop/h5/";
-                    urls.port2 = "https://ssl-test.instarekber.com/ushop";
-                    urls.apiPort = "http://api.test.instarekber.com";
-                    urls.loginPort = "https://ssl-test.instarekber.com/ushop";
-                    urls.imUrlPort = "./chat/";
-                    urls.instaUrl = "http://www-test.instarekber.com/eula.html";
-                    break;
+
                 case 'local' :
-                    urls.port = "https://ssl-test.instarekber.com/vshop/1/H5/";
-                    urls.portNew = "https://ssl-test.instarekber.com/ushop/h5/";
-                    urls.port2 = "https://ssl-test.instarekber.com/ushop";
-                    urls.apiPort = "http://api.test.instarekber.com";
-                    urls.loginPort = "https://ssl-test.instarekber.com/ushop";
-                    urls.imUrlPort = "./chat/";
-                    urls.instaUrl = "http://www-test.instarekber.com/eula.html";
-                    break;
+                    
             }
             return urls;
         },
@@ -196,9 +176,9 @@ window.Wlib = (function () {
 
         GetJsonData: function (url, success, error) {
             $.ajax({
-                url: "http://icefox-cool.xicp.net/master/"+url,
-                dataType : "jsonp",
-                method : "GET",
+                url: "http://icefox-cool.xicp.net/master/" + url,
+                dataType: "jsonp",
+                method: "GET",
                 success: function (res) {
                     success(res);
                 },
@@ -218,12 +198,68 @@ window.Wlib = (function () {
                     error && error(err);
                 }
             })
+        },
+        SendRequest: function (path, data, method, success, error) {
+            var that = this;
+
+            //http://icefox-cool.xicp.net:80/zayi/app/user/reg
+
+            data = (function (d, m) {
+                var res = "";
+                if (m == "POST") {
+                    res = d;
+                } else {
+                    if(d){
+                        for (var i in d) {
+                            res += i + "=" + d[i] + "&";
+                        }
+                    }else{
+                        res = "";
+                    }
+
+                }
+
+                return res;
+            })(data, method);
+
+            var url = (function () {
+                if (document.domain == 'localhost') {
+                    return "http://127.0.0.1";
+                }
+                return location.protocol + "//" + document.domain;
+            })();
+
+
+            var obj = {
+                dataType: "JSON",
+                success: function (res) {
+                    success && success(res);
+                },
+                error: function (err) {
+                    error && error(err);
+                }
+            }
+
+            if (method == "POST") {
+                obj.url = url + path;
+                obj.data = data;
+                obj.dataType = "JSON";
+                obj.type = "POST";
+            } else {
+                if(data){
+                    obj.url = url + path + "&" + data;
+                }else{
+                    obj.url = url + path
+                }
+
+            }
+
+            $.ajax(obj);
         }
 
     };
 
 
-
-    return new lib("publish", "");
+    return new lib("local", "");
 })($);
 

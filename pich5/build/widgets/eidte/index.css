@@ -1,1 +1,49 @@
-.edite-wrapper{padding:10px;background-color:#FFF;margin:10px 0;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:flex;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-moz-box-pack:center;justify-content:center;-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;flex:1}.edite-wrapper .modify-sel{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;flex:1}.edite-wrapper .modify-sel span{display:inline-block;width:3em;padding:8px 0;text-align:center;background-color:#f66;color:#FFF;font-size:13px;margin-right:10px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}.edite-wrapper .share-btn{padding:8px 15px;text-align:center;background-color:#f66;color:#FFF;font-size:13px;margin-right:10px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}.edite-wrapper .share-btn span{font-size:10px}
+.edite-wrapper {
+  padding: 10px;
+  background-color: #FFF;
+  margin: 10px 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+     -moz-box-flex: 1;
+          flex: 1; }
+  .edite-wrapper .modify-sel {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+            flex: 1; }
+    .edite-wrapper .modify-sel span {
+      display: inline-block;
+      width: 3em;
+      padding: 8px 0px;
+      text-align: center;
+      background-color: #ff6666;
+      color: #FFFFFF;
+      font-size: 13px;
+      margin-right: 10px;
+      -webkit-border-radius: 2px;
+         -moz-border-radius: 2px;
+              border-radius: 2px; }
+  .edite-wrapper .share-btn {
+    padding: 8px 15px;
+    text-align: center;
+    background-color: #ff6666;
+    color: #FFFFFF;
+    font-size: 13px;
+    margin-right: 10px;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px; }
+    .edite-wrapper .share-btn span {
+      font-size: 10px; }

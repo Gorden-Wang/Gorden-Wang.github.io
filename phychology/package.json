@@ -41,7 +41,9 @@
     "http-rewrite-middleware": "^0.1.6",
     "load-grunt-tasks": "^3.1.0",
     "lodash": "^3.6.0",
-    "request" : ""
+    "request": ""
   },
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.72.0"
+  }
 }

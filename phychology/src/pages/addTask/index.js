@@ -12,9 +12,11 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
+
+            that.getTags();
 
             //that.getItems();
         },
@@ -58,44 +60,74 @@
 
             FastClick.attach(document.body);
 
-            that.dom.back.on("click",function(){
+            that.dom.back.on("click", function () {
                 win.history.back();
             });
 
 
+            that.dom.commitBtn.on("click", function () {
 
+                that.addTask();
 
-            that.dom.commitBtn.on("click",function(){
-
-                var top = "<p class='title'>您的需求已经提交.</p><p class='content'>接下来我们的项目经理会与您联系,并确认需求细节.您也可以加客服微信‘zayiapp’进行咨询</p>";
-                var btn = "<div class='btn'>朕知道了</div>";
-                Wlib.alert(top,btn,function(){
-                    $(".fadeIn").remove();
-                });
             });
 
 
-
-            that.dom.tags.on("click",function(){
+            that.dom.tags.on("click", function () {
                 var isAdd = $(this).hasClass("add-btn"),
                     isSel = $(this).hasClass("select");
 
-                if(!isSel){
+                if (!isSel) {
                     $(this).addClass("select").siblings().removeClass("select");
 
-                    if(isAdd){
+                    if (isAdd) {
                         that.dom.tagInput.show();
                         return;
                     }
+                    that.dom.tagInput.find("input").val("");
+                    that.dom.tagInput.hide();
                     var top = "<p class='title'>tag解释.</p><p class='content' style='text-align: left'>假字假字假字假字假字假字假字</p>";
                     var btn = "<div class='btn'>确定</div>";
-                    Wlib.alert(top,btn,function(){
+                    Wlib.alert(top, btn, function () {
                         $(".fadeIn").remove();
                     });
                 }
             });
 
 
+        },
+        addTask: function () {
+            var that = this;
+            var req = {
+                userId : localStorage.getItem("userId"),
+                apptoken : localStorage.getItem("apptoken"),
+                title : $(".tag-input input").val() || $(".tags-wrap").find(".select").html(),
+                money : $("#money").val(),
+                content : makeContent()
+            }
+
+
+            function makeContent(){
+                var res = "",
+                    c = $("textarea").val(),
+                    tel = $("#tel").val() && "手机号:"+$("#tel").val(),
+                    name = $("#name").val() && " 姓名:"+$("#name").val(),
+                    wechat = $("#wechat").val() && " 微信:"+$("#wechat").val(),
+                    qq = $("#qq").val() && " QQ:"+$("#qq").val(),
+                    email = $("#email").val() && " 邮箱:"+ $("#email").val()
+
+                return c+tel+name+wechat+qq+email;
+
+            }
+
+            Wlib.SendRequest("/zayi/app/requirement/submit",req,"POST",function(data){
+                if(data.resultCode == 1){
+                    var top = "<p class='title'>您的需求已经提交.</p><p class='content'>接下来我们的项目经理会与您联系,并确认需求细节.您也可以加客服微信‘zayiapp’进行咨询</p>";
+                    var btn = "<div class='btn'>朕知道了</div>";
+                    Wlib.alert(top, btn, function () {
+                        $(".fadeIn").remove();
+                    });
+                }
+            });
         },
         addJuicerHandler: function () {
             var that = this;
@@ -108,48 +140,20 @@
             });
 
         },
-        getItems: function () {
-
+        getTags: function () {
             var that = this;
 
-
-            function callback(data) {
-
-                if (data.resultCode == "1") {
-                    //成功
-
-                    that.data.data = data.resultData;
-
+            Wlib.SendRequest("/zayi/app/resources/tags", null, "GET", function (data) {
+                if (data.resultCode == 1) {
+                    that.data.info = data.resultData;
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
-
-
-                    console.log(that.data.data)
-
-
                 } else {
-                    Wlib.tips(data.message);
+                    //Wlib.tips("")
                 }
-
-            }
-
-            var param = (function (data) {
-
-                var res = "";
-
-                for (var i in data) {
-                    res += (i + "=" + data[i]) + "&";
-                }
-
-                return res.slice(0, -1);
-
-            })(that.data.param);
-
-
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
-
-        }
+            });
+        },
     }
 
     var search = new Search();

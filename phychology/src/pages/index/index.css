@@ -374,6 +374,14 @@ footer {
   footer div:first-of-type {
     margin-right: 10px; }
 
+.s-r {
+  display: inline-block;
+  width: 10px;
+  height: 15px;
+  background-position: -22px -28px;
+  margin-top: 3px;
+  margin-left: 10px; }
+
 @media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
   /* 兼容iphone 6 */ }
 @media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3) {

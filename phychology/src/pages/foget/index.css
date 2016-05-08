@@ -68,6 +68,9 @@
         padding: 2px 0px;
         display: inline-block;
         width: 7em; }
+      #page .content-wrapper .input-wrapper span.input-button.enable {
+        background-color: #ebe5e2;
+        color: #59463d; }
       #page .content-wrapper .input-wrapper .pswview {
         display: inline-block;
         width: 21px !important;
@@ -115,5 +118,8 @@
     color: #59453e;
     margin-top: 20px;
     padding: 0px 20px; }
+
+.hide {
+  display: none !important; }
 
 /*# sourceMappingURL=index.css.map */

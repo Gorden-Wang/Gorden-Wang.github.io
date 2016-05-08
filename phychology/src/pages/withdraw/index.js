@@ -12,10 +12,10 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
-
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
+            that.getMoney();
             //that.getItems();
         },
         cacheData: function () {
@@ -63,17 +63,38 @@
 
             that.dom.submit.on("click",function(){
 
-                var top = "<p class='title'>您的提现申请已提交</p><p class='content'>一般3-7个工作日可到账,请耐心等待</p>";
-                var btn = "<div class='btn'>确定</div>";
-                Wlib.alert(top,btn,function(){
-                    win.history.back();
-                });
+
+                that.withDraw();
+
+
+
 
 
 
             })
 
 
+        },
+        withDraw : function(){
+          var that = this;
+            var req = {
+                userId: localStorage.getItem("userId"),
+                apptoken: localStorage.getItem("apptoken"),
+                alipay : $("#alipay").val(),
+                mondy : $("#money").val()
+            }
+
+            Wlib.SendRequest("/zayi/app/user/apply_withdraw", req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    var top = "<p class='title'>您的提现申请已提交</p><p class='content'>一般3-7个工作日可到账,请耐心等待</p>";
+                    var btn = "<div class='btn'>确定</div>";
+                    Wlib.alert(top,btn,function(){
+                        win.history.back();
+                    });
+                } else {
+                    Wlib.tips(data.resultMsg)
+                }
+            });
         },
         addJuicerHandler: function () {
             var that = this;
@@ -86,48 +107,24 @@
             });
 
         },
-        getItems: function () {
-
+        getMoney: function () {
             var that = this;
+            var req = {
+                userId: localStorage.getItem("userId"),
+                apptoken: localStorage.getItem("apptoken")
+            }
 
-
-            function callback(data) {
-
-                if (data.resultCode == "1") {
-                    //成功
-
-                    that.data.data = data.resultData;
-
+            Wlib.SendRequest("/zayi/app/user/account_balance", req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    that.data.info = data.resultData;
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
-
-
-                    console.log(that.data.data)
-
-
                 } else {
-                    Wlib.tips(data.message);
+                    //Wlib.tips("")
                 }
-
-            }
-
-            var param = (function (data) {
-
-                var res = "";
-
-                for (var i in data) {
-                    res += (i + "=" + data[i]) + "&";
-                }
-
-                return res.slice(0, -1);
-
-            })(that.data.param);
-
-
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
-
-        }
+            });
+        },
     }
 
     var search = new Search();

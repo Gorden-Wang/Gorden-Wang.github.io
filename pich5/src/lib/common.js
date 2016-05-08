@@ -43,7 +43,10 @@ window.Wlib = (function () {
         alert: function (content, btn, callback) {
             var sty = "color: white;text-align: center;font-size: 15px;margin-top: 20px; width: 5em;height: 3em;"
             var bgwrapper = $("<div class = 'fixed fadeIn animated' style='z-index: 502'>" + content + "</div>");
-            bgwrapper.append("<button style='" + sty + "'>" + btn + "</button>");
+            if(btn){
+                bgwrapper.append("<button style='" + sty + "'>" + btn + "</button>");
+            }
+
             $("body").append("<div class='alert-bg'></div>");
             $("body").append(bgwrapper);
             $(bgwrapper).find("button").on("click", function () {
@@ -232,6 +235,11 @@ window.Wlib = (function () {
                 //url: url + "&callback=?",
                 dataType: "JSONP",
                 success: function (res) {
+                    if(res.nodata == 1){
+                        $("body").html("");
+                        Wlib.alert("商品已下架,请浏览其他商品");
+                        return;
+                    }
                     success && success(res);
                 },
                 error: function (err) {
@@ -387,7 +395,22 @@ window.Wlib = (function () {
                 var that = this;
                 if (localStorage.getItem("uid") && localStorage.getItem("token")) {
                     //认为已经登录过了.不需要授权.
-                    callback && callback();
+
+                    Wlib.SendRequest("wechat/wechat/myinfo", {openid : localStorage.getItem("openid")}, "GET",function(data){
+                        if(data.state == 1){
+                            localStorage.setItem("uid", data.uid);
+                            localStorage.setItem("token", data.token);
+                            data.avatar && localStorage.setItem("avatar",data.avatar);
+                            localStorage.setItem("isbind", data.isbind);
+                            localStorage.setItem("openid", data.openid);
+                            localStorage.setItem("imtoken", data.imtoken);
+
+                            callback && callback();
+                        }
+
+                    });
+
+
                     return;
                 } else {
                     Wlib.wx.forceLogin(callback, url);
@@ -563,6 +586,6 @@ window.Wlib = (function () {
         }
 
     };
-    return new lib("publish", "");
+    return new lib("daily", "");
 })($);
 

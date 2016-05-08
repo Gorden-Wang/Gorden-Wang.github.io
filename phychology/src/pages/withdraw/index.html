@@ -41,14 +41,16 @@
 
         <section class="wrap">
             <div class="top-wrap flex">
-                <span>体现金额:</span>
-                <p>5000.00元</p>
+                <span>提现金额:</span>
+                <p>
+                    <input id="money" style="width:100%;text-align:right" type="num" value="${info.balance}" placeholder="最多能够提现金额为${info.balance}元">
+                </p>
             </div>
 
             <p>请输入提现支付宝账户:</p>
 
             <div class="form-wrap">
-                <input type="text" placeholder="输入">
+                <input id="alipay" type="text" placeholder="输入">
             </div>
 
         </section>

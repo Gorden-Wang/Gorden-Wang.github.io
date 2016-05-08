@@ -70,15 +70,22 @@
             });
             juicer.register("getType", function (type) {
                 var res = "";
-                switch (type){
+                switch (type) {
                     case "出售":
                         res = "../../pages/sale/index.html";
                         break;
                     case "拍卖":
                         res = "../../pages/auction/index.html";
                         break;
-                    //  @TODO : 鉴定，欣赏
-
+                    case "欣赏" :
+                        res = '../../pages/appreciate/index.html';
+                        break;
+                    case "鉴定" :
+                        res = '../../pages/identify/index.html';
+                        break;
+                    case "文字" :
+                        res = '../../pages/text/index.html';
+                        break;
                 }
                 return res;
             });

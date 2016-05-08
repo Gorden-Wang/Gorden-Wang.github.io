@@ -385,4 +385,9 @@
     #page .battle-wrapper .befalse {
       background-color: #70b646; }
 
+#pics .swiper-slide {
+  display: flex;
+  align-items: center;
+  background-color: #000; }
+
 /*# sourceMappingURL=index.css.map */

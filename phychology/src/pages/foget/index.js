@@ -2,11 +2,11 @@
  * Created by gorden on 15/10/10.
  */
 (function (win, $) {
-    var Search = function () {
+    var Foget = function () {
         this.init();
     }
 
-    Search.prototype = {
+    Foget.prototype = {
         init: function () {
             var that = this;
             that.cacheData();
@@ -49,7 +49,16 @@
             var that = this;
             that.dom.tabs = $(".tab-wrapper li");
             that.dom.back = $(".m-icon0");
-            that.dom.forget = $(".forget");
+            //that.dom.forget = $(".forget");
+
+
+            that.dom.tel = $("#tel");
+            that.dom.num = $("#num");
+            that.dom.pass = $("#pass");
+            that.dom.pass1 = $("#pass1");
+            that.dom.sendNum = $($(".input-button")[0]);
+            that.dom.regist = $(".btn");
+            that.dom.swich = $(".pswview");
 
 
         },
@@ -58,17 +67,62 @@
 
             FastClick.attach(document.body);
 
-            that.dom.back.on("click",function(){
+            that.dom.back.on("click", function () {
                 win.history.back();
             });
 
 
 
-            that.dom.forget.on("click",function(){
-                win.location = "../../pages/login/forget.html";
+
+            that.dom.tel.on("input", function () {
+                var val = $(this).val();
+                if (/1\d{10}/.test(val)) {
+                    that.dom.sendNum.addClass("enable");
+                }
             });
 
 
+            that.dom.sendNum.on("click", function () {
+
+                if ($(this).hasClass("enable")) {
+                    that.sendNum();
+                }
+            })
+
+            that.dom.regist.on("click", function () {
+                var req = {
+                    callPhone: that.dom.tel.val(),
+                    password: that.dom.pass.val(),
+                    code: that.dom.num.val()
+                }
+
+                that.goRegist(req);
+
+
+            });
+
+            that.dom.pass.on("input", function () {
+                that.dom.pass1.val($(this).val());
+            })
+
+            that.dom.pass1.on("input", function () {
+                that.dom.pass.val($(this).val());
+            })
+
+            that.dom.swich.on("click", function () {
+                var passDis = that.dom.pass.hasClass("hide");
+                var pass1Dis = that.dom.pass1.hasClass("hide");
+
+
+                if (passDis) {
+                    that.dom.pass.removeClass("hide")
+                    that.dom.pass1.addClass("hide");
+                } else {
+                    that.dom.pass1.removeClass("hide")
+                    that.dom.pass.addClass("hide");
+                }
+
+            })
 
 
         },
@@ -83,51 +137,43 @@
             });
 
         },
-        getItems: function () {
 
+        sendNum: function () {
+            var that = this;
+            var req = {
+                callPhone: that.dom.tel.val(),
+                codeType: 2
+            }
+            that.dom.loading.show();
+            Wlib.SendRequest('/zayi/app/user/smscode', req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    that.dom.loading.hide();
+                    Wlib.tips(data.resultMsg);
+                }else{
+                    that.dom.loading.hide();
+                    Wlib.tips(data.resultMsg);
+                }
+            });
+        },
+        goRegist: function (obj) {
             var that = this;
 
+            that.dom.loading.show();
+            Wlib.SendRequest('/zayi/app/user/find_passwd', obj, "POST", function (data) {
 
-            function callback(data) {
-
-                if (data.resultCode == "1") {
-                    //成功
-
-                    that.data.data = data.resultData;
-
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
-
-
-                    console.log(that.data.data)
-
-
+                if (data.resultCode == 1) {
+                    Wlib.tips("修改密码成功")
+                    that.dom.loading.hide();
                 } else {
-                    Wlib.tips(data.message);
+                    that.dom.loading.hide();
+                    win.history.back();
                 }
 
-            }
-
-            var param = (function (data) {
-
-                var res = "";
-
-                for (var i in data) {
-                    res += (i + "=" + data[i]) + "&";
-                }
-
-                return res.slice(0, -1);
-
-            })(that.data.param);
-
-
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
-
+            })
         }
     }
 
-    var search = new Search();
+    var foget = new Foget();
 
 
 })(window, $);

@@ -58,18 +58,21 @@
             FastClick.attach(document.body);
 
             that.dom.next.on("click", function () {
-                var val = that.dom.input.val();
-                if (/^1\d{10}$/.test(val)) {
-                    that.dom.confirmtel.text(that.dom.input.val());
-                    that.dom.overlay.show();
+                if ($(this).hasClass("enable")) {
+                    var val = that.dom.input.val();
+                    if (/^1\d{10}$/.test(val)) {
+                        that.dom.confirmtel.text(that.dom.input.val());
+                        that.dom.overlay.show();
 
-                } else {
-                    Wlib.tips("请输入正确的手机号");
+                    } else {
+                        Wlib.tips("请输入正确的手机号");
+                    }
                 }
+
             });
 
             that.dom.confim.on("click", function () {
-                that.sendCode(function(){
+                that.sendCode(function () {
                     win.location = "./verify.html?tel=" + that.dom.input.val();
                 });
             });
@@ -78,21 +81,29 @@
                 that.dom.overlay.hide();
             })
 
+            that.dom.input.on("input", function () {
+                var num = $(this).val();
+
+                if (/^1\d{10}$/.test(num)) {
+                    that.dom.next.addClass("enable");
+                }
+            })
+
 
         },
         sendCode: function (callback) {
             var that = this;
             var tel = that.dom.input.val();
             var req = {
-                phone : that.dom.input.val(),
-                type : 5,
-                open_id : localStorage.getItem("openid")
+                phone: that.dom.input.val(),
+                type: 5,
+                open_id: localStorage.getItem("openid")
             };
             Wlib.SendRequest("default/index/getCode", req, "GET", function (data) {
-                if(data.state == 0){
+                if (data.state == 0) {
                     Wlib.tips(data.message);
-                }else{
-                    localStorage.setItem("code",data.code);
+                } else {
+                    localStorage.setItem("code", data.code);
                     callback && callback();
                 }
             });

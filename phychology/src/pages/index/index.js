@@ -36,31 +36,31 @@
                 wrapper: $("#page"),
                 loading: $("#loading"),
                 tpl: $("#tpl"),
-                rWrapper : $("#right-wrapper"),
-                rtpl : $("#r-tpl"),
-                lWrapper : $("#left-wrapper"),
-                ltpl : $("#l-tpl"),
+                rWrapper: $("#right-wrapper"),
+                rtpl: $("#r-tpl"),
+                lWrapper: $("#left-wrapper"),
+                ltpl: $("#l-tpl"),
             }
         },
         renderUI: function () {
             var that = this;
             that.RSLIDE = new Wlib.Slider({
                 wrapper: "#right-wrapper",
-                sibling : "#page",
-                scroll : "#scrollwrapper",
+                sibling: "#page",
+                scroll: "#scrollwrapper",
                 dir: "1",
             });
             that.LSLIDE = new Wlib.Slider({
                 wrapper: "#left-wrapper",
-                sibling : "#page",
-                scroll : "",
+                sibling: "#page",
+                scroll: "",
                 dir: "0",
-                slideOutCallback : function(){
-                    setTimeout(function(){
+                slideOutCallback: function () {
+                    setTimeout(function () {
                         that.dom.ImgWrap.css({
-                            'margin-top' : '52px'
+                            'margin-top': '52px'
                         });
-                    },290);
+                    }, 290);
 
                 }
             });
@@ -101,81 +101,93 @@
 
             FastClick.attach(document.body);
 
-            that.dom.tabs.on("click",function(){
+            that.dom.tabs.on("click", function () {
                 var target = $(this).attr("data-target");
                 var nextTarget = $(this).siblings().attr("data-target");
                 var isSelect = $(this).hasClass("selected");
-                if(!isSelect){
+                if (!isSelect) {
                     $(nextTarget).hide();
                     $(target).show();
                     $(this).addClass("selected").siblings().removeClass("selected");
                 }
             });
 
-            that.dom.filterbtn.on("click",function(){
+            that.dom.filterbtn.on("click", function () {
                 that.RSLIDE.slideIn();
             });
-            that.dom.mybtn.on("click",function(){
+            that.dom.mybtn.on("click", function () {
                 that.LSLIDE.slideIn();
                 that.dom.ImgWrap.css({
-                    'margin-top' : '0'
+                    'margin-top': '0'
                 });
             });
-            that.dom.lbbtn.on("click",function(){
+            that.dom.lbbtn.on("click", function () {
                 that.LSLIDE.slideOut();
             });
-            that.dom.searchbtn.on("click",function(){
+            that.dom.searchbtn.on("click", function () {
                 win.location = "../../pages/index/search.html";
             });
 
-            that.dom.filterLis.on("click",function(){
-                if(!$(this).hasClass("selected")){
+            that.dom.filterLis.on("click", function () {
+                if (!$(this).hasClass("selected")) {
                     $(this).addClass("selected").siblings().removeClass("selected")
                 }
             });
-            that.dom.resetbtn.on("click",function(){
-               that.dom.filterLis.not(".unreset").removeClass("selected");
+            that.dom.resetbtn.on("click", function () {
+                that.dom.filterLis.not(".unreset").removeClass("selected");
             });
-            that.dom.filterSearchbtn.on("click",function(){
+            that.dom.filterSearchbtn.on("click", function () {
                 that.dom.loading.show();
-                setTimeout(function(){
+                setTimeout(function () {
                     that.RSLIDE.slideOut();
                     that.dom.resetbtn.trigger("click");
                     that.dom.loading.hide();
-                },2000)
+                }, 2000)
             });
-            that.dom.addNoteBtn.on("click",function(){
+            that.dom.addNoteBtn.on("click", function () {
                 win.location = "../../pages/addNote/index.html";
             });
-            that.dom.inetestbtn.on("click",function(){
+            that.dom.inetestbtn.on("click", function () {
                 win.location = "../../pages/interest/index.html"
             });
-            that.dom.newsbtn.on("click",function(){
-                win.location = "../../pages/news/index.html"
+            that.dom.newsbtn.on("click", function () {
+                if (that.checkLogin()) {
+                    win.location = "../../pages/news/index.html"
+                }
             });
-            that.dom.setbtn.on("click",function(){
+            that.dom.setbtn.on("click", function () {
                 win.location = "../../pages/setting/index.html"
             });
-            that.dom.loginbtn.on("click",function(){
+            that.dom.loginbtn.on("click", function () {
                 win.location = "../../pages/login/index.html"
             });
-            that.dom.items.on("click",function(){
+            that.dom.items.on("click", function () {
                 win.location = "../../pages/item/index.html"
             });
-            that.dom.orderbtn.on("click",function(){
-                win.location = "../../pages/orderlist/index.html"
+            that.dom.orderbtn.on("click", function () {
+
+                if (that.checkLogin()) {
+                    win.location = "../../pages/orderlist/index.html"
+                }
+
             });
-            that.dom.profile.on("click",function(){
-               win.location = '../../pages/profile/index.html';
+            that.dom.profile.on("click", function () {
+                if (that.checkLogin()) {
+                    win.location = '../../pages/profile/index.html';
+                }
+
             });
-            that.dom.money.on("click",function(){
-                win.location = '../../pages/money/index.html';
+            that.dom.money.on("click", function () {
+                if (that.checkLogin()) {
+                    win.location = '../../pages/money/index.html';
+                }
+
             });
 
-            that.dom.addTask.on("click",function(){
+            that.dom.addTask.on("click", function () {
                 win.location = '../../pages/addTask/index.html';
             });
-            that.dom.iwant.on("click",function(){
+            that.dom.iwant.on("click", function () {
                 win.location = '../../pages/iwant/index.html';
             });
         },
@@ -189,6 +201,18 @@
                 return big + lit;
             });
 
+        },
+
+        checkLogin: function () {
+            if (!(localStorage.getItem("apptoken") && localStorage.getItem("userId"))) {
+                var top = "<p class='content'>请先登录,享受更多服务</p>";
+                var btn = "<div class='btn'>朕知道了</div>";
+                Wlib.alert(top, btn, function () {
+                    win.location.href = '../../pages/login/index.html'
+                });
+            } else {
+                return true;
+            }
         },
         getItems: function () {
 

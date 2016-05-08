@@ -12,10 +12,10 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
-
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
+            that.getRequireInfo();
             //that.getItems();
         },
         cacheData: function () {
@@ -78,48 +78,28 @@
             });
 
         },
-        getItems: function () {
-
+        getRequireInfo: function () {
             var that = this;
+            var req = {
+                userId: localStorage.getItem("userId"),
+                apptoken: localStorage.getItem("apptoken")
+            }
 
-
-            function callback(data) {
-
-                if (data.resultCode == "1") {
-                    //成功
-
-                    that.data.data = data.resultData;
-
+            Wlib.SendRequest("/zayi/app/user/myrequirements", req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    if(data.resultData.length == 0){
+                        Wlib.tips("还没有提交过需求~");
+                        return;
+                    }
+                    that.data.info = data.resultData;
                     that.renderUI();
                     that.recacheDom();
                     that.bindEvent();
-
-
-                    console.log(that.data.data)
-
-
                 } else {
-                    Wlib.tips(data.message);
+                    Wlib.tips(data.resultMsg)
                 }
-
-            }
-
-            var param = (function (data) {
-
-                var res = "";
-
-                for (var i in data) {
-                    res += (i + "=" + data[i]) + "&";
-                }
-
-                return res.slice(0, -1);
-
-            })(that.data.param);
-
-
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
-
-        }
+            });
+        },
     }
 
     var search = new Search();

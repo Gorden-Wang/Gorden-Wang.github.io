@@ -2,19 +2,17 @@
  * Created by gorden on 15/10/10.
  */
 (function (win, $) {
-    var Search = function () {
+    var Profile = function () {
         this.init();
     }
 
-    Search.prototype = {
+    Profile.prototype = {
         init: function () {
             var that = this;
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getUserInfo();
 
             //that.getItems();
         },
@@ -57,19 +55,55 @@
 
             FastClick.attach(document.body);
 
-            that.dom.back.on("click",function(){
+            that.dom.back.on("click", function () {
                 win.history.back();
             });
 
-            that.dom.submit.on("click",function(){
+            that.dom.submit.on("click", function () {
 
+                that.modifyUser();
 
-
-                win.history.back();
-
+                //win.history.back();
             })
+        },
+        modifyUser: function () {
+            var that = this;
+
+            var req = {
+                userId: localStorage.getItem("userId"),
+                apptoken: localStorage.getItem("apptoken"),
+                fullName : $("#name").val(),
+                qq: $("#qq").val() || "",
+                wechat: $("#wechat").val() || "",
+                email: $("#email").val() || ""
+            }
 
 
+            Wlib.SendRequest("/zayi/app/user/modinfo", req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    win.history.back();
+                } else {
+                    Wlib.tips(data.resultMsg);
+                }
+            });
+        },
+        getUserInfo: function () {
+            var that = this;
+            var req = {
+                userId: localStorage.getItem("userId"),
+                apptoken: localStorage.getItem("apptoken")
+            }
+
+            Wlib.SendRequest("/zayi/app/user/getinfo", req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    that.data.info = data.resultData;
+                    that.renderUI();
+                    that.recacheDom();
+                    that.bindEvent();
+                } else {
+                    //Wlib.tips("")
+                }
+            });
         },
         addJuicerHandler: function () {
             var that = this;
@@ -82,51 +116,10 @@
             });
 
         },
-        getItems: function () {
 
-            var that = this;
-
-
-            function callback(data) {
-
-                if (data.resultCode == "1") {
-                    //成功
-
-                    that.data.data = data.resultData;
-
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
-
-
-                    console.log(that.data.data)
-
-
-                } else {
-                    Wlib.tips(data.message);
-                }
-
-            }
-
-            var param = (function (data) {
-
-                var res = "";
-
-                for (var i in data) {
-                    res += (i + "=" + data[i]) + "&";
-                }
-
-                return res.slice(0, -1);
-
-            })(that.data.param);
-
-
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
-
-        }
     }
 
-    var search = new Search();
+    var profile = new Profile();
 
 
 })(window, $);

@@ -2,11 +2,11 @@
  * Created by gorden on 15/10/10.
  */
 (function (win, $) {
-    var Search = function () {
+    var Login = function () {
         this.init();
     }
 
-    Search.prototype = {
+    Login.prototype = {
         init: function () {
             var that = this;
             that.cacheData();
@@ -47,10 +47,14 @@
         },
         recacheDom: function () {
             var that = this;
-            that.dom.tabs = $(".tab-wrapper li");
+
             that.dom.back = $(".m-icon0");
             that.dom.forget = $(".forget");
             that.dom.registbtn = $(".btn");
+
+            that.dom.tel = $("#tel");
+            that.dom.pass = $("#pass");
+            that.dom.loginBtn = $(".btn01");
 
 
         },
@@ -59,21 +63,27 @@
 
             FastClick.attach(document.body);
 
-            that.dom.back.on("click",function(){
+            that.dom.back.on("click", function () {
                 win.history.back();
             });
 
-
-
-            that.dom.forget.on("click",function(){
+            that.dom.forget.on("click", function () {
                 win.location = "../../pages/foget/index.html";
             });
 
-            that.dom.registbtn.on("click",function(){
+            that.dom.registbtn.on("click", function () {
                 win.location = "../../pages/register/index.html";
             });
 
 
+            that.dom.loginBtn.on("click", function () {
+                var req = {
+                    callPhone: that.dom.tel.val(),
+                    password: that.dom.pass.val()
+                }
+
+                that.login(req);
+            })
 
 
         },
@@ -88,51 +98,24 @@
             });
 
         },
-        getItems: function () {
-
+        login: function (obj) {
             var that = this;
-
-
-            function callback(data) {
-
-                if (data.resultCode == "1") {
-                    //成功
-
-                    that.data.data = data.resultData;
-
-                    that.renderUI();
-                    that.recacheDom();
-                    that.bindEvent();
-
-
-                    console.log(that.data.data)
-
-
-                } else {
-                    Wlib.tips(data.message);
+            that.dom.loading.show();
+            Wlib.SendRequest("/zayi/app/user/login", obj, "POST", function (data) {
+                if(data.resultCode == "1"){
+                    localStorage.setItem("userId",data.resultData.userId);
+                    localStorage.setItem("apptoken",data.resultData.apptoken);
+                    that.dom.loading.hide();
+                    win.history.back();
+                }else{
+                    Wlib.tips(data.resultMsg);
+                    that.dom.loading.hide();
                 }
-
-            }
-
-            var param = (function (data) {
-
-                var res = "";
-
-                for (var i in data) {
-                    res += (i + "=" + data[i]) + "&";
-                }
-
-                return res.slice(0, -1);
-
-            })(that.data.param);
-
-
-            Wlib.GetJsonData("app/product/detail/jsonp?" + param, callback, callback);
-
+            });
         }
     }
 
-    var search = new Search();
+    var login = new Login();
 
 
 })(window, $);

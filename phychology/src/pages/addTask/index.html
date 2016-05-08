@@ -49,9 +49,9 @@
             </div>
 
             <ul class="tags-wrap">
-                {@each i in range(0,5)}
+                {@each info as item}
                 <li class="tag-item">
-                    微博微信运营
+                    ${item.name}
                 </li>
                 {@/each}
                 <li class="tag-item add-btn select">
@@ -75,7 +75,7 @@
                 <div class="flex flex1 center">
                     <span>￥</span>
                     <div class="input-wrap">
-                        <input type="number" placeholder="不低于200元" style="width: auto;">
+                        <input type="number" id="money" placeholder="不低于200元" style="width: auto;">
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                     手机号:
                 </span>
                     <div class="input-wrap">
-                        <input type="number">
+                        <input id="tel" type="tel">
                     </div>
                 </li>
                 <li class="flex">
@@ -111,7 +111,7 @@
                     姓名:
                 </span>
                     <div class="input-wrap">
-                        <input type="text">
+                        <input id="name" type="text">
                     </div>
                 </li>
                 <li class="flex">
@@ -119,7 +119,7 @@
                     微信:
                 </span>
                     <div class="input-wrap">
-                        <input type="text">
+                        <input id="wechat" type="text">
                     </div>
                 </li>
                 <li class="flex">
@@ -127,7 +127,7 @@
                     QQ:
                 </span>
                     <div class="input-wrap">
-                        <input type="number">
+                        <input id="qq" type="number">
                     </div>
                 </li>
                 <li class="flex">
@@ -135,7 +135,7 @@
                     邮箱:
                 </span>
                     <div class="input-wrap">
-                        <input type="email">
+                        <input id="email" type="email">
                     </div>
                 </li>
             </ul>

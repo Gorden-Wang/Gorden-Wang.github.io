@@ -46,10 +46,21 @@ module.exports = exports = {
         options: {
             protocol: 'https',
             port: '443',
-            middleware: function(connect, options) {
+            middleware: function (connect, options, middlewares) {
+
+
+                //middlewares.unshift(function(req, res, next) {
+                //
+                //    console.log(req.url);
+                //    if (req.url !== '/hello/world') return next();
+                //
+                //    res.end('Hello, world from port #' + options.port + '!');
+                //});
+                //
+                //return middlewares;
                 var middlewares = [];
                 middlewares.push(rewriteRulesSnippet);
-                if(!Array.isArray(options.base)) {
+                if (!Array.isArray(options.base)) {
                     options.base = [options.base];
                 }
                 var directory = options.directory || options.base[options.base.length - 1];
@@ -66,27 +77,114 @@ module.exports = exports = {
         options: {
             protocal: 'http',
             port: '80',
-            middleware: function(connect, options) {
-                var middlewares = [];
-                middlewares.push(rewriteRulesSnippet);
-                if(!Array.isArray(options.base)) {
-                    options.base = [options.base];
-                }
-                var directory = options.directory || options.base[options.base.length - 1];
-                options.base.forEach(function (base) {
-                    middlewares.push(connect.static(base));
+            middleware: function (connect, options, middlewares) {
+                //var middlewares = [];
+                //middlewares.push(rewriteRulesSnippet);
+                //if (!Array.isArray(options.base)) {
+                //    options.base = [options.base];
+                //}
+                //var directory = options.directory || options.base[options.base.length - 1];
+                //options.base.forEach(function (base) {
+                //    middlewares.push(connect.static(base));
+                //});
+                //middlewares.push(connect.directory(directory));
+                //return middlewares;
+
+                console.log(middlewares)
+
+                middlewares.unshift(function (req, res, next) {
+                    if (req.url.indexOf("zayi/app") > -1) {
+                        //zayi
+                        (function () {
+                            var Request = require("request");
+                            var querystring = require("querystring");
+                            //var http = require("http");
+                            var url = require("url");
+                            var RouterURL = "http://icefox-cool.xicp.net";
+                            var info = "";
+                            var path = url.parse(req.url);
+                            var postData = "";
+                            var u = RouterURL + path.path;
+                            if (req.method === "GET") {
+                                console.log(u);
+                                //Request.get("http://icefox-cool.xicp.net/zayi/app/resources/tags",function(e,h,r){
+                                //    res.end(r);
+                                //});
+                                //Request("http://icefox-cool.xicp.net/zayi/app/resources/tags",function(e,h,r){
+                                //    res.end(r);
+                                //})
+                                Request.get({
+                                    url: "http://icefox-cool.xicp.net/zayi/app/resources/tags",
+                                    headers: {
+                                        Host: "icefox-cool.xicp.net",
+                                        //Origin: "http://icefox-cool.xicp.net"
+                                    }
+                                }, function (e, h, r) {
+                                    res.end(r);
+                                })
+                            } else {
+                                //req.pipe(Request.post(u)).pipe(res);
+
+
+                            }
+
+
+                            req.addListener("data", function (postDataChunk) {
+                                postData += postDataChunk;
+
+                                console.log(postData)
+                            });
+
+                            req.addListener("end", function (postDataChunk) {
+
+                                if(req.method == "GET"){
+                                    return;
+                                }
+                                var data = querystring.parse(postData);
+                                Request.post({
+                                    url: RouterURL + req.url.split("?")[0],
+                                    form: data,
+                                    headers: {
+                                        Host: "icefox-cool.xicp.net",
+                                        Origin: "http://icefox-cool.xicp.net"
+                                    }
+                                }, function (e, h, b) {
+                                    console.log(h.headers);
+
+                                    if (h.headers['set-cookie']) {
+                                        res.writeHead(200, {
+                                            'Set-Cookie': h.headers['set-cookie']
+                                        })
+                                    }
+                                    res.end(b);
+                                })
+
+
+                            });
+
+
+                        })();
+                    } else {
+                        return next();
+                    }
+
+                    //if (req.url !== '/hello/world') return next();
+                    //
+                    //res.end('Hello, world from port #' + options.port + '!');
                 });
-                middlewares.push(connect.directory(directory));
+
                 return middlewares;
+
+
             },
             base: ['src', 'DOKU_template']
         }
     }
 };
 
-function setMiddleware () {
+function setMiddleware() {
     var config = {};
-    config['middlewares'] = function(connect, options) {
+    config['middlewares'] = function (connect, options) {
         var middlewares = [];
         middlewares.push(rewriteRulesSnippet);
         if (!Array.isArray(options.base)) {

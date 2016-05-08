@@ -8,7 +8,7 @@
         var that = this;
         //Wlib.Weixin.goAuth();
         //Wlib.wx.pay();
-        Wlib.wx.forceLogin(function () {
+        Wlib.wx.checkLogin(function () {
             Wlib.wx.getJSSign('', function (data) {
                 Wlib.wx.jsConfig(data, function () {
                     Wlib.wx.hideMenu();

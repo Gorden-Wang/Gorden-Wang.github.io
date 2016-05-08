@@ -12,9 +12,10 @@
             that.cacheData();
             that.cacheDom();
             that.addJuicerHandler();
-            that.renderUI();
-            that.recacheDom();
-            that.bindEvent();
+            that.getMoney();
+            //that.renderUI();
+            //that.recacheDom();
+            //that.bindEvent();
 
             //that.getItems();
         },
@@ -68,6 +69,24 @@
             })
 
 
+        },
+        getMoney: function () {
+            var that = this;
+            var req = {
+                userId: localStorage.getItem("userId"),
+                apptoken: localStorage.getItem("apptoken")
+            }
+
+            Wlib.SendRequest("/zayi/app/user/account_balance", req, "POST", function (data) {
+                if (data.resultCode == 1) {
+                    that.data.info = data.resultData;
+                    that.renderUI();
+                    that.recacheDom();
+                    that.bindEvent();
+                } else {
+                    //Wlib.tips("")
+                }
+            });
         },
         addJuicerHandler: function () {
             var that = this;

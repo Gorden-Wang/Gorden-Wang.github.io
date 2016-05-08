@@ -94,6 +94,10 @@
         display: inline-block;
         width: 7em;
       }
+      span.input-button.enable{
+        background-color:#ebe5e2 ;
+        color: #59463d;
+      }
 
       .pswview{
         display: inline-block;
@@ -172,4 +176,8 @@
     padding: 0px 20px;
   }
 
+}
+
+.hide{
+  display: none !important;
 }
