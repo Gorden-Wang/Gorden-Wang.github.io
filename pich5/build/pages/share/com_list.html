@@ -10,9 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>拍卖预展公司列表</title>
     <link href="../../lib/boot.css" rel="stylesheet">
-    <link href="../../widgets/swiper/index.css?version=0.6.10" type="text/css" rel="stylesheet"/>
-    <link href="../../pages/share/com_list.css?version=0.6.10" type="text/css" rel="stylesheet"/>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.6.10"></script>
+    <link href="../../widgets/swiper/index.css?version=0.6.12" type="text/css" rel="stylesheet"/>
+    <link href="../../pages/share/com_list.css?version=0.6.12" type="text/css" rel="stylesheet"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=0.6.12"></script>
 
 </head>
 <body>
@@ -70,7 +70,7 @@
 <script type="template/juicer" id="tplItem">
     {@each list as item}
     <li>
-        <a href="../../pages/share/com_detail.html?id=${item.id}">
+        <a href="../../pages/share/com_detail.html?id=${item.expo_id}">
         <div class="l-img">
             <img class="lazy-image" lazy-image="${item.logo}">
         </div>
@@ -91,9 +91,9 @@
     {@/each}
 </script>
 
-<script src="../../lib/libAll.js?version=0.6.10"></script>
-<script src="../../widgets/swiper/index.js?version=0.6.10"></script>
-<script src="../../pages/share/com_list.js?version=0.6.10"></script>
+<script src="../../lib/libAll.js?version=0.6.12"></script>
+<script src="../../widgets/swiper/index.js?version=0.6.12"></script>
+<script src="../../pages/share/com_list.js?version=0.6.12"></script>
 
 <script>
 
