@@ -149,6 +149,7 @@ module.exports = exports = {
                                         Origin: "http://icefox-cool.xicp.net"
                                     }
                                 }, function (e, h, b) {
+                                    console.log(e);
                                     console.log(h.headers);
 
                                     if (h.headers['set-cookie']) {

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>活动详情</title>
+    <!--<link href="../../lib/base.css" rel="stylesheet">-->
+    <link href="../../lib/base.css" rel="stylesheet"/>
+    <link href="../../pages/act/index.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="loading" class="loading">
+    <div class="loading-content">loading...</div>
+</div>
+<div id="page">
+    <div id="bottom">
+        <div class="button">
+            我要去报名
+        </div>
+    </div>
+
+</div>
+
+<script type="template/juicer" id="tpl">
+
+    <div class="m-wrap">
+        <div class="head-wrap">
+            <a>
+                <img src="${data.images[0]}">
+
+                <div class="over">
+                    ${data.title}
+                </div>
+            </a>
+        </div>
+
+        <div class="detail-wrap">
+            <ul>
+                <li>
+                    活动地点：${data.activity_address}
+                </li>
+                <li>
+                    报名截止：${data.end_time}
+                </li>
+                <li>
+                    集合时间：${data.jihe_time}
+                </li>
+                <li>
+                    集合地点：${data.jihe_address}
+                </li>
+                <li>
+                    上线人数：${data.max_man}人
+                </li>
+                <li>
+                    活动费用：￥${data.price}
+                </li>
+                <li>
+                    支付方式：${data.pay_way}
+                </li>
+                <li>
+                    交通工具：${data.utils}
+                </li>
+                <li>
+                    联系人：${data.link_name}
+                </li>
+                <li>
+                    联系电话：${data.link_mobile}
+                </li>
+            </ul>
+
+            <div class="sm-img">
+                <img src="${data.member_avar}">
+
+                <p>${data.member_name}</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="discribe wrap">
+            <p class="d-t">活动介绍</p>
+            <article>${data.info}</article>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="sub-wrap wrap">
+            <p class="d-t">babylink已提供支持</p>
+            <article style="text-indent: 0em">${data.help}</article>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="attend-wrap wrap">
+            <p class="d-t">参与人数(${data.log_list.length}人)</p>
+
+            <ul class="pic-list">
+                {@each data.log_list as item}
+                <li>
+                    <div class="sm-img">
+                        <img src="${item.member_avar}">
+
+                        <p>${item.member_name}</p>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+        </div>
+    </div>
+
+    <div class="m-wrap" style="margin: 10px 5px;">
+        <div class="reply wrap">
+            <div class="t-w flex">
+                <p class="flex1">评论(<span>${data.commend_list.length}</span>)</p>
+                <span>更多</span>
+            </div>
+
+            <ul class="re-ul">
+                {@each data.commend_list as item}
+                <li class="flex">
+                    <img src="${item.from_userAvar}">
+
+                    <div class="flex1">
+                        <div class="s-t-w flex">
+                            <p class="t-name flex1">${item.from_userName}</p>
+                            <span>${item.add_time}</span>
+                        </div>
+                        <p>${item.info}</p>
+                    </div>
+                </li>
+                {@/each}
+            </ul>
+
+        </div>
+    </div>
+
+
+
+
+</script>
+
+<script src="../../lib/libAll.js"></script>
+<script src="../../pages/act/index.js"></script>
+
+
+</body>
+</html>
