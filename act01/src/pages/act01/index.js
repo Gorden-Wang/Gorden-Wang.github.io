@@ -13,7 +13,10 @@
             that.cacheDom();
             that.addJuicerHandler();
 
-            that.getItems();
+            //that.getItems();
+            that.renderUI();
+            that.recacheDom();
+            that.bindEvent();
         },
         cacheData: function () {
             var that = this;
