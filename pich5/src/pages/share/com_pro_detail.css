@@ -19,8 +19,9 @@ body {
       padding-bottom: 100%;
       position: relative; }
     body header .back-img img {
-      height: 100%;
-      text-align: center; }
+      max-height: 100%;
+      text-align: center;
+      max-width: 100%; }
     body header .imgs-overlay {
       position: absolute;
       bottom: 0px;
@@ -144,5 +145,11 @@ body {
       width: 10px;
       height: 10px;
       background-position: 0 -14px; }
+
+#pics .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000; }
 
 /*# sourceMappingURL=com_pro_detail.css.map */

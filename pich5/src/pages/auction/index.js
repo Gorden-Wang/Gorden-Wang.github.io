@@ -43,6 +43,10 @@
                     img: that.data.data.minipic[0]
                 }
 
+                if(!that.CTIME){
+                    obj.desc = that.data.data.author + '作品已经拍卖结束'
+                }
+
                 Wlib.wx.shareTo(obj.title,obj.desc,obj.link,obj.img);
             },1000);
 

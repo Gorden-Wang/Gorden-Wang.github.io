@@ -29,7 +29,7 @@
 
                     <a class="back-img">
                         <img class="swiper-lazy"
-                             data-src="${item.picture}">
+                             data-src="${item.minipicture}">
                         <div class="swiper-lazy-preloader"></div>
                     </a>
                 </div>
@@ -70,7 +70,7 @@
 <script type="template/juicer" id="tplItem">
     {@each list as item}
     <li>
-        <a href="../../pages/share/com_detail.html?id=${item.id}">
+        <a href="../../pages/share/com_detail.html?id=${item.expo_id}">
         <div class="l-img">
             <img class="lazy-image" lazy-image="${item.logo}">
         </div>
