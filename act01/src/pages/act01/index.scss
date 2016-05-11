@@ -54,6 +54,7 @@ body {
   padding: 20px;
   max-width: 640px;
   margin: auto;
+  padding-bottom:60px;
 
   header {
     background-image: url(./midbg.png);
@@ -217,8 +218,8 @@ body {
     overflow: hidden;
     .scr-item {
       float: left;
-      width:24%;
-      margin-right : 1.33333333%;
+      width: 23%;
+      margin-right: 2.6666666666666665%;
       text-align: center;
       background-color: white;
       font-size: 16px;
@@ -262,7 +263,23 @@ body {
   }
 
 }
-
+footer {
+  background-color: #f15c40;
+  color: #FFF;
+  font-size: 17px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0px;
+}
+a {
+  text-decoration: none;
+  color: #FFF;
+  outline: none;
+}
 @media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
   /* 兼容iphone 6 */
   .class {
