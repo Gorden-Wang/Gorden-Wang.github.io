@@ -1,0 +1,308 @@
+
+#loading {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  z-index: 99999;
+  background: transparent;
+
+}
+
+#loading .loading-content {
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  line-height: 100px;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -45px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 0px !important;
+  box-shadow: none !important;
+  display: block;
+  background-color: rgba(47, 34, 33, 0.9);
+  background-image: url(./loading_new.gif);
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  line-height: 0px;
+  text-indent: -999em;
+}
+
+body {
+  background-image: url(./bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#page {
+  padding: 20px;
+  max-width: 640px;
+  margin: auto;
+
+  header {
+    background-image: url(./midbg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 0px;
+    width: 100%;
+    padding-bottom: percentage(222/688);
+    max-width: 640px;
+    color: #cecece;
+
+    .title-wrap {
+      font-size: 13px;
+      text-align: center;
+      padding-top: 10px;
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    .team-wrap {
+      margin: 10px 0px;
+
+      .team-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      span {
+        font-size: 25px;
+      }
+      .img {
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        img {
+          width: 33px;
+          height: 33px;
+          display: block;
+          border-radius: 33px;
+          border: 2px solid #004807;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .split {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    > div {
+      flex: 1;
+      background-image: url(./split.png);
+      background-repeat: no-repeat;
+      height: 20px;
+      background-position: right center;
+      background-size: 100% 18px;
+    }
+    > div:last-of-type {
+      transform: rotate(180deg);
+    }
+    > span {
+      color: #ffffff;
+      margin: auto 10px;
+    }
+  }
+
+  /*
+  <div class="main-wrap">
+        <div class="main-item">
+            <div class="item">
+                <p>罗马尼亚</p>
+                <p>胜</p>
+            </div>
+            <p>赔率 1.21</p>
+        </div>
+        <div class="main-item">
+            <div class="item">
+                <p>VS</p>
+                <p>平</p>
+            </div>
+            <p>赔率 1.21</p>
+        </div>
+        <div class="main-item">
+            <div class="item">
+                <p>克洛迪亚</p>
+                <p>剩</p>
+            </div>
+            <p>赔率 1.21</p>
+        </div>
+    </div>
+  */
+
+  .main-wrap {
+    display: flex;
+    .main-item {
+      flex: 1;
+      > p {
+        text-align: center;
+        margin: 10px 0px;
+        color: white;
+
+      }
+      .item {
+        margin-right: 13px;
+        background-color: white;
+        font-size: 16px;
+        text-align: center;
+        padding: 13px 0px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+
+        p:first-of-type{
+          width: 4em;
+          margin: auto;
+          margin-bottom: 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      .item:before {
+        content: '';
+        width: 50px;
+        height: 50px;
+        background-color: #d0ffbb;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        transform: translateX(-26px) translateY(35px) rotate(45deg);
+      }
+      .item:after {
+        content: '';
+        width: 50px;
+        height: 50px;
+        background-color: #d0ffbb;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        transform: translateX(26px) translateY(35px) rotate(45deg);
+
+      }
+
+      p:first-of-type {
+        margin-bottom:10px;
+      }
+
+    }
+    .main-item:last-of-type {
+      margin-right: 0px;
+    }
+  }
+
+  .scr-wrap {
+    overflow: hidden;
+    .scr-item {
+      float: left;
+      width:24%;
+      margin-right : 1.33333333%;
+      text-align: center;
+      background-color: white;
+      font-size: 16px;
+      padding: 8px 0px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom:10px;
+      border:2px solid #004807;
+      box-sizing: border-box;
+
+      >p:last-of-type{
+        color: #999999;
+
+      }
+    }
+    .scr-item:before {
+      content: '';
+      width: 50px;
+      height: 50px;
+      background-color: #d0ffbb;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      transform: translateX(-34px) translateY(35px) rotate(45deg);
+    }
+    .scr-item:after {
+      content: '';
+      width: 50px;
+      height: 50px;
+      background-color: #d0ffbb;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      transform: translateX(34px) translateY(35px) rotate(45deg);
+
+    }
+    .scr-item:nth-of-type(4n){
+      margin-right:0px;
+    }
+  }
+
+}
+
+@media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* 兼容iphone 6 */
+  .class {
+  }
+  #page .main-wrap .main-item .item p:first-of-type{
+    width:6em;
+  }
+}
+
+@media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3.0) {
+  /* 兼容iphone6 plus */
+
+  #page header .team-wrap {
+    margin: 15px 0px;
+  }
+  .scr-item>p:first-of-type{
+    margin-bottom:5px;
+
+  }
+  #page .main-wrap .main-item .item p:first-of-type{
+    width:7em;
+  }
+
+}
+
+@media (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2.0) {
+  /* 兼容iphone5S */
+
+  .smallfont {
+    font-size: 10px !important;
+  }
+
+  #page header .team-wrap .img img {
+    margin-bottom: 5px;
+  }
+  #page header .team-wrap .img {
+    font-size: 13px;
+  }
+  #page header .team-wrap {
+    margin: 5px 0px;
+  }
+
+}

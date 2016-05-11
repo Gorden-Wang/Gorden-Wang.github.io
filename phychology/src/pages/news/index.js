@@ -57,11 +57,11 @@
 
             FastClick.attach(document.body);
 
-            that.dom.back.on("click",function(){
+            that.dom.back.on("click", function () {
                 win.history.back();
             });
 
-            that.dom.lis.on("click",function(){
+            that.dom.lis.on("click", function () {
                 win.location = "../../pages/detail/index.html"
             })
 
@@ -69,12 +69,44 @@
         },
         addJuicerHandler: function () {
             var that = this;
-            juicer.register("makeRateImg", function (rate) {
+            juicer.register("makeStatus", function (sta) {
+                var res = "";
+                /*
+                 DRAFT (1, "草稿", "生成订单为发送给用户"),
+                 READY_PAY (2, "待付款", "刚发出去，B还没付款"),
+                 PAID (3, "已付款,待开工", "B已经付款，还没法订单给C"),
+                 NORMAL (4, "正常", "至少一个C订单发出去了.所有C都正常或者提前"),
+                 DELAY (5, "滞后", "存在1个或以上滞后C"),
+                 COMPLETED (6, "结束", "旗下所有C都结束");
+                 */
+                //需求方
+                switch (sta) {
+                    case 1 :
+                        res = "草稿";
+                        break;
+                    case 2 :
+                        res = "待付款";
+                        break;
 
-                var arr = (rate + "").split(".");
-                var big = arr[0];
-                var lit = arr[1] > 0 ? '.5' : '';
-                return big + lit;
+                    case 3 :
+                        res = "已付款,待开工";
+                        break;
+
+                    case 4 :
+                        res = "正常";
+                        break;
+
+                    case 5 :
+                        res = "滞后";
+                        break;
+
+                    case 6 :
+                        res = "结束";
+                        break;
+
+                }
+
+                return res;
             });
 
         },
@@ -87,7 +119,7 @@
 
             Wlib.SendRequest("/zayi/app/user/myrequirements", req, "POST", function (data) {
                 if (data.resultCode == 1) {
-                    if(data.resultData.length == 0){
+                    if (data.resultData.length == 0) {
                         Wlib.tips("还没有提交过需求~");
                         return;
                     }
